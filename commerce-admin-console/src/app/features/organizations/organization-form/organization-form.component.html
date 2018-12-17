@@ -1,0 +1,137 @@
+<div class="organization-form">
+    <div class="form-group">
+        <h3 [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.headers.detail'"></h3>
+        <div class="bx--row">
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">{{ 'ORGANIZATIONS.FORM_ORGANIZATION.inputs.name' | translate}} *</label>
+                    <input class="bx--text-input" type="text" [attr.disabled]="isInputDisabled?'':null" [(ngModel)]="inputOrg['orgEntityName']" formControlName="orgEntityName" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.nameInput' | translate}}" [ngClass]="{'invalid-input-style': orgEntityName.invalid && (orgEntityName.dirty || orgEntityName.touched)}">
+                    <div class="validation-msg" *ngIf="orgEntityName.invalid && (orgEntityName.dirty || orgEntityName.touched)">
+                        <div *ngIf="orgEntityName.errors.minlength">
+                            <p [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.validation.minName'" [translateParams]="{len: 4}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">{{ 'ORGANIZATIONS.FORM_ORGANIZATION.inputs.desc' | translate}}</label>
+                    <input class="bx--text-input" type="text" [(ngModel)]="inputOrg['description']" formControlName="description" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.descInput' | translate}}" [ngClass]="{'invalid-input-style': description.invalid }">
+                    <div class="validation-msg" *ngIf="description.invalid && (description.dirty || description.touched)">
+                        <div *ngIf="description.errors.maxlength">
+                            <p [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.validation.maxDescription'" [translateParams]="{len: 300}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bx--row">
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm" class="bx--col-lg-5 dropdown">
+                    <label class="bx--label">
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.orgType' | translate}} *
+                    </label>
+                    <ibm-dropdown class="bx--col-lg-10" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.select' | translate}}" (selected)="onTypeSelected($event)" [disabled]="isInputDisabled" [ngClass]="{'valid--error': orgEntityType.invalid && (orgEntityType.dirty || orgEntityType.touched)}" formControlName="orgEntityType">
+                        <ibm-dropdown-list [items]="organizationTypeItems"></ibm-dropdown-list>
+                    </ibm-dropdown>
+                </div>
+            </div>
+            <div class="bx--form-item">
+
+                <div [formGroup]="organizationForm" class="bx--col-lg-5 dropdown">
+                    <label class="bx--label">
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.parentOrg' | translate}} *
+                    </label>
+                    <ibm-dropdown placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.select' | translate}}" [displayValue]="inputOrg['parentMemberName']" (selected)="onParentOrgSelected($event)" [disabled]="isInputDisabled" formControlName="parentOrg" [ngClass]="{'valid--error': parentOrg.invalid && (parentOrg.dirty || parentOrg.touched)}">
+                        <ibm-dropdown-list [items]="parentOrgsItems"></ibm-dropdown-list>
+                    </ibm-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <h3 [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.headers.address'"></h3>
+        <div class="bx--row">
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.streetAdd' | translate}} *</label>
+                    <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.addInput' | translate}}" [(ngModel)]="inputOrg['address']" formControlName="address" [ngClass]="{'invalid-input-style': address.invalid && (address.dirty || address.touched)}">
+                    <div class="validation-msg" *ngIf="address.invalid && (address.dirty || address.touched)">
+                        <div *ngIf="address.errors.pattern">
+                            <p [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.validation.invalidAddress'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.state' | translate}} *</label>
+                    <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.state' | translate}}" [(ngModel)]="inputOrg['state']" formControlName="state" [ngClass]="{'invalid-input-style': state.invalid && (state.dirty || state.touched)}">
+                </div>
+            </div>
+        </div>
+        <div class="bx--row">
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.city' | translate}} *</label>
+                    <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.city' | translate}}" [(ngModel)]="inputOrg['city']" formControlName="city" [ngClass]="{'valid--error': city.invalid && (city.dirty || city.touched)}">
+                </div>
+            </div>
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.zipCode' | translate}} *</label>
+                    <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.zipCode' | translate}}" [(ngModel)]="inputOrg['zipCode']" formControlName="zipCode" [ngClass]="{'invalid-input-style': zipCode.invalid && (zipCode.dirty || zipCode.touched)}">
+                    <div class="validation-msg" *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)">
+                        <div *ngIf="zipCode.errors.pattern || zipCode.errors.minlength">
+                            <p [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.validation.zipCodeFormat'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bx--row">
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.country' | translate}} *</label>
+                    <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.country' | translate}}" [(ngModel)]="inputOrg['country']" formControlName="country" [ngClass]="{'invalid-input-style': country.invalid && (country.dirty || country.touched)}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <h3 [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.headers.contact'"></h3>
+        <div class="bx--row">
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.email' | translate}} *</label>
+                    <input class="bx--text-input" type="email" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.email' | translate}}" [(ngModel)]="inputOrg['email']" formControlName="email" [ngClass]="{'invalid-input-style': email.invalid && (email.dirty || email.touched)}">
+                    <div class="validation-msg" *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors.email">
+                            <p [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.validation.invalidEmail'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bx--form-item">
+                <div [formGroup]="organizationForm">
+                    <label class="bx--label">
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.phone' | translate}}</label>
+                    <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.phone' | translate}}" [(ngModel)]="inputOrg['phone']" formControlName="phone" [ngClass]="{'invalid-input-style': phone.invalid && (phone.dirty || phone.touched)}">
+                    <div class="validation-msg" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                        <div *ngIf="phone.errors.pattern || phone.errors.minlength || phone.errors.maxlength">
+                            <p [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.validation.invalidPhone'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <button class="bx--btn bx--btn--primary" [disabled]="disableSubmit()" (click)="submitForm()" [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.footer.submitBtn'"></button>
+        <button class="bx--btn bx--btn--primary" (click)="cancelForm()" [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.footer.cancelBtn'"></button>
+    </footer>
+</div>

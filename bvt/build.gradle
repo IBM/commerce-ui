@@ -1,0 +1,21 @@
+apply plugin: 'wc-bvt'
+
+// Need to list which project are evaluated before this
+// project.  If these are not defined the it will not be
+// possible to depend on tasks from those projects
+//evaluationDependsOn(':sample-app')
+
+evaluationDependsOn(':idc-admin-console')
+
+bvt {
+	enableYqmtTagging = true
+
+	web {
+		name = project.hasProperty('releaseType') ? "commerce-${releaseType}/ts-web" : "commerce/ts-web"
+
+		asset {
+			unzip project(':idc-admin-console').tasks.assetZip
+			dest 'SETUP/app'
+		}
+	}
+}

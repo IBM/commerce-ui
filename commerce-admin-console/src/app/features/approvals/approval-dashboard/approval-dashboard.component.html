@@ -1,0 +1,33 @@
+<div class="top-container">
+  <div class="breadcrumb-container">
+    <ac-breadcrumb [pages]="pages"></ac-breadcrumb>
+    <a href = {{APPROVAL_HELPLINKS}} target="_blank">
+      <ac-help-links></ac-help-links>
+    </a>
+  </div>
+  <div class="view-container">
+    <div class="content-container">
+      <div class="bx--row">
+        <div class="bx--col-offset-xs-2 bx--col-xs-10">
+          <ac-view-dropdown></ac-view-dropdown>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="bx--row">
+        <div class="bx--col-xs-12">
+          <ac-button-bar></ac-button-bar>
+        </div>
+      </div>
+
+      <div class="bx--row">
+        <div class="bx--col-xs-12">
+          <ac-approval-table></ac-approval-table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<ibm-modal-placeholder></ibm-modal-placeholder>

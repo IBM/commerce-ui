@@ -1,0 +1,121 @@
+# Contents extracted from https://www.gitignore.io/ and modified
+
+####### Eclipse IDE related files #######
+**/.metadata
+**/.project
+**/.settings
+**/clientdb.xml
+**/.loadpath
+
+**/*.tmp
+**/*.bak
+**/*.sw?
+**/~.nib
+**/local.properties
+
+# External tool builders
+**/.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+**/.launch
+
+# PyDev specific (Python IDE for Eclipse)
+**/.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+**/.cproject
+
+# JDT-specific (Eclipse Java Development Tools)
+**/.classpath
+
+# Java annotation processor (APT)
+**/.factorypath
+
+# PDT-specific (PHP Development Tools)
+**/.buildpath
+
+# sbteclipse plugin
+**/.target
+
+# Tern plugin
+**/.tern-project
+
+# TeXlipse plugin
+**/.texlipse
+
+# STS (Spring Tool Suite)
+**/.springBeans
+
+# Code Recommenders
+.recommenders/
+
+# Project output directory
+*/bin
+
+##### JAVA #####
+#Compiled java outputs should not be checked-in
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+#Do not include following binary and text files
+**/*.zip
+**/*.log
+
+##### Gradle #####
+**/.gradle
+**/build
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+##### Run Engine #####
+**/config.properties
+
+# Cache of project
+.gradletasknamecache
+
+# ignore MacOS folder caches
+**/*.DS_Store
+
+
+# UI compiled output
+**/dist
+**/tmp
+**/out-tsc
+
+# node dependencies
+**/build
+**/node_modules
+
+# VS code set up
+**/.vscode/*
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
+
+# misc
+**/.sass-cache
+**/connect.lock
+**/coverage
+**/libpeerconnection.log
+**/npm-debug*.log
+**/testem.log
+**/typings
+
+# e2e
+**/e2e/*.js
+**/e2e/*.map
+
+# yarn 
+**/yarn-error.log
+
+

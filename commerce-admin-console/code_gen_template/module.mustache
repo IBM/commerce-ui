@@ -1,0 +1,26 @@
+/* tslint:disable */
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { {{configurationClass}} } from './{{configurationFile}}';
+
+{{#services}}import { {{serviceClass}} } from './services/{{serviceFile}}';
+{{/services}}
+
+/**
+ * Provider for all {{ prefix }} services, plus {{configurationClass}}
+ */
+@NgModule({
+  imports: [
+    HttpClientModule
+  ],
+  exports: [
+    HttpClientModule
+  ],
+  declarations: [],
+  providers: [
+    {{configurationClass}},
+{{#services}}    {{serviceClass}}{{^serviceIsLast}},{{/serviceIsLast}}
+{{/services}}
+  ],
+})
+export class {{moduleClass}} { }

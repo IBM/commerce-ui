@@ -1,0 +1,19 @@
+<ibm-table class="table--md" [model]="approvalTableContent" [enableRowSelect]="!isTableEmpty" (sort)="simpleSort($event)"></ibm-table>
+
+<div *ngIf="isTableEmpty" class="empty-table-msg"><i>{{'APPROVALS.APPROVAL_TABLE.NO_DATA_MSG' | translate}}</i></div>
+
+<div class="">
+    <div class="bx--row table-footer--pagination">
+        <div class="bx--col-xs-2">
+            <span class="table-selection-info">{{viewedRows}} {{'APPROVALS.APPROVAL_TABLE.NUM_ROWS' | translate}} {{availableRows}}</span>
+        </div>
+        <div class="bx--col-xs-8 pagination-container">
+            <ibm-pagination [model]="approvalTableContent" (selectPage)="selectPage($event)"></ibm-pagination>
+        </div>
+        <!--
+        <div class="bx--col-xs-2">
+            <n-table-goto-page (selectPage)="selectPage($event)"></n-table-goto-page>
+        </div>
+        -->
+    </div>
+</div>

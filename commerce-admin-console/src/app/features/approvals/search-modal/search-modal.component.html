@@ -1,0 +1,42 @@
+<ibm-modal size="md">
+  <ibm-modal-header (closeSelect)="closeModal()">{{'APPROVALS.SEARCH_MODAL.HEADER' | translate}}</ibm-modal-header>
+  <div class="modal-body form-container">
+    <ibm-label>
+      {{'APPROVALS.SEARCH_MODAL.LABEL.SUBMITTER_FIRST_NAME' | translate}}
+      <input type="text" [(ngModel)]="submitterFirstName" class="input-text--md" placeholder="{{ 'APPROVALS.SEARCH_MODAL.PLACEHOLDER.SUBMITTER_FIRST_NAME' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'APPROVALS.SEARCH_MODAL.LABEL.SUBMITTER_MIDDLE_NAME' | translate}}
+      <input type="text" [(ngModel)]="submitterMiddleName" class="input-text--md" placeholder="{{ 'APPROVALS.SEARCH_MODAL.PLACEHOLDER.SUBMITTER_MIDDLE_NAME' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'APPROVALS.SEARCH_MODAL.LABEL.SUBMITTER_LAST_NAME' | translate}}
+      <input type="text" [(ngModel)]="submitterLastName" class="input-text--md" placeholder="{{ 'APPROVALS.SEARCH_MODAL.PLACEHOLDER.SUBMITTER_LAST_NAME' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'APPROVALS.SEARCH_MODAL.LABEL.START_SUBMIT_TIME' | translate}}
+      <input type="text" [(ngModel)]="startSubmitTime" class="input-text--md" placeholder="{{ 'APPROVALS.SEARCH_MODAL.PLACEHOLDER.START_SUBMIT_TIME' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'APPROVALS.SEARCH_MODAL.LABEL.END_SUBMIT_TIME' | translate}}
+      <input type="text" [(ngModel)]="endSubmitTime" class="input-text--md" placeholder="{{ 'APPROVALS.SEARCH_MODAL.PLACEHOLDER.END_SUBMIT_TIME' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'APPROVALS.SEARCH_MODAL.LABEL.APPROVAL_STATUS_ID' | translate}}
+      <input type="number" [(ngModel)]="approvalStatusId" class="input-text--md" placeholder="{{ 'APPROVALS.SEARCH_MODAL.PLACEHOLDER.APPROVAL_STATUS_ID' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'APPROVALS.SEARCH_MODAL.LABEL.ENTITY_ID' | translate}}
+      <input type="number" [(ngModel)]="entityId" class="input-text--md" placeholder="{{ 'APPROVALS.SEARCH_MODAL.PLACEHOLDER.ENTITY_ID' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'APPROVALS.SEARCH_MODAL.LABEL.APPROVER_ID' | translate}}
+      <input type="number" [(ngModel)]="approverId" class="input-text--md" placeholder="{{ 'APPROVALS.SEARCH_MODAL.PLACEHOLDER.APPROVER_ID' | translate}}" />
+    </ibm-label>
+  </div>
+  <ibm-modal-footer>
+    <button class="btn--secondary cancel-button" type="button" (click)="closeModal()">{{'APPROVALS.SEARCH_MODAL.CANCEL' |
+      translate}}</button>
+    <button class="btn--primary submit-button" type="button" (click)="find()">{{'APPROVALS.SEARCH_MODAL.FIND' | translate}}</button>
+  </ibm-modal-footer>
+</ibm-modal>

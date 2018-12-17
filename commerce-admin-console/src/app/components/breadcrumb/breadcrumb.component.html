@@ -1,0 +1,9 @@
+<div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li *ngFor="let page of pages">
+            <a routerLink="page.link">{{page.name}}</a>
+          </li>
+        </ol>
+      </nav>
+</div>

@@ -1,0 +1,10 @@
+{
+	"/lobtools": {
+		"target": "https://localhost:8000",
+		"secure": false
+	},
+	"/wcs": {
+		"target": "https://localhost:8000",
+		"secure": false
+	}
+}

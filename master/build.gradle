@@ -1,0 +1,39 @@
+buildscript {
+	repositories {
+		maven {
+			url 'http://wcnexus.torolab.ibm.com:8081/nexus/content/groups/public'
+		}
+	}
+
+	dependencies {
+		classpath 'com.ibm.commercebuild:gradle-plugins:+'
+		/* Load Run Engine plugin */
+		classpath 'com.ibm.commercebuild.runengine:runengine-plugins:+'
+	}
+}
+
+plugins {
+	id 'org.sonarqube' version '2.6.2'
+}
+
+////////////////////////////
+// Start Build Configuration
+////////////////////////////
+
+ext.javaVersion = 1.8
+ext.product = 'IDC Admin Tools'
+group = 'com.ibm.commerce.idcadmintools'
+version = project.hasProperty('versionOverride') ? project.versionOverride : '1.0-SNAPSHOT'
+
+//////////////////////////
+// End Build Configuration
+//////////////////////////
+
+apply from: 'gradle/base.gradle'
+
+////////////////////////
+// Customization Follows
+////////////////////////
+allprojects {
+	ext.FOUNDATION_VERSION = '1.0-SNAPSHOT'
+}
