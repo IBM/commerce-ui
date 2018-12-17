@@ -1,0 +1,19 @@
+.container {
+    display:flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btn {
+    margin-left: 14px;
+    border: none;
+    background-color: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+n-icon {
+    margin-right: 7px;
+}

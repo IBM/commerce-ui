@@ -1,0 +1,44 @@
+/* tslint:disable */
+import { ComIbmCommerceFoundationCommonDatatypesOrganizationIdentifierType } from './com-ibm-commerce-foundation-common-datatypes-organization-identifier-type';
+import { ComIbmCommerceFoundationCommonDatatypesPersonIdentifierType } from './com-ibm-commerce-foundation-common-datatypes-person-identifier-type';
+import { JavaUtilMapEntry } from './java-util-map-entry';
+import { PersonSingleContactUserDataField } from './person-single-contact-user-data-field';
+export interface PersonSingleContact {
+  phone2: string;
+  addressType?: string;
+  addressId?: string;
+  personTitle?: string;
+  primary?: string;
+  email2: string;
+  email1: string;
+  city?: string;
+  middleName?: string;
+  geographicalTaxCode?: string;
+  state?: string;
+  internalOfficeAddress?: string;
+  fax2: string;
+  fax1: string;
+  organizationIdentifier?: ComIbmCommerceFoundationCommonDatatypesOrganizationIdentifierType;
+  phone1Type?: string;
+  nickName: string;
+  phone2Type?: string;
+  addressLine?: Array<string>;
+  businessTitle?: string;
+  phone1: string;
+  zipCode?: string;
+  bestCallingTime?: string;
+  mobilePhone1Country: string;
+  phone2Publish?: string;
+  mobilePhone1: string;
+  personIdentifier?: ComIbmCommerceFoundationCommonDatatypesPersonIdentifierType;
+  organizationUnitName?: string;
+  organizationName?: string;
+  language?: string;
+  firstName?: string;
+  lastName?: string;
+  geographicalShippingCode?: string;
+  phone1Publish?: string;
+  attributes?: Array<JavaUtilMapEntry>;
+  country?: string;
+  userDataField?: Array<PersonSingleContactUserDataField>;
+}

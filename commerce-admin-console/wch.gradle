@@ -1,0 +1,99 @@
+/**
+ * =================================================================
+ * Licensed Materials - Property of IBM
+ *
+ * Digital Commerce
+ *
+ * (C) Copyright IBM Corp. 2018 All Rights Reserved.
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ * =================================================================
+ */
+ 
+def wchtoolsUrl = 'http://wcnexus.torolab.ibm.com:8081/nexus/content/repositories/releases/com/ibm/commerce/npmpackage/commerce-wchtools-cli/0.1.2/commerce-wchtools-cli-0.1.2.tgz'
+def pushType = project.hasProperty('pushType') ? "${pushType}" : "MISSING_pushType"
+
+def getWchCredentials(def envType) {
+	def wchCredentials = [:]
+
+	if(envType == "QA") {
+		if (System.env.QA_WCH_USER && System.env.QA_WCH_PASSWORD && System.env.QA_WCH_API_URL) {
+			wchCredentials['user'] 		= System.env.QA_WCH_USER
+			wchCredentials['password'] 	= System.env.QA_WCH_PASSWORD
+			wchCredentials['apiUrl'] 	= System.env.QA_WCH_API_URL
+		} else {
+			throw new GradleException('Missing required credentials in System environment for WCH QA.')
+		}
+
+	} else if (envType == "PREPROD") {
+		if (System.env.PREPROD_WCH_USER && System.env.PREPROD_WCH_PASSWORD && System.env.PREPROD_WCH_API_URL) {
+			wchCredentials['user'] 		= System.env.PREPROD_WCH_USER
+			wchCredentials['password'] 	= System.env.PREPROD_WCH_PASSWORD
+			wchCredentials['apiUrl'] 	= System.env.PREPROD_WCH_API_URL			
+		} else {
+			throw new GradleException('Missing required credentials in System environment for WCH PREPROD.')
+		}
+
+	} else if (envType == "PROD") {
+		if (System.env.PROD_WCH_USER && System.env.PROD_WCH_PASSWORD && System.env.PROD_WCH_API_URL) {
+			wchCredentials['user'] 		= System.env.PROD_WCH_USER
+			wchCredentials['password'] 	= System.env.PROD_WCH_PASSWORD
+			wchCredentials['apiUrl'] 	= System.env.PROD_WCH_API_URL			
+		} else {
+			throw new GradleException('Missing required credentials in System environment for WCH PROD.')
+		}
+
+	}
+
+	return wchCredentials
+}
+
+task prepareWCHAssets(type: Copy) {
+	description 'Prepare SPA assets for pushing to Watson Content Hub'
+	group 'WCHAssets Management'
+	
+	from "${buildDir}/dist/"
+	into "${buildDir}/wchAssets/assets"
+}
+
+task installWchtoolsCli(type: NpmTask) {
+	description 'Install Commerce-Wchtools-Cli package'
+	group 'Build'
+
+	args = ["install", wchtoolsUrl, "--no-package-lock", "--no-save"]
+}
+
+task prepareWCHManifest(type: NpmTask) {
+	description 'Prepare WCH manifest file'
+	group 'WCHAssets Management'
+
+	dependsOn installWchtoolsCli,prepareWCHAssets
+
+	args = ["run", "wchlist", "--", "--dir", "$buildDir/wchAssets", "--write-manifest", "${project.name}.json"]
+}
+
+task deleteWCHAssets(type: NpmTask) {
+	description 'Delete SPA assets from Watson Content Hub'
+	group 'WCHAssets Management'
+	
+	mustRunAfter prepareWCHManifest
+
+	def wchCredentials = getWchCredentials(pushType)
+	
+	// NOTE: Use --silent parameter to prevent npm print WCH Credentials in standard out because when it's executed with production push, we shouldn't expose WCH Credentials
+	args = ["run", "--silent", "wchdelete", "--", "-v","--user", wchCredentials.user, "--password", wchCredentials.password, "--url", wchCredentials.apiUrl, "--server-manifest", "${project.name}.json"]
+}
+
+task pushWCHAssets(type: NpmTask) {
+	description 'Push SPA assets to Watson Content Hub'
+	group 'WCHAssets Management'
+	
+	dependsOn installWchtoolsCli, prepareWCHManifest, deleteWCHAssets
+
+	def wchCredentials = getWchCredentials(pushType)
+	
+	// NOTE: Use --silent parameter to prevent npm print WCH Credentials in standard out because when it's executed with production push, we shouldn't expose WCH Credentials
+	args = ["run", "--silent", "wchpush", "--", "-v","--user", wchCredentials.user, "--password", wchCredentials.password, "--url", wchCredentials.apiUrl, "--dir", "$buildDir/wchAssets"]
+}

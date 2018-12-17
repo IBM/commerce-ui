@@ -1,0 +1,106 @@
+<Config ASDisableNagle="false" AcceptAllContent="true" AppServerPortPreference="HostHeader" ChunkedResponse="false" FIPSEnable="false" FailoverToNext="false" HTTPMaxHeaders="300" IISDisableFlushFlag="false" IISDisableNagle="false" IISPluginPriority="High" IgnoreDNSFailures="false" KillWebServerStartUpOnParseErr="false" MarkBusyDown="false" OS400ConvertQueryStringToJobCCSID="false" RefreshInterval="60" ResponseChunkSize="64" SSLConsolidate="true" StrictSecurity="false" TrustedProxyEnable="false" VHostMatchingCompat="false">
+  <Log LogLevel="Error" Name="/dev/stdout"/>
+  <Property Name="ESIEnable" Value="true"/>
+  <Property Name="ESIMaxCacheSize" Value="1024"/>
+  <Property Name="ESIInvalidationMonitor" Value="false"/>
+  <Property Name="ESIEnableToPassCookies" Value="false"/>
+  <Property Name="ESICacheidFull" Value="false"/>
+  <Property Name="PostSizeLimit" Value="-1"/>
+  <Property Name="PostBufferSize" Value="0"/>
+  <Property Name="PluginInstallRoot" Value="/SETUP/"/>
+  <Property Name="Keyfile" Value="/SETUP/certs/plugin-key.kdb"/>
+  <Property Name="Stashfile" Value="/SETUP/certs/plugin-key.sth"/>
+  <VirtualHostGroup Name="VH_admin">
+    <VirtualHost Name="*:443"/>
+    <VirtualHost Name="*:8002"/>
+  </VirtualHostGroup>
+  <VirtualHostGroup Name="VH_orgAdmin">
+    <VirtualHost Name="*:443"/>
+    <VirtualHost Name="*:8004"/>
+  </VirtualHostGroup>
+  <VirtualHostGroup Name="VH_preview">
+    <VirtualHost Name="*:443"/>
+    <VirtualHost Name="*:5443"/>
+  </VirtualHostGroup>
+  <VirtualHostGroup Name="VH_tools">
+    <VirtualHost Name="*:443"/>
+    <VirtualHost Name="*:8000"/>
+    <VirtualHost Name="*:8002"/>
+    <VirtualHost Name="*:8004"/>
+  </VirtualHostGroup>
+  <VirtualHostGroup Name="VH_cmc">
+    <VirtualHost Name="*:443"/>
+    <VirtualHost Name="*:8001"/>
+  </VirtualHostGroup>
+  <VirtualHostGroup Name="VH_oidc">
+    <VirtualHost Name="*:443"/>
+    <VirtualHost Name="*:8000"/>
+    <VirtualHost Name="*:8001"/>
+    <VirtualHost Name="*:8002"/>
+    <VirtualHost Name="*:8004"/>
+  </VirtualHostGroup>
+  <ServerCluster CloneSeparatorChange="false" GetDWLMTable="false" IgnoreAffinityRequests="true" LoadBalance="Round Robin" Name="server1_localhost_Cluster" PostBufferSize="0" PostSizeLimit="-1" RemoveSpecialHeaders="true" RetryInterval="60" ServerIOTimeoutRetry="-1">
+    <Server ConnectTimeout="5" ExtendedHandshake="false" MaxConnections="-1" Name="localhost_server1" ServerIOTimeout="900" WaitForContinue="false">
+      <Transport Hostname="app" Port="5443" Protocol="https">
+        <Property Name="keyring" Value="/SETUP/certs/plugin-key.kdb"/>
+        <Property Name="stashfile" Value="/SETUP/certs/plugin-key.sth"/>
+      </Transport>
+    </Server>
+  </ServerCluster>
+  <UriGroup Name="VH_admin_server1_localhost_Cluster_URIs">
+    <Uri Name="/webapp/wcs/admin/*"/>
+  </UriGroup>
+  <Route ServerCluster="server1_localhost_Cluster" UriGroup="VH_admin_server1_localhost_Cluster_URIs" VirtualHostGroup="VH_admin"/>
+  <UriGroup Name="VH_preview_server1_localhost_Cluster_URIs">
+    <Uri Name="/webapp/wcs/preview/servlet/*"/>
+    <Uri Name="/webapp/wcs/preview/*.jsp"/>
+    <Uri Name="/webapp/wcs/preview/*"/>
+    <Uri Name="/webapp/wcs/preview/*.jsv"/>
+    <Uri Name="/webapp/wcs/preview/*.jsw"/>
+    <Uri Name="/webapp/wcs/preview/j_security_check"/>
+    <Uri Name="/webapp/wcs/preview/ibm_security_logout"/>
+    <Uri Name="/wcs/previewresources/*"/>
+    <Uri Name="/wcs/previewresources/*.jsp"/>
+    <Uri Name="/wcs/previewresources/*.jsv"/>
+    <Uri Name="/wcs/previewresources/*.jsw"/>
+    <Uri Name="/wcs/previewresources/j_security_check"/>
+    <Uri Name="/wcs/previewresources/ibm_security_logout"/>
+  </UriGroup>
+  <Route ServerCluster="server1_localhost_Cluster" UriGroup="VH_preview_server1_localhost_Cluster_URIs" VirtualHostGroup="VH_preview"/>
+  <UriGroup Name="VH_orgAdmin_server1_localhost_Cluster_URIs">
+    <Uri Name="/webapp/wcs/orgadmin/*"/>
+  </UriGroup>
+  <Route ServerCluster="server1_localhost_Cluster" UriGroup="VH_orgAdmin_server1_localhost_Cluster_URIs" VirtualHostGroup="VH_orgAdmin"/>
+  <UriGroup Name="VH_tools_server1_localhost_Cluster_URIs">
+    <Uri Name="/webapp/wcs/*"/>
+    <Uri Name="/Enablement-BusinessContextWebServicesRouter/*"/>
+    <Uri Name="/webapp/wcs/tools/*"/>
+    <Uri Name="/Telesales-BaseWebServicesRouter/*"/>
+  </UriGroup>
+  <Route ServerCluster="server1_localhost_Cluster" UriGroup="VH_tools_server1_localhost_Cluster_URIs" VirtualHostGroup="VH_tools"/>
+  <UriGroup Name="VH_cmc_server1_localhost_Cluster_URIs">
+    <Uri Name="/lobtools/*"/>
+    <Uri Name="/wcs/resources/*"/>
+  </UriGroup>
+  <Route ServerCluster="server1_localhost_Cluster" UriGroup="VH_cmc_server1_localhost_Cluster_URIs" VirtualHostGroup="VH_cmc"/>
+  <UriGroup Name="VH_oidc_server1_localhost_Cluster_URIs">
+    <Uri Name="/oidcclient/*"/>
+  </UriGroup>
+  <Route ServerCluster="server1_localhost_Cluster" UriGroup="VH_oidc_server1_localhost_Cluster_URIs" VirtualHostGroup="VH_oidc"/>
+  <RequestMetrics armEnabled="false" loggingEnabled="false" rmEnabled="false" traceLevel="HOPS">
+    <filters enable="false" type="URI">
+      <filterValues enable="false" value="/snoop"/>
+      <filterValues enable="false" value="/hitcount"/>
+    </filters>
+    <filters enable="false" type="SOURCE_IP">
+      <filterValues enable="false" value="255.255.255.255"/>
+      <filterValues enable="false" value="254.254.254.254"/>
+    </filters>
+    <filters enable="false" type="JMS">
+      <filterValues enable="false" value="destination=aaa"/>
+    </filters>
+    <filters enable="false" type="WEB_SERVICES">
+      <filterValues enable="false" value="wsdlPort=aaa:op=bbb:nameSpace=ccc"/>
+    </filters>
+  </RequestMetrics>
+</Config>

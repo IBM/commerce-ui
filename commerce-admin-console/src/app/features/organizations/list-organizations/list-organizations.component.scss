@@ -1,0 +1,51 @@
+@import "~carbon-components/scss/globals/grid/_grid.scss";
+@import "~scss/_variables.scss";
+
+.list_organizations {
+
+    .disabled {
+        color: lightgray;
+    }
+
+    label {
+        font-size: 20px;
+    }
+    padding: 5px 5px 5px 5px;
+    margin: $spacing-xl;
+    .organization_buttons {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .icon_buttons{
+            float: right;
+            button {
+                margin-left: 14px;
+                border: none;
+                background-color: inherit;
+                font-size: 14px;
+                cursor: pointer;
+                display: inline-block;
+                n-icon {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .empty-table {    
+        height: 300px;
+        line-height: 300px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    footer{
+        margin-top: 40px;
+        .table-footer_row-count{
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    }
+}
+
+

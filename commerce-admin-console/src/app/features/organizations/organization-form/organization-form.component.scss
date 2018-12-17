@@ -1,0 +1,41 @@
+@import "~carbon-components/scss/globals/grid/_grid.scss";
+@import '../../../../../node_modules/carbon-components/src/globals/scss/styles.scss';
+@import '../../../../../node_modules/carbon-components/scss/globals/scss/styles.scss';
+@import '../../../../../node_modules/carbon-components/scss/components/form/form';
+@import "~scss/_variables.scss";
+
+.organization-form {
+    .form-group{
+        margin: $spacing-xl;
+        h3 {
+            padding-bottom: 15px;
+        }
+        n-label {
+            margin-right:25px;
+            margin-bottom: 10px;
+            @extend .bx--col-lg-5;
+        }
+        .dropdown {
+            padding: 0px;
+            margin-right: 25px;
+        }
+
+        .invalid-input-style {
+            border-color: red;
+        }
+        
+        .error-list-elem {
+            color: red;
+        }
+
+        .validation-msg {
+            width: 250px;
+        }
+    }
+
+    footer {
+        display: block;
+        float: right;
+        margin-bottom:10px;
+    }
+}

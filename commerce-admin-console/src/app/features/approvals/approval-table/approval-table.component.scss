@@ -1,0 +1,15 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
+    min-height: 500px;
+}
+
+.empty-table-msg {
+    height: 500px;
+    line-height: 500px;
+    text-align: center;
+    vertical-align: middle;
+}

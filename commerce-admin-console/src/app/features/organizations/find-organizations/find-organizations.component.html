@@ -1,0 +1,34 @@
+<div id="find-org-component">
+    <div class="breadcrumb-container">
+        <ac-breadcrumb [pages]="breadCrumbLinks"></ac-breadcrumb>
+        <a href = {{ORGANIZATIONS_HELPLINKS}} target="_blank">
+          <ac-help-links></ac-help-links>
+        </a>
+    </div>
+    <div class="bx--row find-input">
+        <div class="bx--col-xs-12 bx--col-md-6 bx--col-lg-4 ">
+          <h2><label [translate]="'ORGANIZATIONS.FIND_ORGANIZATION.header'"></label></h2>
+          <p class="find-org-description" [translate]="'ORGANIZATIONS.FIND_ORGANIZATION.description'"></p>
+          <ibm-label>
+            {{ 'ORGANIZATIONS.FIND_ORGANIZATION.orgName' | translate }}
+          </ibm-label>
+          <ibm-dropdown placeholder="{{'ORGANIZATIONS.FIND_ORGANIZATION.orgNameDesc' | translate}}" (selected)="onOrgSelected($event)" >
+            <ibm-dropdown-list [items]="orgItems"></ibm-dropdown-list>
+          </ibm-dropdown>
+          <ibm-label>
+            {{ 'ORGANIZATIONS.FIND_ORGANIZATION.parentOrg' | translate }}
+          </ibm-label>
+          <ibm-dropdown placeholder="{{'ORGANIZATIONS.FIND_ORGANIZATION.parentOrgDesc' | translate}}" (selected)="onParentOrgSelected($event)" >
+              <ibm-dropdown-list [items]="parentOrgItems"></ibm-dropdown-list>
+          </ibm-dropdown>
+        </div>
+    </div>
+      <hr>
+    <footer class="bx--row bx--offset-md-10 bx--offset-lg-10">
+        <div class="btn-group--lg " role="group">
+          <button [disabled]="!validRequest()" class="btn--primary" type="button" (click)="findOrg()" [translate]="'ORGANIZATIONS.FIND_ORGANIZATION.submitBtn'" ></button>
+          <button class="btn--secondary" type="button"routerLink="/organizations" [translate]="'ORGANIZATIONS.FIND_ORGANIZATION.cancelBtn'" ></button>
+        </div>
+    </footer>
+</div>
+

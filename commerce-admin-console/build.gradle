@@ -1,0 +1,49 @@
+plugins {
+	id "com.moowork.node" version "1.2.0"
+}
+
+///////////////////////////////////////
+// Node configuration to compile the UI
+///////////////////////////////////////
+
+apply plugin: "com.moowork.node"
+
+node {
+	version = '8.9.4'
+	npmVersion = '5.6.0' // Version of npm to use.
+	download = true 	// Download node using above parameters
+	
+	// Set the work directory for unpacking node
+	workDir = file("${project.buildDir}/nodejs")
+	
+	// Set the work directory for NPM
+	npmWorkDir = file("${project.buildDir}/npm")
+}
+
+clean {
+	delete 'node_modules'
+}
+
+/////////////////////////
+// Build dependency logic
+/////////////////////////
+task buildNg(type: YarnTask) {
+	description 'Install the express package only'
+	group 'Build'
+	
+	args = ['run', 'build-prod']
+}
+
+build.dependsOn(buildNg)
+buildNg.dependsOn(yarn_install)
+yarn_install.dependsOn(yarn_cache_clean)
+
+task assetZip(type: Zip, dependsOn: buildNg) {
+	description 'Creates a ZIP file containing only the compiled application.'
+	group 'Build'
+	
+	from "${buildDir}/dist/"
+	include "**/*"
+}
+
+apply from: "wch.gradle"

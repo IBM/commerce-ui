@@ -1,0 +1,90 @@
+stages:
+        - build
+        - validation
+        - deploy
+
+build_master:
+        stage: build
+        script:
+                - cd master
+                - sh gradlew clean build bvt publishImage publish pushWCHAssets -PpushType=QA
+
+        only:
+                - master
+        environment:
+               name: qa
+
+build_release-candidate:
+        stage: build
+        script:
+                - cd master
+                - sh gradlew clean build bvt publishImage publish -PreleaseType=rc
+
+        only:
+                - release-candidate
+
+build_production:
+        stage: build
+        script:
+                - cd master
+                - sh gradlew clean build bvt publishImage publish -PreleaseType=production
+
+        only:
+                - production
+
+build_branch:
+        stage: build
+        script:
+                - cd master
+                - sh gradlew clean build bvt
+
+        except:
+                - master
+                - production
+                - release-candidate
+
+sonarqube:
+        stage: validation
+        script:
+                - export JAVA_HOME=${JAVA_HOME_OPENJDK}
+                - cd master
+                - sh gradlew sonarqube
+        only:
+                - master
+
+sonarqube_preview:
+        stage: validation
+        script:
+                - export JAVA_HOME=${JAVA_HOME_OPENJDK}
+                - cd master
+                - sh gradlew sonarqube -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME
+        except:
+                - master
+                - production
+                - release-candidate
+
+deploy_preprod_spa:
+        stage: deploy
+        script:
+                - cd master
+                - sh gradlew clean build pushWCHAssets -PpushType=PREPROD
+        when: manual
+        only:
+                - master
+        environment:
+               name: preprod
+
+deploy_prod_spa:
+        stage: deploy
+        script:
+                - cd master
+                - sh gradlew clean build pushWCHAssets -PpushType=PROD
+        when: manual
+        only:
+                - master
+        environment:
+               name: production
+
+
+
+
