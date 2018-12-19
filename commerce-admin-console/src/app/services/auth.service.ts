@@ -5,7 +5,8 @@ import { Subject } from 'rxjs/Subject';
 export class AuthService {
 	static jwt: string;
 	isTokenValid: Subject<boolean> = new Subject<boolean>();
-	
+	language: Subject<string> = new Subject<string>();
+
 	setJwt(token: string) {
 		if (token !== AuthService.jwt) {
 			AuthService.jwt = token;
@@ -18,4 +19,9 @@ export class AuthService {
 			}
 		}
 	}
+	
+	setLanguage(language: string) {
+		this.language.next(language);
+	}
+
 }

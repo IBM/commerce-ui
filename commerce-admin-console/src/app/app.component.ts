@@ -38,7 +38,8 @@ export class AppComponent {
 					}
 					let language = eventData.data.language;
 					if (language) {
-						this.translate.use(language);
+						// localStorage.setItem("language", language);
+						this.authService.setLanguage(language);
 					}
 				}
 				else if (eventData.action === 'DARK_FEATURES') {

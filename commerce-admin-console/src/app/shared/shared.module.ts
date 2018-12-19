@@ -5,6 +5,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { IframeService } from '../services/iframe.service';
+import { AuthService } from '../services/auth.service';
 
 export function createRootTranslateLoader(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -28,9 +29,14 @@ export function createRootTranslateLoader(httpClient: HttpClient) {
 })
 export class SharedModule {
 
-  constructor( public translateService: TranslateService) {
+  constructor( public translateService: TranslateService,
+    private authService: AuthService) {
       this.translateService.setDefaultLang('en');
+      authService.language.subscribe(language => {
+        this.translateService.use(language);
+      })
     }
+
   
   static forRoot(): ModuleWithProviders{
     return {
