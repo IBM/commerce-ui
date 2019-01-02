@@ -19,10 +19,6 @@ export class OrganizationFormComponent implements OnInit {
   parentOrgsItems = [];
   organizationTypeItems = [];
 
-  disableSubmit(){
-    return this.organizationForm.status != 'VALID' || this.organizationForm.pristine;
-  }
-
   submitForm() {
     this.outputOrg.emit(this.inputOrg);
   }
