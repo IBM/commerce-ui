@@ -131,7 +131,7 @@
     </div>
     <hr>
     <footer>
-        <button class="bx--btn bx--btn--primary" [disabled]="disableSubmit()" (click)="submitForm()" [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.footer.submitBtn'"></button>
+        <button class="bx--btn bx--btn--primary" [disabled]="this.organizationForm.status != 'VALID' || this.organizationForm.pristine" (click)="submitForm()" [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.footer.submitBtn'"></button>
         <button class="bx--btn bx--btn--primary" (click)="cancelForm()" [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.footer.cancelBtn'"></button>
     </footer>
 </div>
