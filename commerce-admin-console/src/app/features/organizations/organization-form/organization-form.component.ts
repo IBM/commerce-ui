@@ -63,8 +63,7 @@ export class OrganizationFormComponent implements OnInit {
     this.organizationForm = new FormGroup({
       'orgEntityName': new FormControl(this.inputOrg['orgEntityName'], [
         Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(25)
+        Validators.minLength(4)
       ]),
       'description': new FormControl(this.inputOrg['description'],Validators.maxLength(300)),
       'orgEntityType': new FormControl(this.inputOrg['orgEntityType'], Validators.required),
