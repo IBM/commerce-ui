@@ -1,6 +1,5 @@
 <div class="list_organizations">
     <div class="breadcrumb-container">
-        <ac-breadcrumb [pages]="breadCrumbLinks"></ac-breadcrumb>
         <a href = {{ORGANIZATIONS_HELPLINKS}} target="_blank">
             <ac-help-links></ac-help-links>
         </a>
@@ -8,16 +7,16 @@
     <label [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.header'" ></label>
     <p [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.number'" [translateParams]="{num: orgModel.totalDataLength }"></p>
     <div class="organization_buttons">
-        <button class="btn--primary" routerLink="/organizations/create" [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.new'"></button>
+        <button class="bx--btn bx--btn--primary" routerLink="/organizations/create" [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.new'"></button>
         <div class="icon_buttons">
-            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.find'" routerLink="/organizations/find"><ibm-icon icon="find" size="sm" ></ibm-icon> </button>
-            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.approval'" routerLink="/approvals" ><ibm-icon icon="check_circle" size="sm"></ibm-icon> </button>
+            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.find'" routerLink="/organizations/find"><ibm-icon icon="find" size="sm" ></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.find' | translate}}</button>
+            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.approval'" routerLink="/approvals" ><ibm-icon icon="check_circle" size="sm"></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.approval' | translate}}</button>
             <button [ngClass]="{'disabled':selectOrgLink === null}">
                 <ibm-icon icon="edit" size="sm" routerLink="{{selectOrgLink}}"  *ngIf="selectOrgLink != null"></ibm-icon>
                 <ibm-icon icon="edit_disabled" size="sm" *ngIf="selectOrgLink === null" ></ibm-icon> {{'ORGANIZATIONS.LIST_ORGANIZATIONS.edit' | translate}}
              </button>
-            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn'"><ibm-icon icon="lock_key" size="sm"></ibm-icon> </button>
-            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.roles'"><ibm-icon icon="behaviors" size="sm"></ibm-icon> </button>
+            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn'"><ibm-icon icon="lock_key" size="sm"></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn' | translate}}</button>
+            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.roles'"><ibm-icon icon="behaviors" size="sm"></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.roles' | translate}}</button>
         </div>
     </div>
     <ibm-table [columnsResizable]="true" class="table--md" [model]="orgModel" (selectRow)="onSelect($event)"
