@@ -2,7 +2,7 @@
     <div class="form-group">
         <h3 [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.headers.detail'"></h3>
         <div class="bx--row form-row">
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">{{ 'ORGANIZATIONS.FORM_ORGANIZATION.inputs.name' | translate}} *</label>
                     <input class="bx--text-input" type="text" [attr.disabled]="isInputDisabled?'':null" [(ngModel)]="inputOrg['orgEntityName']" formControlName="orgEntityName" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.nameInput' | translate}}" [ngClass]="{'invalid-input-style': orgEntityName.invalid && (orgEntityName.dirty || orgEntityName.touched)}">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">{{ 'ORGANIZATIONS.FORM_ORGANIZATION.inputs.desc' | translate}}</label>
                     <input class="bx--text-input" type="text" [(ngModel)]="inputOrg['description']" formControlName="description" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.descInput' | translate}}" [ngClass]="{'invalid-input-style': description.invalid }">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="bx--row form-row">
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm" class="bx--col-lg-5 dropdown">
                     <label class="bx--label">
                         {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.orgType' | translate}} *
@@ -36,7 +36,7 @@
                     </ibm-dropdown>
                 </div>
             </div>
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
 
                 <div [formGroup]="organizationForm" class="bx--col-lg-5 dropdown">
                     <label class="bx--label">
@@ -52,7 +52,7 @@
     <div class="form-group">
         <h3 [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.headers.address'"></h3>
         <div class="bx--row form-row">
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.streetAdd' | translate}} *</label>
                     <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.addInput' | translate}}" [(ngModel)]="inputOrg['address']" formControlName="address" [ngClass]="{'invalid-input-style': address.invalid && (address.dirty || address.touched)}">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.state' | translate}} *</label>
                     <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.state' | translate}}" [(ngModel)]="inputOrg['state']" formControlName="state" [ngClass]="{'invalid-input-style': state.invalid && (state.dirty || state.touched)}">
@@ -71,14 +71,14 @@
             </div>
         </div>
         <div class="bx--row form-row">
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">
                         {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.city' | translate}} *</label>
                     <input class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.city' | translate}}" [(ngModel)]="inputOrg['city']" formControlName="city" [ngClass]="{'valid--error': city.invalid && (city.dirty || city.touched)}">
                 </div>
             </div>
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">
                         {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.zipCode' | translate}} *</label>
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="bx--row form-row">
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">
                         {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.country' | translate}} *</label>
@@ -104,7 +104,7 @@
     <div class="form-group">
         <h3 [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.headers.contact'"></h3>
         <div class="bx--row form-row">
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.email' | translate}} *</label>
                     <input class="bx--text-input" type="email" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.email' | translate}}" [(ngModel)]="inputOrg['email']" formControlName="email" [ngClass]="{'invalid-input-style': email.invalid && (email.dirty || email.touched)}">
@@ -115,7 +115,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bx--form-item form-item">
+            <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">
                         {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.phone' | translate}}</label>
