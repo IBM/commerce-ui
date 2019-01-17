@@ -1,0 +1,265 @@
+<div class="container-fluid containerClass">
+    <div class="row">
+        <div class="col-md-1">
+            <span class="iconFontSize"><i class="fas fa-bars"></i></span>
+        </div>
+        <div class="col-md-4 headTextMargin">
+            <sup><span class="starFont"><i class="fas fa-star-of-life"></i></span></sup>
+            <span class="mstrCtgry">New Master Category</span>
+            <label class="headAlertTxt"><span class="exclaIcon"><i class='fas fa-exclamation-circle'></i></span>
+                <span class="specifyTxt">Specify a value for the <strong>Code</strong> field</span>
+            </label>
+        </div>
+        <div class="col-md-3"></div>
+            <button ibmButton size="sm" class="savePreviewBtn" (click)="saveMasterData()">Save and Preview</button>
+            <button ibmButton size="sm" class="saveBtn" (click)="saveMasterData()">Save</button>
+            <button  ibmButton="secondary" size="sm" (click)="closeMasterCategory()">Close</button>
+    </div>
+    <div class="headerTabs">
+        <ibm-tabs [followFocus]="followFocus">
+            <ibm-tab heading="Manage Category">
+                <ibm-accordion>
+                    <ibm-accordion-item title="Object Properties">
+                        <div class="row associateFont">
+                            <div class="col-md-2">
+                                Associated Store
+                            </div>
+                            <div class="col-md-2">
+                                AuroraESite
+                            </div>
+                        </div>
+                    </ibm-accordion-item>
+                    <ibm-accordion-item title="General Category Information">
+                        <div class="row">
+                            <div class="col-md-2">
+                                Unique ID
+                            </div>
+                        </div>
+                        <div class="row uniqueRow">
+                            <div class="col-md-2">
+                                <span class="uniqueFont">Code</span><sup><span class="starCodeFont"><i class="fas fa-star-of-life"></i></span></sup>
+                            </div>
+                                <span class="questionMark"><i class="fa fa-question-circle"></i></span>
+                                <input type="text" class="col-md-5 inputPadding" [(ngModel)]="code">
+                        </div>
+                        <div class="row uniqueRow">
+                            <div class="col-md-2">
+                                <span class="uniqueFont">Name (United State English)</span><sup><span class="starCodeFont"><i class="fas fa-star-of-life"></i></span></sup>
+                            </div>
+                            <input type="text" class="col-md-5" [(ngModel)]="name">
+                        </div>
+                        <div class="row uniqueRow">
+                            <div class="col-md-2">
+                                <span class="uniqueFont">Short description (United State English)</span>
+                            </div>
+                            <input type="text" class="col-md-8 inputPadding" [(ngModel)]="description"> 
+                        </div>
+                    </ibm-accordion-item>
+                    <ibm-accordion-item title="Display">
+                        <div class="row uniqueRow">
+                            <div class="col-md-2">
+                                Display to customer (United State English)
+                            </div><span class="questionMarkCheck"><i class="fa fa-question-circle"></i></span>
+                                <ibm-checkbox
+                                    [checked]="checked"
+                                    [disabled]="disabled"
+                                    [indeterminate]="indeterminate"
+                                    (change)="onChange($event)">
+                                </ibm-checkbox>
+                        </div>
+                        <div class="row uniqueRow">
+                            <div class="col-md-2">
+                                Thumbnail (United State English)
+                            </div>
+                            <input type="text" class="col-md-5 inputPadding" [(ngModel)]="thumbnail">
+                        </div>
+                        <div class="row uniqueRow">
+                            <div class="col-md-2">
+                                Full image (United State English)
+                            </div>
+                            <input type="text" class="col-md-5 inputPadding" [(ngModel)]="image">
+                        </div>
+                    </ibm-accordion-item>
+                </ibm-accordion>
+            </ibm-tab>
+            <ibm-tab heading="Search Engine Optimization">
+                <div class="searchEngine">
+                    <div class="row">
+                        <div class="col-md-2 titleName">
+                            URL keyword (United State English)
+                        </div>
+                        <span class="questionMark"><i class="fa fa-question-circle"></i></span>
+                        <input type="text" class="col-md-8 inputPadding" [(ngModel)]="keyword">
+                    </div>
+                    <hr class="searchEngineRow">
+                    <div class="row">
+                        <div class="col-md-2 titleName">
+                            Page title (United State English)
+                        </div>
+                        <div class="col-md-8 pagetitle">
+                            <div class="row useDefault">
+                                <div class="col-md-3"><ibm-radio>Use default</ibm-radio></div>
+                            </div>
+                            <div class="row overrideQtn">
+                                <sup><span class="qtnOverride"><i class="fa fa-question-circle"></i></span></sup>
+                                <div class="col-md-4 overrideMargin"><ibm-radio>Override default</ibm-radio></div>
+                            </div>
+                            <div class="row overrideInput">
+                                <input type="text" class="col-md-12 inputPadding" [(ngModel)]="pageTitle">
+                            </div>
+                        </div> 
+                    </div>
+                    <hr class="searchEngineRow">
+                    <div class="row">
+                        <div class="col-md-2 metaDesc titleName">
+                            Meta description (United State English)
+                        </div>
+                        <div class="col-md-8 pagetitle">
+                            <div class="row useDefault">
+                                <div class="col-md-3"><ibm-radio>Use default</ibm-radio></div>
+                            </div>
+                            <div class="row overrideQtn">
+                                
+                                <div class="col-md-4 overrideMargin"><ibm-radio>Override default</ibm-radio></div>
+                            </div>
+                            <div class="row overridetextarea">
+                                <span class="qtnTextarea"><i class="fa fa-question-circle"></i></span>
+                                <textarea type="text" class="col-md-12" [(ngModel)]="metaDesc"></textarea>
+                            </div>
+                        </div> 
+                    </div>
+                    <hr class="searchEngineRow">
+                    <div class="row">
+                            <div class="col-md-2 titleName">
+                                Image alt text (United State English)
+                            </div>
+                            <div class="col-md-8 pagetitle">
+                                <div class="row useDefault">
+                                    <div class="col-md-3"><ibm-radio>Use default</ibm-radio></div>
+                                </div>
+                                <div class="row overrideQtn">
+                                    <sup><span class="qtnOverride"><i class="fa fa-question-circle"></i></span></sup>
+                                    <div class="col-md-4 overrideMargin"><ibm-radio>Override default</ibm-radio></div>
+                                </div>
+                                <div class="row overrideInput">
+                                    <input type="text" class="col-md-12 inputPadding" [(ngModel)]="imgAltText">
+                                </div>
+                            </div> 
+                        </div>
+                </div>
+            </ibm-tab>
+            <ibm-tab heading="Associated Assets">
+                    <!-- <ibm-table class="table-wrapper"
+                    [model]="model"
+                    [size]="md"
+                    [showSelectionColumn]="true"
+                    [striped]="true"
+                    (sort)="customSort($event)">
+                </ibm-table> -->
+                <div class="row tableOverflow">
+                    <div class="col-md-2 associateMargin">Associated assets</div>
+                    <div class="col-md-10">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                                    <thead>
+                                      <tr>
+                                        <th>Sequence</th>
+                                        <th>Type</th>
+                                        <th>Store</th>
+                                        <th>Path</th>
+                                        <th>Code</th>
+                                        <th>usage</th>
+                                        <th>Administative name(United States English)</th>
+                                        <th>Display name(United State English)</th>
+                                        <th>Short Description(United State English)</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>0 of 0 selected</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                      </tr>
+                                    </tbody>
+                                  </table> 
+                    </div>   
+                </div>
+            </ibm-tab>
+            <ibm-tab heading="Content">
+                <div class="row tableOverflow">
+                    <div class="col-md-2 associateMargin">Associated assets</div>
+                    <div class="col-md-10">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                                    <thead>
+                                      <tr>
+                                        <th>Sequence</th>
+                                        <th>Type</th>
+                                        <th>Store</th>
+                                        <th>Path</th>
+                                        <th>Code</th>
+                                        <th>usage</th>
+                                        <th>Administative name(United States English)</th>
+                                        <th>Display name(United State English)</th>
+                                        <th>Short Description(United State English)</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>0 of 0 selected</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                      </tr>
+                                    </tbody>
+                                  </table> 
+                    </div>   
+                </div>
+            </ibm-tab>
+            <ibm-tab heading="Refrences">
+                <div class="row tableOverflow">
+                    <div class="col-md-2 associateMargin">Associated assets</div>
+                    <div class="col-md-10">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                                    <thead>
+                                      <tr>
+                                        <th>Sequence</th>
+                                        <th>Type</th>
+                                        <th>Store</th>
+                                        <th>Path</th>
+                                        <th>Code</th>
+                                        <th>usage</th>
+                                        <th>Administative name(United States English)</th>
+                                        <th>Display name(United State English)</th>
+                                        <th>Short Description(United State English)</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>0 of 0 selected</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                      </tr>
+                                    </tbody>
+                                  </table> 
+                    </div>   
+                </div>  
+            </ibm-tab>
+        </ibm-tabs>
+    </div>
+</div>
