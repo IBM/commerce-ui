@@ -58,15 +58,8 @@ export class ListOrganizationsComponent implements OnInit {
   }
 
 
-  isOnlyOneSelected(arr: Array<Boolean>): Boolean {
-    var onlyOne = true;
-    
-    let numberSelected = arr.filter(sel => sel === true).length;
-    if (numberSelected != 1){
-      onlyOne = false;
-    }
-
-    return onlyOne;
+  isOnlyOneSelected(arr: Array<Boolean>): Boolean {    
+    return arr.filter(sel => sel === true).length === 1;
   }
 
   setPageIndex(){
