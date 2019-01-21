@@ -120,7 +120,7 @@
             },
             "inputs": {
                 "name": "Organization Name",
-                "desc": "Description",
+                "desc": "Description (Optional)",
                 "orgType": "Organization Type",
                 "parentOrg": "Parent Organization",
                 "streetAdd": "Street Address",
@@ -129,7 +129,7 @@
                 "zipCode": "Zip/Postal Code",
                 "country": "Country/Region Code",
                 "email": "Email Address",
-                "phone": "Phone Number"
+                "phone": "Phone Number (Optional)"
             },
             "description": {
                 "select": "Select an option",

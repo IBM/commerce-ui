@@ -1,11 +1,10 @@
-<!-- According to carbon design, all fields are assumed required while optional fields should have some indication it is optional.  This is opposite to what was implemented since the original org admin console had required fields indicated -->
 <div class="organization-form">
     <div class="form-group">
         <h3 [translate]="'ORGANIZATIONS.FORM_ORGANIZATION.headers.detail'"></h3>
         <div class="bx--row form-row">
             <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
-                    <label class="bx--label">{{ 'ORGANIZATIONS.FORM_ORGANIZATION.inputs.name' | translate}} *</label>
+                    <label class="bx--label">{{ 'ORGANIZATIONS.FORM_ORGANIZATION.inputs.name' | translate}}</label>
                     <input [attr.data-invalid]="orgEntityName.invalid && (orgEntityName.dirty || orgEntityName.touched) ? '' : null" class="bx--text-input" type="text" [attr.disabled]="isInputDisabled?'':null" [(ngModel)]="inputOrg['orgEntityName']" formControlName="orgEntityName" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.nameInput' | translate}}">
                     <div class="bx--form-requirement">
                         <div>
@@ -30,7 +29,7 @@
             <div class="bx--form-item">
                 <div [formGroup]="organizationForm" class="bx--col-lg-5 dropdown">
                     <label class="bx--label">
-                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.orgType' | translate}} *
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.orgType' | translate}}
                     </label>
                     <ibm-dropdown [attr.data-invalid]="orgEntityType.invalid && (orgEntityType.dirty || orgEntityType.touched) ? '' : null" class="bx--col-lg-10" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.select' | translate}}" (selected)="onTypeSelected($event)" [disabled]="isInputDisabled" formControlName="orgEntityType">
                         <ibm-dropdown-list [items]="organizationTypeItems"></ibm-dropdown-list>
@@ -41,7 +40,7 @@
 
                 <div [formGroup]="organizationForm" class="bx--col-lg-5 dropdown">
                     <label class="bx--label">
-                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.parentOrg' | translate}} *
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.parentOrg' | translate}}
                     </label>
                     <ibm-dropdown [attr.data-invalid]="parentOrg.invalid && (parentOrg.dirty || parentOrg.touched) ? '' : null" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.select' | translate}}" [displayValue]="inputOrg['parentMemberName']" (selected)="onParentOrgSelected($event)" [disabled]="isInputDisabled" formControlName="parentOrg">
                         <ibm-dropdown-list [items]="parentOrgsItems"></ibm-dropdown-list>
@@ -55,7 +54,7 @@
         <div class="bx--row form-row">
             <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
-                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.streetAdd' | translate}} *</label>
+                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.streetAdd' | translate}}</label>
                     <input [attr.data-invalid]="address.invalid && (address.dirty || address.touched) ? '' : null" class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.addInput' | translate}}" [(ngModel)]="inputOrg['address']" formControlName="address">
                     <div class="bx--form-requirement">
                         <div>
@@ -66,7 +65,7 @@
             </div>
             <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
-                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.state' | translate}} *</label>
+                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.state' | translate}}</label>
                     <input [attr.data-invalid]="state.invalid && (state.dirty || state.touched) ? '' : null" class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.state' | translate}}" [(ngModel)]="inputOrg['state']" formControlName="state">
                 </div>
             </div>
@@ -75,14 +74,14 @@
             <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">
-                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.city' | translate}} *</label>
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.city' | translate}}</label>
                     <input [attr.data-invalid]="city.invalid && (city.dirty || city.touched) ? '' : null" class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.city' | translate}}" [(ngModel)]="inputOrg['city']" formControlName="city">
                 </div>
             </div>
             <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">
-                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.zipCode' | translate}} *</label>
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.zipCode' | translate}}</label>
                     <input [attr.data-invalid]="zipCode.invalid && (zipCode.dirty || zipCode.touched) ? '' : null" class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.zipCode' | translate}}" [(ngModel)]="inputOrg['zipCode']" formControlName="zipCode">
                     <div class="bx--form-requirement" *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)">
                         <div>
@@ -96,7 +95,7 @@
             <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
                     <label class="bx--label">
-                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.country' | translate}} *</label>
+                        {{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.country' | translate}}</label>
                     <input [attr.data-invalid]="country.invalid && (country.dirty || country.touched) ? '' : null" class="bx--text-input" type="text" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.country' | translate}}" [(ngModel)]="inputOrg['country']" formControlName="country">
                 </div>
             </div>
@@ -107,7 +106,7 @@
         <div class="bx--row form-row">
             <div class="bx--form-item">
                 <div [formGroup]="organizationForm">
-                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.email' | translate}} *</label>
+                    <label class="bx--label">{{'ORGANIZATIONS.FORM_ORGANIZATION.inputs.email' | translate}}</label>
                     <input [attr.data-invalid]="email.invalid && (email.dirty || email.touched) ? '' : null" class="bx--text-input" type="email" placeholder="{{'ORGANIZATIONS.FORM_ORGANIZATION.description.email' | translate}}" [(ngModel)]="inputOrg['email']" formControlName="email">
                     <div class="bx--form-requirement">
                         <div>

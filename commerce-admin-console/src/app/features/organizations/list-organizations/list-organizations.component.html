@@ -11,7 +11,7 @@
         <div class="icon_buttons">
             <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.find'" routerLink="/organizations/find"><ibm-icon icon="find" size="sm" ></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.find' | translate}}</button>
             <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.approval'" routerLink="/approvals" ><ibm-icon icon="check_circle" size="sm"></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.approval' | translate}}</button>
-            <button [ngClass]="{'disabled':selectOrgLink === null}">
+            <button [attr.disabled]="selectOrgLink === null ?  '' : null">
                 <ibm-icon icon="edit" size="sm" routerLink="{{selectOrgLink}}"  *ngIf="selectOrgLink != null"></ibm-icon>
                 <ibm-icon icon="edit_disabled" size="sm" *ngIf="selectOrgLink === null" ></ibm-icon> {{'ORGANIZATIONS.LIST_ORGANIZATIONS.edit' | translate}}
              </button>
@@ -31,7 +31,6 @@
             [translateParams]="{total: orgModel.totalDataLength, start: pageIndex['start'], end: pageIndex['end']}" ></span>
         <div class="bx--col-offset-4">
             <ibm-pagination [model]="orgModel" (selectPage)="onPage($event)"></ibm-pagination>
-            <!--<n-table-goto-page class="bx--col-lg-3" (selectPage)="onPage($event)"></n-table-goto-page>-->
         </div>
     </footer>
 </div>
