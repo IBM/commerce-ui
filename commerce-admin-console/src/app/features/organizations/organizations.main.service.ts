@@ -108,17 +108,25 @@ export class OrganizationsMainService {
             this.iframeService.stopProgressIndicator();
             resolve(response.orgEntityId);
         }, error => {
-            for(var e of error.error.errors){
-                this.iframeService.postStatusMsg(e.errorKey+' '+e.errorMessage,'error');
-            }
-            this.translateService.get('ORGANIZATIONS.SERVICES.errorMessage', {code: error.status, msg: error.message})
-                            .subscribe((message: string) =>{
-                                this.iframeService.postStatusMsg(message,'error');
-                            });
+            this.errorHandler(error);
             this.iframeService.stopProgressIndicator();
             reject();
         });
       });
+  }
+
+  private errorHandler(error) {
+    for(var e of error.error.errors){
+        this.iframeService.postStatusMsg(e.errorKey+' '+e.errorMessage,'error');
+    }
+    this.translateService.get('ORGANIZATIONS.SERVICES.errorMessage', {code: error.status, msg: error.message})
+    .subscribe((message: string) =>{
+        this.iframeService.postStatusMsg(message,'error');
+    });
+  }
+
+  private consoleLog(message) {
+      console.log(message);
   }
 
   getOrganizationById(_orgId: string): Promise<Object> {
@@ -147,13 +155,7 @@ export class OrganizationsMainService {
             this.iframeService.stopProgressIndicator();
             resolve(orgResponse);
         }, error => {
-            for(var e of error.error.errors){
-                this.iframeService.postStatusMsg(e.errorKey+' '+e.errorMessage,'error');
-            }
-            this.translateService.get('ORGANIZATIONS.SERVICES.errorMessage', {code: error.status, msg: error.message})
-                            .subscribe((message: string) =>{
-                                this.iframeService.postStatusMsg(message,'error');
-                            });
+            this.errorHandler(error);
             this.iframeService.stopProgressIndicator();
             reject();
         });  
@@ -261,13 +263,7 @@ export class OrganizationsMainService {
         });
         this.iframeService.stopProgressIndicator();
       }, error => {
-        for(var e of error.error.errors){
-            this.iframeService.postStatusMsg(e.errorKey+' '+e.errorMessage,'error');
-        }
-        this.translateService.get('ORGANIZATIONS.SERVICES.errorMessage', {code: error.status, msg: error.message})
-                            .subscribe((message: string) =>{
-                                this.iframeService.postStatusMsg(message,'error');
-                            });
+        this.errorHandler(error);
         this.iframeService.stopProgressIndicator();
         reject();
       });
