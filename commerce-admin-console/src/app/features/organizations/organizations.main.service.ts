@@ -125,10 +125,6 @@ export class OrganizationsMainService {
     });
   }
 
-  private consoleLog(message) {
-      console.log(message);
-  }
-
   getOrganizationById(_orgId: string): Promise<Object> {
       return new Promise((resolve, reject) =>{
         this.iframeService.startProgressIndicator();
