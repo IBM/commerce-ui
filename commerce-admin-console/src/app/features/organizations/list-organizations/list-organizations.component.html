@@ -11,8 +11,8 @@
         <div class="icon_buttons">
             <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.find'" routerLink="/organizations/find"><ibm-icon icon="find" size="sm" ></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.find' | translate}}</button>
             <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.approval'" routerLink="/approvals" ><ibm-icon icon="check_circle" size="sm"></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.approval' | translate}}</button>
-            <button [attr.disabled]="selectOrgLink === null ?  '' : null">
-                <ibm-icon icon="edit" size="sm" routerLink="{{selectOrgLink}}"  *ngIf="selectOrgLink != null"></ibm-icon>
+            <button [attr.disabled]="selectOrgLink === null ?  '' : null" routerLink="{{selectOrgLink}}">
+                <ibm-icon icon="edit" size="sm" *ngIf="selectOrgLink != null"></ibm-icon>
                 <ibm-icon icon="edit_disabled" size="sm" *ngIf="selectOrgLink === null" ></ibm-icon> {{'ORGANIZATIONS.LIST_ORGANIZATIONS.edit' | translate}}
              </button>
             <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn'"><ibm-icon icon="lock_key" size="sm"></ibm-icon>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn' | translate}}</button>
