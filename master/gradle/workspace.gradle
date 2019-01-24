@@ -1,0 +1,103 @@
+import org.gradle.internal.os.OperatingSystem
+
+repositories {
+	maven {
+		url 'http://wcnexus.torolab.ibm.com:8081/nexus/content/groups/public'
+	}
+}
+
+configurations {
+	all {
+		resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+	}
+}
+
+// Create a new build script to initialize the workspace
+def createSetup() {
+	// read the setup template file
+	Node xml = new XmlParser().parse(file('setup/setup.xml.template'))
+
+	// add project import statements to the build file
+	def targets = xml.target
+	Node importNode = targets.find { it.@name == 'importProjects' }
+ 	allprojects.each { importNode.appendNode('projectImport', ['projectName' : it.name]) }
+
+	// save a temp build script
+	File output = File.createTempFile('setup', '.xml')
+	output.withPrintWriter { out ->
+		new XmlNodePrinter(out).print(xml)
+	}
+
+	return output
+}
+
+// Calculate the workspace directory
+def workspaceDir = new File('..').canonicalFile
+
+// provide a default libertyHome value in case it is missing from the properties file
+def libertyHome = project.hasProperty('libertyHome') ? project.libertyHome : 'MISSING_LIBERTY_HOME'
+
+task cleanWorkspace(type: Delete) {
+	description = 'Erases the existing workspace metadata'
+	group = 'Workspace management'
+
+	delete "${workspaceDir}/.metadata"
+}
+
+task createWorkspace {
+	description = 'Creates a new workspace and imports configured projects'
+	group = 'Workspace management'
+
+	doLast {
+		logging.level = LogLevel.INFO
+
+		// Locate the RunAnt launcher
+		def launchers = new File(project.radHome, 'plugins').listFiles().findAll { it.name ==~ /.*launcher.*.jar/ }
+		def launcher = launchers.sort()[launchers.size() - 1]
+
+		// Calculate the setup directory
+		def setupDir = new File('setup').canonicalFile
+
+		// Create the setup script
+		def buildScript = createSetup()
+
+		// Check for macOS
+		def isMacOS = OperatingSystem.current().isMacOsX()
+
+		// Get Java home
+		// Change the Java home location if the default one is not working
+		def javaHome = "$project.radHome/jdk/bin/java"
+		if (isMacOS){
+			javaHome = "${libertyHome}/java/8.0/bin/java"
+		}
+
+
+		// Create the workspace
+		ant.exec(executable : javaHome, failOnError: true) {
+			if (isMacOS){ arg(line : '-XstartOnFirstThread') }
+			arg(line : """-cp "$launcher" """)
+			arg(line : 'org.eclipse.equinox.launcher.Main')
+			arg(line : '-application com.ibm.etools.j2ee.ant.RunAnt')
+			arg(line : """-data "$workspaceDir" """)
+			arg(line : """-DsetupDir="$setupDir" """)
+			arg(line : """-buildfile "$buildScript" """)
+		}
+	}
+}
+
+task newWorkspace {
+	description = 'Creates a new Eclipse workspace'
+	group = 'Workspace management'
+	dependsOn createWorkspace
+}
+
+// creating a new workspace should trigger creating new eclipse metadata
+// do this lazily to guarantee that all tasks have been defined
+allprojects {
+	afterEvaluate {
+		def task = it.tasks.findByPath('cleanEclipse')
+		if (task != null) {
+			createWorkspace.dependsOn(task)
+		}
+	}
+}

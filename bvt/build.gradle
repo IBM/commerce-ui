@@ -5,7 +5,7 @@ apply plugin: 'wc-bvt'
 // possible to depend on tasks from those projects
 //evaluationDependsOn(':sample-app')
 
-evaluationDependsOn(':idc-admin-console')
+evaluationDependsOn(':commerce-admin-console')
 
 bvt {
 	enableYqmtTagging = true
@@ -14,7 +14,7 @@ bvt {
 		name = project.hasProperty('releaseType') ? "commerce-${releaseType}/ts-web" : "commerce/ts-web"
 
 		asset {
-			unzip project(':idc-admin-console').tasks.assetZip
+			unzip project(':commerce-admin-console').tasks.assetZip
 			dest 'SETUP/app'
 		}
 	}
