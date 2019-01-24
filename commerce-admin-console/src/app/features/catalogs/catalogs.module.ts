@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CatalogsRoutingModule } from './catalogs-routing.module';
-import { ListCatalogsComponent } from './list-catalogs/list-catalogs.component';
 import { ButtonModule, TabsModule, AccordionModule, CheckboxModule, RadioModule, TableModule, DropdownModule,
 LinkModule, ModalModule } from 'carbon-components-angular';
 import { HeaderComponent } from './components/header/header.component';
@@ -29,7 +28,7 @@ DropdownModule,
 LinkModule,
 ModalModule
 ],
-declarations: [ListCatalogsComponent, HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent, 
+declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent, 
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent]
 })
 export class CatalogsModule { }
