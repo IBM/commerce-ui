@@ -1,2 +1,4 @@
-includeFlat 'idc-admin-console',
-'bvt'
+includeFlat 'commerce-admin-console',
+'bvt',
+'orgadmin-fixture',
+'orgadmin-fvt-tests'

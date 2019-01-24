@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2015 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+-->
+
+<project name="setup" default="setup">
+
+  <target name="setup">
+    <echo message="Initializing workspace" />
+
+    <antcall target="setWorkspacePreferences" />
+    <antcall target="importProjects" />
+  </target>
+
+  <target name="importProjects">
+	  <!-- projects to import go here -->
+  </target>
+
+  <target name="setWorkspacePreferences">
+    <!-- Configure some of the workspace's preferences -->
+    <!-- This line may not work on Mac -->
+    <importPreferences file="${setupDir}/base.prefs" />
+  </target>
+</project>

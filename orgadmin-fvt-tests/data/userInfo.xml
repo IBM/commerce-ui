@@ -1,0 +1,27 @@
+<!--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2019 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+-->
+
+<Scenario name="LOGIN">
+	
+	<Test name="LOGIN">
+	
+		<Datablock name="baseOrgAdmin">
+			<Input>
+				<Parameter name="username" value="test_sst_fvt_org_admin_01@isc4sb.com"/>
+				<Parameter name="password" value="Diet4coke@"/>
+			</Input>
+		</Datablock>
+
+	</Test>
+</Scenario>

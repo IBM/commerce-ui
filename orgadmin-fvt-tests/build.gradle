@@ -1,0 +1,8 @@
+dependencies {
+	compile project(':orgadmin-fixture')
+}
+sonarqube {
+	properties {
+		property 'sonar.coverage.exclusions', '**/*'
+	}
+}
