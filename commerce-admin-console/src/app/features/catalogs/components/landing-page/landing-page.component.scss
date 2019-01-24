@@ -1,0 +1,42 @@
+.containerClass{
+    margin: 2%;
+    }
+    .catlogMargin{
+        margin: 3%;
+    }
+    ul.ordrLst {
+        list-style-type: dot;
+      }
+      .liText{
+          font-size: 14px;
+          margin-bottom: 5px;
+      }
+      .orderMargin {
+          margin-left: 3%;
+      }
+      .moreDetails{
+          margin-top: 2%;
+          font-size: 14px;
+      }
+    
+    .custom-bullet{
+        content: "\f111";
+        font-size: 5px;
+        float: left;
+        margin-top: 6px;
+        margin-left: -13px;
+        color: black;
+    }
+    .content-width{
+        max-width: 78% !important;
+        background-color: #f1f1f1 !important;
+        margin-left: 0.5%;
+        min-height: 438px;
+        margin-bottom: 0.6%;
+    }
+    .side-width{
+        max-width: 22% !important;
+        background-color: #f1f1f1 !important;
+        min-height: 438px;
+        margin-bottom: 0.6%;
+    }

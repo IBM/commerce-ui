@@ -1,0 +1,161 @@
+<a class="navbar-brand ml-3" href="#">
+    <span class="">Catalog</span>
+</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
+    <div class="collapse navbar-collapse flex-column " id="navbar">
+        <ul class="navbar-nav  w-100">
+            <li class="nav-item dropdown">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" ibmButton>File</button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-toggle dropdown-item tabnextx" data-toggle="dropdown" (click)="onClickMe()"
+                        href="#" ibmLink>New
+                        <!-- This will execute on click of new-->
+                        <div class="dropdown-menu" *ngIf="show">
+                            <a class="dropdown-item" [routerLink]="['./masterCategory']" ibmLink>New Master
+                                Category</a>
+                            <a class="dropdown-item" href="#" ibmLink>Store Preview</a>
+                            <a class="dropdown-item" href="#" ibmLink>Exit Tool</a>
+                        </div>
+                        <!-- <div class="test" tabindex="-1" *ngIf="show">
+                        <ul> 
+                            <li><a class="dropdown-item" href="#" ibmLink>Restore All and Close</a></li>
+                            <li><a class="dropdown-item" href="#" ibmLink>Store Preview</a></li>
+                            <li><a class="dropdown-item" href="#" ibmLink>Exit Tool</a></li>
+                        </ul>
+                        </div>-->
+                    </a>
+                    <a class="dropdown-item" href="#" ibmLink>Open</a>
+                    <a class="dropdown-item" href="#" ibmLink>Open Compare View</a>
+                    <a class="dropdown-item" href="#" ibmLink>Close</a>
+                    <a class="dropdown-item" href="#" ibmLink>Close All</a>
+                    <a class="dropdown-item" href="#" ibmLink>Save</a>
+                    <a class="dropdown-item" href="#" ibmLink>Save All</a>
+                    <a class="dropdown-item" href="#" ibmLink>Reload</a>
+                    <a class="dropdown-item" href="#" ibmLink>Restore All and Close</a>
+                    <a class="dropdown-item" href="#" ibmLink>Store Preview</a>
+                    <a class="dropdown-item" href="#" ibmLink>Exit Tool</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" ibmButton>Edit</button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#" ibmLink>Copy</a>
+                    <a class="dropdown-item" href="#" ibmLink>Copy To Clipboard</a>
+                    <a class="dropdown-item" href="#" ibmLink>Create Copy</a>
+                    <a class="dropdown-item" href="#" ibmLink>Paste</a>
+                    <a class="dropdown-item" href="#" ibmLink>Delete</a>
+                    <a class="dropdown-item" href="#" ibmLink>Select All</a>
+                    <a class="dropdown-item" href="#" ibmLink>Deselect All</a>
+                    <a class="dropdown-item" href="#" ibmLink>Edit flex-column</a>
+                    <a class="dropdown-item" href="#" ibmLink>Find and Replace</a>
+                    <a class="dropdown-item" href="#" ibmLink>Move Up</a>
+                    <a class="dropdown-item" href="#" ibmLink>Move Down</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" ibmButton>View</button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#" ibmLink>Back</a>
+                    <a class="dropdown-item" href="#" ibmLink>Forward</a>
+                    <a class="dropdown-item" href="#" ibmLink>Hide Explorer View</a>
+                    <a class="dropdown-item" href="#" ibmLink>Show Utilities View</a>
+                    <a class="dropdown-item" href="#" ibmLink>Split Horizontally</a>
+                    <a class="dropdown-item" href="#" ibmLink>Split Vertically</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" ibmButton>Help</button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#" ibmLink>Getting Started</a>
+                    <a class="dropdown-item" href="#" ibmLink>Help links</a>
+                    <a class="dropdown-item" href="#" ibmLink>Context Help</a>
+                    <a class="dropdown-item" href="#" ibmLink>Keyboard Shortcuts</a>
+                </div>
+            </li>
+            <li class="nav-item ibm-dropdownWidth">
+                <ibm-dropdown>
+                    <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                </ibm-dropdown>
+            </li>
+        </ul>
+        <ul class="navbar-nav w-100 bg-secondary px-3">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <span>
+                        <i class="fas fa-arrow-circle-left"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span>
+                        <i class="fas fa-arrow-circle-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" [routerLink]="['./masterCategory']" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span><i class="fas fa-plus-circle"></i>
+                    </span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" [routerLink]="['./masterCategory']">New Master Category</a>
+                    <a class="dropdown-item" href="#">Category-level SKU</a>
+                    <a class="dropdown-item" href="#">Product-level SKU</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span><i class="fas fa-folder-open"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span>
+                        <i class="far fa-save"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span>
+                        <i class="fas fa-redo-alt"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span>
+                        <i class="far fa-stop-circle"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span><i class="fas fa-globe"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span>
+                        <i class="fas fa-tv"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span>
+                        <i class="fas fa-times-circle"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
