@@ -16,5 +16,9 @@ export class ModelPopupComponent implements OnInit {
   // @Output() close = new EventEmitter<boolean>();
 	// closeModal(event: any): void {
 	// 	this.close.emit(false);
-	// }
+  // }
+  
+  closeModal() {
+    
+  }
 }
