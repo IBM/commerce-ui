@@ -10,26 +10,19 @@
             ExtendedSitesCatalogAssetStore - Categories List
           </h1>
         </div>
-        
-        
-        <!-- <button class="bx--btn bx--btn--sm bx--btn--primary" (click)="addRow()">Add row</button>
-            <button class="bx--btn bx--btn--sm bx--btn--primary" (click)="addColumn()">Add column</button> -->
-        
-            <!-- <ng-template #customTableItemTemplate let-data="data">
-              <a [attr.href]="data.link">{{ data.name }} {{ data.surname }}</a>
-            </ng-template>
-            <ng-template #customHeaderTemplate let-data="data">
-              <i
-                ><a [attr.href]="data.link">{{ data.name }}</a></i
-              >
-            </ng-template> -->
-        
-            <ibm-table
-              [model]="model"
-              [size]="size"
-              [showSelectionColumn]="showSelectionColumn"
-              [striped]="striped">
-            </ibm-table>
+        <ng-template #customTableItemTemplate>
+          <input ibmText value="{{this.customModel.data.TableItem}}"/>
+      </ng-template>
+      
+          
+      <ibm-table
+        [model]="customModel"
+        [size]="size"
+        [showSelectionColumn]="showSelectionColumn"
+        [striped]="striped"
+        (sort)="customSort($event)"
+      >
+      </ibm-table>
         </div>
   </div>
 <ac-footer></ac-footer>

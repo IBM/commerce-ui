@@ -22,7 +22,7 @@
                     <button  ibmButton="secondary" size="sm" (click)="closeMasterCategory()">Close</button>
             </div>
             <div class="headerTabs">
-                <ibm-tabs [followFocus]="followFocus">
+                <ibm-tabs>
                     <ibm-tab heading="Manage Category">
                         <ibm-accordion>
                             <ibm-accordion-item title="Object Properties">
@@ -66,11 +66,7 @@
                                     <div class="col-md-2">
                                         Display to customer (United State English)
                                     </div><span class="questionMarkCheck"><i class="fa fa-question-circle"></i></span>
-                                        <ibm-checkbox
-                                            [checked]="checked"
-                                            [disabled]="disabled"
-                                            [indeterminate]="indeterminate"
-                                            (change)="onChange($event)">
+                                        <ibm-checkbox>
                                         </ibm-checkbox>
                                 </div>
                                 <div class="row uniqueRow">

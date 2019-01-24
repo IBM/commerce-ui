@@ -11,7 +11,7 @@ export class NewMasterCategoryComponent implements OnInit {
   title: 'NewMasterCotegory';
   code = '';
   name = '';
-  descreption = '';
+  description = '';
   thumbnail = '';
   image = '';
   keyword = '';
@@ -24,7 +24,7 @@ export class NewMasterCategoryComponent implements OnInit {
 
     saveMasterData() {
       this.masterInputData = [
-          {'code': this.code, 'name': this.name, 'descreption': this.descreption, 
+          {'code': this.code, 'name': this.name, 'descreption': this.description, 
           'thumbnail': this.thumbnail, 'image': this.image, 'keyword': this.keyword, 
           'pageTitle': this.pageTitle, 'metaDesc': this.metaDesc, 'imgAltText': this.imgAltText}
       ];
@@ -67,5 +67,8 @@ export class NewMasterCategoryComponent implements OnInit {
     @ViewChild("customTableItemTemplate")
     protected customTableItemTemplate: TemplateRef<any>;
 
+    closeMasterCategory() {
+        
+    }
 
 }
