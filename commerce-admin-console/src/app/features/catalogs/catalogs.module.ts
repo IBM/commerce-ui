@@ -14,7 +14,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-imports: [
+imports: [ 
 CommonModule,
 FormsModule,
 CatalogsRoutingModule,
