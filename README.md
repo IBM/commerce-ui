@@ -13,8 +13,8 @@ your own.  Execute the following to get your repository set up:
 * Fork this repository 
 * By default your new repository will have the same name.  This will need to 
 be changed to something meaningful.  From the repository's main page, select
-'edit project' from the settings button.
-* From the 'Rename repository' section, change the project name and the path 
+`edit project` from the settings button.
+* From the `Rename repository` section, change the project name and the path 
 values to your desired name.  Make sure you keep path and name consistent to 
 avoid confusion.  When ready, rename the project.
 * From the same settings page, locate the option to break the fork relationship
@@ -42,7 +42,7 @@ This template project provides the ability to set up a RAD 9.5 based development
 environment.  Before setting up an environment for the first time, you will need
 to configure Gradle with the location of your RAD 9.5 installation:
 
-1. Edit the gradle.properties file in your <user home>/.gradle directory.  E.g. `c:\users\blima\.gradle`.
+1. Edit the `gradle.properties` file in your `<user home>/.gradle` directory.  E.g. `c:\users\blima\.gradle`.
 2. If the file doesn't exist, create a new empty file.
 3. Add a new property named `radHome` pointing to your RAD installation directory.  E.g. `radHome=c:\software\SDP95`
 4. Add a new property named `libertyHome` pointing to your Liberty installation directory. E.g. `libertyHome=c:\software\liberty`
@@ -69,13 +69,13 @@ Follow the `README` file in subproject `idc-admin-console`.
 
 # Watson Content Hub : Push
 Usage
-
+```
 gradlew clean build pushWCHAssets -PpushType=QA
-
-1. Before run the command, you need have all the WCH tenant credentials in your system environment, the environment variable names are QA_WCH_USER, QA_WCH_PASSWORD,QA_WCH_API_URL. Otherwise you will get GradleException.
-2. pushWCHAssets has dependency on prepareWCHAssets and prepareWCHManifest, prepareWCHAssets will copy the contents under idc-admin-console/build/dist to idc-admin-console/build/wchAssets/assets.
-3. After prepareWCHAssets, prepareWCHManifest task will generate WCH manifest file based on the assets under idc-admin-console/build/wchAssets/assets.
-4. when prepareWCHManifest task finished, pushWCHAssets will get the WCH Credentials based on the pushType, then it will push all the assets under idc-admin-console/build/wchAssets/assets to Watson Content Hub.
+```
+1. Before run the command, you need have all the WCH tenant credentials in your system environment, the environment variable names are `QA_WCH_USER`, `QA_WCH_PASSWORD`, `QA_WCH_API_URL`. Otherwise you will get GradleException.
+2. pushWCHAssets has dependency on prepareWCHAssets and prepareWCHManifest, prepareWCHAssets will copy the contents under `idc-admin-console/build/dist` to `idc-admin-console/build/wchAssets/assets`.
+3. After prepareWCHAssets, prepareWCHManifest task will generate WCH manifest file based on the assets under `idc-admin-console/build/wchAssets/assets`.
+4. when prepareWCHManifest task finished, pushWCHAssets will get the WCH Credentials based on the pushType, then it will push all the assets under `idc-admin-console/build/wchAssets/assets` to Watson Content Hub.
 
 
 # Unit Test Guideline
