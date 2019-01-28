@@ -22,6 +22,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.ibm.commerce.cmc.rest.fixture.TestUsersEmailFixture;
 import com.ibm.commerce.cmc.rest.fixture.impl.TestUsersEmailFixtureImpl;
+import com.ibm.commerce.cmc.ui.config.CMCConfigManager;
 import com.ibm.commerce.cmc.ui.page.IbmIdSignInPage;
 import com.ibm.commerce.cmc.ui.page.TwoFAAuthPage;
 import com.ibm.commerce.orgadmin.fvt.test.AbstractSingleSessionTest;
@@ -37,6 +38,9 @@ public class LoginFlow extends AbstractSingleSessionTest{
 	@Inject
 	private
 	TwoFAAuthPage twoFactorAuthPage;
+	
+	@Inject
+	CMCConfigManager cmcConfig;
 	
 	private final String USER_INFO_FILE_NAME = "data/UserInfo.xml";
 
@@ -77,9 +81,13 @@ public class LoginFlow extends AbstractSingleSessionTest{
 		ibmIdSignInPage = getSession().continueToPage("https://idaas.iam.ibm.com", IbmIdSignInPage.class);
 		initLoginData(user);
 		loginThroughUI();
-		twoFactorAuthPage = getSession().continueToPage("https://idaas.iam.ibm.com/idaas/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:persession:EOTP"
-				, TwoFAAuthPage.class);
-		twoFactor();
+		//give enough time for log in to take effect
+		Thread.sleep(1000);
+		if (cmcConfig.getCustomProperty("2FA_ENABLED").contains("true")) {
+			twoFactorAuthPage = getSession().continueToPage("https://idaas.iam.ibm.com/idaas/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:persession:EOTP"
+					, TwoFAAuthPage.class);
+			twoFactor();
+		}
 	}
 	
 	/**

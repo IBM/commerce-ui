@@ -1,5 +1,5 @@
 dependencies {
-	compile project(':orgadmin-fixture')
+	compile project(':commerce-management-fixture')
 }
 sonarqube {
 	properties {
