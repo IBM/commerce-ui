@@ -1,4 +1,4 @@
 includeFlat 'commerce-admin-console',
 'bvt',
-'orgadmin-fixture',
+'commerce-management-fixture',
 'orgadmin-fvt-tests'
