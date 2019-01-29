@@ -5,31 +5,45 @@
         </div>
         <div class="col-md-9 content-width">
           <!--The content below is only a placeholder and can be replaced.-->
-      <div style="text-align:center">
-          <h1>
-            ExtendedSitesCatalogAssetStore - Categories List
-          </h1>
-        </div>
+          <div style="text-align:center">
+            <h1>
+              ExtendedSitesCatalogAssetStore - Categories List
+            </h1>
+          </div>
+
+          <ng-template #customHeaderTemplate>
+            <div style="width: 230px">
+              <ibm-dropdown
+                placeholder="Store"
+                [disabled]="disabled"
+                (selected)="selected($event)"
+                (onClose)="onClose($event)">
+                <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+              </ibm-dropdown>
+            </div>
+          </ng-template>
+
         <ng-template #customTableItemTemplate let-data="data">
           <input ibmText value="{{this.customModel.data.TableItem}}"/>
           <!-- <a [routerLink]="data.link">{{data.name}}</a> -->
-      </ng-template>
-      <!-- <ng-template #customTableItemTemplate let-data="data">
-        <td (click)="onSelect()"></td>
-    </ng-template> -->
-      <!-- <ng-template #customTableItemTemplate2 let-data="data">
-        <a (click)="onSelect()">{{data.name}}</a>
-      </ng-template> -->
+        </ng-template>
       
+        <ng-template #customTableItemTemplate let-data="data">
+            <input ibmText value="{{this.customModel.data.TableItem}}"/>
+            <!-- <a [routerLink]="data.link">{{data.name}}</a> -->
+        </ng-template>
+        <!-- <ng-template #customTableItemTemplate let-data="data">
+          <td (click)="onSelect()"></td>
+        </ng-template> -->
           
-      <ibm-table
-        [model]="customModel"
-        [size]="size"
-        [showSelectionColumn]="showSelectionColumn"
-        [striped]="striped"
-        (sort)="customSort($event)"
-      >
-      </ibm-table>
-        </div>
+        <ibm-table
+          [model]="customModel"
+          [size]="size"
+          [showSelectionColumn]="showSelectionColumn"
+          [striped]="striped"
+          (sort)="customSort($event)"
+        >
+        </ibm-table>
+      </div>
   </div>
 <ac-footer></ac-footer>
