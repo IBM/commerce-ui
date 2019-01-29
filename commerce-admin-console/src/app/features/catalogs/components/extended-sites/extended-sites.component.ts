@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, Input, OnChanges, AfterContentInit, OnDestroy, SimpleChanges, TemplateRef } from '@angular/core';
-
+import { Router } from '@angular/router'; 
 import { TableModel, TableItem, TableHeaderItem } from 'carbon-components-angular';
 
 
@@ -8,9 +8,13 @@ import { TableModel, TableItem, TableHeaderItem } from 'carbon-components-angula
   templateUrl: './extended-sites.component.html',
   styleUrls: ['./extended-sites.component.scss']
 })
-export class ExtendedSitesComponent implements OnInit {
+export class ExtendedSitesComponent implements OnInit, OnChanges {
 
-  constructor() { }
+  // private router = Router;
+
+  constructor(private router: Router) {
+    // this.router =route;
+}
 
   @Input() customModel = new TableModel();
   @Input() size = 'md';
@@ -22,12 +26,12 @@ export class ExtendedSitesComponent implements OnInit {
 	protected customHeaderTemplate: TemplateRef<any>;
 	@ViewChild("customTableItemTemplate")
   protected customTableItemTemplate: TemplateRef<any>;
-  // @ViewChild("customTableItemTemplate2")
-	// protected customTableItemTemplate2: TemplateRef<any>;
+  @ViewChild("customTableItemTemplate2")
+	protected customTableItemTemplate2: TemplateRef<any>;
  
   ngOnInit() {
     this.customModel.data = [
-      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "jhjh"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "checkbox"})],
+      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "jhjh"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: {name: "Lessy", link: "/masterCategory"}, template: this.customTableItemTemplate2})],
       [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "asas"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
       [new TableItem({data: "5.0", template: this.customTableItemTemplate}),new TableItem({data: "dfd"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
       [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "ccv"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
@@ -48,22 +52,29 @@ export class ExtendedSitesComponent implements OnInit {
     //   // new CustomHeaderItem({data: { name: 'Custom header', link: '/table' }, template: this.customHeaderTemplate, style: { width: 'auto' },}),
     // ];
 
-    // this.model.header = [
-    //   new TableHeaderItem({ data: "Sequence" }),
-    //   new TableHeaderItem({ data: "* Type" }),
-    //   new TableHeaderItem({ data: "Store" }),
-    //   new TableHeaderItem({ data: "* Code" }),
-    //   new TableHeaderItem({ data: "* Name" }),
-    //   new TableHeaderItem({ data: "Display to customers" })
-    // ];
-    // this.model.data = [
-    //   [new TableItem({data: "asdf"}), new TableItem({data: "qwer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"})],
-    //   [new TableItem({data: "csdf"}), new TableItem({data: "zwer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"})],
-    //   [new TableItem({data: "bsdf"}), new TableItem({data: "swer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"})],
-    //   [new TableItem({data: "csdf"}), new TableItem({data: "twer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"})],
-    //   [new TableItem({data: "bsdf"}), new TableItem({data: "swer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"})],
-    //   [new TableItem({data: "csdf"}), new TableItem({data: "twer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"}), new TableItem({data: "asdf"}), new TableItem({data: "qwer"})]
-    // ];
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.sortable) {
+      for (let column of this.customModel.header) {
+        column.sortable = changes.sortable.currentValue;
+      }
+    }
+  }
+  // simpleSort(index: number) {
+  //   sort(simpleModel, index);
+  // }
+  customSort(index: number) {
+    this.sort(this.customModel, index);
+  }
+
+  sort(customModel, index: number) {
+    if (customModel.header[index].sorted) {
+      // if already sorted flip sorting direction
+      customModel.header[index].ascending = customModel.header[index].descending;
+    }
+    customModel.sort(index);
+  }
+
 
 }
