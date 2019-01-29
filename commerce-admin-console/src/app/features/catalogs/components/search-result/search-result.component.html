@@ -1,0 +1,23 @@
+<ac-header></ac-header>
+<div class="row">
+  <div class="col-md-3 side-width">
+    <ac-side-bar></ac-side-bar>
+  </div>
+  <div class="col-md-9 content-width">
+    <!--The content below is only a placeholder and can be replaced.-->
+    <div>
+      <p class="searchheader"><i class='fas fa-search'></i> &nbsp;Search Result - Catagories</p>
+      <!--Empty table-->
+      <ibm-table [model]="model" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped" (sort)="customSort($event)">
+        <tbody>
+          <tr>
+            <td class="no-data" colspan="7">
+              <div>No data.</div>
+            </td>
+          </tr>
+        </tbody>
+      </ibm-table>
+</div>
+</div>
+</div>
+      <ac-footer></ac-footer>

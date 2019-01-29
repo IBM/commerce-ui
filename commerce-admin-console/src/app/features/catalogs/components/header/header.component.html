@@ -156,6 +156,15 @@
                     </span>
                 </a>
             </li>
+             <!--Dropdown with search-->
+             <li class="nav-item ibm-dropdown">
+                <ibm-dropdown>
+                <ibm-dropdown-list [items]="listItems" ></ibm-dropdown-list>
+            </ibm-dropdown>
+            </li>
+            <li class="nav-item ibm-searchwidth">
+            <ibm-search [theme]="theme" [placeholder]="placeholder" [disabled]="disabled" [size]="size"></ibm-search>
+        </li>
         </ul>
     </div>
 </nav>
