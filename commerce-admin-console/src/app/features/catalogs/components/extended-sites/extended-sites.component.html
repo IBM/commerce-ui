@@ -10,9 +10,16 @@
             ExtendedSitesCatalogAssetStore - Categories List
           </h1>
         </div>
-        <ng-template #customTableItemTemplate>
+        <ng-template #customTableItemTemplate let-data="data">
           <input ibmText value="{{this.customModel.data.TableItem}}"/>
+          <!-- <a [routerLink]="data.link">{{data.name}}</a> -->
       </ng-template>
+      <!-- <ng-template #customTableItemTemplate let-data="data">
+        <td (click)="onSelect()"></td>
+    </ng-template> -->
+      <!-- <ng-template #customTableItemTemplate2 let-data="data">
+        <a (click)="onSelect()">{{data.name}}</a>
+      </ng-template> -->
       
           
       <ibm-table
@@ -20,6 +27,7 @@
         [size]="size"
         [showSelectionColumn]="showSelectionColumn"
         [striped]="striped"
+        (sort)="customSort($event)"
       >
       </ibm-table>
         </div>
