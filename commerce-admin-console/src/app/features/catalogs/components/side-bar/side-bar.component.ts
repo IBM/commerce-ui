@@ -18,6 +18,11 @@ export class SideBarComponent implements OnInit {
     this.router.navigate(['/catalogs/extendedSite']);
 
   }
+  navigateToSearch(): void {
+
+    this.router.navigate(['/catalogs/searchResult']);
+
+  }
 
   navigateToMaster(): void {
 

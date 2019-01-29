@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Input, OnChanges,ViewEncapsulation } from '@angular/core';
+
 
 @Component({
   selector: 'ac-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  @Input() size = 'sm';
+  @Input() theme = 'dark';
+  @Input() disabled = false;
+  @Input() placeholder='Search';
+  
   listItems = [
     {
       content: "AuroraESite",
