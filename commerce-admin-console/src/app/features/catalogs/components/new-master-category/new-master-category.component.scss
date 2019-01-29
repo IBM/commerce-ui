@@ -1,6 +1,6 @@
 .containerClass{
-    margin: 15px;
-    width: 108.5%;
+    margin-top: 1%;
+    width: 100%;
 }
 .iconFontSize{
     font-size: 35px;
@@ -137,11 +137,11 @@ td {
 #dtHorizontalExample th, td {
     white-space: nowrap;
 }
-.tableOverflow{
-    overflow-y: auto;
+.row-width{
+    min-width: 105%;
 }
 .content-width{
-    max-width: 78% !important;
+    max-width: 77% !important;
     background-color: #f1f1f1 !important;
     margin-left: 0.5%;
     min-height: 438px;
@@ -152,4 +152,23 @@ td {
     background-color: #f1f1f1 !important;
     min-height: 438px;
     margin-bottom: 0.6%;
+}
+.tab-overflow{
+    overflow-y: auto;
+    max-width: 96%;
+    min-height: 300px;
+}
+.action-btn{
+    margin: 5px;
+}
+.multi-btn{
+    color: gray;
+    font-size: 20px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.plus-btn{
+    color: gray;
+    font-size: 20px;
+    cursor: pointer;
 }

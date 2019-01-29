@@ -1,5 +1,5 @@
 <ac-header></ac-header>
-<div class="row">
+<div class="row row-width">
     <div class="col-md-3 side-width">
         <ac-side-bar></ac-side-bar>
     </div>
@@ -150,30 +150,36 @@
                                 </div>
                         </div>
                     </ibm-tab>
-                    <ibm-tab heading="Associated Assets">Associated Assets
-                            <!-- <ibm-table class="table-wrapper"
-                            [model]="model"
-                            [size]="md"
-                            [showSelectionColumn]="true"
-                            [striped]="true"
-                            (sort)="customSort($event)">
-                        </ibm-table> -->
-                    </ibm-tab>
-                    <ibm-tab heading="Content">
-                        <div class="row tableOverflow">
-                            <div class="col-md-2 associateMargin">Content</div>
-                            <div class="col-md-10">
-                                    
-                            </div>   
+                    <ibm-tab heading="Associated Assets">
+                        <div class="tab-overflow">
+                            <div class="action-btn">
+                                <span class="plus-btn" id="plusBtn">
+                                    <a (click)="addAssociateRow()"><span><i class="fas fa-plus-circle"></i></span></a>
+                                </span>
+                                <span class="multi-btn" id="multiBtn">
+                                    <a (click)="deleteNewRow()"><span><i class="fas fa-times-circle"></i></span></a>
+                                </span>
+                            </div>
+                            <div *ngIf="showAssociate">
+                                <ibm-table class="td-width"
+                                    [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                               </ibm-table>
+                            </div>
+                            <div *ngIf="showAssociateEdit">
+                                <ibm-table class="body_roy"
+                                    [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                                </ibm-table>
+                                <ng-template #customTableItemTemplate>
+                                    <input ibmText value="{{this.customModel.data.TableItem}}"/>
+                                </ng-template>
+                           </div>
                         </div>
                     </ibm-tab>
+                    <ibm-tab heading="Content">
+                        
+                    </ibm-tab>
                     <ibm-tab heading="Refrences">
-                        <div class="row tableOverflow">
-                            <div class="col-md-2 associateMargin">Refrences</div>
-                            <div class="col-md-10">
-                                    
-                            </div>   
-                        </div>  
+                        
                     </ibm-tab>
                 </ibm-tabs>
             </div>

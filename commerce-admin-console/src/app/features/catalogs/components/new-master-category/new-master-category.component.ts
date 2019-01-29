@@ -1,12 +1,23 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
-import {TableModel, TableHeaderItem, TableItem } from "carbon-components-angular";
+import {TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
+import { ViewEncapsulation } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'ac-new-master-category',
   templateUrl: './new-master-category.component.html',
-  styleUrls: ['./new-master-category.component.scss']
+    styleUrls: ['./new-master-category.component.scss'],
 })
 export class NewMasterCategoryComponent implements OnInit {
+
+@ViewChild('customHeaderTemplate')
+protected customHeaderTemplate: TemplateRef<any>;
+@ViewChild('customTableItemTemplate')
+protected customTableItemTemplate: TemplateRef<any>;
+@Input() customModel = new TableModel();
+@Input() model = new TableModel();
+@Input() size = 'md';
+@Input() showSelectionColumn = true;
+@Input() striped = true;
 
   title: 'NewMasterCotegory';
   code = '';
@@ -18,14 +29,20 @@ export class NewMasterCategoryComponent implements OnInit {
   pageTitle = '';
   metaDesc = '';
   imgAltText = '';
+  showAssociate: boolean;
+  showContent: boolean;
+  showReferences: boolean;
+  showAssociateEdit: boolean;
+  showContentEdit: boolean;
+  showReferencesEdit: boolean;
   masterInputData = [];
 
   constructor() { }
 
     saveMasterData() {
       this.masterInputData = [
-          {'code': this.code, 'name': this.name, 'descreption': this.description, 
-          'thumbnail': this.thumbnail, 'image': this.image, 'keyword': this.keyword, 
+          {'code': this.code, 'name': this.name, 'descreption': this.description,
+          'thumbnail': this.thumbnail, 'image': this.image, 'keyword': this.keyword,
           'pageTitle': this.pageTitle, 'metaDesc': this.metaDesc, 'imgAltText': this.imgAltText}
       ];
       // this.masterCategoryService.categoryListTableData.push(this.masterInputData);
@@ -35,40 +52,63 @@ export class NewMasterCategoryComponent implements OnInit {
   // closeMasterCategory() {
   // this.router.navigate(['/']);
   // }
-
-@Input() model = new TableModel();
-@Input() size = "md";
-@Input() showSelectionColumn = true;
-@Input() striped = true;
+addRow() {
+  this.customModel.data = [
+    [new TableItem({data: '', template: this.customTableItemTemplate}),
+    new TableItem({data: ''}),
+    new TableItem({data: '', template: this.customTableItemTemplate}),
+    new TableItem({data: '', template: this.customTableItemTemplate}),
+    new TableItem({data: '', template: this.customTableItemTemplate}),
+    new TableItem({data: '', template: this.customTableItemTemplate}),
+    new TableItem({data: '', template: this.customTableItemTemplate}),
+    new TableItem({data: '', template: this.customTableItemTemplate}),
+    new TableItem({data: '', template: this.customTableItemTemplate})]
+  ];
+}
   ngOnInit() {
-      this.model.header = [
-          new TableHeaderItem({data: "Sequence"}), new TableHeaderItem({data: "Type"}), 
-          new TableHeaderItem({data: "Store"}), new TableHeaderItem({data: "Path"}),
-          new TableHeaderItem({data: "Code"}), new TableHeaderItem({data: "Usage"}),
-          new TableHeaderItem({data: "Administative name (United State English)"}), 
-          new TableHeaderItem({data: "Display name (United State English)"}),
-          new TableHeaderItem({data: "Short description (United State English)"}),
+    this.showAssociate = true;
+    this.showContent = true;
+    this.showReferences = true;
+    this.showAssociateEdit = false;
+    this.showContentEdit = false;
+    this.showReferencesEdit = false;
+      this.customModel.header = [
+        new TableHeaderItem({ data: 'Sequence'}),
+        new TableHeaderItem({ data: '*Type'}),
+        new TableHeaderItem({ data: 'Store'}),
+        new TableHeaderItem({ data: 'Path'}),
+        new TableHeaderItem({ data: 'Code'}),
+        new TableHeaderItem({ data: 'Usage'}),
+        new TableHeaderItem({ data: 'Administative name (United State English)'}),
+        new TableHeaderItem({ data: 'Display name (United State English)'}),
+        new TableHeaderItem({ data: 'Short description (United State English)'})
       ];
-      // this.model.data = [
-      //     [new TableItem({ data: '0 of 0 selected' }), new TableItem({ data: ''}), new TableItem({ data: ''}), 
-      //     new TableItem({ data: '' }), new TableItem({ data: ''}), new TableItem({ data: ''}),
-      //     new TableItem({ data: '' }), new TableItem({ data: ''}), new TableItem({ data: ''})]   
-      // ];
-
-      this.model.data = [
-          [new TableItem({ data: "Name 1" }), new TableItem({ data: { name: "Lessy", Input: '<input type="text">'}, template: this.customTableItemTemplate })],
-          [new TableItem({ data: "Name 3" }), new TableItem({ data: "swer" })],
-          [new TableItem({ data: "Name 2" }), new TableItem({ data: { name: "Alice", surname: "Bob" }, template: this.customTableItemTemplate })],
-          [new TableItem({ data: "Name 4" }), new TableItem({ data: "twer" })]
-      ];
+    //   this.customModel.data = [
+    //     [new TableItem({data: ''}), new TableItem({data: ''}), new TableItem({data: ''}), new TableItem({data: ''}),
+    //     new TableItem({data: ''}), new TableItem({data: ''}), new TableItem({data: ''}), new TableItem({data: ''}),
+    //     new TableItem({data: ''})]
+    //   ];
+  this.addRow();
   }
-    @ViewChild("customHeaderTemplate")
-    protected customHeaderTemplate: TemplateRef<any>;
-    @ViewChild("customTableItemTemplate")
-    protected customTableItemTemplate: TemplateRef<any>;
 
-    closeMasterCategory() {
-        
+    closeMasterCategory() { }
+    addAssociateRow() {
+        this.showAssociate = false;
+        this.showAssociateEdit = true;
+        this.addRow();
+    }
+    addContentRow() {
+      this.showContent = false;
+      this.showContentEdit = true;
+      this.addRow();
+    }
+    addReferencesRow() {
+      this.showReferences = false;
+      this.showReferencesEdit = true;
+      this.addRow();
+    }
+    deleteNewRow() {
+        console.log('hello');
     }
 
 }
