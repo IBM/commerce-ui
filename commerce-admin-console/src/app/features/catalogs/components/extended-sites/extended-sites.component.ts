@@ -31,12 +31,12 @@ export class ExtendedSitesComponent implements OnInit, OnChanges {
  
   ngOnInit() {
     this.customModel.data = [
-      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "jhjh"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: {name: "Lessy", link: "/masterCategory"}, template: this.customTableItemTemplate2})],
-      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "asas"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
+      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "jhjh"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
+      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "asas"}), new TableItem({data: "AuroraESite"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
       [new TableItem({data: "5.0", template: this.customTableItemTemplate}),new TableItem({data: "dfd"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
       [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "ccv"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
-      [new TableItem({data: "5.0", template: this.customTableItemTemplate}),new TableItem({data: "njkb"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
-      [new TableItem({data: "10.0", template: this.customTableItemTemplate}),new TableItem({data: "hsn"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})]
+      [new TableItem({data: "5.0", template: this.customTableItemTemplate}),new TableItem({data: "njkb"}), new TableItem({data: "AuroraESite"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})],
+      [new TableItem({data: "10.0", template: this.customTableItemTemplate}),new TableItem({data: "hsn"}), new TableItem({data: "AuroraESite"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({data: "Checkbox"})]
     ];
     this.customModel.header = [
       new TableHeaderItem({ data: "Sequence"}),
@@ -75,6 +75,24 @@ export class ExtendedSitesComponent implements OnInit, OnChanges {
     }
     customModel.sort(index);
   }
+
+  listItems = [{
+             content: "Show All",
+             selected: false
+         },
+         {
+             content: "AuroraESite",
+             selected: false,
+         },
+         {
+             content: "ExtendedSitesCatalogAssetStore",
+             selected: false
+         }
+  ];
+
+  selected() {}
+
+  onClose() {}
 
 
 }
