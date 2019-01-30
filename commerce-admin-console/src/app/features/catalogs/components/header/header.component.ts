@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'ac-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
 

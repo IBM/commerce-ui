@@ -1,5 +1,5 @@
 <ibm-modal size='size'>
-    <ibm-modal-header (closeSelect)="closeModal()">Message Console</ibm-modal-header>
+    <ibm-modal-header (closeSelect)="closeModal($event)">Message Console</ibm-modal-header>
     <!-- <div class="">
     <ibm-dropdown>
     <ibm-dropdown-list [items]="modalListitems"></ibm-dropdown-list>
@@ -52,9 +52,9 @@
         </div>
     </div>
     <ibm-modal-footer>
-        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal()">Copy</button>
-        <button ibmButton class="footerbutton" (click)="closeModal()">Clear</button>
-        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal()">Close</button>
+        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal($event)">Copy</button>
+        <button ibmButton class="footerbutton" (click)="closeModal($event)">Clear</button>
+        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal($event)">Close</button>
     </ibm-modal-footer>
 </ibm-modal>
 
