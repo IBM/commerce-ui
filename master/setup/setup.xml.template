@@ -29,7 +29,6 @@
 
   <target name="setWorkspacePreferences">
     <!-- Configure some of the workspace's preferences -->
-    <!-- This line may not work on Mac -->
-    <importPreferences file="${setupDir}/base.prefs" />
+    <!-- importPreferences file="${setupDir}/base.prefs"-->
   </target>
 </project>
