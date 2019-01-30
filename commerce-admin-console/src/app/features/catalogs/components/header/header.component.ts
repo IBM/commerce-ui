@@ -1,15 +1,21 @@
-import { Component, ViewChild, OnInit, Input, OnChanges,ViewEncapsulation } from '@angular/core';
-
+import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, AfterViewInit, TemplateRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ac-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  show = false;
+  
+  @Input() linkShow = true;
+  //@ViewChild(HeaderComponent) ele: HeaderComponent;
+  user : {id: number};
+
+  constructor(private _AR: ActivatedRoute) { }
 
   @Input() size = 'sm';
   @Input() theme = 'dark';
@@ -35,18 +41,23 @@ export class HeaderComponent implements OnInit {
     }
   ];
 
-  public show: boolean = false;
-
 
   ngOnInit() {
+   this.user = {
+     id: this._AR.snapshot.params['id']
+   };
+   if (this.user.id) {
+    this.linkShow = false;
+    }
   }
-  // formData.show = {};
+// ngAfterViewInit(){
 
+// if (this.user.id) {
+// this.linkShow = false;
+//  }
+// }
   onClickMe() {
     this.show = true;
-    //this.show = !this.show;
-
-    //this.formData.show = !this.formData.show;
   }
 
 }

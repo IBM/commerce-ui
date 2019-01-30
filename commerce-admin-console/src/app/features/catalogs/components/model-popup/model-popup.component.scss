@@ -1,0 +1,33 @@
+.ibm-dropdownModal {
+    width: 150px;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+}
+.bx--list-box__menu {
+    z-index: 9001;
+    width: 150%;
+}
+.tooltipQuestionMark {
+    position: absolute;
+    margin-left: 160px;
+    bottom: 10px;
+    box-sizing: border-box;
+}
+.modaltable {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: auto;
+    overflow: scroll;
+}
+.empty-table-msg {
+    height: 100px;
+    line-height: auto;
+    text-align: center;
+    vertical-align: middle;
+    overflow: scroll;
+}
+.footerbutton {
+    margin: 2%;
+}

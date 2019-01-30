@@ -18,6 +18,9 @@ path: 'masterCategory', component: NewMasterCategoryComponent
 path: 'searchResult', component: SearchResultComponent
 },
 {
+path: 'masterCategory/:id', component: NewMasterCategoryComponent
+},
+{
 path: 'extendedSite', component: ExtendedSitesComponent
 }
 ];
