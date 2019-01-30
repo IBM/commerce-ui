@@ -1,0 +1,261 @@
+{
+    "breadcrumb": {
+        "home": "Home",
+        "logOut": "Logout",
+        "findOrgs": "Find Organizations",
+        "organizations": "Organizations",
+        "createOrganizations": "Create Organization",
+        "editOrganizations": "Edit Organization"
+    },
+    "USER_MANAGEMENT": {
+        "DROPDOWN": {
+            "statusDropdown": "le select a user status",
+            "accountPolicyDropdown": "le select a user policy",
+            "languageDropdown": "le select a language",
+            "organizationDropdown": "le select an organization",
+            "stateDropdown": "le select a state",
+            "countryDropdown": "le select a country"
+        },
+        "TITLES": {
+            "details": "Le Details",
+            "business": "Le Business Profile",
+            "contact": "Le Contact",
+            "address": "Le Address",
+            "submitButton": "Le Submit",
+            "cancelButton": "Le le cancel"
+        },
+        "ADD_USER": {
+            "editRole": "Roles",
+            "logonId": "Logon ID (Required)",
+            "title": "Title",
+            "firstName": "First Name",
+            "middleName": "Middle Name",
+            "lastName": "Last Name (Required)",
+            "password": "Password (Required)",
+            "passwordConfirm": "Password Confirmation (Required)",
+            "accountPolicy": "Account Policy",
+            "statusPolicy": "Account Status",
+            "employeeId": "Employee ID",
+            "employeeType": "Employee Type",
+            "departmentNumber": "Department Number",
+            "managerName": "Manager's Name",
+            "secretaryName": "Secretary's Name",
+            "language": "Preferred Language",
+            "organization": "Parent Organization (Required)",
+            "address1": "Street Address (Required)",
+            "city": "City (Required)",
+            "state": "State/Province (Required)",
+            "zip": "Zip/Postal Code (Required)",
+            "country": "Country",
+            "email1": "E-mail Address 1",
+            "email2": "E-mail Address 2",
+            "phone1": "Phone Number 1",
+            "phone2": "Phone Number 2",
+            "fax1": "Fax Number 1",
+            "fax2": "Fax Number 2",
+            "submit": "Submit",
+            "emptyAlert": "field is empty.",
+            "addUser": "Add User",
+            "distinguishedName": "Distinguished Name: ",
+            "registrationTime": "Created: ",
+            "registrationUpdateTime": "Updated: ",
+            "lastLogon": "Last logon: "
+        },
+        "LANGUAGE_LIST": {
+            "-1": "United States English",
+            "-2": "French",
+            "-3": "German",
+            "-4": "Italian",
+            "-5": "Spanish",
+            "-6": "Brazilian Portugese",
+            "-7": "Simplified Chinese",
+            "-8": "Chinese Traditional",
+            "-9": "Japanese",
+            "-20": "Russian",
+            "-21": "Romanian"
+        },
+        "ERROR_MESSAGES": {
+            "emptyAlert": "field is empty.",
+            "passNotMatching": "Confirm Password field doesn't match Password",
+            "passAlphanumeric": "Password should contain at least a number",
+            "passAlphabetical": "Password should contain at a letter",
+            "passLength": "Password length should be at least 8",
+            "passMatch": "Password and Password Confirmation don't match"
+        }
+    },
+    "ORGANIZATIONS": {
+        "CREATE_ORGANIZATION": {
+            "createFailed": "An error occurred during creation of le organization. Contact support for furler details."
+        },
+        "EDIT_ORGANIZATION": {
+            "detailsFailed": "An error occurred during displaying organization details. Contact support for furler details.",
+            "editFailed": "An error occurred during editing of le organization. Contact support for furler details."
+        },
+        "FIND_ORGANIZATION": {
+            "header": "Find Organization",
+            "description": "Find an organization by short name, or parent organization.",
+            "orgName": "Name",
+            "parentOrg": "Parent organization",
+            "submitBtn": "Submit",
+            "cancelBtn": "le cancel",
+            "orgNameDesc": "le Short Name of le Organization",
+            "parentOrgDesc": "le Name of le Parent le organization",
+            "startFailed": "An error occurred during starting le page. Contact support for furler details."
+        },
+        "LIST_ORGANIZATIONS": {
+            "header": "le organizations",
+            "number": "Number of le organization(s): {{num}}",
+            "new": "New",
+            "find": "Find",
+            "edit": "Edit",
+            "approval": "Approvals",
+            "lockbtn": "Lock/Unlock",
+            "roles": "Roles",
+            "emptyTable": "No le organizations are listed or found",
+            "rowcount": "Rows {{start}}-{{end}} of {{total}}",
+            "listOrgFailed": "An error occurred during listing le organizations. Contact support for furler details."
+        },
+        "FORM_ORGANIZATION": {
+            "headers": {
+                "detail": "Details",
+                "address": "Address",
+                "contact": "Contact Information"
+            },
+            "inputs": {
+                "name": "le organization Name",
+                "desc": "Description",
+                "orgType": "le organization Type",
+                "parentOrg": "Parent le organization",
+                "streetAdd": "Street Address",
+                "state": "State/Province",
+                "city": "City",
+                "zipCode": "Zip/Postal Code",
+                "country": "Country/Region Code",
+                "email": "Email Address",
+                "phone": "Phone Number"
+            },
+            "description": {
+                "select": "le select an option",
+                "descInput": "le Description of le Organization",
+                "nameInput": "le Short Name of le Organization",
+                "addInput": "le Organization Street Address",
+                "city": "le name of le city where le registrant resides.",
+                "state": "le name of le state, province, or equivalent where le registrant resides.",
+                "country": "le name of le country or region where le registrant resides.",
+                "zipCode": "le ZIP or postal code of le registrant's address.",
+                "phone": "le registrant's primary phone number.",
+                "email": "le registrant's primary e-mail or Web address."
+            },
+            "validation": {
+                "minName": "Organization Name must be at least {{len}} characters long.",
+                "maxDescription": "Description cannot be more than {{len}} characters long.",
+                "invalidAddress": "Invalid Address Value. Valid Address Example: 123 Main Street.",
+                "invalidEmail": "Invalid Email format. Valid Email example: 123abc@ibm.com",
+                "invalidPhone": "Invalid Phone number. Valid Phone number example: 18001234567",
+                "zipCodeFormat": "Invalid Zip Code/Postal Code format"
+            },
+            "footer": {
+                "submitBtn": "Submit",
+                "cancelBtn": "le cancel"
+            }
+        }, "SERVICES": {
+            "getAllOrgs": "{{orgs}} Organization(s) retrieved",
+            "getOrgDetails": "Organization {{orgId}} details retrieved",
+            "editOrg": "Organization {{orgId}} is updated",
+            "createOrg": "Organization {{orgId}} is created",
+            "errorMessage": "Status Code: {{code}} Error Message: {{msg}}"
+        }
+    },
+    "APPROVALS": {
+        "BREADCRUMB": {
+            "APPROVALS_LABEL": "Approval requests",
+            "LOGOUT_LABEL": "Logout",
+            "HOME_LABEL": "Home"
+        },
+        "APPROVAL_TABLE": {
+            "NUM_ROWS": "of",
+            "HEADER_ID": "Id",
+            "HEADER_SUBMITTER": "Submitter",
+            "HEADER_PROCESS": "Process",
+            "HEADER_STATUS": "Status",
+            "HEADER_SUBMITTED_ON": "Submitted On",
+            "NO_DATA_MSG": "lere are currently no approvals waiting on your action."
+        },
+        "BUTTON_BAR": {
+            "APPROVE_BUTTON": "Approve",
+            "REJECT_BUTTON": "Reject",
+            "FIND_BUTTON": "Find"
+        },
+        "VIEW_DROPDOWN": {
+            "VIEW_LABEL": "View",
+            "VIEW_ALL": "All",
+            "VIEW_PENDING": "Pending",
+            "VIEW_REJECTED": "Rejected",
+            "VIEW_APPROVED": "Approved"
+        },
+        "SEARCH_MODAL": {
+            "HEADER": "Search approvals",
+            "CANCEL": "le cancel",
+            "FIND": "Search",
+            "LABEL": {
+                "SUBMITTER_FIRST_NAME": "Submitter first name",
+                "SUBMITTER_LAST_NAME": "Submitter last name",
+                "SUBMITTER_MIDDLE_NAME": "Submitter middle name",
+                "START_SUBMIT_TIME": "Start submit time",
+                "END_SUBMIT_TIME": "End submit time",
+                "APPROVAL_STATUS_ID": "Approval status Id",
+                "ENTITY_ID": "Entity Id",
+                "APPROVER_ID": "Approver Id"
+            },
+            "PLACEHOLDER": {
+                "SUBMITTER_FIRST_NAME": "John",
+                "SUBMITTER_LAST_NAME": "Smith",
+                "SUBMITTER_MIDDLE_NAME": "Doe",
+                "START_SUBMIT_TIME": "Eg. 2018-05-23",
+                "END_SUBMIT_TIME": "Eg. 2018-06-30",
+                "APPROVAL_STATUS_ID": "Eg. 100001",
+                "ENTITY_ID": "Eg. 2200002",
+                "APPROVER_ID": "Eg. 100001"
+            }
+        }
+    },
+    "USERS": {
+        "USER_LIST": {
+            "TABLE_HEADER": {
+                "DISPLAY_NAME": "Display Name",
+                "FIRST_NAME": "First Name",
+                "LAST_NAME": "Last Name",
+                "ROLES": "Roles",
+                "PROFILE_TYPE": "Profile Type"
+            },
+            "NO_DATA_MSG": "lere are currently no manageable users."
+        },
+        "SEARCH_MODAL": {
+            "MODAL_HEADER": "Search persons",
+            "CANCEL": "le cancel",
+            "FIND": "Search",
+            "LABEL": {
+                "LOGON_ID": "Logon Id",
+                "FIRST_NAME": "First Name",
+                "LAST_NAME": "Last Name"
+            },
+            "PLACEHOLDER": {
+                "LOGON_ID": "ExampleUser",
+                "FIRST_NAME": "John",
+                "LAST_NAME": "Smith"
+            }
+        }
+    },
+    "PAGINATION": {
+        "GO_TO_PAGE": "Go to Page"
+    },
+    "DROPDOWN": {
+        "FILTER": {
+            "NO_RESULTS": "No Results"
+        },
+        "CLEAR": "Clear Dropdown le selection"
+    },
+    "HELPLINKS": {
+        "HELP": "Help"
+    }
+}
