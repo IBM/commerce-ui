@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,Input } from '@angular/core';
+import { ModalService } from 'carbon-components-angular'
+import { ModelPopupComponent } from '../model-popup/model-popup.component';
 @Component({
   selector: 'ac-footer',
   templateUrl: './footer.component.html',
@@ -7,12 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+ 
+  @Input() modalText = "Footer sample model";
+  @Input() theme: "light" | "dark" = "dark";
+  @Input() size: "sm" | "md" | "lg" = "md";
+
+  constructor(private modalService: ModalService) { }
 
   ngOnInit() {
   }
 
-  footerClick() {
-    
+  openModal() {
+    this.modalService.create({ component: ModelPopupComponent });
   }
 }

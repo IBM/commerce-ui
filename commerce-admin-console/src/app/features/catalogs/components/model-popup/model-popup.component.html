@@ -1,11 +1,62 @@
-<ibm-modal>
-  <ibm-modal-header (closeSelect)="closeModal()">Header label</ibm-modal-header>
-  <section class="bx--modal-content">
-    <h1>Sample modal works.</h1>
-    <p class="bx--modal-content__text">Modal Text</p>
-  </section>
-  <ibm-modal-footer>
-    <button ibmButton modal-primary-focus (click)="closeModal()">Close</button>
-  </ibm-modal-footer>
+<ibm-modal size='size'>
+    <ibm-modal-header (closeSelect)="closeModal()">Message Console</ibm-modal-header>
+    <!-- <div class="">
+    <ibm-dropdown>
+    <ibm-dropdown-list [items]="modalListitems"></ibm-dropdown-list>
+</ibm-dropdown>
+</div> 
+<section class="bx--modal-content"> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibm-dropdownModal">
+                    <ibm-dropdown>
+                        <ibm-dropdown-list [items]="modalListitems"></ibm-dropdown-list>
+                    </ibm-dropdown>
+                </div>
+                <div class="tooltipQuestionMark">
+                    <span [ibmTooltip]="template" trigger="click" placement="bottom" style="cursor: pointer;">
+                        <i class="fas fa-question-circle fa-1x"></i>
+                    </span>
+                </div>
+                <ng-template #template let-tooltip="tooltip">
+                    <p>Filter the message console by message type. Object error messages describe problems with your
+                        business objects.</p>
+                    <p>System error messages describe problems that have occurred in the IBM Digital Commerce server.</p>
+                    <p>Status messages are informational and do not require any further action.</p>
+                    <div>
+                        <a href="https://www.ibm.com/support/knowledgecenter/en/SS9PHW/com.ibm.commerce.management-center.doc/tasks/ttfviewmessages.htm"
+                            ibmLink target="blank">More details...</a>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 modaltable">
+                <ibm-table [model]="model" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                    <tbody>
+                        <tr>
+                            <td class="no-data" colspan="4"></td>
+                        </tr>
+                    </tbody>
+                </ibm-table>
+
+                <div class="empty-table-msg">
+                    There are currently no Messages for your action.
+                </div>
+                <div class="">
+                    <span class="table-selection-info">{{availableRows}} of {{totalRows}} selected</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ibm-modal-footer>
+        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal()">Copy</button>
+        <button ibmButton class="footerbutton" (click)="closeModal()">Clear</button>
+        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal()">Close</button>
+    </ibm-modal-footer>
 </ibm-modal>
+
+
 

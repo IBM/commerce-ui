@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CatalogsRoutingModule } from './catalogs-routing.module';
 import { ButtonModule, TabsModule, AccordionModule, CheckboxModule, RadioModule, TableModule, DropdownModule,
-LinkModule, ModalModule, SearchModule } from 'carbon-components-angular';
+LinkModule, ModalModule, SearchModule, PlaceholderModule, DialogModule  } from 'carbon-components-angular';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
@@ -13,6 +13,8 @@ import { ExtendedSitesComponent } from './components/extended-sites/extended-sit
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FormsModule } from '@angular/forms';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { ModalService } from 'carbon-components-angular'
+
 @NgModule({
 imports: [ 
 CommonModule,
@@ -30,6 +32,15 @@ ModalModule,
 SearchModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent, 
-NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent]
+NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent,
+PlaceholderModule,
+DialogModule
+],
+
+
+providers: [ModalService],
+
+entryComponents: [ModelPopupComponent]
+ 
 })
 export class CatalogsModule { }
