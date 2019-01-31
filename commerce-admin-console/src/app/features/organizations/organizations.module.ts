@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NFormsModule, TableModule, PaginationModule, DropdownModule, IconModule } from 'carbon-components-angular';
 
 import { ComponentsModule } from '../../components/components.module';
-import { SharedModule } from '../../shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { OrganizationsRoutingModule } from './organizations-routing.module';
 import { OrganizationsMainService } from './organizations.main.service';
@@ -26,9 +26,9 @@ import { OrganizationFormComponent } from './organization-form/organization-form
 		DropdownModule,
 		IconModule,
 		ComponentsModule,
-		SharedModule,
 		OrganizationsRoutingModule,
-		ComponentsModule
+		ComponentsModule,
+		TranslateModule
 	],
 	declarations: [
 		ListOrganizationsComponent,

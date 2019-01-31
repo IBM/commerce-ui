@@ -14,7 +14,7 @@ import {
 
 import { SearchModalComponent } from './user-list/search-modal/search-modal.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { SharedModule } from '../../shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonBarComponent } from './user-list/button-bar/button-bar.component';
 import { UserListDashboardComponent } from './user-list/user-list-dashboard/user-list-dashboard.component';
 import { UserTableComponent } from './user-list/user-table/user-table.component';
@@ -33,7 +33,7 @@ import { UserTableComponent } from './user-list/user-table/user-table.component'
     DialogModule,
     ModalModule,
     FormsModule,
-    SharedModule
+    TranslateModule
   ],
   declarations: [
     SearchModalComponent,

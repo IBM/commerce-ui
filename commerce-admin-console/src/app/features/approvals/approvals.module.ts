@@ -20,7 +20,7 @@ import { SearchModalComponent } from './search-modal/search-modal.component';
 import { ApprovalStatusQueryService } from './approvals-status-query.service';
 import { FormsModule } from '@angular/forms';
 import { ApprovalUpdateService } from './approval-update.service';
-import { SharedModule } from '../../shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -36,7 +36,7 @@ import { SharedModule } from '../../shared/shared.module';
     PaginationModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    TranslateModule
   ],
   providers: [
     ApprovalStatusQueryService,
