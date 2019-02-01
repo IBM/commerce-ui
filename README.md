@@ -79,7 +79,7 @@ gradlew clean build pushWCHAssets -PpushType=QA
 
 
 # Unit Test Guideline
-Check the [Unit Test Guideline](https://w3-connections.ibm.com/wikis/home?lang=en-us#!/wiki/W0ef0cde2caad_4659_9684_603fd59f94e1/page/Unit%20Test%20Guideline%20for%20Karma%20and%20Jasmine) with Karma and Jasmine to get an idea of the unit tests. 
+Check the [Unit Test Guideline](https://github.com/IBM/commerce-ui/wiki/Karma-Jasmine-Code-Level-Unit-Test) with Karma and Jasmine to get an idea of the unit tests. 
 
 # FVT Automation Guideline
 Steps to run the test cases under the orgadmin-fvt-tests project
@@ -89,6 +89,6 @@ Steps to run the test cases under the orgadmin-fvt-tests project
 3. Update the xml files under the data folder, since they include information required by the automation scripts. For example, UserInfo.xml includes the user info used to log into the machine.
 4. Run all of the orgadmin tests as junit by running allTest.java under `com.ibm.commerce.orgadmin.fvt.testbuckets`, or you can run each of the test case under `com.ibm.commerce.orgadmin.fvt.test`.
 
-Check the [UI Automation Guideline](https://w3-connections.ibm.com/wikis/home?lang=en-us#!/wiki/W0ef0cde2caad_4659_9684_603fd59f94e1/page/UI%20Automation%20Test%20Writing%20Guidelines) to get an idea of the UI Automation Tests. 
+Check the [UI Automation Guideline](https://github.com/IBM/commerce-ui/wiki/UI-Automation-Guidelines) to get an idea of the UI Automation Tests. 
 
 
