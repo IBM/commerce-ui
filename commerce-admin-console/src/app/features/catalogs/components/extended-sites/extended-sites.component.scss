@@ -1,6 +1,4 @@
 .content-width{
-    margin-left: 0.5%;
-    width: 100%;
     display: inline-block;
     position: absolute;
     background-color: #f1f1f1 !important;
@@ -10,4 +8,10 @@
     min-height: 438px;
     margin-bottom: 0.6%;
     display: inline-block;
+}
+.bx--list-box {
+    width: 220px !important;
+}
+.align-checkbox {
+    margin-left: 32px;
 }
