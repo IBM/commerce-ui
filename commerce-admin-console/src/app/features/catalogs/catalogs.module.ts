@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CatalogsRoutingModule } from './catalogs-routing.module';
 import { ButtonModule, 
     TabsModule, AccordionModule, CheckboxModule, RadioModule, TableModule, DropdownModule,
-LinkModule, ModalModule, SearchModule, PlaceholderModule, DialogModule  } from 'carbon-components-angular';
+LinkModule, ModalModule, SearchModule, PlaceholderModule, DialogModule,  IconModule, UIShellModule  } from 'carbon-components-angular';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
@@ -33,7 +33,9 @@ LinkModule,
 ModalModule,
 SearchModule,
 PlaceholderModule,
-DialogModule
+DialogModule,
+IconModule,
+UIShellModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent, 
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent
