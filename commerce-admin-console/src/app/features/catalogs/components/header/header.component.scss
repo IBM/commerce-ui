@@ -1,10 +1,97 @@
+.headcontainer {
+    width: 100%;
+    background: #BEBEBE;
+    display: flex;
+    // overflow: hidden;
+} 
+.third-level-menu
+{
+    position: absolute;
+    top: 0;
+    right: -150px;
+    width: 150px;
+    list-style: none;
+    padding: 0;
+    margin-left: 5px;
+    display: none;
+}
+
+.third-level-menu > li
+{
+    height: 30px;
+    background: white;
+}
+.third-level-menu > li:hover { background:lightblue; }
+
+.second-level-menu
+{
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 150px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.second-level-menu > li
+{
+    position: relative;
+    height: 30px;
+    background: white;
+    z-index: 1;
+    margin-left: 2px;
+}
+.second-level-menu > li:hover { background: lightblue; }
+
+.top-level-menu
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-level-menu > li
+{
+    position: relative;
+    float: left;
+    height: 30px;
+    width: 150px;
+    background: #999999;
+}
+.top-level-menu > li { background: #CCCCCC; }
+
+.top-level-menu li:hover > ul
+{
+    /* On hover, display the next level's menu */
+    display: inline;
+}
+
+
+/* Menu Link Styles */
+
+.top-level-menu a /* Apply to all links inside the multi-level menu */
+{
+    font: bold 14px Arial, Helvetica, sans-serif;
+    color: white;
+    text-decoration: none;
+    padding: 0 0 0 10px;
+
+    /* Make the link cover the entire list item-container */
+    display: block;
+    line-height: 30px;
+    
+}
+.top-level-menu a:hover { color: #000000;}
+
  /* Remove the navbar's default margin-bottom and rounded borders */
  
  .ibm-dropdownWidth {
     width: 250px;
     margin-top: 5px;
     position: absolute;
-    right: 150px;
+    right: 250px;
     height: 50px;
 }
 .ibm-dropdown {
@@ -39,14 +126,6 @@
     // color: #152935;
 }
 
-.navbar {
-padding: 0rem;
-margin-bottom: 0rem;
-} 
-// .disabled {
-//     pointer-events: none;
-//     cursor: default;
-// }
 
 .bx--list-box {
     height: 2.0rem;

@@ -1,171 +1,71 @@
-<a class="navbar-brand ml-3" href="#">
-    <span class="">Catalog</span>
-</a>
-<nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
-    <div class="collapse navbar-collapse flex-column " id="navbar">
-        <ul class="navbar-nav  w-100">
-            <li class="nav-item dropdown">
-                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" ibmButton>File</button>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-toggle dropdown-item tabnextx" data-toggle="dropdown" (click)="onClickMe()"
-                        href="#" ibmLink>New
-                        <!-- This will execute on click of new-->
-                        <div class="dropdown-menu" *ngIf="show">
-                            <a class="dropdown-item" [routerLink]="['./masterCategory', 1]" ibmLink>New Master
-                                Category</a>
-                            <a class="dropdown-item" href="#" ibmLink>Store Preview</a>
-                            <a class="dropdown-item" href="#" ibmLink>Exit Tool</a>
-                        </div>
-                        <!-- <div class="test" tabindex="-1" *ngIf="show">
-                        <ul> 
-                            <li><a class="dropdown-item" href="#" ibmLink>Restore All and Close</a></li>
-                            <li><a class="dropdown-item" href="#" ibmLink>Store Preview</a></li>
-                            <li><a class="dropdown-item" href="#" ibmLink>Exit Tool</a></li>
-                        </ul>
-                        </div>-->
-                    </a>
-                    <a class="dropdown-item" [routerLink]="['./masterCategory']" [disabled]="linkShow" ibmLink>Open</a>
-                    <!-- <a [routerLink]="homeLinkEnabled ? '/home' : null" routerLinkActive="is-active">Home</a> -->
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink #id1>Open Compare View</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink #id2>Close</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink #id3>Close All</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Save</a>
-                    <a class="dropdown-item" href="#" ibmLink>Save All</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Reload</a>
-                    <a class="dropdown-item" href="#" ibmLink>Restore All and Close</a>
-                    <a class="dropdown-item" href="#" ibmLink>Store Preview</a>
-                    <a class="dropdown-item" href="#" ibmLink>Exit Tool</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" ibmButton>Edit</button>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Copy</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Copy To Clipboard</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Create Copy</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Paste</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Delete</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Select All</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Deselect All</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Edit flex-column</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Find and Replace</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Move Up</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Move Down</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" ibmButton>View</button>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Back</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Forward</a>
-                    <a class="dropdown-item" href="#" ibmLink>Hide Explorer View</a>
-                    <a class="dropdown-item" href="#" ibmLink>Show Utilities View</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Split Horizontally</a>
-                    <a class="dropdown-item" href="#" [disabled]="linkShow" ibmLink>Split Vertically</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" ibmButton>Help</button>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#" ibmLink>Getting Started</a>
-                    <a class="dropdown-item" href="#" ibmLink>Help links</a>
-                    <a class="dropdown-item" href="#" ibmLink>Context Help</a>
-                    <a class="dropdown-item" href="#" ibmLink>Keyboard Shortcuts</a>
-                </div>
-            </li>
-            <li class="nav-item ibm-dropdownWidth">
-                <ibm-dropdown>
-                    <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
-                </ibm-dropdown>
-            </li>
-        </ul>
-        <ul class="navbar-nav w-100 bg-secondary px-3">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    <span>
-                        <i class="fas fa-arrow-circle-left"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span>
-                        <i class="fas fa-arrow-circle-right"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" [routerLink]="['./masterCategory']" id="navbarDropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span><i class="fas fa-plus-circle"></i>
-                    </span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" [routerLink]="['./masterCategory']">New Master Category</a>
-                    <a class="dropdown-item" href="#">Category-level SKU</a>
-                    <a class="dropdown-item" href="#">Product-level SKU</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span><i class="fas fa-folder-open"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span>
-                        <i class="far fa-save"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span>
-                        <i class="fas fa-redo-alt"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span>
-                        <i class="far fa-stop-circle"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span><i class="fas fa-globe"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span>
-                        <i class="fas fa-tv"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span>
-                        <i class="fas fa-times-circle"></i>
-                    </span>
-                </a>
-            </li>
-             <!--Dropdown with search-->
-             <li class="nav-item ibm-dropdown">
-                <ibm-dropdown>
-                <ibm-dropdown-list [items]="listItems" ></ibm-dropdown-list>
-            </ibm-dropdown>
-            </li>
-            <li class="nav-item ibm-searchwidth">
-            <ibm-search [theme]="theme" [placeholder]="placeholder" [disabled]="disabled" [size]="size"></ibm-search>
+<div class="headcontainer">
+    <ul class="top-level-menu">
+        <li>
+            <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.file' | translate }}</a>
+            <ul class="second-level-menu">
+                <li>
+                    <a href="#" ibmLink>{{ 'CATALOGS.HEADR.new' | translate }}</a>
+                    <ul class="third-level-menu">
+                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.back' | translate }}</a></li>
+                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.forward' | translate }}</a></li>
+                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.hide_explorer_view' | translate }}</a></li>
+                        <li><a href="#" ibmLink> {{ 'CATALOGS.HEADR.show_utilities_view' | translate }}</a></li>
+                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.split_horizontally' | translate }}</a></li>
+                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.split_vertically' | translate }}</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.open' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.open_compare_view' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.close' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.close_all' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.save' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.save_all' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.reload' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.restore_all_and_close' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.store_preview' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.exit_tool' | translate }}</a></li>
+            </ul>
         </li>
-        </ul>
-    </div>
-</nav>
+        <li>
+            <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.edit' | translate }}</a>
+            <ul class="second-level-menu">
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.copy' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.copy_to_clipboard' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.create_copy' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.paste' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.delete' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.select_all' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.deselect_all' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.edit_flexcolumn' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.find_and_replace' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.move_up' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.move_down' | translate }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.view' | translate }}</a>
+            <ul class="second-level-menu">
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.back' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.forward' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.hide_explorer_view' | translate }}</a></li>
+                <li><a href="#" ibmLink> {{ 'CATALOGS.HEADR.show_utilities_view' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.split_horizontally' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.split_vertically' | translate }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.help' | translate }}</a>
+            <ul class="second-level-menu">
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.getting_started' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.help_links' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.content_help' | translate }}</a></li>
+                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.keyboard_shortcuts' | translate }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <ibm-dropdown>
+                <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+            </ibm-dropdown>
+        </li>
+    </ul>
+</div>
