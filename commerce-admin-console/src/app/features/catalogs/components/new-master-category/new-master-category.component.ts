@@ -47,6 +47,7 @@ protected customTableItemTemplate: TemplateRef<any>;
   showContentEdit: boolean;
   showReferencesEdit: boolean;
   masterInputData = [];
+  masterDataSaves = false;
 
   constructor(private translate: TranslateService,
      private masterCategoryService: MasterCategoryService,
@@ -218,10 +219,12 @@ protected customTableItemTemplate: TemplateRef<any>;
         // this.customModel.addRow(lastRowCopy);
       // }
       this.masterCategoryService.categoryListTableData.push(this.masterInputData);
-      this.router.navigate(['/catalogs/extendedSite']);
       console.log(this.masterCategoryService.categoryListTableData);
+      this.masterDataSaves = true;
   }
-
+  navigateExtendedSite() {
+    this.router.navigate(['/catalogs/extendedSite']);
+  }
   // protected prepareData(data: Array<Array<any>>) {
   //   // create new data from the service data
   //   let newData = [];
