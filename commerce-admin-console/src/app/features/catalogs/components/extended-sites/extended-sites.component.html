@@ -10,7 +10,7 @@
           </div>
 
           <ng-template #customHeaderTemplate>
-            <div style="width: 230px">
+            <div>
               <ibm-dropdown
                 placeholder="Store"
                 [disabled]="disabled"
@@ -25,6 +25,15 @@
           <input ibmText value="{{this.customModel.data.TableItem}}"/>
           <!-- <a [routerLink]="data.link">{{data.name}}</a> -->
         </ng-template>
+        <ng-template #customTableItemTemplate2 let-data="data">
+          <div class="align-checkbox">
+            <ibm-checkbox
+              [checked]="true"
+              [disabled]="disabled"
+              [indeterminate]="indeterminate">
+            </ibm-checkbox>
+          </div>
+      </ng-template>
       
         <ng-template #customTableItemTemplate let-data="data">
             <input ibmText value="{{this.customModel.data.TableItem}}"/>
