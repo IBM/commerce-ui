@@ -254,5 +254,60 @@
     },
     "HELPLINKS": {
         "HELP": "Help"
+    },
+    "CATALOGS": {
+        "NEW_MASTER_CATEGORY": {
+            "header_text": "New Master Category",
+            "header_help_text": "Specify a value for the",
+            "code": "Code",
+            "field": "field",
+            "save_preview": "Save and Preview",
+            "save": "Save",
+            "close": "Close",
+            "manage_category": "Manage Category",
+            "search_engine_optimization": "Search Engine Optimization",
+            "associated_assets": "Associated Assets",
+            "content": "Content",
+            "refrences": "Refrences",
+            "associated_store": "Associated Store",
+            "auroraESite": "AuroraESite",
+            "unique_id": "Unique ID",
+            "united_state_english": " (United State English)",
+            "name": "Name",
+            "short_description": "Short description",
+            "display_customer": "Display to customer",
+            "thumbnail": "Thumbnail",
+            "full_image": "Full image",
+            "url_keyword": "URL keyword",
+            "use_default":"Use default",
+            "page_title": "Page title",
+            "override_default": "Override default",
+            "meta_description": "Meta description ",
+            "image_alt_text": "Image alt text",
+            "marketing_activities": "Marketing Activities",
+            "ASSOCIATE_TABLE": {
+                "sequence": "Sequence",
+                "type": "*Type",
+                "store": "Store",
+                "path": "Path",
+                "code": "code",
+                "usage": "Usage",
+                "administative_name": "Administative name (United State English)",
+                "display_name": "Administative name (United State English)",
+                "short_description": "Short description (United State English)"
+            }
+        },
+        "LANDING_PAGE": {
+            "catalog": "Catalog",
+            "create_new_catalog_text": "To create a new catalog object, click the black arrow beside the",
+            "create_new": "Create New",
+            "icon_toolbar_text": " icon on the toolbar; then click the type of object.",
+            "to_work_text": "To work with an exesting catalog object, in the explore view to the left, navigate to the object.",
+            "to_search_text": "To search for a catlog object:",
+            "line_1": "1. In the find area at the top right, type a keyword in the search field. use the asteric (*) as a wildcard.",
+            "line_2": "2. To select what you want to search for, click the black arrow beside the search icon.",
+            "line_3": "3. Click the searh icon.",
+            "more_details": "More details..."
+        }
     }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { CatalogsRoutingModule } from './catalogs-routing.module';
 import { ButtonModule, 
     TabsModule, AccordionModule, CheckboxModule, RadioModule, TableModule, DropdownModule,
@@ -14,12 +14,13 @@ import { ExtendedSitesComponent } from './components/extended-sites/extended-sit
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FormsModule } from '@angular/forms';
 import { SearchResultComponent } from './components/search-result/search-result.component';
-import { ModalService } from 'carbon-components-angular'
+import { ModalService } from 'carbon-components-angular';
 
 @NgModule({
-imports: [ 
+imports: [
 CommonModule,
 FormsModule,
+TranslateModule,
 CatalogsRoutingModule,
 ButtonModule,
 TabsModule,

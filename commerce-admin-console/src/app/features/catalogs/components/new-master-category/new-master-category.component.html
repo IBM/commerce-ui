@@ -1,189 +1,149 @@
 <ac-header></ac-header>
-<div class="row row-width">
-    <div class="col-md-3 side-width">
+    <div class="side-width">
         <ac-side-bar></ac-side-bar>
     </div>
-    <div class="col-md-9 content-width">
-        <div class="container-fluid containerClass">
-            <div class="row">
-                <div class="col-md-1">
-                    <span class="iconFontSize"><i class="fas fa-bars"></i></span>
+        <div class="containerClass">
+                <div class="headTextMargin">
+                    <label class="mstrCtgry">{{ 'CATALOGS.NEW_MASTER_CATEGORY.header_text' | translate }}</label>
+                    <p class="specifyTxt">{{ 'CATALOGS.NEW_MASTER_CATEGORY.header_help_text' | translate }}<strong>{{ 'CATALOGS.NEW_MASTER_CATEGORY.code' | translate }}</strong> {{ 'CATALOGS.NEW_MASTER_CATEGORY.field' | translate }}</p>
                 </div>
-                <div class="col-md-4 headTextMargin">
-                    <sup><span class="starFont"><i class="fas fa-star-of-life"></i></span></sup>
-                    <span class="mstrCtgry">New Master Category</span>
-                    <label class="headAlertTxt"><span class="exclaIcon"><i class='fas fa-exclamation-circle'></i></span>
-                        <span class="specifyTxt">Specify a value for the <strong>Code</strong> field</span>
-                    </label>
+                <div class="header-btn">
+                    <button ibmButton size="sm" class="savePreviewBtn" (click)="saveMasterData()">{{ 'CATALOGS.NEW_MASTER_CATEGORY.save_preview' | translate }}</button>
+                    <button ibmButton size="sm" class="saveBtn" (click)="saveMasterData()">{{ 'CATALOGS.NEW_MASTER_CATEGORY.save' | translate }}</button>
+                    <button  ibmButton="secondary" size="sm" (click)="closeMasterCategory()">{{ 'CATALOGS.NEW_MASTER_CATEGORY.close' | translate }}</button>
                 </div>
-                <div class="col-md-3"></div>
-                    <button ibmButton size="sm" class="savePreviewBtn" (click)="saveMasterData()">Save and Preview</button>
-                    <button ibmButton size="sm" class="saveBtn" (click)="saveMasterData()">Save</button>
-                    <button  ibmButton="secondary" size="sm" (click)="closeMasterCategory()">Close</button>
-            </div>
             <div class="headerTabs">
                 <ibm-tabs>
-                    <ibm-tab heading="Manage Category">
+                    <ibm-tab heading="{{ 'CATALOGS.NEW_MASTER_CATEGORY.manage_category' | translate }}">
                         <ibm-accordion>
                             <ibm-accordion-item title="Object Properties">
-                                <div class="row associateFont">
-                                    <div class="col-md-2">
-                                        Associated Store
+                                    <div class="div-left ">
+                                        {{ 'CATALOGS.NEW_MASTER_CATEGORY.associated_store' | translate }}
                                     </div>
-                                    <div class="col-md-2">
-                                        AuroraESite
+                                    <div class="div-right">
+                                        {{ 'CATALOGS.NEW_MASTER_CATEGORY.auroraESite' | translate }}
                                     </div>
-                                </div>
                             </ibm-accordion-item>
                             <ibm-accordion-item title="General Category Information">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        Unique ID
+                                    <label>{{ 'CATALOGS.NEW_MASTER_CATEGORY.unique_id' | translate }}</label>
+                                    <div class="general-div">
+                                        <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.code' | translate }}</div>
+                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="code"></div>
                                     </div>
-                                </div>
-                                <div class="row uniqueRow">
-                                    <div class="col-md-2">
-                                        <span class="uniqueFont">Code</span><sup><span class="starCodeFont"><i class="fas fa-star-of-life"></i></span></sup>
+                                    <div class="general-div">
+                                        <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.name' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
+                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
                                     </div>
-                                        <span class="questionMark"><i class="fa fa-question-circle"></i></span>
-                                        <input type="text" class="col-md-5 inputPadding" [(ngModel)]="code">
-                                </div>
-                                <div class="row uniqueRow">
-                                    <div class="col-md-2">
-                                        <span class="uniqueFont">Name (United State English)</span><sup><span class="starCodeFont"><i class="fas fa-star-of-life"></i></span></sup>
+                                    <div class="general-div">
+                                        <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.short_description' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
+                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="description"></div>
                                     </div>
-                                    <input type="text" class="col-md-5" [(ngModel)]="name">
-                                </div>
-                                <div class="row uniqueRow">
-                                    <div class="col-md-2">
-                                        <span class="uniqueFont">Short description (United State English)</span>
-                                    </div>
-                                    <input type="text" class="col-md-8 inputPadding" [(ngModel)]="description"> 
-                                </div>
                             </ibm-accordion-item>
                             <ibm-accordion-item title="Display">
-                                <div class="row uniqueRow">
-                                    <div class="col-md-2">
-                                        Display to customer (United State English)
-                                    </div><span class="questionMarkCheck"><i class="fa fa-question-circle"></i></span>
-                                        <ibm-checkbox>
-                                        </ibm-checkbox>
-                                </div>
-                                <div class="row uniqueRow">
-                                    <div class="col-md-2">
-                                        Thumbnail (United State English)
+                                    <div class="display-text">
+                                        {{ 'CATALOGS.NEW_MASTER_CATEGORY.display_customer' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}
                                     </div>
-                                    <input type="text" class="col-md-5 inputPadding" [(ngModel)]="thumbnail">
-                                </div>
-                                <div class="row uniqueRow">
-                                    <div class="col-md-2">
-                                        Full image (United State English)
+                                    <div class="display-checkbox"><ibm-checkbox></ibm-checkbox></div>
+                                    <div class="general-div">
+                                        <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.thumbnail' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
+                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="code"></div>
                                     </div>
-                                    <input type="text" class="col-md-5 inputPadding" [(ngModel)]="image">
+                                    <div class="general-div">
+                                        <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.full_image' | translate }}</div>
+                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                                    </div>
+                            </ibm-accordion-item>
+                        </ibm-accordion>
+                    </ibm-tab>
+                    <ibm-tab heading="{{ 'CATALOGS.NEW_MASTER_CATEGORY.search_engine_optimization' | translate }}">
+                        <div class="searchEngine">
+                            <div class="general-div">
+                                <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.url_keyword' | translate }}</div>
+                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                            </div>
+                            <hr class="searchEngineRow">
+                                <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
+                                <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.page_title' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
+                                <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
+                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                            <hr class="searchEngineRow">
+                                <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
+                                <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.meta_description' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
+                                <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
+                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                            <hr class="searchEngineRow">
+                                <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
+                                <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.image_alt_text' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
+                                <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
+                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                        
+                        </div>
+                    </ibm-tab>
+                    <ibm-tab heading="{{ 'CATALOGS.NEW_MASTER_CATEGORY.associated_assets' | translate }}">
+                    <ibm-accordion>
+                        <ibm-accordion-item title="{{ 'CATALOGS.NEW_MASTER_CATEGORY.associated_assets' | translate }}" (click)="associateClicked()">
+                            <div class="tab-overflow">
+                                <ng-template #customHeaderTemplate>
+                                    <div style="width: 230px">
+                                        <ibm-dropdown
+                                        placeholder="Store"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                                        </ibm-dropdown>
+                                    </div>
+                                </ng-template>
+                                    <div class="action-btn">
+                                        <span class="plus-btn" id="plusBtn">
+                                        </span>
+                                        <span class="multi-btn" id="multiBtn">
+                                            <a (click)="deleteNewRow()"><span><i class="fas fa-times-circle"></i></span></a>
+                                        </span>
+                                    </div>
+                                    <div *ngIf="showAssociate" class="tab-overflow">
+                                        <ibm-table class="td-width"
+                                            [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                                        </ibm-table>
+                                    </div>
+                                    <div *ngIf="showAssociateEdit" class="tab-overflow">
+                                        <ibm-table
+                                            [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                                        </ibm-table>
+                                        <ng-template #customTableItemTemplate>
+                                            <input ibmText value="{{this.customModel.data.TableItem}}"/>
+                                        </ng-template>
+                                    </div>
                                 </div>
                             </ibm-accordion-item>
                         </ibm-accordion>
                     </ibm-tab>
-                    <ibm-tab heading="Search Engine Optimization">
-                        <div class="searchEngine">
-                            <div class="row">
-                                <div class="col-md-2 titleName">
-                                    URL keyword (United State English)
-                                </div>
-                                <span class="questionMark"><i class="fa fa-question-circle"></i></span>
-                                <input type="text" class="col-md-8 inputPadding" [(ngModel)]="keyword">
-                            </div>
-                            <hr class="searchEngineRow">
-                            <div class="row">
-                                <div class="col-md-2 titleName">
-                                    Page title (United State English)
-                                </div>
-                                <div class="col-md-8 pagetitle">
-                                    <div class="row useDefault">
-                                        <div class="col-md-3"><ibm-radio>Use default</ibm-radio></div>
-                                    </div>
-                                    <div class="row overrideQtn">
-                                        <sup><span class="qtnOverride"><i class="fa fa-question-circle"></i></span></sup>
-                                        <div class="col-md-4 overrideMargin"><ibm-radio>Override default</ibm-radio></div>
-                                    </div>
-                                    <div class="row overrideInput">
-                                        <input type="text" class="col-md-12 inputPadding" [(ngModel)]="pageTitle">
-                                    </div>
-                                </div> 
-                            </div>
-                            <hr class="searchEngineRow">
-                            <div class="row">
-                                <div class="col-md-2 metaDesc titleName">
-                                    Meta description (United State English)
-                                </div>
-                                <div class="col-md-8 pagetitle">
-                                    <div class="row useDefault">
-                                        <div class="col-md-3"><ibm-radio>Use default</ibm-radio></div>
-                                    </div>
-                                    <div class="row overrideQtn">
-                                        
-                                        <div class="col-md-4 overrideMargin"><ibm-radio>Override default</ibm-radio></div>
-                                    </div>
-                                    <div class="row overridetextarea">
-                                        <span class="qtnTextarea"><i class="fa fa-question-circle"></i></span>
-                                        <textarea type="text" class="col-md-12" [(ngModel)]="metaDesc"></textarea>
-                                    </div>
-                                </div> 
-                            </div>
-                            <hr class="searchEngineRow">
-                            <div class="row">
-                                    <div class="col-md-2 titleName">
-                                        Image alt text (United State English)
-                                    </div>
-                                    <div class="col-md-8 pagetitle">
-                                        <div class="row useDefault">
-                                            <div class="col-md-3"><ibm-radio>Use default</ibm-radio></div>
+                    <ibm-tab heading="{{ 'CATALOGS.NEW_MASTER_CATEGORY.content' | translate }}">
+                            <ibm-accordion (click)="contentClicked()">
+                                    <ibm-accordion-item title="{{ 'CATALOGS.NEW_MASTER_CATEGORY.content' | translate }}">
+                                        <div>
+                                            <input type="text">
+                                            <input type="text" [disabled]="disableInput">
+                                            <span class="plus-btn" id="plusBtn">
+                                                <a><span><i class="fas fa-plus-circle"></i></span></a>
+                                            </span>
                                         </div>
-                                        <div class="row overrideQtn">
-                                            <sup><span class="qtnOverride"><i class="fa fa-question-circle"></i></span></sup>
-                                            <div class="col-md-4 overrideMargin"><ibm-radio>Override default</ibm-radio></div>
-                                        </div>
-                                        <div class="row overrideInput">
-                                            <input type="text" class="col-md-12 inputPadding" [(ngModel)]="imgAltText">
-                                        </div>
-                                    </div> 
-                                </div>
-                        </div>
+                                        <ibm-table class="body_roy"
+                                        [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                                       </ibm-table>
+                                    </ibm-accordion-item>
+                                </ibm-accordion>
                     </ibm-tab>
-                    <ibm-tab heading="Associated Assets">
-                        <div class="tab-overflow">
-                            <div class="action-btn">
-                                <span class="plus-btn" id="plusBtn">
-                                    <a (click)="addAssociateRow()"><span><i class="fas fa-plus-circle"></i></span></a>
-                                </span>
-                                <span class="multi-btn" id="multiBtn">
-                                    <a (click)="deleteNewRow()"><span><i class="fas fa-times-circle"></i></span></a>
-                                </span>
-                            </div>
-                            <div *ngIf="showAssociate">
-                                <ibm-table class="td-width"
-                                    [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
-                               </ibm-table>
-                            </div>
-                            <div *ngIf="showAssociateEdit">
+                    <ibm-tab heading="{{ 'CATALOGS.NEW_MASTER_CATEGORY.refrences' | translate }}">
+                        <ibm-accordion (click)="referencesClicked()">
+                            <ibm-accordion-item title="{{ 'CATALOGS.NEW_MASTER_CATEGORY.marketing_activities' | translate }}">
                                 <ibm-table class="body_roy"
-                                    [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                                [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
                                 </ibm-table>
-                                <ng-template #customTableItemTemplate>
-                                    <input ibmText value="{{this.customModel.data.TableItem}}"/>
-                                </ng-template>
-                           </div>
-                        </div>
-                    </ibm-tab>
-                    <ibm-tab heading="Content">
-                        
-                    </ibm-tab>
-                    <ibm-tab heading="Refrences">
-                        
+                            </ibm-accordion-item>
+                        </ibm-accordion>
                     </ibm-tab>
                 </ibm-tabs>
             </div>
         </div>
-    </div>
-</div>
 <ac-footer></ac-footer>
