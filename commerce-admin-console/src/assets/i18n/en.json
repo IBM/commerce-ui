@@ -308,6 +308,20 @@
             "line_2": "2. To select what you want to search for, click the black arrow beside the search icon.",
             "line_3": "3. Click the searh icon.",
             "more_details": "More details..."
+        },
+        "SEARCH_RESULT": {
+            "HEADER": "Search Results - Catagories",
+            "TABLE_HEADER_TYPE": "*Type",
+            "TABLE_HEADER_STORE": "Store",
+            "TABLE_HEADER_CODE": "*Code",
+            "TABLE_HEADER_NAME": "Name",
+            "TABLE_HEADER_THUMBNAIL": "Thumbnail",
+            "TABLE_HEADER_DISPLAY_TO_CUSTOMER": "Display To Customer",
+            "TABLE_HEADER_BUYABLE": "Buyable",
+            "TABLE_HEADER_MANUFACTURER_PART_NUMBER": "Manufacturer Part Number",
+            "TABLE_HEADER_MANUFACTURER_NAME": "Manufacturer Name",
+            "NO_DATA_MSG": "No Data"
         }
+
     }
 }
