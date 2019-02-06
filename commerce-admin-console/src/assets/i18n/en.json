@@ -360,6 +360,17 @@
             "TABLE_HEADER_MANUFACTURER_PART_NUMBER": "Manufacturer Part Number",
             "TABLE_HEADER_MANUFACTURER_NAME": "Manufacturer Name",
             "NO_DATA_MSG": "No Data"
+        },
+        "EXTENDED_SITES": {
+            "header": "ExtendedSitesCatalogAssetStore-Catagories List"
+        },
+        "EXTENDED_SITES_TABLE": {
+            "SEQUENCE": "Sequence",
+            "TYPE": "* Type",
+            "STORE": "Store",
+            "CODE": "* Code",
+            "NAME": "* Name",
+            "DISPLAY_TO_CUSTOMERS": "Display to customers"
         }
 
     }
