@@ -5,6 +5,7 @@
         <div class="containerClass">
                 <div class="headTextMargin">
                     <label class="mstrCtgry">{{ 'CATALOGS.NEW_MASTER_CATEGORY.header_text' | translate }}</label>
+                    
                     <p class="specifyTxt">{{ 'CATALOGS.NEW_MASTER_CATEGORY.header_help_text' | translate }}<strong>{{ 'CATALOGS.NEW_MASTER_CATEGORY.code' | translate }}</strong> {{ 'CATALOGS.NEW_MASTER_CATEGORY.field' | translate }}</p>
                 </div>
                 <div class="header-btn">
@@ -46,11 +47,11 @@
                                     <div class="display-checkbox"><ibm-checkbox></ibm-checkbox></div>
                                     <div class="general-div">
                                         <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.thumbnail' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
-                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="code"></div>
+                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="thumbnail"></div>
                                     </div>
                                     <div class="general-div">
                                         <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.full_image' | translate }}</div>
-                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="image"></div>
                                     </div>
                             </ibm-accordion-item>
                         </ibm-accordion>
@@ -59,23 +60,23 @@
                         <div class="searchEngine">
                             <div class="general-div">
                                 <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.url_keyword' | translate }}</div>
-                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="keyword"></div>
                             </div>
                             <hr class="searchEngineRow">
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
                                 <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.page_title' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
-                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="pageTitle"></div>
                             <hr class="searchEngineRow">
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
                                 <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.meta_description' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
-                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="metaDesc"></div>
                             <hr class="searchEngineRow">
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
                                 <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.image_alt_text' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
-                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="name"></div>
+                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="imgAltText"></div>
                         
                         </div>
                     </ibm-tab>

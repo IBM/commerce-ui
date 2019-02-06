@@ -3,6 +3,8 @@ import {TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ViewEncapsulation } from '@angular/compiler/src/core';
+import { MasterCategoryService } from '../../services/masterCategory/master-category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ac-new-master-category',
@@ -40,7 +42,9 @@ protected customTableItemTemplate: TemplateRef<any>;
   showReferencesEdit: boolean;
   masterInputData = [];
 
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService,
+     private masterCategoryService: MasterCategoryService,
+     private router: Router) { }
 
   private readonly headerIndex = {
     '0': {
@@ -118,13 +122,10 @@ protected customTableItemTemplate: TemplateRef<any>;
           'thumbnail': this.thumbnail, 'image': this.image, 'keyword': this.keyword,
           'pageTitle': this.pageTitle, 'metaDesc': this.metaDesc, 'imgAltText': this.imgAltText}
       ];
-      // this.masterCategoryService.categoryListTableData.push(this.masterInputData);
-      // console.log(this.masterCategoryService.categoryListTableData);
+      this.masterCategoryService.categoryListTableData.push(this.masterInputData);
+      console.log(this.masterCategoryService.categoryListTableData);
   }
 
-  // closeMasterCategory() {
-  // this.router.navigate(['/']);
-  // }
   ngOnInit() {
     this.showAssociate = true;
     this.showContent = true;
@@ -139,11 +140,11 @@ protected customTableItemTemplate: TemplateRef<any>;
     //     new TableItem({data: ''})]
     //   ];
   }
+  closeMasterCategory() {
+   this.router.navigate(['/catalogs']);
+  }
+  deleteNewRow() {}
 
-    closeMasterCategory() { }
-    deleteNewRow() {
-        console.log('hello');
-    }
     associateClicked() {
       // this.customModel.header = [
       //   new TableHeaderItem({ data: 'Sequence'}),
