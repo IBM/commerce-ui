@@ -6,6 +6,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { NewMasterCategoryComponent } from './components/new-master-category/new-master-category.component';
 import { ExtendedSitesComponent } from './components/extended-sites/extended-sites.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { UnderconstructionComponent } from './components/underconstruction/underconstruction.component';
+
 
 const routes: Routes = [
 {
@@ -18,7 +20,7 @@ path: 'masterCategory', component: NewMasterCategoryComponent
 path: 'searchResult', component: SearchResultComponent
 },
 {
-path: 'masterCategory/:id', component: NewMasterCategoryComponent
+path: 'UnderConstruction', component: UnderconstructionComponent
 },
 {
 path: 'extendedSite', component: ExtendedSitesComponent

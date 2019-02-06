@@ -334,7 +334,13 @@
             "getting_started": "Getting Started",
             "help_links": "Help links",
             "content_help": "Context Help",
-            "keyboard_shortcuts": "Keyboard Shortcuts"
+            "keyboard_shortcuts": "Keyboard Shortcuts",
+            "master_category": "Master Category",
+            "category_level_sku": "Category Level SKU",
+            "prodcut_level_sku": "Product Level SKU",
+            "product": "Product",
+            "Bundle": "Bundle",
+            "kit":"Kit"
         },
         "LANDING_PAGE": {
             "catalog": "Catalog",
