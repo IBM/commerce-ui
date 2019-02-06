@@ -1,19 +1,20 @@
 .headcontainer {
-    width: 100%;
+
     background: #BEBEBE;
     display: flex;
-    // overflow: hidden;
 } 
 .third-level-menu
 {
     position: absolute;
     top: 0;
+    left: 200px;
     right: -150px;
-    width: 150px;
+    width: 200px;
     list-style: none;
     padding: 0;
-    margin-left: 5px;
+    //margin-left: -1px;
     display: none;
+    z-index: 2;
 }
 
 .third-level-menu > li
@@ -28,7 +29,7 @@
     position: absolute;
     top: 30px;
     left: 0;
-    width: 150px;
+    width: 200px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -74,7 +75,7 @@
 .top-level-menu a /* Apply to all links inside the multi-level menu */
 {
     font: bold 14px Arial, Helvetica, sans-serif;
-    color: white;
+    color: #732f2f;
     text-decoration: none;
     padding: 0 0 0 10px;
 

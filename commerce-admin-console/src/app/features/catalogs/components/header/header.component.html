@@ -1,65 +1,65 @@
 <div class="headcontainer">
     <ul class="top-level-menu">
         <li>
-            <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.file' | translate }}</a>
+            <a routerLink="">{{ 'CATALOGS.HEADR.file' | translate }}</a>
             <ul class="second-level-menu">
                 <li>
-                    <a href="#" ibmLink>{{ 'CATALOGS.HEADR.new' | translate }}</a>
+                    <a routerLink="" ibmLink>{{ 'CATALOGS.HEADR.new' | translate }}</a>
                     <ul class="third-level-menu">
-                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.back' | translate }}</a></li>
-                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.forward' | translate }}</a></li>
-                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.hide_explorer_view' | translate }}</a></li>
-                        <li><a href="#" ibmLink> {{ 'CATALOGS.HEADR.show_utilities_view' | translate }}</a></li>
-                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.split_horizontally' | translate }}</a></li>
-                        <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.split_vertically' | translate }}</a></li>
+                        <li><a routerLink="" (click)="masterFromMenu()" ibmLink>{{ 'CATALOGS.HEADR.master_category' | translate }}</a></li>
+                        <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.category_level_sku' | translate }}</a></li>
+                        <li><a routerLink="" (click)="underDev()" ibmLink> {{ 'CATALOGS.HEADR.prodcut_level_sku' | translate }}</a></li>
+                        <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.product' | translate }}</a></li>
+                        <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.Bundle' | translate }}</a></li>
+                        <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.kit' | translate }}</a></li>
                     </ul>
                 </li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.open' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.open_compare_view' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.close' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.close_all' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.save' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.save_all' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.reload' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.restore_all_and_close' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.store_preview' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.exit_tool' | translate }}</a></li>
+                <li><a routerLink="" [disabled]="linkShow" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.open' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.open_compare_view' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow1" ibmLink>{{ 'CATALOGS.HEADR.close' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow1" ibmLink>{{ 'CATALOGS.HEADR.close_all' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow1" ibmLink>{{ 'CATALOGS.HEADR.save' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.save_all' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.reload' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.restore_all_and_close' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.store_preview' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.exit_tool' | translate }}</a></li>
             </ul>
         </li>
         <li>
-            <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.edit' | translate }}</a>
+            <a routerLink="">{{ 'CATALOGS.HEADR.edit' | translate }}</a>
             <ul class="second-level-menu">
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.copy' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.copy_to_clipboard' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.create_copy' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.paste' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.delete' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.select_all' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.deselect_all' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.edit_flexcolumn' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.find_and_replace' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.move_up' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.move_down' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow1" ibmLink>{{ 'CATALOGS.HEADR.copy' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow1" ibmLink>{{ 'CATALOGS.HEADR.copy_to_clipboard' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow1" ibmLink>{{ 'CATALOGS.HEADR.create_copy' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.paste' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow1" ibmLink>{{ 'CATALOGS.HEADR.delete' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.select_all' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.deselect_all' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.edit_flexcolumn' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.find_and_replace' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.move_up' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.move_down' | translate }}</a></li>
             </ul>
         </li>
         <li>
             <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.view' | translate }}</a>
             <ul class="second-level-menu">
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.back' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.forward' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.hide_explorer_view' | translate }}</a></li>
-                <li><a href="#" ibmLink> {{ 'CATALOGS.HEADR.show_utilities_view' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.split_horizontally' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.split_vertically' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.back' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.forward' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.hide_explorer_view' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink> {{ 'CATALOGS.HEADR.show_utilities_view' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.split_horizontally' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" [disabled]="linkShow" ibmLink>{{ 'CATALOGS.HEADR.split_vertically' | translate }}</a></li>
             </ul>
         </li>
         <li>
             <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.help' | translate }}</a>
             <ul class="second-level-menu">
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.getting_started' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.help_links' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.content_help' | translate }}</a></li>
-                <li><a href="#" ibmLink>{{ 'CATALOGS.HEADR.keyboard_shortcuts' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.getting_started' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.help_links' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.content_help' | translate }}</a></li>
+                <li><a routerLink="" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.keyboard_shortcuts' | translate }}</a></li>
             </ul>
         </li>
         <li>
