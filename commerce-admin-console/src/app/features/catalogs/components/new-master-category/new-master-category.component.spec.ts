@@ -3,13 +3,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NewMasterCategoryComponent } from './new-master-category.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-describe('NewMasterCategoryComponent', () => {
+import { FormsModule } from '@angular/forms';
+import { DialogModule } from 'carbon-components-angular';
+fdescribe('NewMasterCategoryComponent', () => {
   let component: NewMasterCategoryComponent;
   let fixture: ComponentFixture<NewMasterCategoryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, TranslateModule.forRoot()],
+      imports: [RouterTestingModule, FormsModule, DialogModule, TranslateModule.forRoot()],
       declarations: [ NewMasterCategoryComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
