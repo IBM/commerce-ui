@@ -1,14 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SideBarComponent } from './side-bar.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
-describe('SideBarComponent', () => {
+fdescribe('SideBarComponent', () => {
   let component: SideBarComponent;
   let fixture: ComponentFixture<SideBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SideBarComponent ]
+      imports: [RouterTestingModule, TranslateModule.forRoot()],
+      declarations: [ SideBarComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

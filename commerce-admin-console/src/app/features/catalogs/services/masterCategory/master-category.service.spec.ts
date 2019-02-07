@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { MasterCategoryService } from './master-category.service';
 
-describe('MasterCategoryService', () => {
+fdescribe('MasterCategoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
