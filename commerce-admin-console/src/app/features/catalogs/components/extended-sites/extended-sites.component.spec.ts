@@ -1,14 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ExtendedSitesComponent } from './extended-sites.component';
-
-describe('ExtendedSitesComponent', () => {
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
+fdescribe('ExtendedSitesComponent', () => {
   let component: ExtendedSitesComponent;
   let fixture: ComponentFixture<ExtendedSitesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExtendedSitesComponent ]
+      imports: [RouterTestingModule, TranslateModule.forRoot()],
+      declarations: [ ExtendedSitesComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -19,7 +22,7 @@ describe('ExtendedSitesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create ', () => {
     expect(component).toBeTruthy();
   });
 });

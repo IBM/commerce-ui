@@ -83,6 +83,11 @@
     font-size: 13px;
     margin-left: 13%;
 }
+.input-size-icon{
+    padding: 10px 0px 10px 0px;
+    width: 35%;
+    font-size: 13px;
+}
 .uniqueFont{
     font-size: 14px;
     display: inline-block;
@@ -169,14 +174,6 @@ td {
 .row-width{
     min-width: 105%;
 }
-// .content-width{
-//     max-width: 77% !important;
-//     background-color: #f1f1f1 !important;
-//     margin-left: 0.5%;
-//     min-height: 438px;
-//     margin-bottom: 0.6%;
-//     display: inline-block;
-// }
 .tab-overflow{
     overflow-y: auto;
     max-width: 96%;
@@ -209,8 +206,7 @@ td {
     font-size: 14px;
 }
 .display-checkbox{
-    display: inline-block;
-    margin-left: 2%;
+    display: inline-flex;
 }
 .radio-space{
     margin: 1% 0 1% 12%;
@@ -222,3 +218,38 @@ td {
     position: absolute;
     width: 11%;
 }
+.unique-radio-textbox{
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 2%;
+    position: absolute;
+    width: 11%;
+}
+.icon-svg-warning {
+    fill: red;
+  }
+//   .headTextMargin label {
+//       display: inline-flex;
+//   }
+  .icon-svg-table{
+    font-size: 20px;
+    height: 50px;
+    line-height: 30px;
+  }
+  .icon-svg-help {
+    margin-left: 11%;
+    fill: rgb(189, 179, 179);
+  }
+  .icon-svg-radio {
+    margin-left: 0;
+    fill: rgb(189, 179, 179);
+  }
+  .help-radio{
+      display: inline-flex;
+  }
+  .tooltip-class{
+    z-index: 1;
+  }
+  .icon-svg-display {
+    fill: rgb(189, 179, 179);
+  }
