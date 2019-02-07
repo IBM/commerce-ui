@@ -2,7 +2,7 @@ import org.gradle.internal.os.OperatingSystem
 
 repositories {
 	maven {
-		url 'http://wcnexus.torolab.ibm.com:8081/nexus/content/groups/public'
+		url 'https://na.artifactory.swg-devops.com/artifactory/wce-wte-snapshot-maven-local'	
 	}
 }
 
@@ -67,10 +67,6 @@ task createWorkspace {
 		// Get Java home
 		// Change the Java home location if the default one is not working
 		def javaHome = "$project.radHome/jdk/bin/java"
-		if (isMacOS){
-			javaHome = "${libertyHome}/java/8.0/bin/java"
-		}
-
 
 		// Create the workspace
 		ant.exec(executable : javaHome, failOnError: true) {

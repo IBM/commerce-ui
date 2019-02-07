@@ -22,8 +22,6 @@ import com.ibm.commerce.cmc.ui.page.CMCMainPage;
 import com.ibm.commerce.cmc.ui.utils.CMCTools;
 import com.ibm.commerce.qa.wte.framework.page.Identifier;
 import com.ibm.commerce.qa.wte.framework.page.PageSection;
-import com.ibm.commerce.qa.wte.framework.page.PageValidator;
-import com.ibm.commerce.qa.wte.framework.page.WteElement;
 
 public class RealCMCMainPage extends AbstractCMCPage implements CMCMainPage {
 

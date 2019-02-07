@@ -22,11 +22,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.google.inject.Inject;
-import com.ibm.commerce.casl.foundation.util.CaslFoundationModule;
-import com.ibm.commerce.cmc.ui.orgadmintool.pages.OrganizationPage;
 import com.ibm.commerce.cmc.ui.orgadmintool.pages.UserManagementPage;
 import com.ibm.commerce.cmc.ui.page.CMCMainPage;
-import com.ibm.commerce.cmc.ui.page.FeatureConfigurationPage;
 import com.ibm.commerce.cmc.ui.page.LogonCMC;
 import com.ibm.commerce.cmc.ui.utils.CMCTools;
 import com.ibm.commerce.cmc.ui.utils.CMCUIModule;
@@ -34,9 +31,6 @@ import com.ibm.commerce.orgadmin.fvt.workflow.CreateUserFlow;
 import com.ibm.commerce.orgadmin.fvt.workflow.LoginFlow;
 import com.ibm.commerce.qa.util.junit.runners.GuiceTestRunner;
 import com.ibm.commerce.qa.util.junit.runners.TestModules;
-import com.ibm.commerce.qa.wc.util.config.MachineRole;
-import com.ibm.commerce.qa.wte.framework.util.WteBaseModule;
-import com.ibm.commerce.qa.wte.s2impl.page.Selenium2BaseModule;
 import com.ibm.commerce.qa.wte.util.WcModule;
 
 @RunWith(GuiceTestRunner.class)

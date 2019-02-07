@@ -16,10 +16,7 @@ package com.ibm.commerce.cmc.ui.orgadmintool.pages.impl;
  *-----------------------------------------------------------------
  */
 
-import com.ibm.commerce.cmc.ui.orgadmintool.pages.ApprovalsPage;
-import com.ibm.commerce.cmc.ui.orgadmintool.pages.CreateOrganizationsPage;
 import com.ibm.commerce.cmc.ui.orgadmintool.pages.CreateUserPage;
-import com.ibm.commerce.cmc.ui.orgadmintool.pages.FindOrganizationsPage;
 import com.ibm.commerce.cmc.ui.orgadmintool.pages.UserManagementPage;
 import com.ibm.commerce.cmc.ui.page.impl.AbstractCMCPage;
 import com.ibm.commerce.qa.wte.framework.page.Identifier;
