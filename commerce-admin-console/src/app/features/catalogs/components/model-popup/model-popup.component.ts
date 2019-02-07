@@ -19,7 +19,7 @@ export class ModelPopupComponent implements OnInit {
   totalRows = 0;
   @Input() modalListitems = [
     {
-      content: "Show All",
+      content: 'Show All',
       selected: true
     },
     {

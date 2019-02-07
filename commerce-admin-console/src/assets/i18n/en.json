@@ -285,6 +285,13 @@
             "meta_description": "Meta description ",
             "image_alt_text": "Image alt text",
             "marketing_activities": "Marketing Activities",
+            "tooltip_code": "The code used to identify the object ",
+            "tooltip_keyword": "Type one or more Keywords, saperated by a coma and a space, that describe the content of the web page. Some internet serch engines use the keywords to determine wheter your page satesfies a search query.",
+            "tooltip_display_customer": "Indicates that customers can view this catalog entery or category in the storefront for the identified language. You can have a different setting for this catalog entry or category in each language that your store supports.",
+            "tooltip_url_keyword" : "The URL keyword is a unique name for the category URL. For example, if you enter the URL keyword furniture, the page URL might look like this example: www.aurora.com/shop/furniture",
+            "tooltip_page_title": "This title appears in the browser title bar. Select Override Default to replace the system-generated title.",
+            "tooltip_meta_desc": "the meta description is used by a search engine to provide a description of your site and category on a search results page. Select Override default to replace the system-generated content",
+            "tooltip_image_text": "Image alt text is used by search engines to accurately rank and index the image. Select Override default to replace the system-generated image alt text.",
             "ASSOCIATE_TABLE": {
                 "sequence": "Sequence",
                 "type": "*Type",

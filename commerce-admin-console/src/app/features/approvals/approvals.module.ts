@@ -5,7 +5,6 @@ import {
   DropdownModule,
   IconModule,
   ModalModule,
-  ListGroupModule,
   TableModule,
   PaginationModule,
   NFormsModule
@@ -30,7 +29,6 @@ import { TranslateModule } from '@ngx-translate/core';
     DropdownModule,
     ModalModule,
     IconModule,
-    ListGroupModule,
     NFormsModule,
     TableModule,
     PaginationModule,

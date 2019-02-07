@@ -4,9 +4,13 @@
     </div>
         <div class="containerClass">
                 <div class="headTextMargin">
-                    <label class="mstrCtgry">{{ 'CATALOGS.NEW_MASTER_CATEGORY.header_text' | translate }}</label>
-                    
-                    <p class="specifyTxt">{{ 'CATALOGS.NEW_MASTER_CATEGORY.header_help_text' | translate }}<strong>{{ 'CATALOGS.NEW_MASTER_CATEGORY.code' | translate }}</strong> {{ 'CATALOGS.NEW_MASTER_CATEGORY.field' | translate }}</p>
+                    <label>
+                        <ibm-icon-table32 class="icon-svg-table"></ibm-icon-table32>
+                        <span class="mstrCtgry">{{ 'CATALOGS.NEW_MASTER_CATEGORY.header_text' | translate }}</span>    
+                        <p class="specifyTxt">
+                            <ibm-icon-warning-filled16 class="icon-svg-warning"></ibm-icon-warning-filled16>{{ 'CATALOGS.NEW_MASTER_CATEGORY.header_help_text' | translate }}<strong>{{ 'CATALOGS.NEW_MASTER_CATEGORY.code' | translate }}</strong> {{ 'CATALOGS.NEW_MASTER_CATEGORY.field' | translate }}
+                        </p>
+                    </label>
                 </div>
                 <div class="header-btn">
                     <button ibmButton size="sm" class="savePreviewBtn" (click)="saveMasterData()">{{ 'CATALOGS.NEW_MASTER_CATEGORY.save_preview' | translate }}</button>
@@ -29,7 +33,12 @@
                                     <label>{{ 'CATALOGS.NEW_MASTER_CATEGORY.unique_id' | translate }}</label>
                                     <div class="general-div">
                                         <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.code' | translate }}</div>
-                                        <div class="general-input"><input type="text" class="input-size" [(ngModel)]="code"></div>
+                                        <div class="general-input">
+                                                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.NEW_MASTER_CATEGORY.tooltip_code' | translate }}" trigger="hover" placement="bottom" style="cursor: pointer;">
+                                                    <ibm-icon-help-filled20 class="icon-svg-help"></ibm-icon-help-filled20>
+                                                </span>
+                                            <input type="text" class="input-size-icon" [(ngModel)]="code">
+                                        </div>
                                     </div>
                                     <div class="general-div">
                                         <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.name' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
@@ -44,7 +53,12 @@
                                     <div class="display-text">
                                         {{ 'CATALOGS.NEW_MASTER_CATEGORY.display_customer' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}
                                     </div>
-                                    <div class="display-checkbox"><ibm-checkbox></ibm-checkbox></div>
+                                    <div class="display-checkbox">
+                                        <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.NEW_MASTER_CATEGORY.tooltip_display_customer' | translate }}" trigger="hover" placement="bottom" style="cursor: pointer;">
+                                            <ibm-icon-help-filled20 class="icon-svg-display"></ibm-icon-help-filled20>
+                                        </span>
+                                        <ibm-checkbox></ibm-checkbox>
+                                    </div>
                                     <div class="general-div">
                                         <div class="uniqueFont">{{ 'CATALOGS.NEW_MASTER_CATEGORY.thumbnail' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
                                         <div class="general-input"><input type="text" class="input-size" [(ngModel)]="thumbnail"></div>
@@ -60,22 +74,44 @@
                         <div class="searchEngine">
                             <div class="general-div">
                                 <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.url_keyword' | translate }}</div>
-                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="keyword"></div>
+                                <div class="general-input">
+                                    <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.NEW_MASTER_CATEGORY.tooltip_url_keyword' | translate }}" trigger="hover" placement="bottom" style="cursor: pointer;">
+                                        <ibm-icon-help-filled20 class="icon-svg-help"></ibm-icon-help-filled20>
+                                    </span>
+                                    <input type="text" class="input-size-icon" [(ngModel)]="keyword">
+                                </div>
                             </div>
                             <hr class="searchEngineRow">
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
-                                <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.page_title' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
-                                <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
+                                <div class="unique-radio">
+                                    {{ 'CATALOGS.NEW_MASTER_CATEGORY.page_title' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
+                                <div class="radio-space">
+                                    <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.NEW_MASTER_CATEGORY.tooltip_page_title' | translate }}" trigger="hover" placement="bottom" style="cursor: pointer;">
+                                        <ibm-icon-help-filled20 class="icon-svg-radio"></ibm-icon-help-filled20>
+                                    </span>
+                                    <ibm-radio class="help-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio>
+                                </div>
                                 <div class="general-input"><input type="text" class="input-size" [(ngModel)]="pageTitle"></div>
                             <hr class="searchEngineRow">
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
-                                <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.meta_description' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
+                                <div class="unique-radio-textbox">
+                                    {{ 'CATALOGS.NEW_MASTER_CATEGORY.meta_description' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}
+                                </div>
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
-                                <div class="general-input"><input type="text" class="input-size" [(ngModel)]="metaDesc"></div>
+                                <div class="general-input">
+                                    <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.NEW_MASTER_CATEGORY.tooltip_meta_desc' | translate }}" trigger="hover" placement="bottom" style="cursor: pointer;">
+                                        <ibm-icon-help-filled20 class="icon-svg-help"></ibm-icon-help-filled20>
+                                    </span>
+                                    <textarea type="text" class="input-size-icon" [(ngModel)]="metaDesc"></textarea></div>
                             <hr class="searchEngineRow">
                                 <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.use_default' | translate }}</ibm-radio></div>
                                 <div class="unique-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.image_alt_text' | translate }}{{ 'CATALOGS.NEW_MASTER_CATEGORY.united_state_english' | translate }}</div>
-                                <div class="radio-space"><ibm-radio>{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio></div>
+                                <div class="radio-space">
+                                    <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.NEW_MASTER_CATEGORY.tooltip_image_text' | translate }}" trigger="hover" placement="bottom" style="cursor: pointer;">
+                                        <ibm-icon-help-filled20 class="icon-svg-radio"></ibm-icon-help-filled20>
+                                    </span>
+                                    <ibm-radio class="help-radio">{{ 'CATALOGS.NEW_MASTER_CATEGORY.override_default' | translate }}</ibm-radio>
+                                </div>
                                 <div class="general-input"><input type="text" class="input-size" [(ngModel)]="imgAltText"></div>
                         
                         </div>
@@ -147,4 +183,6 @@
                 </ibm-tabs>
             </div>
         </div>
-<ac-footer></ac-footer>
+<div>
+    <ac-footer></ac-footer>
+</div>
