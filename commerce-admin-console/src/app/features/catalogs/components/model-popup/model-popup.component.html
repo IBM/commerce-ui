@@ -8,53 +8,49 @@
 <section class="bx--modal-content"> -->
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="bx--row">
+            <div class="bx--col-md-12">
                 <div class="ibm-dropdownModal">
                     <ibm-dropdown>
                         <ibm-dropdown-list [items]="modalListitems"></ibm-dropdown-list>
                     </ibm-dropdown>
                 </div>
                 <div class="tooltipQuestionMark">
-                    <span [ibmTooltip]="template" trigger="click" placement="bottom" style="cursor: pointer;">
-                        <i class="fas fa-question-circle fa-1x"></i>
+                    <span [ibmTooltip]="templateTooltip" trigger="click" placement="bottom" style="cursor: pointer;">
+                        <ibm-icon-help-filled20 class="icon-svg-help"></ibm-icon-help-filled20>
                     </span>
                 </div>
-                <ng-template #template let-tooltip="tooltip">
-                    <p>Filter the message console by message type. Object error messages describe problems with your
-                        business objects.</p>
-                    <p>System error messages describe problems that have occurred in the IBM Digital Commerce server.</p>
-                    <p>Status messages are informational and do not require any further action.</p>
+                <ng-template #templateTooltip let-tooltip="tooltip">
+                    <p>{{ 'CATALOGS.FOOTR.tip_help1' | translate }}</p>
+                    <p>{{ 'CATALOGS.FOOTR.tip_help2' | translate }}</p>
+                    <p>{{ 'CATALOGS.FOOTR.tip_help3' | translate }}</p>
+                
                     <div>
                         <a href="https://www.ibm.com/support/knowledgecenter/en/SS9PHW/com.ibm.commerce.management-center.doc/tasks/ttfviewmessages.htm"
-                            ibmLink target="blank">More details...</a>
+                            ibmLink target="blank"> <p>{{ 'CATALOGS.FOOTR.more_details' | translate }}</p></a>
                     </div>
                 </ng-template>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 modaltable">
-                <ibm-table [model]="model" [size]="size" [showSelectionColumn]="showSelectionColumn" [striped]="striped">
-                    <tbody>
-                        <tr>
-                            <td class="no-data" colspan="4"></td>
-                        </tr>
-                    </tbody>
-                </ibm-table>
+        <div class="bx--row">
+            <div class="bx--col-md-12 modaltable">
+                    <ibm-table
+                    [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn">
+                    </ibm-table>
 
                 <div class="empty-table-msg">
-                    There are currently no Messages for your action.
+                        <p>{{ 'CATALOGS.FOOTR.no_data' | translate }}</p>
                 </div>
-                <div class="">
-                    <span class="table-selection-info">{{availableRows}} of {{totalRows}} selected</span>
+                <div class="errorCount">
+                    <span class="table-selection-info">{{availableRows}} {{ 'CATALOGS.FOOTR.of' | translate }} {{totalRows}} {{ 'CATALOGS.FOOTR.selected' | translate }}</span>
                 </div>
             </div>
         </div>
     </div>
     <ibm-modal-footer>
-        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal($event)">Copy</button>
-        <button ibmButton class="footerbutton" (click)="closeModal($event)">Clear</button>
-        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal($event)">Close</button>
+        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal($event)">{{ 'CATALOGS.HEADR.copy' | translate }}</button>
+        <button ibmButton class="footerbutton" (click)="closeModal($event)">{{ 'CATALOGS.FOOTR.clear' | translate }}</button>
+        <button ibmButton modal-primary-focus class="footerbutton" (click)="closeModal($event)">{{ 'CATALOGS.HEADR.close' | translate }}</button>
     </ibm-modal-footer>
 </ibm-modal>
 
