@@ -302,6 +302,23 @@
                 "administative_name": "Administative name (United State English)",
                 "display_name": "Administative name (United State English)",
                 "short_description": "Short description (United State English)"
+            },
+            "CONTENT_TABLE": {
+                "language": "Language",
+                "identifier": "Identifier",
+                "name": "Name",
+                "content_type": "Content Type",
+                "description": "Description"
+            },
+            "REFERENCES_TABLE": {
+                "type": "*Type",
+                "status": "Status",
+                "store": "Store",
+                "name": "Name",
+                "description": "Description",
+                "start_date": "Start Date",
+                "end_date": "End Date",
+                "campaign": "Campaign"
             }
         },
         "HEADR": {
