@@ -46,7 +46,7 @@ protected customTableItemTemplate: TemplateRef<any>;
      private masterCategoryService: MasterCategoryService,
      private router: Router) { }
 
-  private readonly headerIndex = {
+  private readonly associateHeaderIndex = {
     '0': {
       'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.ASSOCIATE_TABLE.sequence',
     },
@@ -75,6 +75,52 @@ protected customTableItemTemplate: TemplateRef<any>;
       'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.ASSOCIATE_TABLE.short_description',
     }
   };
+
+  private readonly contentHeaderIndex = {
+    '0': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.CONTENT_TABLE.language',
+    },
+    '1': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.CONTENT_TABLE.identifier',
+    },
+    '2': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.CONTENT_TABLE.name',
+    },
+    '3': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.CONTENT_TABLE.content_type',
+    },
+    '4': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.CONTENT_TABLE.description',
+    }
+  };
+
+  private readonly referencesHeaderIndex = {
+    '0': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.REFERENCES_TABLE.type',
+    },
+    '1': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.REFERENCES_TABLE.status',
+    },
+    '2': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.REFERENCES_TABLE.store',
+    },
+    '3': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.REFERENCES_TABLE.name',
+    },
+    '4': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.REFERENCES_TABLE.description',
+    },
+    '5': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.REFERENCES_TABLE.start_date',
+    },
+    '6': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.REFERENCES_TABLE.end_date',
+    },
+    '7': {
+      'translateId': 'CATALOGS.NEW_MASTER_CATEGORY.REFERENCES_TABLE.campaign',
+    }
+  };
+
   listItems = [{
     content: 'Show All',
     selected: false
@@ -91,31 +137,70 @@ protected customTableItemTemplate: TemplateRef<any>;
 
   private translationSubscription: Subscription;
 
-  populateTableHeader() {
-    this.translationSubscription = this.translate.get([this.headerIndex['0'].translateId,
-    this.headerIndex['1'].translateId,
-    this.headerIndex['2'].translateId,
-    this.headerIndex['3'].translateId,
-    this.headerIndex['4'].translateId,
-    this.headerIndex['5'].translateId,
-    this.headerIndex['6'].translateId,
-    this.headerIndex['7'].translateId,
-    this.headerIndex['8'].translateId
+  associateTableHeader() {
+    this.translationSubscription = this.translate.get([this.associateHeaderIndex['0'].translateId,
+    this.associateHeaderIndex['1'].translateId,
+    this.associateHeaderIndex['2'].translateId,
+    this.associateHeaderIndex['3'].translateId,
+    this.associateHeaderIndex['4'].translateId,
+    this.associateHeaderIndex['5'].translateId,
+    this.associateHeaderIndex['6'].translateId,
+    this.associateHeaderIndex['7'].translateId,
+    this.associateHeaderIndex['8'].translateId
     ]).subscribe((result: object) => {
       this.customModel.header = [
-        new TableHeaderItem({ data: result[this.headerIndex['0'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['1'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['2'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['3'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['4'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['5'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['6'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['7'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['8'].translateId] })
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['0'].translateId] }),
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['1'].translateId] }),
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['2'].translateId] }),
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['3'].translateId] }),
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['4'].translateId] }),
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['5'].translateId] }),
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['6'].translateId] }),
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['7'].translateId] }),
+        new TableHeaderItem({ data: result[this.associateHeaderIndex['8'].translateId] })
       ];
     });
   }
 
+  contentTableHeader() {
+    this.translationSubscription = this.translate.get([this.contentHeaderIndex['0'].translateId,
+    this.contentHeaderIndex['1'].translateId,
+    this.contentHeaderIndex['2'].translateId,
+    this.contentHeaderIndex['3'].translateId,
+    this.contentHeaderIndex['4'].translateId
+    ]).subscribe((result: object) => {
+      this.customModel.header = [
+        new TableHeaderItem({ data: result[this.contentHeaderIndex['0'].translateId] }),
+        new TableHeaderItem({ data: result[this.contentHeaderIndex['1'].translateId] }),
+        new TableHeaderItem({ data: result[this.contentHeaderIndex['2'].translateId] }),
+        new TableHeaderItem({ data: result[this.contentHeaderIndex['3'].translateId] }),
+        new TableHeaderItem({ data: result[this.contentHeaderIndex['4'].translateId] })
+      ];
+    });
+  }
+
+  referencesTableHeader() {
+    this.translationSubscription = this.translate.get([this.referencesHeaderIndex['0'].translateId,
+    this.referencesHeaderIndex['1'].translateId,
+    this.referencesHeaderIndex['2'].translateId,
+    this.referencesHeaderIndex['3'].translateId,
+    this.referencesHeaderIndex['4'].translateId,
+    this.referencesHeaderIndex['5'].translateId,
+    this.referencesHeaderIndex['6'].translateId,
+    this.referencesHeaderIndex['7'].translateId
+    ]).subscribe((result: object) => {
+      this.customModel.header = [
+        new TableHeaderItem({ data: result[this.referencesHeaderIndex['0'].translateId] }),
+        new TableHeaderItem({ data: result[this.referencesHeaderIndex['1'].translateId] }),
+        new TableHeaderItem({ data: result[this.referencesHeaderIndex['2'].translateId] }),
+        new TableHeaderItem({ data: result[this.referencesHeaderIndex['3'].translateId] }),
+        new TableHeaderItem({ data: result[this.referencesHeaderIndex['4'].translateId] }),
+        new TableHeaderItem({ data: result[this.referencesHeaderIndex['5'].translateId] }),
+        new TableHeaderItem({ data: result[this.referencesHeaderIndex['6'].translateId] }),
+        new TableHeaderItem({ data: result[this.referencesHeaderIndex['7'].translateId] })
+      ];
+    });
+  }
     saveMasterData() {
       this.masterInputData = [
           {'code': this.code, 'name': this.name, 'descreption': this.description,
@@ -134,11 +219,6 @@ protected customTableItemTemplate: TemplateRef<any>;
     this.showContentEdit = false;
     this.showReferencesEdit = false;
 
-    //   this.customModel.data = [
-    //     [new TableItem({data: ''}), new TableItem({data: ''}), new TableItem({data: ''}), new TableItem({data: ''}),
-    //     new TableItem({data: ''}), new TableItem({data: ''}), new TableItem({data: ''}), new TableItem({data: ''}),
-    //     new TableItem({data: ''})]
-    //   ];
   }
   closeMasterCategory() {
    this.router.navigate(['/catalogs']);
@@ -146,18 +226,7 @@ protected customTableItemTemplate: TemplateRef<any>;
   deleteNewRow() {}
 
     associateClicked() {
-      // this.customModel.header = [
-      //   new TableHeaderItem({ data: 'Sequence'}),
-      //   new TableHeaderItem({ data: '*Type'}),
-      //   new TableHeaderItem({ data: 'Store', template: this.customHeaderTemplate}),
-      //   new TableHeaderItem({ data: 'Path'}),
-      //   new TableHeaderItem({ data: 'Code'}),
-      //   new TableHeaderItem({ data: 'Usage'}),
-      //   new TableHeaderItem({ data: 'Administative name (United State English)'}),
-      //   new TableHeaderItem({ data: 'Display name (United State English)'}),
-      //   new TableHeaderItem({ data: 'Short description (United State English)'})
-      // ];
-      this.populateTableHeader();
+      this.associateTableHeader();
       this.customModel.data = [
         [new TableItem({data: '', template: this.customTableItemTemplate}),
         new TableItem({data: ''}),
@@ -171,13 +240,7 @@ protected customTableItemTemplate: TemplateRef<any>;
       ];
     }
     contentClicked() {
-      this.customModel.header = [
-        new TableHeaderItem({ data: 'Language'}),
-        new TableHeaderItem({ data: 'Identifier'}),
-        new TableHeaderItem({ data: 'Name'}),
-        new TableHeaderItem({ data: 'Content Type'}),
-        new TableHeaderItem({ data: 'Description'})
-      ];
+      this.contentTableHeader();
       this.customModel.data = [
         [new TableItem({data: ''}),
         new TableItem({data: ''}),
@@ -187,16 +250,7 @@ protected customTableItemTemplate: TemplateRef<any>;
       ];
     }
     referencesClicked() {
-      this.customModel.header = [
-        new TableHeaderItem({ data: '*Type'}),
-        new TableHeaderItem({ data: 'Status'}),
-        new TableHeaderItem({ data: 'Store'}),
-        new TableHeaderItem({ data: 'Name'}),
-        new TableHeaderItem({ data: 'Description'}),
-        new TableHeaderItem({ data: 'Start Date'}),
-        new TableHeaderItem({ data: 'End Date'}),
-        new TableHeaderItem({ data: 'Campaign'})
-      ];
+      this.referencesTableHeader();
       this.customModel.data = [
         [new TableItem({data: ''}),
         new TableItem({data: ''}),
