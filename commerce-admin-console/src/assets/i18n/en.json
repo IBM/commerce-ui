@@ -366,6 +366,19 @@
             "Bundle": "Bundle",
             "kit":"Kit"
         },
+        "FOOTR": {
+            "tip_help1": "Filter the message console by message type. Object error messages describe problems with your business objects.",
+            "tip_help2": "System error messages describe problems that have occurred in the IBM Digital Commerce server.",
+            "tip_help3":"Status messages are informational and do not require any further action.",
+            "more_details": "More details...",
+            "no_data": "There are currently no Messages for your action." ,
+            "selected": "Selected",
+            "of": "of",
+            "clear": "Clear",
+            "message": "Message",
+            "object":"Object",
+            "date_and_time": "Date and Time"
+        },
         "LANDING_PAGE": {
             "catalog": "Catalog",
             "create_new_catalog_text": "To create a new catalog object, click the black arrow beside the",
