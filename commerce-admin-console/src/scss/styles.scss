@@ -1,3 +1,6 @@
+$feature-flags: (
+    ui-shell: true
+);
 
 @import "~scss/_variables.scss";
 @import "~carbon-components/scss/globals/grid/_grid.scss";

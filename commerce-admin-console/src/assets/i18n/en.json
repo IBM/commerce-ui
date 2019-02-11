@@ -404,6 +404,24 @@
             "TABLE_HEADER_MANUFACTURER_NAME": "Manufacturer Name",
             "NO_DATA_MSG": "No Data"
         },
+        "UI_SHELL": {
+            "ALL_CATALOG_ENTRIES_INCLUDING_SKUS": "All Catalog Entries Including SKUs",
+            "ALL_CATALOG_ENTRIES_EXCLUDING_SKUS": "All Catalog Entries Excluding SKUs",
+            "CATEGORIES": "Categories",
+            "SALES_CEGORIES": "Sales Categories",
+            "PRODUCTS": "Products",
+            "SKUS": "SKUs",
+            "BUNDLES": "Bundles",
+            "KITS": "Kits",
+            "ATTRIBUTE_DICTIONARY_ATTRIBUTE": "Attribute Dictionary Attributes",
+            "CATALOG": "Catalog"
+        },
+        "MAIN_UI_SHELL": {
+            "WELCOME_MSG":"Welcome xyz123@in.ibm.com<",
+            "WORKING_ON_APPROVAL_CONTENT":"Working on Approval Content",
+            "MANAGEMENT_CENTER_TOOLS":"Management Center Tools",
+            "LAGOUT": "Lagout"
+        },
         "EXTENDED_SITES": {
             "header": "ExtendedSitesCatalogAssetStore-Catagories List"
         },

@@ -1,0 +1,29 @@
+
+.bx--header__menu-item{
+    border: 2px solid transparent !important;
+    padding: 0px 0px !important;
+}
+.ibmheaderdropdown{
+    height: 2.0rem !important;
+    position: absolute !important;
+    right: 278px !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    width:170px;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+}
+.ibmheadersearch{
+    position: absolute !important;
+    right:30px !important;
+}
+.bx--list-box__menu {
+    max-height: 452px;
+}
+.bx--header__menu-item{
+    fill: #f3f3f3;
+}
+
+
+
