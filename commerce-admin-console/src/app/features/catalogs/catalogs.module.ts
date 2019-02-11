@@ -17,7 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { ModalService } from 'carbon-components-angular';
 import { UnderconstructionComponent } from './components/underconstruction/underconstruction.component';
-
+import { UiShellComponent } from './components/ui-shell/ui-shell.component'
+import { MainUiShellComponent } from './components/main-ui-shell/main-ui-shell.component';
 
 @NgModule({
 imports: [
@@ -41,8 +42,8 @@ IconModule,
 UIShellModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent,
-NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UnderconstructionComponent
-],
+NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UiShellComponent, UnderconstructionComponent,
+MainUiShellComponent],
 
 
 providers: [ModalService],
