@@ -302,6 +302,23 @@
                 "administative_name": "Administative name (United State English)",
                 "display_name": "Administative name (United State English)",
                 "short_description": "Short description (United State English)"
+            },
+            "CONTENT_TABLE": {
+                "language": "Language",
+                "identifier": "Identifier",
+                "name": "Name",
+                "content_type": "Content Type",
+                "description": "Description"
+            },
+            "REFERENCES_TABLE": {
+                "type": "*Type",
+                "status": "Status",
+                "store": "Store",
+                "name": "Name",
+                "description": "Description",
+                "start_date": "Start Date",
+                "end_date": "End Date",
+                "campaign": "Campaign"
             }
         },
         "HEADR": {
@@ -348,6 +365,19 @@
             "product": "Product",
             "Bundle": "Bundle",
             "kit":"Kit"
+        },
+        "FOOTR": {
+            "tip_help1": "Filter the message console by message type. Object error messages describe problems with your business objects.",
+            "tip_help2": "System error messages describe problems that have occurred in the IBM Digital Commerce server.",
+            "tip_help3":"Status messages are informational and do not require any further action.",
+            "more_details": "More details...",
+            "no_data": "There are currently no Messages for your action." ,
+            "selected": "Selected",
+            "of": "of",
+            "clear": "Clear",
+            "message": "Message",
+            "object":"Object",
+            "date_and_time": "Date and Time"
         },
         "LANDING_PAGE": {
             "catalog": "Catalog",

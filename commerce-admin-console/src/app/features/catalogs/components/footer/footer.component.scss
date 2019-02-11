@@ -5,9 +5,13 @@ footer {
     padding: 10px;
     margin-left: -0.8%;
     margin-right: -0.8%;
-    }
-    .flex-container {
-        display: flex;
-        justify-content: center;
-      }
-    .pointer {cursor: pointer;}
+    height: auto;
+    width: 100%;
+   
+}
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+.pointer {cursor: pointer;}
+
