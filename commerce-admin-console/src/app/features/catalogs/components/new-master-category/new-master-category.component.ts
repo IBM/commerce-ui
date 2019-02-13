@@ -219,12 +219,33 @@ protected customTableItemTemplate: TemplateRef<any>;
         // this.customModel.addRow(lastRowCopy);
       // }
       this.masterCategoryService.categoryListTableData.push(this.masterInputData);
+      this.router.navigate(['/catalogs/extendedSite']);
       console.log(this.masterCategoryService.categoryListTableData);
       this.masterDataSaves = true;
   }
   navigateExtendedSite() {
     this.router.navigate(['/catalogs/extendedSite']);
   }
+  // protected prepareData(data: Array<Array<any>>) {
+  //   // create new data from the service data
+  //   let newData = [];
+  //   data.forEach(dataRow => {
+  //     let row = [];
+  //     dataRow.forEach(dataElement => {
+  //       row.push(
+  //         new TableItem({
+  //           data: dataElement,
+  //           template: typeof dataElement === 'string' ? undefined : this.paginationTableItemTemplate,
+  //           // your template can handle all the data types so you don't have to conditionally set it
+  //           // you can also set different templates for different columns based on index
+  //         })
+  //       );
+  //     });
+  //     newData.push(row);
+  //   });
+  //   return newData;
+  // }
+
   // protected prepareData(data: Array<Array<any>>) {
   //   // create new data from the service data
   //   let newData = [];
