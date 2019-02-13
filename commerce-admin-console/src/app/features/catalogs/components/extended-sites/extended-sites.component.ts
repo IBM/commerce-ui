@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { TableModel, TableItem, TableHeaderItem } from 'carbon-components-angular';
+import { MasterCategoryService } from '../../services/masterCategory/master-category.service';
 
 
 @Component({
@@ -14,17 +15,27 @@ import { TableModel, TableItem, TableHeaderItem } from 'carbon-components-angula
 export class ExtendedSitesComponent implements OnInit, OnChanges {
 
   // private router = Router;
+  // data = this.masterCategoryService.getData();
 
-  constructor(private router: Router,
-    private translate: TranslateService,) {
-    // this.router =route;
-}
+  constructor(private translate: TranslateService,
+    private masterCategoryService: MasterCategoryService,
+    private router:Router) {
+      // if(this.data){
+      //   // do whatever needed
+      //   return this.data;
+      // }
+      // else{
+      //   this.router.navigate(['/catalogs/masterCategory']);
+      // }
+   } 
+//    {
+//     // this.router =route;
+// }
 
   @Input() customModel = new TableModel();
   @Input() size = 'md';
   @Input() showSelectionColumn = false;
   @Input() striped = true;
-
 
   @ViewChild("customHeaderTemplate")
 	protected customHeaderTemplate: TemplateRef<any>;
@@ -32,7 +43,18 @@ export class ExtendedSitesComponent implements OnInit, OnChanges {
   protected customTableItemTemplate: TemplateRef<any>;
   @ViewChild("customTableItemTemplate2")
   protected customTableItemTemplate2: TemplateRef<any>;
-  
+  @ViewChild('paginationTableItemTemplate')
+  protected paginationTableItemTemplate: TemplateRef<any>;
+
+  masterInputData = [];
+  display_to_customers;
+  image = '';
+  descreption: any;
+  sequence: any;
+  type: any;
+  code: any;
+  name: any;
+
   private readonly headerIndex = {
     '0': {
       'translateId': 'CATALOGS.EXTENDED_SITES_TABLE.SEQUENCE',
@@ -70,23 +92,41 @@ export class ExtendedSitesComponent implements OnInit, OnChanges {
  
   ngOnInit() {
     this.populateTableHeader();
+    // this.showMasterData();
 
+    const abc = this.masterCategoryService.getData();
+    console.log('SERVICEDATa', abc);
+    // abc.forEach((data,index) => {
+    //     console.log('VALUE', data[index].code, data[index].name, data[index].descreption);
+
+    //     this.masterInputData.push(
+    //       [new TableItem({ data: data[index].code}),
+    //       ({ data: data[index].type}),
+    //       ({ data: data[index].store}),
+    //       ({ data: data[index].code}),
+    //       ({ data: data[index].name}),
+    //       ({ data: data[index].display_to_customers})])
+    //       console.log('VALUEEEEEEEE', data[index].code, data[index].name, data[index].sequence);
+    // });
+    
+    
+    for (let i = 0; i < abc.length; i++) {
+      // debugger;
+      this.sequence = abc[i][0].sequence; //2Dimensional Array
+      this.code = abc[i][0].code;
+      this.name = abc[i][0].name;
+      this.descreption = abc[i][0].descreption;
+    }
+
+    this.customModel.data = this.masterInputData;
+    // console.log('MASTERDATA', this.customModel.data);
     this.customModel.data = [
-      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "jhjh"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
       [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "asas"}), new TableItem({data: "AuroraESite"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
-      [new TableItem({data: "5.0", template: this.customTableItemTemplate}),new TableItem({data: "dfd"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
-      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "ccv"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
-      [new TableItem({data: "5.0", template: this.customTableItemTemplate}),new TableItem({data: "njkb"}), new TableItem({data: "AuroraESite"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
-      [new TableItem({data: "10.0", template: this.customTableItemTemplate}),new TableItem({data: "hsn"}), new TableItem({data: "AuroraESite"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})]
+      [new TableItem({data: "5.0", template: this.customTableItemTemplate}),new TableItem({data: "abc"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "queue", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
+      [new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "def"}), new TableItem({data: "AuroraESite"}), new TableItem({data: "hello", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
+      [new TableItem({data: this.sequence, template: this.customTableItemTemplate}),new TableItem({data: "Type1"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: this.code, template: this.customTableItemTemplate}), new TableItem({data: this.name, template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})]
+      
     ];
-    // this.customModel.header = [
-    //   new TableHeaderItem({ data: "Sequence"}),
-    //   new TableHeaderItem({ data: "* Type"}),
-    //   new TableHeaderItem({ data: "Store", template: this.customHeaderTemplate}),
-    //   new TableHeaderItem({ data: "* Code"}),
-    //   new TableHeaderItem({ data: "* Name"}),
-    //   new TableHeaderItem({ data: "Display to customers"})
-    // ];
   }
 
   populateTableHeader() {
@@ -143,6 +183,23 @@ export class ExtendedSitesComponent implements OnInit, OnChanges {
              selected: false
          }
   ];
+
+//   showMasterData() {
+//     this.masterInputData = [
+//       {
+//         'sequence': this.sequence,
+//         'code': this.code,
+//         'name': this.name
+//       }
+//     ];
+//     this.masterCategoryService.categoryListTableData.push(this.masterInputData);
+//     console.log("showMasterData", this.masterCategoryService.categoryListTableData);
+// }
+
+  onSelect() {
+    this.router.navigate(['/catalogs/masterCategory']);
+    console.log("Click here");
+ }
 
   selected() {}
 

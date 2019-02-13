@@ -3,7 +3,7 @@
   <div class="row">
       <div class="side-width">
         <ac-side-bar></ac-side-bar>
-        </div>
+      </div>
         <div class="content-width">
           <!--The content below is only a placeholder and can be replaced.-->
           <div style="text-align:center"><br>
@@ -22,27 +22,19 @@
             </div>
           </ng-template>
 
-        <ng-template #customTableItemTemplate let-data="data">
-          <input ibmText value="{{this.customModel.data.TableItem}}"/>
-          <!-- <a [routerLink]="data.link">{{data.name}}</a> -->
-        </ng-template>
-        <ng-template #customTableItemTemplate2 let-data="data">
-          <div class="align-checkbox">
-            <ibm-checkbox
-              [checked]="true"
-              [disabled]="disabled"
-              [indeterminate]="indeterminate">
-            </ibm-checkbox>
-          </div>
-      </ng-template>
-      
-        <ng-template #customTableItemTemplate let-data="data">
-            <input ibmText value="{{this.customModel.data.TableItem}}"/>
+          <ng-template #customTableItemTemplate let-data="data">
+            <input ibmText value="{{data}}"/>
             <!-- <a [routerLink]="data.link">{{data.name}}</a> -->
-        </ng-template>
-        <!-- <ng-template #customTableItemTemplate let-data="data">
-          <td (click)="onSelect()"></td>
-        </ng-template> -->
+          </ng-template>
+          <ng-template #customTableItemTemplate2 let-data="data">
+            <div class="align-checkbox">
+              <ibm-checkbox
+                [checked]="true"
+                [disabled]="disabled"
+                [indeterminate]="indeterminate">
+              </ibm-checkbox>
+            </div>
+          </ng-template>
           
         <ibm-table
           [model]="customModel"
@@ -50,8 +42,10 @@
           [showSelectionColumn]="showSelectionColumn"
           [striped]="striped"
           (sort)="customSort($event)"
-        >
+          (dblclick)="onSelect()">
         </ibm-table>
       </div>
   </div>
 <ac-footer></ac-footer>
+
+
