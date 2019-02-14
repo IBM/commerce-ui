@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<listeners>
+<listener class-name="com.ibm.commerce.cmc.ui.utils.ExtentReporterNG"></listener>
+<listener class-name="com.ibm.commerce.cmc.ui.utils.Listeners"></listener>
+</listeners>
+  <test thread-count="5" name="CatalogsHomePage">
+    <classes>
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="CreateNewMasterCategory">
+  <classes>
+   <class name="com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest"/>
+   </classes>
+  </test>
+  <test name="ExtendedSitesCatalogAssetStoreCategoriesList">
+  <classes>
+   <class name="com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest"/>
+   </classes>
+  </test>
+</suite> <!-- Suite -->
