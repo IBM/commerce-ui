@@ -7,6 +7,8 @@ import { NewMasterCategoryComponent } from './components/new-master-category/new
 import { ExtendedSitesComponent } from './components/extended-sites/extended-sites.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { UnderconstructionComponent } from './components/underconstruction/underconstruction.component';
+import { StockHolmCASComponent } from './components/stock-holm-cas/stock-holm-cas.component';
+import { StockholmComponent } from './components/stockholm/stockholm.component';
 
 
 const routes: Routes = [
@@ -24,7 +26,13 @@ path: 'UnderConstruction', component: UnderconstructionComponent
 },
 {
 path: 'extendedSite', component: ExtendedSitesComponent
-}
+},
+{
+path: 'stockholmcas', component: StockHolmCASComponent
+},
+{
+path: 'stockholm', component: StockholmComponent
+},
 ];
 
 @NgModule({
