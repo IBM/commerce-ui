@@ -1,51 +1,42 @@
-.containerClass{
-    margin: 2%;
-    }
-    .catlogMargin{
-        margin: 3%;
-    }
-    ul.ordrLst {
-        list-style-type: dot;
-      }
-      .liText{
-          font-size: 14px;
-          margin-bottom: 5px;
-      }
-      .orderMargin {
-          margin-left: 3%;
-      }
-      .moreDetails{
-          margin-top: 2%;
-          font-size: 14px;
-      }
-    
-    .custom-bullet{
-        content: "\f111";
-        font-size: 5px;
-        float: left;
-        margin-top: 6px;
-        margin-left: -13px;
-        color: black;
-    }
-    .content-width{
-    margin-left: 0.5%;
-    width: 100%;
-    display: inline-block;
-    position: absolute;
+// .containerClass{
+//     margin: 2%;
+//     }
+//     .catlogMargin{
+//         margin: 3%;
+//     }
+ul.ordrLst {
+    list-style-type: dot;
+  }
+  .liText{
+      font-size: 14px;
+      margin-bottom: 5px;
+  }
+  .orderMargin {
+      margin-left: 3%;
+  }
+  .moreDetails{
+      margin-top: 2%;
+      font-size: 14px;
+  }
+
+.custom-bullet{
+    content: "\f111";
+    font-size: 5px;
+    float: left;
+    margin-top: 6px;
+    margin-left: -13px;
+    color: black;
+}
+.content-width{
+margin-left: 0.5%;
+width: 100%;
+display: inline-block;
+position: absolute;
+background-color: #f1f1f1 !important;
+}
+.side-width{
     background-color: #f1f1f1 !important;
-    }
-    .side-width{
-        background-color: #f1f1f1 !important;
-        min-height: 438px;
-        margin-bottom: 0.6%;
-        display: inline-block;
-        margin-top: 50px;
-    }
-    .content-width {
-        margin-left: 0.5%;
-        width: 100%;
-        display: inline-block;
-        position: absolute;
-        background-color: #f1f1f1 !important;
-        margin-top: 50px;
-    }
+    min-height: 438px;
+    margin-bottom: 0.6%;
+    display: inline-block;
+}

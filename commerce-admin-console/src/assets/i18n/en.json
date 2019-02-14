@@ -417,7 +417,7 @@
             "CATALOG": "Catalog"
         },
         "MAIN_UI_SHELL": {
-            "WELCOME_MSG":"Welcome xyz123@in.ibm.com<",
+            "WELCOME_MSG":"Welcome xyz123@in.ibm.com",
             "WORKING_ON_APPROVAL_CONTENT":"Working on Approval Content",
             "MANAGEMENT_CENTER_TOOLS":"Management Center Tools",
             "LAGOUT": "Lagout"

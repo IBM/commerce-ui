@@ -1,10 +1,12 @@
 <div>
-  <ibm-header>
+  <ibm-header (menuClicked)="menuClicked()">
+
     <ibm-header-navigation>
       <ibm-header-item>{{ 'CATALOGS.MAIN_UI_SHELL.MANAGEMENT_CENTER_TOOLS' | translate }}</ibm-header-item>
       <ibm-header-item>
         <div class="ibmheaderrightside">
-          <ibm-icon-checkmark-outline16></ibm-icon-checkmark-outline16>{{ 'CATALOGS.MAIN_UI_SHELL.WORKING_ON_APPROVAL_CONTENT' | translate }}
+          <ibm-icon-checkmark-outline16></ibm-icon-checkmark-outline16>
+          {{ 'CATALOGS.MAIN_UI_SHELL.WORKING_ON_APPROVAL_CONTENT' | translate }}
         </div>
       </ibm-header-item>
       <ibm-header-item>
