@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="com.ibm.commerce.cmc.ui.utils.ExtentReporterNG"/>
+    <listener class-name="com.ibm.commerce.cmc.ui.utils.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="CatalogsHomePage(failed)">
+    <classes>
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="catalogHomePageTitleTest"/>
+        </methods>
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest -->
+    </classes>
+  </test> <!-- CatalogsHomePage(failed) -->
+  <test thread-count="5" name="CreateNewMasterCategory(failed)">
+    <classes>
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest">
+        <methods>
+          <include name="validateManageCategoryDisplayAccordionFullImageFieldTest"/>
+          <include name="validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioAutoSelectTest"/>
+          <include name="validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioTest"/>
+          <include name="validateSearchEngineOptimizationPageTitleOverrideDefaultRadioAutoSelectTest"/>
+          <include name="validateManageCategoryGeneralCategoryInformationUniqueIdFieldNameTest"/>
+          <include name="validateSearchEngineOptimizationImageAltTextUseDefaultRadioTest"/>
+          <include name="validateSearchEngineOptimizationPageTitleUseDefaultRadioTest"/>
+          <include name="validateSearchEngineOptimizationURLKeywordFieldTest"/>
+          <include name="setUp"/>
+          <include name="validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioAutoSelectTest"/>
+          <include name="tearDown"/>
+          <include name="validateSearchEngineOptimizationMetaDescriptionUseDefaultRadioTest"/>
+        </methods>
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest -->
+    </classes>
+  </test> <!-- CreateNewMasterCategory(failed) -->
+  <test thread-count="5" name="ExtendedSitesCatalogAssetStoreCategoriesList(failed)">
+    <classes>
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest -->
+    </classes>
+  </test> <!-- ExtendedSitesCatalogAssetStoreCategoriesList(failed) -->
+</suite> <!-- Failed suite [Suite] -->
