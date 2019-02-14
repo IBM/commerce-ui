@@ -24,6 +24,21 @@
 .bx--header__menu-item{
     fill: #f3f3f3;
 }
+.bx--toolbar {
+    font-family: "ibm-plex-sans", Helvetica Neue, Arial, sans-serif;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 0rem 0;
+    background-color: #3d70b2;
+    height: 3rem;
+    fill: white;
+}
+.bx--toolbar .bx--search-input {
+    height: 2rem;
+    background-color: white;
+    outline: none;
+}
 
 
 

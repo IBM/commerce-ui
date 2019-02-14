@@ -1,15 +1,14 @@
-<ibm-header>
-  <ibm-header-navigation>
-    <ibm-header-item>
-      <ibm-icon-arrow-left32></ibm-icon-arrow-left32>
-    </ibm-header-item>
-    <ibm-header-item>
-      <ibm-icon-arrow-right32></ibm-icon-arrow-right32>
-    </ibm-header-item>
-    <ibm-header-item>
-      <ibm-icon-add-alt32></ibm-icon-add-alt32>
-    </ibm-header-item>
-    <!-- <ibm-header-menu>
+<div class="bx--toolbar" data-toolbar>
+  <div class="toolbar">
+    <ibm-icon-arrow-left32></ibm-icon-arrow-left32>
+  </div>
+  <div class="toolbar">
+    <ibm-icon-arrow-right32></ibm-icon-arrow-right32>
+  </div>
+  <div class="toolbar">
+    <ibm-icon-add-alt32></ibm-icon-add-alt32>
+  </div>
+  <!-- <ibm-header-menu>
       <ibm-header-item>{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_INCLUDING_SKUS' | translate }}</ibm-header-item>
       <ibm-header-item>{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_EXCLUDING_SKUS' | translate }}</ibm-header-item>
       <ibm-header-item>{{ 'CATALOGS.UI_SHELL.CATEGORIES' | translate }}</ibm-header-item>
@@ -21,39 +20,35 @@
       <ibm-header-item>{{ 'CATALOGS.UI_SHELL.ATTRIBUTE_DICTIONARY_ATTRIBUTE' | translate }}</ibm-header-item>
       <ibm-header-item>{{ 'CATALOGS.UI_SHELL.CATALOG' | translate }}</ibm-header-item>
     </ibm-header-menu> -->
-    <ibm-header-item>
-      <ibm-icon-stop-outline32></ibm-icon-stop-outline32>
-    </ibm-header-item>
-    <ibm-header-item>
-      <ibm-icon-wikis32></ibm-icon-wikis32>
-    </ibm-header-item>
-    <ibm-header-item>
-      <ibm-icon-save32></ibm-icon-save32>
-    </ibm-header-item>
-    <ibm-header-item>
-      <ibm-icon-copy-file32></ibm-icon-copy-file32>
-    </ibm-header-item>
-    <ibm-header-item>
-      <ibm-icon-close32></ibm-icon-close32>
-    </ibm-header-item>
-    <ibm-header-item>
-      <ibm-icon-search32></ibm-icon-search32>
-    </ibm-header-item>
-    <ibm-header-item>
-      <ibm-icon-screen32></ibm-icon-screen32>
-    </ibm-header-item>
+  <div class="toolbar">
+    <ibm-icon-stop-outline32></ibm-icon-stop-outline32>
+  </div>
+  <div class="toolbar">
+    <ibm-icon-wikis32></ibm-icon-wikis32>
+  </div>
+  <div class="toolbar">
+    <ibm-icon-save32></ibm-icon-save32>
+  </div>
+  <div class="toolbar">
+    <ibm-icon-copy-file32></ibm-icon-copy-file32>
+  </div>
+  <div class="toolbar">
+    <ibm-icon-close32></ibm-icon-close32>
+  </div>
+  <div class="toolbar">
+    <ibm-icon-search32></ibm-icon-search32>
+  </div>
+  <div class="toolbar">
+    <ibm-icon-screen32></ibm-icon-screen32>
+  </div>
 
-    <ibm-header-item>
-      <div class="ibmheaderdropdown">
-        <ibm-dropdown>
-          <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
-        </ibm-dropdown>
-      </div>
-    </ibm-header-item>
-    <ibm-header-item>
-      <div class="ibmheadersearch">
-        <ibm-search [theme]="theme" [placeholder]="placeholder" [disabled]="disabled" [size]="size"></ibm-search>
-      </div>
-    </ibm-header-item>
-  </ibm-header-navigation>
-</ibm-header>
+  <!-- <ibm-header-item> -->
+  <div class="ibmheaderdropdown">
+    <ibm-dropdown>
+      <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+    </ibm-dropdown>
+  </div>
+  <div class="ibmheadersearch">
+    <ibm-search [theme]="theme" [placeholder]="placeholder" [disabled]="disabled" [size]="size"></ibm-search>
+  </div>
+</div>
