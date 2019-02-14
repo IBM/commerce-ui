@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="12" ignored="0" total="39" passed="27">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="91117" started-at="2019-02-12T10:26:33Z" finished-at="2019-02-12T10:28:04Z">
+    <groups>
+    </groups>
+    <test name="CatalogsHomePage" duration-ms="7057" started-at="2019-02-12T10:26:33Z" finished-at="2019-02-12T10:26:40Z">
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest@35e2d654]" name="setUp" is-config="true" duration-ms="5774" started-at="2019-02-12T10:26:33Z" finished-at="2019-02-12T10:26:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="FAIL" signature="catalogHomePageTitleTest()[pri:1, instance:com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest@35e2d654]" name="catalogHomePageTitleTest" duration-ms="29" started-at="2019-02-12T10:26:39Z" finished-at="2019-02-12T10:26:39Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Catalogs] but found []]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Catalogs] but found []
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:453)
+at org.testng.Assert.assertEquals(Assert.java:463)
+at com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest.catalogHomePageTitleTest(CatalogsHomePageTest.java:41)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- catalogHomePageTitleTest -->
+        <test-method status="PASS" signature="catalogHomePageHeadingTest()[pri:2, instance:com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest@35e2d654]" name="catalogHomePageHeadingTest" duration-ms="51" started-at="2019-02-12T10:26:40Z" finished-at="2019-02-12T10:26:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- catalogHomePageHeadingTest -->
+        <test-method status="PASS" signature="navigatetoNewMasterCategoryPageTest()[pri:3, instance:com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest@35e2d654]" name="navigatetoNewMasterCategoryPageTest" duration-ms="429" started-at="2019-02-12T10:26:40Z" finished-at="2019-02-12T10:26:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigatetoNewMasterCategoryPageTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest@35e2d654]" name="tearDown" is-config="true" duration-ms="188" started-at="2019-02-12T10:26:40Z" finished-at="2019-02-12T10:26:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest -->
+    </test> <!-- CatalogsHomePage -->
+    <test name="CreateNewMasterCategory" duration-ms="58946" started-at="2019-02-12T10:26:40Z" finished-at="2019-02-12T10:27:39Z">
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="setUp" is-config="true" duration-ms="8351" started-at="2019-02-12T10:26:40Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="newMasterCategoryPageHeadingTest()[pri:1, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="newMasterCategoryPageHeadingTest" duration-ms="199" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- newMasterCategoryPageHeadingTest -->
+        <test-method status="PASS" signature="validateSaveandPreviewButtonExistance()[pri:2, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSaveandPreviewButtonExistance" duration-ms="82" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSaveandPreviewButtonExistance -->
+        <test-method status="PASS" signature="validateSaveButtonExistance()[pri:3, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSaveButtonExistance" duration-ms="35" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSaveButtonExistance -->
+        <test-method status="PASS" signature="validateCloseButtonExistance()[pri:4, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateCloseButtonExistance" duration-ms="36" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateCloseButtonExistance -->
+        <test-method status="PASS" signature="validateManageCategoryTabExistance()[pri:5, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryTabExistance" duration-ms="32" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryTabExistance -->
+        <test-method status="PASS" signature="validateSearchEngineOptimizationTabExistance()[pri:6, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationTabExistance" duration-ms="34" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationTabExistance -->
+        <test-method status="PASS" signature="validateAssociatedAssetsTabExistance()[pri:7, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateAssociatedAssetsTabExistance" duration-ms="29" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateAssociatedAssetsTabExistance -->
+        <test-method status="PASS" signature="validateContentTabExistance()[pri:8, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateContentTabExistance" duration-ms="28" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateContentTabExistance -->
+        <test-method status="PASS" signature="validateReferencesTabExistance()[pri:9, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateReferencesTabExistance" duration-ms="29" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateReferencesTabExistance -->
+        <test-method status="PASS" signature="validateManageCategoryObjectPropertiesAssociatedStoreTest()[pri:10, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryObjectPropertiesAssociatedStoreTest" duration-ms="250" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryObjectPropertiesAssociatedStoreTest -->
+        <test-method status="PASS" signature="validateManageCategoryObjectPropertiesAssociatedStoreDisplayedTest()[pri:11, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryObjectPropertiesAssociatedStoreDisplayedTest" duration-ms="152" started-at="2019-02-12T10:26:49Z" finished-at="2019-02-12T10:26:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryObjectPropertiesAssociatedStoreDisplayedTest -->
+        <test-method status="FAIL" signature="validateManageCategoryGeneralCategoryInformationUniqueIdFieldNameTest()[pri:12, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryGeneralCategoryInformationUniqueIdFieldNameTest" duration-ms="229" started-at="2019-02-12T10:26:50Z" finished-at="2019-02-12T10:26:50Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Unique ID Code] but found [Code]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Unique ID Code] but found [Code]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:453)
+at org.testng.Assert.assertEquals(Assert.java:463)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateManageCategoryGeneralCategoryInformationUniqueIdFieldNameTest(CreateNewMasterCategoryTest.java:147)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryGeneralCategoryInformationUniqueIdFieldNameTest -->
+        <test-method status="PASS" signature="validateManageCategoryGeneralCategoryInformationNameFieldTest()[pri:13, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryGeneralCategoryInformationNameFieldTest" duration-ms="38" started-at="2019-02-12T10:26:51Z" finished-at="2019-02-12T10:26:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryGeneralCategoryInformationNameFieldTest -->
+        <test-method status="PASS" signature="validateManageCategoryGeneralCategoryInformationShortDescriptionFieldTest()[pri:14, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryGeneralCategoryInformationShortDescriptionFieldTest" duration-ms="46" started-at="2019-02-12T10:26:51Z" finished-at="2019-02-12T10:26:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryGeneralCategoryInformationShortDescriptionFieldTest -->
+        <test-method status="PASS" signature="validateManageCategoryInputGeneralCategoryInformationTest()[pri:15, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryInputGeneralCategoryInformationTest" duration-ms="1514" started-at="2019-02-12T10:26:51Z" finished-at="2019-02-12T10:26:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryInputGeneralCategoryInformationTest -->
+        <test-method status="PASS" signature="validateManageCategoryDisplayAccordionDisplayToCustomerFieldTest()[pri:16, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryDisplayAccordionDisplayToCustomerFieldTest" duration-ms="280" started-at="2019-02-12T10:26:52Z" finished-at="2019-02-12T10:26:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryDisplayAccordionDisplayToCustomerFieldTest -->
+        <test-method status="PASS" signature="validateManageCategoryDisplayAccordionThumbnailFieldTest()[pri:17, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryDisplayAccordionThumbnailFieldTest" duration-ms="99" started-at="2019-02-12T10:26:53Z" finished-at="2019-02-12T10:26:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryDisplayAccordionThumbnailFieldTest -->
+        <test-method status="FAIL" signature="validateManageCategoryDisplayAccordionFullImageFieldTest()[pri:18, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryDisplayAccordionFullImageFieldTest" duration-ms="110" started-at="2019-02-12T10:26:53Z" finished-at="2019-02-12T10:26:53Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Full image (United State English)] but found [Full image]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Full image (United State English)] but found [Full image]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:453)
+at org.testng.Assert.assertEquals(Assert.java:463)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateManageCategoryDisplayAccordionFullImageFieldTest(CreateNewMasterCategoryTest.java:189)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryDisplayAccordionFullImageFieldTest -->
+        <test-method status="PASS" signature="validateManageCategoryInputDisplayAccordionInformationTest()[pri:19, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateManageCategoryInputDisplayAccordionInformationTest" duration-ms="785" started-at="2019-02-12T10:26:53Z" finished-at="2019-02-12T10:26:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateManageCategoryInputDisplayAccordionInformationTest -->
+        <test-method status="FAIL" signature="validateSearchEngineOptimizationURLKeywordFieldTest()[pri:20, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationURLKeywordFieldTest" duration-ms="128" started-at="2019-02-12T10:26:54Z" finished-at="2019-02-12T10:26:54Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [URL keyword (United State English)] but found [URL keyword]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [URL keyword (United State English)] but found [URL keyword]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:453)
+at org.testng.Assert.assertEquals(Assert.java:463)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateSearchEngineOptimizationURLKeywordFieldTest(CreateNewMasterCategoryTest.java:202)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationURLKeywordFieldTest -->
+        <test-method status="PASS" signature="validateSearchEngineOptimizationPageTitleFieldTest()[pri:21, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationPageTitleFieldTest" duration-ms="38" started-at="2019-02-12T10:26:54Z" finished-at="2019-02-12T10:26:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationPageTitleFieldTest -->
+        <test-method status="FAIL" signature="validateSearchEngineOptimizationPageTitleUseDefaultRadioTest()[pri:22, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationPageTitleUseDefaultRadioTest" duration-ms="35" started-at="2019-02-12T10:26:55Z" finished-at="2019-02-12T10:26:55Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertTrue(Assert.java:44)
+at org.testng.Assert.assertTrue(Assert.java:54)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateSearchEngineOptimizationPageTitleUseDefaultRadioTest(CreateNewMasterCategoryTest.java:215)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationPageTitleUseDefaultRadioTest -->
+        <test-method status="PASS" signature="validateSearchEngineOptimizationPageTitleOverrideDefaultRadioTest()[pri:23, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationPageTitleOverrideDefaultRadioTest" duration-ms="47" started-at="2019-02-12T10:26:55Z" finished-at="2019-02-12T10:26:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationPageTitleOverrideDefaultRadioTest -->
+        <test-method status="FAIL" signature="validateSearchEngineOptimizationPageTitleOverrideDefaultRadioAutoSelectTest()[pri:24, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationPageTitleOverrideDefaultRadioAutoSelectTest" duration-ms="122" started-at="2019-02-12T10:26:55Z" finished-at="2019-02-12T10:26:55Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertTrue(Assert.java:44)
+at org.testng.Assert.assertTrue(Assert.java:54)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateSearchEngineOptimizationPageTitleOverrideDefaultRadioAutoSelectTest(CreateNewMasterCategoryTest.java:226)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationPageTitleOverrideDefaultRadioAutoSelectTest -->
+        <test-method status="PASS" signature="validateSearchEngineOptimizationMetaDescriptionFieldTest()[pri:25, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationMetaDescriptionFieldTest" duration-ms="38" started-at="2019-02-12T10:26:55Z" finished-at="2019-02-12T10:26:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationMetaDescriptionFieldTest -->
+        <test-method status="FAIL" signature="validateSearchEngineOptimizationMetaDescriptionUseDefaultRadioTest()[pri:26, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationMetaDescriptionUseDefaultRadioTest" duration-ms="38" started-at="2019-02-12T10:26:56Z" finished-at="2019-02-12T10:26:56Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertTrue(Assert.java:44)
+at org.testng.Assert.assertTrue(Assert.java:54)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateSearchEngineOptimizationMetaDescriptionUseDefaultRadioTest(CreateNewMasterCategoryTest.java:237)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationMetaDescriptionUseDefaultRadioTest -->
+        <test-method status="PASS" signature="validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioTest()[pri:27, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioTest" duration-ms="38" started-at="2019-02-12T10:26:56Z" finished-at="2019-02-12T10:26:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioTest -->
+        <test-method status="FAIL" signature="validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioAutoSelectTest()[pri:28, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioAutoSelectTest" duration-ms="157" started-at="2019-02-12T10:26:56Z" finished-at="2019-02-12T10:26:56Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertTrue(Assert.java:44)
+at org.testng.Assert.assertTrue(Assert.java:54)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioAutoSelectTest(CreateNewMasterCategoryTest.java:248)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioAutoSelectTest -->
+        <test-method status="PASS" signature="validateSearchEngineOptimizationImageAltFieldTest()[pri:29, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationImageAltFieldTest" duration-ms="37" started-at="2019-02-12T10:26:57Z" finished-at="2019-02-12T10:26:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationImageAltFieldTest -->
+        <test-method status="FAIL" signature="validateSearchEngineOptimizationImageAltTextUseDefaultRadioTest()[pri:30, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationImageAltTextUseDefaultRadioTest" duration-ms="32" started-at="2019-02-12T10:26:57Z" finished-at="2019-02-12T10:26:57Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertTrue(Assert.java:44)
+at org.testng.Assert.assertTrue(Assert.java:54)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateSearchEngineOptimizationImageAltTextUseDefaultRadioTest(CreateNewMasterCategoryTest.java:260)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationImageAltTextUseDefaultRadioTest -->
+        <test-method status="FAIL" signature="validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioTest()[pri:31, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioTest" duration-ms="20031" started-at="2019-02-12T10:26:57Z" finished-at="2019-02-12T10:27:17Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span"}
+  (Session info: chrome=71.0.3578.98)
+  (Driver info: chromedriver=2.45.615355 (d5698f682d8b2742017df6c81e0bd8e6a3063189),platform=Mac OS X 10.13.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Narasimharaos-MacBook-Pro.local', ip: 'fe80:0:0:0:1043:a0c7:f196:9c06%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.45.615355 (d5698f682d8b27..., userDataDir: /var/folders/p4/bzwnsv1x7nb...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:55386}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
+Session ID: ed5b7dd13a793b9816c8e5c00cd2221b
+*** Element info: {Using=xpath, value=//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span"}
+  (Session info: chrome=71.0.3578.98)
+  (Driver info: chromedriver=2.45.615355 (d5698f682d8b2742017df6c81e0bd8e6a3063189),platform=Mac OS X 10.13.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Narasimharaos-MacBook-Pro.local', ip: 'fe80:0:0:0:1043:a0c7:f196:9c06%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.45.615355 (d5698f682d8b27..., userDataDir: /var/folders/p4/bzwnsv1x7nb...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:55386}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
+Session ID: ed5b7dd13a793b9816c8e5c00cd2221b
+*** Element info: {Using=xpath, value=//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span}
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:424)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at com.sun.proxy.$Proxy26.isSelected(Unknown Source)
+at com.ibm.commerce.cmc.ui.utils.TestUtil.isElementSelected(TestUtil.java:20)
+at com.ibm.commerce.cmc.ui.catalogs.pages.NewMasterCategoryPage.isImageAltTextOverrideDefaultRadioSelected(NewMasterCategoryPage.java:526)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioTest(CreateNewMasterCategoryTest.java:265)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioTest -->
+        <test-method status="FAIL" signature="validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioAutoSelectTest()[pri:32, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioAutoSelectTest" duration-ms="20112" started-at="2019-02-12T10:27:17Z" finished-at="2019-02-12T10:27:37Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span"}
+  (Session info: chrome=71.0.3578.98)
+  (Driver info: chromedriver=2.45.615355 (d5698f682d8b2742017df6c81e0bd8e6a3063189),platform=Mac OS X 10.13.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Narasimharaos-MacBook-Pro.local', ip: 'fe80:0:0:0:1043:a0c7:f196:9c06%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.45.615355 (d5698f682d8b27..., userDataDir: /var/folders/p4/bzwnsv1x7nb...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:55386}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
+Session ID: ed5b7dd13a793b9816c8e5c00cd2221b
+*** Element info: {Using=xpath, value=//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span"}
+  (Session info: chrome=71.0.3578.98)
+  (Driver info: chromedriver=2.45.615355 (d5698f682d8b2742017df6c81e0bd8e6a3063189),platform=Mac OS X 10.13.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Narasimharaos-MacBook-Pro.local', ip: 'fe80:0:0:0:1043:a0c7:f196:9c06%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.45.615355 (d5698f682d8b27..., userDataDir: /var/folders/p4/bzwnsv1x7nb...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:55386}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
+Session ID: ed5b7dd13a793b9816c8e5c00cd2221b
+*** Element info: {Using=xpath, value=//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span}
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:424)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at com.sun.proxy.$Proxy26.isSelected(Unknown Source)
+at com.ibm.commerce.cmc.ui.utils.TestUtil.isElementSelected(TestUtil.java:20)
+at com.ibm.commerce.cmc.ui.catalogs.pages.NewMasterCategoryPage.isImageAltTextOverrideDefaultRadioSelected(NewMasterCategoryPage.java:526)
+at com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest.validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioAutoSelectTest(CreateNewMasterCategoryTest.java:272)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioAutoSelectTest -->
+        <test-method status="PASS" signature="validateSearchEngineOptimizationInputDetailsTest()[pri:33, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="validateSearchEngineOptimizationInputDetailsTest" duration-ms="1232" started-at="2019-02-12T10:27:38Z" finished-at="2019-02-12T10:27:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSearchEngineOptimizationInputDetailsTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest@4c583ecf]" name="tearDown" is-config="true" duration-ms="167" started-at="2019-02-12T10:27:39Z" finished-at="2019-02-12T10:27:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest -->
+    </test> <!-- CreateNewMasterCategory -->
+    <test name="ExtendedSitesCatalogAssetStoreCategoriesList" duration-ms="24997" started-at="2019-02-12T10:27:39Z" finished-at="2019-02-12T10:28:04Z">
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest@55182842]" name="setUp" is-config="true" duration-ms="3752" started-at="2019-02-12T10:27:39Z" finished-at="2019-02-12T10:27:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="FAIL" signature="extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest()[pri:1, instance:com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest@55182842]" name="extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest" duration-ms="20066" started-at="2019-02-12T10:27:43Z" finished-at="2019-02-12T10:28:03Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":".//*[contains(text(), 'ExtendedSitesCatalogAssetStore - Categories List')]"}
+  (Session info: chrome=71.0.3578.98)
+  (Driver info: chromedriver=2.45.615355 (d5698f682d8b2742017df6c81e0bd8e6a3063189),platform=Mac OS X 10.13.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Narasimharaos-MacBook-Pro.local', ip: 'fe80:0:0:0:1043:a0c7:f196:9c06%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.45.615355 (d5698f682d8b27..., userDataDir: /var/folders/p4/bzwnsv1x7nb...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:55659}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
+Session ID: cab2f0289c60c4738c3cae3aad3bfa62
+*** Element info: {Using=xpath, value=.//*[contains(text(), 'ExtendedSitesCatalogAssetStore - Categories List')]}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":".//*[contains(text(), 'ExtendedSitesCatalogAssetStore - Categories List')]"}
+  (Session info: chrome=71.0.3578.98)
+  (Driver info: chromedriver=2.45.615355 (d5698f682d8b2742017df6c81e0bd8e6a3063189),platform=Mac OS X 10.13.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Narasimharaos-MacBook-Pro.local', ip: 'fe80:0:0:0:1043:a0c7:f196:9c06%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.45.615355 (d5698f682d8b27..., userDataDir: /var/folders/p4/bzwnsv1x7nb...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:55659}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
+Session ID: cab2f0289c60c4738c3cae3aad3bfa62
+*** Element info: {Using=xpath, value=.//*[contains(text(), 'ExtendedSitesCatalogAssetStore - Categories List')]}
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:424)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at com.sun.proxy.$Proxy26.getText(Unknown Source)
+at com.ibm.commerce.cmc.ui.utils.TestUtil.getElementText(TestUtil.java:30)
+at com.ibm.commerce.cmc.ui.catalogs.pages.ExtendedSitesCatalogAssetStoreCategoriesListPage.getPageHeading(ExtendedSitesCatalogAssetStoreCategoriesListPage.java:56)
+at com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest.extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest(ExtendedSitesCatalogAssetStoreCategoriesListTest.java:36)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest -->
+        <test-method status="PASS" signature="verifyAllColumnsDisplayedOnThePage()[pri:2, instance:com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest@55182842]" name="verifyAllColumnsDisplayedOnThePage" duration-ms="198" started-at="2019-02-12T10:28:04Z" finished-at="2019-02-12T10:28:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAllColumnsDisplayedOnThePage -->
+        <test-method status="PASS" signature="verifyAllColumnsClickable()[pri:3, instance:com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest@55182842]" name="verifyAllColumnsClickable" duration-ms="277" started-at="2019-02-12T10:28:04Z" finished-at="2019-02-12T10:28:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAllColumnsClickable -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest@55182842]" name="tearDown" is-config="true" duration-ms="133" started-at="2019-02-12T10:28:04Z" finished-at="2019-02-12T10:28:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest -->
+    </test> <!-- ExtendedSitesCatalogAssetStoreCategoriesList -->
+  </suite> <!-- Suite -->
+</testng-results>
