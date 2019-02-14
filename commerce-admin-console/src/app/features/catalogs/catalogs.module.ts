@@ -20,7 +20,8 @@ import { UnderconstructionComponent } from './components/underconstruction/under
 import { UiShellComponent } from './components/ui-shell/ui-shell.component'
 import { MainUiShellComponent } from './components/main-ui-shell/main-ui-shell.component';
 import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component';
-
+import { StockHolmCASComponent } from './components/stock-holm-cas/stock-holm-cas.component';
+import { StockholmComponent } from './components/stockholm/stockholm.component';
 
 @NgModule({
 imports: [
@@ -45,7 +46,8 @@ UIShellModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent,
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UiShellComponent, UnderconstructionComponent,
-MainUiShellComponent, UnassignedCatEntriesComponent],
+MainUiShellComponent, UnassignedCatEntriesComponent,StockholmComponent,
+StockHolmCASComponent],
 
 
 providers: [ModalService],

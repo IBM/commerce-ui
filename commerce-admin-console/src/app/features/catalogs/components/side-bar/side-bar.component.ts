@@ -29,6 +29,16 @@ export class SideBarComponent implements OnInit {
     this.router.navigate(['/catalogs/masterCategory']);
 
   }
+  navigateToStockCAS(): void {
+
+    this.router.navigate(['/catalogs/stockholmcas']);
+
+  }
+  navigateToStock(): void {
+
+    this.router.navigate(['/catalogs/stockholm']);
+
+  }
 listItems = [
 {
 content: "AuroraESite",
