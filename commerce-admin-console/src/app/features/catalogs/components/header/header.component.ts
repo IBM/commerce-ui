@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, AfterViewInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StoreselectionService } from '../../services/storeSelection/storeselection.service';
+//import { SideBarComponent } from './side-bar/side-bar.component';
+
+
 
 @Component({
   selector: 'ac-header',
@@ -12,7 +16,8 @@ export class HeaderComponent implements OnInit {
   //show = false;
   @Input() linkShow = true;
   @Input() linkShow1: boolean = true;
-  //@ViewChild(HeaderComponent) ele: HeaderComponent;
+  //@ViewChild(SideBarComponent) ele: SideBarComponent;
+
   //user : {id: number};
 
 
@@ -39,7 +44,7 @@ export class HeaderComponent implements OnInit {
       selected: false
     }
   ];
-  constructor(private _AR: ActivatedRoute, private router: Router) { }
+  constructor(private router: Router, private storesele: StoreselectionService) { }
 
   ngOnInit() {
     if (this.router.url == '/catalogs/masterCategory') {
@@ -53,4 +58,14 @@ export class HeaderComponent implements OnInit {
   masterFromMenu() {
     this.router.navigate(["/catalogs/masterCategory"]);
   }
+  selected(ev){
+    if (ev.item != undefined && ev.item.content != undefined) {
+      debugger;
+      if(ev.item.content === "AuroraESite"){
+        this.storesele.set();
+        this.router.navigate(['/catalogs/extendedSite'])
+     
+      }
+  }
+}
 }

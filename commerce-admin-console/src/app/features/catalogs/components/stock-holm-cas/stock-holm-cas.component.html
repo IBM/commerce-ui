@@ -11,7 +11,7 @@
             <h3>{{ 'CATALOGS.STOCKHOLMCAS.header' | translate }}</h3><br>
           </div>
 
-          <ng-template #customHeaderTemplate>
+          <!-- <ng-template #customHeaderTemplate>
             <div>
               <ibm-dropdown
                 placeholder="Store"
@@ -21,7 +21,7 @@
                 <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
               </ibm-dropdown>
             </div>
-          </ng-template>
+          </ng-template> -->
 
         <ng-template #customTableItemTemplate let-data="data">
           <input ibmText value="{{this.customModel.data.TableItem}}"/>

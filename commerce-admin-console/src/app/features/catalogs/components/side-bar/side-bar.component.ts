@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { StoreselectionService } from '../../services/storeSelection/storeselection.service';
 
 @Component({
   selector: 'ac-side-bar',
@@ -7,10 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent implements OnInit {
+ 
+  sideBar:boolean=false;
 
-  constructor(private router: Router) { }
+  title: 'NewMasterCotegory';
+  navToStock:boolean;
+  sequence = '';
+  type = '';
+  displaytocust
+  constructor(private router: Router, private storesele: StoreselectionService) { }
+
+
 
   ngOnInit() {
+   
+    // let abc = this.storesele.initialLoad;
+    // abc = true;
+    this.sideBar=this.storesele.get();
+    
   }
 
   navigateToExtend(): void {
@@ -41,19 +56,15 @@ export class SideBarComponent implements OnInit {
   }
 listItems = [
 {
-content: "AuroraESite",
+content: "Master Catalog",
 selected: false
 },
 {
-content: "ExtendedSitesCatalogAssetStore",
+content: "Master Catalog Categories",
 selected: false,
 },
 {
-content: "MyCustomStore",
-selected: false
-},
-{
-content: "MyCustomStoreCAS",
+content: "Sales Catalog Categories",
 selected: false
 }
 ];

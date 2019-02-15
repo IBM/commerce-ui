@@ -47,15 +47,12 @@ export class StockHolmCASComponent implements OnInit,OnChanges {
       'translateId': 'CATALOGS.STOCKHOLMCAS.type'
     },
     '2': {
-      'translateId': 'CATALOGS.STOCKHOLMCAS.store'
-    },
-    '3': {
       'translateId': 'CATALOGS.STOCKHOLMCAS.code'
     },  
-    '4': {
+    '3': {
       'translateId': 'CATALOGS.STOCKHOLMCAS.name'
     },
-    '5': {
+    '4': {
       'translateId': 'CATALOGS.STOCKHOLMCAS.display_to_customers'
     }
   };
@@ -99,16 +96,16 @@ export class StockHolmCASComponent implements OnInit,OnChanges {
     this.customModel.data = [
       [new TableItem({data: "4.0", template: this.customTableItemTemplate}),
       new TableItem({data: "asas"}), 
-      new TableItem({data: "AuroraESite"}), 
+      
       new TableItem({data: "asdf", template: this.customTableItemTemplate}), 
       new TableItem({data: "Lessy", template: this.customTableItemTemplate}), 
       new TableItem({template: this.customTableItemTemplate2})],
 
       [new TableItem({data: "5.0", template: this.customTableItemTemplate}),
-      new TableItem({data: "dfd"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
+      new TableItem({data: "dfd"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
       //[new TableItem({data: "4.0", template: this.customTableItemTemplate}),new TableItem({data: "ccv"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
       //[new TableItem({data: "5.0", template: this.customTableItemTemplate}),new TableItem({data: "njkb"}), new TableItem({data: "AuroraESite"}), new TableItem({data: "asdf", template: this.customTableItemTemplate}), new TableItem({data: "Lessy", template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})],
-      [new TableItem({data: this.sequence, template: this.customTableItemTemplate}),new TableItem({data: "Type1"}), new TableItem({data: "ExtendedSitesCatalogAssetStore"}), new TableItem({data: this.code, template: this.customTableItemTemplate}), new TableItem({data: this.name, template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})]
+      [new TableItem({data: this.sequence, template: this.customTableItemTemplate}),new TableItem({data: "Type1"}), new TableItem({data: this.code, template: this.customTableItemTemplate}), new TableItem({data: this.name, template: this.customTableItemTemplate}), new TableItem({template: this.customTableItemTemplate2})]
 
     ];
   }
@@ -117,16 +114,14 @@ export class StockHolmCASComponent implements OnInit,OnChanges {
     this.headerIndex['1'].translateId,
     this.headerIndex['2'].translateId,
     this.headerIndex['3'].translateId,
-    this.headerIndex['4'].translateId,
-    this.headerIndex['5'].translateId
+    this.headerIndex['4'].translateId
     ]).subscribe((result: object) => {
       this.customModel.header = [
         new TableHeaderItem({ data: result[this.headerIndex['0'].translateId] }),
         new TableHeaderItem({ data: result[this.headerIndex['1'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['2'].translateId], template: this.customHeaderTemplate}),
+        new TableHeaderItem({ data: result[this.headerIndex['2'].translateId] }),
         new TableHeaderItem({ data: result[this.headerIndex['3'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['4'].translateId] }),
-        new TableHeaderItem({ data: result[this.headerIndex['5'].translateId] })
+        new TableHeaderItem({ data: result[this.headerIndex['4'].translateId] })
       ];
     });
 }
