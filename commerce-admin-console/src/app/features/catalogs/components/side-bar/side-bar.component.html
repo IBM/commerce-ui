@@ -10,19 +10,30 @@
                     <label class="headAlertTxtSection"><span class="exclaIconSection"><i class='fas fa-exclamation-circle'></i></span></label>
                     <sup><span class="starFontSection"><i class="fas fa-star-of-life"></i></span></sup>New Master Category</button>
             </div> -->
-    <div>
+    <!-- <ng-template #aurora> -->
+
+
+            <!-- <span *ngIf="abc">
+    </span> -->
+
+    <div *ngIf="sideBar">
         <button ibmButton (click)="navigateToMaster()">New Master Category</button>
     </div>
-    <div>
+
+    <!-- <div *ngIf="initialLoad">
         <button ibmButton (click)="navigateToSearch()">Search Results</button>
     </div>
     <div>
         <button ibmButton (click)="navigateToExtend()">ExtendedSitesCatalogAssetStore</button>
     </div>
+    
     <div>
-        <button ibmButton (click) ="navigateToStockCAS()">StockholmCAS</button>
+        <button ibmButton (click)="navigateToStockCAS()">StockholmCAS</button>
     </div>
+    </ng-template>
     <div>
-        <button ibmButton (click) ="navigateToStock()">Stockholm</button>
-    </div>
+        <button ibmButton (click)="navigateToStock()">Stockholm</button>
+    </div> -->
+
+
 </section>
