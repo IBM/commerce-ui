@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   @Input() linkShow1: boolean = true;
   //@ViewChild(HeaderComponent) ele: HeaderComponent;
   //user : {id: number};
-
+  aurora= {};
 
   @Input() size = 'sm';
   @Input() theme = 'dark';
@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
 
   listItems = [
     {
+      id:1,
       content: "AuroraESite",
       selected: false
     },
@@ -39,6 +40,10 @@ export class HeaderComponent implements OnInit {
       selected: false
     }
   ];
+  selected(){
+    if(this.listItems.)
+  }
+  
   constructor(private _AR: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

@@ -7,10 +7,12 @@
 }
 .containerClass{
     margin-left: 0.5%;
-    width: 100%;
+    width: 78%;
     display: inline-block;
     position: absolute;
     background-color: #f1f1f1 !important;
+    height: 438px;
+    overflow: scroll;
 }
 .div-right {
     display: inline-block;

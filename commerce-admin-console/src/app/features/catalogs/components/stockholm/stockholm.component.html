@@ -1,0 +1,51 @@
+<app-ui-shell></app-ui-shell>
+<ac-header></ac-header>
+  <div class="row">
+      <div class="side-width">
+        <ac-side-bar></ac-side-bar>
+      </div>
+        <div class="content-width">
+          <!--The content below is only a placeholder and can be replaced.-->
+          <div style="text-align:center"><br>
+            <h3>{{ 'CATALOGS.EXTENDED_SITES.header' | translate }}</h3><br>
+          </div>
+
+          <ng-template #customHeaderTemplate>
+            <div>
+              <ibm-dropdown
+                placeholder="Store"
+                [disabled]="disabled"
+                (selected)="selected($event)"
+                (onClose)="onClose($event)">
+                <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+              </ibm-dropdown>
+            </div>
+          </ng-template>
+
+          <ng-template #customTableItemTemplate let-data="data">
+            <input ibmText value="{{data}}"/>
+            <!-- <a [routerLink]="data.link">{{data.name}}</a> -->
+          </ng-template>
+          <ng-template #customTableItemTemplate2 let-data="data">
+            <div class="align-checkbox">
+              <ibm-checkbox
+                [checked]="true"
+                [disabled]="disabled"
+                [indeterminate]="indeterminate">
+              </ibm-checkbox>
+            </div>
+          </ng-template>
+          
+        <ibm-table
+          [model]="customModel"
+          [size]="size"
+          [showSelectionColumn]="showSelectionColumn"
+          [striped]="striped"
+          (sort)="customSort($event)"
+          (dblclick)="onSelect()">
+        </ibm-table>
+      </div>
+  </div>
+<ac-footer></ac-footer>
+
+

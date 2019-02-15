@@ -379,6 +379,15 @@
             "object":"Object",
             "date_and_time": "Date and Time"
         },
+        "STOCKHOLMCAS": {
+            "header": "StockholmCAS - Categories List",
+            "sequence": "Sequence",
+            "type": "* Type",
+            "store": "Store",
+            "code": "* Code",
+            "name": "* Name",
+            "display_to_customers": "Display to customers"
+        },
         "LANDING_PAGE": {
             "catalog": "Catalog",
             "create_new_catalog_text": "To create a new catalog object, click the black arrow beside the",
