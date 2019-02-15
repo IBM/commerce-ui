@@ -23,6 +23,8 @@ export class SideBarComponent implements OnInit {
   ngOnInit() {
    
     // let abc = this.storesele.initialLoad;
+    // sidebar components  for recent push to git for reference
+
     // abc = true;
     this.sideBar=this.storesele.get();
     
