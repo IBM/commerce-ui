@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
 
   listItems = [
     {
+      id:1,
       content: "AuroraESite",
       selected: false
     },
@@ -36,11 +37,11 @@ export class HeaderComponent implements OnInit {
       selected: false,
     },
     {
-      content: "MyCustomStore",
+      content: "StockholmCAS",
       selected: false
     },
     {
-      content: "MyCustomStoreCAS",
+      content: "Stockholm",
       selected: false
     }
   ];
@@ -58,14 +59,52 @@ export class HeaderComponent implements OnInit {
   masterFromMenu() {
     this.router.navigate(["/catalogs/masterCategory"]);
   }
-  selected(ev){
+  navigateToNewCatalogUpload(): void{
+    this.router.navigate(["/catalogs/newCatalogUpload"]);
+    }
+    navigateToCatalogLevelSKU(){
+      this.router.navigate(["/catalogs/catalogSKU"]);
+    }
+  selected(ev) {
     if (ev.item != undefined && ev.item.content != undefined) {
-      debugger;
-      if(ev.item.content === "AuroraESite"){
-        this.storesele.set();
-        this.router.navigate(['/catalogs/extendedSite'])
-     
-      }
+    //   //debugger;
+    if (ev.item.content === "AuroraESite" || ev.item.content === "ExtendedSitesCatalogAssetStore") {
+      this.storesele.set();
+      this.router.navigate(['/catalogs/extendedSite']);
+      this.storesele.navToUnassigned = true;
+      this.storesele.navToExtendedSite = true;
+      this.storesele.navToStockCAS = false;
+      this.storesele.navToStock = false;
+      this.storesele.navigateToSearch=true;
+      this.storesele.navigateToCatalogUpload=true;
+      this.storesele.navigateToCatalogSKU=true;
+    }
+  
+    if (ev.item.content === "StockholmCAS") {
+
+      //console.log(ev);
+      this.storesele.setStockCAS();
+      this.router.navigate(['/catalogs/stockholmcas']);
+      this.storesele.navToExtendedSite = false;
+      this.storesele.navToMaster = false;
+      this.storesele.navToStock = false;
+      this.storesele.navigateToCatalogUpload=false;
+      this.storesele.navigateToCatalogSKU=false;
+    }
+    //console.log(this.storesele.setExt);
+
+    if (ev.item.content === "Stockholm") {
+      this.storesele.setStock();
+      this.router.navigate(['/catalogs/stockholm']);
+      this.storesele.navToExtendedSite = false;
+      this.storesele.navToStockCAS = false;
+      this.storesele.navToMaster = false;
+      this.storesele.navigateToCatalogUpload=false;
+      this.storesele.navigateToCatalogSKU=false;
+
+    }
+  }
   }
 }
-}
+
+
