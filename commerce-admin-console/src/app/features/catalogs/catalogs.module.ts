@@ -61,13 +61,3 @@ entryComponents: [ModelPopupComponent]
 
 })
 export class CatalogsModule { }
-StockHolmCASComponent],
->>>>>>> Added Stockholm and StockholmCAS Components
-
-
-providers: [ModalService],
-
-entryComponents: [ModelPopupComponent]
-
-})
-export class CatalogsModule { }
