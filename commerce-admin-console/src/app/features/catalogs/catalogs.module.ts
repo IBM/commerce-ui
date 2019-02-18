@@ -21,7 +21,6 @@ import { UiShellComponent } from './components/ui-shell/ui-shell.component'
 import { MainUiShellComponent } from './components/main-ui-shell/main-ui-shell.component';
 import { StockHolmCASComponent } from './components/stock-holm-cas/stock-holm-cas.component';
 import { StockholmComponent } from './components/stockholm/stockholm.component';
-import { ExampleComponent } from './components/example/example.component';
 import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component';
 
 
@@ -48,7 +47,7 @@ UIShellModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent,
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UiShellComponent, UnderconstructionComponent,
-StockholmComponent, MainUiShellComponent, StockHolmCASComponent, ExampleComponent, UnassignedCatEntriesComponent ],
+StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent ],
 
 
 providers: [ModalService],

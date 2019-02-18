@@ -268,7 +268,7 @@
             "search_engine_optimization": "Search Engine Optimization",
             "associated_assets": "Associated Assets",
             "content": "Content",
-            "refrences": "Refrences",
+            "references": "References",
             "associated_store": "Associated Store",
             "auroraESite": "AuroraESite",
             "unique_id": "Unique ID",
@@ -389,7 +389,7 @@
             "display_to_customers": "Display to customers"
         },
         "LANDING_PAGE": {
-            "catalog": "Catalog",
+            "catalogs": "Catalogs",
             "create_new_catalog_text": "To create a new catalog object, click the black arrow beside the",
             "create_new": "Create New",
             "icon_toolbar_text": " icon on the toolbar; then click the type of object.",
@@ -426,10 +426,20 @@
             "CATALOG": "Catalog"
         },
         "MAIN_UI_SHELL": {
-            "WELCOME_MSG":"Welcome xyz123@in.ibm.com<",
+            "WELCOME_MSG":"Welcome xyz123@in.ibm.com",
             "WORKING_ON_APPROVAL_CONTENT":"Working on Approval Content",
             "MANAGEMENT_CENTER_TOOLS":"Management Center Tools",
-            "LAGOUT": "Lagout"
+            "LOGOUT": "Logout",
+            "CATALOGS":"Catalogs",
+            "MARKETING":"Marketing",
+            "PROMOTIONS":"Promotions",
+            "ATTACHMENTS":"Attachments",
+            "CATALOG_FILTER_AND_PRICING":"Catalog Filter and pricing",
+            "CATALOG_COMPOSER":"Catalog composer",
+            "STORE_MANAGEMENT":"Store management",
+            "WORKSPACE_MANAGEMENT":"Workspace management",
+            "GETTING_STARTED":"Getting started",
+            "PREFERENCES":"Preferences..."
         },
         "EXTENDED_SITES": {
             "header": "ExtendedSitesCatalogAssetStore-Catagories List"

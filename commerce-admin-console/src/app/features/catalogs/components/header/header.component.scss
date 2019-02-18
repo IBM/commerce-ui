@@ -1,8 +1,7 @@
 .headcontainer {
 
-    background: #cccccc;
+    background: #BEBEBE;
     display: flex;
-    height: 50px;
 } 
 .third-level-menu
 {
@@ -89,13 +88,13 @@
 
  /* Remove the navbar's default margin-bottom and rounded borders */
  
-//  #ibmdropdownheader {
-//     // width: 350px;
-//     margin-top: 5px;
-//     position: absolute;
-//     right: 250px;
-//     height: 50px;
-// }
+ .ibm-dropdownWidth {
+    width: 250px;
+    margin-top: 5px;
+    position: absolute;
+    right: 250px;
+    height: 50px;
+}
 .ibm-dropdown {
     width: 170px;
     // margin-top: 5px;
@@ -108,31 +107,18 @@
     text-overflow: ellipsis;
 }
 .ibm-searchwidth{
-    // width: 170px;
-    // margin-top: 5px;
     position: absolute;
     right: 30px;
-    // height: 50px;
 }
 .bx--list-box {
-    // position: relative;
-    // width: 100%;
     height: 2.0rem !important;
     max-height: 2rem !important;
-    width:270px;
-    // background-color: #f4f7fb;
-    // border: none;
-    // box-shadow: 0 1px 0 0 #5a6872;
-    // order: 1;
-    // cursor: pointer;
-    // color: #152935;
+    width:170px;
 }
-
-
-// .bx--list-box {
-//     height: 2.0rem;
-//     max-height: 2.5rem;  
-// }
+.bx--list-box {
+    height: 2.0rem;
+    max-height: 2.5rem;  
+}
 .ibm-dropdownWidth {
     width: 250px;
     margin-top: 1px;
@@ -159,6 +145,42 @@ background-color: #396fb4;
 }
 .bg-secondary {
 background-color: #457ec3!important;
+}
+.tabnextx .dropdown-menu{
+top: 0;
+left: 100%;
+margin-top: -1px;
+border-radius: 0;
+
+}
+.dropdown  {
+border-radius: 0;  
+}
+
+.dropdown-toggle::after {
+display:none;
+}
+/* Medium devices (tablets, 768px and up) 
+The navbar toggle appears at this breakpoint 
+@media (min-width: 768px) {
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    border-radius: 0;
+}
+}*/
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+min-height: 450px
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+padding-top: 10px;
+background-color: #f1f1f1;
+max-width: 21%;
+margin-left: -12px;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -222,60 +244,25 @@ span.bx--list-box__label {
         display: flex;
         align-items: center;
         position: fixed;
-        top: 78px;
+        top: 0;
         left: 0;
         right: 0;
         height: 3rem;
-        background-color: #3d70b2;
         color: #f3f3f3;
-        z-index: 0;
     }
     .headcontainer {
         background: #BEBEBE;
         display: flex;
-        margin-top: 49px;
+        margin-top: 50px;
     }
     a.bx--header__name {
-        font-size: 0.875rem;
         display: none;
-        align-items: center;
-        height: 100%;
-        padding: 0 1rem;
         text-decoration: none;
-        font-weight: 600;
-        letter-spacing: 0.1px;
-        line-height: 20px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
     }
     .bx--header__action {
-        font-family: "ibm-plex-sans", Helvetica Neue, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        letter-spacing: 0;
-        display: none;
+        display: flex;
         background: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        border: 0;
-        padding: 0;
-        cursor: pointer;
-        width: 100%;
-        width: 3rem;
-        height: 3rem;
-        border: 0.1875rem solid transparent;
     }
-    @media (min-width: 576px){
-.bx--grid {
-    margin-left: 0%;
-     margin-right: 0%; 
-     padding-left: 0px; 
-     padding-right: 0px; 
-}
-}
 .bx--grid {
     margin-left: 0%;
      margin-right: 0%; 
@@ -287,4 +274,23 @@ span.bx--list-box__label {
     background-color: white;
     z-index: 1;
     color: #3d70b2;
+}
+
+.bx--header__action {
+    font-family: "ibm-plex-sans", Helvetica Neue, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0;
+    display: none;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    width: 3rem;
+    height: 3rem;
+    border: 0.1875rem solid transparent;
 }

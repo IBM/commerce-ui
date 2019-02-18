@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     }
   ];
   selected(){
-    if(this.listItems.)
+    if(this.listItems){}
   }
   
   constructor(private _AR: ActivatedRoute, private router: Router) { }

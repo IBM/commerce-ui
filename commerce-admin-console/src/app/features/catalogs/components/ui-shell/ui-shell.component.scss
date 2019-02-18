@@ -14,6 +14,14 @@
     text-overflow: ellipsis !important;
 
 }
+.toolbardropdown{
+    
+    display: inline-block !important;
+    white-space: nowrap !important;
+     width:20px;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
 .ibmheadersearch{
     position: absolute !important;
     right:30px !important;
@@ -24,6 +32,60 @@
 .bx--header__menu-item{
     fill: #f3f3f3;
 }
+.bx--toolbar {
+    font-family: "ibm-plex-sans", Helvetica Neue, Arial, sans-serif;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 0rem 0;
+    background-color: #3d70b2;
+    height: 3rem;
+    fill: white;
+}
+.bx--toolbar .bx--search-input {
+    height: 2rem;
+    background-color: white;
+    outline: none;
+}
 
+.dropdownnav {
+    background-color: #3d70b2;
+    color: white;
+    font-size: 16px;
+    border: none;
+    outline: 1px solid transparent;
+    text-decoration: underline;
+    color: #152935;
+}
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1 !important;
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
 
+  .dropdown-content a:hover {background-color: #3d70b2;}
+  
+    .dropdown:hover .dropdown-content {
+        display: block;
+      }
+  
+    .dropdown:hover .dropbtn {background-color: #3d70b2;}
+   
+  
+ 
 
