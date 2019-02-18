@@ -182,8 +182,10 @@
 } 
 .containerClass{
   margin-left: 0.5%;
-  width: 100%;
   display: inline-block;
   position: absolute;
-  background-color: #f1f1f1 !important;
+    width: 78%;
+    background-color: #f1f1f1 !important;
+    height: 438px;
+    // overflow: scroll;
 }
