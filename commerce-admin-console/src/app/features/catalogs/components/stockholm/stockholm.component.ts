@@ -58,56 +58,32 @@ export class StockholmComponent implements OnInit {
 
   private readonly headerIndex = {
     '0': {
-<<<<<<< HEAD
       'translateId': 'CATALOGS.STOCKHOLM.sequence',
-=======
-      'translateId': 'CATALOGS.EXTENDED_SITES_TABLE.SEQUENCE',
->>>>>>>  Added git catalog store branch for sidebar components
       'sortOrderAscId': 'A-approvalStatusId',
       'sortOrderDescId': 'D-approvalStatusId'
     },
     '1': {
-<<<<<<< HEAD
       'translateId': 'CATALOGS.STOCKHOLM.type',
-=======
-      'translateId': 'CATALOGS.EXTENDED_SITES_TABLE.TYPE',
->>>>>>>  Added git catalog store branch for sidebar components
       'sortOrderAscId': '',
       'sortOrderDescId': ''
     },
     '2': {
-<<<<<<< HEAD
       'translateId': 'CATALOGS.STOCKHOLM.store',
-=======
-      'translateId': 'CATALOGS.EXTENDED_SITES_TABLE.STORE',
->>>>>>>  Added git catalog store branch for sidebar components
       'sortOrderAscId': 'A-flowTypeId',
       'sortOrderDescId': 'D-flowTypeId'
     },
     '3': {
-<<<<<<< HEAD
       'translateId': 'CATALOGS.STOCKHOLM.code',
-=======
-      'translateId': 'CATALOGS.EXTENDED_SITES_TABLE.CODE',
->>>>>>>  Added git catalog store branch for sidebar components
       'sortOrderAscId': 'A-stateId',
       'sortOrderDescId': 'D-stateId'
     },
     '4': {
-<<<<<<< HEAD
       'translateId': 'CATALOGS.STOCKHOLM.name',
-=======
-      'translateId': 'CATALOGS.EXTENDED_SITES_TABLE.NAME',
->>>>>>>  Added git catalog store branch for sidebar components
       'sortOrderAscId': 'A-submitTime',
       'sortOrderDescId': 'D-submitTime'
     },
     '5': {
-<<<<<<< HEAD
       'translateId': 'CATALOGS.STOCKHOLM.display_to_customers',
-=======
-      'translateId': 'CATALOGS.EXTENDED_SITES_TABLE.DISPLAY_TO_CUSTOMERS',
->>>>>>>  Added git catalog store branch for sidebar components
       'sortOrderAscId': 'A-submitTime',
       'sortOrderDescId': 'D-submitTime'
     }

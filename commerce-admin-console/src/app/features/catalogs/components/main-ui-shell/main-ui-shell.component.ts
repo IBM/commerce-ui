@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges, TemplateRef,ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-main-ui-shell',
@@ -10,7 +10,9 @@ export class MainUiShellComponent implements OnInit {
 
   constructor() { }
 
+  // @Input() size = 'sm';
+  // @Input() ibmButton='primary';
+
   ngOnInit() {
   }
-  menuClicked: () => {};
 }
