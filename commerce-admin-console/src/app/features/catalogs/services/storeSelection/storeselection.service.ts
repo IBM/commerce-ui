@@ -5,16 +5,28 @@ import { Injectable } from '@angular/core';
 })
 export class StoreselectionService {
 
-  initialLoad:boolean = true;
+  navToStockCAS:boolean = false;
   navToMaster:boolean = false;
+  navToStock:boolean= false;
 
   set(){
-    debugger;
+    //debugger;
     this.navToMaster = true;
   }
   get(){
    return this.navToMaster;
   }
-
+  setStockCAS(){
+    this.navToStockCAS = true;
+  }
+  getStockCAS(){
+   return this.navToStockCAS;
+  }
+  setStock(){
+    this.navToStock = true;
+  }
+  getStock(){
+   return this.navToStock;
+  }
   constructor() { }
 }

@@ -5,21 +5,21 @@
   <div class="toolbar">
     <ibm-icon-arrow-right32></ibm-icon-arrow-right32>
   </div>
-  <div class="toolbar">
-    <ibm-icon-add-alt32></ibm-icon-add-alt32>
+  <div class="dropdown">
+    <button class="dropdownnav"><ibm-icon-add-alt32></ibm-icon-add-alt32></button>
+    <div class="dropdown-content">
+      <a href="#">{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_INCLUDING_SKUS' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_EXCLUDING_SKUS' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.CATEGORIES' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.SALES_CEGORIES' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.PRODUCTS' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.SKUS' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.BUNDLES' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.KITS' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.ATTRIBUTE_DICTIONARY_ATTRIBUTE' | translate }}</a>
+      <a href="#">{{ 'CATALOGS.UI_SHELL.CATALOG' | translate }}</a>
+    </div>
   </div>
-  <!-- <ibm-header-menu>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_INCLUDING_SKUS' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_EXCLUDING_SKUS' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.CATEGORIES' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.SALES_CEGORIES' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.PRODUCTS' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.SKUS' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.BUNDLES' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.KITS' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.ATTRIBUTE_DICTIONARY_ATTRIBUTE' | translate }}</ibm-header-item>
-      <ibm-header-item>{{ 'CATALOGS.UI_SHELL.CATALOG' | translate }}</ibm-header-item>
-    </ibm-header-menu> -->
   <div class="toolbar">
     <ibm-icon-stop-outline32></ibm-icon-stop-outline32>
   </div>
@@ -42,7 +42,7 @@
     <ibm-icon-screen32></ibm-icon-screen32>
   </div>
 
-  <!-- <ibm-header-item> -->
+  <!-- <li> -->
   <div class="ibmheaderdropdown">
     <ibm-dropdown>
       <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>

@@ -1,39 +1,40 @@
 <section class="sidenav">
-    <p>
-        <ibm-dropdown>
-            <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
-        </ibm-dropdown>
-    </p>
-    <!-- <div class="masterSection">
+            <p>
+                <ibm-dropdown>
+                    <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                </ibm-dropdown>
+            </p>
+            <!-- <div class="masterSection">
                 <button ibmButton (click) ="navigateToMaster()">
                     <span class="iconFontSizeSection"><i class="fas fa-bars"></i></span>
                     <label class="headAlertTxtSection"><span class="exclaIconSection"><i class='fas fa-exclamation-circle'></i></span></label>
                     <sup><span class="starFontSection"><i class="fas fa-star-of-life"></i></span></sup>New Master Category</button>
-            </div> -->
-    <!-- <ng-template #aurora> -->
+            </div> --> 
+    <!-- <ng-template #aurora> 
+        </ng-template>-->
 
 
             <!-- <span *ngIf="abc">
     </span> -->
 
-    <div *ngIf="sideBar">
+    <!-- <div *ngIf="sideBar2">
         <button ibmButton (click)="navigateToMaster()">New Master Category</button>
-    </div>
+    </div> -->
 
-    <!-- <div *ngIf="initialLoad">
+    <!-- <div *ngIf="sideBar">
         <button ibmButton (click)="navigateToSearch()">Search Results</button>
-    </div>
-    <div>
+    </div> -->
+    <div *ngIf="sideBar">
         <button ibmButton (click)="navigateToExtend()">ExtendedSitesCatalogAssetStore</button>
     </div>
     
-    <div>
+    <div *ngIf="sideBar1">
         <button ibmButton (click)="navigateToStockCAS()">StockholmCAS</button>
     </div>
-    </ng-template>
-    <div>
+    
+    <div *ngIf="sideBar2">
         <button ibmButton (click)="navigateToStock()">Stockholm</button>
-    </div> -->
+    </div>
 
 
 </section>

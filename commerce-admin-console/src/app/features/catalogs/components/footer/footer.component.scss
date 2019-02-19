@@ -1,5 +1,16 @@
 /* Set black background color, white text and some padding */
-footer {
+// footer {
+//     background-color: #555;
+//     color: white;
+//     padding: 10px;
+//     margin-left: -0.8%;
+//     margin-right: -0.8%;
+//     display: flex;
+   
+// }
+.flex-container {
+    display: flex;
+    justify-content: center;
     background-color: #555;
     color: white;
     padding: 10px;

@@ -46,8 +46,7 @@ UIShellModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent,
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UiShellComponent, UnderconstructionComponent,
-MainUiShellComponent, UnassignedCatEntriesComponent,StockholmComponent,
-StockHolmCASComponent],
+StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent ],
 
 
 providers: [ModalService],

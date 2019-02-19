@@ -10,23 +10,21 @@ import { StoreselectionService } from '../../services/storeSelection/storeselect
 export class SideBarComponent implements OnInit {
  
   sideBar:boolean=false;
-
-  title: 'NewMasterCotegory';
-  navToStock:boolean;
-  sequence = '';
-  type = '';
-  displaytocust
+  sideBar1:boolean=false;
+  sideBar2:boolean=false;
+  // sideBar3:boolean=false;
+  
+ 
   constructor(private router: Router, private storesele: StoreselectionService) { }
 
 
 
   ngOnInit() {
    
-    // let abc = this.storesele.initialLoad;
-    // sidebar components  for recent push to git for reference
-
     // abc = true;
     this.sideBar=this.storesele.get();
+    this.sideBar1=this.storesele.getStockCAS();
+    this.sideBar2=this.storesele.getStock();
     
   }
 
