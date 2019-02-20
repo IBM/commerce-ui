@@ -10,7 +10,9 @@ import com.ibm.commerce.cmc.ui.utils.TestUtil;
 public class SearchResultsPage extends TestBase {
 	public SearchResultsPage(){
 		PageFactory.initElements(driver, this);
+		
 		}
+	
 	
 	@FindBy(xpath="//button[contains(text(),'Search Result')]")
 	WebElement searchResultsinExplorerView;
