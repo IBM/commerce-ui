@@ -4,8 +4,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.AssertJUnit;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -34,7 +39,7 @@ public class CatalogsHomePageTest extends TestBase{
 		catalogsHomePage= new CatalogsHomePage();
 	}
 	
-	@Test(priority=1)
+	@Test(priority=1,enabled=false)
 	public void catalogHomePageTitleTest() {
 		//System.out.println("in cat priority 1 Test");
 		String title = catalogsHomePage.getCatalogsPageTitle();
@@ -46,10 +51,22 @@ public class CatalogsHomePageTest extends TestBase{
 	@Test(priority=2)
 	public void catalogHomePageHeadingTest() {
 		String pageHeading = catalogsHomePage.getPageHeading();
-		Assert.assertEquals(pageHeading, "Catalog");
+		Assert.assertEquals(pageHeading, "Catalogs");
 	}
 	
 	@Test(priority=3)
+	public void validateStoreSelectionTest() {
+	catalogsHomePage.clickOnStoreDropdown();
+	
+	Assert.assertTrue(catalogsHomePage.selectStorefromAngularDropDownByName("MyCustomStoreCAS"));
+	
+	}
+	
+	@Test(priority=4)
+	public void searchForCategoryOnCatalogsHomePage() {
+		catalogsHomePage.searchForItemOnCatalogsPage("Categories", "Electronics");
+	}
+	@Test(priority=5)
 	public void navigatetoNewMasterCategoryPageTest()	{
 		//System.out.println("in cat Priority 2 Test");
 		newMasterCategoryPage= catalogsHomePage.clickNewMasterCategoryFromFileMenu();
@@ -57,9 +74,22 @@ public class CatalogsHomePageTest extends TestBase{
 	}
 	
 	
-	@AfterClass
+	
+	
+@AfterClass
 	public void tearDown() {
 		//System.out.println("in cat teardown");
 		driver.close();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

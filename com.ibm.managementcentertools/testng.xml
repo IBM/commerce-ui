@@ -20,4 +20,9 @@
    <class name="com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest"/>
    </classes>
   </test>
+  <test name="SearchResultsPage">
+  <classes>
+   <class name="com.ibm.commerce.cmc.catalogs.testcases.SearchResultsPageTest"/>
+   </classes>
+  </test>
 </suite> <!-- Suite -->

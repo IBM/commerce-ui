@@ -1,11 +1,13 @@
 package com.ibm.commerce.cmc.catalogs.testcases;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import org.testng.annotations.BeforeMethod;
 
 //import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -14,6 +16,7 @@ import org.testng.annotations.Test;
 import com.ibm.commerce.cmc.base.TestBase;
 import com.ibm.commerce.cmc.ui.catalogs.pages.CatalogsHomePage;
 import com.ibm.commerce.cmc.ui.catalogs.pages.NewMasterCategoryPage;
+import com.ibm.commerce.cmc.ui.utils.TestUtil;
 
 public class CreateNewMasterCategoryTest extends TestBase {
 	NewMasterCategoryPage newMasterCategoryPage;
@@ -137,14 +140,24 @@ public class CreateNewMasterCategoryTest extends TestBase {
 		Assert.assertEquals(associatedStoreDisplayed, "AuroraESite");
 		newMasterCategoryPage.clickObjectPropertiesAccordion();
 	}
-
+	
 	@Test(priority = 12)
 	public void validateManageCategoryGeneralCategoryInformationUniqueIdFieldNameTest() {
 
 		newMasterCategoryPage.clickGeneralCategoryInformationAccordion();
 
-		String uniqueIdFieldName = newMasterCategoryPage.getUniqueIDCodeFieldText();
-		Assert.assertEquals(uniqueIdFieldName, "Unique ID Code");
+		String uniqueIDFieldName = newMasterCategoryPage.getUniqueIDFieldText();
+		Assert.assertEquals(uniqueIDFieldName, "Unique ID");
+
+	}
+
+	@Test(priority = 12)
+	public void validateManageCategoryGeneralCategoryInformationCodeFieldNameTest() {
+
+		//newMasterCategoryPage.clickGeneralCategoryInformationAccordion();
+
+		String codeFieldName = newMasterCategoryPage.getCodeFieldText();
+		Assert.assertEquals(codeFieldName, "Code");
 
 	}
 
@@ -278,6 +291,72 @@ public class CreateNewMasterCategoryTest extends TestBase {
 		newMasterCategoryPage.inputSearchEngineOptimizationInformation("URL Information", "pageTitle",
 				"metaDescription", "imageAltText");
 	}
+	
+	@Test(priority=34)
+	public void verifyAllColumnsDisplayedUnderAssociatedAssetsTab() {
+		TestUtil.scrollByPixels(0,-1000);
+		newMasterCategoryPage.clickAssociatedAssertsTab();
+		newMasterCategoryPage.clickOnAssociatedAssetsAccordion();
+		
+		SoftAssert sa = new SoftAssert();
+		sa.assertTrue(newMasterCategoryPage.isAASequenceColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isAATypeColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isAAStoreColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isAAPathColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isAACodeColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isAAUsageColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isAAAdminNameColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isAADisplayNameColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isAAShortDescriptionColumnExists());
+		sa.assertAll();
+		
+
+	}
+	
+	@Test(priority=35)
+	public void verifyAllColumnsDisplayedUnderContentTab() {
+		
+		newMasterCategoryPage.clickContentTab();
+		newMasterCategoryPage.clickOnContentAccordion();
+		
+		SoftAssert sa = new SoftAssert();
+		sa.assertTrue(newMasterCategoryPage.isContentLanguageColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isContentIdentifierColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isContentNameColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isContentContentTypeColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isContentDescriptionColumnExists());
+		
+		sa.assertAll();
+		
+
+	}
+	
+	@Test(priority=36, description=" this is only applicable for Extended Stores...")
+	public void verifyAllColumnsDisplayedUnderReferencesTab() {
+		
+		newMasterCategoryPage.clickReferencesTab();
+		newMasterCategoryPage.clickOnMarketingActivitiesAccordion();
+		
+		SoftAssert sa = new SoftAssert();
+		sa.assertTrue(newMasterCategoryPage.isReferencesMATypeColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isReferencesMAStatusColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isReferencesMAStoreColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isReferencesMANameColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isReferencesMADescriptionColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isReferencesMAStartDateColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isReferencesMAEndDateColumnExists());
+		sa.assertTrue(newMasterCategoryPage.isReferencesMACampaignColumnExists());
+		
+		sa.assertAll();
+		
+
+	}
+	
+	@Test(priority=37)
+	public void saveNewMasterCategory() {
+		newMasterCategoryPage.clickOnSaveButton();
+	}
+	
 
 	@AfterClass
 	public void tearDown() {

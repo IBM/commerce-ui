@@ -10,8 +10,8 @@
       <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest">
         <methods>
           <include name="tearDown"/>
+          <include name="validateStoreSelectionTest"/>
           <include name="setUp"/>
-          <include name="catalogHomePageTitleTest"/>
         </methods>
       </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest -->
     </classes>
@@ -20,17 +20,18 @@
     <classes>
       <class name="com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest">
         <methods>
+          <include name="verifyAllColumnsDisplayedUnderAssociatedAssetsTab"/>
+          <include name="validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioAutoSelectTest"/>
+          <include name="tearDown"/>
           <include name="validateManageCategoryDisplayAccordionFullImageFieldTest"/>
           <include name="validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioAutoSelectTest"/>
           <include name="validateSearchEngineOptimizationImageAltTextOverrideDefaultRadioTest"/>
+          <include name="validateManageCategoryGeneralCategoryInformationCodeFieldNameTest"/>
           <include name="validateSearchEngineOptimizationPageTitleOverrideDefaultRadioAutoSelectTest"/>
-          <include name="validateManageCategoryGeneralCategoryInformationUniqueIdFieldNameTest"/>
           <include name="validateSearchEngineOptimizationImageAltTextUseDefaultRadioTest"/>
           <include name="validateSearchEngineOptimizationPageTitleUseDefaultRadioTest"/>
           <include name="validateSearchEngineOptimizationURLKeywordFieldTest"/>
           <include name="setUp"/>
-          <include name="validateSearchEngineOptimizationMetaDescriptionOverrideDefaultRadioAutoSelectTest"/>
-          <include name="tearDown"/>
           <include name="validateSearchEngineOptimizationMetaDescriptionUseDefaultRadioTest"/>
         </methods>
       </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CreateNewMasterCategoryTest -->
@@ -42,9 +43,24 @@
         <methods>
           <include name="tearDown"/>
           <include name="extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest"/>
+          <include name="verifyAllColumnsClickable"/>
           <include name="setUp"/>
+          <include name="verifyAllColumnsDisplayedOnThePage"/>
         </methods>
       </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest -->
     </classes>
   </test> <!-- ExtendedSitesCatalogAssetStoreCategoriesList(failed) -->
+  <test thread-count="5" name="SearchResultsPage(failed)">
+    <classes>
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.SearchResultsPageTest">
+        <methods>
+          <include name="verifyAllColumnsDisplayedOnThePage"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="veriverifyAllColumnsClickable"/>
+          <include name="searchResultsPageHeadingTest"/>
+        </methods>
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.SearchResultsPageTest -->
+    </classes>
+  </test> <!-- SearchResultsPage(failed) -->
 </suite> <!-- Failed suite [Suite] -->
