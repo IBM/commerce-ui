@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest">
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest">
         <methods>
           <include name="tearDown"/>
-          <include name="extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest"/>
+          <include name="searchForCategoryOnCatalogsHomePage"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest -->
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
