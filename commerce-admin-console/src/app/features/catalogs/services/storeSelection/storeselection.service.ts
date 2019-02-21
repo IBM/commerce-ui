@@ -9,6 +9,7 @@ export class StoreselectionService {
   navToMaster:boolean = false;
   navToStock:boolean= false;
   navToUnassigned:boolean = false;
+  navToExtendedSite:boolean = false;
 
   set(){
     //debugger;
@@ -29,11 +30,17 @@ export class StoreselectionService {
   getStock(){
    return this.navToStock;
   }
-setUnassignedCatEntries(){
-  this.navToUnassigned = true;
-}
-getUnassignedCatEntries(){
-  return this.navToUnassigned;
-}
+  setUnassignedCatEntries(){
+    this.navToUnassigned = true;
+  }
+  getUnassignedCatEntries(){
+    return this.navToUnassigned;
+  }
+  setExtendedSite(){
+    this.navToExtendedSite = true;
+  }
+  getExtendedSite(){
+    return this.navToExtendedSite;
+  }
   constructor() { }
 }

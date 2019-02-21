@@ -17,28 +17,27 @@
             <!-- <span *ngIf="abc">
     </span> -->
 
-    <div *ngIf="sideBar1">
+    <!-- <div>
         <button ibmButton (click)="navigateToMaster()">New Master Category</button>
-    </div>
-
-    <div *ngIf="sideBar2">
+    </div> -->
+    <div *ngIf="sideBar">
         <button ibmButton (click)="navigateToSearch()">Search Results</button>
     </div>
-    <div *ngIf="sideBar3">
-        <button ibmButton (click)="navigateToExtend()">ExtendedSitesCatalogAssetStore</button>
-    </div>
-    <div *ngIf="sideBar4">
+    <div *ngIf="sideBar1">
         <button ibmButton (click)="navigateToStockCAS()">StockholmCAS</button>
     </div>
-    <div *ngIf="sideBar5">
+    <div *ngIf="sideBar2">
         <button ibmButton (click)="navigateToStock()">Stockholm</button>
     </div>
-    <div *ngIf="sideBar6">
+    <div *ngIf="sideBar3">
         <button ibmButton (click) ="navigateToUnassigned()">Unassigned Catalog Entries</button>
     </div>
-    <div *ngIf="sideBar7">
-            <button ibmButton (click) ="navigateToCatalogUpload()">Catalog Uploads</button>
-        </div>
+    <div *ngIf="sideBar4">
+        <button ibmButton (click)="navigateToExtend()">ExtendedSitesCatalogAssetStore</button>
+    </div>
+    <div *ngIf="sideBar5">
+        <button ibmButton (click) ="navigateToCatalogUpload()">Catalog Uploads</button>
+    </div>
         
 
 </section>

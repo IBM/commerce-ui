@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit {
       this.storesele.set();
       this.router.navigate(['/catalogs/extendedSite']);
       this.storesele.navToUnassigned = true;
+      this.storesele.navToExtendedSite = true;
       this.storesele.navToStockCAS = false;
       this.storesele.navToStock = false;
     }
@@ -75,6 +76,7 @@ export class HeaderComponent implements OnInit {
       //console.log(ev);
       this.storesele.setStockCAS();
       this.router.navigate(['/catalogs/stockholmcas']);
+      this.storesele.navToExtendedSite = false;
       this.storesele.navToMaster = false;
       this.storesele.navToStock = false;
 
@@ -84,6 +86,7 @@ export class HeaderComponent implements OnInit {
     if (ev.item.content === "Stockholm") {
       this.storesele.setStock();
       this.router.navigate(['/catalogs/stockholm']);
+      this.storesele.navToExtendedSite = false;
       this.storesele.navToStockCAS = false;
       this.storesele.navToMaster = false;
 
