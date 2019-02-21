@@ -10,6 +10,9 @@ import { UnderconstructionComponent } from './components/underconstruction/under
 import { StockHolmCASComponent } from './components/stock-holm-cas/stock-holm-cas.component';
 import { StockholmComponent } from './components/stockholm/stockholm.component';
 import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component'
+import { CatalogUploadComponent } from './components/catalog-upload/catalog-upload.component';
+import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-catalog-upload.component';
+
 
 
 const routes: Routes = [
@@ -36,7 +39,14 @@ const routes: Routes = [
 },
 {
     path: 'unassignedCatEntries', component: UnassignedCatEntriesComponent
+},
+{
+    path: 'catalogUpload', component: CatalogUploadComponent
+},
+{
+    path: 'newCatalogUpload', component: NewCatalogUploadComponent
 }
+
 ];
 
 @NgModule({

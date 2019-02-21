@@ -8,16 +8,17 @@
   <div class="dropdown">
     <button class="dropdownnav"><ibm-icon-add-alt32></ibm-icon-add-alt32></button>
     <div class="dropdown-content">
-      <a href="#">{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_INCLUDING_SKUS' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_EXCLUDING_SKUS' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.CATEGORIES' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.SALES_CEGORIES' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.PRODUCTS' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.SKUS' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.BUNDLES' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.KITS' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.ATTRIBUTE_DICTIONARY_ATTRIBUTE' | translate }}</a>
-      <a href="#">{{ 'CATALOGS.UI_SHELL.CATALOG' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_INCLUDING_SKUS' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.ALL_CATALOG_ENTRIES_EXCLUDING_SKUS' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.CATEGORIES' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.SALES_CEGORIES' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.PRODUCTS' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.SKUS' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.BUNDLES' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.KITS' | translate }}</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.ATTRIBUTE_DICTIONARY_ATTRIBUTE' | translate }}</a>
+      <a routerLink="" (click)=navigateToNewCatalogUpload()>Catalog Upload</a>
+      <a routerLink="">{{ 'CATALOGS.UI_SHELL.CATALOG' | translate }}</a>
     </div>
   </div>
   <div class="toolbar">

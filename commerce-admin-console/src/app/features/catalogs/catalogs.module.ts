@@ -5,7 +5,7 @@ import { CatalogsRoutingModule } from './catalogs-routing.module';
 import { IconModule } from '@carbon/icons-angular';
 import { ButtonModule,
     TabsModule, AccordionModule, CheckboxModule, RadioModule, TableModule, DropdownModule,
-LinkModule, ModalModule, SearchModule, PlaceholderModule, DialogModule, UIShellModule  } from 'carbon-components-angular';
+LinkModule, ModalModule, SearchModule, PlaceholderModule, DialogModule, UIShellModule, FileUploaderModule, NotificationModule  } from 'carbon-components-angular';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
@@ -19,9 +19,11 @@ import { ModalService } from 'carbon-components-angular';
 import { UnderconstructionComponent } from './components/underconstruction/underconstruction.component';
 import { UiShellComponent } from './components/ui-shell/ui-shell.component'
 import { MainUiShellComponent } from './components/main-ui-shell/main-ui-shell.component';
-import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component';
 import { StockHolmCASComponent } from './components/stock-holm-cas/stock-holm-cas.component';
 import { StockholmComponent } from './components/stockholm/stockholm.component';
+import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component';
+import { CatalogUploadComponent } from './components/catalog-upload/catalog-upload.component';
+import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-catalog-upload.component';
 
 @NgModule({
 imports: [
@@ -42,11 +44,13 @@ SearchModule,
 PlaceholderModule,
 DialogModule,
 IconModule,
-UIShellModule
+UIShellModule,
+FileUploaderModule,
+NotificationModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent,
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UiShellComponent, UnderconstructionComponent,
-StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent ],
+StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent, CatalogUploadComponent, NewCatalogUploadComponent ],
 
 
 providers: [ModalService],
