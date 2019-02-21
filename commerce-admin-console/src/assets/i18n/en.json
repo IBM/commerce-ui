@@ -461,6 +461,18 @@
             "CODE": "* Code",
             "NAME": "* Name",
             "DISPLAY_TO_CUSTOMERS": "Display to customers"
+        },
+        "UNASSIGNED_CATALOG_ENTRIES": {
+            "CATALOG_ENTRIES_LIST": "Unassigned Catalog Entries - Catalog Entries List",
+            "TYPE": "* Type",
+            "STORE": "Store",
+            "CODE": "* Code",
+            "NAME": "Name",
+            "THUMBNAIL": "Thumbnail",
+            "DISPLAY_TO_CUSTOMERS": "Display to Customers",
+            "BUYABLE": "Buyable",
+            "MANUFACTURER_PART_NUMBER": "Manufacturer Part Number",
+            "MANUFACTURER_NAME": "Manufacturer Name"
         }
 
     }
