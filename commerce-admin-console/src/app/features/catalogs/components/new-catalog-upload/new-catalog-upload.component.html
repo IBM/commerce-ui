@@ -1,0 +1,72 @@
+<app-main-ui-shell></app-main-ui-shell>
+<ac-header></ac-header>
+<app-ui-shell></app-ui-shell>
+
+<div class="row">
+  <div class="side-width">
+    <ac-side-bar></ac-side-bar>
+  </div>
+  <div class="containerClass">
+    <div class="headTextMargin">
+      <label>
+        <ibm-icon-catalog32></ibm-icon-catalog32>
+        <span id="header-text" class="mstrCtgry">{{ 'CATALOGS.NEW_CATALOG_UPLOAD.HEADER' | translate }}</span>
+        <p class="specifyTxt">
+          <ibm-icon-warning-filled16 id="warning-icon" class="icon-svg-warning"></ibm-icon-warning-filled16>
+          <span class="warn">{{ 'CATALOGS.NEW_CATALOG_UPLOAD.ERROR_MSG' | translate }}</span>
+        </p>
+      </label>
+    </div>
+    <div class="header-btn">
+      <button ibmButton size="sm" id="save-btn" class="saveBtn" (click)="saveCatalogData()">{{
+        'CATALOGS.NEW_CATALOG_UPLOAD.SAVE' | translate }}</button>
+      <button ibmButton="secondary" id="close-btn" size="sm" (click)="closeCatalogUpload()">{{
+        'CATALOGS.NEW_CATALOG_UPLOAD.CLOSE' | translate }}</button>
+    </div>
+    <div class="headerTabs">
+      <ibm-tabs>
+        <ibm-tab heading="{{ 'CATALOGS.NEW_CATALOG_UPLOAD.MANAGE_CATALOG_UPLOAD' | translate }}">
+        </ibm-tab>
+      </ibm-tabs>
+    </div>
+    <ibm-accordion>
+      <ibm-accordion-item title="Main Properties">
+        <div class="general-div">
+          <div class="uniqueFont" id="thumbnail-text">{{ 'CATALOGS.NEW_CATALOG_UPLOAD.FILENAME' | translate }}</div>
+          <div class="general-input" class="input-size">
+            <ibm-file-uploader [title]="title" [description]="description" [buttonText]="buttonText" [accept]="accept"
+              [multiple]="multiple"  (change)="getFileDetails($event, Filesize.value, Filename.value) " >
+            </ibm-file-uploader>
+            <div class="general-input">
+                <!-- <input type="number" id="thumbnail" class="input-size" [(ngModel)]="thumbnail" (change)="getFileSize($event)"></div> -->
+              <input type='text' [value]="filename" #Filename class="input" disabled/>
+              </div>
+          </div>
+        </div>
+        <div class="general-div">
+          <div class="uniqueFont" id="thumbnail-text">{{ 'CATALOGS.NEW_CATALOG_UPLOAD.SIZE' | translate }}</div>
+          <div class="general-input"> 
+           <input type='text' [value]="size" #Filesize class="input-size" disabled/>
+            </div>  
+        </div>
+        <div class="general-div">
+          <div class="uniqueFont" id="thumbnail-text">{{ 'CATALOGS.NEW_CATALOG_UPLOAD.CHAR_SET' | translate }}</div>
+          <div class="general-input" class="input-size">
+            <ibm-dropdown>
+              <ibm-dropdown-list [items]="listItm"></ibm-dropdown-list>
+            </ibm-dropdown>
+          </div>
+        </div>
+        <div class="general-div">
+          <div class="uniqueFont" id="thumbnail-text">{{ 'CATALOGS.NEW_CATALOG_UPLOAD.TARGET_CATALOG' | translate }}</div>
+          <div class="general-input" class="input-size">
+            <ibm-dropdown>
+              <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+            </ibm-dropdown>
+          </div>
+        </div>
+      </ibm-accordion-item>
+    </ibm-accordion>
+  </div>
+</div>
+<ac-footer></ac-footer>

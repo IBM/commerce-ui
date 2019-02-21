@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, AfterViewInit, TemplateRef } from '@angular/core';
-import { UIShellModule } from 'carbon-components-angular'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ui-shell',
@@ -9,7 +9,7 @@ import { UIShellModule } from 'carbon-components-angular'
 })
 export class UiShellComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _AR: ActivatedRoute, private router: Router) { }
 
   @Input() size = 'sm';
   @Input() theme = 'dark';
@@ -62,7 +62,9 @@ export class UiShellComponent implements OnInit {
       selected: false
     }
   ];
-
+  navigateToNewCatalogUpload(): void{
+  this.router.navigate(["/catalogs/newCatalogUpload"]);
+  }
   ngOnInit() {
   }
   menuClicked: () => {};

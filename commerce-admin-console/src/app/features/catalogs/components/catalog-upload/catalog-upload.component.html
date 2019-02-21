@@ -1,0 +1,31 @@
+<app-main-ui-shell></app-main-ui-shell>
+<ac-header></ac-header>
+<app-ui-shell></app-ui-shell>
+
+  <div class="row">
+      <div class="side-width">
+        <ac-side-bar></ac-side-bar>
+      </div>
+      <div class="content-width">
+          <div style="text-align:center"><br>
+            <h3>
+              <span>
+                  <ibm-icon-catalog32></ibm-icon-catalog32>
+              </span>{{ 'CATALOGS.CATALOG_UPLOADS.HEADER' | translate }}</h3><br>
+          </div>
+          <div class="headTextMargin">
+              <ibm-table [model]="model" [showSelectionColumn]="showSelectionColumn" [size]="size" [striped]="striped" (sort)="simpleSort($event)">
+              </ibm-table>
+              <ng-template #customHeaderTemplate>
+                <div style="width: 230px">
+                  <ibm-dropdown placeholder="Store" [disabled]="disabled" (selected)="selected($event)" (onClose)="onClose($event)">
+                    <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                  </ibm-dropdown>
+                </div>
+              </ng-template>
+            </div>
+      </div>
+      </div>
+      <div>
+      <ac-footer></ac-footer>
+    </div>
