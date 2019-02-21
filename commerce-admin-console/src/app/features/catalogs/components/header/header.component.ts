@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["/catalogs/masterCategory"]);
   }
   selected(ev) {
-    // if (ev.item != undefined && ev.item.content != undefined) {
+    if (ev.item != undefined && ev.item.content != undefined) {
     //   //debugger;
     if (ev.item.content === "AuroraESite" || ev.item.content === "ExtendedSitesCatalogAssetStore") {
       this.storesele.set();
@@ -69,6 +69,7 @@ export class HeaderComponent implements OnInit {
       this.storesele.navToStockCAS = false;
       this.storesele.navToStock = false;
     }
+  
     if (ev.item.content === "StockholmCAS") {
 
       //console.log(ev);
@@ -87,6 +88,7 @@ export class HeaderComponent implements OnInit {
       this.storesele.navToMaster = false;
 
     }
+  }
   }
 }
 
