@@ -33,7 +33,7 @@
     <div *ngIf="sideBar2">
         <button ibmButton (click)="navigateToStock()">Stockholm</button>
     </div>
-    <div>
+    <div *ngIf="sideBar3">
         <button ibmButton (click) ="navigateToUnassigned()">Unassigned Catalog Entries</button>
     </div>
 

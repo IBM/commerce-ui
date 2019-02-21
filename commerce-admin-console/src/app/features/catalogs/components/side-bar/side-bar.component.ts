@@ -12,7 +12,7 @@ export class SideBarComponent implements OnInit {
   sideBar:boolean=false;
   sideBar1:boolean=false;
   sideBar2:boolean=false;
-  // sideBar3:boolean=false;
+  sideBar3:boolean=false;
  
   constructor(private router: Router, private storesele: StoreselectionService) { }
 
@@ -21,6 +21,7 @@ export class SideBarComponent implements OnInit {
     this.sideBar=this.storesele.get();
     this.sideBar1=this.storesele.getStockCAS();
     this.sideBar2=this.storesele.getStock();
+    this.sideBar3=this.storesele.getUnassignedCatEntries();
   }
 
   navigateToExtend(): void {

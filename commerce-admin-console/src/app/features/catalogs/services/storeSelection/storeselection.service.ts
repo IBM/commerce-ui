@@ -8,6 +8,7 @@ export class StoreselectionService {
   navToStockCAS:boolean = false;
   navToMaster:boolean = false;
   navToStock:boolean= false;
+  navToUnassigned:boolean = false;
 
   set(){
     //debugger;
@@ -28,5 +29,11 @@ export class StoreselectionService {
   getStock(){
    return this.navToStock;
   }
+setUnassignedCatEntries(){
+  this.navToUnassigned = true;
+}
+getUnassignedCatEntries(){
+  return this.navToUnassigned;
+}
   constructor() { }
 }

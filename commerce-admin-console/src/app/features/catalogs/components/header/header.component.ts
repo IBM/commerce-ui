@@ -65,6 +65,7 @@ export class HeaderComponent implements OnInit {
     if (ev.item.content === "AuroraESite" || ev.item.content === "ExtendedSitesCatalogAssetStore") {
       this.storesele.set();
       this.router.navigate(['/catalogs/extendedSite']);
+      this.storesele.navToUnassigned = true;
       this.storesele.navToStockCAS = false;
       this.storesele.navToStock = false;
     }
