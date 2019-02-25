@@ -35,7 +35,7 @@
           <div class="uniqueFont" id="thumbnail-text">{{ 'CATALOGS.NEW_CATALOG_UPLOAD.FILENAME' | translate }}</div>
           <div class="general-input" class="input-size">
             <ibm-file-uploader [title]="title" [description]="description" [buttonText]="buttonText" [accept]="accept"
-              [multiple]="multiple"  (change)="getFileDetails($event, Filesize.value, Filename.value) " >
+              [multiple]="multiple"  (change)="getFileDetails($event) " >
             </ibm-file-uploader>
             <div class="general-input">
                 <!-- <input type="number" id="thumbnail" class="input-size" [(ngModel)]="thumbnail" (change)="getFileSize($event)"></div> -->

@@ -364,7 +364,8 @@
             "prodcut_level_sku": "Product Level SKU",
             "product": "Product",
             "Bundle": "Bundle",
-            "kit":"Kit"
+            "kit":"Kit",
+            "select_store": "Select Store"
         },
         "FOOTR": {
             "tip_help1": "Filter the message console by message type. Object error messages describe problems with your business objects.",
