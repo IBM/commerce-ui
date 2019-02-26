@@ -3,13 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest">
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.UnassignedCatalogEntriesPageTest">
         <methods>
+          <include name="veriverifyAllColumnsClickable"/>
+          <include name="verifyAllColumnsDisplayedOnThePage"/>
           <include name="tearDown"/>
-          <include name="searchForCategoryOnCatalogsHomePage"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest -->
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.UnassignedCatalogEntriesPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -81,7 +81,8 @@ public class NewMasterCategoryPage extends TestBase {
 	WebElement uniqueIdFieldText;
 
 	// @FindBy(xpath="//ul[@class='bx--accordion']/ibm-accordion-item[2]/div/div[1]/div")
-	@FindBy(xpath = "//ul[@class='bx--accordion']/ibm-accordion-item[2]//div[contains(text(), 'Code')]")
+	//@FindBy(xpath = "//ul[@class='bx--accordion']/ibm-accordion-item[2]//div[contains(text(), 'Code')]")
+	@FindBy(id="code-text")
 	WebElement codeFieldText;
 
 	// @FindBy(xpath="//ul[@class='bx--accordion']/ibm-accordion-item[2]/div/div[1]/div[2]/input")

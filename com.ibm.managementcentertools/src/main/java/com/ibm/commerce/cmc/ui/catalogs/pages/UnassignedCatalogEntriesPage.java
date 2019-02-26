@@ -17,8 +17,9 @@ public class UnassignedCatalogEntriesPage extends TestBase {
 	WebElement unassignedCatalogEntriesinExplorerView;
 	
 	//html/body/app-root/div/app-search-result/div/div[2]/div/p
-	@FindBy(className="searchheader")
+	@FindBy(xpath="//h3")
 	WebElement pageHeader;
+	//html/body/app-root/div/app-unassigned-cat-entries/div/div[2]/div/h3
 	
 	
 	
@@ -38,7 +39,7 @@ public class UnassignedCatalogEntriesPage extends TestBase {
 	@FindBy(xpath="//ibm-table//thead/tr/th[5]/button/span[contains(text(), 'Thumbnail')]")
 	WebElement column_Thumbnail;
 	
-	@FindBy(xpath="//ibm-table//thead/tr/th[6]/button/span[contains(text(), 'Display To Customer')]")
+	@FindBy(xpath="//ibm-table//thead/tr/th[6]/button/span[contains(text(), 'Display to Customer')]")
 	WebElement column_DisplayToCustomer;
 	
 	@FindBy(xpath="//ibm-table//thead/tr/th[7]/button/span[contains(text(), 'Buyable')]")
@@ -52,7 +53,7 @@ public class UnassignedCatalogEntriesPage extends TestBase {
 	
 	
 	
-	public void clickOnSearchResults() {
+	public void clickOnUnassignedCatalogEntriesinExplorerView() {
 		TestUtil.clickOnElement(unassignedCatalogEntriesinExplorerView);
 	}
 	
@@ -115,11 +116,11 @@ public class UnassignedCatalogEntriesPage extends TestBase {
 	}
 	
 	public boolean isBuyableColumnExists() {
-		return TestUtil.isElementDisplayed(column_DisplayToCustomer);
+		return TestUtil.isElementDisplayed(column_Buyable);
 	}
 	
 	public boolean isBuyableColumnClickable() {
-		return TestUtil.isClickable(column_DisplayToCustomer);
+		return TestUtil.isClickable(column_Buyable);
 	}
 	
 	public boolean isManufacturerPartNumberColumnExists() {

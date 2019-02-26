@@ -12,6 +12,7 @@ import com.ibm.commerce.cmc.ui.catalogs.pages.CatalogsHomePage;
 import com.ibm.commerce.cmc.ui.catalogs.pages.ExtendedSitesCatalogAssetStoreCategoriesListPage;
 
 public class ExtendedSitesCatalogAssetStoreCategoriesListTest extends TestBase {
+	CatalogsHomePage catalogsHomePage;
 	ExtendedSitesCatalogAssetStoreCategoriesListPage extendedSitesCatalogAssetStoreCategoriesListPage;
 	public ExtendedSitesCatalogAssetStoreCategoriesListTest()
 	{
@@ -24,6 +25,10 @@ public class ExtendedSitesCatalogAssetStoreCategoriesListTest extends TestBase {
 	public void setUp() {
 		//System.out.println("in new master setup");
 		initialization();
+		catalogsHomePage = new CatalogsHomePage();
+		catalogsHomePage.clickOnStoreDropdown();
+		
+		Assert.assertTrue(catalogsHomePage.selectStorefromAngularDropDownByName(p.getProperty("storeToSelect")));
 		extendedSitesCatalogAssetStoreCategoriesListPage= new ExtendedSitesCatalogAssetStoreCategoriesListPage();
 		
 		extendedSitesCatalogAssetStoreCategoriesListPage.clickOnExtendedSitesCatalogAssetStore();
@@ -34,7 +39,7 @@ public class ExtendedSitesCatalogAssetStoreCategoriesListTest extends TestBase {
 	@Test(priority=1)
 	public void extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest() {
 		String heading = extendedSitesCatalogAssetStoreCategoriesListPage.getPageHeading();
-		Assert.assertEquals(heading, "ExtendedSitesCatalogAssetStore - Catagories List");
+		Assert.assertEquals(heading, "ExtendedSitesCatalogAssetStore - Categories List");
 	}
 	
 	@Test(priority=2)
