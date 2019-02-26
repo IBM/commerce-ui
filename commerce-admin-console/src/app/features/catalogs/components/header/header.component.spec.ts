@@ -6,31 +6,35 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { StoreselectionService } from '../../services/storeSelection/storeselection.service';
 
+class MockHeaderService extends StoreselectionService {
+
+}
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let testBedService: StoreselectionService;
   let componentService: StoreselectionService;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule, FormsModule, TranslateModule.forRoot()],
-      declarations: [ HeaderComponent ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       imports: [RouterTestingModule, FormsModule, TranslateModule.forRoot()],
+//       declarations: [ HeaderComponent ],
+//       schemas: [CUSTOM_ELEMENTS_SCHEMA]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(HeaderComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
 
 
 
@@ -41,14 +45,16 @@ describe('HeaderComponent', () => {
 
         // refine the test module by declaring the test component
         TestBed.configureTestingModule({
-            declarations: [HeaderComponent],
+          imports: [RouterTestingModule, FormsModule, TranslateModule.forRoot()],
+          declarations: [ HeaderComponent ],
+          schemas: [CUSTOM_ELEMENTS_SCHEMA],
             providers: [StoreselectionService]
         });
 
         // Configure the component with another set of Providers
         TestBed.overrideComponent(
             HeaderComponent,
-            { set: { providers: [{ provide: StoreselectionService, useClass: MockStoreselectionService }] } }
+            { set: { providers: [{ provide: StoreselectionService, useClass: MockHeaderService }] } }
         );
 
         // create component and test fixture
@@ -60,7 +66,7 @@ describe('HeaderComponent', () => {
         // StoreselectionService provided to the TestBed
         testBedService = TestBed.get(StoreselectionService);
 
-        // StoreselectionService provided by Component, (should return MockStoreselectionService)
+        // StoreselectionService provided by Component, (should return MockHeaderService)
         componentService = fixture.debugElement.injector.get(StoreselectionService);
     });
 
@@ -70,7 +76,12 @@ describe('HeaderComponent', () => {
         })
     );
 
-    it('Service injected via component should be and instance of MockStoreselectionService', () => {
-        expect(componentService instanceof MockStoreselectionService).toBeTruthy();
+    it('Service injected via component should be and instance of MockHeaderService', () => {
+        expect(componentService instanceof MockHeaderService).toBeTruthy();
     });
+    it('should contain "Translation header!"', () => {
+   const headerElement: HTMLElement = fixture.nativeElement;
+   // const header  = headerElement.querySelector('h3')
+   expect(headerElement.textContent).toContain('CATALOGS.EXTENDED_SITES.header');
+ });
 });
