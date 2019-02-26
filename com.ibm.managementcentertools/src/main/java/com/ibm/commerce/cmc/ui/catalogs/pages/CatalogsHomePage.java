@@ -25,6 +25,12 @@ public class CatalogsHomePage extends TestBase {
 	@FindBy(xpath="//ibm-dropdown-list/ul/li")
 	List<WebElement> dropDownItems;
 	
+	@FindBy(xpath="")
+	WebElement storeSelected;
+	
+	//*[@id="ibmdropdownheader"]/ibm-dropdown/div[1]/button/span
+	
+	
 	@FindBy(xpath="//*[@class='ibmheaderdropdown']/ibm-dropdown//button[@class='bx--list-box__field']")
 	WebElement searchItemDropDown;
 	
@@ -34,6 +40,8 @@ public class CatalogsHomePage extends TestBase {
 	//@FindBy(xpath="//*[@class='ibmheadersearch']//input[@class='bx--search-input']//following-sibling::svg")
 	@FindBy(xpath="//*[@class='bx--search-magnifier']")
 	WebElement searchMagnifier;
+	
+	//html/body/app-root/div/app-stockholm/app-ui-shell/div/div[11]/ibm-dropdown/div[1]/button/span
 	
 	//html/body/div/div/ibm-dropdown-list/ul/li[1]
 	///html/body/app-root/div/ac-landing-page/div/div[2]/div/div[1]/h3/strong
@@ -49,6 +57,14 @@ public class CatalogsHomePage extends TestBase {
 	@FindBy(linkText="Master Category")
 	WebElement newMasterCategory;
 	
+	//html/body/app-root/div/app-new-catalog-upload/app-ui-shell/div/div[3]/button/ibm-icon-add-alt32/svg
+	@FindBy(xpath="//button[@class='dropdownnav']")
+	WebElement plus;
+	//html/body/app-root/div/ac-landing-page/app-ui-shell/div/div[3]/button/ibm-icon-add-alt32/svg
+	//html/body/app-root/div/app-extended-sites/app-ui-shell/div/div[3]/button/ibm-icon-add-alt32/svg
+	
+	@FindBy(linkText="Catalog Upload")
+	WebElement catalogUpload;
 	
 	public String getPageHeading() {
 		return pageHeading.getText();
@@ -65,6 +81,10 @@ public class CatalogsHomePage extends TestBase {
 	
 	public void selectStoreByName(String store) {
 		TestUtil.selectItemFromDropDownByVisibleText(storeDropDown, store);
+	}
+	
+	public String getSelectedStore() {
+		return TestUtil.getElementText(storeDropDown);
 	}
 	
 	public boolean selectStorefromAngularDropDownByName(String store) {
@@ -89,6 +109,15 @@ public class CatalogsHomePage extends TestBase {
 		TestUtil.mouseHoverToElement(newElement);
 		newMasterCategory.click();
 		return new  NewMasterCategoryPage();
+	}
+	
+	public CatalogUploadPage clickCatalogUploadFromPlus() {
+		TestUtil.mouseHoverToElement(plus);
+		//TestUtil.mouseHoverToElement(catalogUpload);
+		TestUtil.clickOnElement(catalogUpload);
+		
+		return new CatalogUploadPage();
+		
 	}
 	
 	

@@ -37,6 +37,10 @@ public class CatalogsHomePageTest extends TestBase{
 		initialization();
 		log.info("Driver is Initialized");
 		catalogsHomePage= new CatalogsHomePage();
+		catalogsHomePage.clickOnStoreDropdown();
+		
+		//Assert.assertTrue(catalogsHomePage.selectStorefromAngularDropDownByName("AuroraESite"));
+		Assert.assertTrue(catalogsHomePage.selectStorefromAngularDropDownByName(p.getProperty("storeToSelect")));
 	}
 	
 	@Test(priority=1,enabled=false)
@@ -54,11 +58,11 @@ public class CatalogsHomePageTest extends TestBase{
 		Assert.assertEquals(pageHeading, "Catalogs");
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, enabled = false)
 	public void validateStoreSelectionTest() {
 	catalogsHomePage.clickOnStoreDropdown();
 	
-	Assert.assertTrue(catalogsHomePage.selectStorefromAngularDropDownByName("MyCustomStoreCAS"));
+	Assert.assertTrue(catalogsHomePage.selectStorefromAngularDropDownByName("AuroraESite"));
 	
 	}
 	

@@ -25,4 +25,15 @@
    <class name="com.ibm.commerce.cmc.catalogs.testcases.SearchResultsPageTest"/>
    </classes>
   </test>
+  <test name="CatalogUPloadtest">
+  <classes>
+   <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogUploadTest"/>
+   </classes>
+  </test>
+  <test name="UnassignedCatalogEntriesPageTest">
+  <classes>
+   <class name="com.ibm.commerce.cmc.catalogs.testcases.UnassignedCatalogEntriesPageTest"/>
+   </classes>
+  </test>
+  
 </suite> <!-- Suite -->
