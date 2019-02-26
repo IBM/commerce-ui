@@ -9,8 +9,8 @@
     <classes>
       <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest">
         <methods>
+          <include name="catalogHomePageHeadingTest"/>
           <include name="tearDown"/>
-          <include name="validateStoreSelectionTest"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CatalogsHomePageTest -->
@@ -43,24 +43,21 @@
         <methods>
           <include name="tearDown"/>
           <include name="extendedSitesCatalogAssetStoreCategoriesListPageHeadingTest"/>
-          <include name="verifyAllColumnsClickable"/>
           <include name="setUp"/>
-          <include name="verifyAllColumnsDisplayedOnThePage"/>
         </methods>
       </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.ExtendedSitesCatalogAssetStoreCategoriesListTest -->
     </classes>
   </test> <!-- ExtendedSitesCatalogAssetStoreCategoriesList(failed) -->
-  <test thread-count="5" name="SearchResultsPage(failed)">
+  <test thread-count="5" name="CatalogUPloadtest(failed)">
     <classes>
-      <class name="com.ibm.commerce.cmc.catalogs.testcases.SearchResultsPageTest">
+      <class name="com.ibm.commerce.cmc.catalogs.testcases.CatalogUploadTest">
         <methods>
-          <include name="verifyAllColumnsDisplayedOnThePage"/>
-          <include name="setUp"/>
+          <include name="setUP"/>
+          <include name="validateTargetCatalogFieldTest"/>
           <include name="tearDown"/>
-          <include name="veriverifyAllColumnsClickable"/>
-          <include name="searchResultsPageHeadingTest"/>
+          <include name="validateCharacterSetFieldTest"/>
         </methods>
-      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.SearchResultsPageTest -->
+      </class> <!-- com.ibm.commerce.cmc.catalogs.testcases.CatalogUploadTest -->
     </classes>
-  </test> <!-- SearchResultsPage(failed) -->
+  </test> <!-- CatalogUPloadtest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

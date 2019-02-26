@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import com.ibm.commerce.cmc.base.TestBase;
 import com.ibm.commerce.cmc.ui.utils.TestUtil;
 
-public class CatalogUploadsPage extends TestBase {
+public class CatalogUploadsListPage extends TestBase {
 	
-	public CatalogUploadsPage() {
+	public CatalogUploadsListPage() {
 		PageFactory.initElements(driver, this);
 	}
 	

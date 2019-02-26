@@ -18,7 +18,8 @@ public class SearchResultsPage extends TestBase {
 	WebElement searchResultsinExplorerView;
 	
 	//html/body/app-root/div/app-search-result/div/div[2]/div/p
-	@FindBy(className="searchheader")
+	//@FindBy(className="searchheader")
+	@FindBy(xpath="//h3")
 	WebElement pageHeader;
 	
 	//html/body/app-root/div/app-search-result/div/div[2]/div/ibm-table/table/thead/tr/th[2]/span/span

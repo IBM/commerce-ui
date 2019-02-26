@@ -31,6 +31,9 @@ public class CreateNewMasterCategoryTest extends TestBase {
 		// System.out.println("in new master setup");
 		initialization();
 		catalogsHomePage = new CatalogsHomePage();
+		catalogsHomePage.clickOnStoreDropdown();
+		
+		Assert.assertTrue(catalogsHomePage.selectStorefromAngularDropDownByName(p.getProperty("storeToSelect")));
 		newMasterCategoryPage = catalogsHomePage.clickNewMasterCategoryFromFileMenu();
 		// newMasterCategoryPage= new NewMasterCategoryPage();
 
@@ -157,6 +160,7 @@ public class CreateNewMasterCategoryTest extends TestBase {
 		//newMasterCategoryPage.clickGeneralCategoryInformationAccordion();
 
 		String codeFieldName = newMasterCategoryPage.getCodeFieldText();
+		//System.out.println("Code Field Text is:"+codeFieldName);
 		Assert.assertEquals(codeFieldName, "Code");
 
 	}
@@ -164,6 +168,7 @@ public class CreateNewMasterCategoryTest extends TestBase {
 	@Test(priority = 13)
 	public void validateManageCategoryGeneralCategoryInformationNameFieldTest() {
 		String nameFieldText = newMasterCategoryPage.getNameFieldText();
+		//System.out.println("name field text is: "+nameFieldText);
 		Assert.assertEquals(nameFieldText, "Name (United State English)");
 	}
 

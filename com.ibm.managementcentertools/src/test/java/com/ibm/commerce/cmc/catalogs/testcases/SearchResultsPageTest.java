@@ -7,10 +7,12 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.ibm.commerce.cmc.base.TestBase;
+import com.ibm.commerce.cmc.ui.catalogs.pages.CatalogsHomePage;
 import com.ibm.commerce.cmc.ui.catalogs.pages.ExtendedSitesCatalogAssetStoreCategoriesListPage;
 import com.ibm.commerce.cmc.ui.catalogs.pages.SearchResultsPage;
 
 public class SearchResultsPageTest extends TestBase {
+	CatalogsHomePage catalogsHomePage;
 	SearchResultsPage sResultsPage;
 	
 	public SearchResultsPageTest() {
@@ -21,6 +23,10 @@ public class SearchResultsPageTest extends TestBase {
 	public void setUp() {
 		//System.out.println("in new master setup");
 		initialization();
+		catalogsHomePage = new CatalogsHomePage();
+		catalogsHomePage.clickOnStoreDropdown();
+		
+		Assert.assertTrue(catalogsHomePage.selectStorefromAngularDropDownByName(p.getProperty("storeToSelect")));
 		sResultsPage= new SearchResultsPage();
 		
 		sResultsPage.clickOnSearchResults();
