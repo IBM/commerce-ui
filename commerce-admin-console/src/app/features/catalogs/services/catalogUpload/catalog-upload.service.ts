@@ -7,21 +7,21 @@ export class CatalogUploadService {
   categoryListTableData = [];
   constructor() { }
 
-  private data;
+  // private data;
 
-  setData(data){
-    this.data = data;
-    console.log("SETDATA IN SERVICE", this.data);
-  }
+  // setData(data){
+  //   this.data = data;
+  //   console.log("SETDATA IN SERVICE", this.data);
+  // }
 
-  getData(){
-    let temp = this.categoryListTableData;
-    // this.clearData();
-    console.log("GETDATA METHOD IN SERVICE", temp);
-    return temp;
-  }
+  // getData(){
+  //   let temp = this.categoryListTableData;
+  //   // this.clearData();
+  //   console.log("GETDATA METHOD IN SERVICE", temp);
+  //   return temp;
+  // }
 
-  clearData(){
-    this.data = undefined;
-  }
+  // clearData(){
+  //   this.data = undefined;
+  // }
 }
