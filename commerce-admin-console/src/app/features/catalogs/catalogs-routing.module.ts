@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,10 +12,11 @@ import { StockholmComponent } from './components/stockholm/stockholm.component';
 import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component'
 import { CatalogUploadComponent } from './components/catalog-upload/catalog-upload.component';
 import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-catalog-upload.component';
+import { MainUiShellComponent } from './components/main-ui-shell/main-ui-shell.component';
+import { UiShellComponent} from './components/ui-shell/ui-shell.component';
 
-
-
-const routes: Routes = [
+ 
+export const routes: Routes = [
 {
     path: '', component: LandingPageComponent
 },
@@ -45,9 +46,15 @@ const routes: Routes = [
 },
 {
     path: 'newCatalogUpload', component: NewCatalogUploadComponent
+},
+{
+    path: 'mainUiShell', component: MainUiShellComponent
+},
+{
+    path: 'uiShell', component: UiShellComponent
 }
-
 ];
+
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

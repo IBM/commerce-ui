@@ -1,10 +1,13 @@
-import { Component, OnInit, ViewChild, Input, OnChanges, TemplateRef,ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges, TemplateRef,ViewEncapsulation, Directive } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-main-ui-shell',
   templateUrl: './main-ui-shell.component.html',
   styleUrls: ['./main-ui-shell.component.scss'],
-  encapsulation:ViewEncapsulation.None
+  
+  encapsulation:ViewEncapsulation.None,
+  
 })
 export class MainUiShellComponent implements OnInit {
  
