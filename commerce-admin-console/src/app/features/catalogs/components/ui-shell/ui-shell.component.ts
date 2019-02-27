@@ -65,6 +65,10 @@ export class UiShellComponent implements OnInit {
   navigateToNewCatalogUpload(): void{
   this.router.navigate(["/catalogs/newCatalogUpload"]);
   }
+  underDev() {
+
+    this.router.navigate(["/catalogs/UnderConstruction"]);
+  }
   ngOnInit() {
   }
   menuClicked: () => {};
