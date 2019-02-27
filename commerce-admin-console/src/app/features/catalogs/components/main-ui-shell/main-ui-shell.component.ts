@@ -19,6 +19,10 @@ export class MainUiShellComponent implements OnInit {
   catalog(){
     this.router.navigate(["/catalogs"]);
   }
+  underDev() {
+
+    this.router.navigate(["/catalogs/UnderConstruction"]);
+  }
   ngOnInit() {
   }
 }

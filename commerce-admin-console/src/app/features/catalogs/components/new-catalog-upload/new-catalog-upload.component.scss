@@ -85,13 +85,13 @@
     fill: rgb(189, 179, 179);
   }
   .input-size{
-    padding: 8px 0px 8px 0px;
+    padding: 6px 0px 6px 0px;
     width: 28%;
     font-size: 13px;
     margin-left: 13%;
 }
 .input-size-icon{
-    padding: 10px 0px 10px 0px;
+    padding: 6px 0px 6px 0px;
     width: 35%;
     font-size: 13px;
 }
@@ -99,7 +99,7 @@
     background-color: white;
     height: 2.0rem !important;
     max-height: 2rem !important;
-    width: 300px !important;
+    // width: 300px !important;
 }
 .input{
 display:none;

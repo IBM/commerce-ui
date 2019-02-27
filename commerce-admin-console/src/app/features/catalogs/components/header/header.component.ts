@@ -59,6 +59,9 @@ export class HeaderComponent implements OnInit {
   masterFromMenu() {
     this.router.navigate(["/catalogs/masterCategory"]);
   }
+  navigateToNewCatalogUpload(): void{
+    this.router.navigate(["/catalogs/newCatalogUpload"]);
+    }
   selected(ev) {
     if (ev.item != undefined && ev.item.content != undefined) {
     //   //debugger;

@@ -15,6 +15,8 @@ export class SideBarComponent implements OnInit {
   sideBar3:boolean=false;
   sideBar4:boolean=false;
   sideBar5 :boolean=false;
+  sideBar6:boolean=false;
+  sideBar7:boolean=false;
  
   constructor(private router: Router, private storesele: StoreselectionService) { }
 
@@ -26,6 +28,9 @@ export class SideBarComponent implements OnInit {
     this.sideBar3=this.storesele.getUnassignedCatEntries();
     this.sideBar4=this.storesele.getExtendedSite();
     this.sideBar5=this.storesele.getStockCAS();
+    this.sideBar6=this.storesele.getSearch();
+    this.sideBar7=this.storesele.getCatalogUpload();
+    
 
   }
 

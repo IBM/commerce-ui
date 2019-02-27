@@ -17,11 +17,8 @@
             <!-- <span *ngIf="abc">
     </span> -->
 
-    <!-- <div>
-        <button ibmButton (click)="navigateToMaster()">New Master Category</button>
-    </div> -->
     <div *ngIf="sideBar">
-        <button ibmButton (click)="navigateToSearch()">Search Results</button>
+        <button ibmButton (click)="navigateToMaster()">New Master Category</button>
     </div>
     <div *ngIf="sideBar1">
         <button ibmButton (click)="navigateToStockCAS()">StockholmCAS</button>
@@ -38,7 +35,12 @@
     <div *ngIf="sideBar5">
         <button ibmButton (click) ="navigateToCatalogUpload()">Catalog Uploads</button>
     </div>
-        
+    <div *ngIf="sideBar6">
+        <button ibmButton (click)="navigateToSearch()">Search Results</button>
+    </div>
+    <div *ngIf="sideBar7">
+        <button ibmButton (click)="navigateToCatalogUpload()">Search Results</button>
+    </div>
 
 </section>
                     <!-- <sup><span class="starFontSection"><i class="fas fa-star-of-life"></i></span></sup> 

@@ -488,6 +488,7 @@
         },
         "NEW_CATALOG_UPLOAD": {
             "HEADER": "New Catalog Upload",
+            "CATALOG_UPLOAD":"Catalog Upload",
             "ERROR_MSG":"You must select a file to upload",
             "MANAGE_CATALOG_UPLOAD": "Manage Catalog Upload",
             "MAIN_PROPERTIES":"- Main properties",
@@ -495,7 +496,7 @@
             "CLOSE": "Close",
             "FILENAME": "Filename *",
             "SIZE": "Size",
-            "CHAR_SET": "Charecter Set",
+            "CHAR_SET": "Character Set",
             "TARGET_CATALOG": "Target Catalog"
         }
 

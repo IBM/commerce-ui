@@ -10,7 +10,8 @@ export class StoreselectionService {
   navToStock:boolean= false;
   navToUnassigned:boolean = false;
   navToExtendedSite:boolean = false;
-
+  navigateToCatalogUpload:boolean=false;
+  navigateToSearch:boolean=false;
   set(){
     //debugger;
     this.navToMaster = true;
@@ -41,6 +42,18 @@ export class StoreselectionService {
   }
   getExtendedSite(){
     return this.navToExtendedSite;
+  }
+  setSearch(){
+    this.navigateToSearch=true;
+  }
+  getSearch(){
+    return this.navigateToSearch;
+  }
+  setCatalogUpload(){
+    this.navigateToCatalogUpload=true;
+  }
+  getCatalogUpload(){
+    return this.navigateToCatalogUpload;
   }
   constructor() { }
 }
