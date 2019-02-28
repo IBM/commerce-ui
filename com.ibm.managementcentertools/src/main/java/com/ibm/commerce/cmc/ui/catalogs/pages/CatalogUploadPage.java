@@ -15,7 +15,7 @@ public class CatalogUploadPage extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id="header-text")
+	@FindBy(xpath="//h3")
 	WebElement pageHeading;
 	
 	
@@ -31,7 +31,7 @@ public class CatalogUploadPage extends TestBase {
 	@FindBy(xpath="(//*[@id='thumbnail-text'])[1]")
 	WebElement fileNameFieldText;
 	
-	@FindBy(xpath="//button[contains(text(), 'Upload')]")
+	@FindBy(xpath="//ibm-file-uploader//button[contains(text(), 'Upload')]")
 	WebElement uploadButton;
 	
 	@FindBy(xpath="(//*[@id='thumbnail-text'])[2]")
@@ -124,6 +124,10 @@ public class CatalogUploadPage extends TestBase {
 	
 	public boolean isUploadedFileElementExists() {
 		return TestUtil.isElementDisplayed(uploadedFileElement);
+	}
+	
+	public void scrollToSaveButtonOnCatalogUploadPage() {
+		TestUtil.scrollToElementOnPage(save);
 	}
 	
 

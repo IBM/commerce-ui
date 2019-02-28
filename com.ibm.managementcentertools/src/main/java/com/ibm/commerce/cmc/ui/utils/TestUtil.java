@@ -181,4 +181,7 @@ public class TestUtil extends TestBase {
 
 		r.keyRelease(KeyEvent.VK_ENTER);
 	}
+	public static void hardWait(long mSecond) throws InterruptedException {
+		Thread.sleep(mSecond);
+	}
 }

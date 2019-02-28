@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import com.ibm.commerce.cmc.base.TestBase;
 import com.ibm.commerce.cmc.ui.catalogs.pages.CatalogUploadPage;
 import com.ibm.commerce.cmc.ui.catalogs.pages.CatalogsHomePage;
+import com.ibm.commerce.cmc.ui.utils.TestUtil;
 
 public class CatalogUploadTest extends TestBase {
 	CatalogsHomePage catalogsHomePage;
@@ -73,26 +74,33 @@ public class CatalogUploadTest extends TestBase {
 	}
 	
 	@Test(priority=6)
-	public void validateCharacterSetFieldTest() {
+	public void validateCharacterSetFieldTest(){
 		String characterSetText = catalogUploadPage.getCharacterSetFieldText();
 		Assert.assertEquals(characterSetText, "Character Set");
+		
 	}
 	
 	@Test(priority=7)
 	public void validateTargetCatalogFieldTest() {
 		String characterSetText = catalogUploadPage.getTargetCatalogFieldText();
 		Assert.assertEquals(characterSetText, "Target catalog");
+		
 	}
 	
 	@Test(priority=8)
-	public void createNewCatalogUpload() throws AWTException, InterruptedException {
+	public void createNewCatalogUpload() throws AWTException {
 		catalogUploadPage.selectCharacterSetfromDropDownByName("UTF-8");
+		
 		catalogUploadPage.selectTargetCatalogfromDropDownByName("ExtendedSitesCatalogAssetStore Catalog");
+		
 		catalogUploadPage.clickOnUploadButton();
-		Thread.sleep(5000);
+		
 		//File Need to be imported
 		//System.out.println("File path is: "+p.getProperty("catalogUploadFile"));
 		catalogUploadPage.uploadCatalogFile(p.getProperty("catalogUploadFile"));
+		
+		//catalogUploadPage.scrollToSaveButtonOnCatalogUploadPage();
+		
 		catalogUploadPage.clickOnSaveButton();
 		Assert.assertTrue(catalogUploadPage.isUploadedFileElementExists(),"Uploaded File Element not displayed on the Screen");
 		

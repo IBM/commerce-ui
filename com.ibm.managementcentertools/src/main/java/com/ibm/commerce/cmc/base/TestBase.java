@@ -73,7 +73,6 @@ public class TestBase {
 		File dest = new File("screenshots/"+"screenshot_"+result+"_"+fileName+".jpg");
 		FileUtils.copyFile(src,dest);
 		
-		
 		/*
 		TakesScreenshot ts1= (TakesScreenshot)driver;
 		File src1 = ts1.getScreenshotAs(OutputType.FILE);
