@@ -39,13 +39,21 @@ Check [proxy settings](https://github.com/angular/angular-cli/blob/master/docs/d
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Internationalization
-Follow Common-UI-Shell, the project use `ngx-translate` to provide internationalization related service. Avaliable locale id are: `de, en, es, fr, it, ja, ko, pt_BR, sv, zh_TW, zh`. 
+Follow Common-UI-Shell, the project use `ngx-translate` to provide internationalization related service. Available locale id are: `de, en, es, fr, it, ja, ko, pt_BR, sv, zh_TW, zh`. 
 
-Translation file located in `src/app/i18n` serves as a global translation. Each feature should have its own translation file in their own folder. 
+Translation file located in `src/app/i18n` serves as a global translation. Each feature should have its own translation file in their own folder.
+
+## Generating combined REST API swagger
+
+Install api-spec-converter using the following command: `npm install -g api-spec-converter`
+Convert openApi 3.1 to swagger 2: `api-spec-converter --from=openapi_3 --to=swagger_2 ../../WebSphereCommerce/commerce-transaction-server/src/projects/Rest-Transaction/WebContent/WEB-INF/config/bod/v2/online-stores.yml > api_definition\online-stores.json`
+Install swagger-combine using the following command: `npm install –g swagger-combine`
+Combine swagger into one swagger file: `swagger-combine swagger-combine.json > api_definition/swagger.json`
+The swagger combine depends on the transaction server swagger files found here: https://ecdgit.canlab.ibm.com/aleong-ca/commerce-api-management
+Before running `npm run build-api`, you must clone commerce-api-management at the same directory level as commerce-ui.
 
 ## Create Rest service
-Run `npm run build-api` to generate the REST service client. The swagger generator depends on the transaction server swagger files found here: https://ecdgit.canlab.ibm.com/aleong-ca/commerce-api-management
-Before running `npm run build-api`, you must clone commerce-api-management at the same directory level as commerce-admin-tools.
+Run `npm run build-api` to generate the REST service client.
 
 ## Kill dev server process
 If you are using Mac OS, you may need run `sudo kill -9 $(sudo lsof -t -i:7443)` to kill previous `ng serve` process. 

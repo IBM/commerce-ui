@@ -2,7 +2,7 @@ export class AppConstants{
     /**
      * rest request's url base root
      */
-    public static URL_BASE = "/wcs/resources";
+    public static URL_BASE = "";
 
     /**
      * data inside iframe

@@ -1,0 +1,1844 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Online Store Admin REST APIs",
+    "version": "2.0"
+  },
+  "paths": {
+    "/online-stores": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The position within the resulting dataset where the query begins returning item records. If the offset is \"5\", the records that returned begin with the sixth record that matches the query parameters. If the offset is \"0\", the records that are returned begin with the first record that matches the query parameters.",
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "x-entity-path": "dataArea/get/recordSetStartNumber"
+          },
+          {
+            "description": "The maximum number of records to return.",
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "x-entity-path": "dataArea/get/maxItems"
+          },
+          {
+            "description": "The usage.",
+            "in": "query",
+            "name": "usage",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreCollection"
+            },
+            "x-entity-path": "dataArea/onlineStore"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStores",
+        "summary": "Gets the online stores.",
+        "x-expression-template": "{_wcf.ap='IBM_Admin_All';_wcf.usage='{usage}'}/OnlineStore",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      }
+    },
+    "/online-stores/by-identifier": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The position within the resulting dataset where the query begins returning item records. If the offset is \"5\", the records that returned begin with the sixth record that matches the query parameters. If the offset is \"0\", the records that are returned begin with the first record that matches the query parameters.",
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "x-entity-path": "dataArea/get/recordSetStartNumber"
+          },
+          {
+            "description": "The maximum number of records to return.",
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "x-entity-path": "dataArea/get/maxItems"
+          },
+          {
+            "description": "The usage.",
+            "in": "query",
+            "name": "usage",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The identifier or name for identifying the online store.",
+            "in": "query",
+            "name": "identifier",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreCollection"
+            },
+            "x-entity-path": "dataArea/onlineStore"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoresByIdentifier",
+        "summary": "Gets online stores by identifier.",
+        "x-expression-builder-class": "com.ibm.commerce.foundation.internal.client.taglib.util.SearchExpressionBuilder",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All",
+          "template": "{_wcf.usage='$usage$'}/OnlineStore[search(StoreIdentifier/ExternalIdentifier/NameIdentifier='$identifier$')]"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      }
+    },
+    "/online-stores/by-related-store-id": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The position within the resulting dataset where the query begins returning item records. If the offset is \"5\", the records that returned begin with the sixth record that matches the query parameters. If the offset is \"0\", the records that are returned begin with the first record that matches the query parameters.",
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "x-entity-path": "dataArea/get/recordSetStartNumber"
+          },
+          {
+            "description": "The maximum number of records to return.",
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "x-entity-path": "dataArea/get/maxItems"
+          },
+          {
+            "description": "The usage.",
+            "in": "query",
+            "name": "usage",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The unique numeric ID of the related online store. The returned online stores are related to this online store.",
+            "format": "int32",
+            "in": "query",
+            "name": "relatedStoreId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreCollection"
+            },
+            "x-entity-path": "dataArea/onlineStore"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoresByRelatedStoreId",
+        "summary": "Gets online stores by related store id.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}';_wcf.usage='{usage}'}/OnlineStore[OnlineStoreRelatedStores[StoreIdentifier[(UniqueID='{relatedStoreId}')]]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      }
+    },
+    "/online-stores/{id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStore"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStore",
+        "summary": "Gets an online store.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{id}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      }
+    },
+    "/online-stores/{id}/close": {
+      "post": {
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "closeOnlineStore",
+        "summary": "Closes an online store.",
+        "x-action-code": "Close",
+        "x-expression-template": "/OnlineStore[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "processOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ProcessOnlineStoreType"
+      }
+    },
+    "/online-stores/{id}/open": {
+      "post": {
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "openOnlineStore",
+        "summary": "Opens an online store.",
+        "x-action-code": "Open",
+        "x-expression-template": "/OnlineStore[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "processOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ProcessOnlineStoreType"
+      }
+    },
+    "/online-stores/{onlineStoreId}/configuration-values": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreConfigurationValues"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/userData"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreConfigurationValues",
+        "summary": "Gets an online store's configuration values.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Details"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      }
+    },
+    "/online-stores/{onlineStoreId}/contacts": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The data language IDs.",
+            "in": "query",
+            "name": "dataLanguageIds",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreContactCollection"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreContactInfo"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreContacts",
+        "summary": "Gets the online store contact information.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}';_wcf.dataLanguageIds='{dataLanguageIds}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreContact"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreContactInfo[1]"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The operation is successful.",
+            "headers": {
+              "Location": {
+                "description": "The URI of the contact.",
+                "type": "string"
+              }
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreContactInfo[1]/contactInfoIdentifier/uniqueID"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "createOnlineStoreContact",
+        "summary": "Creates an online store contact.",
+        "x-action-code": "Add",
+        "x-expression-template": "/OnlineStore[1]/OnlineStoreContactInfo[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/contacts/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The unique numeric ID for identifying online store contact ID.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreContactInfo[1]/contactInfoIdentifier/uniqueID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "deleteOnlineStoreContact",
+        "summary": "Deletes an online store contact.",
+        "x-action-code": "Delete",
+        "x-expression-template": "/OnlineStore[1]/OnlineStoreContactInfo[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The unique numeric ID for identifying online store contact ID.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreContactInfo[1]/contactInfoIdentifier/uniqueID"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreContact"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreContactInfo[1]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "updateOnlineStoreContact",
+        "summary": "Updates an online store contact.",
+        "x-action-code": "Change",
+        "x-expression-template": "/OnlineStore[1]/OnlineStoreContactInfo[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/currencies": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreCurrencies"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreSupportedCurrencies[1]"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreCurrencies",
+        "summary": "Gets an online store's currencies.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_Details"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreCurrencies"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreSupportedCurrencies[1]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "updateOnlineStoreCurrencies",
+        "summary": "Updates an online store's currencies.",
+        "x-action-code": "Change",
+        "x-expression-template": "/OnlineStore[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/default-catalogs": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreDefaultCatalogCollection"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/defaultCatalog"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreDefaultCatalogs",
+        "summary": "Gets an online store's default catalogs.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_Details"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreDefaultCatalog"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/defaultCatalog[1]"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The operation is successful.",
+            "headers": {
+              "Location": {
+                "description": "The URI of the default catalog.",
+                "type": "string"
+              }
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/defaultCatalog[1]/uniqueID"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "createOnlineStoreDefaultCatalog",
+        "summary": "Create a default catalog for an online store.",
+        "x-action-code": "Add",
+        "x-expression-template": "/OnlineStore[1]/DefaultCatalog[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/default-catalogs/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The unique numeric ID for identifying the default catalog.",
+            "format": "int64",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/defaultCatalog[1]/uniqueID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "deleteOnlineStoreDefaultCatalog",
+        "summary": "Deletes a default catalog of an online store.",
+        "x-action-code": "Delete",
+        "x-expression-template": "/OnlineStore[1]/DefaultCatalog[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId"
+          },
+          {
+            "description": "The unique numeric ID for identifying the default catalog.",
+            "format": "int64",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreDefaultCatalog"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/defaultCatalog[1]"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreDefaultCatalog",
+        "summary": "Gets an online store's default catalog by unique ID.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')] and DefaultCatalog[(UniqueID='{id}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_Details"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      }
+    },
+    "/online-stores/{onlineStoreId}/descriptions": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The data language IDs.",
+            "in": "query",
+            "name": "dataLanguageIds",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreDescriptionCollection"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreDescription"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreDescriptions",
+        "summary": "Gets the online store descriptions.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}';_wcf.dataLanguageIds='{dataLanguageIds}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreDescription"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreDescription[1]"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The operation is successful.",
+            "headers": {
+              "Location": {
+                "description": "The URI of the online store description.",
+                "type": "string"
+              }
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreDescription[1]/language"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "createOnlineStoreDescription",
+        "summary": "Create a description for an online store.",
+        "x-action-code": "Add",
+        "x-expression-template": "/OnlineStore[1]/OnlineStoreDescription[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/descriptions/{id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The integer for identifying the language of the description. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreDescription"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreDescription[1]"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreDescription",
+        "summary": "Gets an online store description.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}';_wcf.dataLanguageIds='{id}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The integer for identifying the language of the description. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreDescription[1]/language"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreDescription"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreDescription[1]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "updateOnlineStoreDescription",
+        "summary": "Updates an online store description.",
+        "x-action-code": "Change",
+        "x-expression-template": "/OnlineStore[1]/OnlineStoreDescription[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/languages": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreLanguages"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreSupportedLanguages[1]"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreLanguages",
+        "summary": "Gets an online store's languages.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreLanguages"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreSupportedLanguages[1]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "updateOnlineStoreLanguages",
+        "summary": "Updates an online store's languages.",
+        "x-action-code": "Change",
+        "x-expression-template": "/OnlineStore[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/locations": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The data language IDs.",
+            "in": "query",
+            "name": "dataLanguageIds",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreLocationCollection"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreLocationInfo"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreLocations",
+        "summary": "Gets the online store location information.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}';_wcf.dataLanguageIds='{dataLanguageIds}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreLocation"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreLocationInfo[1]"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The operation is successful.",
+            "headers": {
+              "Location": {
+                "description": "The URI of the location.",
+                "type": "string"
+              }
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreLocationInfo[1]/contactInfoIdentifier/uniqueID"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "createOnlineStoreLocation",
+        "summary": "Creates an online store location.",
+        "x-action-code": "Add",
+        "x-expression-template": "/OnlineStore[1]/OnlineStoreLocationInfo[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/locations/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The unique numeric ID for identifying online store location ID.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreLocationInfo[1]/contactInfoIdentifier/uniqueID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "deleteOnlineStoreLocation",
+        "summary": "Deletes an online store location.",
+        "x-action-code": "Delete",
+        "x-expression-template": "/OnlineStore[1]/OnlineStoreLocationInfo[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreIdentifier/uniqueID"
+          },
+          {
+            "description": "The unique numeric ID for identifying online store location ID.",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreLocationInfo[1]/contactInfoIdentifier/uniqueID"
+          },
+          {
+            "description": "The request body.",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreLocation"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreLocationInfo[1]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful."
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "updateOnlineStoreLocation",
+        "summary": "Updates an online store location.",
+        "x-action-code": "Change",
+        "x-expression-template": "/OnlineStore[1]/OnlineStoreLocationInfo[1]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "changeOnlineStore",
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.ChangeOnlineStoreType",
+        "x-request-verb": "change"
+      }
+    },
+    "/online-stores/{onlineStoreId}/related-stores": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The unique numeric ID for identifying the online store.",
+            "format": "int32",
+            "in": "path",
+            "name": "onlineStoreId",
+            "required": true,
+            "type": "integer",
+            "x-context-data": "storeId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation is successful.",
+            "schema": {
+              "$ref": "#/definitions/OnlineStoreRelatedStoreCollection"
+            },
+            "x-entity-path": "dataArea/onlineStore[1]/onlineStoreRelatedStores"
+          }
+        },
+        "tags": [
+          "Online Stores"
+        ],
+        "operationId": "getOnlineStoreRelatedStores",
+        "summary": "Gets an online store's related stores.",
+        "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
+        "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
+        "x-facade-client-method": "getOnlineStore",
+        "x-parameters": {
+          "accessProfile": "IBM_Admin_All"
+        },
+        "x-request-bod-class": "com.ibm.commerce.infrastructure.facade.datatypes.GetOnlineStoreType"
+      }
+    }
+  },
+  "definitions": {
+    "OnlineStore": {
+      "description": "An online store.",
+      "properties": {
+        "catalogOverrideEnabled": {
+          "description": "The catalog override enabled value configured for the online store.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "userData/userDataField/isCatalogOverrideEnabled"
+        },
+        "externalContentEnablementMode": {
+          "description": "The external content enablement value configured for the online store.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "userData/userDataField/externalContentEnablementMode"
+        },
+        "externalContentHostName": {
+          "description": "The external content host name configured for the online store.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "userData/userDataField/wc.externalContent.hostName"
+        },
+        "externalContentPickerUrl": {
+          "description": "The external content picker URL configured for the online store.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "userData/userDataField/wc.externalContent.pickerURL"
+        },
+        "externalContentTenantId": {
+          "description": "The external content tenant ID configured for the online store.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "userData/userDataField/wc.externalContent.tenant-id"
+        },
+        "externalContentUiContextRoot": {
+          "description": "The external content UI context root configured for the online store.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "userData/userDataField/wc.externalContent.UIContextRoot"
+        },
+        "id": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "onlineStoreIdentifier/uniqueID"
+        },
+        "identifier": {
+          "description": "The identifier or name for identifying the online store.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "onlineStoreIdentifier/externalIdentifier/nameIdentifier"
+        },
+        "ownerId": {
+          "description": "The unique numeric ID of the organization that owns the online store.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "onlineStoreIdentifier/externalIdentifier/ownerID"
+        },
+        "state": {
+          "description": "The state of the online store. Valid values are 'open' and 'closed'.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "state"
+        },
+        "type": {
+          "description": "The online store type.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "storeType"
+        },
+        "unregisterMarketingEvent": {
+          "description": "The unregister marketing event configuration value for the online store.",
+          "readOnly": true,
+          "type": "string",
+          "x-entity-path": "userData/userDataField/unregisterMarketingEvent"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.infrastructure.facade.datatypes.OnlineStoreType"
+    },
+    "OnlineStoreCollection": {
+      "description": "A collection of online stores.",
+      "properties": {
+        "count": {
+          "description": "The total number of item records that match the query parameters.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "integer"
+        },
+        "items": {
+          "description": "The data objects or resources that that match the query parameters.",
+          "items": {
+            "$ref": "#/definitions/OnlineStore"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "OnlineStoreConfigurationValues": {
+      "description": "An online store's configuration values.",
+      "properties": {
+        "onlineStoreId": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "container/onlineStoreIdentifier/uniqueID"
+        },
+        "values": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "The set of configuration values for the online store.",
+          "readOnly": true,
+          "type": "object",
+          "x-entity-path": "userDataField"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.foundation.common.datatypes.UserDataType"
+    },
+    "OnlineStoreContact": {
+      "description": "An online store contact.",
+      "properties": {
+        "addressLine1": {
+          "description": "First address line.",
+          "type": "string",
+          "x-entity-path": "address/addressLine[1]"
+        },
+        "addressLine2": {
+          "description": "Second address line.",
+          "type": "string",
+          "x-entity-path": "address/addressLine[2]"
+        },
+        "addressLine3": {
+          "description": "Third address line.",
+          "type": "string",
+          "x-entity-path": "address/addressLine[3]"
+        },
+        "city": {
+          "description": "City.",
+          "type": "string",
+          "x-entity-path": "address/city"
+        },
+        "country": {
+          "description": "Country.",
+          "type": "string",
+          "x-entity-path": "address/country"
+        },
+        "email1": {
+          "description": "Primary e-mail address.",
+          "type": "string",
+          "x-entity-path": "emailAddress1/value"
+        },
+        "email2": {
+          "description": "Secondary e-mail address.",
+          "type": "string",
+          "x-entity-path": "emailAddress2/value"
+        },
+        "fax1": {
+          "description": "Primary fax number.",
+          "type": "string",
+          "x-entity-path": "fax1/value"
+        },
+        "fax2": {
+          "description": "Secondary fax number.",
+          "type": "string",
+          "x-entity-path": "fax2/value"
+        },
+        "id": {
+          "description": "The unique numeric ID for identifying the online store contact.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "contactInfoIdentifier/uniqueID"
+        },
+        "languageId": {
+          "description": "The integer for identifying the language of the online store contact. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.",
+          "format": "int32",
+          "type": "integer",
+          "x-entity-path": "language"
+        },
+        "name": {
+          "description": "The name of the online store contact.",
+          "type": "string",
+          "x-entity-path": "contactName/businessTitle"
+        },
+        "onlineStoreId": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "container/onlineStoreIdentifier/uniqueID"
+        },
+        "phone1": {
+          "description": "Primary telephone number.",
+          "type": "string",
+          "x-entity-path": "telephone1/value"
+        },
+        "phone2": {
+          "description": "Secondary telephone number.",
+          "type": "string",
+          "x-entity-path": "telephone2/value"
+        },
+        "postalCode": {
+          "description": "Postal code.",
+          "type": "string",
+          "x-entity-path": "address/postalCode"
+        },
+        "stateOrProvince": {
+          "description": "State or province.",
+          "type": "string",
+          "x-entity-path": "address/stateOrProvinceName"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.foundation.common.datatypes.ContactInfoType"
+    },
+    "OnlineStoreContactCollection": {
+      "description": "A collection of online store contacts.",
+      "properties": {
+        "count": {
+          "description": "The total number of item records that match the query parameters.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "integer"
+        },
+        "items": {
+          "description": "The data objects or resources that that match the query parameters.",
+          "items": {
+            "$ref": "#/definitions/OnlineStoreContact"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "OnlineStoreCurrencies": {
+      "description": "An online store's supported currencies.",
+      "properties": {
+        "currencies": {
+          "description": "An array containing the currencies that are supported by the online store.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "x-entity-path": "supportedCurrencies"
+        },
+        "defaultCurrency": {
+          "description": "The default currency of the online store.",
+          "type": "string",
+          "x-entity-path": "defaultCurrency"
+        },
+        "onlineStoreId": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "container/onlineStoreIdentifier/uniqueID"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.infrastructure.facade.datatypes.OnlineStoreSupportedCurrenciesType"
+    },
+    "OnlineStoreDefaultCatalog": {
+      "description": "An online store default catalog.",
+      "properties": {
+        "catalogId": {
+          "description": "The unique numeric ID of the catalog associated with the default catalog.",
+          "format": "int64",
+          "type": "integer",
+          "x-entity-path": "catalogIdentifier/uniqueID"
+        },
+        "id": {
+          "description": "The unique numeric ID for identifying the online store default catalog.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "uniqueID"
+        },
+        "onlineStoreId": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "container/onlineStoreIdentifier/uniqueID"
+        },
+        "storeId": {
+          "description": "The unique numeric ID of the store associated with the default catalog.",
+          "format": "int32",
+          "type": "integer",
+          "x-entity-path": "storeIdentifier/uniqueID"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.infrastructure.facade.datatypes.DefaultCatalogType"
+    },
+    "OnlineStoreDefaultCatalogCollection": {
+      "description": "A collection of online store default catalogs.",
+      "properties": {
+        "count": {
+          "description": "The total number of item records that match the query parameters.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "integer"
+        },
+        "items": {
+          "description": "The data objects or resources that that match the query parameters.",
+          "items": {
+            "$ref": "#/definitions/OnlineStoreDefaultCatalog"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "OnlineStoreDescription": {
+      "description": "An online store description.",
+      "properties": {
+        "description": {
+          "description": "The online store description.",
+          "type": "string"
+        },
+        "id": {
+          "description": "The language ID of the online store description.",
+          "format": "int32",
+          "type": "integer",
+          "x-entity-path": "language"
+        },
+        "name": {
+          "description": "The name of the online store.",
+          "type": "string",
+          "x-entity-path": "displayName"
+        },
+        "onlineStoreId": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "container/onlineStoreIdentifier/uniqueID"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.infrastructure.facade.datatypes.OnlineStoreDescriptionType"
+    },
+    "OnlineStoreDescriptionCollection": {
+      "description": "A collection of online store descriptions.",
+      "properties": {
+        "count": {
+          "description": "The total number of item records that match the query parameters.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "integer"
+        },
+        "items": {
+          "description": "The data objects or resources that that match the query parameters.",
+          "items": {
+            "$ref": "#/definitions/OnlineStoreDescription"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "OnlineStoreLanguages": {
+      "description": "An online store's supported languages.",
+      "properties": {
+        "defaultLanguageId": {
+          "description": "The integer for identifying the default language of the online store. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.",
+          "format": "int32",
+          "type": "integer",
+          "x-entity-path": "defaultLanguage"
+        },
+        "languageIds": {
+          "description": "An array containing the integers for identifying the languages that are supported by the online store. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "type": "array",
+          "x-entity-path": "supportedLanguages"
+        },
+        "onlineStoreId": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "container/onlineStoreIdentifier/uniqueID"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.infrastructure.facade.datatypes.OnlineStoreSupportedLanguagesType"
+    },
+    "OnlineStoreLocation": {
+      "description": "An online store location.",
+      "properties": {
+        "addressLine1": {
+          "description": "First address line.",
+          "type": "string",
+          "x-entity-path": "address/addressLine[1]"
+        },
+        "addressLine2": {
+          "description": "Second address line.",
+          "type": "string",
+          "x-entity-path": "address/addressLine[2]"
+        },
+        "addressLine3": {
+          "description": "Third address line.",
+          "type": "string",
+          "x-entity-path": "address/addressLine[3]"
+        },
+        "city": {
+          "description": "City.",
+          "type": "string",
+          "x-entity-path": "address/city"
+        },
+        "country": {
+          "description": "Country.",
+          "type": "string",
+          "x-entity-path": "address/country"
+        },
+        "email1": {
+          "description": "Primary e-mail address.",
+          "type": "string",
+          "x-entity-path": "emailAddress1/value"
+        },
+        "email2": {
+          "description": "Secondary e-mail address.",
+          "type": "string",
+          "x-entity-path": "emailAddress2/value"
+        },
+        "fax1": {
+          "description": "Primary fax number.",
+          "type": "string",
+          "x-entity-path": "fax1/value"
+        },
+        "fax2": {
+          "description": "Secondary fax number.",
+          "type": "string",
+          "x-entity-path": "fax2/value"
+        },
+        "id": {
+          "description": "The unique numeric ID for identifying the online store location.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "contactInfoIdentifier/uniqueID"
+        },
+        "languageId": {
+          "description": "The integer for identifying the language of the online store location. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.",
+          "format": "int32",
+          "type": "integer",
+          "x-entity-path": "language"
+        },
+        "name": {
+          "description": "Store location name.",
+          "type": "string",
+          "x-entity-path": "contactName/businessTitle"
+        },
+        "onlineStoreId": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "container/onlineStoreIdentifier/uniqueID"
+        },
+        "phone1": {
+          "description": "Primary phone number.",
+          "type": "string",
+          "x-entity-path": "telephone1/value"
+        },
+        "phone2": {
+          "description": "Secondary phone number.",
+          "type": "string",
+          "x-entity-path": "telephone2/value"
+        },
+        "postalCode": {
+          "description": "Postal code.",
+          "type": "string",
+          "x-entity-path": "address/postalCode"
+        },
+        "stateOrProvince": {
+          "description": "State or province.",
+          "type": "string",
+          "x-entity-path": "address/stateOrProvinceName"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.foundation.common.datatypes.ContactInfoType"
+    },
+    "OnlineStoreLocationCollection": {
+      "description": "A collection of online store contacts.",
+      "properties": {
+        "count": {
+          "description": "The total number of item records that match the query parameters.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "integer"
+        },
+        "items": {
+          "description": "The data objects or resources that that match the query parameters.",
+          "items": {
+            "$ref": "#/definitions/OnlineStoreContact"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "OnlineStoreRelatedStore": {
+      "description": "An online store related stores.",
+      "properties": {
+        "id": {
+          "description": "The unique numeric ID for identifying the online store relationship.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "storeIdentifier/uniqueID"
+        },
+        "onlineStoreId": {
+          "description": "The unique numeric ID for identifying the online store.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "container/onlineStoreIdentifier/uniqueID"
+        },
+        "relationshipTypeId": {
+          "description": "The unique numeric ID for identifying the store relationship type.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "relationshipType"
+        },
+        "sequence": {
+          "description": "The store relationship sequence number.",
+          "format": "double",
+          "readOnly": true,
+          "type": "number",
+          "x-entity-path": "relationshipSequence"
+        },
+        "state": {
+          "description": "The store relationship state. 1 indicates active. 0 indicates inactive.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer",
+          "x-entity-path": "state"
+        }
+      },
+      "type": "object",
+      "x-entity-class": "com.ibm.commerce.infrastructure.facade.datatypes.OnlineStoreRelatedStoresType"
+    },
+    "OnlineStoreRelatedStoreCollection": {
+      "description": "A collection of online store related stores.",
+      "properties": {
+        "count": {
+          "description": "The total number of item records that match the query parameters.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "integer"
+        },
+        "items": {
+          "description": "The data objects or resources that that match the query parameters.",
+          "items": {
+            "$ref": "#/definitions/OnlineStoreRelatedStore"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "tags": [
+    {
+      "description": "This class provides RESTful services to manage online stores.",
+      "name": "Online Stores"
+    }
+  ],
+  "x-components": {}
+}

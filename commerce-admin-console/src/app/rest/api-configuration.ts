@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
 /**
  * Global configuration for Api services
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ApiConfiguration {
-  rootUrl: string = 'https://hostname.com/wcs/resources';
+  rootUrl: string = '';
 }

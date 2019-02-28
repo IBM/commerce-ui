@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { OrganizationService } from '../../rest/services/organization.service';
 import { IframeService } from '../../services/iframe.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityUpdateRequest } from '../../rest/models';
-import { ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityAddRequest } from '../../rest/models';
 
 @Injectable()
 export class OrganizationsMainService {
@@ -59,7 +57,7 @@ export class OrganizationsMainService {
         };
         this.organizationService.OrganizationRegisterOrganization({
             storeId: '0',
-            body: orgBody as ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityAddRequest
+            body: orgBody
         }).subscribe(response => {
             this.translateService.get('ORGANIZATIONS.SERVICES.createOrg', {orgId: response.orgEntityId})
                                 .subscribe((message: string)=>{
@@ -99,7 +97,7 @@ export class OrganizationsMainService {
         this.organizationService.OrganizationUpdateOrganization({
             storeId: '0',
             organizationId: org['organizationId'],
-            body: orgBody as ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityUpdateRequest
+            body: orgBody
         }).subscribe(response => {
             this.translateService.get('ORGANIZATIONS.SERVICES.editOrg', {orgId: response.orgEntityId})
                             .subscribe((message: string) =>{
