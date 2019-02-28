@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class NewCatalogUploadComponent implements OnInit {
+  catalogDataSaves: boolean;
 
   constructor(private translate: TranslateService,
     private catalogUploadService: CatalogUploadService,
@@ -24,6 +25,7 @@ export class NewCatalogUploadComponent implements OnInit {
  
   size:any='';
   filename='';
+  uploadedby="xyz123@in.ibm.com"
   charecterSet='UTF-8';
   targetCatalog='Extendedsitescatalogstore Catalog';
   catalogInputData = [];
@@ -82,20 +84,27 @@ export class NewCatalogUploadComponent implements OnInit {
   @Input() buttonText= "Upload";
   @Input() accept=['.csv', '.xml'];
   @Input() multiple=false;
-
+   
+   now = new Date();
+ 
   
   saveCatalogData() {
     this.catalogInputData = [
-        {'filename': this.filename, 'size': this.size, 'charecterSet': this.charecterSet, 'targetCatalog': this.targetCatalog }
+        {'filename': this.filename, 'size': this.size, 'charecterSet': this.charecterSet, 'targetCatalog': this.targetCatalog,
+        'uploadedby':this.uploadedby,'stime': this.now, 'etime':this.now }
     ];
     console.log(this.catalogInputData);
+    this.catalogUploadService.categoryListTableData.push(this.catalogInputData);
+      console.log(this.catalogUploadService.categoryListTableData);
+      this.catalogDataSaves = true;
   }
+  
   closeCatalogUpload(){
       this.router.navigate(['/catalogs']);
   }
   
   ngOnInit() {
-    
+   
   }
   getFileDetails(event) {
     // multiple
@@ -110,14 +119,4 @@ export class NewCatalogUploadComponent implements OnInit {
       // return this.size+"KB";
       }
   }
-  // getFilename(event) {
-  //   // multiple
-  //   // for (var i = 0; i < event.target.files.length; i++) { 
-  //     var i=0;
-  //     if(i < event.target.files.length){
-  //       var name = event.target.files[i].name;
-  //     console.log ('Filename: ' + name );
-  //     // return this.size+"KB";
-  //     }
-  // }
 }

@@ -6,13 +6,22 @@ import {
 } from 'carbon-components-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { CatalogUploadService } from '../../services/catalogUpload/catalog-upload.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-catalog-upload',
   templateUrl: './catalog-upload.component.html',
   styleUrls: ['./catalog-upload.component.scss']
 })
 export class CatalogUploadComponent implements OnInit {
-  isTableEmpty = true;
+  // isTableEmpty = true;
+  size:any='';
+  filename='';
+  characterSet='';
+  targetCatalog='';
+  uploadedby: any;
+  stime='';
+  etime='';
 
   private readonly headerIndex = {
     '0': {
@@ -38,22 +47,49 @@ export class CatalogUploadComponent implements OnInit {
     }
   }
   private translationSubscription: Subscription;
-  constructor(private translate: TranslateService) { }
+  catalogInputData: TableItem[][];
+  constructor(private translate: TranslateService,
+    private catalogUploadService: CatalogUploadService,
+    private router:Router
+    ) { }
 
   @Input() model = new TableModel();
-  @Input() size = 'md';
   @Input() showSelectionColumn = false;
   @Input() striped = true;
 
   listItems = [{
     content: "Show All",
     selected: false,
+  },
+  {
+    content: "Completed",
+    selected: false,
   }]
 
   @ViewChild("customHeaderTemplate")
   protected customHeaderTemplate: TemplateRef<any>;
+  @ViewChild("customTableItemTemplate2")
+  protected customTableItemTemplate2: TemplateRef<any>;
+  @ViewChild("customTableItemTemplate3")
+  protected customTableItemTemplate3: TemplateRef<any>;
 
   ngOnInit() {
+    const catalogUpload = this.catalogUploadService.getData();
+    console.log('SERVICEDATa', catalogUpload);
+
+    for (let i = 0; i < catalogUpload.length; i++) {
+      // debugger;
+      this.filename = catalogUpload[i][0].filename; //2Dimensional Array
+      this.size = catalogUpload[i][0].size;
+      this.characterSet = catalogUpload[i][0].characterSet;
+      this.targetCatalog = catalogUpload[i][0].targetCatalog;
+      this.uploadedby=catalogUpload[i][0].uploadedby;
+      this.stime=catalogUpload[i][0].stime;
+      this.etime=catalogUpload[i][0].etime;
+
+    }
+
+    this.model.data = this.catalogInputData;
  
     this.translationSubscription = this.translate.get([
     this.headerIndex['0'].translateId,
@@ -75,7 +111,8 @@ export class CatalogUploadComponent implements OnInit {
       ];
     });
     this.model.data = [
-        [new TableItem({data: " "}), new TableItem({data: " "}), new TableItem({data: " "}), new TableItem({data: " "}), new TableItem({data: " "}), new TableItem({data: " "}), new TableItem({data: " "})],
+        [new TableItem({data: this.filename}), new TableItem({data: this.size}), new TableItem({template:this.customTableItemTemplate2}), new TableItem({data: this.uploadedby}), 
+          new TableItem({data: this.targetCatalog}), new TableItem({data: this.stime, template:this.customTableItemTemplate3}), new TableItem({data: this.etime, template:this.customTableItemTemplate3})],
       ];
   
 }
