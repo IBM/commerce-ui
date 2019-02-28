@@ -82,7 +82,7 @@ public class NewMasterCategoryPage extends TestBase {
 
 	// @FindBy(xpath="//ul[@class='bx--accordion']/ibm-accordion-item[2]/div/div[1]/div")
 	//@FindBy(xpath = "//ul[@class='bx--accordion']/ibm-accordion-item[2]//div[contains(text(), 'Code')]")
-	@FindBy(id="code-text")
+	@FindBy(xpath="//*[@id='code-text']")
 	WebElement codeFieldText;
 
 	// @FindBy(xpath="//ul[@class='bx--accordion']/ibm-accordion-item[2]/div/div[1]/div[2]/input")
@@ -217,11 +217,13 @@ public class NewMasterCategoryPage extends TestBase {
 	WebElement imageAltTextUseDefaultRadioButton;
 
 	// @FindBy(xpath="//*[@id='n-tab-1']/div/div/div[4]/div[2]/div[2]/div/ibm-radio/label")
-	@FindBy(xpath = "//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label")
+	@FindBy(xpath = "//*[@id='n-tab-1']//ibm-radio//input[@id='override-imagealt']//following-sibling::label")
 	WebElement imageAltTextOverrideDefaultRadioText;
 
 	// @FindBy(xpath="//*[@id='n-tab-1']/div/div/div[4]/div[2]/div[2]/div/ibm-radio/label/span")
-	@FindBy(xpath = "//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span")
+	//@FindBy(xpath = "//*[@id='n-tab-1']//ibm-radio//input[@id='radio-5']//following-sibling::label/span")
+	
+	@FindBy(xpath = "//*[@id='n-tab-1']//ibm-radio//input[@id='override-imagealt']//following-sibling::label/span")
 	WebElement imageAltTextOverrideDefaultRadioButton;
 
 	// @FindBy(xpath="//*[@id='n-tab-1']/div/div/div[4]/div[2]/div[3]/input")

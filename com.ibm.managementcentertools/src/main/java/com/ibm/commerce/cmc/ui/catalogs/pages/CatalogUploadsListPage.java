@@ -17,22 +17,23 @@ public class CatalogUploadsListPage extends TestBase {
 	WebElement catalogUploadsinExplorerView;
 	
 	//html/body/app-root/div/app-search-result/div/div[2]/div/p
-	@FindBy(className="searchheader")
+	@FindBy(xpath="//h3")
 	WebElement pageHeader;
 	
 	
-	
+	//ibm-table/table/thead/tr/th[1]/button/span
 	@FindBy(xpath="//ibm-table//thead/tr/th[1]/button/span[contains(text(), 'File Name')]")
 	WebElement column_FileName;
 	
 	
-	@FindBy(xpath="//ibm-table//thead/tr/th[2]/button//ibm-dropdown//span[contains(text(), 'Size')]")
+	@FindBy(xpath="//ibm-table//thead/tr/th[2]/button//span[contains(text(), 'Size')]")
 	WebElement column_Size;
 	
-	@FindBy(xpath="//ibm-table//thead/tr/th[3]/button/span[contains(text(), 'Status')]")
+	
+	@FindBy(xpath="//ibm-table//thead/tr/th[3]/button//ibm-dropdown//span[contains(text(), 'Status')]")
 	WebElement column_Status;
 	
-	@FindBy(xpath="//ibm-table//thead/tr/th[4]/button/span[contains(text(), 'Uploaded by')]")
+	@FindBy(xpath="//ibm-table//thead/tr/th[4]/button/span[contains(text(), 'Uploaded By')]")
 	WebElement column_Uploadedby;
 	
 	@FindBy(xpath="//ibm-table//thead/tr/th[5]/button/span[contains(text(), 'Target Catalog')]")
@@ -41,14 +42,14 @@ public class CatalogUploadsListPage extends TestBase {
 	@FindBy(xpath="//ibm-table//thead/tr/th[6]/button/span[contains(text(), 'Start Time')]")
 	WebElement column_StartTime;
 	
-	@FindBy(xpath="//ibm-table//thead/tr/th[7]/button/span[contains(text(), 'Buyable')]")
+	@FindBy(xpath="//ibm-table//thead/tr/th[7]/button/span[contains(text(), 'End Time')]")
 	WebElement column_EndTime;
 	
 	
 	
 	
 	
-	public void clickOnSearchResults() {
+	public void clickOnCatalogUploads() {
 		TestUtil.clickOnElement(catalogUploadsinExplorerView);
 	}
 	
@@ -58,63 +59,63 @@ public class CatalogUploadsListPage extends TestBase {
 		
 	}
 	
-	public boolean isTypeColumnExists() {
+	public boolean isFileNameColumnExists() {
 		return TestUtil.isElementDisplayed(column_FileName);
 	}
 	
 	
-	public boolean isTypeColumnClickable() {
+	public boolean isFileNameColumnClickable() {
 		return TestUtil.isClickable(column_FileName);
 	}
 	
-	public boolean isStoreColumnExists() {
+	public boolean isSizeColumnExists() {
 		return TestUtil.isElementDisplayed(column_Size);
 	}
 	
 	
-	public boolean isStoreColumnClickable() {
+	public boolean isSizeColumnClickable() {
 		return TestUtil.isClickable(column_Size);
 	}
 	
 	
-	public boolean isCodeColumnExists() {
+	public boolean isStatusColumnExists() {
 		return TestUtil.isElementDisplayed(column_Status);
 	}
 	
-	public boolean isCodeColumnClickable() {
+	public boolean isStatusColumnClickable() {
 		return TestUtil.isClickable(column_Status);
 	}
 	
-	public boolean isNameColumnExists() {
+	public boolean isUploadedByColumnExists() {
 		return TestUtil.isElementDisplayed(column_Uploadedby);
 	}
 	
-	public boolean isNameColumnClickable() {
+	public boolean isUploadedByColumnClickable() {
 		return TestUtil.isClickable(column_Uploadedby);
 	}
 	
-	public boolean isThumbnailColumnExists() {
+	public boolean isTargetCatalogColumnExists() {
 		return TestUtil.isElementDisplayed(column_TargetCatalog);
 	}
 	
-	public boolean isThumbnailColumnClickable() {
+	public boolean isTargetCatalogColumnClickable() {
 		return TestUtil.isClickable(column_TargetCatalog);
 	}
 	
 	
-	public boolean isDisplayToCustomerColumnExists() {
+	public boolean isStartTimeColumnExists() {
 		return TestUtil.isElementDisplayed(column_StartTime);
 	}
 	
-	public boolean isDisplayToCustomerColumnClickable() {
+	public boolean isStartTimeColumnClickable() {
 		return TestUtil.isClickable(column_StartTime);
 	}
 	
-	public boolean isBuyableColumnExists() {
+	public boolean isEndTimeColumnExists() {
 		return TestUtil.isElementDisplayed(column_EndTime);
 	}
 	
-	public boolean isBuyableColumnClickable() {
+	public boolean isEndTimeColumnClickable() {
 		return TestUtil.isClickable(column_EndTime);
 	}
 	
