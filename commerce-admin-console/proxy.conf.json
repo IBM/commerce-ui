@@ -6,5 +6,9 @@
 	"/wcs": {
 		"target": "https://localhost:8000",
 		"secure": false
+	},
+	"/rest": {
+		"target": "https://localhost:8000",
+		"secure": false
 	}
 }

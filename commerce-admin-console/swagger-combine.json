@@ -1,0 +1,45 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Commerce API",
+    "version": "1.0.0"
+  },
+  "apis": [
+    {
+      "url": "./api_definition/online-stores.json",
+      "paths": {
+        "rename": [
+          {
+            "type": "regex",
+            "from": "(.*)",
+            "to": "/rest/admin/v2$1"
+          }
+        ]
+      }
+    },
+    {
+      "url": "../../commerce-api-management/spec/swagger20/transaction/user_and_organization_management.json",
+      "paths": {
+        "rename": [
+          {
+            "type": "regex",
+            "from": "(.*)",
+            "to": "/wcs/resources$1"
+          }
+        ]
+      }
+    },
+    {
+      "url": "../../commerce-api-management/spec/swagger20/transaction/store_locator.json",
+      "paths": {
+        "rename": [
+          {
+            "type": "regex",
+            "from": "(.*)",
+            "to": "/wcs/resources$1"
+          }
+        ]
+      }
+    }
+  ]
+}

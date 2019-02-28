@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
 /**
  * Global configuration for {{prefix}} services
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class {{configurationClass}} {
   rootUrl: string = '{{{rootUrl}}}';
 }

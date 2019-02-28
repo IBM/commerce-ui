@@ -3,12 +3,12 @@
   }}{{#operationParameters}}{{paramVar}}{{^paramRequired}}?{{/paramRequired}}: {{{paramType
   }}}{{^paramIsLast}},
     {{/paramIsLast}}{{/operationParameters}}{{/operationParamsClass
-    }}): Observable<{{{operationResultType}}}> {
+    }}): __Observable<{{{operationResultType}}}> {
     return this.{{operationName}}Response({{#operationParamsClass
     }}params{{/operationParamsClass}}{{^operationParamsClass
     }}{{#operationParameters}}{{paramVar}}{{^paramIsLast}}, {{/paramIsLast
     }}{{/operationParameters}}{{/operationParamsClass
     }}).pipe(
-      __map(_r => _r.body)
+      __map(_r => _r.body as {{{operationResultType}}})
     );
   }

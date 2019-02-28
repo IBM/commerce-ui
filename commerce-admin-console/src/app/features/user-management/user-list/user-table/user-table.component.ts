@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { TableHeaderItem, TableItem, TableModel } from 'carbon-components-angular';
 import { PersonService } from '../../../../rest/services/person.service';
 import { SearchService } from '../../search-service.service';
-import { ComIbmCommerceUserBeansUserSearchDataBean_IBM_User_List_DetailsUserDataBeans } from '../../../../rest/models';
 
 @Component({
   selector: 'ac-user-table',
@@ -97,7 +96,7 @@ export class UserTableComponent implements OnInit {
     }
 
 
-    data.userDataBeans.forEach((item: ComIbmCommerceUserBeansUserSearchDataBean_IBM_User_List_DetailsUserDataBeans) => {
+    data.userDataBeans.forEach((item) => {
       this.userModel.addRow([
         new TableItem({ data: {name: item.displayName, link: '/users/edit-user/'+item.userId}, template: this.userItemTemplate }),
         new TableItem({ data: item.firstName }),

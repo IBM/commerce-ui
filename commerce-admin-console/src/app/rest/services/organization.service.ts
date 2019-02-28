@@ -1,30 +1,28 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { StrictHttpResponse } from '../strict-http-response';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { BaseService as __BaseService } from '../base-service';
+import { ApiConfiguration as __Configuration } from '../api-configuration';
+import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-response';
+import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityIdentity } from '../models/com-ibm-commerce-rest-member-handler-organization-handler-_org-entity-identity';
-import { ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityAddRequest } from '../models/com-ibm-commerce-rest-member-handler-organization-handler-_org-entity-add-request';
-import { ComIbmCommerceUserBeansOrganizationSearchDataBean_IBM_Organization_List_Details } from '../models/com-ibm-commerce-user-beans-organization-search-data-bean-_ibm_organization-_list-_details';
-import { ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityUpdateRequest } from '../models/com-ibm-commerce-rest-member-handler-organization-handler-_org-entity-update-request';
-import { ComIbmCommerceRestMemberHandlerOrganizationHandler_UpdateApprovalGroupsResponse } from '../models/com-ibm-commerce-rest-member-handler-organization-handler-_update-approval-groups-response';
-import { ComIbmCommerceRestMemberHandlerOrganizationHandler_UpdateApprovalGroups } from '../models/com-ibm-commerce-rest-member-handler-organization-handler-_update-approval-groups';
-import { ComIbmCommerceUserBeansOrgEntityDataBean_IBM_Parent_Assigned_Roles_Details } from '../models/com-ibm-commerce-user-beans-org-entity-data-bean-_ibm_parent-_assigned-_roles-_details';
-import { ComIbmCommerceMemberBeansOrganizationListDataBean_IBM_Organization_Summary } from '../models/com-ibm-commerce-member-beans-organization-list-data-bean-_ibm_organization-_summary';
-import { ComIbmCommerceRestMemberHandlerOrganizationHandlerOrgEntityBuyerIdentifier } from '../models/com-ibm-commerce-rest-member-handler-organization-handler-org-entity-buyer-identifier';
-import { ComIbmCommerceRestMemberHandlerOrganizationHandlerBuyerRegistrationAddRequest } from '../models/com-ibm-commerce-rest-member-handler-organization-handler-buyer-registration-add-request';
+@Injectable({
+  providedIn: 'root',
+})
+class OrganizationService extends __BaseService {
+  static readonly OrganizationRegisterOrganizationPath = '/wcs/resources/store/{storeId}/organization';
+  static readonly OrganizationFindByQueryPath = '/wcs/resources/store/{storeId}/organization';
+  static readonly OrganizationUpdateOrganizationPath = '/wcs/resources/store/{storeId}/organization/{organizationId}';
+  static readonly OrganizationUpdateApprovalGroupsPath = '/wcs/resources/store/{storeId}/organization/{organizationId}';
+  static readonly OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileNamePath = '/wcs/resources/store/{storeId}/organization/{organizationId}';
+  static readonly OrganizationLockPath = '/wcs/resources/store/{storeId}/organization/{organizationId}/lock';
+  static readonly OrganizationUnlockPath = '/wcs/resources/store/{storeId}/organization/{organizationId}/unlock';
+  static readonly OrganizationGetEntitledOrganizationsPath = '/wcs/resources/store/{storeId}/organization/@self/entitled_orgs';
+  static readonly OrganizationRegisterBuyerOrganizationPath = '/wcs/resources/store/{storeId}/organization/buyer';
 
-/**
- * This class provides RESTful services to register an organization, to get or update organization information.
- */
-@Injectable()
-class OrganizationService extends BaseService {
   constructor(
-    config: ApiConfiguration,
+    config: __Configuration,
     http: HttpClient
   ) {
     super(config, http);
@@ -40,7 +38,7 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationRegisterOrganizationResponse(params: OrganizationService.OrganizationRegisterOrganizationParams): Observable<StrictHttpResponse<ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityIdentity>> {
+  OrganizationRegisterOrganizationResponse(params: OrganizationService.OrganizationRegisterOrganizationParams): __Observable<__StrictHttpResponse<any>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -48,7 +46,7 @@ class OrganizationService extends BaseService {
     __body = params.body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/store/${params.storeId}/organization`,
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization`,
       __body,
       {
         headers: __headers,
@@ -58,8 +56,8 @@ class OrganizationService extends BaseService {
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
-      __map((_r: HttpResponse<any>) => {
-        return _r as StrictHttpResponse<ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityIdentity>;
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
       })
     );
   }
@@ -74,9 +72,9 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationRegisterOrganization(params: OrganizationService.OrganizationRegisterOrganizationParams): Observable<ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityIdentity> {
+  OrganizationRegisterOrganization(params: OrganizationService.OrganizationRegisterOrganizationParams): __Observable<any> {
     return this.OrganizationRegisterOrganizationResponse(params).pipe(
-      __map(_r => _r.body)
+      __map(_r => _r.body as any)
     );
   }
 
@@ -88,38 +86,38 @@ class OrganizationService extends BaseService {
    *
    * - `q`: The query name. <ul><li>organizationHierarchy: Retrieves the organization hierarchy.</li><li>organizationsICanAdmin: This allows an administrator to find organizations that he/she can administer.</li><li>rolesICanAssignInOrg: This allows an administrator to find roles that he/she can assign in organizations.</li></ul>
    *
-   * - `startIndex`: The starting index of the result.
-   *
    * - `profileName`: Profile name. Profiles determine the subset of data returned by a query.
-   *
-   * - `parentOrgName`: The parent organization name.
-   *
-   * - `orgName`: The organization name.
-   *
-   * - `orgId`: The organization identifier.
-   *
-   * - `maxResults`: The maximum number of results to be returned.
    *
    * - `accountId`: The trading account ID.
    *
+   * - `orgId`: The organization identifier.
+   *
+   * - `orgName`: The organization name.
+   *
+   * - `parentOrgName`: The parent organization name.
+   *
+   * - `startIndex`: The starting index of the result.
+   *
+   * - `maxResults`: The maximum number of results to be returned.
+   *
    * @return The requested completed successfully.
    */
-  OrganizationFindByQueryResponse(params: OrganizationService.OrganizationFindByQueryParams): Observable<StrictHttpResponse<ComIbmCommerceUserBeansOrganizationSearchDataBean_IBM_Organization_List_Details>> {
+  OrganizationFindByQueryResponse(params: OrganizationService.OrganizationFindByQueryParams): __Observable<__StrictHttpResponse<any>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     if (params.q != null) __params = __params.set('q', params.q.toString());
-    if (params.startIndex != null) __params = __params.set('startIndex', params.startIndex.toString());
     if (params.profileName != null) __params = __params.set('profileName', params.profileName.toString());
-    if (params.parentOrgName != null) __params = __params.set('parentOrgName', params.parentOrgName.toString());
-    if (params.orgName != null) __params = __params.set('orgName', params.orgName.toString());
-    if (params.orgId != null) __params = __params.set('orgId', params.orgId.toString());
-    if (params.maxResults != null) __params = __params.set('maxResults', params.maxResults.toString());
     if (params.accountId != null) __params = __params.set('accountId', params.accountId.toString());
+    if (params.orgId != null) __params = __params.set('orgId', params.orgId.toString());
+    if (params.orgName != null) __params = __params.set('orgName', params.orgName.toString());
+    if (params.parentOrgName != null) __params = __params.set('parentOrgName', params.parentOrgName.toString());
+    if (params.startIndex != null) __params = __params.set('startIndex', params.startIndex.toString());
+    if (params.maxResults != null) __params = __params.set('maxResults', params.maxResults.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/store/${params.storeId}/organization`,
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization`,
       __body,
       {
         headers: __headers,
@@ -129,8 +127,8 @@ class OrganizationService extends BaseService {
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
-      __map((_r: HttpResponse<any>) => {
-        return _r as StrictHttpResponse<ComIbmCommerceUserBeansOrganizationSearchDataBean_IBM_Organization_List_Details>;
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
       })
     );
   }
@@ -143,25 +141,25 @@ class OrganizationService extends BaseService {
    *
    * - `q`: The query name. <ul><li>organizationHierarchy: Retrieves the organization hierarchy.</li><li>organizationsICanAdmin: This allows an administrator to find organizations that he/she can administer.</li><li>rolesICanAssignInOrg: This allows an administrator to find roles that he/she can assign in organizations.</li></ul>
    *
-   * - `startIndex`: The starting index of the result.
-   *
    * - `profileName`: Profile name. Profiles determine the subset of data returned by a query.
-   *
-   * - `parentOrgName`: The parent organization name.
-   *
-   * - `orgName`: The organization name.
-   *
-   * - `orgId`: The organization identifier.
-   *
-   * - `maxResults`: The maximum number of results to be returned.
    *
    * - `accountId`: The trading account ID.
    *
+   * - `orgId`: The organization identifier.
+   *
+   * - `orgName`: The organization name.
+   *
+   * - `parentOrgName`: The parent organization name.
+   *
+   * - `startIndex`: The starting index of the result.
+   *
+   * - `maxResults`: The maximum number of results to be returned.
+   *
    * @return The requested completed successfully.
    */
-  OrganizationFindByQuery(params: OrganizationService.OrganizationFindByQueryParams): Observable<ComIbmCommerceUserBeansOrganizationSearchDataBean_IBM_Organization_List_Details> {
+  OrganizationFindByQuery(params: OrganizationService.OrganizationFindByQueryParams): __Observable<any> {
     return this.OrganizationFindByQueryResponse(params).pipe(
-      __map(_r => _r.body)
+      __map(_r => _r.body as any)
     );
   }
 
@@ -177,7 +175,7 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationUpdateOrganizationResponse(params: OrganizationService.OrganizationUpdateOrganizationParams): Observable<StrictHttpResponse<ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityIdentity>> {
+  OrganizationUpdateOrganizationResponse(params: OrganizationService.OrganizationUpdateOrganizationParams): __Observable<__StrictHttpResponse<any>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -186,7 +184,7 @@ class OrganizationService extends BaseService {
     __body = params.body;
     let req = new HttpRequest<any>(
       'PUT',
-      this.rootUrl + `/store/${params.storeId}/organization/${params.organizationId}`,
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization/${params.organizationId}`,
       __body,
       {
         headers: __headers,
@@ -196,8 +194,8 @@ class OrganizationService extends BaseService {
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
-      __map((_r: HttpResponse<any>) => {
-        return _r as StrictHttpResponse<ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityIdentity>;
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
       })
     );
   }
@@ -214,14 +212,14 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationUpdateOrganization(params: OrganizationService.OrganizationUpdateOrganizationParams): Observable<ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityIdentity> {
+  OrganizationUpdateOrganization(params: OrganizationService.OrganizationUpdateOrganizationParams): __Observable<any> {
     return this.OrganizationUpdateOrganizationResponse(params).pipe(
-      __map(_r => _r.body)
+      __map(_r => _r.body as any)
     );
   }
 
   /**
-   * Updates an approval group.
+   * Performs an action on an organization. See each action for details on input and output. Actions include: updating an approval group, and assigning or unassigning one or more roles from an organization
    * @param params The `OrganizationService.OrganizationUpdateApprovalGroupsParams` containing the following parameters:
    *
    * - `storeId`: The store identifier.
@@ -234,7 +232,7 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationUpdateApprovalGroupsResponse(params: OrganizationService.OrganizationUpdateApprovalGroupsParams): Observable<StrictHttpResponse<ComIbmCommerceRestMemberHandlerOrganizationHandler_UpdateApprovalGroupsResponse>> {
+  OrganizationUpdateApprovalGroupsResponse(params: OrganizationService.OrganizationUpdateApprovalGroupsParams): __Observable<__StrictHttpResponse<any>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -244,7 +242,7 @@ class OrganizationService extends BaseService {
     __body = params.body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/store/${params.storeId}/organization/${params.organizationId}`,
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization/${params.organizationId}`,
       __body,
       {
         headers: __headers,
@@ -254,14 +252,14 @@ class OrganizationService extends BaseService {
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
-      __map((_r: HttpResponse<any>) => {
-        return _r as StrictHttpResponse<ComIbmCommerceRestMemberHandlerOrganizationHandler_UpdateApprovalGroupsResponse>;
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Updates an approval group.
+   * Performs an action on an organization. See each action for details on input and output. Actions include: updating an approval group, and assigning or unassigning one or more roles from an organization
    * @param params The `OrganizationService.OrganizationUpdateApprovalGroupsParams` containing the following parameters:
    *
    * - `storeId`: The store identifier.
@@ -274,9 +272,9 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationUpdateApprovalGroups(params: OrganizationService.OrganizationUpdateApprovalGroupsParams): Observable<ComIbmCommerceRestMemberHandlerOrganizationHandler_UpdateApprovalGroupsResponse> {
+  OrganizationUpdateApprovalGroups(params: OrganizationService.OrganizationUpdateApprovalGroupsParams): __Observable<any> {
     return this.OrganizationUpdateApprovalGroupsResponse(params).pipe(
-      __map(_r => _r.body)
+      __map(_r => _r.body as any)
     );
   }
 
@@ -292,7 +290,7 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileNameResponse(params: OrganizationService.OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileNameParams): Observable<StrictHttpResponse<ComIbmCommerceUserBeansOrgEntityDataBean_IBM_Parent_Assigned_Roles_Details>> {
+  OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileNameResponse(params: OrganizationService.OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileNameParams): __Observable<__StrictHttpResponse<any>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -301,7 +299,7 @@ class OrganizationService extends BaseService {
     if (params.profileName != null) __params = __params.set('profileName', params.profileName.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/store/${params.storeId}/organization/${params.organizationId}`,
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization/${params.organizationId}`,
       __body,
       {
         headers: __headers,
@@ -311,8 +309,8 @@ class OrganizationService extends BaseService {
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
-      __map((_r: HttpResponse<any>) => {
-        return _r as StrictHttpResponse<ComIbmCommerceUserBeansOrgEntityDataBean_IBM_Parent_Assigned_Roles_Details>;
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
       })
     );
   }
@@ -329,37 +327,32 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileName(params: OrganizationService.OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileNameParams): Observable<ComIbmCommerceUserBeansOrgEntityDataBean_IBM_Parent_Assigned_Roles_Details> {
+  OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileName(params: OrganizationService.OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileNameParams): __Observable<any> {
     return this.OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileNameResponse(params).pipe(
-      __map(_r => _r.body)
+      __map(_r => _r.body as any)
     );
   }
 
   /**
-   * Get user's entitled organizations.
-   * @param params The `OrganizationService.OrganizationGetEntitledOrganizationsParams` containing the following parameters:
+   * Updates an organization to a locked status. When locked the organization's status is -1.
+   * @param params The `OrganizationService.OrganizationLockParams` containing the following parameters:
    *
-   * - `storeId`:
+   * - `storeId`: The store identifier.
    *
-   * - `responseFormat`:
+   * - `organizationId`: The organization identifier.
    *
-   * - `explicitEntitlement`:
-   *
-   * - `accountCheck`:
-   *
-   * @return The requested completed successfully.
+   * - `responseFormat`: The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
    */
-  OrganizationGetEntitledOrganizationsResponse(params: OrganizationService.OrganizationGetEntitledOrganizationsParams): Observable<StrictHttpResponse<ComIbmCommerceMemberBeansOrganizationListDataBean_IBM_Organization_Summary>> {
+  OrganizationLockResponse(params: OrganizationService.OrganizationLockParams): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
+
     if (params.responseFormat != null) __params = __params.set('responseFormat', params.responseFormat.toString());
-    if (params.explicitEntitlement != null) __params = __params.set('explicitEntitlement', params.explicitEntitlement.toString());
-    if (params.accountCheck != null) __params = __params.set('accountCheck', params.accountCheck.toString());
     let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/store/${params.storeId}/organization/@self/entitled_orgs`,
+      'POST',
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization/${params.organizationId}/lock`,
       __body,
       {
         headers: __headers,
@@ -369,8 +362,115 @@ class OrganizationService extends BaseService {
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
-      __map((_r: HttpResponse<any>) => {
-        return _r as StrictHttpResponse<ComIbmCommerceMemberBeansOrganizationListDataBean_IBM_Organization_Summary>;
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+
+  /**
+   * Updates an organization to a locked status. When locked the organization's status is -1.
+   * @param params The `OrganizationService.OrganizationLockParams` containing the following parameters:
+   *
+   * - `storeId`: The store identifier.
+   *
+   * - `organizationId`: The organization identifier.
+   *
+   * - `responseFormat`: The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
+   */
+  OrganizationLock(params: OrganizationService.OrganizationLockParams): __Observable<null> {
+    return this.OrganizationLockResponse(params).pipe(
+      __map(_r => _r.body as null)
+    );
+  }
+
+  /**
+   * Updates an organization to an unlocked status. When unlocked the organization's status is 0.
+   * @param params The `OrganizationService.OrganizationUnlockParams` containing the following parameters:
+   *
+   * - `storeId`: The store identifier.
+   *
+   * - `organizationId`: The organization identifier.
+   *
+   * - `responseFormat`: The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
+   */
+  OrganizationUnlockResponse(params: OrganizationService.OrganizationUnlockParams): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+
+    if (params.responseFormat != null) __params = __params.set('responseFormat', params.responseFormat.toString());
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization/${params.organizationId}/unlock`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+
+  /**
+   * Updates an organization to an unlocked status. When unlocked the organization's status is 0.
+   * @param params The `OrganizationService.OrganizationUnlockParams` containing the following parameters:
+   *
+   * - `storeId`: The store identifier.
+   *
+   * - `organizationId`: The organization identifier.
+   *
+   * - `responseFormat`: The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
+   */
+  OrganizationUnlock(params: OrganizationService.OrganizationUnlockParams): __Observable<null> {
+    return this.OrganizationUnlockResponse(params).pipe(
+      __map(_r => _r.body as null)
+    );
+  }
+
+  /**
+   * Get user's entitled organizations.
+   * @param params The `OrganizationService.OrganizationGetEntitledOrganizationsParams` containing the following parameters:
+   *
+   * - `storeId`: The store identifier.
+   *
+   * - `responseFormat`: The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
+   *
+   * - `accountCheck`:
+   *
+   * - `explicitEntitlement`:
+   *
+   * @return The requested completed successfully.
+   */
+  OrganizationGetEntitledOrganizationsResponse(params: OrganizationService.OrganizationGetEntitledOrganizationsParams): __Observable<__StrictHttpResponse<any>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    if (params.responseFormat != null) __params = __params.set('responseFormat', params.responseFormat.toString());
+    if (params.accountCheck != null) __params = __params.set('accountCheck', params.accountCheck.toString());
+    if (params.explicitEntitlement != null) __params = __params.set('explicitEntitlement', params.explicitEntitlement.toString());
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization/@self/entitled_orgs`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
       })
     );
   }
@@ -379,19 +479,19 @@ class OrganizationService extends BaseService {
    * Get user's entitled organizations.
    * @param params The `OrganizationService.OrganizationGetEntitledOrganizationsParams` containing the following parameters:
    *
-   * - `storeId`:
+   * - `storeId`: The store identifier.
    *
-   * - `responseFormat`:
-   *
-   * - `explicitEntitlement`:
+   * - `responseFormat`: The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
    *
    * - `accountCheck`:
    *
+   * - `explicitEntitlement`:
+   *
    * @return The requested completed successfully.
    */
-  OrganizationGetEntitledOrganizations(params: OrganizationService.OrganizationGetEntitledOrganizationsParams): Observable<ComIbmCommerceMemberBeansOrganizationListDataBean_IBM_Organization_Summary> {
+  OrganizationGetEntitledOrganizations(params: OrganizationService.OrganizationGetEntitledOrganizationsParams): __Observable<any> {
     return this.OrganizationGetEntitledOrganizationsResponse(params).pipe(
-      __map(_r => _r.body)
+      __map(_r => _r.body as any)
     );
   }
 
@@ -407,7 +507,7 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationRegisterBuyerOrganizationResponse(params: OrganizationService.OrganizationRegisterBuyerOrganizationParams): Observable<StrictHttpResponse<ComIbmCommerceRestMemberHandlerOrganizationHandlerOrgEntityBuyerIdentifier>> {
+  OrganizationRegisterBuyerOrganizationResponse(params: OrganizationService.OrganizationRegisterBuyerOrganizationParams): __Observable<__StrictHttpResponse<any>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -416,7 +516,7 @@ class OrganizationService extends BaseService {
     if (params.responseFormat != null) __params = __params.set('responseFormat', params.responseFormat.toString());
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/store/${params.storeId}/organization/buyer`,
+      this.rootUrl + `/wcs/resources/store/${params.storeId}/organization/buyer`,
       __body,
       {
         headers: __headers,
@@ -426,8 +526,8 @@ class OrganizationService extends BaseService {
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
-      __map((_r: HttpResponse<any>) => {
-        return _r as StrictHttpResponse<ComIbmCommerceRestMemberHandlerOrganizationHandlerOrgEntityBuyerIdentifier>;
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
       })
     );
   }
@@ -444,9 +544,9 @@ class OrganizationService extends BaseService {
    *
    * @return The requested completed successfully.
    */
-  OrganizationRegisterBuyerOrganization(params: OrganizationService.OrganizationRegisterBuyerOrganizationParams): Observable<ComIbmCommerceRestMemberHandlerOrganizationHandlerOrgEntityBuyerIdentifier> {
+  OrganizationRegisterBuyerOrganization(params: OrganizationService.OrganizationRegisterBuyerOrganizationParams): __Observable<any> {
     return this.OrganizationRegisterBuyerOrganizationResponse(params).pipe(
-      __map(_r => _r.body)
+      __map(_r => _r.body as any)
     );
   }
 }
@@ -466,7 +566,7 @@ module OrganizationService {
     /**
      * Request body.
      */
-    body?: ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityAddRequest;
+    body?: any;
   }
 
   /**
@@ -485,24 +585,14 @@ module OrganizationService {
     q: 'organizationHierarchy' | 'organizationsICanAdmin' | 'rolesICanAssignInOrg';
 
     /**
-     * The starting index of the result.
-     */
-    startIndex?: string;
-
-    /**
      * Profile name. Profiles determine the subset of data returned by a query.
      */
     profileName?: 'IBM_Store_Summary' | 'IBM_Organization_List_Summary' | 'IBM_Organization_List_Short_Summary' | 'IBM_Organization_List_Details' | 'IBM_Roles_To_Assign_Details';
 
     /**
-     * The parent organization name.
+     * The trading account ID.
      */
-    parentOrgName?: string;
-
-    /**
-     * The organization name.
-     */
-    orgName?: string;
+    accountId?: string;
 
     /**
      * The organization identifier.
@@ -510,14 +600,24 @@ module OrganizationService {
     orgId?: string;
 
     /**
+     * The organization name.
+     */
+    orgName?: string;
+
+    /**
+     * The parent organization name.
+     */
+    parentOrgName?: string;
+
+    /**
+     * The starting index of the result.
+     */
+    startIndex?: string;
+
+    /**
      * The maximum number of results to be returned.
      */
     maxResults?: string;
-
-    /**
-     * The trading account ID.
-     */
-    accountId?: string;
   }
 
   /**
@@ -538,7 +638,7 @@ module OrganizationService {
     /**
      * Request body.
      */
-    body?: ComIbmCommerceRestMemberHandlerOrganizationHandler_OrgEntityUpdateRequest;
+    body?: any;
   }
 
   /**
@@ -559,12 +659,12 @@ module OrganizationService {
     /**
      * The action of the rest service.
      */
-    action: 'updateApprovalGroups';
+    action: 'updateApprovalGroups' | 'assignRole' | 'unassignRole';
 
     /**
      * Request body.
      */
-    body?: ComIbmCommerceRestMemberHandlerOrganizationHandler_UpdateApprovalGroups;
+    body?: any;
   }
 
   /**
@@ -589,13 +689,63 @@ module OrganizationService {
   }
 
   /**
+   * Parameters for OrganizationLock
+   */
+  export interface OrganizationLockParams {
+
+    /**
+     * The store identifier.
+     */
+    storeId: string;
+
+    /**
+     * The organization identifier.
+     */
+    organizationId: string;
+
+    /**
+     * The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
+     */
+    responseFormat?: 'xml' | 'json';
+  }
+
+  /**
+   * Parameters for OrganizationUnlock
+   */
+  export interface OrganizationUnlockParams {
+
+    /**
+     * The store identifier.
+     */
+    storeId: string;
+
+    /**
+     * The organization identifier.
+     */
+    organizationId: string;
+
+    /**
+     * The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
+     */
+    responseFormat?: 'xml' | 'json';
+  }
+
+  /**
    * Parameters for OrganizationGetEntitledOrganizations
    */
   export interface OrganizationGetEntitledOrganizationsParams {
+
+    /**
+     * The store identifier.
+     */
     storeId: string;
-    responseFormat?: string;
-    explicitEntitlement?: string;
+
+    /**
+     * The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.
+     */
+    responseFormat?: 'xml' | 'json';
     accountCheck?: string;
+    explicitEntitlement?: string;
   }
 
   /**
@@ -611,7 +761,7 @@ module OrganizationService {
     /**
      * Request body.
      */
-    body: ComIbmCommerceRestMemberHandlerOrganizationHandlerBuyerRegistrationAddRequest;
+    body: any;
 
     /**
      * The response format. Valid values are json and xml. If the request contains an input body, it must use the format specified in responseFormat. If the responseFormat is not specified, the accept  HTTP header determines the format of the response. If the accept  HTTP header is not specified then default response format is json.

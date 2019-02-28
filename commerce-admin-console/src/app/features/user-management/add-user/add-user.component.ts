@@ -292,7 +292,7 @@ export class AddUserComponent implements OnInit {
     });
     this.organizationList = newOrgList;
 
-    this.countryService.CountryfindCountryStateList({
+    this.countryService.CountryFindCountryStateList({
       storeId: '0'
     }).subscribe(data => this.processCountryData(data));
 
