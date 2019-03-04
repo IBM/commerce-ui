@@ -16,19 +16,13 @@
     padding: 10px;
     margin-left: -0.8%;
     margin-right: -0.8%;
-  
+    height: auto;
+    width: 100%;
+   
 }
-button {
-    cursor: pointer;
-    // z-index: -1;
+.flex-container {
+    display: flex;
+    justify-content: center;
 }
-ibm-icon-maximize32 svg {
-    will-change: unset; 
-    will-change: auto;
-    will-change: auto !important;
-}
-.icon-svg-warning svg {
-    will-change: unset;
-    will-change: auto;
-    will-change: auto !important;
-}
+.pointer {cursor: pointer;}
+

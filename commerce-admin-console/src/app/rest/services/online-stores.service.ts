@@ -27,7 +27,6 @@ class OnlineStoresService extends __BaseService {
   static readonly getOnlineStoreDefaultCatalogsPath = '/rest/admin/v2/online-stores/{onlineStoreId}/default-catalogs';
   static readonly createOnlineStoreDefaultCatalogPath = '/rest/admin/v2/online-stores/{onlineStoreId}/default-catalogs';
   static readonly deleteOnlineStoreDefaultCatalogPath = '/rest/admin/v2/online-stores/{onlineStoreId}/default-catalogs/{id}';
-  static readonly getOnlineStoreDefaultCatalogPath = '/rest/admin/v2/online-stores/{onlineStoreId}/default-catalogs/{id}';
   static readonly getOnlineStoreDescriptionsPath = '/rest/admin/v2/online-stores/{onlineStoreId}/descriptions';
   static readonly createOnlineStoreDescriptionPath = '/rest/admin/v2/online-stores/{onlineStoreId}/descriptions';
   static readonly getOnlineStoreDescriptionPath = '/rest/admin/v2/online-stores/{onlineStoreId}/descriptions/{id}';
@@ -752,54 +751,6 @@ class OnlineStoresService extends __BaseService {
   }
 
   /**
-   * @param params The `OnlineStoresService.GetOnlineStoreDefaultCatalogParams` containing the following parameters:
-   *
-   * - `onlineStoreId`: The unique numeric ID for identifying the online store.
-   *
-   * - `id`: The unique numeric ID for identifying the default catalog.
-   *
-   * @return The operation is successful.
-   */
-  getOnlineStoreDefaultCatalogResponse(params: OnlineStoresService.GetOnlineStoreDefaultCatalogParams): __Observable<__StrictHttpResponse<{catalogId?: number, id?: number, onlineStoreId?: number, storeId?: number}>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-
-
-    let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/rest/admin/v2/online-stores/${params.onlineStoreId}/default-catalogs/${params.id}`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<{catalogId?: number, id?: number, onlineStoreId?: number, storeId?: number}>;
-      })
-    );
-  }
-
-  /**
-   * @param params The `OnlineStoresService.GetOnlineStoreDefaultCatalogParams` containing the following parameters:
-   *
-   * - `onlineStoreId`: The unique numeric ID for identifying the online store.
-   *
-   * - `id`: The unique numeric ID for identifying the default catalog.
-   *
-   * @return The operation is successful.
-   */
-  getOnlineStoreDefaultCatalog(params: OnlineStoresService.GetOnlineStoreDefaultCatalogParams): __Observable<{catalogId?: number, id?: number, onlineStoreId?: number, storeId?: number}> {
-    return this.getOnlineStoreDefaultCatalogResponse(params).pipe(
-      __map(_r => _r.body as {catalogId?: number, id?: number, onlineStoreId?: number, storeId?: number})
-    );
-  }
-
-  /**
    * @param params The `OnlineStoresService.GetOnlineStoreDescriptionsParams` containing the following parameters:
    *
    * - `onlineStoreId`: The unique numeric ID for identifying the online store.
@@ -1472,22 +1423,6 @@ module OnlineStoresService {
    * Parameters for deleteOnlineStoreDefaultCatalog
    */
   export interface DeleteOnlineStoreDefaultCatalogParams {
-
-    /**
-     * The unique numeric ID for identifying the online store.
-     */
-    onlineStoreId: number;
-
-    /**
-     * The unique numeric ID for identifying the default catalog.
-     */
-    id: number;
-  }
-
-  /**
-   * Parameters for getOnlineStoreDefaultCatalog
-   */
-  export interface GetOnlineStoreDefaultCatalogParams {
 
     /**
      * The unique numeric ID for identifying the online store.
