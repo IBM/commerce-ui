@@ -272,7 +272,7 @@
             "associated_store": "Associated Store",
             "auroraESite": "AuroraESite",
             "unique_id": "Unique ID",
-            "united_state_english": " (United State English)",
+            "united_state_english": " (United States English)",
             "name": "Name",
             "short_description": "Short description",
             "display_customer": "Display to customer",
@@ -297,11 +297,11 @@
                 "type": "*Type",
                 "store": "Store",
                 "path": "Path",
-                "code": "code",
+                "code": "Code",
                 "usage": "Usage",
-                "administative_name": "Administative name (United State English)",
-                "display_name": "Administative name (United State English)",
-                "short_description": "Short description (United State English)"
+                "administative_name": "Administative name (United States English)",
+                "display_name": "Display name (United States English)",
+                "short_description": "Short description (United States English)"
             },
             "CONTENT_TABLE": {
                 "language": "Language",
@@ -497,7 +497,22 @@
             "SIZE": "Size",
             "CHAR_SET": "Charecter Set",
             "TARGET_CATALOG": "Target Catalog"
+        },
+        "DEFAULT_CATALOG": {
+            "header_text": "Default Catalog",
+            "manage_default_catalog": "Manage Default Catalog",
+            "object_properties": "Object Properties",
+            "associated_store": "Associated Store",
+            "auroraESite": "AuroraESite",
+            "inherited_default_catalog": "Inherited Default Catalog (AuroraESite)",
+            "default_catalog_auroraESite": "Default Catalog (AuroraESite)",
+            "INHERITED_TABLE": {
+                "type": "*Type",
+                "store": "Store",
+                "unique_id": "* Unique ID",
+                "code": "* Code",
+                "name": "* Name"
+            }
         }
-
     }
 }

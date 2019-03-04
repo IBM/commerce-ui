@@ -51,6 +51,10 @@ export class SideBarComponent implements OnInit {
   navigateToCatalogUpload(): void {
     this.router.navigate(['/catalogs/catalogUpload']);
   }
+  navigateToDefaultCatalog(): void {
+    this.router.navigate(['/catalogs/defaultCatalog']);
+  }
+
 listItems = [
   {
     content: "Master Catalog",

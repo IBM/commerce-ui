@@ -1,0 +1,76 @@
+<app-main-ui-shell></app-main-ui-shell>
+<ac-header></ac-header>
+<app-ui-shell></app-ui-shell>
+    <div class="side-width">
+        <ac-side-bar></ac-side-bar>
+    </div>
+    <div class="content-width">
+        <div class="headTextMargin">
+            <label>
+                <ibm-icon-catalog32 id="table-icon" class="icon-catalog"></ibm-icon-catalog32>
+                <span id="header-text" class="mstrCtgry">{{ 'CATALOGS.DEFAULT_CATALOG.header_text' | translate }}</span>
+            </label>
+        </div>
+        <div class="headerTabs">
+            <ibm-tabs>
+                <ibm-tab heading="{{ 'CATALOGS.DEFAULT_CATALOG.manage_default_catalog' | translate }}">
+                    <ibm-accordion>
+                        <ibm-accordion-item title="{{ 'CATALOGS.DEFAULT_CATALOG.object_properties' | translate }}">
+                                <div class="div-left" id="associated-text">
+                                    {{ 'CATALOGS.DEFAULT_CATALOG.associated_store' | translate }}
+                                </div>
+                                <div class="div-right" id="esite-text">
+                                    {{ 'CATALOGS.DEFAULT_CATALOG.auroraESite' | translate }}
+                                </div>
+                        </ibm-accordion-item>
+                    </ibm-accordion>
+                </ibm-tab>
+            </ibm-tabs>
+            <div class="inherited-margin">
+                <div class="div-left">
+                    <span>{{ 'CATALOGS.DEFAULT_CATALOG.inherited_default_catalog' | translate }}</span>
+                </div>
+                <div class="div-right">
+                    <div class="icon-position">
+                    <input type="text" class="input-padding">
+                    <input type="text" [disabled]="disableInput" class="input-padding" placeholder="Find and Add" [disabled]="disableInput">
+                    <ibm-icon-close-outline16 class="icon-svg-btn"></ibm-icon-close-outline16>
+                    <ibm-icon-open-panel-right20 class="icon-open-btn"></ibm-icon-open-panel-right20>
+                </div>
+                    <div>
+                        <!-- <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.NEW_MASTER_CATEGORY.tooltip_code' | translate }}" trigger="hover" placement="bottom" style="cursor: pointer;">
+                            <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                        </span> -->
+                        <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                        <div class="display-table">
+                            <ibm-table [model]="model"></ibm-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inherited-margin">
+                <div class="div-left">
+                    <span>{{ 'CATALOGS.DEFAULT_CATALOG.default_catalog_auroraESite' | translate }}</span>
+                </div>
+                <div class="div-right">
+                    <div class="icon-position">
+                    <input type="text" class="input-padding">
+                    <input type="text" [disabled]="disableInput" class="input-padding" placeholder="Find and Add" [disabled]="disableInput">
+                    <ibm-icon-close-outline16 class="icon-svg-btn"></ibm-icon-close-outline16>
+                    <ibm-icon-open-panel-right20 class="icon-open-btn"></ibm-icon-open-panel-right20>
+                    </div>
+                    <div>
+                        <!-- <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.NEW_MASTER_CATEGORY.tooltip_code' | translate }}" trigger="hover" placement="bottom" style="cursor: pointer;">
+                            <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                        </span> -->
+                        <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                        <div class="display-table">
+                            <ibm-table [model]="customModel" (dblclick)="onSelect()"></ibm-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ac-footer></ac-footer>
+    

@@ -14,6 +14,7 @@ import { CatalogUploadComponent } from './components/catalog-upload/catalog-uplo
 import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-catalog-upload.component';
 import { MainUiShellComponent } from './components/main-ui-shell/main-ui-shell.component';
 import { UiShellComponent} from './components/ui-shell/ui-shell.component';
+import { DefaultCatalogComponent } from './components/default-catalog/default-catalog.component';
 
  
 export const routes: Routes = [
@@ -52,6 +53,9 @@ export const routes: Routes = [
 },
 {
     path: 'uiShell', component: UiShellComponent
+},
+{
+    path: 'defaultCatalog', component: DefaultCatalogComponent
 }
 ];
 

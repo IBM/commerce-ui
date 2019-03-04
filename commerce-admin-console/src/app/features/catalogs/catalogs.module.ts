@@ -24,6 +24,7 @@ import { StockholmComponent } from './components/stockholm/stockholm.component';
 import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component';
 import { CatalogUploadComponent } from './components/catalog-upload/catalog-upload.component';
 import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-catalog-upload.component';
+import { DefaultCatalogComponent } from './components/default-catalog/default-catalog.component';
 
 @NgModule({
 imports: [
@@ -50,7 +51,7 @@ NotificationModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent,
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UiShellComponent, UnderconstructionComponent,
-StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent, CatalogUploadComponent, NewCatalogUploadComponent ],
+StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent, CatalogUploadComponent, NewCatalogUploadComponent, DefaultCatalogComponent ],
 
 
 providers: [ModalService],

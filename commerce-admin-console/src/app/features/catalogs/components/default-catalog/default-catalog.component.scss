@@ -1,0 +1,69 @@
+.content-width{
+    margin-left: 0.5%;
+    width: 86.2%;
+    display: inline-block;
+    position: absolute;
+    background-color: #f1f1f1 !important;
+    height: 438px;
+    overflow: scroll;
+}
+.side-width{
+    background-color: #f1f1f1 !important;
+    min-height: 438px;
+    margin-bottom: 0.6%;
+    display: inline-block;
+}
+.headTextMargin{
+    display: inline-block;
+    margin-top: 5%;
+}
+.icon-catalog{
+    font-size: 20px;
+    height: 50px;
+    line-height: 30px;
+  }
+  .headerTabs{
+    margin-top: 25px;
+    margin-left: 15px;
+}
+.div-right {
+    display: inline-block;
+    font-size: 13px;
+    width: 87%; 
+}
+.div-left {
+    font-size: 13px;
+    display: inline-block;
+    width: 13%;
+}
+.input-padding {
+    padding: 6px 0 6px 0;
+}
+.icon-svg-btn {
+    fill: rgb(189, 179, 179);
+  }
+  .icon-open-btn {
+    fill: rgb(189, 179, 179);
+    margin-left: 0.5%;
+  }
+  .inherited-margin {
+      margin-top: 2%;
+  }
+  .icon-svg-help {
+    fill: #bdb3b3;
+    display: inline-flex;
+    margin-right: 1%;
+  }
+  .display-table{
+    display: inline-flex;
+    width: 87%;
+  }
+  .bx--data-table-v2 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 254.5%;
+    border-bottom: 1px solid #dfe3e6;
+}
+.icon-position {
+    margin-left: 3%;
+}
