@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.ibm.commerce.casl.rest.fixtures.TestUsersEmailFixture;
-import com.ibm.commerce.casl.rest.fixtures.impl.TestUsersEmailFixtureImpl;
+import com.ibm.commerce.qa.util.bluebox.TestUsersEmailFixture;
+import com.ibm.commerce.qa.util.bluebox.impl.TestUsersEmailFixtureImpl;
 import com.ibm.commerce.cmc.ui.config.CMCConfigManager;
 import com.ibm.commerce.cmc.ui.page.IbmIdSignInPage;
 import com.ibm.commerce.cmc.ui.page.TwoFAAuthPage;
@@ -171,6 +171,7 @@ public class LoginFlow extends AbstractSingleSessionTest{
 	 */
     private void loginIBMIDPageSubmitCredentials() throws InterruptedException{
       ibmIdSignInPage.setIbmIdInput(getUserName());
+      ibmIdSignInPage.clickContinueButton();
       ibmIdSignInPage.setPasswordInput(getPassword());
       ibmIdSignInPage.clickSignInButton();
       Thread.sleep(2000);
