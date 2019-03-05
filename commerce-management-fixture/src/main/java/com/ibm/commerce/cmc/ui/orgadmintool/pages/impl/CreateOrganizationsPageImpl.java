@@ -19,7 +19,6 @@ package com.ibm.commerce.cmc.ui.orgadmintool.pages.impl;
 import com.ibm.commerce.cmc.ui.page.impl.AbstractCMCPage;
 import com.ibm.commerce.qa.wte.framework.page.Identifier;
 import com.ibm.commerce.cmc.ui.orgadmintool.pages.CreateOrganizationsPage;
-import com.ibm.commerce.cmc.ui.orgadmintool.pages.OrganizationPage;
 
 public class CreateOrganizationsPageImpl extends AbstractCMCPage implements CreateOrganizationsPage{
 	

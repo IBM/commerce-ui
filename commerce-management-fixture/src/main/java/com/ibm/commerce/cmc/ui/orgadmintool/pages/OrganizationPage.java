@@ -16,7 +16,6 @@ package com.ibm.commerce.cmc.ui.orgadmintool.pages;
  *-----------------------------------------------------------------
  */
 
-import com.ibm.commerce.cmc.ui.orgadmintool.pages.*;
 import com.ibm.commerce.qa.wte.framework.page.PageObject;
 import com.ibm.commerce.qa.wte.framework.page.PageObject.PageType;
 
