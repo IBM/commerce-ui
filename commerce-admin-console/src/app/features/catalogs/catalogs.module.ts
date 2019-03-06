@@ -5,7 +5,7 @@ import { CatalogsRoutingModule } from './catalogs-routing.module';
 import { IconModule } from '@carbon/icons-angular';
 import { ButtonModule,
     TabsModule, AccordionModule, CheckboxModule, RadioModule, TableModule, DropdownModule,
-LinkModule, ModalModule, SearchModule, PlaceholderModule, DialogModule, UIShellModule, FileUploaderModule, NotificationModule  } from 'carbon-components-angular';
+LinkModule, ModalModule, SearchModule, PlaceholderModule, DialogModule, UIShellModule, FileUploaderModule, NotificationModule, DatePickerModule  } from 'carbon-components-angular';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
@@ -24,6 +24,9 @@ import { StockholmComponent } from './components/stockholm/stockholm.component';
 import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component';
 import { CatalogUploadComponent } from './components/catalog-upload/catalog-upload.component';
 import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-catalog-upload.component';
+import { DefaultCatalogComponent } from './components/default-catalog/default-catalog.component';
+import { NewProductComponent } from './components/new-product/new-product.component';
+import { NewBundleComponent } from './components/new-bundle/new-bundle.component';
 
 @NgModule({
 imports: [
@@ -46,11 +49,14 @@ DialogModule,
 IconModule,
 UIShellModule,
 FileUploaderModule,
-NotificationModule
+NotificationModule,
+DatePickerModule
 ],
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent,
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UiShellComponent, UnderconstructionComponent,
-StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent, CatalogUploadComponent, NewCatalogUploadComponent ],
+StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent, CatalogUploadComponent, NewCatalogUploadComponent, DefaultCatalogComponent,
+NewBundleComponent, NewProductComponent
+ ],
 
 
 providers: [ModalService],

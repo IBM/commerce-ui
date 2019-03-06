@@ -13,46 +13,58 @@ import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entri
 import { CatalogUploadComponent } from './components/catalog-upload/catalog-upload.component';
 import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-catalog-upload.component';
 import { MainUiShellComponent } from './components/main-ui-shell/main-ui-shell.component';
-import { UiShellComponent} from './components/ui-shell/ui-shell.component';
+import { UiShellComponent } from './components/ui-shell/ui-shell.component';
+import { DefaultCatalogComponent } from './components/default-catalog/default-catalog.component';
+import { NewProductComponent } from './components/new-product/new-product.component';
+import { NewBundleComponent } from './components/new-bundle/new-bundle.component';
 
- 
+
 export const routes: Routes = [
-{
-    path: '', component: LandingPageComponent
-},
-{
-    path: 'masterCategory', component: NewMasterCategoryComponent
-},
-{
-    path: 'searchResult', component: SearchResultComponent
-},
-{
-    path: 'UnderConstruction', component: UnderconstructionComponent
-},
-{
-    path: 'extendedSite', component: ExtendedSitesComponent
-},
-{
-    path: 'stockholmcas', component: StockHolmCASComponent
-},
-{
-    path: 'stockholm', component: StockholmComponent
-},
-{
-    path: 'unassignedCatEntries', component: UnassignedCatEntriesComponent
-},
-{
-    path: 'catalogUpload', component: CatalogUploadComponent
-},
-{
-    path: 'newCatalogUpload', component: NewCatalogUploadComponent
-},
-{
-    path: 'mainUiShell', component: MainUiShellComponent
-},
-{
-    path: 'uiShell', component: UiShellComponent
-}
+    {
+        path: '', component: LandingPageComponent
+    },
+    {
+        path: 'masterCategory', component: NewMasterCategoryComponent
+    },
+    {
+        path: 'searchResult', component: SearchResultComponent
+    },
+    {
+        path: 'UnderConstruction', component: UnderconstructionComponent
+    },
+    {
+        path: 'extendedSite', component: ExtendedSitesComponent
+    },
+    {
+        path: 'stockholmcas', component: StockHolmCASComponent
+    },
+    {
+        path: 'stockholm', component: StockholmComponent
+    },
+    {
+        path: 'unassignedCatEntries', component: UnassignedCatEntriesComponent
+    },
+    {
+        path: 'catalogUpload', component: CatalogUploadComponent
+    },
+    {
+        path: 'newCatalogUpload', component: NewCatalogUploadComponent
+    },
+    {
+        path: 'mainUiShell', component: MainUiShellComponent
+    },
+    {
+        path: 'uiShell', component: UiShellComponent
+    },
+    {
+        path: 'defaultCatalog', component: DefaultCatalogComponent
+    },
+    {
+        path: 'product', component: NewProductComponent
+    },
+    {
+        path: 'bundle', component: NewBundleComponent
+    }
 ];
 
 

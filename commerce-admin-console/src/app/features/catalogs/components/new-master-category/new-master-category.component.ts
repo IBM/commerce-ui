@@ -48,6 +48,12 @@ protected customTableItemTemplate: TemplateRef<any>;
   showReferencesEdit: boolean;
   masterInputData = [];
   masterDataSaves = false;
+  pageTilleDefaultRadio = true;
+  disabledPageTitle = true;
+  metaDescDefault = true;
+  disabledMetaDesc = true;
+  imageTextRadio = true;
+  disabledImageText = true;
 
   constructor(private translate: TranslateService,
      private masterCategoryService: MasterCategoryService,
@@ -295,5 +301,27 @@ protected customTableItemTemplate: TemplateRef<any>;
         new TableItem({data: ''}),
         new TableItem({data: ''})]
       ];
+    }
+
+    pageTilleRadioClick(pageTitle) {
+      if (pageTitle === 'default') {
+        this.disabledPageTitle = true;
+      } else if (pageTitle === 'override') {
+        this.disabledPageTitle = false;
+      }
+    }
+    metaDefaultClick(metaDesc) {
+      if (metaDesc === 'default') {
+      this.disabledMetaDesc = true;
+    } else if (metaDesc === 'override') {
+      this.disabledMetaDesc = false;
+  }
+    }
+    imageTextClick(imageText) {
+      if (imageText === 'default') {
+        this.disabledImageText = true;
+      } else if (imageText === 'override') {
+        this.disabledImageText = false;
+      }
     }
 }

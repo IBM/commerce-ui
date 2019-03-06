@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
 
   listItems = [
     {
-      id:1,
       content: "AuroraESite",
       selected: false
     },
@@ -62,12 +61,20 @@ export class HeaderComponent implements OnInit {
   navigateToNewCatalogUpload(): void{
     this.router.navigate(["/catalogs/newCatalogUpload"]);
     }
+    navToProduct(): void {
+    this.router.navigate(["/catalogs/product"]);
+    }
+    navToBundle(): void {
+      this.router.navigate(["/catalogs/bundle"]);
+      }
   selected(ev) {
     if (ev.item != undefined && ev.item.content != undefined) {
     //   //debugger;
     if (ev.item.content === "AuroraESite" || ev.item.content === "ExtendedSitesCatalogAssetStore") {
+      
       this.storesele.set();
       this.router.navigate(['/catalogs/extendedSite']);
+      ev.item.selected = true;
       this.storesele.navToUnassigned = true;
       this.storesele.navToExtendedSite = true;
       this.storesele.navToStockCAS = false;
@@ -79,6 +86,7 @@ export class HeaderComponent implements OnInit {
       //console.log(ev);
       this.storesele.setStockCAS();
       this.router.navigate(['/catalogs/stockholmcas']);
+      ev.item.selected = true;
       this.storesele.navToExtendedSite = false;
       this.storesele.navToMaster = false;
       this.storesele.navToStock = false;
@@ -89,6 +97,7 @@ export class HeaderComponent implements OnInit {
     if (ev.item.content === "Stockholm") {
       this.storesele.setStock();
       this.router.navigate(['/catalogs/stockholm']);
+      ev.item.selected = true;
       this.storesele.navToExtendedSite = false;
       this.storesele.navToStockCAS = false;
       this.storesele.navToMaster = false;

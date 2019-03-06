@@ -1,4 +1,5 @@
 <div class="headcontainer">
+    <div class="navbar-menu">
     <ul class="top-level-menu">
         <li>
             <a href="javascript:void(0)">{{ 'CATALOGS.HEADR.file' | translate }}</a>
@@ -9,8 +10,8 @@
                         <li><a routerLink="" id="fileNewLink1" (click)="masterFromMenu()" ibmLink>{{ 'CATALOGS.HEADR.master_category' | translate }}</a></li>
                         <li><a routerLink="" id="fileNewLink2" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.category_level_sku' | translate }}</a></li>
                         <li><a routerLink="" id="fileNewLink3" (click)="underDev()" ibmLink> {{ 'CATALOGS.HEADR.prodcut_level_sku' | translate }}</a></li>
-                        <li><a routerLink="" id="fileNewLink4" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.product' | translate }}</a></li>
-                        <li><a routerLink="" id="fileNewLink5" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.Bundle' | translate }}</a></li>
+                        <li><a routerLink="" id="fileNewLink4" (click)="navToProduct()" ibmLink>{{ 'CATALOGS.HEADR.product' | translate }}</a></li>
+                        <li><a routerLink="" id="fileNewLink5" (click)="navToBundle()" ibmLink>{{ 'CATALOGS.HEADR.Bundle' | translate }}</a></li>
                         <li><a routerLink="" id="fileNewLink6" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.kit' | translate }}</a></li>
                         <li><a routerLink="" id="fileNewLink7" (click)=navigateToNewCatalogUpload() ibmLink>{{ 'CATALOGS.NEW_CATALOG_UPLOAD.CATALOG_UPLOAD' | translate }}</a></li>
                     </ul>
@@ -63,10 +64,13 @@
                 <li><a routerLink="" id="navHelpLink4" (click)="underDev()" ibmLink>{{ 'CATALOGS.HEADR.keyboard_shortcuts' | translate }}</a></li>
             </ul>
         </li>
-        <li id="ibmdropdownheader">
+    </ul>
+    </div>
+        <div class="navdropdown">
+
             <ibm-dropdown (selected)="selected($event)">
                 <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
             </ibm-dropdown>
-        </li>
-    </ul>
+
+</div>
 </div>

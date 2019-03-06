@@ -57,7 +57,8 @@ export const INIT_API_CONFIGURATION: Provider = {
   declarations: [
     AppComponent,
     FeatureEnabledDirective,
-    FeatureDisabledDirective  ],
+    FeatureDisabledDirective,
+      ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

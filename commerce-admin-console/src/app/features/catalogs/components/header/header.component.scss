@@ -1,32 +1,38 @@
 .headcontainer {
-
     background: #BEBEBE;
     display: flex;
-    //padding: 6px 0px 6px 0px;
+    height: 37px;
 } 
-.third-level-menu
-{
+.navbar-menu {
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 1%;
+    position: absolute;
+}
+.navdropdown{ 
+    display: inline-block;
+    margin-left: 1000px;
+    margin-top: 2px;
+}
+.third-level-menu {
     position: absolute;
     top: 0;
-    left: 200px;
+    left: 198px;
     right: -150px;
     width: 200px;
     list-style: none;
     padding: 0;
-    //margin-left: -1px;
     display: none;
     z-index: 2;
 }
-
-.third-level-menu > li
-{
+.third-level-menu > li {
     height: 30px;
     background: white;
 }
-.third-level-menu > li:hover { background:lightblue; }
-
-.second-level-menu
-{
+.third-level-menu > li:hover {
+     background:lightblue; 
+}
+.second-level-menu {
     position: absolute;
     top: 30px;
     left: 0;
@@ -36,78 +42,77 @@
     margin: 0;
     display: none;
 }
-
-.second-level-menu > li
-{
+.second-level-menu > li {
     position: relative;
     height: 30px;
     background: white;
     z-index: 1;
     margin-left: 2px;
 }
-.second-level-menu > li:hover { background: lightblue; }
-
-.top-level-menu
-{
+.second-level-menu > li:hover { 
+    background: lightblue;
+}
+.top-level-menu {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin-top: -13px;
 }
-
-.top-level-menu > li
-{
+.top-level-menu > li {
     position: relative;
     float: left;
     height: 30px;
     width: 150px;
-    background: #999999;
+    background: #BEBEBE;
 }
-.top-level-menu > li { background: #CCCCCC; }
+//.top-level-menu > li { background: #CCCCCC; }
 
-.top-level-menu li:hover > ul
-{
+.top-level-menu li:hover > ul {
     /* On hover, display the next level's menu */
     display: inline;
 }
-
-
 /* Menu Link Styles */
 
 .top-level-menu a /* Apply to all links inside the multi-level menu */
 {
     font: bold 14px Arial, Helvetica, sans-serif;
-    color: #732f2f;
+    color: #252525;
     text-decoration: none;
     padding: 0 0 0 10px;
 
     /* Make the link cover the entire list item-container */
     display: block;
-    line-height: 30px;
+    line-height: 38px;
     
 }
-.top-level-menu a:hover { color: #000000;}
+.top-level-menu a:hover { 
+    color:white;
+    background-color: #3d70b2;
+}
+.top-level-menu li:hover {
+    background-color: #c4cad1;
+}
 
  /* Remove the navbar's default margin-bottom and rounded borders */
  
  
- .ibm-dropdownWidth {
-    width: 250px;
-    margin-top: 5px;
-    position: absolute;
-    right: 450px;
-    height: 50px;
-}
-.ibm-dropdown {
-    width: 170px;
-    // margin-top: 5px;
-    position: absolute;
-    right: 277px;
-    // height: 50px;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
-}
+//  .ibm-dropdownWidth {
+//     width: 250px;
+//     margin-top: 5px;
+//     position: absolute;
+//     right: 450px;
+//     height: 50px;
+// }
+// .ibm-dropdown {
+//     width: 170px;
+//     // margin-top: 5px;
+//     position: absolute;
+//     right: 277px;
+//     // height: 50px;
+//     display: inline-block;
+//     white-space: nowrap;
+//     overflow: hidden !important;
+//     text-overflow: ellipsis;
+// }
 .ibm-searchwidth{
     position: absolute;
     right: 30px;
@@ -121,12 +126,12 @@
     height: 2.0rem;
     max-height: 2.5rem;  
 }
-.ibm-dropdownWidth {
-    width: 250px;
-    margin-top: 1px;
-    position: absolute;
-    right: 150px;
-}
+// .ibm-dropdownWidth {
+//     width: 250px;
+//     margin-top: 1px;
+//     position: absolute;
+//     right: 150px;
+// }
 .bg-light {
 margin-left: -0.75%;
 margin-right: -0.75%;
@@ -148,13 +153,13 @@ background-color: #396fb4;
 .bg-secondary {
 background-color: #457ec3!important;
 }
-.tabnextx .dropdown-menu{
-top: 0;
-left: 100%;
-margin-top: -1px;
-border-radius: 0;
+// .tabnextx .dropdown-menu{
+// top: 0;
+// left: 100%;
+// margin-top: -1px;
+// border-radius: 0;
 
-}
+// }
 .dropdown  {
 border-radius: 0;  
 }
@@ -178,25 +183,25 @@ min-height: 450px
 }
 
 /* Set gray background color and 100% height */
-.sidenav {
-padding-top: 10px;
-background-color: #f1f1f1;
-max-width: 21%;
-margin-left: -12px;
-}
+// .sidenav {
+// padding-top: 10px;
+// background-color: #f1f1f1;
+// max-width: 21%;
+// margin-left: -12px;
+// }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-.sidenav {
-    height: auto;
-    padding: 15px;
-}
+// @media screen and (max-width: 767px) {
+// .sidenav {
+//     height: auto;
+//     padding: 15px;
+// }
 
-.row.content {
-    height: auto;
-}
+// .row.content {
+//     height: auto;
+// }
 
-}
+// }
 .starFontSection{
 font-size: 5px;
 }
