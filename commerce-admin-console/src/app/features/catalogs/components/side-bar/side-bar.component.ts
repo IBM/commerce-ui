@@ -59,6 +59,9 @@ export class SideBarComponent implements OnInit {
   navigateToDefaultCatalog(): void {
     this.router.navigate(['/catalogs/defaultCatalog']);
   }
+  navigateToSTAssociation(): void {
+    this.router.navigate(['/catalogs/searchTAssociation']);
+  }
 
 listItems = [
   {

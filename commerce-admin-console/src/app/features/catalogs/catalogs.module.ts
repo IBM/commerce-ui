@@ -27,6 +27,7 @@ import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-c
 import { DefaultCatalogComponent } from './components/default-catalog/default-catalog.component';
 import { NewProductComponent } from './components/new-product/new-product.component';
 import { NewBundleComponent } from './components/new-bundle/new-bundle.component';
+import { StAssociationComponent } from './components/st-association/st-association.component';
 
 @NgModule({
 imports: [
@@ -55,7 +56,7 @@ DatePickerModule
 declarations: [HeaderComponent, FooterComponent, SideBarComponent, ModelPopupComponent,
 NewMasterCategoryComponent, ExtendedSitesComponent, LandingPageComponent, SearchResultComponent, UiShellComponent, UnderconstructionComponent,
 StockholmComponent, MainUiShellComponent, StockHolmCASComponent, UnassignedCatEntriesComponent, CatalogUploadComponent, NewCatalogUploadComponent, DefaultCatalogComponent,
-NewBundleComponent, NewProductComponent
+NewBundleComponent, NewProductComponent, StAssociationComponent
  ],
 
 

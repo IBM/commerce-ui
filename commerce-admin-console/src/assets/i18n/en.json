@@ -660,6 +660,35 @@
                 "code": "* Code",
                 "name": "* Name"
             }
+        },
+        "SEARCH_TERM_ASSOCIATIONS": {
+            "HEADER_TEXT": "Search Term Associations",
+            "SAVE": "Save",
+            "SYNONYMS": "Synonyms (United State English)",
+            "REPLACEMENTS": "Replacements (United State English)",
+            "LANDING_PAGE_TEXT": "Landing Page (United State English)",
+            "TYPE": "* Type",
+            "STORE": "Store",
+            "SYNONYM_LIST": "*Synonym List",
+            "SEARCH_TERM": "*Serch Term",
+            "REPLACEMENT_TYPE": "*Replacement Type",
+            "REPLACEMENT_TERMS": "*Replacement Terms",
+            "LANDING_PAGE": "Landing Page",
+            "KEYWORD": "Keyword",
+            "SEARCHING_SESSIONS": "Searching Sessions",
+            "RESULTS_FOR_KEYWORD": "Results for Keyword",
+            "SYNONYMS_OR_REPLACEMENTS": "Synonyms or Replacements",
+            "REPORTING_PEROD": "Reporting Period",
+            "SHOWTOP_KEYWORDS": "Show Top Keywords",
+            "LANGUAGE": "Language",
+            "STATISTICS": "Statistics",
+            "FROM": "From",
+            "TO": "To",
+            "APPLY": "Apply",
+            "SHOWTOP_MISSED_KEYWORDS": "Show Top Missed Keywords",
+            "SUGGESTED_KEYWORD": "Suggested Keyword",
+            "RESULTS_FOR_SUGGESTED_KEYWORD": "Results for Suggested Keyword",
+            "TOP_SEARCH_MISSES": "Top Search Misses"
         }
     }
 }

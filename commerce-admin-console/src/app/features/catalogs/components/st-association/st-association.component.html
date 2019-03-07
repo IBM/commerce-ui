@@ -1,0 +1,277 @@
+<app-main-ui-shell></app-main-ui-shell>
+<ac-header></ac-header>
+<app-ui-shell></app-ui-shell>
+    <div class="side-width">
+        <ac-side-bar></ac-side-bar>
+    </div>
+    <div class="content-width">
+        <div class="headTextMargin">
+            <label>
+                <ibm-icon-table32 id="table-icon" class="icon-svg-table"></ibm-icon-table32>
+                <span id="header-text" class="mstrCtgry">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.HEADER_TEXT' | translate }}</span>  
+            </label>
+        </div>
+        <div class="header-btn">
+          <button ibmButton size="sm" id="save-btn" class="saveBtn" (click)="save()">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.SAVE' | translate }}</button>
+        </div>
+        <div class="headerTabs">
+        <ibm-tabs>
+            <ibm-tab heading='Synonyms'>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.SYNONYMS' | translate }}</div>
+                            <div class="table">
+                                <ibm-table
+                                [model]="customModel_1"
+                                [size]="size"
+                                [showSelectionColumn]="showSelectionColumn"
+                                [striped]="striped"
+                                (sort)="customSort($event)">
+                                </ibm-table>
+            
+                                <ng-template #customHeaderTemplate>
+                                    <div>
+                                    <ibm-dropdown
+                                        placeholder="Store"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                                    </ibm-dropdown>
+                                    </div>
+                                </ng-template>
+                            </div>
+                    </div>
+            </ibm-tab>
+
+            <ibm-tab heading='Replacements'>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.REPLACEMENTS' | translate }}</div>
+                            <div class="table">
+                                <ibm-table
+                                [model]="customModel_2"
+                                [size]="size"
+                                [showSelectionColumn]="showSelectionColumn"
+                                [striped]="striped"
+                                (sort)="customSort($event)">
+                                </ibm-table>
+            
+                                <ng-template #customHeaderTemplate>
+                                    <div>
+                                    <ibm-dropdown
+                                        placeholder="Store"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                                    </ibm-dropdown>
+                                    </div>
+                                </ng-template>
+                            </div>
+                    </div>
+            </ibm-tab>
+            
+            <ibm-tab heading='Landing Page'>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.LANDING_PAGE_TEXT' | translate }}</div>
+                            <div class="table">
+                                <ibm-table
+                                [model]="customModel_3"
+                                [size]="size"
+                                [showSelectionColumn]="showSelectionColumn"
+                                [striped]="striped"
+                                (sort)="customSort($event)">
+                                </ibm-table>
+            
+                                <ng-template #customHeaderTemplate>
+                                    <div>
+                                    <ibm-dropdown
+                                        placeholder="Store"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                                    </ibm-dropdown>
+                                    </div>
+                                </ng-template>
+                            </div>
+                    </div>
+            </ibm-tab>
+
+            <ibm-tab heading='Top Search Hits'>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="code-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.REPORTING_PEROD' | translate }}</div>
+                            <div class="general-input">
+                                <ibm-dropdown
+                                class="dropdown_header"
+                                        placeholder="Last Week"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="reporting_listItems"></ibm-dropdown-list>
+                                </ibm-dropdown>
+                                <span class="dateFont" id="code-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.FROM' | translate }}</span>
+                                <span>
+                                    <input type="date" id="code" class="from-date">
+                                </span>
+                                <span class="dateFont" id="code-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.TO' | translate }}</span>
+                                    <input type="date" id="code" class="from-date">
+                            </div>
+                    </div>
+                    <div class="general-div">
+                        <div class="uniqueFont" id="name-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.KEYWORD' | translate }}</div>
+                        <div class="general-input">
+                            <input type="text" id="name" class="input-size-icon" [(ngModel)]="name">
+                        </div>
+                    </div>
+                    <div class="general-div">
+                        <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.SHOWTOP_KEYWORDS' | translate }}</div>
+                        <div class="general-input">
+                                <ibm-dropdown
+                                class="dropdown_header"
+                                        placeholder="All"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="topKeywod_listItems"></ibm-dropdown-list>
+                                </ibm-dropdown>
+                        </div>
+                    </div>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.LANGUAGE' | translate }}</div>
+                            <div class="general-input">
+                                    <ibm-dropdown
+                                    class="dropdown_header"
+                                            placeholder="United States English"
+                                            [disabled]="disabled"
+                                            (selected)="selected($event)"
+                                            (onClose)="onClose($event)">
+                                            <ibm-dropdown-list [items]="language_listItems"></ibm-dropdown-list>
+                                    </ibm-dropdown>
+                            </div>
+                    </div>
+                    <button ibmButton size="sm" id="apply-btn" class="applyBtn">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.APPLY' | translate }}</button>
+                    <br><br><br>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.STATISTICS' | translate }}</div>
+                            <div class="table">
+                                <ibm-table
+                                [model]="customModel_4"
+                                [size]="size"
+                                [showSelectionColumn]="showSelectionColumn"
+                                [striped]="striped"
+                                (sort)="customSort($event)">
+                                </ibm-table>
+            
+                                <ng-template #customHeaderTemplate>
+                                    <div>
+                                    <ibm-dropdown
+                                        placeholder="Store"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                                    </ibm-dropdown>
+                                    </div>
+                                </ng-template>
+                            </div>
+                    </div>
+            </ibm-tab>
+            <ibm-tab heading='Top Search Misses'>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="code-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.REPORTING_PEROD' | translate }}</div>
+                            <div class="general-input">
+                                <ibm-dropdown
+                                class="dropdown_header"
+                                        placeholder="Last Week"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="reporting_listItems"></ibm-dropdown-list>
+                                </ibm-dropdown>
+                                <span class="dateFont" id="code-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.FROM' | translate }}</span>
+                                <span>
+                                    <input type="date" id="code" class="from-date">
+                                </span>
+                                <span class="dateFont" id="code-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.TO' | translate }}</span>
+                                    <input type="date" id="code" class="from-date">
+                            </div>
+                    </div>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="code-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.KEYWORD' | translate }}</div>
+                            <div class="general-input">
+                                    <input type="text" id="name" class="input-size-icon" [(ngModel)]="name">
+                            </div>
+                    </div>
+                    <div class="general-div">
+                        <div class="uniqueFont" id="name-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.SHOWTOP_MISSED_KEYWORDS' | translate }}</div>
+                        <div class="general-input">
+                                <ibm-dropdown
+                                class="dropdown_header"
+                                        placeholder="All"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="topKeywod_listItems"></ibm-dropdown-list>
+                                </ibm-dropdown>
+                        </div>
+                    </div>
+                    <div class="general-div">
+                        <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.LANGUAGE' | translate }}</div>
+                        <div class="general-input">
+                                <ibm-dropdown
+                                class="dropdown_header"
+                                        placeholder="United States English"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="language_listItems"></ibm-dropdown-list>
+                                </ibm-dropdown>
+                        </div>
+                    </div>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.SUGGESTED_KEYWORD' | translate }}</div>
+                            <div class="general-input">
+                                    <ibm-dropdown
+                                    class="dropdown_header"
+                                            placeholder="Show all keywords"
+                                            [disabled]="disabled"
+                                            (selected)="selected($event)"
+                                            (onClose)="onClose($event)">
+                                            <ibm-dropdown-list [items]="suggested_listItems"></ibm-dropdown-list>
+                                    </ibm-dropdown>
+                            </div>
+                    </div>
+                    <button ibmButton size="sm" id="apply-btn" class="applyBtn">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.APPLY' | translate }}</button>
+                    <br><br><br>
+                    <div class="general-div">
+                            <div class="uniqueFont" id="desc-text">{{ 'CATALOGS.SEARCH_TERM_ASSOCIATIONS.TOP_SEARCH_MISSES' | translate }}</div>
+                            <div class="table">
+                                <ibm-table
+                                [model]="customModel_5"
+                                [size]="size"
+                                [showSelectionColumn]="showSelectionColumn"
+                                [striped]="striped"
+                                (sort)="customSort($event)">
+                                </ibm-table>
+            
+                                <ng-template #customHeaderTemplate>
+                                    <div>
+                                    <ibm-dropdown
+                                        placeholder="Store"
+                                        [disabled]="disabled"
+                                        (selected)="selected($event)"
+                                        (onClose)="onClose($event)">
+                                        <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                                    </ibm-dropdown>
+                                    </div>
+                                </ng-template>
+                            </div>
+                    </div>
+            </ibm-tab>
+        </ibm-tabs>
+        </div>
+    </div>
+<div>
+    <ac-footer></ac-footer>
+</div>
+

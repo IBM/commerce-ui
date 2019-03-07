@@ -12,14 +12,11 @@ import { StockholmComponent } from './components/stockholm/stockholm.component';
 import { UnassignedCatEntriesComponent } from './components/unassigned-cat-entries/unassigned-cat-entries.component'
 import { CatalogUploadComponent } from './components/catalog-upload/catalog-upload.component';
 import { NewCatalogUploadComponent } from './components/new-catalog-upload/new-catalog-upload.component';
-import { MainUiShellComponent } from './components/main-ui-shell/main-ui-shell.component';
-import { UiShellComponent } from './components/ui-shell/ui-shell.component';
-import { DefaultCatalogComponent } from './components/default-catalog/default-catalog.component';
-import { NewProductComponent } from './components/new-product/new-product.component';
-import { NewBundleComponent } from './components/new-bundle/new-bundle.component';
+import { StAssociationComponent } from './components/st-association/st-association.component';
+import { from } from 'rxjs';
 
 
-export const routes: Routes = [
+const routes: Routes = [
     {
         path: '', component: LandingPageComponent
     },
@@ -51,20 +48,9 @@ export const routes: Routes = [
         path: 'newCatalogUpload', component: NewCatalogUploadComponent
     },
     {
-        path: 'mainUiShell', component: MainUiShellComponent
-    },
-    {
-        path: 'uiShell', component: UiShellComponent
-    },
-    {
-        path: 'defaultCatalog', component: DefaultCatalogComponent
-    },
-    {
-        path: 'product', component: NewProductComponent
-    },
-    {
-        path: 'bundle', component: NewBundleComponent
+        path: 'searchTAssociation', component: StAssociationComponent
     }
+
 ];
 
 
