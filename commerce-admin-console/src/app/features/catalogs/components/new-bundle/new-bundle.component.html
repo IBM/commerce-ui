@@ -1,3 +1,546 @@
-<p>
-  new-bundle works!
-</p>
+<app-main-ui-shell></app-main-ui-shell>
+<ac-header></ac-header>
+<app-ui-shell></app-ui-shell>
+<div class="side-width">
+  <ac-side-bar></ac-side-bar>
+</div>
+<div class="containerClass">
+  <div class="headTextMargin">
+    <label>
+      <ibm-icon-table32 id="table-icon" class="icon-svg-table"></ibm-icon-table32>
+      <span id="header-text" class="mstrCtgry">{{ 'CATALOGS.BUNDLE.header_text' | translate }}</span>
+      <p class="specifyTxt">
+        <ibm-icon-warning-filled16 id="warning-icon" class="icon-svg-warning"></ibm-icon-warning-filled16>
+        {{ 'CATALOGS.BUNDLE.header_help_text' | translate }}<strong>{{ 'CATALOGS.BUNDLE.code' | translate }}</strong>
+        {{ 'CATALOGS.BUNDLE.field' | translate }}
+      </p>
+    </label>
+  </div>
+  <div class="header-btn">
+    <button ibmButton size="sm" id="save-preview" class="savePreviewBtn"
+      (click)="saveMasterData()">{{ 'CATALOGS.BUNDLE.save_preview' | translate }}</button>
+    <button ibmButton size="sm" id="save-btn" class="saveBtn"
+      (click)="saveMasterData()">{{ 'CATALOGS.BUNDLE.save' | translate }}</button>
+    <button ibmButton="secondary" id="close-btn" size="sm"
+      (click)="closeMasterCategory()">{{ 'CATALOGS.BUNDLE.close' | translate }}</button>
+  </div>
+  <div class="headerTabs">
+    <ibm-tabs>
+      <ibm-tab heading="{{ 'CATALOGS.BUNDLE.manage_category' | translate }}">
+        <ibm-accordion>
+          <ibm-accordion-item title="Object Properties">
+            <div class="div-left" id="associated-text">
+              {{ 'CATALOGS.BUNDLE.associated_store' | translate }}
+            </div>
+            <div class="div-right" id="esite-text">
+              {{ 'CATALOGS.BUNDLE.auroraESite' | translate }}
+            </div>
+          </ibm-accordion-item>
+
+          <!--  General Category Information -->
+
+          <ibm-accordion-item title="General Bundle Information">
+            <label id="unique-id">{{ 'CATALOGS.BUNDLE.unique_id' | translate }}</label>
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.code' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="hover" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+            <div class="general-div">
+              <div class="uniqueFont" id="name-text">
+                {{ 'CATALOGS.BUNDLE.name' | translate }}{{ 'CATALOGS.BUNDLE.united_state_english' | translate }}</div>
+              <div class="general-input"><input type="text" id="name" class="input-size" [(ngModel)]="name"></div>
+            </div>
+            <div class="general-div">
+              <div class="uniqueFont" id="desc-text">
+                {{ 'CATALOGS.BUNDLE.short_description' | translate }}{{ 'CATALOGS.BUNDLE.united_state_english' | translate }}
+              </div>
+              <div class="general-input"><input type="text" id="description" class="input-size"
+                  [(ngModel)]="description"></div>
+            </div>
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.keyword' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.manufacturer' | translate }}</div>
+              <div class="general-input"><input type="text" id="description" class="input-size"
+                  [(ngModel)]="description"></div>
+            </div>
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.manufacturer_part' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.url' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.parent_category' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.recurring_order_item' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;line-height: -10px;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <div class="checkbox-product">
+                  <ibm-radio checked="true">
+                    Enabled
+                  </ibm-radio>
+                  <ibm-radio checked="false">
+                    Disabled
+                  </ibm-radio>
+                </div>
+              </div>
+            </div>
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.subscription_item' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;line-height: -10px;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <div class="checkbox-product">
+                  <ibm-radio checked="true">
+                    Enabled
+                  </ibm-radio>
+                  <ibm-radio checked="false">
+                    Disabled
+                  </ibm-radio>
+                </div>
+              </div>
+            </div>
+
+          </ibm-accordion-item>
+          <ibm-accordion-item title="Publishing">
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.for_purchase' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;line-height: -10px;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <div class="checkbox-product">
+                  <ibm-checkbox checked="true">
+                  </ibm-checkbox>
+                </div>
+              </div>
+            </div>
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.on_special' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;line-height: -10px;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <div class="checkbox-product">
+                  <ibm-checkbox checked="true">
+                  </ibm-checkbox>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.announcement_date' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <div class="checkbox-product">
+                  <ibm-date-picker label="Date Picker Label">
+                  </ibm-date-picker>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.withdrawal_date' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <div class="checkbox-product"></div>
+                <ibm-date-picker label="Date Picker Label">
+                </ibm-date-picker>
+              </div>
+            </div>
+          </ibm-accordion-item>
+
+          <ibm-accordion-item title="Display">
+            <div class="display-text" id="display-text">
+              {{ 'CATALOGS.BUNDLE.display_customer' | translate }}{{ 'CATALOGS.BUNDLE.united_state_english' | translate }}
+            </div>
+            <div class="display-checkbox">
+              <span class="tooltip-class" id="display-tooltip"
+                ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_display_customer' | translate }}" trigger="hover"
+                placement="bottom" style="cursor: pointer;">
+                <ibm-icon-help-filled20 id="display-icon" class="icon-svg-display"></ibm-icon-help-filled20>
+              </span>
+              <ibm-checkbox id="display-checkbox"></ibm-checkbox>
+            </div>
+            <div class="general-div">
+              <div class="uniqueFont" id="thumbnail-text">
+                {{ 'CATALOGS.BUNDLE.thumbnail' | translate }}{{ 'CATALOGS.BUNDLE.united_state_english' | translate }}
+              </div>
+              <div class="general-input"><input type="text" id="thumbnail" class="input-size" [(ngModel)]="thumbnail">
+              </div>
+            </div>
+            <div class="general-div">
+              <div class="uniqueFont" id="fullimage-text">{{ 'CATALOGS.BUNDLE.full_image' | translate }}</div>
+              <div class="general-input"><input type="text" id="fullimage" class="input-size" [(ngModel)]="image"></div>
+            </div>
+          </ibm-accordion-item>
+
+      
+
+          <!-- CUSTOM -->
+
+          <ibm-accordion-item title="Custom">
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.field1' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.field2' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.field3' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.field4' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+
+
+
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">{{ 'CATALOGS.BUNDLE.field5' | translate }}</div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <input type="text" id="code" class="input-size-icon" [(ngModel)]="code">
+              </div>
+            </div>
+          </ibm-accordion-item>
+
+          <!-- Search Engine optimization-->
+
+        </ibm-accordion>
+      </ibm-tab>
+      <ibm-tab heading="{{ 'CATALOGS.BUNDLE.search_engine_optimization' | translate }}">
+        <div class="searchEngine">
+          <div class="general-div">
+            <div class="unique-radio" id="urlkeyword-text">{{ 'CATALOGS.BUNDLE.url_keyword' | translate }}</div>
+            <div class="general-input">
+              <span class="tooltip-class" id="urlkeyword-text"
+                ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_url_keyword' | translate }}" trigger="hover" placement="bottom"
+                style="cursor: pointer;">
+                <ibm-icon-help-filled20 id="urlkeyword-icon" class="icon-svg-help"></ibm-icon-help-filled20>
+              </span>
+              <input type="text" id="urlkeyword" class="input-size-icon" [(ngModel)]="keyword">
+            </div>
+          </div>
+          <hr class="searchEngineRow">
+          <div class="radio-space">
+            <ibm-radio>{{ 'CATALOGS.BUNDLE.use_default' | translate }}</ibm-radio>
+          </div>
+          <div class="unique-radio">
+            {{ 'CATALOGS.BUNDLE.page_title' | translate }}{{ 'CATALOGS.BUNDLE.united_state_english' | translate }}
+          </div>
+          <div class="radio-space">
+            <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_page_title' | translate }}"
+              trigger="hover" placement="bottom" style="cursor: pointer;">
+              <ibm-icon-help-filled20 class="icon-svg-radio"></ibm-icon-help-filled20>
+            </span>
+            <ibm-radio class="help-radio">{{ 'CATALOGS.BUNDLE.override_default' | translate }}</ibm-radio>
+          </div>
+          <div class="general-input"><input type="text" id="page-title" class="input-size" [(ngModel)]="pageTitle">
+          </div>
+          <hr class="searchEngineRow">
+          <div class="radio-space">
+            <ibm-radio>{{ 'CATALOGS.BUNDLE.use_default' | translate }}</ibm-radio>
+          </div>
+          <div class="unique-radio-textbox">
+            {{ 'CATALOGS.BUNDLE.meta_description' | translate }}{{ 'CATALOGS.BUNDLE.united_state_english' | translate }}
+          </div>
+          <div class="radio-space">
+            <ibm-radio>{{ 'CATALOGS.BUNDLE.override_default' | translate }}</ibm-radio>
+          </div>
+          <div class="general-input">
+            <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_meta_desc' | translate }}"
+              trigger="hover" placement="bottom" style="cursor: pointer;">
+              <ibm-icon-help-filled20 class="icon-svg-help"></ibm-icon-help-filled20>
+            </span>
+            <textarea type="text" id="metaDesc" class="input-size-icon" [(ngModel)]="metaDesc"></textarea></div>
+          <hr class="searchEngineRow">
+          <div class="radio-space">
+            <ibm-radio>{{ 'CATALOGS.BUNDLE.use_default' | translate }}</ibm-radio>
+          </div>
+          <div class="unique-radio" id="default-imagealt">
+            {{ 'CATALOGS.BUNDLE.image_alt_text' | translate }}{{ 'CATALOGS.BUNDLE.united_state_english' | translate }}
+          </div>
+          <div class="radio-space">
+            <span class="tooltip-class" id="imagealt-tooltip"
+              ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_image_text' | translate }}" trigger="hover" placement="bottom"
+              style="cursor: pointer;">
+              <ibm-icon-help-filled20 class="icon-svg-radio"></ibm-icon-help-filled20>
+            </span>
+            <ibm-radio class="help-radio" id="override-imagealt">{{ 'CATALOGS.BUNDLE.override_default' | translate }}
+            </ibm-radio>
+          </div>
+          <div class="general-input"><input type="text" id="imagealt" class="input-size" [(ngModel)]="imgAltText"></div>
+
+        </div>
+      </ibm-tab>
+
+      <!-- descriptive attributes -->
+
+      <ibm-tab heading="{{ 'CATALOGS.BUNDLE.descriptive_attributes' | translate }}">
+        <ibm-accordion (click)="descriptiveTableHeader()">
+          <ibm-accordion-item title="{{ 'CATALOGS.BUNDLE.descriptive_attributes' | translate }}">
+            <div>
+              <input type="text">
+              <input type="text" [disabled]="disableInput">
+              <ibm-icon-close-outline16 class="icon-svg-btn"></ibm-icon-close-outline16>
+            </div>
+            <div class="general-div">
+              <div class="uniqueFont" id="code-text">
+                {{ 'CATALOGS.BUNDLE.descriptive_attributes' | translate }}{{ 'CATALOGS.BUNDLE.attribute_dictionary' | translate }}
+              </div>
+              <div class="general-input">
+                <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                  trigger="click" placement="bottom" style="cursor: pointer;">
+                  <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                </span>
+                <div class="checkbox-product">
+                  <div class="tab-overflow">
+                    <ng-template #customHeaderTemplate>
+                      <div style="width: 230px">
+                        <ibm-dropdown placeholder="Store" [disabled]="disabled" (selected)="selected($event)"
+                          (onClose)="onClose($event)">
+                          <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                        </ibm-dropdown>
+                      </div>
+                    </ng-template>
+                    <div *ngIf="showAssociate" class="tab-overflow">
+                      <ibm-table class="td-width" [model]="customModel" [size]="size"
+                        [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                      </ibm-table>
+                    </div>
+                    <div *ngIf="showAssociateEdit" class="tab-overflow">
+                      <ibm-table [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn"
+                        [striped]="striped">
+                      </ibm-table>
+                      <ng-template #customTableItemTemplate>
+                        <input ibmText value="{{this.customModel.data.TableItem}}" />
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ibm-accordion-item>
+        </ibm-accordion>
+      </ibm-tab>
+
+      <!--defining_attributes-->
+      <ibm-tab heading="{{ 'CATALOGS.BUNDLE.defining_attributes' | translate }}">
+         <ibm-accordion (click)="definingTableHeader()">
+                <ibm-accordion-item title="{{ 'CATALOGS.BUNDLE.defining_attributes' | translate }}">
+                  <div>
+                    <input type="text">
+                    <input type="text" [disabled]="disableInput">
+                    <ibm-icon-close-outline16 class="icon-svg-btn"></ibm-icon-close-outline16>
+                  </div>
+                  <div class="general-div">
+                    <div class="uniqueFont" id="code-text">
+                      {{ 'CATALOGS.BUNDLE.defining_attributes' | translate }}{{ 'CATALOGS.BUNDLE.attribute_dictionary' | translate }}
+                    </div>
+                    <div class="general-input">
+                      <span class="tooltip-class" ibmTooltip="{{ 'CATALOGS.BUNDLE.tooltip_code' | translate }}"
+                        trigger="click" placement="bottom" style="cursor: pointer;">
+                        <ibm-icon-help-filled20 id="code-help" class="icon-svg-help"></ibm-icon-help-filled20>
+                      </span>
+                      <div class="checkbox-product">
+                        <div class="tab-overflow">
+                          <ng-template #customHeaderTemplate>
+                            <div style="width: 230px">
+                              <ibm-dropdown placeholder="Store" [disabled]="disabled" (selected)="selected($event)"
+                                (onClose)="onClose($event)">
+                                <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                              </ibm-dropdown>
+                            </div>
+                          </ng-template>
+                          <div *ngIf="showAssociate" class="tab-overflow">
+                            <ibm-table class="td-width" [model]="customModel" [size]="size"
+                              [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                            </ibm-table>
+                          </div>
+                          <div *ngIf="showAssociateEdit" class="tab-overflow">
+                            <ibm-table [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn"
+                              [striped]="striped">
+                            </ibm-table>
+                            <ng-template #customTableItemTemplate>
+                              <input ibmText value="{{this.customModel.data.TableItem}}" />
+                            </ng-template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ibm-accordion-item>
+              </ibm-accordion>
+            </ibm-tab>
+
+      <!--associated_assets-->
+      <ibm-tab heading="{{ 'CATALOGS.BUNDLE.associated_assets' | translate }}">
+        <ibm-accordion>
+          <ibm-accordion-item title="{{ 'CATALOGS.BUNDLE.associated_assets' | translate }}"
+            (click)="associateClicked()">
+            <div class="tab-overflow">
+              <ng-template #customHeaderTemplate>
+                <div style="width: 230px">
+                  <ibm-dropdown placeholder="Store" [disabled]="disabled" (selected)="selected($event)"
+                    (onClose)="onClose($event)">
+                    <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
+                  </ibm-dropdown>
+                </div>
+              </ng-template>
+              <div class="action-btn">
+                <ibm-icon-add-outline16 class="icon-svg-btn"></ibm-icon-add-outline16>
+                <ibm-icon-close-outline16 class="icon-svg-btn"></ibm-icon-close-outline16>
+              </div>
+              <div *ngIf="showAssociate" class="tab-overflow">
+                <ibm-table class="td-width" [model]="customModel" [size]="size"
+                  [showSelectionColumn]="showSelectionColumn" [striped]="striped">
+                </ibm-table>
+              </div>
+              <div *ngIf="showAssociateEdit" class="tab-overflow">
+                <ibm-table [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn"
+                  [striped]="striped">
+                </ibm-table>
+                <ng-template #customTableItemTemplate>
+                  <input ibmText value="{{this.customModel.data.TableItem}}" />
+                </ng-template>
+              </div>
+            </div>
+          </ibm-accordion-item>
+        </ibm-accordion>
+      </ibm-tab>
+
+      <!--content-->
+      <ibm-tab heading="{{ 'CATALOGS.BUNDLE.content' | translate }}">
+        <ibm-accordion (click)="contentClicked()">
+          <ibm-accordion-item title="{{ 'CATALOGS.BUNDLE.content' | translate }}">
+            <div>
+              <input type="text">
+              <input type="text" [disabled]="disableInput">
+              <ibm-icon-close-outline16 class="icon-svg-btn"></ibm-icon-close-outline16>
+            </div>
+            <ibm-table class="body_roy" [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn"
+              [striped]="striped">
+            </ibm-table>
+          </ibm-accordion-item>
+        </ibm-accordion>
+      </ibm-tab>
+
+      <!--references-->
+      <ibm-tab heading="{{ 'CATALOGS.BUNDLE.references' | translate }}">
+        <ibm-accordion (click)="referencesClicked()">
+          <ibm-accordion-item title="{{ 'CATALOGS.BUNDLE.marketing_activities' | translate }}">
+            <ibm-table class="body_roy" [model]="customModel" [size]="size" [showSelectionColumn]="showSelectionColumn"
+              [striped]="striped">
+            </ibm-table>
+          </ibm-accordion-item>
+        </ibm-accordion>
+      </ibm-tab>
+    </ibm-tabs>
+  </div>
+</div>
+<div>
+  <ac-footer></ac-footer>
+</div>

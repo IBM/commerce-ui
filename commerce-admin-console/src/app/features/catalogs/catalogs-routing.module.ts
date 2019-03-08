@@ -50,9 +50,7 @@ const routes: Routes = [
     {
         path: 'searchTAssociation', component: StAssociationComponent
     }
-
-];
-
+]
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

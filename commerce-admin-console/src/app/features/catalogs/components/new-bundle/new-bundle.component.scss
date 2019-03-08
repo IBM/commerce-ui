@@ -1,0 +1,263 @@
+
+.side-width{
+    background-color: #f1f1f1 !important;
+    min-height: 438px;
+    margin-bottom: 0.6%;
+    display: inline-block;
+}
+.containerClass{
+    margin-left: 0.5%;
+    width: 78%;
+    display: inline-block;
+    position: absolute;
+    background-color: #f1f1f1 !important;
+    height: 438px;
+    overflow: scroll;
+}
+.div-right {
+    display: inline-block;
+    font-size: 13px;
+    margin-left: 5%;
+}
+.div-left {
+    font-size: 13px;
+    display: inline-block;
+}
+.iconFontSize{
+    font-size: 35px;
+}
+.starFont{
+    font-size: 7px;
+    margin-left: 10px;
+}
+.savePreviewBtn{
+    margin-right: 20px;
+}
+.saveBtn{
+    margin-right: 15px; 
+}
+.starCodeFont{
+    font-size: 5px;
+    margin-left: 2px;
+}
+.headTextMargin{
+    display: inline-block;
+    margin: 1% 0 0 1%;
+}
+.header-btn {
+    position: absolute;
+    display: inline-block;
+    margin: 1% 0 0 25%;
+}
+.mstrCtgry{
+    font-size: 23px;
+}
+.headAlertTxt{
+    color: red;
+    font-size: 13px;
+}
+.exclaIcon{
+    margin-left: -15px;
+    font-size:20px;
+}
+.specifyTxt{
+    margin-left: 30px;
+}
+.headerTabs{
+    margin-top: 25px;
+    margin-left: 15px;
+}
+ ibm-tabs ul {
+    border-bottom: 1px solid;
+}
+.bx--accordion__title{
+    font-weight: 600 !important;
+}
+.bx--accordion{
+    margin-top: 30px;
+}
+.uniqueRow{
+    margin-top: 10px;
+}
+.input-size{
+    padding: 10px 0px 10px 0px;
+    width: 35%;
+    font-size: 13px;
+    margin-left: 13%;
+}
+.input-size-icon{
+    padding: 10px 0px 10px 0px;
+    width: 35%;
+    font-size: 13px;
+}
+.uniqueFont{
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 1%;
+    position: absolute;
+    width: 11%;
+}
+.questionMark{
+    margin: 12px 5px 0px -21px;
+    color: darkgray;
+}
+.questionMarkCheck{
+    margin: 0px 5px 0px 0px;
+    color: darkgray;
+}
+.searchEngine{
+    margin-top: 17px;
+}
+.searchEngineRow{
+    margin-top: 50px;
+}
+.overrideInput {
+    margin-left: 20px;
+}
+.useDefault{
+    margin-bottom: 25px;
+}
+.overrideMargin{
+    margin: -7px;
+}
+.qtnOverride{
+    color: darkgray;
+    margin: 0px -15px 5px;
+}
+.overrideQtn{
+    margin-left: -8px;
+}
+.pagetitle{
+    margin-left: -20px;
+}
+.titleName{
+    font-size: 15px;
+}
+textarea {
+    height:100px !important;
+    padding: 0;
+    border: 1px solid #ccc;
+    }
+.metaDesc{
+    margin-top: 5%;
+}
+.overridetextarea{
+    margin: 10px 0px 0px 20px;
+}
+.qtnTextarea{
+    color: darkgray;
+    margin: 25px 25px 0px -45px;
+}
+.bx--table-sort-v2 {
+    width: 290px !important;
+}
+th .bx--checkbox-wrapper{
+    display: none
+}
+td .bx--checkbox-wrapper{
+    display: none
+}
+td {
+    font-weight: 100;
+    padding-top: 20px;
+    font-size: smaller !important;
+}
+.bx--btn--primary{
+    background: #3d70b2;
+    color: white;
+}
+.associateMargin{
+    margin-top: 15px;
+}
+ 
+#dtHorizontalExample th, td {
+    white-space: nowrap;
+}
+.row-width{
+    min-width: 105%;
+}
+.tab-overflow{
+    overflow-y: auto;
+    max-width: 96%;
+    min-height: 300px;
+}
+.action-btn{
+    margin: 5px;
+}
+.multi-btn{
+    color: gray;
+    font-size: 20px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.plus-btn{
+    color: gray;
+    font-size: 20px;
+    cursor: pointer;
+}
+.general-div{
+    margin-top: 1.5%;
+}
+.general-input{
+    display: inline-block;
+    width: 100%;
+}
+.display-text{
+    display: inline-block;
+    width: 12%;
+    font-size: 14px;
+}
+.display-checkbox{
+    display: inline-flex;
+}
+.radio-space{
+    margin: 1% 0 1% 12%;
+}
+.unique-radio{
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 1%;
+    position: absolute;
+    width: 11%;
+}
+.unique-radio-textbox{
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 2%;
+    position: absolute;
+    width: 11%;
+}
+.icon-svg-warning {
+    fill: red;
+  }
+//   .headTextMargin label {
+//       display: inline-flex;
+//   }
+  .icon-svg-table{
+    font-size: 20px;
+    height: 50px;
+    line-height: 30px;
+  }
+  .icon-svg-help {
+    margin-left: 11%;
+    fill: rgb(189, 179, 179);
+  }
+  .icon-svg-btn {
+    fill: rgb(189, 179, 179);
+  }
+  .icon-svg-radio {
+    margin-left: 0;
+    fill: rgb(189, 179, 179);
+  }
+  .help-radio{
+      display: inline-flex;
+  }
+  .tooltip-class{
+    z-index: 1;
+  }
+  .icon-svg-display {
+    fill: rgb(189, 179, 179);
+  }
+.checkbox-product{
+    display: inline-block;
+}
