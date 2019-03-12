@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { OnlineStoresService } from '../../../../rest/services/online-stores.service';
+import { TranslateService } from '@ngx-translate/core';
+import { IframeService } from '../../../../services/iframe.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +16,12 @@ export class StoreselectionService {
   navigateToCatalogUpload:boolean=false;
   navigateToSearch:boolean=false;
   navigateToCatalogSKU:boolean=false;
+
+  resultData: any;
+
+
+  constructor(private onlineStoriesService: OnlineStoresService, private translateService: TranslateService,
+    private iframeService: IframeService) { }
 
   set(){
     //debugger;
@@ -63,5 +72,26 @@ export class StoreselectionService {
   getCatalogSku(){
    return this.navigateToCatalogSKU;
   }
-  constructor() { }
+
+  storeListApi(): Promise<Object> {
+    return new Promise((resolve, reject) => {
+      this.onlineStoriesService.getOnlineStores({
+        usage: 'IBM_ViewCatalogTool'
+      }).subscribe(response => {
+        resolve(response);
+        this.resultData = response;
+      },  error => {
+        this.errorHandler(error);
+        reject();
+      });
+    });
+  }
+
+  private errorHandler(error) {
+    this.translateService.get('CATALOGS.HEADR.errorMessage', {code: error.status, msg: error.message})
+    .subscribe((message: string) => {
+        this.iframeService.postStatusMsg(message, 'error');
+    });
+  }
+
 }

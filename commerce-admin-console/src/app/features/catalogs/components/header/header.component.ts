@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, AfterViewInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreselectionService } from '../../services/storeSelection/storeselection.service';
-//import { SideBarComponent } from './side-bar/side-bar.component';
+import { OnlineStoresService } from '../../../../rest/services/online-stores.service';
+import { TranslateService } from '@ngx-translate/core';
+import { IframeService } from '../../../../services/iframe.service';
 
 
 
@@ -16,42 +18,48 @@ export class HeaderComponent implements OnInit {
   //show = false;
   @Input() linkShow = true;
   @Input() linkShow1: boolean = true;
-  //@ViewChild(SideBarComponent) ele: SideBarComponent;
-
-  //user : {id: number};
-
 
   @Input() size = 'sm';
   @Input() theme = 'dark';
   @Input() disabled = false;
   @Input() placeholder = 'Search';
 
-  listItems = [
-    {
-      id:1,
-      content: "AuroraESite",
-      selected: false
-    },
-    {
-      content: "ExtendedSitesCatalogAssetStore",
-      selected: false,
-    },
-    {
-      content: "StockholmCAS",
-      selected: false
-    },
-    {
-      content: "Stockholm",
-      selected: false
-    }
-  ];
-  constructor(private router: Router, private storesele: StoreselectionService) { }
+
+  constructor(private router: Router, private storesele: StoreselectionService,
+    private onlineStoriesService: OnlineStoresService, private translateService: TranslateService,
+    private iframeService: IframeService) { }
+ storeListResult: any;
+ stores: any;
+ listItems: any;
+
 
   ngOnInit() {
-    if (this.router.url == '/catalogs/masterCategory') {
+    if (this.router.url === '/catalogs/masterCategory') {
       this.linkShow1 = false;
     }
+    this.stoteListServiceCall();
   }
+
+  stoteListServiceCall() {
+      this.storesele.storeListApi().then(results => {
+      this.storeListResult = Object.assign([], results);
+      this.iterateStoreList();
+   }).catch(() => {
+    this.translateService
+        .get('CATALOGS.HEADR.store_list_failed')
+        .subscribe((msg: string) => {
+          this.iframeService.postStatusMsg(msg, 'error');
+        });
+  });
+  }
+
+  iterateStoreList() {
+    this.listItems = this.storeListResult.items.map(item => {
+      return { content: item.identifier
+      };
+    });
+  }
+
   underDev() {
 
     this.router.navigate(["/catalogs/UnderConstruction"]);
@@ -79,10 +87,8 @@ export class HeaderComponent implements OnInit {
       this.storesele.navigateToCatalogUpload=true;
       this.storesele.navigateToCatalogSKU=true;
     }
-  
-    if (ev.item.content === "StockholmCAS") {
 
-      //console.log(ev);
+    if (ev.item.content === "StockholmCAS") {
       this.storesele.setStockCAS();
       this.router.navigate(['/catalogs/stockholmcas']);
       this.storesele.navToExtendedSite = false;
@@ -91,7 +97,6 @@ export class HeaderComponent implements OnInit {
       this.storesele.navigateToCatalogUpload=false;
       this.storesele.navigateToCatalogSKU=false;
     }
-    //console.log(this.storesele.setExt);
 
     if (ev.item.content === "Stockholm") {
       this.storesele.setStock();

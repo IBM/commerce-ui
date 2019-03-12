@@ -15,7 +15,9 @@
     "test": "ng test --code-coverage",
     "wchpush": "./node_modules/wchtools-commerce/node_modules/.bin/wchtools push",
     "wchlist": "./node_modules/wchtools-commerce/node_modules/.bin/wchtools list",
-    "wchdelete": "./node_modules/wchtools-commerce/node_modules/.bin/wchtools delete"
+    "wchdelete": "./node_modules/wchtools-commerce/node_modules/.bin/wchtools delete",
+    "fix-memory-limit": "cross-env LIMIT=2048 increase-memory-limit",
+    "dev": "npx --max_old_space_size=4096 vue-cli-service serve"
   },
   "private": true,
   "dependencies": {
@@ -61,6 +63,8 @@
     "protractor": "^5.4.1",
     "ts-node": "~3.3.0",
     "tslint": "^5.8.0",
-    "typescript": "2.9.2"
+    "typescript": "2.9.2",
+    "increase-memory-limit": "^1.0.3",
+    "cross-env": "^5.0.5"
   }
 }
