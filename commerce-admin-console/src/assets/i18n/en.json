@@ -365,7 +365,9 @@
             "product": "Product",
             "Bundle": "Bundle",
             "kit":"Kit",
-            "select_store": "Select Store"
+            "select_store": "Select Store",
+            "store_list_failed": "An error occurred during listing organizations. Contact support for further details.",
+            "errorMessage": "Status Code: {{code}} Error Message: {{msg}}"
         },
         "FOOTR": {
             "tip_help1": "Filter the message console by message type. Object error messages describe problems with your business objects.",
