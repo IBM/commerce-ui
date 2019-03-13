@@ -366,7 +366,7 @@
             "Bundle": "Bundle",
             "kit":"Kit",
             "select_store": "Select Store",
-            "store_list_failed": "An error occurred during listing organizations. Contact support for further details.",
+            "store_list_failed": "An error occurred during listing store list. Contact support for further details.",
             "errorMessage": "Status Code: {{code}} Error Message: {{msg}}"
         },
         "FOOTR": {
