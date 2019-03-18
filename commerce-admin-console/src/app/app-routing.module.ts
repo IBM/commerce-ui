@@ -17,6 +17,10 @@ const routes: Routes = [
 	{
 		path: 'catalogs',
 		loadChildren: './features/catalogs/catalogs.module#CatalogsModule'
+	},
+	{
+		path: 'orgadmin',
+		loadChildren: './features/orgadmin/orgadmin.module#OrgadminModule'
 	}
 ];
 
