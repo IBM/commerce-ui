@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateLoader, TranslateModule, TranslateFakeLoader, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../../shared/shared.module'
 import { Location} from "@angular/common";
-import { OrganizationService } from '../../../rest/services/organization.service';
+import { OrganizationsService } from '../../../rest/services/organization.service';
 import { OrganizationsMainService } from '../organizations.main.service';
 import { ApiConfiguration } from '../../../rest/api-configuration';
 import { IframeService } from '../../../services/iframe.service';
@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'organizations', component: ListOrganizationsComponent}
 ];
 
-class MockOrganizationService {
+class MockOrganizationsService {
 
 }
 
@@ -40,11 +40,11 @@ fdescribe('CreateOrganizationComponent', () => {
       declarations: [ CreateOrganizationComponent, ListOrganizationsComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: OrganizationService, useClass: MockOrganizationService },
+        { provide: OrganizationsService, useClass: MockOrganizationsService },
         ApiConfiguration,
         OrganizationsMainService,
         IframeService,
-        MockOrganizationService,
+        MockOrganizationsService,
         AuthService
       ]
     })

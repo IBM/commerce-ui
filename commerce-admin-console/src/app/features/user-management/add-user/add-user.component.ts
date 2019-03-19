@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { OrganizationService } from "../../../rest/services/organization.service";
+import { OrganizationsService } from "../../../rest/services/organizations.service";
 import { PersonService } from "../../../rest/services/person.service";
 import { CountryService } from "../../../rest/services/country.service";
 import { TranslateService } from '@ngx-translate/core';
@@ -243,7 +243,7 @@ export class AddUserComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private organizationService: OrganizationService,
+    private organizationsService: OrganizationsService,
     private personService: PersonService,
     private countryService: CountryService,
     private translateService: TranslateService) {
@@ -269,10 +269,7 @@ export class AddUserComponent implements OnInit {
       if (this.router.url.includes('/edit-user')) {
         this.route.params.subscribe(data => this.setUserId(data));
       } else {
-        this.organizationService.OrganizationFindByQuery({
-          storeId: UserManagementConstants.DEFAULT_STORE_ID,
-          q: UserManagementConstants.DEFAULT_ORG_Q,
-          orgId: '*'
+        this.organizationsService.OrganizationGetManageableOrganizations({
         }).subscribe(this.processOrgData.bind(this));
       }
     });
@@ -326,10 +323,7 @@ export class AddUserComponent implements OnInit {
   setUserId(data) {
     this.editUserEnabled = true;
     this.userId = data.id;
-    this.organizationService.OrganizationFindByQuery({
-      storeId: UserManagementConstants.DEFAULT_STORE_ID,
-      q: UserManagementConstants.DEFAULT_ORG_Q,
-      orgId: '*'
+    this.organizationsService.OrganizationGetManageableOrganizations({
     }).subscribe(this.processOrgData.bind(this));
   }
 

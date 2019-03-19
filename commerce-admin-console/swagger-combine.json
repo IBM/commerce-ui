@@ -18,7 +18,19 @@
       }
     },
     {
-      "url": "../../commerce-api-management/spec/swagger20/transaction/user_and_organization_management.json",
+      "url": "../../commerce-api-management/spec/swagger20/admin/user_and_organization_management.json",
+      "paths": {
+        "rename": [
+          {
+            "type": "regex",
+            "from": "(.*)",
+            "to": "/rest/admin/v2$1"
+          }
+        ]
+      }
+    },
+    {
+      "url": "./api_definition/user_and_organization_management.json",
       "paths": {
         "rename": [
           {

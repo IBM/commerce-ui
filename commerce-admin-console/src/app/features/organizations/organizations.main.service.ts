@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { OrganizationService } from '../../rest/services/organization.service';
+import { OrganizationsService } from '../../rest/services/organizations.service';
 import { IframeService } from '../../services/iframe.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class OrganizationsMainService {
   orgDataResponse = [];
-  constructor(private organizationService: OrganizationService,
+  constructor(private organizationsService: OrganizationsService,
               private iframeService: IframeService,
               private translateService: TranslateService) { }
     
@@ -55,16 +55,16 @@ export class OrganizationsMainService {
             state: org['state'],
             zipCode: org['zipCode']
         };
-        this.organizationService.OrganizationRegisterOrganization({
-            storeId: '0',
+        this.organizationsService.OrganizationsCreateOrganization({
             body: orgBody
         }).subscribe(response => {
-            this.translateService.get('ORGANIZATIONS.SERVICES.createOrg', {orgId: response.orgEntityId})
+        	console.log(response);
+            this.translateService.get('ORGANIZATIONS.SERVICES.createOrg', {orgId: null})
                                 .subscribe((message: string)=>{
                                 this.iframeService.postStatusMsg(message, 'success');
                                 });
             this.iframeService.stopProgressIndicator();
-            resolve(response.orgEntityId);
+            resolve(null);
         }, error => {
             for(var e of error.error.errors){
                 this.iframeService.postStatusMsg(e.errorKey+' '+e.errorMessage,'error');
@@ -94,17 +94,16 @@ export class OrganizationsMainService {
             state: org['state'],
             zipCode: org['zipCode']
         };
-        this.organizationService.OrganizationUpdateOrganization({
-            storeId: '0',
-            organizationId: org['organizationId'],
+        this.organizationsService.OrganizationsUpdateOrganization({
+            id: org['organizationId'],
             body: orgBody
         }).subscribe(response => {
-            this.translateService.get('ORGANIZATIONS.SERVICES.editOrg', {orgId: response.orgEntityId})
+            this.translateService.get('ORGANIZATIONS.SERVICES.editOrg', {orgId: org['organizationId']})
                             .subscribe((message: string) =>{
                                 this.iframeService.postStatusMsg(message, 'success');
                             });
             this.iframeService.stopProgressIndicator();
-            resolve(response.orgEntityId);
+            resolve(org['organizationId']);
         }, error => {
             this.errorHandler(error);
             this.iframeService.stopProgressIndicator();
@@ -123,13 +122,10 @@ export class OrganizationsMainService {
     });
   }
 
-  getOrganizationById(_orgId: string): Promise<Object> {
+  getOrganizationById(_orgId: number): Promise<Object> {
       return new Promise((resolve, reject) =>{
         this.iframeService.startProgressIndicator();
-        this.organizationService.OrganizationFindByOrganizationIdWParentAssignedRolesDetailsProfileName({
-            storeId: '0',
-            organizationId: _orgId
-        }).subscribe(response =>{
+        this.organizationsService.OrganizationsFindByOrganizationId(_orgId).subscribe(response =>{
             var orgResponse = {
                 orgEntityName: response['organizationName'],
                 description: response['description'],
@@ -159,18 +155,17 @@ export class OrganizationsMainService {
   getOrganizations(_orgName: string, _parentOrgName: string, _orgId: string): Promise<Object> { 
    return new Promise((resolve, reject) => {
     this.iframeService.startProgressIndicator();
-    this.organizationService.OrganizationFindByQuery({
-        storeId: '0',
-        q: 'organizationsICanAdmin',
-        orgId: _orgId 
+    this.organizationsService.OrganizationGetManageableOrganizations({
+    	organizationName: _orgName,
+    	parentOrganizationName: _parentOrgName
       }).subscribe(response =>{
         var organizationsData = [];
-        if (response != null && response.recordSetTotal > 0){
+        if (response != null && response.count > 0){
             var orgsReturned;
-            let organizationDataBeans = Object.assign([], response.organizationDataBeans);
-            for (var org of organizationDataBeans) {
+            let organizations = Object.assign([], response.items);
+            for (var org of organizations) {
                 var orgType: string;
-                switch (org['orgEntityType']){
+                switch (org['organizationType']){
                     case "O": {
                         orgType = "Organization";
                         break;
@@ -189,7 +184,7 @@ export class OrganizationsMainService {
                     }
                 }
                 var orgApprovalState: string;
-                switch (org['state']){
+                switch (org['approvalState']){
                     case "0": {
                         orgApprovalState = "Pending Approval";
                         break;
@@ -215,15 +210,14 @@ export class OrganizationsMainService {
                 var orgResponse = {
                     businessCategory: org['businessCategory'],
                     description: org['description'],
-                    displayName: org['displayName'],
                     distinguishedName: org['distinguishedName'],
                     legalId: org['legalId'],
-                    memberId: org['memberId'],
                     orgEntityType: orgType ,
-                    orgEntityTypeCode: org['orgEntityType'],
-                    organizationId: org['organizationId'],
-                    organizationName: org['organizationName'],
-                    parentMemberId: org['parentMemberId'],
+                    orgEntityTypeCode: org['organizationType'],
+                    organizationId: org['id'],
+                    organizationName: org['name'],
+                    parentMemberId: org['parentOrganizationId'],
+                    parentMemberName: org['parentOrganizationName'],
                     state: orgApprovalState,
                     status: org['status'] === -1? "Locked": "Unlocked",
                     type: org['type']
@@ -234,7 +228,7 @@ export class OrganizationsMainService {
             this.convertParentIdtoName(organizationsData);
             if(_orgId != '*'){ 
             // The current GET API only returns all orgs regardless of orgId value. Need to filter the all the orgs based on orgId
-                let organizationByOrgId = organizationsData.filter(org => org['organizationId'] === _orgId);
+                let organizationByOrgId = organizationsData.filter(org => org['id'] === _orgId);
                 orgsReturned = organizationByOrgId.length;
                 resolve(organizationByOrgId);
             }else if(_orgName !=  null){
@@ -242,11 +236,11 @@ export class OrganizationsMainService {
                 orgsReturned = organizationsByOrgName.length;
                 resolve(organizationsByOrgName);
             }else if(_parentOrgName != null) {
-                let organizationsByParentName =  organizationsData.filter(org => org['parentMemberName'] === _parentOrgName);
+                let organizationsByParentName =  organizationsData.filter(org => org['parentOrganizationName'] === _parentOrgName);
                 orgsReturned = organizationsByParentName.length
                 resolve(organizationsByParentName);
             }else{
-                orgsReturned = response.recordSetTotal;
+                orgsReturned = response.count;
                 resolve(organizationsData);
             }
             this.orgDataResponse = organizationsData;

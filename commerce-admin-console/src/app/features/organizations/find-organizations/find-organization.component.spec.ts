@@ -7,7 +7,7 @@ import { TranslateLoader, TranslateModule, TranslateFakeLoader } from '@ngx-tran
 import { ListOrganizationsComponent } from '../list-organizations/list-organizations.component';
 import { SharedModule } from '../../../shared/shared.module'
 import { Location} from "@angular/common";
-import { OrganizationService } from '../../../rest/services/organization.service';
+import { OrganizationsService } from '../../../rest/services/organizations.service';
 import { OrganizationsMainService } from '../organizations.main.service';
 import { ApiConfiguration } from '../../../rest/api-configuration';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'organizations', component: ListOrganizationsComponent}
 ];
 
-class MockOrganizationService {
+class MockOrganizationsService {
 
 }
 
@@ -42,11 +42,11 @@ fdescribe('FindOrganizationComponent', () => {
       declarations: [ FindOrganizationsComponent, ListOrganizationsComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: OrganizationService, useClass: MockOrganizationService },
+        { provide: OrganizationsService, useClass: MockOrganizationsService },
         OrganizationsMainService,
         ApiConfiguration,
         IframeService,
-        MockOrganizationService,
+        MockOrganizationsService,
         AuthService
       ]
     })

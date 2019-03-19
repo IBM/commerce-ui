@@ -50,7 +50,7 @@
           "Online Stores"
         ],
         "operationId": "getOnlineStores",
-        "summary": "Gets the online stores.",
+        "summary": "Get a collection of online stores.",
         "x-expression-template": "{_wcf.ap='IBM_Admin_All';_wcf.usage='{usage}'}/OnlineStore",
         "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
         "x-facade-client-method": "getOnlineStore",
@@ -173,7 +173,7 @@
           "Online Stores"
         ],
         "operationId": "getOnlineStoresByRelatedStoreId",
-        "summary": "Gets online stores by related store id.",
+        "summary": "Get a collection of online stores by related store ID.",
         "x-expression-template": "{_wcf.ap='{accessProfile}';_wcf.usage='{usage}'}/OnlineStore[OnlineStoreRelatedStores[StoreIdentifier[(UniqueID='{relatedStoreId}')]]]",
         "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
         "x-facade-client-method": "getOnlineStore",
@@ -211,7 +211,7 @@
           "Online Stores"
         ],
         "operationId": "getOnlineStore",
-        "summary": "Gets an online store.",
+        "summary": "Gets an online store by online store ID.",
         "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{id}')]]",
         "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
         "x-facade-client-method": "getOnlineStore",
@@ -535,7 +535,7 @@
           "Online Stores"
         ],
         "operationId": "getOnlineStoreCurrencies",
-        "summary": "Gets an online store's currencies.",
+        "summary": "Get an online store's currencies.",
         "x-expression-template": "{_wcf.ap='{accessProfile}'}/OnlineStore[StoreIdentifier[(UniqueID='{onlineStoreId}')]]",
         "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
         "x-facade-client-method": "getOnlineStore",
@@ -708,7 +708,7 @@
           "Online Stores"
         ],
         "operationId": "deleteOnlineStoreDefaultCatalog",
-        "summary": "Deletes a default catalog of an online store.",
+        "summary": "Delete the default catalog of an online store.",
         "x-action-code": "Delete",
         "x-expression-template": "/OnlineStore[1]/DefaultCatalog[1]",
         "x-facade-client-class": "com.ibm.commerce.infrastructure.facade.client.InfrastructureFacadeClient",
