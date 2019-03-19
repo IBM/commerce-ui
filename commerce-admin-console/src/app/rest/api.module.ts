@@ -4,7 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiConfiguration } from './api-configuration';
 
 import { OnlineStoresService } from './services/online-stores.service';
-import { OrganizationService } from './services/organization.service';
+import { OrganizationsService } from './services/organizations.service';
+import { UsersService } from './services/users.service';
+import { AddressesService } from './services/addresses.service';
 import { PersonService } from './services/person.service';
 import { ApprovalStatusService } from './services/approval-status.service';
 import { CountryService } from './services/country.service';
@@ -23,7 +25,9 @@ import { CountryService } from './services/country.service';
   providers: [
     ApiConfiguration,
     OnlineStoresService,
-    OrganizationService,
+    OrganizationsService,
+    UsersService,
+    AddressesService,
     PersonService,
     ApprovalStatusService,
     CountryService
