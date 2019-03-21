@@ -7,6 +7,9 @@ import { ManageOrgComponent } from './components/users/manage-org/manage-org.com
 export const routes: Routes = [
     {
         path: '', component: ManageOrgComponent
+    },
+    {
+        path: 'accountInfo', component: AccountInfoComponent
     }
 ];
 

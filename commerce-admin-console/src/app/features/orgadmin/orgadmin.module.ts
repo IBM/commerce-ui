@@ -14,7 +14,7 @@ import { ManageOrgComponent } from './components/users/manage-org/manage-org.com
     OrgadminRoutingModule,
     IconModule,
     TabsModule,
-    AccordionModule, 
+    AccordionModule,
     CheckboxModule, 
     RadioModule,
     TableModule, 
@@ -26,7 +26,8 @@ import { ManageOrgComponent } from './components/users/manage-org/manage-org.com
     DialogModule,
     UIShellModule,
     FileUploaderModule,
-    NotificationModule
+    NotificationModule,
+    ButtonModule
   ],
   declarations: [UsersComponent, AccountInfoComponent, ManageOrgComponent]
 })

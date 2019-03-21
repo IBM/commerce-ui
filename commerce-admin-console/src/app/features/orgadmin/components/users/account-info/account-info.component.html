@@ -1,19 +1,62 @@
-<div class="bx--grid Rectangle">
-    <div class="bx--row">
-      <div class="bx--col-sm-4 bx--col-md-4 side-content">
-        <p>Account Info</p>
+<div class="bx--grid">
+  <div class="header">IBM Watson Commerce</div>
+  <div class="border-div">
+      <div class="users">
+        <span>Users</span>
+        <span class="icon-top"><ibm-icon-chevron-right16 id="table-icon" class="chevron-icon"></ibm-icon-chevron-right16></span>
+        <span><strong class="new-user">New User</strong></span>
       </div>
-      <div class="bx--col-sm-7 bx--col-md-7 main-content">
-        <div>Login ID</div>
-        <input type="text" class="bx--col-sm-10 bx--col-md-10">
-        <div>Email</div>
-        <input type="text" class="bx--col-sm-10 bx--col-md-10">
-        <div>Password</div>
-        <input type="text" class="bx--col-sm-10 bx--col-md-10">
-        <div>Organization</div>
-        <input type="text" class="bx--col-sm-10 bx--col-md-10">
-        <div>Account Policy</div>
-        <input type="text" class="bx--col-sm-10 bx--col-md-10">
-      </div>
-    </div>
+        <div class="bx--row header-border">
+          <div class="bx--col-sm-4 bx--col-md-4 side-content">
+            <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
+            <!-- <ibm-icon-radio-button20 id="radio-icon" class="radio-icon"></ibm-icon-radio-button20><span class="text-margin">Account Information</span> -->
+            <span class="dot account-dot"></span><span class="text-margin">Account Information</span>
+            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+            <span class="dot"></span><span class="text-margin">Contact Information</span>
+            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+            <span class="dot"></span><span class="text-margin">Roles (Optional)</span>
+            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+            <span class="dot"></span><span class="text-margin">Groups (Optional)</span>
+            </div>
+          </div>
+          <div class="bx--col-sm-8 bx--col-md-8">
+            <div class="bx--row">
+              <div class="bx--col-sm-12 bx--col-md-12 main-content">
+                  <div class="form-text">Login ID</div>
+                  <input ibmText class="bx--col-sm-11 bx--col-md-11 input"><br/><br/>
+                  <div class="form-text">Email</div>
+                  <input ibmText class="bx--col-sm-11 bx--col-md-11 input"><br/><br/>
+                  <div class="form-text">
+                    <span>Password</span>
+                    <span class="password-show">
+                      <ibm-icon-view16 class="view-icon"></ibm-icon-view16><span class="show-margin">Show</span>
+                    </span>
+                    <!-- <span class="password-show">
+                      <ibm-icon-view-off16 class="view-icon"></ibm-icon-view-off16>Hide
+                    </span> -->
+                  </div>
+                    <div class="input-tikmark" *ngIf="showInput"> 
+                        <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
+                        <input ibmText class="bx--col-sm-11 bx--col-md-11 input" type="password"><br/><br/>
+                    </div>
+                      <div class="input-tikmark" *ngIf="!showInput">
+                          <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
+                          <input ibmText class="bx--col-sm-11 bx--col-md-11 input" type="text"><br/><br/>
+                      </div>
+                  <div class="form-text">Organization</div>
+                  <input ibmText class="bx--col-sm-11 bx--col-md-11 input"><br/><br/>
+                  <div class="form-text">Account Policy</div>
+                  <input ibmText class="bx--col-sm-11 bx--col-md-11 input"><br/><br/>
+              </div>
+              <div class="bx--col-sm-12 bx--col-md-12 footer-content">
+                  <div class="footer-btn">
+                      <button ibmButton="secondary" size="sm" id="save-preview" class="cancel-button">Cancel</button>
+                      <button ibmButton size="sm" id="save-preview" class="next-button">Next</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+  
   </div>
