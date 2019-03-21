@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './components/users/users/users.component';
 import { AccountInfoComponent } from './components/users/account-info/account-info.component';
 import { ManageOrgComponent } from './components/users/manage-org/manage-org.component';
+import { OrganisationLandingPageComponent } from './components/organisation-landing-page/organisation-landing-page.component';
  
 export const routes: Routes = [
     {
@@ -10,6 +11,9 @@ export const routes: Routes = [
     },
     {
         path: 'accountInfo', component: AccountInfoComponent
+    },
+    {
+        path: 'orgland', component: OrganisationLandingPageComponent
     }
 ];
 
