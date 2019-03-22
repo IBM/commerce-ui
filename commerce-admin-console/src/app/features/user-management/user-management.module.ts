@@ -19,6 +19,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ButtonBarComponent } from './user-list/button-bar/button-bar.component';
 import { UserListDashboardComponent } from './user-list/user-list-dashboard/user-list-dashboard.component';
 import { UserTableComponent } from './user-list/user-table/user-table.component';
+import { ManageUserComponent } from './components/manage-user/manage-user.component';
+import { AccountInfoComponent } from './components/account-info/account-info.component';
+import { OrganisationLandingPageComponent } from './components/organisation-landing-page/organisation-landing-page.component';
 
 @NgModule({
   imports: [
@@ -42,7 +45,10 @@ import { UserTableComponent } from './user-list/user-table/user-table.component'
     AddUserComponent,
     ButtonBarComponent,
     UserListDashboardComponent,
-    UserTableComponent
+    UserTableComponent,
+    ManageUserComponent,
+    AccountInfoComponent,
+    OrganisationLandingPageComponent
   ],
   providers: [
     SearchService
