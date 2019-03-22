@@ -1,0 +1,126 @@
+
+  .header-border {
+    width: 98%;
+    margin: 0 0 2% 1%;
+    margin-top: -0.5%;  
+  }
+  .side-content {
+    padding-top: 4%; 
+    background-color: #ffffff; 
+  }
+  .main-content {
+    padding-top: 6%;
+    margin: 0 0 0.2% 0.2%;
+    background-color: #ffffff;
+  }
+  .footer-content {
+    margin: 0 0 0.2% 0.2%;
+    background-color: #ffffff;
+  }
+  .dot {
+    height: 10px;
+    width:  10px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid blue;
+  }
+  .text-margin {
+    margin-left: 5px;
+  }
+  .arrow-icon {
+    display: block;
+    margin: 10px 0px 10px -5px;
+  }
+  .radio-icon {
+    //border: 1px solid blue;
+
+  }
+  .side-txt-margin {
+    margin-left: 5px;
+  }
+  .header {
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+    background: black;
+    color: white;
+    padding: 8px 0px 0px 10px;
+  }
+  .users {
+    width: 100%;
+    height: 35px;
+    background: white;
+    color: black;
+    padding: 8px 0px 0px 10px;
+    font-size: 14px;
+  }
+  .border-div {
+    border: 1px solid gray;
+    //height: auto;
+  }
+  .radio-icon {
+    font-size: 10px;
+    height: 30px;
+    line-height: 20px;
+  }
+  .new-user {
+    font-weight: 600
+  }
+  .chevron-icon {
+    margin: 0px 5px 0px 5px;
+  }
+  .icon-top {
+    margin-top: 4px !important;
+  }
+  .account-dot {
+    background-color: blue;
+  }
+  .next-button {
+    width: 45%;
+  }
+  .cancel-button {
+    width: 35%;
+  }
+  .footer-btn {
+    margin: 3% 0% 3% 35%;
+  }
+  .input {
+    background: #F3F3F3;
+    height: 30px;
+    font-size: 14px;
+    color: #282828;
+    border: none;
+    border-bottom: 1px solid gray;
+  }
+  .form-text {
+    margin-bottom: 1%;
+  }
+  .password-show {
+    float: right;
+    margin-right: 9%;
+    width: 9%;
+    font-size: 12px;
+  }
+  .view-icon {
+    font-size: 20px;
+    height: 50px;
+    line-height: 30px;
+  }
+  .input-tikmark {
+    position: relative; 
+  }
+  // .input-tikmark input {
+  //   text-indent: 30px;
+  //   font-family:  FontAwesome, sans-serif;
+  // }
+  .input-tikmark .fa-tickmark { 
+    position: absolute;
+    top: 11px;
+    left: 88%;
+    font-size: 15px;
+    z-index: 10000;
+    fill: blue;
+  }
+  .show-margin {
+    margin-left: 12%;
+  }
