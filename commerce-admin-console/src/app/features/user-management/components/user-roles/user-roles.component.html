@@ -29,38 +29,45 @@
           <div class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
               <div class="bx--col-sm-11 bx--col-md-11">
-                  <div class="form-text">Login ID</div>
-                  <input ibmText class=" inputbx"><br/><br/>
-                  <div class="form-text">Email</div>
-                  <input ibmText class=" inputbx"><br/><br/>
-                  <div class="form-text">
-                    <span>Password</span>
-                    <span class="password-show">
-                      <ibm-icon-view16 class="view-icon"></ibm-icon-view16><span class="show-margin">Show</span>
-                    </span>
-                    <div class="clr"></div>
-                    <!-- <span class="password-show">
-                      <ibm-icon-view-off16 class="view-icon"></ibm-icon-view-off16>Hide
-                    </span> -->
-                  </div>
-                    <div class="input-tikmark" *ngIf="showInput"> 
-                        <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
-                        <input ibmText class=" inputbx" type="password"><br/><br/>
-                    </div>
-                      <div class="input-tikmark" *ngIf="!showInput">
-                          <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
-                          <input ibmText class=" inputbx" type="text"><br/><br/>
-                      </div>
-                  <div class="form-text">Organization</div>
-                  <input ibmText class=" inputbx"><br/><br/>
-                  <div class="form-text">Account Policy</div>
-                  <input ibmText class=" inputbx"><br/><br/>
+                <div class="info-text">
+                    <p>Select an organization and choose the user's roles from the list of available</p>
+                    <p>roles. A user can have roles in more than one organization.</p>
+                </div>
+                <div class="form-text">Organization</div>
+                  <!-- <ibm-select [(ngModel)]="model">
+                      <option value="default" disabled selected hidden>Select title</option>
+                      <option value="option1">Option 1</option>
+                      <option value="option2">Option 2</option>
+                      <option value="option3">Option 3</option>
+                      </ibm-select><br/><br/> -->
+                <ibm-dropdown
+                  placeholder="Select title"
+                  [disabled]="disabled"
+                  [(ngModel)]="model"
+                  value="content">
+                  <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
+                </ibm-dropdown><br/><br/>
+                <div class="form-text">Available roles</div>
+                <ibm-dropdown
+                  placeholder="Select title"
+                  [disabled]="disabled"
+                  [(ngModel)]="model"
+                  value="content">
+                  <ibm-dropdown-list [items]="rolesList"></ibm-dropdown-list>
+                </ibm-dropdown><br/><br/>
+                <div class="roles-margin">
+                  <span>Selected roles</span>
+                </div>
               </div>
-              <div class="bx--col-sm-12 bx--col-md-12 footer-content">
-                  <div class="footer-btn">
+              <div class="bx--col-sm-11 bx--col-md-11 footer-content">
+                <div class="bx--row">
+                  <div class="bx--col-sm-3 bx--col-md-3"></div>
+                  <div class="bx--col-sm-9 bx--col-md-9">
                       <button ibmButton="secondary" size="sm" id="save-preview" class="cancel-button">Cancel</button>
+                      <button ibmButton size="sm" id="save-preview" class="back-button">Back</button>
                       <button ibmButton size="sm" id="save-preview" class="next-button">Next</button>
                   </div>
+                </div>
               </div>
             </div>
           </div>
