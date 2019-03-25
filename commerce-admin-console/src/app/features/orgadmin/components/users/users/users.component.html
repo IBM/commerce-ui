@@ -1,1 +1,54 @@
+<div class=" userLandingPage">
+    <!--Header part (start)-->
+    <div class="Header bx--row">
+        <div class="menuLogo bx--col-xs-1 bx--col-sm-1 bx--col-md-1 bx--col-lg-1 bx--col-xl-1 bx--col-xxl-1">
+            <ibm-icon-menu32 class="icon-menu"></ibm-icon-menu32>
+        </div>
+        <div class="bx--col-xs-11 bx--col-sm-11 bx--col-md-11 bx--col-lg-11 bx--col-xl-11 bx--col-xxl-11">
+            <p class="headingName">
+                IBM Watson Commerce
+            </p>
+        </div>
+    </div>
+    <!--User part(start)-->
+    <div class="Users bx--row">
+        <div class="bx--col-xs-12 bx--col-sm-12 bx--col-md-12 bx--col-lg-12 bx--col-xl-12 bx--col-xxl-12">
+            <p class="userName">
+                Users
+            </p>
+        </div>
+    </div>
+    <!--Search,Filter part(start)-->
+    <div class="SearchMenu icons_user bx--row">
+        <div class="icon-group">
+            <span class="icons">
+                <button type="button" class="rowAdditionButton">New</button>
+            </span>
+            <span class="icons glyphiconsButton">
+                <ibm-icon-settings16></ibm-icon-settings16>
+            </span>
+            <span class="icons glyphiconsButton">
+                <ibm-icon-filter16></ibm-icon-filter16>
+            </span>
+            <span class="icons glyphiconsButton">
+                <ibm-icon-search16></ibm-icon-search16>
+            </span>
+        </div>
+    </div>
 
+    <!--TABLE PART (START)-->
+    <div class="TableItem bx--row">
+      <div class="table-body">
+            <ibm-table [model]="model"   [striped]="striped"></ibm-table>
+
+        
+            <ibm-pagination  [model]="model" (selectPage)="selectPage($event)"></ibm-pagination>
+      </div>  
+    
+
+    </div>
+
+
+
+
+</div>

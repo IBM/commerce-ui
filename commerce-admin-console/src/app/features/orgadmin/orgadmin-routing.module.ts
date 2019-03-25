@@ -9,6 +9,9 @@ import { UserRolesComponent } from './components/users/user-roles/user-roles.com
  
 export const routes: Routes = [
     {
+        path: 'Users', component: UsersComponent
+    },
+    {
         path: '', component: ManageOrgComponent
     },
     {
@@ -23,8 +26,7 @@ export const routes: Routes = [
     {
         path: 'userRoles', component: UserRolesComponent
     }
-];
-
+    ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
