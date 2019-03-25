@@ -22,6 +22,10 @@ import { UserTableComponent } from './user-list/user-table/user-table.component'
 import { ManageUserComponent } from './components/manage-user/manage-user.component';
 import { AccountInfoComponent } from './components/account-info/account-info.component';
 import { OrganisationLandingPageComponent } from './components/organisation-landing-page/organisation-landing-page.component';
+import { ContactInfoComponent } from './components/contact-info/contact-info.component';
+import { UserGroupsComponent } from './components/user-groups/user-groups.component';
+import { UserRolesComponent } from './components/user-roles/user-roles.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   imports: [
@@ -48,7 +52,11 @@ import { OrganisationLandingPageComponent } from './components/organisation-land
     UserTableComponent,
     ManageUserComponent,
     AccountInfoComponent,
-    OrganisationLandingPageComponent
+    OrganisationLandingPageComponent,
+    ContactInfoComponent,
+    UserGroupsComponent,
+    UserRolesComponent,
+    UsersComponent
   ],
   providers: [
     SearchService
