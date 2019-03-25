@@ -14,7 +14,7 @@
     background-color: #ffffff;
   }
   .footer-content {
-    margin: 0 0 0.2% 0.2%;
+    margin: 0 0 3% 0.2%;
     background-color: #ffffff;
   }
   .dot {
@@ -82,10 +82,14 @@
     background-color: blue;
   }
   .next-button {
-    width: 45%;
+    width: 39%;
   }
   .cancel-button {
-    width: 35%;
+    width: 19%;
+  }
+  .back-button {
+    width: 38%;
+    background-color: black;
   }
   .footer-btn {
     margin: 3% 0% 3% 35%;
@@ -138,3 +142,13 @@
   .right-content {
     padding-left: 1px;
   }
+  .bx--label {
+      display: none;
+  }
+  .info-text {
+      margin-bottom: 20px;
+  }
+  .roles-margin {
+      margin-bottom: 20px;
+  }
+  
