@@ -25,7 +25,14 @@ import { OrganisationLandingPageComponent } from './components/organisation-land
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 import { UserGroupsComponent } from './components/user-groups/user-groups.component';
 import { UserRolesComponent } from './components/user-roles/user-roles.component';
-import { UsersComponent } from './components/users/users.component';
+import { UserAccountComponent } from './components/users/user-account/user-account.component';
+import { UserContactComponent } from './components/users/user-contact/user-contact.component';
+import { ManageUserAccountComponent } from './components/users/manage-user-account/manage-user-account.component';
+import { ManageUserContactComponent } from './components/users/manage-user-contact/manage-user-contact.component';
+import { ManageUserGroupsComponent } from './components/users/manage-user-groups/manage-user-groups.component';
+import { ManageUserRolesComponent } from './components/users/manage-user-roles/manage-user-roles.component';
+import { UserListComponent } from './components/users/user-list/user-list.component';
+import { OrganizationListComponent } from './components/organizations/organization-list/organization-list.component';
 
 @NgModule({
   imports: [
@@ -56,7 +63,14 @@ import { UsersComponent } from './components/users/users.component';
     ContactInfoComponent,
     UserGroupsComponent,
     UserRolesComponent,
-    UsersComponent
+    UserAccountComponent,
+    UserContactComponent,
+    ManageUserAccountComponent,
+    ManageUserContactComponent,
+    ManageUserGroupsComponent,
+    ManageUserRolesComponent,
+    UserListComponent,
+    OrganizationListComponent
   ],
   providers: [
     SearchService
