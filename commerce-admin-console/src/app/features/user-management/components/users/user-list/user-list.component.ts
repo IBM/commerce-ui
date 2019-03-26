@@ -1,10 +1,8 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
 import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
-import { Router } from '@angular/router';
-import { UsersService } from '../../../../../rest/services/users.service';
 
 @Component({
-  selector: 'ac-user-list',
+  selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
@@ -24,7 +22,12 @@ export class UserListComponent implements OnInit {
   @ViewChild('paginationTableItemTemplate')
   protected paginationTableItemTemplate: TemplateRef<any>;
   
-  constructor(private router: Router, private usersService: UsersService) { }
+
+
+
+
+  constructor() { }
+  
 
   ngOnInit() {
     
@@ -56,36 +59,20 @@ export class UserListComponent implements OnInit {
   }
 
   getPage(page: number) {
-    //const line = line => [`dave_evans`, `Dave`,`Evans`,`Organization A`,`Site Administrator`,``];
+    const line = line => [`dave_evans`, `Dave`,`Evans`,`Organization A`,`Site Administrator`,``];
 
-    //const fullPage = [];
+    const fullPage = [];
 
-    //for (
-    //  let i = (page - 1) * this.model.pageLength;
-    //  i < page * this.model.pageLength && i < this.model.totalDataLength;
-    //  i++
-    //) {
-    //  fullPage.push(line(i + 1));
-    //}
+    for (
+      let i = (page - 1) * this.model.pageLength;
+      i < page * this.model.pageLength && i < this.model.totalDataLength;
+      i++
+    ) {
+      fullPage.push(line(i + 1));
+    }
 
     return new Promise(resolve => {
-      //setTimeout(() => resolve(fullPage), 150);
-      this.usersService.UsersGetManageableUsers({
-        offset:(page-1)*this.model.pageLength,
-        limit:this.model.pageLength
-      }).subscribe((body: any) => {
-        this.model.totalDataLength = body.count;
-        let data = [];
-        for (let i = 0; i < body.items.length; i++) {
-          let item = body.items[i];
-          let logonId = item.logonId;
-          let firstName = item.address ? item.address.firstName : '';
-          let lastName = item.address ? item.address.lastName : '';
-          let organizationName = item.organizationName;
-          data.push([logonId, firstName, lastName, organizationName, '', '']);
-        }
-        resolve(data);
-      });
+      setTimeout(() => resolve(fullPage), 150);
     });
   }
 
@@ -117,8 +104,6 @@ export class UserListComponent implements OnInit {
     });
     return newData;
   }
-  createUser() {
-    this.router.navigate(['users/userAccount']);
-  }
+
 
 }
