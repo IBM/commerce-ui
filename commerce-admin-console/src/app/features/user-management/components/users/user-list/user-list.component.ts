@@ -2,11 +2,12 @@ import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core'
 import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UserListComponent implements OnInit {
+
   @Input() striped: boolean = false;
   
   @Input() model = new TableModel();
@@ -106,4 +107,3 @@ export class UsersComponent implements OnInit {
 
 
 }
-
