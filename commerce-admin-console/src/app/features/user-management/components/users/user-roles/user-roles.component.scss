@@ -5,44 +5,31 @@
     margin-top: -0.5%;  
   }
   .side-content {
-    padding-top: 56px; 
+    padding-top: 4%; 
     background-color: #ffffff; 
   }
   .main-content {
-    padding-top: 56px;
+    padding-top: 6%;
     margin: 0 0 0.2% 0.2%;
     background-color: #ffffff;
   }
   .footer-content {
-    margin: 0 0 0 0.2%;
+    margin: 0 0 3% 0.2%;
     background-color: #ffffff;
   }
-  .inside-footer {
-    margin: 30px 0 38px 0;
-  }
-  .inside-content {
-    margin-left: 20px;
-  }
-  .footer-btn-margin {
-    margin-left: 21%;
-  }
   .dot {
-    height: 14px;
-    width:  14px;
+    height: 10px;
+    width:  10px;
     border-radius: 50%;
     display: inline-block;
-    border: 1px solid #0f6ddf;
-  }
-  .icon-ckeckout {
-    fill: #0f6ddf;
+    border: 1px solid blue;
   }
   .text-margin {
-    margin-left: 11px;
-    font-weight: 400;
+    margin-left: 5px;
   }
   .arrow-icon {
     display: block;
-    margin: 16px 0px 16px -2px;
+    margin: 10px 0px 10px -5px;
   }
   .radio-icon {
     //border: 1px solid blue;
@@ -53,28 +40,18 @@
   }
   .header {
     width: 100%;
-    height: 38px;
-    margin-top: 4px;
-    background: #343334;
+    height: 35px;
+    margin-top: 10px;
+    background: black;
     color: white;
-    padding: 3px 0px 0px 10px;
-  }
-  .menu-icon {
-    padding: 5px;
-    fill: white;
-  }
-  .ibm-text {
-    font-size: 14px;
-    position: absolute;
-    top: 16px;
-    margin-left: 25px;
+    padding: 8px 0px 0px 10px;
   }
   .users {
     width: 100%;
     height: 35px;
     background: white;
     color: black;
-    padding: 8px 0px 0px 18px;
+    padding: 8px 0px 0px 10px;
     font-size: 14px;
   }
   .user-show {
@@ -99,34 +76,27 @@
     vertical-align: middle;
   }
   .icon-top {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 4px !important;
   }
   .account-dot {
-    background-color: #0f6ddf;
+    background-color: blue;
   }
   .next-button {
-    width: 33.68%;
-    text-align: left;
-    background-color: #0f6ddf;
-    height: 3rem;
+    width: 39%;
   }
   .cancel-button {
-    width: 20%;
-    height: 3rem;
+    width: 19%;
   }
   .back-button {
-    width: 33.68%;
-    text-align: left;
-    background-color: #343334;
-    height: 3rem;
+    width: 38%;
+    background-color: black;
   }
   .footer-btn {
     margin: 3% 0% 3% 35%;
   }
   .inputbx {
-    background-color: #f4f7fb;
-    height: 2.5rem;
+    background: #F3F3F3;
+    height: 30px;
     font-size: 14px;
     color: #282828;
     border: none;
@@ -134,8 +104,7 @@
     width: 100%;
   }
   .form-text {
-    margin-bottom: 5px;
-    margin-top: 23px;
+    margin-bottom: 1%;
   }
   .password-show {
     float: right;
@@ -155,9 +124,10 @@
   .input-tikmark {
     position: relative; 
   }
-  .select-field {
-    margin-top: 23px;
-  }
+  // .input-tikmark input {
+  //   text-indent: 30px;
+  //   font-family:  FontAwesome, sans-serif;
+  // }
   .input-tikmark .fa-tickmark { 
     position: absolute;
     top: 7px;
@@ -180,33 +150,5 @@
   }
   .roles-margin {
       margin-bottom: 20px;
-      margin-top: 23px;
   }
-  .roles-margin {
-    margin-bottom: 20px;
-}
-.model-role{
- 
-  width:200px;
-  height:15px;
-  color:white;
-  background-color: black;
-  border-radius: 25px;
-  padding:4px;
-  font-size: 12px;
-  margin-right:10px;
-}
-
-.icon-close{
-  fill: white;
-  cursor: pointer;
-}
-.optional-text {
-  font-weight: 300;
-  color: #808080;
-}
-.text-weight {
-  font-weight: 500;
-  margin-left: 11px;
-}
   
