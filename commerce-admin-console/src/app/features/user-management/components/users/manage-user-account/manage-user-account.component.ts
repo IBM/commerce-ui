@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-user-account',
@@ -7,14 +6,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./manage-user-account.component.scss']
 })
 export class ManageUserAccountComponent implements OnInit {
-  showInput: boolean;
-  constructor(private router: Router) { }
+
+  constructor() { }
 
   ngOnInit() {
-    this.showInput = true;
   }
 
-  saveAccount() {
-    this.router.navigate(['/users/manageContact']);
-  }
 }
