@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-user-account.component.scss']
 })
 export class ManageUserAccountComponent implements OnInit {
-
+  showInput: boolean;
   constructor() { }
 
   ngOnInit() {

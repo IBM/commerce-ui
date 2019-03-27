@@ -6,7 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-contact.component.scss']
 })
 export class UserContactComponent implements OnInit {
-
+  model: '';
+  disabled: '';
+  items = [
+    {
+      content: 'Mr.',
+      selected: false
+    },
+    {
+      content: 'Mrs.',
+      selected: false,
+    }
+  ];
   constructor() { }
 
   ngOnInit() {
