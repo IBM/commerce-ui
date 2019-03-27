@@ -1,3 +1,96 @@
-<p>
-  user-groups works!
-</p>
+
+  <div class="header">
+    <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
+    <span class="ibm-text">IBM Watson Commerce</span>
+  </div>
+  <div class="border-div">
+      <div class="users">
+        <span>Users</span>
+        <span class="icon-top"><ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16></span>
+        <span><strong class="new-user">New User</strong></span>
+        <div class="clr"></div>
+      </div>
+        <div class="bx--row header-border">
+          <div class="bx--col-sm-4 bx--col-md-4 side-content">
+            <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
+            <!-- <ibm-icon-radio-button20 id="radio-icon" class="radio-icon"></ibm-icon-radio-button20><span class="text-margin">Account Information</span> -->
+            <span class="dot account-dot"></span><span class="text-margin">Account Information</span>
+            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+            <span class="dot"></span><span class="text-margin">Contact Information</span>
+            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+            <span class="dot"></span><span class="text-margin">Roles (Optional)</span>
+            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+            <span class="dot"></span><span class="text-margin">Groups (Optional)</span>
+            </div>
+          </div>
+          <div class="bx--col-sm-8 bx--col-md-8 right-content">
+            <div class="bx--row main-content">
+              <div class="bx--col-sm-11 bx--col-md-11 inside-content">
+                    <ibm-tabs>
+                        <ibm-tab heading="Include">
+                            <div class="slct-grp-content">
+                                <div class="slct-grp-txt">
+                                    <span>Select which groups include the user.</span>
+                                </div>
+                              <div>
+                                <div class="aval-grp-txt">
+                                    <span>Avaliable groups</span>
+                                </div>
+                                <input ibmText class="inputbx" placeholder="Find a group"><br/><br/>
+                                <ul>
+                                  <li *ngFor="let groupList of groupListData">
+                                      <ibm-checkbox
+                                      (change)="onChange($event)">
+                                      {{groupList.groupName}}
+                                    </ibm-checkbox>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="total-items">
+                                  <span >44 items</span>
+                              </div>
+                            </div>
+                        </ibm-tab>
+                        <ibm-tab heading="Exclude">
+                            <div class="slct-grp-content">
+                                <div class="slct-grp-txt">
+                                    <span>Select which groups include the user.</span>
+                                </div>
+                              <div>
+                                <div class="aval-grp-txt">
+                                    <span>Avaliable groups</span>
+                                </div>
+                                <input ibmText class="inputbx" placeholder="Find a group"><br/><br/>
+                                <ul>
+                                  <li *ngFor="let groupList of groupListData">
+                                      <ibm-checkbox
+                                      (change)="onChange($event)">
+                                      {{groupList.groupName}}
+                                    </ibm-checkbox>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="total-items">
+                                  <span >44 items</span>
+                              </div>
+                            </div>
+                        </ibm-tab>
+                      </ibm-tabs>
+              </div>
+            </div>
+            <div class="bx--row footer-content">
+              <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
+                <div class="bx--row">
+                  <div class="bx--col-sm-2 bx--col-md-2"></div>
+                  <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
+                    <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">Cancel</button>
+                    <button ibmButton size="lg" id="save-preview" class="back-button">Back</button>
+                    <button ibmButton size="lg" id="save-preview" class="next-button">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+  

@@ -8,7 +8,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { UserManagementRoutingModule } from './user-management-routing.module';
 import {
   NFormsModule, DropdownModule, TableModule, PaginationModule,
-  DialogModule, ModalModule
+  DialogModule, ModalModule, TabsModule
 } from 'carbon-components-angular';
 import { IconModule } from '@carbon/icons-angular';
 
@@ -18,12 +18,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ButtonBarComponent } from './user-list/button-bar/button-bar.component';
 import { UserListDashboardComponent } from './user-list/user-list-dashboard/user-list-dashboard.component';
 import { UserTableComponent } from './user-list/user-table/user-table.component';
-import { ManageUserComponent } from './components/manage-user/manage-user.component';
-import { AccountInfoComponent } from './components/account-info/account-info.component';
-import { OrganisationLandingPageComponent } from './components/organisation-landing-page/organisation-landing-page.component';
-import { ContactInfoComponent } from './components/contact-info/contact-info.component';
-import { UserGroupsComponent } from './components/user-groups/user-groups.component';
-import { UserRolesComponent } from './components/user-roles/user-roles.component';
+import { UserGroupsComponent } from './components/users/user-groups/user-groups.component';
+import { UserRolesComponent } from './components/users/user-roles/user-roles.component';
 import { UserAccountComponent } from './components/users/user-account/user-account.component';
 import { UserContactComponent } from './components/users/user-contact/user-contact.component';
 import { ManageUserAccountComponent } from './components/users/manage-user-account/manage-user-account.component';
@@ -42,6 +38,7 @@ import { OrganizationListComponent } from './components/organizations/organizati
     NFormsModule,
     DropdownModule,
     TableModule,
+    TabsModule,
     PaginationModule,
     IconModule,
     DialogModule,
@@ -55,10 +52,6 @@ import { OrganizationListComponent } from './components/organizations/organizati
     ButtonBarComponent,
     UserListDashboardComponent,
     UserTableComponent,
-    ManageUserComponent,
-    AccountInfoComponent,
-    OrganisationLandingPageComponent,
-    ContactInfoComponent,
     UserGroupsComponent,
     UserRolesComponent,
     UserAccountComponent,
