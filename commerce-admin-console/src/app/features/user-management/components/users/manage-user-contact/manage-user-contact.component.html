@@ -1,3 +1,69 @@
-<p>
-  manage-user-contact works!
-</p>
+<div class="header">
+  <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
+  <span class="ibm-text">IBM Watson Commerce</span>
+</div>
+<div class="border-div">
+  <div class="users">
+    <!-- <span>Password</span>
+              <span class="user-show">
+                  <span><ibm-icon-chevron-right16 id="table-icon" class="chevron-icon"></ibm-icon-chevron-right16></span>
+                  <span><strong class="new-user">New User</strong></span>
+              </span>
+              <div class="clr"></div> -->
+    <span>Users</span>
+    <span class="icon-top">
+      <ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16>
+    </span>
+    <span><strong class="new-user">Edit User</strong></span>
+    <div class="clr"></div>
+  </div>
+   <div class="bx--row header-border">
+    <div class="bx--col-sm-4 bx--col-md-4 side-content">
+      <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
+        <span></span>
+        <div class="text-margin">Account Information</div><br />
+        <span class="dot account-dot"></span>
+        <div class="text-margin">Contact Information</div><br />
+        <div class="text-margin">Roles</div><br />
+        <div class="text-margin">Groups</div>
+      </div>
+    </div>
+    <div class="bx--col-sm-8 bx--col-md-8 right-content">
+      <div class="bx--row main-content">
+        <div class="bx--col-sm-11 bx--col-md-11 inside-content">
+          <div class="form-text">Title (Optional)</div>
+          <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content">
+            <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
+          </ibm-dropdown><br /><br />
+          <div class="bx--row">
+            <div class="bx--col-sm-6 bx--col-md-6">
+              <div class="form-text">First Name</div>
+              <input ibmText class=" inputbx"><br /><br />
+            </div>
+            <div class="bx--col-sm-6 bx--col-md-6">
+              <div class="form-text">Last Name</div>
+              <input ibmText class=" inputbx"><br /><br />
+            </div>
+          </div>
+          <div class="form-text">Street address</div>
+          <input ibmText class=" inputbx"><br /><br />
+          <input ibmText class=" inputbx"><br /><br />
+          <div class="form-text">City</div>
+          <input ibmText class=" inputbx"><br /><br />
+          <div class="form-text">State / Province / Region</div>
+          <input ibmText class=" inputbx"><br /><br />
+        </div>
+      </div>
+      <div class="bx--row footer-content">
+        <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
+          <div class="bx--row">
+            <div class="bx--col-sm-4 bx--col-md-4"></div>
+            <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">Cancel</button>
+              <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveContact()>Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

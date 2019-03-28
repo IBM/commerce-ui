@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-user-contact',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageUserContactComponent implements OnInit {
 
-  constructor() { }
+  model: '';
+  disabled: '';
+  items = [
+    {
+      content: 'Mr.',
+      selected: false
+    },
+    {
+      content: 'Mrs.',
+      selected: false,
+    }
+  ];
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  saveContact() {
+    this.router.navigate(['/users/manageRoles']);
   }
 
 }
