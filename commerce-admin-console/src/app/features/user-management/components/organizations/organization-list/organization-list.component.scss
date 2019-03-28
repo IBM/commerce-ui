@@ -1,58 +1,128 @@
-.header {
-    width: 100%;
-    height: 48px;
-    background-color: #343334;
-    color: white;
-    }
-.orgtable{
-    height: 400px;
-    //line-height: 300px;
-    text-align: center;
-    vertical-align: middle;
-    margin-left: 10px;
-    margin-right: 10px;
+// .header {
+//     width: 100%;
+//     height: 48px;
+//     background-color: #343334;
+//     color: white;
+//     }
+// .orgtable{
+//     height: 400px;
+//     //line-height: 300px;
+//     text-align: center;
+//     vertical-align: middle;
+//     margin-left: 10px;
+//     margin-right: 10px;
+// }
+
+// .headertext{
+//     color: white;
+//     padding-top: 15px;
+//     padding-bottom: 15px;
+//     margin-left: 3%; 
+// }
+// .hamicon{
+//     color: white;
+//     padding-top: 15px;
+//     padding-bottom: 15px;
+//     margin-left: 2%; 
+// }
+// .top-container{
+// height: auto;
+// border: 2px solid gray;
+// }
+// .td-width{
+// min-height: 400px;
+// }
+// .orgtable-filter{
+//     height: 80px;
+//     background-color: white;
+//     margin-left: 10px;
+//     margin-right: 10px;
+//     margin-top: 10px;
+// }
+// .filtermenu1{
+//    float: right;
+//    padding-top: 25px;
+// }
+// .filtermenu{
+    
+//     padding: 10px;
+//  }
+//  .icon-svg-menu {
+//     fill: white;
+//   }
+// .breadcumbs{
+//     background-color: white;
+//     height: 40px;
+//     padding-left: 10px;
+//     padding-top: 10px;
+// }
+
+.Header{
+    // width:100%;
+    height:50px;
+    background-color: black;
+    text-align: left;
+    color:white; 
+}
+.menuLogo{
+    margin-top:10px;
+}
+.icon-menu {
+    fill:white;
 }
 
-.headertext{
-    color: white;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-left: 3%; 
+.headingName{
+    margin-top:13px;
+    margin-left:-20px;
 }
-.hamicon{
-    color: white;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-left: 2%; 
-}
-.top-container{
-height: auto;
-border: 2px solid gray;
-}
-.td-width{
-min-height: 400px;
-}
-.orgtable-filter{
-    height: 80px;
+.Users{
+    // width:100%;
+    height:50px;
     background-color: white;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
 }
-.filtermenu1{
-   float: right;
-   padding-top: 25px;
+.userName{
+    margin-top:13px;
+    font-size: 15px;
+    font-weight:600;
 }
-.filtermenu{
+.SearchMenu{
+    width:95%;
+    height:75px;
+    margin-top:20px;
+    margin-left:30px; 
+    background-color: white;
     
-    padding: 10px;
- }
- .icon-svg-menu {
-    fill: white;
-  }
-.breadcumbs{
+}
+.icon-group{
+    width:100%;
+    // display: flex;
+    // float: right;
+    // margin-left:80%;   
+}
+.glyphiconsButton{
+margin-top:30px;
+}
+.icons{
+   float:right;
+   margin-right:15px;
+}
+.rowAdditionButton{
+    margin-top:15px;
+    width:100px;
+    height:50px;
+    background-color: #0F6DFF;
+    color:white;
+    font-size:13px;
+    cursor: pointer;
+}
+.TableItem{
+    width:95%;
+    // height:75px;
+    // margin-top:20px;
+    margin-left:30px; 
     background-color: white;
-    height: 40px;
-    padding-left: 10px;
-    padding-top: 10px;
+    
+}
+.table-body{
+    width:100%;
 }
