@@ -29,11 +29,12 @@
     height: 35px;
     background: white;
     color: black;
-    padding: 8px 0px 0px 10px;
+    padding: 8px 0px 0px 18px;
     font-size: 14px;
   }
   .icon-top {
-    margin-top: 4px !important;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .chevron-icon {
     font-size: 20px;
@@ -93,7 +94,7 @@
     margin-left: 5px;
   }
   .side-txt-margin {
-    margin-left: 5px;
+    margin-left: 4px;
   }
   .form-text {
     margin-bottom: 1%;
@@ -102,7 +103,7 @@
     margin-left: 12%;
   }
   .footer-btn-margin {
-    margin-left: 41.5%;
+    margin-left: 48.5%;
   }
   .next-button {
     width: 33.68%;
@@ -111,7 +112,7 @@
     height: 3rem;
   }
   .cancel-button {
-    width: 29%;
+    width: 20%;
     height: 3rem;
   }
   // .next-button {
@@ -128,10 +129,10 @@
   .input-tikmark .fa-tickmark { 
     position: absolute;
     top: 215px;
-    left: 90%;
+    left: 95%;
     font-size: 15px;
     z-index: 10000;
-    fill: green;
+    fill: blue;
   }
   .account-dot {
     background-color: #0062FF;
