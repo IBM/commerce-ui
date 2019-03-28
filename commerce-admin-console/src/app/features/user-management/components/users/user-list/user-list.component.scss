@@ -1,13 +1,24 @@
 // .userLandingPage{
 //     border:1px solid gray;
 // }
-.Header{
-    // width:100%;
-    height:50px;
-    background-color: black;
-    text-align: left;
-    color:white; 
-}
+.header {
+    width: 100%;
+    height: 38px;
+    margin-top: 4px;
+    background: #343334;
+    color: white;
+    padding: 3px 0px 0px 10px;
+  }
+  .menu-icon {
+    padding: 5px;
+    fill: white;
+  }
+  .ibm-text {
+    font-size: 14px;
+    position: absolute;
+    top: 16px;
+    margin-left: 25px;
+  }
 .menuLogo{
     margin-top:10px;
 }
@@ -19,29 +30,31 @@
     margin-top:13px;
     margin-left:-20px;
 }
-.Users{
-    // width:100%;
-    height:50px;
-    background-color: white;
-}
+.users {
+    width: 100%;
+    height: 35px;
+    background: white;
+    color: black;
+    padding: 8px 0px 0px 18px;
+    font-size: 14px;
+    font-weight:600;
+  }
 .userName{
     margin-top:13px;
     font-size: 15px;
     font-weight:600;
 }
 .SearchMenu{
-    width:95%;
-    height:75px;
-    margin-top:20px;
-    margin-left:30px; 
+    width: 96%;
+    height: 75px;
+    margin-top: 10px;
+    margin-left: 1.8%;
     background-color: white;
     
 }
 .icon-group{
     width:100%;
-    // display: flex;
-    // float: right;
-    // margin-left:80%;   
+    margin-left: 2.05%;  
 }
 .glyphiconsButton{
 margin-top:30px;
@@ -51,20 +64,19 @@ margin-top:30px;
    margin-right:15px;
 }
 .rowAdditionButton{
-    margin-top:15px;
-    width:100px;
-    height:50px;
-    background-color: blue;
+    margin-top:16px;
+    width:90px;
+    height:3rem;
+    background-color: #0f6ddf;
     color:white;
     font-size:13px;
     cursor: pointer;
+    text-align: left;
+    padding-left: 16px;
 }
 .TableItem{
-    width:95%;
-    // height:75px;
-    // margin-top:20px;
-    margin-left:30px; 
-    background-color: white;
+    width: 97.5%;
+    margin-left: 13px;
     
 }
 .table-body{

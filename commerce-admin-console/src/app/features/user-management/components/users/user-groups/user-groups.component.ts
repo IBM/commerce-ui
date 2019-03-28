@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ac-user-groups',
@@ -20,10 +21,24 @@ export class UserGroupsComponent implements OnInit {
     { id: 9, groupName: 'AccountAdministatorsRole9' },
     { id: 10, groupName: 'AccountAdministatorsRole10' }
   ];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.groupListData = this.groupList;
     console.log(this.groupListData);
+  }
+
+  submitUserDetails() {
+    this.router.navigate(['users']);
+    }
+    backClick() {
+      this.router.navigate(['users/userRoles']);
+    }
+<<<<<<< Updated upstream
+    cancelClick() {
+=======
+  cancelClick() {
+>>>>>>> Stashed changes
+    this.router.navigate(['users']);
   }
 }

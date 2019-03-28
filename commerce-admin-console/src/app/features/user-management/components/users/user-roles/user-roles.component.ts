@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-roles',
+  selector: 'ac-user-roles',
   templateUrl: './user-roles.component.html',
   styleUrls: ['./user-roles.component.scss']
 })
@@ -9,10 +10,14 @@ export class UserRolesComponent implements OnInit {
 
   model: '';
   disabled: '';
-  rolesArray:any=[];
-  result:any=[];
-  modelRoles:'';
-  constructor() { }
+<<<<<<< Updated upstream
+  rolesArray: any = [];
+  result: any = [];
+  modelRoles: '';
+  constructor(private router: Router) { }
+=======
+  constructor( private router: Router) { }
+>>>>>>> Stashed changes
 
   orgList = [
     {
@@ -45,40 +50,56 @@ export class UserRolesComponent implements OnInit {
 
   ngOnInit() {
   }
-  mySelectedRoles(mySelectedRoles:any){ 
-
-    
-    
-    if(mySelectedRoles != null){
-      this.rolesArray.push(mySelectedRoles) ;
+  mySelectedRoles(mySelectedRoles: any) {
+    if (mySelectedRoles != null) {
+      this.rolesArray.push(mySelectedRoles);
       this.removeDuplicate(this.rolesArray);
     }
   }
-  removeDuplicate(rolesArray:any){
+  removeDuplicate(rolesArray: any) {
     let index;
-    let len = rolesArray.length;
-    let resultArray=[];
-    let obj = {}; 
-    for (index = 0; index<len; index++)  {            
-      obj[rolesArray[index]] = 0;        
-   }  
-   for (index in obj) {            
-    resultArray.push(index);        
-   }  
-   this.result = resultArray;    
-} 
-RemoveRoles(removeRoles:any){
-for( var i = 0; i < this.result.length; i++){
-  if ( this.result[i] === removeRoles) {
-    this.result.splice(i, 1); 
-    this.rolesArray.splice(i, 1);
-    this.modelRoles = null;
-    if(this.result.length===0){
-      this.result=[];
-      this.rolesArray = [];
+    const len = rolesArray.length;
+    const resultArray = [];
+    const obj = {};
+    for (index = 0; index < len; index++) {
+      obj[rolesArray[index]] = 0;
     }
+    for (index in obj) {
+      resultArray.push(index);
+    }
+    this.result = resultArray;
   }
-}
 
-}
+  RemoveRoles(removeRoles: any) {
+    for (let i = 0; i < this.result.length; i++) {
+      if (this.result[i] === removeRoles) {
+        this.result.splice(i, 1);
+        this.rolesArray.splice(i, 1);
+        this.modelRoles = null;
+        if (this.result.length === 0) {
+          this.result = [];
+          this.rolesArray = [];
+        }
+      }
+    }
+
+<<<<<<< Updated upstream
+  }
+  goToGroup() {
+    this.router.navigate(['users/userGroups']);
+  }
+  backClick() {
+    this.router.navigate(['users/userContact']);
+  }
+=======
+  goToGroup() {
+    this.router.navigate(['users/userGroups']);
+    }
+    backClick() {
+      this.router.navigate(['users/userContact']);
+    }
+>>>>>>> Stashed changes
+  cancelClick() {
+    this.router.navigate(['users']);
+  }
 }
