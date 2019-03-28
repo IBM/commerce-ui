@@ -113,6 +113,7 @@
     border: none;
     border-bottom: 1px solid gray;
     width: 100%;
+    margin-bottom: 23px;
   }
   .form-text {
     margin-bottom: 1%;
@@ -153,11 +154,17 @@
       display: none;
   }
   .inside-footer {
-    margin: 4% 0 4% 0;
+    margin: 30px 0 38px 0;
   }
   .inside-content {
     margin-left: 20px;
   }
   .icon-ckeckout {
-    fill: blue;
+    fill: #0f6ddf;
+<<<<<<< Updated upstream
+  }
+  .name-field {
+    margin-top: 23px;
+=======
+>>>>>>> Stashed changes
   }
