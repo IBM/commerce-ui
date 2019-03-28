@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-user-roles',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageUserRolesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  saveRoles() {
+    this.router.navigate(['/users/manageGroups']);
   }
 
 }
