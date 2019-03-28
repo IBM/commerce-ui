@@ -21,10 +21,10 @@
     background-color: #ffffff;
   }
   .text-margin {
-    margin-bottom: 10px;
+    margin-left: 5px;
   }
   .side-txt-margin {
-    margin-left: 6px;
+    margin-left: 5px;
   }
   .header {
     width: 100%;
@@ -49,7 +49,7 @@
     height: 35px;
     background: white;
     color: black;
-    padding: 8px 0px 0px 18px;
+    padding: 8px 0px 0px 10px;
     font-size: 14px;
   }
   .user-show {
@@ -74,32 +74,27 @@
     vertical-align: middle;
   }
   .icon-top {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 4px !important;
   }
   .next-button {
     width: 33.68%;
     text-align: left;
-    background-color: #0F6DFF;
+    background-color: #8C8C8C;
     height: 3rem;
   }
   .cancel-button {
-    width: 20%;
+    width: 29%;
     height: 3rem;
-    color: #343334;
   }
   .footer-btn {
     margin: 3% 0% 3% 35%;
   }
   .inputbx {
-    background-color: #f4f7fb;
+    background: #f4f7fb;
+    // height: 30px;
     height: 2.5rem;
     font-size: 14px;
     color: #282828;
-    border: none;
-    border-bottom: 1px solid gray;
-    width: 100%;
-    margin-bottom: 23px;
   }
   .form-text {
     margin-bottom: 1%;
@@ -155,7 +150,7 @@
     margin: 4% 0 4% 0;
   }
   .footer-btn-margin {
-    margin-left: 48.5%;
+    margin-left: 41.5%;
   }
   .bx--list-box {
     position: relative;
@@ -169,7 +164,4 @@
     cursor: pointer;
     color: #152935;
     margin-left: 5%;
-}
-.name-field {
-  margin-top: 23px;
 }
