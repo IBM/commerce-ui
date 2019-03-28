@@ -5,12 +5,6 @@
   </div>
   <div class="border-div">
       <div class="users">
-              <!-- <span>Password</span>
-              <span class="user-show">
-                  <span><ibm-icon-chevron-right16 id="table-icon" class="chevron-icon"></ibm-icon-chevron-right16></span>
-                  <span><strong class="new-user">New User</strong></span>
-              </span>
-              <div class="clr"></div> -->
         <span>Users</span>
         <span class="icon-top"><ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16></span>
         <span><strong class="new-user">New User</strong></span>
@@ -31,11 +25,11 @@
           </div>
           <div class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
-              <div class="bx--col-sm-11 bx--col-md-11">
+              <div class="bx--col-sm-11 bx--col-md-11 inside-content">
                   <div class="form-text">Login ID</div>
-                  <input ibmText class=" inputbx"><br/><br/>
+                  <input ibmText class=" inputbx">
                   <div class="form-text">Email</div>
-                  <input ibmText class=" inputbx"><br/><br/>
+                  <input ibmText class=" inputbx">
                   <div class="form-text">
                     <span>Password</span>
                     <span class="password-show">
@@ -48,24 +42,29 @@
                   </div>
                     <div class="input-tikmark" *ngIf="showInput"> 
                         <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
-                        <input ibmText class=" inputbx" type="password"><br/><br/>
+                        <input ibmText class=" inputbx" type="password">
                     </div>
                       <div class="input-tikmark" *ngIf="!showInput">
                           <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
-                          <input ibmText class=" inputbx" type="text"><br/><br/>
+                          <input ibmText class=" inputbx" type="text">
                       </div>
                   <div class="form-text">Organization</div>
-                  <input ibmText class=" inputbx"><br/><br/>
+                  <input ibmText class=" inputbx">
                   <div class="form-text">Account Policy</div>
-                  <input ibmText class=" inputbx"><br/><br/>
-              </div>
-              <div class="bx--col-sm-12 bx--col-md-12 footer-content">
-                  <div class="footer-btn">
-                      <button ibmButton="secondary" size="sm" id="save-preview" class="cancel-button">Cancel</button>
-                      <button ibmButton size="sm" id="save-preview" class="next-button">Next</button>
-                  </div>
+                  <input ibmText class=" inputbx">
               </div>
             </div>
+            <div class="bx--row footer-content">
+                <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
+                  <div class="bx--row">
+                      <div class="bx--col-sm-5 bx--col-md-5"></div>
+                    <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
+                      <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">Cancel</button>
+                      <button ibmButton size="lg" id="save-preview" class="next-button" (click)="goToContact()">Next</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
   </div>

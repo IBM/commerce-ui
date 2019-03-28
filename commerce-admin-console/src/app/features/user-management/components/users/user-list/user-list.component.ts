@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
 import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'ac-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
@@ -26,7 +27,7 @@ export class UserListComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private router: Router) { }
   
 
   ngOnInit() {
@@ -104,6 +105,8 @@ export class UserListComponent implements OnInit {
     });
     return newData;
   }
-
+  createUser() {
+    this.router.navigate(['users/userAccount']);
+  }
 
 }
