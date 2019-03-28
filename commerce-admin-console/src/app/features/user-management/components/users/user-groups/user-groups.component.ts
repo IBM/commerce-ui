@@ -34,11 +34,7 @@ export class UserGroupsComponent implements OnInit {
     backClick() {
       this.router.navigate(['users/userRoles']);
     }
-<<<<<<< Updated upstream
     cancelClick() {
-=======
-  cancelClick() {
->>>>>>> Stashed changes
     this.router.navigate(['users']);
   }
 }
