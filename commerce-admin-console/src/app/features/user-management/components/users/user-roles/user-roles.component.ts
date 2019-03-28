@@ -10,14 +10,10 @@ export class UserRolesComponent implements OnInit {
 
   model: '';
   disabled: '';
-<<<<<<< Updated upstream
   rolesArray: any = [];
   result: any = [];
   modelRoles: '';
   constructor(private router: Router) { }
-=======
-  constructor( private router: Router) { }
->>>>>>> Stashed changes
 
   orgList = [
     {
@@ -83,7 +79,6 @@ export class UserRolesComponent implements OnInit {
       }
     }
 
-<<<<<<< Updated upstream
   }
   goToGroup() {
     this.router.navigate(['users/userGroups']);
@@ -91,14 +86,6 @@ export class UserRolesComponent implements OnInit {
   backClick() {
     this.router.navigate(['users/userContact']);
   }
-=======
-  goToGroup() {
-    this.router.navigate(['users/userGroups']);
-    }
-    backClick() {
-      this.router.navigate(['users/userContact']);
-    }
->>>>>>> Stashed changes
   cancelClick() {
     this.router.navigate(['users']);
   }
