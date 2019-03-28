@@ -15,7 +15,7 @@ export class UserAccountComponent implements OnInit {
     this.showInput = true;
   }
   goToContact() {
-  this.router.navigate(['users/userContact']);
+  this.router.navigate(['/users/userContact']);
   }
   cancelClick() {
     this.router.navigate(['users']);

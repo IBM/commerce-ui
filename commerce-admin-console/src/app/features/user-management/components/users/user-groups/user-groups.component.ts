@@ -29,7 +29,7 @@ export class UserGroupsComponent implements OnInit {
   }
 
   submitUserDetails() {
-    this.router.navigate(['users']);
+    this.router.navigate(['users/manageAccount']);
     }
     backClick() {
       this.router.navigate(['users/userRoles']);
