@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-user-groups',
@@ -21,10 +22,14 @@ export class ManageUserGroupsComponent implements OnInit {
     { id: 9, groupName: 'AccountAdministatorsRole9' },
     { id: 10, groupName: 'AccountAdministatorsRole10' }
   ];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.groupListData = this.groupList;
     console.log(this.groupListData);
+  }
+
+  saveGroups() {
+    this.router.navigate(['/users/organizationsList']);
   }
 }
