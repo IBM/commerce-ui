@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-contact',
+  selector: 'ac-user-contact',
   templateUrl: './user-contact.component.html',
   styleUrls: ['./user-contact.component.scss']
 })
@@ -18,9 +19,17 @@ export class UserContactComponent implements OnInit {
       selected: false,
     }
   ];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-
+  goToRoles() {
+    this.router.navigate(['users/userRoles']);
+    }
+    backClick() {
+      this.router.navigate(['users/userAccount']);
+    }
+  cancelClick() {
+    this.router.navigate(['users']);
+  }
 }

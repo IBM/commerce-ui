@@ -27,7 +27,7 @@ const routes: Routes = [
       path: 'userRoles', component: UserRolesComponent
   },
   {
-    path: 'userGroup', component: UserGroupsComponent
+    path: 'userGroups', component: UserGroupsComponent
   },
   {
     path: 'manageAccount', component: ManageUserAccountComponent
