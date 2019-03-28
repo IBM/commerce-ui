@@ -426,6 +426,13 @@
             "TABLE_HEADER_MANUFACTURER_NAME": "Manufacturer Name",
             "NO_DATA_MSG": "No Data"
         },
+        "ORGANIZATION":{
+            "ORGNIZATION_TABLE":{
+                "name": "Name",
+                "parent_organization": "Parent organization",
+                "type": "Type"
+            }
+        },
         "UI_SHELL": {
             "ALL_CATALOG_ENTRIES_INCLUDING_SKUS": "All Catalog Entries Including SKUs",
             "ALL_CATALOG_ENTRIES_EXCLUDING_SKUS": "All Catalog Entries Excluding SKUs",
