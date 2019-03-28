@@ -54,12 +54,23 @@
                 <ibm-dropdown
                   placeholder="Select title"
                   [disabled]="disabled"
-                  [(ngModel)]="model"
+                  [(ngModel)]="modelRoles"
                   value="content">
-                  <ibm-dropdown-list [items]="rolesList"></ibm-dropdown-list>
+                  <ibm-dropdown-list [items]="rolesList" (click)="mySelectedRoles(modelRoles)"></ibm-dropdown-list>
                 </ibm-dropdown><br/><br/>
                 <div class="roles-margin">
                   <span>Selected roles</span>
+                </div>
+                <div class="roles-margin">
+                  <span class="model-role" *ngFor="let Roles of result; let i = index" [attr.data-index]="i">
+                    
+                      
+                      {{Roles}}
+                  
+                      
+                          <ibm-icon-close16 class="icon-close"  (click)="RemoveRoles(Roles)"></ibm-icon-close16>
+                      
+                  </span>
                 </div>
               </div>
               <div class="bx--col-sm-11 bx--col-md-11 footer-content">
