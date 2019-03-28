@@ -13,21 +13,23 @@
         <div class="bx--row header-border">
           <div class="bx--col-sm-4 bx--col-md-4 side-content">
             <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
-            <!-- <ibm-icon-radio-button20 id="radio-icon" class="radio-icon"></ibm-icon-radio-button20><span class="text-margin">Account Information</span> -->
-            <span class="dot account-dot"></span><span class="text-margin">Account Information</span>
-            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">Contact Information</span>
-            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">Roles (Optional)</span>
-            <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">Groups (Optional)</span>
+              <ibm-icon-checkmark-outline16 class="icon-ckeckout"></ibm-icon-checkmark-outline16>
+              <span class="text-margin">Account Information</span>
+              <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+              <ibm-icon-checkmark-outline16 class="icon-ckeckout"></ibm-icon-checkmark-outline16>
+              <span class="text-margin">Contact Information</span>
+              <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+              <ibm-icon-checkmark-outline16 class="icon-ckeckout"></ibm-icon-checkmark-outline16>
+              <span class="text-margin">Roles (Optional)</span>
+              <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+              <span class="dot account-dot"></span><span class="text-margin">Groups (Optional)</span>
             </div>
           </div>
           <div class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
               <div class="bx--col-sm-11 bx--col-md-11 inside-content">
                     <ibm-tabs>
-                        <ibm-tab heading="Include">
+                        <ibm-tab heading="Include" class="group-header">
                             <div class="slct-grp-content">
                                 <div class="slct-grp-txt">
                                     <span>Select which groups include the user.</span>
@@ -36,7 +38,7 @@
                                 <div class="aval-grp-txt">
                                     <span>Avaliable groups</span>
                                 </div>
-                                <input ibmText class="inputbx" placeholder="Find a group"><br/><br/>
+                                <input ibmText class="inputbx" placeholder="Find a group">
                                 <ul>
                                   <li *ngFor="let groupList of groupListData">
                                       <ibm-checkbox
@@ -51,16 +53,16 @@
                               </div>
                             </div>
                         </ibm-tab>
-                        <ibm-tab heading="Exclude">
+                        <ibm-tab heading="Exclude" class="group-header">
                             <div class="slct-grp-content">
                                 <div class="slct-grp-txt">
-                                    <span>Select which groups include the user.</span>
+                                    <span>Select which groups exclude the user.</span>
                                 </div>
                               <div>
                                 <div class="aval-grp-txt">
                                     <span>Avaliable groups</span>
                                 </div>
-                                <input ibmText class="inputbx" placeholder="Find a group"><br/><br/>
+                                <input ibmText class="inputbx" placeholder="Find a group">
                                 <ul>
                                   <li *ngFor="let groupList of groupListData">
                                       <ibm-checkbox
@@ -83,9 +85,9 @@
                 <div class="bx--row">
                   <div class="bx--col-sm-2 bx--col-md-2"></div>
                   <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-                    <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">Cancel</button>
-                    <button ibmButton size="lg" id="save-preview" class="back-button">Back</button>
-                    <button ibmButton size="lg" id="save-preview" class="next-button">Next</button>
+                    <button ibmButton="ghost" size="normal" id="save-preview" class="cancel-button" (click)="cancelClick()">Cancel</button>
+                    <button ibmButton size="normal" id="save-preview" class="back-button" (click)="backClick()">Back</button>
+                    <button ibmButton size="normal" id="save-preview" class="next-button" (click)="submitUserDetails()">Submit</button>
                   </div>
                 </div>
               </div>

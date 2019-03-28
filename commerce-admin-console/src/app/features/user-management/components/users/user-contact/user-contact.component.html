@@ -5,12 +5,6 @@
   </div>
   <div class="border-div">
       <div class="users">
-              <!-- <span>Password</span>
-              <span class="user-show">
-                  <span><ibm-icon-chevron-right16 id="table-icon" class="chevron-icon"></ibm-icon-chevron-right16></span>
-                  <span><strong class="new-user">New User</strong></span>
-              </span>
-              <div class="clr"></div> -->
         <span>Users</span>
         <span class="icon-top"><ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16></span>
         <span><strong class="new-user">New User</strong></span>
@@ -39,24 +33,28 @@
                         [(ngModel)]="model"
                         value="content">
                         <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
-			                </ibm-dropdown><br/><br/>
+			                </ibm-dropdown>
+<<<<<<< Updated upstream
+                      <div class="bx--row name-field">
+=======
                       <div class="bx--row">
+>>>>>>> Stashed changes
                         <div class="bx--col-sm-6 bx--col-md-6">
                             <div class="form-text">First Name</div>
-                            <input ibmText class=" inputbx"><br/><br/>
+                            <input ibmText class=" inputbx">
                         </div>
                         <div class="bx--col-sm-6 bx--col-md-6">
                             <div class="form-text">Last Name</div>
-                            <input ibmText class=" inputbx"><br/><br/>
+                            <input ibmText class=" inputbx">
                         </div>
                       </div>
                   <div class="form-text">Street address</div>
-                  <input ibmText class=" inputbx"><br/><br/>
-                  <input ibmText class=" inputbx"><br/><br/>
+                  <input ibmText class=" inputbx">
+                  <input ibmText class=" inputbx">
                   <div class="form-text">City</div>
-                  <input ibmText class=" inputbx"><br/><br/>
+                  <input ibmText class=" inputbx">
                   <div class="form-text">State / Province / Region</div>
-                  <input ibmText class=" inputbx"><br/><br/>
+                  <input ibmText class=" inputbx">
               </div>
             </div>
             <div class="bx--row footer-content">
@@ -64,9 +62,9 @@
                   <div class="bx--row">
                     <div class="bx--col-sm-2 bx--col-md-2"></div>
                     <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-                      <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">Cancel</button>
-                      <button ibmButton size="lg" id="save-preview" class="back-button">Back</button>
-                      <button ibmButton size="lg" id="save-preview" class="next-button">Next</button>
+                      <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">Cancel</button>
+                      <button ibmButton size="lg" id="save-preview" class="back-button" (click)="backClick()">Back</button>
+                      <button ibmButton size="lg" id="save-preview" class="next-button" (click)="goToRoles()">Next</button>
                     </div>
                   </div>
                 </div>
