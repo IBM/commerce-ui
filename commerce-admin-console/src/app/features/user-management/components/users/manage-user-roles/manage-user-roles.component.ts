@@ -10,6 +10,35 @@ export class ManageUserRolesComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  orgList = [
+    {
+      content: 'Organization A',
+      selected: false
+    },
+    {
+      content: 'Organization B',
+      selected: false,
+    }
+  ];
+  rolesList = [
+    {
+      content: 'Developer',
+      selected: true
+    },
+    {
+      content: 'Tester',
+      selected: false,
+    },
+    {
+      content: 'Architect',
+      selected: false,
+    },
+    {
+      content: 'Test Lead',
+      selected: false,
+    }
+  ];
+
   ngOnInit() {
   }
 
