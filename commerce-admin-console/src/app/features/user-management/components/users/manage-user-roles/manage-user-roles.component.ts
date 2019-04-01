@@ -10,6 +10,9 @@ export class ManageUserRolesComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  model: '';
+  disabled: '';
+
   orgList = [
     {
       content: 'Organization A',
