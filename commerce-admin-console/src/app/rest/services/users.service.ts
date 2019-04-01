@@ -190,21 +190,13 @@ class UsersService extends __BaseService {
 
   /**
    * Create a user.
-   * @param params The `UsersService.UsersCreateUserParams` containing the following parameters:
-   *
-   * - `body`: Request body.
-   *
-   * - `offset`: The position within the resulting dataset where the query begins returning item records. If the offset is "5", the records that returned begin with the sixth record that matches the query parameters. If the offset is "0", the records that are returned begin with the first record that matches the query parameters.
-   *
-   * - `limit`: The maximum number of records to return.
+   * @param body Request body.
    */
-  UsersCreateUserResponse(params: UsersService.UsersCreateUserParams): __Observable<__StrictHttpResponse<null>> {
+  UsersCreateUserResponse(body: any): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = params.body;
-    if (params.offset != null) __params = __params.set('offset', params.offset.toString());
-    if (params.limit != null) __params = __params.set('limit', params.limit.toString());
+    __body = body;
     let req = new HttpRequest<any>(
       'POST',
       this.rootUrl + `/rest/admin/v2/users`,
@@ -225,16 +217,10 @@ class UsersService extends __BaseService {
 
   /**
    * Create a user.
-   * @param params The `UsersService.UsersCreateUserParams` containing the following parameters:
-   *
-   * - `body`: Request body.
-   *
-   * - `offset`: The position within the resulting dataset where the query begins returning item records. If the offset is "5", the records that returned begin with the sixth record that matches the query parameters. If the offset is "0", the records that are returned begin with the first record that matches the query parameters.
-   *
-   * - `limit`: The maximum number of records to return.
+   * @param body Request body.
    */
-  UsersCreateUser(params: UsersService.UsersCreateUserParams): __Observable<null> {
-    return this.UsersCreateUserResponse(params).pipe(
+  UsersCreateUser(body: any): __Observable<null> {
+    return this.UsersCreateUserResponse(body).pipe(
       __map(_r => _r.body as null)
     );
   }
@@ -818,27 +804,6 @@ module UsersService {
      * Request body.
      */
     body?: any;
-  }
-
-  /**
-   * Parameters for UsersCreateUser
-   */
-  export interface UsersCreateUserParams {
-
-    /**
-     * Request body.
-     */
-    body: any;
-
-    /**
-     * The position within the resulting dataset where the query begins returning item records. If the offset is "5", the records that returned begin with the sixth record that matches the query parameters. If the offset is "0", the records that are returned begin with the first record that matches the query parameters.
-     */
-    offset?: number;
-
-    /**
-     * The maximum number of records to return.
-     */
-    limit?: number;
   }
 
   /**

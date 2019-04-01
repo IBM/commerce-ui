@@ -2752,13 +2752,15 @@
               "properties": {
                 "id": {
                   "description": "The unique numeric ID for identifying the organization.",
-                  "type": "string"
+                  "type": "integer",
+                  "format": "int64"
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                   "properties": {
                     "id": {
-                      "type": "string",
+                      "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the address."
                     },
                     "address1": {
@@ -2844,6 +2846,7 @@
                     },
                     "memberId": {
                       "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                     },
                     "middleName": {
@@ -3242,13 +3245,15 @@
               "properties": {
                 "id": {
                   "description": "The unique numeric ID for identifying the organization.",
-                  "type": "string"
+                  "type": "integer",
+                  "format": "int64"
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                   "properties": {
                     "id": {
-                      "type": "string",
+                      "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the address."
                     },
                     "address1": {
@@ -3334,6 +3339,7 @@
                     },
                     "memberId": {
                       "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                     },
                     "middleName": {
@@ -3525,13 +3531,15 @@
               "properties": {
                 "id": {
                   "description": "The unique numeric ID for identifying the organization.",
-                  "type": "string"
+                  "type": "integer",
+                  "format": "int64"
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                   "properties": {
                     "id": {
-                      "type": "string",
+                      "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the address."
                     },
                     "address1": {
@@ -3617,6 +3625,7 @@
                     },
                     "memberId": {
                       "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                     },
                     "middleName": {
@@ -4450,13 +4459,15 @@
                     "properties": {
                       "id": {
                         "description": "The unique numeric ID for identifying the organization.",
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                       },
                       "address": {
                         "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                         "properties": {
                           "id": {
-                            "type": "string",
+                            "type": "integer",
+                            "format": "int64",
                             "description": "The unique numeric ID for identifying the address."
                           },
                           "address1": {
@@ -4542,6 +4553,7 @@
                           },
                           "memberId": {
                             "type": "integer",
+                            "format": "int64",
                             "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                           },
                           "middleName": {
@@ -7335,7 +7347,8 @@
                         "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                         "properties": {
                           "id": {
-                            "type": "string",
+                            "type": "integer",
+                            "format": "int64",
                             "description": "The unique numeric ID for identifying the address."
                           },
                           "address1": {
@@ -7421,6 +7434,7 @@
                           },
                           "memberId": {
                             "type": "integer",
+                            "format": "int64",
                             "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                           },
                           "middleName": {
@@ -7529,7 +7543,7 @@
                       "createdDateTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Timestamp representing the date the registrant was registered."
+                        "description": "The date and time that the registrant was registered."
                       },
                       "dateOfBirth": {
                         "type": "string",
@@ -7568,12 +7582,12 @@
                       "updatedDateTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Timestamp representing the most recent update to the registrant's information."
+                        "description": "The date and time representing the most recent update to the registrant's information."
                       },
                       "lastSession": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Timestamp representing the most recent login time of the user."
+                        "description": "The date and time representing the most recent login time of the user."
                       },
                       "logonId": {
                         "type": "string",
@@ -7584,7 +7598,8 @@
                         "description": "The name of the registrant's manager."
                       },
                       "organizationId": {
-                        "type": "string",
+                        "type": "integer",
+                        "format": "int64",
                         "readOnly": true,
                         "description": "The identifier of the registrant's company."
                       },
@@ -7912,7 +7927,8 @@
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                   "properties": {
                     "id": {
-                      "type": "string",
+                      "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the address."
                     },
                     "address1": {
@@ -7998,6 +8014,7 @@
                     },
                     "memberId": {
                       "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                     },
                     "middleName": {
@@ -8106,7 +8123,7 @@
                 "createdDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the date the registrant was registered."
+                  "description": "The date and time that the registrant was registered."
                 },
                 "dateOfBirth": {
                   "type": "string",
@@ -8145,12 +8162,12 @@
                 "updatedDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the most recent update to the registrant's information."
+                  "description": "The date and time representing the most recent update to the registrant's information."
                 },
                 "lastSession": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the most recent login time of the user."
+                  "description": "The date and time representing the most recent login time of the user."
                 },
                 "logonId": {
                   "type": "string",
@@ -8161,7 +8178,8 @@
                   "description": "The name of the registrant's manager."
                 },
                 "organizationId": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "readOnly": true,
                   "description": "The identifier of the registrant's company."
                 },
@@ -8640,7 +8658,8 @@
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                   "properties": {
                     "id": {
-                      "type": "string",
+                      "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the address."
                     },
                     "address1": {
@@ -8726,6 +8745,7 @@
                     },
                     "memberId": {
                       "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                     },
                     "middleName": {
@@ -8834,7 +8854,7 @@
                 "createdDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the date the registrant was registered."
+                  "description": "The date and time that the registrant was registered."
                 },
                 "dateOfBirth": {
                   "type": "string",
@@ -8873,12 +8893,12 @@
                 "updatedDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the most recent update to the registrant's information."
+                  "description": "The date and time representing the most recent update to the registrant's information."
                 },
                 "lastSession": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the most recent login time of the user."
+                  "description": "The date and time representing the most recent login time of the user."
                 },
                 "logonId": {
                   "type": "string",
@@ -8889,7 +8909,8 @@
                   "description": "The name of the registrant's manager."
                 },
                 "organizationId": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "readOnly": true,
                   "description": "The identifier of the registrant's company."
                 },
@@ -9157,24 +9178,6 @@
         },
         "parameters": [
           {
-            "default": 0,
-            "description": "The position within the resulting dataset where the query begins returning item records. If the offset is \"5\", the records that returned begin with the sixth record that matches the query parameters. If the offset is \"0\", the records that are returned begin with the first record that matches the query parameters.",
-            "in": "query",
-            "name": "offset",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "default": 100000,
-            "description": "The maximum number of records to return.",
-            "in": "query",
-            "name": "limit",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
             "required": true,
             "in": "body",
             "description": "Request body.",
@@ -9190,7 +9193,8 @@
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                   "properties": {
                     "id": {
-                      "type": "string",
+                      "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the address."
                     },
                     "address1": {
@@ -9276,6 +9280,7 @@
                     },
                     "memberId": {
                       "type": "integer",
+                      "format": "int64",
                       "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                     },
                     "middleName": {
@@ -9384,7 +9389,7 @@
                 "createdDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the date the registrant was registered."
+                  "description": "The date and time that the registrant was registered."
                 },
                 "dateOfBirth": {
                   "type": "string",
@@ -9423,12 +9428,12 @@
                 "updatedDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the most recent update to the registrant's information."
+                  "description": "The date and time representing the most recent update to the registrant's information."
                 },
                 "lastSession": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "Timestamp representing the most recent login time of the user."
+                  "description": "The date and time representing the most recent login time of the user."
                 },
                 "logonId": {
                   "type": "string",
@@ -9439,7 +9444,8 @@
                   "description": "The name of the registrant's manager."
                 },
                 "organizationId": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "readOnly": true,
                   "description": "The identifier of the registrant's company."
                 },
@@ -11882,7 +11888,8 @@
                     "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                     "properties": {
                       "id": {
-                        "type": "string",
+                        "type": "integer",
+                        "format": "int64",
                         "description": "The unique numeric ID for identifying the address."
                       },
                       "address1": {
@@ -11968,6 +11975,7 @@
                       },
                       "memberId": {
                         "type": "integer",
+                        "format": "int64",
                         "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                       },
                       "middleName": {
@@ -12545,7 +12553,8 @@
               "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
               "properties": {
                 "id": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the address."
                 },
                 "address1": {
@@ -12631,6 +12640,7 @@
                 },
                 "memberId": {
                   "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                 },
                 "middleName": {
@@ -12749,7 +12759,8 @@
               "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
               "properties": {
                 "id": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the address."
                 },
                 "address1": {
@@ -12835,6 +12846,7 @@
                 },
                 "memberId": {
                   "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                 },
                 "middleName": {
@@ -13584,7 +13596,8 @@
               "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
               "properties": {
                 "id": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the address."
                 },
                 "address1": {
@@ -13670,6 +13683,7 @@
                 },
                 "memberId": {
                   "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                 },
                 "middleName": {
