@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SearchService } from './search-service.service';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../../components/components.module';
 import { UserManagementRoutingModule } from './user-management-routing.module';
@@ -12,12 +11,7 @@ import {
 } from 'carbon-components-angular';
 import { IconModule } from '@carbon/icons-angular';
 
-import { SearchModalComponent } from './user-list/search-modal/search-modal.component';
-import { AddUserComponent } from './add-user/add-user.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonBarComponent } from './user-list/button-bar/button-bar.component';
-import { UserListDashboardComponent } from './user-list/user-list-dashboard/user-list-dashboard.component';
-import { UserTableComponent } from './user-list/user-table/user-table.component';
 import { UserGroupsComponent } from './components/users/user-groups/user-groups.component';
 import { UserRolesComponent } from './components/users/user-roles/user-roles.component';
 import { UserAccountComponent } from './components/users/user-account/user-account.component';
@@ -47,11 +41,6 @@ import { OrganizationListComponent } from './components/organizations/organizati
     TranslateModule
   ],
   declarations: [
-    SearchModalComponent,
-    AddUserComponent,
-    ButtonBarComponent,
-    UserListDashboardComponent,
-    UserTableComponent,
     UserGroupsComponent,
     UserRolesComponent,
     UserAccountComponent,
@@ -64,10 +53,8 @@ import { OrganizationListComponent } from './components/organizations/organizati
     OrganizationListComponent
   ],
   providers: [
-    SearchService
   ],
   entryComponents: [
-    SearchModalComponent
   ]
 })
 export class UserManagementModule { }
