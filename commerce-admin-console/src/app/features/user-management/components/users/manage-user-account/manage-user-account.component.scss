@@ -51,7 +51,7 @@
     background-color: #ffffff; 
   }
   .main-content {
-    padding-top: 56px;
+    padding-top: 40px;
     margin: 0 0 0.2% 0.2%;
     background-color: #ffffff;
   }
@@ -89,11 +89,11 @@
   .border-div {
     border: 1px solid gray;
   }
-  .text-margin {
-    margin-left: 5px;
-  }
+  // .text-margin {
+  //   margin-left: 5px;
+  // }
   .side-txt-margin {
-    margin-left: 5px;
+    margin-left: 6px;
   }
   .form-text {
     margin-bottom: 1%;
@@ -137,7 +137,7 @@
     background-color: #0062FF;
   }
   .dot {
-    height: 18px;
+    height: 20px;
     width:  4px;
     display: inline-block;
     border: 1px solid #0062FF;
@@ -152,4 +152,8 @@
     padding-top: 15px;
     padding-bottom: 15px;
     margin-left: 3%; 
+}
+.icon-group{
+  width:100%;
+  margin-left: 96.05%;  
 }
