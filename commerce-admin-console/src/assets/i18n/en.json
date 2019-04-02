@@ -589,31 +589,16 @@
             "NEW_USER":"New User",
             "ACCOUNT_INFORMATION":"Account Information",
             "CONTACT_INFORMATION":"Contact Information",
-<<<<<<< HEAD
-            "ROLES":"Roles",
-            "OPTIONAL": " (Optional)",
-            "GROUPS":"Groups",
-=======
             "ROLES":"Roles (Optional)",
             "GROUPS":"Groups (Optional)",
->>>>>>> Added Translation for all the files.
             "LOGIN_ID":"Login ID",
             "EMAIL":"Email",
             "PASSWORD":"Password",
             "SHOW":"Show",
-<<<<<<< HEAD
-            "HIDE":"Hide",
-            "ORGANIZATION":"Organization",
-            "ACCOUNT_POLICY":"Account Policy",
-            "CANCEL":"Cancel",
-            "NEXT":"Next",
-            "EMAIL_ERROR": "Please enter valid Email address"
-=======
             "ORGANIZATION":"Organization",
             "ACCOUNT_POLICY":"Account Policy",
             "CANCEL":"Cancel",
             "NEXT":"Next"
->>>>>>> Added Translation for all the files.
         },
         "USER_CONTACT":
         {
@@ -622,24 +607,14 @@
             "NEW_USER":"New User",
             "ACCOUNT_INFORMATION":"Account Information",
             "CONTACT_INFORMATION":"Contact Information",
-<<<<<<< HEAD
-            "ROLES":"Roles",
-            "GROUPS":"Groups",
-            "OPTIONAL": " (Optional)",
-=======
             "ROLES":"Roles (Optional)",
             "GROUPS":"Groups (Optional)",
->>>>>>> Added Translation for all the files.
             "TITLE_OPTIONAL":"Title (Optional)",
             "FIRST_NAME":"First Name",
             "LAST_NAME":"Last Name",
             "STREET_ADDRESS":"Street address",
             "CITY":"City",
             "STATE_PROVINCE_REGION":"State / Province / Region",
-<<<<<<< HEAD
-            "ZIP_POSTAI_CODE":"Zip / Postal code",
-=======
->>>>>>> Added Translation for all the files.
             "CANCEL":"Cancel",
             "BACK":"Back",
             "NEXT":"Next"
@@ -651,14 +626,8 @@
             "NEW_USER":"New User",
             "ACCOUNT_INFORMATION":"Account Information",
             "CONTACT_INFORMATION":"Contact Information",
-<<<<<<< HEAD
-            "ROLES":"Roles",
-            "OPTIONAL": " (Optional)",
-            "GROUPS":"Groups",
-=======
             "ROLES":"Roles (Optional)",
             "GROUPS":"Groups (Optional)",
->>>>>>> Added Translation for all the files.
             "SELECT_AN_ORGANIZATION":"Select an organization and choose the user's roles from the list of available",
             "MULTIPLE_ROLES":"roles. A user can have roles in more than one organization.",
             "ORGANIZATION":"Organization",
@@ -675,14 +644,8 @@
             "NEW_USER":"New User",
             "ACCOUNT_INFORMATION":"Account Information",
             "CONTACT_INFORMATION":"Contact Information",
-<<<<<<< HEAD
-            "ROLES":"Roles",
-            "OPTIONAL": " (Optional)",
-            "GROUPS":"Groups", 
-=======
             "ROLES":"Roles (Optional)",
             "GROUPS":"Groups (Optional)", 
->>>>>>> Added Translation for all the files.
             "INCLUDE_TAB":
                 {
                    "SELECT_GROUP":"Select which groups include the user.",
