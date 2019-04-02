@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddUserComponent } from './add-user/add-user.component';
-import { UserListDashboardComponent } from './user-list/user-list-dashboard/user-list-dashboard.component';
 import { UserAccountComponent } from './components/users/user-account/user-account.component';
 import { UserContactComponent } from './components/users/user-contact/user-contact.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
@@ -16,7 +14,7 @@ import { UserGroupsComponent } from './components/users/user-groups/user-groups.
 const routes: Routes = [
   {
     path: '', component: UserListComponent
-},
+  },
   {
     path: 'userAccount', component: UserAccountComponent
   },
