@@ -1,39 +1,39 @@
 
   <div class="header">
     <ibm-icon-menu32  class="menu-icon"></ibm-icon-menu32>
-    <span class="ibm-text">IBM Watson Commerce</span>
+    <span class="ibm-text">{{'MANAGE_USER.USER_ACCOUNT.TITLE' | translate}}</span>
   </div>
   <div class="border-div">
       <div class="users">
-        <span>Users</span>
+        <span>{{'MANAGE_USER.USER_ACCOUNT.USERS' | translate}}</span>
         <span class="icon-top"><ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16></span>
-        <span><strong class="new-user">New User</strong></span>
+        <span><strong class="new-user">{{'MANAGE_USER.USER_ACCOUNT.NEW_USER' | translate}}</strong></span>
         <div class="clr"></div>
       </div>
         <div class="bx--row header-border">
           <div class="bx--col-sm-4 bx--col-md-4 side-content">
             <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
             <!-- <ibm-icon-radio-button20 id="radio-icon" class="radio-icon"></ibm-icon-radio-button20><span class="text-margin">Account Information</span> -->
-            <span class="dot account-dot"></span><span class="text-margin">Account Information</span>
+            <span class="dot account-dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.ACCOUNT_INFORMATION' | translate}}</span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">Contact Information</span>
+            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.CONTACT_INFORMATION' | translate}}</span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">Roles (Optional)</span>
+            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.ROLES' | translate}}</span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">Groups (Optional)</span>
+            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.GROUPS' | translate}}</span>
             </div>
           </div>
           <div class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
               <div class="bx--col-sm-11 bx--col-md-11 inside-content">
-                  <div class="form-text">Login ID</div>
+                  <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.LOGIN_ID' | translate}}</div>
                   <input ibmText class=" inputbx">
-                  <div class="form-text">Email</div>
+                  <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.EMAIL' | translate}}</div>
                   <input ibmText class=" inputbx">
                   <div class="form-text">
-                    <span>Password</span>
+                    <span>{{'MANAGE_USER.USER_ACCOUNT.PASSWORD' | translate}}</span>
                     <span class="password-show">
-                      <ibm-icon-view16 class="view-icon"></ibm-icon-view16><span class="show-margin">Show</span>
+                      <ibm-icon-view16 class="view-icon"></ibm-icon-view16><span class="show-margin">{{'MANAGE_USER.USER_ACCOUNT.SHOW' | translate}}</span>
                     </span>
                     <div class="clr"></div>
                     <!-- <span class="password-show">
@@ -48,9 +48,9 @@
                           <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
                           <input ibmText class=" inputbx" type="text">
                       </div>
-                  <div class="form-text">Organization</div>
+                  <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.ORGANIZATION' | translate}}</div>
                   <input ibmText class=" inputbx">
-                  <div class="form-text">Account Policy</div>
+                  <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.ACCOUNT_POLICY' | translate}}</div>
                   <input ibmText class=" inputbx">
               </div>
             </div>
@@ -59,8 +59,8 @@
                   <div class="bx--row">
                       <div class="bx--col-sm-5 bx--col-md-5"></div>
                     <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
-                      <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">Cancel</button>
-                      <button ibmButton size="lg" id="save-preview" class="next-button" (click)="goToContact()">Next</button>
+                      <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">{{'MANAGE_USER.USER_ACCOUNT.CANCEL' | translate}}</button>
+                      <button ibmButton size="lg" id="save-preview" class="next-button" (click)="goToContact()">{{'MANAGE_USER.USER_ACCOUNT.NEXT' | translate}}</button>
                     </div>
                   </div>
                 </div>
