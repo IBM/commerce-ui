@@ -1,16 +1,16 @@
 <div class="header">
     <ibm-icon-menu32 id="table-icon" class="menu-icon"></ibm-icon-menu32>
-    <span class="ibm-text">IBM Watson Commerce</span>
+    <span class="ibm-text">{{'MANAGE_USER.USER_LANDING_PAGE.TITLE' | translate}}</span>
 </div>
 <div class=" userLandingPage">
     <div class="users">
-        <span>Users</span>
+        <span>{{'MANAGE_USER.USER_LANDING_PAGE.USERS' | translate}}</span>
     </div>
   <!--Search,Filter part(start)-->
   <div class="SearchMenu icons_user bx--row">
       <div class="bx--col-md-12 bx--col-sm-12 icon-group">
           <span class="icons">
-              <button type="button" class="rowAdditionButton" (click)="createUser()">New</button>
+              <button type="button" class="rowAdditionButton" (click)="createUser()">{{'MANAGE_USER.USER_LANDING_PAGE.NEW_BUTTON' | translate}}</button>
           </span>
           <span class="icons glyphiconsButton">
               <ibm-icon-settings16></ibm-icon-settings16>
