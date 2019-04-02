@@ -589,19 +589,16 @@
             "NEW_USER":"New User",
             "ACCOUNT_INFORMATION":"Account Information",
             "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "OPTIONAL": " (Optional)",
-            "GROUPS":"Groups",
+            "ROLES":"Roles (Optional)",
+            "GROUPS":"Groups (Optional)",
             "LOGIN_ID":"Login ID",
             "EMAIL":"Email",
             "PASSWORD":"Password",
             "SHOW":"Show",
-            "HIDE":"Hide",
             "ORGANIZATION":"Organization",
             "ACCOUNT_POLICY":"Account Policy",
             "CANCEL":"Cancel",
-            "NEXT":"Next",
-            "EMAIL_ERROR": "Please enter valid Email address"
+            "NEXT":"Next"
         },
         "USER_CONTACT":
         {
@@ -610,16 +607,14 @@
             "NEW_USER":"New User",
             "ACCOUNT_INFORMATION":"Account Information",
             "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "GROUPS":"Groups",
-            "OPTIONAL": " (Optional)",
+            "ROLES":"Roles (Optional)",
+            "GROUPS":"Groups (Optional)",
             "TITLE_OPTIONAL":"Title (Optional)",
             "FIRST_NAME":"First Name",
             "LAST_NAME":"Last Name",
             "STREET_ADDRESS":"Street address",
             "CITY":"City",
             "STATE_PROVINCE_REGION":"State / Province / Region",
-            "ZIP_POSTAI_CODE":"Zip / Postal code",
             "CANCEL":"Cancel",
             "BACK":"Back",
             "NEXT":"Next"
@@ -631,9 +626,8 @@
             "NEW_USER":"New User",
             "ACCOUNT_INFORMATION":"Account Information",
             "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "OPTIONAL": " (Optional)",
-            "GROUPS":"Groups",
+            "ROLES":"Roles (Optional)",
+            "GROUPS":"Groups (Optional)",
             "SELECT_AN_ORGANIZATION":"Select an organization and choose the user's roles from the list of available",
             "MULTIPLE_ROLES":"roles. A user can have roles in more than one organization.",
             "ORGANIZATION":"Organization",
@@ -650,9 +644,8 @@
             "NEW_USER":"New User",
             "ACCOUNT_INFORMATION":"Account Information",
             "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "OPTIONAL": " (Optional)",
-            "GROUPS":"Groups", 
+            "ROLES":"Roles (Optional)",
+            "GROUPS":"Groups (Optional)", 
             "INCLUDE_TAB":
                 {
                    "SELECT_GROUP":"Select which groups include the user.",
@@ -751,135 +744,6 @@
             "TITLE":"IBM Watson Commerce",
             "ORGANIZATIONS":"Organisations",
             "NEW_BUTTON":"New"  
-        },
-        "ORGANIZATION_DETAILS":
-        {
-            "TITLE":"IBM Watson Commerce",
-            "ORGANIZATIONS":"Organisations",
-            "NEW_ORGANIZATION":"New organization",
-            "ORGANISATION_DETAILS_HEADING":"Organization details",
-            "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "APPROVALS":"Approvals",
-            "ORGANIZATION_NAME":"Organization name",
-            "DESCRIPTION_OPTIONAL":"Description (optional)",
-            "TYPE":"Type",
-            "PARENT_ORGANIZATION":"Parent organization",
-            "CANCEL":"Cancel",
-            "NEXT":"Next"
-        },
-        "ORGANIZATION_CONTACT":
-        {
-            "TITLE":"IBM Watson Commerce",
-            "ORGANIZATIONS":"Organisations",
-            "NEW_ORGANIZATION":"New organization",
-            "ORGANISATION_DETAILS_HEADING":"Organization details",
-            "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "APPROVALS":"Approvals",
-            "CONTACT_NAME":"Contact name",
-            "CONTACT_EMAIL":"Contact email",
-            "STREET_ADDRESS":"Street address",
-            "CITY":"City",
-            "ADDRESS":"State / Province / Region",
-            "CANCEL":"Cancel",
-            "BACK":"Back",
-            "NEXT":"Next"
-        },
-        "ORGANIZATION_ROLES":
-        {
-            "TITLE":"IBM Watson Commerce",
-            "ORGANIZATIONS":"Organisations",
-            "NEW_ORGANIZATION":"New organization",
-            "ORGANISATION_DETAILS_HEADING":"Organization details",
-            "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "APPROVALS":"Approvals",
-            "SELECT_ROLES":"Select the roles that are available for the organization",
-            "AVAILABLE_ROLES":"Available Roles",
-            "ITEMS":"23 items",
-            "CANCEL":"Cancel",
-            "BACK":"Back",
-            "NEXT":"Next"
-        },
-        "ORGANISATION_APPROVALS":
-        {
-            "TITLE":"IBM Watson Commerce",
-            "ORGANIZATIONS":"Organisations",
-            "NEW_ORGANIZATION":"New organization",
-            "ORGANISATION_DETAILS_HEADING":"Organization details",
-            "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "APPROVALS":"Approvals",
-            "SELECT_APPROVALS":"Select the approval types that are available for the organization",
-            "AVAILABLE_APPROVALS":"Available approvals",
-            "ITEMS":"23 items",
-            "CANCEL":"Cancel",
-            "BACK":"Back",
-            "NEXT":"Next"
-        },
-        "MANAGE_ORGANIZATION_DETAILS":
-        {
-            "TITLE":"IBM Watson Commerce",
-            "ORGANIZATIONS":"Organisations",
-            "EDIT_ORGANIZATION":"Edit organization",
-            "ACCOUNT_INFORMATION":"Account information",
-            "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "APPROVALS":"Approvals",
-            "ORGANIZATION_NAME":"Organization name",
-            "DESCRIPTION_OPTIONAL":"Description (optional)",
-            "TYPE":"Type",
-            "PARENT_ORGANIZATION":"Parent organization",
-            "CANCEL":"Cancel",
-            "SAVE":"Save"
-        },
-        "MANAGE_ORGANIZATION_CONTACT":
-        {
-            "TITLE":"IBM Watson Commerce",
-            "ORGANIZATIONS":"Organisations",
-            "EDIT_ORGANIZATION":"Edit organization",
-            "ACCOUNT_INFORMATION":"Account information",
-            "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "APPROVALS":"Approvals",
-            "CONTACT_NAME":"Contact name",
-            "CONTACT_EMAIL":"Contact email",
-            "STREET_ADDRESS":"Street address",
-            "CITY":"City",
-            "ADDRESS":"State / Province / Region",
-            "CANCEL":"Cancel",
-            "SAVE":"Save"
-        },
-        "MANAGE_ORGANIZATION_ROLES":
-        {
-            "TITLE":"IBM Watson Commerce",
-            "ORGANIZATIONS":"Organisations",
-            "EDIT_ORGANIZATION":"Edit organization",
-            "ACCOUNT_INFORMATION":"Account information",
-            "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "APPROVALS":"Approvals",
-            "SELECT_ROLES":"Select the roles that are available for the organization",
-            "AVAILABLE_ROLES":"Available Roles",
-            "ITEMS":"23 items",
-            "CANCEL":"Cancel",
-            "SAVE":"Save"
-        },
-        "MANAGE_ORGANIZATION_APPROVALS":
-        {
-            "TITLE":"IBM Watson Commerce",
-            "ORGANIZATIONS":"Organisations",
-            "EDIT_ORGANIZATION":"Edit organization",
-            "ACCOUNT_INFORMATION":"Account information",
-            "CONTACT_INFORMATION":"Contact Information",
-            "ROLES":"Roles",
-            "APPROVALS":"Approvals",
-            "SELECT_APPROVALS":"Select the approval types that are available for the organization",
-            "AVAILABLE_APPROVALS":"Available approvals",
-            "ITEMS":"23 items",
-            "CANCEL":"Cancel",
-            "SAVE":"Save"
         }
     }
 

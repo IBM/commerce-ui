@@ -1,35 +1,35 @@
 <div class="header">
   <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
-  <span class="ibm-text">IBM Watson Commerce</span>
+  <span class="ibm-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.TITLE'| translate}}</span>
 </div>
 <div class="border-div">
   <div class="users">
-    <span>Users</span>
+    <span>{{'MANAGE_USER.MANAGE_USER_ACCOUNT.USERS'| translate}}</span>
     <span class="icon-top">
       <ibm-icon-chevron-right16 id="table-icon" class="chevron-icon"></ibm-icon-chevron-right16>
     </span>
-    <span><strong class="new-user">Edit User</strong></span>
+    <span><strong class="new-user">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.EDIT_USER'| translate}}</strong></span>
   </div>
    <div class="bx--row header-border">
     <div class="bx--col-sm-4 bx--col-md-4 side-content">
       <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
         <span class="dot account-dot"></span>
-        <div class="text-margin">Account Information</div><br />
+        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.ACCOUNT_INFORMATION'| translate}}</div><br />
         <span></span>
-        <div class="text-margin">Contact Information</div><br />
-        <div class="text-margin">Roles</div><br />
-        <div class="text-margin">Groups</div>
+        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.CONTACT_INFORMATION'| translate}}</div><br />
+        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.ROLES'| translate}}</div><br />
+        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.GROUPS'| translate}}</div>
       </div>
     </div>
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
-          <div class="form-text">Login ID</div>
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.LOGIN_ID'| translate}}</div>
           <input ibmText class="inputbx"><br /><br />
-          <div class="form-text">Email</div>
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.EMAIL'| translate}}</div>
           <input ibmText class="inputbx"><br /><br />
           <div class="form-text">
-            <span>Password</span>
+            <span>{{'MANAGE_USER.MANAGE_USER_ACCOUNT.PASSWORD'| translate}}</span>
             <span class="password-show"></span>
             <!-- <span class="password-show">
                 <ibm-icon-view-off16 class="view-icon"></ibm-icon-view-off16>Hide
@@ -43,11 +43,11 @@
             <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
             <input ibmText class="inputbx" type="text"><br /><br />
           </div>
-          <div class="form-text">Organization</div>
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.ORGANIZATION'| translate}}</div>
           <input ibmText class="inputbx"><br /><br />
-          <div class="form-text">User type</div>
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.USER_TYPE'| translate}}</div>
           <input ibmText class="inputbx"><br /><br />
-          <div class="form-text">Preferred language</div>
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.PREFERED_LANGUAGE'| translate}}</div>
         </div>
       </div>
       <div class="bx--row footer-content">
@@ -55,8 +55,8 @@
           <div class="bx--row">
             <div class="bx--col-sm-2 bx--col-md-2"></div>
             <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">Cancel</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveAccount()>Next</button>
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.CANCEL'| translate}}</button>
+              <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveAccount()>{{'MANAGE_USER.MANAGE_USER_ACCOUNT.SAVE'| translate}}</button>
             </div>
           </div>
         </div>
