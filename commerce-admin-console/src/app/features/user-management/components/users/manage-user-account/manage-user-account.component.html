@@ -24,6 +24,11 @@
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
+          <div class="bx--col-md-12 bx--col-sm-12 icon-group">
+            <span class="icons glyphiconsButton">
+              <ibm-icon-settings16></ibm-icon-settings16>
+            </span>
+          </div>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.LOGIN_ID'| translate}}</div>
           <input ibmText class="inputbx"><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.EMAIL'| translate}}</div>
@@ -55,8 +60,10 @@
           <div class="bx--row">
             <div class="bx--col-sm-2 bx--col-md-2"></div>
             <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.CANCEL'| translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveAccount()>{{'MANAGE_USER.MANAGE_USER_ACCOUNT.SAVE'| translate}}</button>
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.CANCEL'|
+                translate}}</button>
+              <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveAccount()>{{'MANAGE_USER.MANAGE_USER_ACCOUNT.SAVE'|
+                translate}}</button>
             </div>
           </div>
         </div>
