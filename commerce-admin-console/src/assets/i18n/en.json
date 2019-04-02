@@ -572,6 +572,179 @@
             "MARKETING_ACTIVITIS":""
 
         }
-
+        
+    },
+    "MANAGE_USER":
+    {
+        "USER_LANDING_PAGE":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "USERS":"Users",
+            "NEW_BUTTON":"New"
+        },
+        "USER_ACCOUNT":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "USERS":"Users",
+            "NEW_USER":"New User",
+            "ACCOUNT_INFORMATION":"Account Information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles (Optional)",
+            "GROUPS":"Groups (Optional)",
+            "LOGIN_ID":"Login ID",
+            "EMAIL":"Email",
+            "PASSWORD":"Password",
+            "SHOW":"Show",
+            "ORGANIZATION":"Organization",
+            "ACCOUNT_POLICY":"Account Policy",
+            "CANCEL":"Cancel",
+            "NEXT":"Next"
+        },
+        "USER_CONTACT":
+        {
+            "HEADING":"IBM Watson Commerce",
+            "USERS":"Users",
+            "NEW_USER":"New User",
+            "ACCOUNT_INFORMATION":"Account Information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles (Optional)",
+            "GROUPS":"Groups (Optional)",
+            "TITLE_OPTIONAL":"Title (Optional)",
+            "FIRST_NAME":"First Name",
+            "LAST_NAME":"Last Name",
+            "STREET_ADDRESS":"Street address",
+            "CITY":"City",
+            "STATE_PROVINCE_REGION":"State / Province / Region",
+            "CANCEL":"Cancel",
+            "BACK":"Back",
+            "NEXT":"Next"
+        },
+        "USER_ROLES":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "USERS":"Users",
+            "NEW_USER":"New User",
+            "ACCOUNT_INFORMATION":"Account Information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles (Optional)",
+            "GROUPS":"Groups (Optional)",
+            "SELECT_AN_ORGANIZATION":"Select an organization and choose the user's roles from the list of available",
+            "MULTIPLE_ROLES":"roles. A user can have roles in more than one organization.",
+            "ORGANIZATION":"Organization",
+            "AVAILABLE_ROLES":"Available roles",
+            "SELECTED_ROLES":"Selected roles",
+            "CANCEL":"Cancel",
+            "BACK":"Back",
+            "NEXT":"Next"
+        },
+        "USER_GROUPS":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "USERS":"Users",
+            "NEW_USER":"New User",
+            "ACCOUNT_INFORMATION":"Account Information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles (Optional)",
+            "GROUPS":"Groups (Optional)", 
+            "INCLUDE_TAB":
+                {
+                   "SELECT_GROUP":"Select which groups include the user.",
+                   "AVAILABLE_GROUPS":"Avaliable groups",
+                   "ITEMS":"44 items" 
+                },
+            "EXCLUDE_TAB":
+                {
+                   "SELECT_GROUP":"Select which groups include the user.",
+                   "AVAILABLE_GROUPS":"Avaliable groups",
+                   "ITEMS":"44 items" 
+                },
+            "CANCEL":"Cancel",
+            "BACK":"Back",
+            "SUBMIT":"Submit"
+        },
+        "MANAGE_USER_ACCOUNT":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "USERS":"Users",
+            "EDIT_USER":"Edit User",
+            "ACCOUNT_INFORMATION":"Account Information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles ",
+            "GROUPS":"Groups ",
+            "LOGIN_ID":"Login ID",
+            "EMAIL":"Email",
+            "PASSWORD":"Password",
+            "ORGANIZATION":"Organization",
+            "USER_TYPE":"User type",
+            "PREFERED_LANGUAGE":"Preferred language",
+            "CANCEL":"Cancel",
+            "SAVE":"Save"
+        },
+        "MANAGE_USER_CONTACT":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "USERS":"Users",
+            "EDIT_USER":"Edit User",
+            "ACCOUNT_INFORMATION":"Account Information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles ",
+            "GROUPS":"Groups ",
+            "TITLE_OPTIONAL":"Title (Optional)",
+            "FIRST_NAME":"First Name",
+            "LAST_NAME":"Last Name",
+            "STREET_ADDRESS":"Street address",
+            "CITY":"City",
+            "STATE_PROVINCE_REGION":"State / Province / Region",
+            "CANCEL":"Cancel",
+            "SAVE":"Save" 
+        },
+        "MANAGE_USER_GROUPS":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "USERS":"Users",
+            "EDIT_USER":"Edit User",
+            "ACCOUNT_INFORMATION":"Account Information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles ",
+            "GROUPS":"Groups ", 
+            "INCLUDE_TAB":
+            {
+               "SELECT_GROUP":"Select which groups include the user.",
+               "AVAILABLE_GROUPS":"Avaliable groups",
+               "ITEMS":"44 items" 
+            },
+        "EXCLUDE_TAB":
+            {
+               "SELECT_GROUP":"Select which groups include the user.",
+               "AVAILABLE_GROUPS":"Avaliable groups",
+               "ITEMS":"44 items" 
+            },
+            "CANCEL":"Cancel",
+            "SAVE":"Save"
+        },
+        "MANAGE_USER_ROLES":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "USERS":"Users",
+            "EDIT_USER":"Edit User",
+            "ACCOUNT_INFORMATION":"Account Information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles ",
+            "GROUPS":"Groups ", 
+            "SELECT_AN_ORGANIZATION":"Select an organization and choose the user's roles from the list of available",
+            "MULTIPLE_ROLES":"roles. A user can have roles in more than one organization.",
+            "ORGANIZATION":"Organization",
+            "AVAILABLE_ROLES":"Available roles",
+            "SELECTED_ROLES":"Selected roles",
+            "CANCEL":"Cancel",
+            "SAVE":"Save"
+        },
+        "ORGANIZATION_LIST":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "NEW_BUTTON":"New"  
+        }
     }
+
 }
