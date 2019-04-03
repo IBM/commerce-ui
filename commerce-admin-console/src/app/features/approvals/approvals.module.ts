@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ApprovalDashboardComponent } from './approval-dashboard/approval-dashboard.component';
 import {
   DropdownModule,
-  IconModule,
   ModalModule,
   TableModule,
   PaginationModule,
@@ -20,6 +19,9 @@ import { ApprovalStatusQueryService } from './approvals-status-query.service';
 import { FormsModule } from '@angular/forms';
 import { ApprovalUpdateService } from './approval-update.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { CheckmarkOutline16Module } from '@carbon/icons-angular/lib/checkmark--outline/16';
+import { CloseOutline16Module } from '@carbon/icons-angular/lib/close--outline/16';
+import { Search16Module } from '@carbon/icons-angular/lib/search/16';
 
 @NgModule({
   imports: [
@@ -28,13 +30,15 @@ import { TranslateModule } from '@ngx-translate/core';
     ComponentsModule,
     DropdownModule,
     ModalModule,
-    IconModule,
     NFormsModule,
     TableModule,
     PaginationModule,
     HttpClientModule,
     FormsModule,
-    TranslateModule
+    TranslateModule,
+    CheckmarkOutline16Module,
+    CloseOutline16Module,
+    Search16Module
   ],
   providers: [
     ApprovalStatusQueryService,
