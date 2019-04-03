@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NFormsModule, TableModule, PaginationModule, DropdownModule, IconModule } from 'carbon-components-angular';
+import { NFormsModule, TableModule, PaginationModule, DropdownModule } from 'carbon-components-angular';
+import { Search16Module } from '@carbon/icons-angular/lib/search/16';
+import { CheckmarkOutline16Module } from '@carbon/icons-angular/lib/checkmark--outline/16';
+import { Edit16Module } from '@carbon/icons-angular/lib/edit/16';
+import { Locked16Module } from '@carbon/icons-angular/lib/locked/16';
 
 import { ComponentsModule } from '../../components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
@@ -24,7 +28,10 @@ import { OrganizationFormComponent } from './organization-form/organization-form
 		TableModule,
 		PaginationModule,
 		DropdownModule,
-		IconModule,
+		Search16Module,
+		Edit16Module,
+		CheckmarkOutline16Module,
+		Locked16Module,
 		ComponentsModule,
 		OrganizationsRoutingModule,
 		ComponentsModule,

@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http'
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { Help16Module } from '@carbon/icons-angular/lib/help/16';
 import { HelpLinksComponent } from './help-links/help-links.component';
-import { IconModule } from 'carbon-components-angular';
 
 // AoT requires an exported function for factories
 export function HttpTranslateLoader(httpClient: HttpClient) {
@@ -22,7 +22,7 @@ export function HttpTranslateLoader(httpClient: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        IconModule
+        Help16Module
     ],
     declarations: [BreadcrumbComponent, HelpLinksComponent],
     exports: [

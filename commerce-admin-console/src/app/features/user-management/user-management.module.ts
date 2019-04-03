@@ -8,9 +8,10 @@ import { ComponentsModule } from '../../components/components.module';
 import { UserManagementRoutingModule } from './user-management-routing.module';
 import {
   NFormsModule, DropdownModule, TableModule, PaginationModule,
-  IconModule,
   DialogModule, ModalModule
 } from 'carbon-components-angular';
+import { Search16Module } from '@carbon/icons-angular/lib/search/16';
+import { Add16Module } from '@carbon/icons-angular/lib/add/16';
 
 import { SearchModalComponent } from './user-list/search-modal/search-modal.component';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -29,9 +30,10 @@ import { UserTableComponent } from './user-list/user-table/user-table.component'
     DropdownModule,
     TableModule,
     PaginationModule,
-    IconModule,
     DialogModule,
     ModalModule,
+    Search16Module,
+    Add16Module,
     FormsModule,
     TranslateModule
   ],
