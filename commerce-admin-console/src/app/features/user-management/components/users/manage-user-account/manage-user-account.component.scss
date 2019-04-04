@@ -72,16 +72,14 @@
   .row-content {
     height: 800px;
   }
-  .input {
-    background: #f4f7fb;
-    // height: 30px;
+  .inputbx {
+    background-color: #f4f7fb;
     height: 2.5rem;
     font-size: 14px;
     color: #282828;
-    // background: #F3F3F3;
-    // height: 30px;
-    // font-size: 14px;
-    // color: #282828;
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 100%;
   }
   .label {
     margin-left: 50px;
@@ -90,9 +88,9 @@
   .border-div {
     border: 1px solid gray;
   }
-  // .text-margin {
-  //   margin-left: 5px;
-  // }
+  .text-margin {
+    margin-bottom: 10px;
+  }
   .side-txt-margin {
     margin-left: 6px;
   }
@@ -128,8 +126,8 @@
   }
   .input-tikmark .fa-tickmark { 
     position: absolute;
-    top: 215px;
-    left: 95%;
+    top: 242px;
+    right: 15px;
     font-size: 15px;
     z-index: 10000;
     fill: blue;
