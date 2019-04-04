@@ -31,27 +31,31 @@
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
-          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.TITLE_OPTIONAL'| translate}}</div>
-          <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content">
-            <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
-          </ibm-dropdown><br /><br />
-          <div class="bx--row">
-            <div class="bx--col-sm-6 bx--col-md-6">
-              <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.FIRST_NAME'| translate}}</div>
-              <input ibmText class=" inputbx"><br /><br />
-            </div>
-            <div class="bx--col-sm-6 bx--col-md-6">
-              <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.LAST_NAME'| translate}}</div>
-              <input ibmText class=" inputbx"><br /><br />
-            </div>
-          </div>
-          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STREET_ADDRESS'| translate}}</div>
-          <input ibmText class=" inputbx"><br /><br />
-          <input ibmText class=" inputbx"><br /><br />
-          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.CITY'| translate}}</div>
-          <input ibmText class=" inputbx"><br /><br />
-          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STATE_PROVINCE_REGION'| translate}}</div>
-          <input ibmText class=" inputbx"><br /><br />
+            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.TITLE_OPTIONAL' | translate}}</div>
+                <ibm-dropdown
+                  placeholder="Select title"
+                  [disabled]="disabled"
+                  [(ngModel)]="model"
+                  value="content">
+                  <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
+                </ibm-dropdown>
+                <div class="bx--row name-field">
+                  <div class="bx--col-sm-6 bx--col-md-6">
+                      <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.FIRST_NAME' | translate}}</div>
+                      <input ibmText class="inputbx">
+                  </div>
+                  <div class="bx--col-sm-6 bx--col-md-6">
+                      <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.LAST_NAME' | translate}}</div>
+                      <input ibmText class="inputbx">
+                  </div>
+                </div>
+            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STREET_ADDRESS' | translate}}</div>
+            <input ibmText class="inputbx">
+            <input ibmText class="inputbx">
+            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.CITY' | translate}}</div>
+            <input ibmText class="inputbx">
+            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
+            <input ibmText class="inputbx">
         </div>
       </div>
       <div class="bx--row footer-content">
