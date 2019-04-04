@@ -20,9 +20,9 @@
     margin: 0 0 0.2% 0.2%;
     background-color: #ffffff;
   }
-  // .text-margin {
-  //   margin-left: 5px;
-  // }
+  .text-margin {
+    margin-bottom: 10px;
+  }
   .side-txt-margin {
     margin-left: 6px;
   }
@@ -86,16 +86,20 @@
   .cancel-button {
     width: 20%;
     height: 3rem;
+    color: #343334;
   }
   .footer-btn {
     margin: 3% 0% 3% 35%;
   }
   .inputbx {
-    background: #f4f7fb;
-    // height: 30px;
+    background-color: #f4f7fb;
     height: 2.5rem;
     font-size: 14px;
     color: #282828;
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    margin-bottom: 23px;
   }
   .form-text {
     margin-bottom: 1%;
@@ -165,4 +169,7 @@
     cursor: pointer;
     color: #152935;
     margin-left: 5%;
+}
+.name-field {
+  margin-top: 23px;
 }
