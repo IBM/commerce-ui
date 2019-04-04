@@ -35,7 +35,7 @@
                   </div>
                   <input ibmText class="inputbx" placeholder="Find a group"><br /><br />
                   <ul>
-                    <li *ngFor="let groupList of groupListData">
+                    <li *ngFor="let groupList of groupListData" class="list-content">
                       <ibm-checkbox (change)="onChange($event)">
                         {{groupList.groupName}}
                       </ibm-checkbox>
@@ -58,7 +58,7 @@
                   </div>
                   <input ibmText class="inputbx" placeholder="Find a group"><br /><br />
                   <ul>
-                    <li *ngFor="let groupList of groupListData">
+                    <li *ngFor="let groupList of groupListData" class="list-content">
                       <ibm-checkbox (change)="onChange($event)">
                         {{groupList.groupName}}
                       </ibm-checkbox>
