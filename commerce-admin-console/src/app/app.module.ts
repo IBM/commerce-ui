@@ -11,7 +11,7 @@ import { ApiModule } from './rest/api.module';
 import { FormsModule } from '@angular/forms';
 
 import { AppConstants } from './app.constants';
-import { NFormsModule, TableModule, DropdownModule, IconModule } from 'carbon-components-angular';
+import { NFormsModule, TableModule, DropdownModule } from 'carbon-components-angular';
 import { AuthService } from './services/auth.service';
 import { FeatureService } from './services/feature.service';
 import { FeatureEnabledDirective } from './directives/feature-enabled.directive';
@@ -65,7 +65,6 @@ export const INIT_API_CONFIGURATION: Provider = {
     DropdownModule,
     FormsModule,
     HttpModule,
-    IconModule,
     NFormsModule,
     TableModule,
     SharedModule.forRoot(),

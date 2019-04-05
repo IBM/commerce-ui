@@ -2,7 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { CatalogsRoutingModule } from './catalogs-routing.module';
-import { IconModule } from '@carbon/icons-angular';
+import { Maximize32Module } from '@carbon/icons-angular/lib/maximize/32';
+import { HelpFilled20Module } from '@carbon/icons-angular/lib/help--filled/20';
+import { Table32Module } from '@carbon/icons-angular/lib/table/32';
+import { WarningFilled16Module } from '@carbon/icons-angular/lib/warning--filled/16';
+import { Add16Module } from '@carbon/icons-angular/lib/add/16';
+import { CloseOutline16Module } from '@carbon/icons-angular/lib/close--outline/16';
+import { Search32Module } from '@carbon/icons-angular/lib/search/32';
+import { ArrowLeft32Module } from '@carbon/icons-angular/lib/arrow--left/32';
+import { ArrowRight32Module } from '@carbon/icons-angular/lib/arrow--right/32';
+import { AddAlt32Module } from '@carbon/icons-angular/lib/add--alt/32';
+import { StopOutline32Module } from '@carbon/icons-angular/lib/stop--outline/32';
+import { Wikis32Module } from '@carbon/icons-angular/lib/wikis/32';
+import { Save32Module } from '@carbon/icons-angular/lib/save/32';
+import { CopyFile32Module } from '@carbon/icons-angular/lib/copy--file/32';
+import { Close32Module } from '@carbon/icons-angular/lib/close/32';
+import { Screen32Module } from '@carbon/icons-angular/lib/screen/32';
+import { Menu32Module } from '@carbon/icons-angular/lib/menu/32';
+import { CheckmarkOutline16Module } from '@carbon/icons-angular/lib/checkmark--outline/16';
+import { Catalog32Module } from '@carbon/icons-angular/lib/catalog/32';
 import { ButtonModule,
     TabsModule, AccordionModule, CheckboxModule, RadioModule, TableModule, DropdownModule,
 LinkModule, ModalModule, SearchModule, PlaceholderModule, DialogModule, UIShellModule, FileUploaderModule, NotificationModule  } from 'carbon-components-angular';
@@ -44,7 +62,25 @@ ModalModule,
 SearchModule,
 PlaceholderModule,
 DialogModule,
-IconModule,
+Maximize32Module,
+HelpFilled20Module,
+Table32Module,
+WarningFilled16Module,
+Add16Module,
+CloseOutline16Module,
+Search32Module,
+ArrowLeft32Module,
+ArrowRight32Module,
+AddAlt32Module,
+StopOutline32Module,
+Wikis32Module,
+Save32Module,
+CopyFile32Module,
+Close32Module,
+Screen32Module,
+Menu32Module,
+CheckmarkOutline16Module,
+Catalog32Module,
 UIShellModule,
 FileUploaderModule,
 NotificationModule
