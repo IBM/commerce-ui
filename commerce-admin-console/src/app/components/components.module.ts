@@ -35,4 +35,3 @@ export function HttpTranslateLoader(httpClient: HttpClient) {
     ]
 })
 export class ComponentsModule { }
-

@@ -11,6 +11,15 @@ import {
 } from 'carbon-components-angular';
 import { Search16Module } from '@carbon/icons-angular/lib/search/16';
 import { Add16Module } from '@carbon/icons-angular/lib/add/16';
+import { ChevronRight16Module } from '@carbon/icons-angular/lib/chevron--right/16';
+import { Menu32Module } from '@carbon/icons-angular/lib/menu/32';
+import { CheckmarkOutline16Module } from '@carbon/icons-angular/lib/checkmark--outline/16';
+import { ArrowDown16Module } from '@carbon/icons-angular/lib/arrow--down/16';
+import { Close16Module } from '@carbon/icons-angular/lib/close/16';
+import { CheckmarkFilled16Module } from '@carbon/icons-angular/lib/checkmark--filled/16';
+import { View16Module } from '@carbon/icons-angular/lib/view/16';
+import { Settings16Module } from '@carbon/icons-angular/lib/settings/16';
+import { Filter16Module } from '@carbon/icons-angular/lib/filter/16';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { UserGroupsComponent } from './components/users/user-groups/user-groups.component';
@@ -40,7 +49,18 @@ import { OrganizationListComponent } from './components/organizations/organizati
     Search16Module,
     Add16Module,
     FormsModule,
-    TranslateModule
+    TranslateModule,
+    Search16Module,
+    Add16Module,
+    ChevronRight16Module,
+    Menu32Module,
+    CheckmarkOutline16Module,
+    ArrowDown16Module,
+    Close16Module,
+    CheckmarkFilled16Module,
+    View16Module,
+    Settings16Module,
+    Filter16Module
   ],
   declarations: [
     UserGroupsComponent,
