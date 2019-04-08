@@ -41,6 +41,7 @@
   }
   .text-margin {
     margin-left: 11px;
+    font-weight: 400;
   }
   .arrow-icon {
     display: block;
@@ -133,10 +134,10 @@
     border: none;
     border-bottom: 1px solid gray;
     width: 100%;
-    margin-bottom: 23px;
   }
   .form-text {
-    margin-bottom: 1%;
+    margin-bottom: 5px;
+    margin-top: 23px;
   }
   .password-show {
     float: right;
@@ -193,4 +194,12 @@
   }
   .list-content {
     margin-bottom: 10px;
+  }
+  .optional-text {
+    font-weight: 300;
+    color: #808080;
+  }
+  .text-weight {
+    font-weight: 500;
+    margin-left: 11px;
   }

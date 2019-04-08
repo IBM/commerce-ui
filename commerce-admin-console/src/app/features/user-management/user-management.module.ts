@@ -18,9 +18,10 @@ import { ArrowDown16Module } from '@carbon/icons-angular/lib/arrow--down/16';
 import { Close16Module } from '@carbon/icons-angular/lib/close/16';
 import { CheckmarkFilled16Module } from '@carbon/icons-angular/lib/checkmark--filled/16';
 import { View16Module } from '@carbon/icons-angular/lib/view/16';
+import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { Settings16Module } from '@carbon/icons-angular/lib/settings/16';
 import { Filter16Module } from '@carbon/icons-angular/lib/filter/16';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { TranslateModule } from '@ngx-translate/core';
 import { UserGroupsComponent } from './components/users/user-groups/user-groups.component';
 import { UserRolesComponent } from './components/users/user-roles/user-roles.component';
@@ -60,6 +61,7 @@ import { OrganizationListComponent } from './components/organizations/organizati
     Close16Module,
     CheckmarkFilled16Module,
     View16Module,
+    ViewOff16Module,
     Settings16Module,
     Filter16Module
   ],
