@@ -19,9 +19,13 @@
             <ibm-icon-checkmark-outline16 class="icon-ckeckout"></ibm-icon-checkmark-outline16>
             <span class="text-margin">{{'MANAGE_USER.USER_ROLES.CONTACT_INFORMATION'| translate}}</span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot account-dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ROLES.ROLES'| translate}}</span>
+            <span class="dot account-dot"></span><span class="text-weight">{{'MANAGE_USER.USER_ROLES.ROLES'| translate}}
+                <span class="optional-text">{{'MANAGE_USER.USER_ACCOUNT.OPTIONAL' | translate}}</span>
+            </span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ROLES.GROUPS'| translate}}</span>
+            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ROLES.GROUPS'| translate}}
+                <span class="optional-text">{{'MANAGE_USER.USER_ACCOUNT.OPTIONAL' | translate}}</span>
+            </span>
             </div>
           </div>
           <div class="bx--col-sm-8 bx--col-md-8 right-content">
@@ -32,16 +36,10 @@
                     <p>{{'MANAGE_USER.USER_ROLES.MULTIPLE_ROLES'| translate}}</p>
                 </div>
                 <div class="form-text">{{'MANAGE_USER.USER_ROLES.ORGANIZATION'| translate}}</div>
-                  <!-- <ibm-select [(ngModel)]="model">
-                      <option value="default" disabled selected hidden>Select title</option>
-                      <option value="option1">Option 1</option>
-                      <option value="option2">Option 2</option>
-                      <option value="option3">Option 3</option>
-                      </ibm-select><br/><br/> -->
                 <ibm-dropdown
                   placeholder="Select title"
                   [disabled]="disabled"
-                  [(ngModel)]="model"
+                  [(ngModel)]="organization"
                   value="content">
                   <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                 </ibm-dropdown>
@@ -49,8 +47,8 @@
                 <ibm-dropdown
                   placeholder="Select title"
                   [disabled]="disabled"
-                  [(ngModel)]="modelRoles"
-                  value="content" (click)="mySelectedRoles(modelRoles)">
+                  [(ngModel)]="availablrRoles"
+                  value="content" (click)="mySelectedRoles(availablrRoles)">
                   <ibm-dropdown-list [items]="rolesList"></ibm-dropdown-list>
                 </ibm-dropdown>
                 <div class="roles-margin">

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserMainService } from '../../../services/user-main.service';
+import { UserSettingService } from '../../../services/user-setting.service';
 
 @Component({
   selector: 'ac-user-roles',
@@ -8,12 +10,17 @@ import { Router } from '@angular/router';
 })
 export class UserRolesComponent implements OnInit {
 
-  model: '';
   disabled: '';
+  rolesData: any;
+  userRolesData: any;
   rolesArray: any = [];
   result: any = [];
   modelRoles: '';
-  constructor(private router: Router) { }
+  organization: string;
+  availablrRoles: string;
+
+  constructor(private router: Router, private userMainService: UserMainService,
+    private userSettingService: UserSettingService) { }
 
   orgList = [
     {
@@ -45,6 +52,7 @@ export class UserRolesComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.rolesData = this.userMainService.listData;
   }
   mySelectedRoles(mySelectedRoles: any) {
     if (mySelectedRoles != null) {
@@ -81,12 +89,21 @@ export class UserRolesComponent implements OnInit {
 
   }
   goToGroup() {
+    this.rolesCall();
+    this.userMainService.userRoles(this.userRolesData);
     this.router.navigate(['users/userGroups']);
   }
   backClick() {
+    this.userSettingService.rolesBackCall = true;
     this.router.navigate(['users/userContact']);
   }
   cancelClick() {
     this.router.navigate(['users']);
+  }
+
+  rolesCall() {
+    this.userRolesData = {
+      availablrRoles: this.availablrRoles
+    };
   }
 }
