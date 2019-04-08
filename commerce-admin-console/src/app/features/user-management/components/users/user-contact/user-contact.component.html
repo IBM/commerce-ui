@@ -16,41 +16,47 @@
             <ibm-icon-checkmark-outline16 class="icon-ckeckout"></ibm-icon-checkmark-outline16>
             <span class="text-margin">{{'MANAGE_USER.USER_CONTACT.ACCOUNT_INFORMATION' | translate}}</span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot account-dot"></span><span class="text-margin">{{'MANAGE_USER.USER_CONTACT.CONTACT_INFORMATION' | translate}}</span>
+            <span class="dot account-dot"></span><span class="text-weight">{{'MANAGE_USER.USER_CONTACT.CONTACT_INFORMATION' | translate}}</span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_CONTACT.ROLES' | translate}}</span>
+            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_CONTACT.ROLES' | translate}}
+                <span class="optional-text">{{'MANAGE_USER.USER_ACCOUNT.OPTIONAL' | translate}}</span>
+            </span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_CONTACT.GROUPS' | translate}}</span>
+            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_CONTACT.GROUPS' | translate}}
+                <span class="optional-text">{{'MANAGE_USER.USER_ACCOUNT.OPTIONAL' | translate}}</span>
+            </span>
             </div>
           </div>
           <div class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
               <div class="bx--col-sm-11 bx--col-md-11 inside-content">
-                  <div class="form-text">{{'MANAGE_USER.USER_CONTACT.TITLE_OPTIONAL' | translate}}</div>
+                  <div class="top-form-text">{{'MANAGE_USER.USER_CONTACT.TITLE_OPTIONAL' | translate}}</div>
                       <ibm-dropdown
                         placeholder="Select title"
                         [disabled]="disabled"
-                        [(ngModel)]="model"
+                        [(ngModel)]="personTitle"
                         value="content">
                         <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
 			                </ibm-dropdown><br/><br/>
                       <div class="bx--row">
                         <div class="bx--col-sm-6 bx--col-md-6">
                             <div class="form-text">{{'MANAGE_USER.USER_CONTACT.FIRST_NAME' | translate}}</div>
-                            <input ibmText class=" inputbx">
+                            <input ibmText class=" inputbx" [(ngModel)]="firstName">
                         </div>
                         <div class="bx--col-sm-6 bx--col-md-6">
                             <div class="form-text">{{'MANAGE_USER.USER_CONTACT.LAST_NAME' | translate}}</div>
-                            <input ibmText class=" inputbx">
+                            <input ibmText class=" inputbx" [(ngModel)]="lastName">
                         </div>
                       </div>
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.STREET_ADDRESS' | translate}}</div>
-                  <input ibmText class=" inputbx">
-                  <input ibmText class=" inputbx">
+                  <input ibmText class=" inputbx" [(ngModel)]="address1">
+                  <input ibmText class=" inputbx address2" [(ngModel)]="address2">
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.CITY' | translate}}</div>
-                  <input ibmText class=" inputbx">
+                  <input ibmText class=" inputbx" [(ngModel)]="city">
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
-                  <input ibmText class=" inputbx">
+                  <input ibmText class=" inputbx" [(ngModel)]="country">
+                  <div class="form-text">{{'MANAGE_USER.USER_CONTACT.ZIP_POSTAI_CODE' | translate}}</div>
+                  <input ibmText class=" inputbx" [(ngModel)]="zipCode">
               </div>
             </div>
             <div class="bx--row footer-content">

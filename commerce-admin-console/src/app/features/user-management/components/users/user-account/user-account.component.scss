@@ -31,15 +31,15 @@
     border: 1px solid blue;
   }
   .text-margin {
-    margin-left: 5px;
+    margin-left: 11px;
+    font-weight: 400;
   }
   .arrow-icon {
     display: block;
     margin: 10px 0px 10px -5px;
   }
-  .radio-icon {
-    //border: 1px solid blue;
-
+  .dropdown-margin {
+    margin-bottom: 23px;
   }
   .side-txt-margin {
     margin-left: 5px;
@@ -114,7 +114,11 @@
     width: 100%;
   }
   .form-text {
-    margin-bottom: 1%;
+    margin-bottom: 5px;
+    margin-top: 23px;
+  }
+  .top-form-text {
+    margin-bottom: 5px;
   }
   .password-show {
     float: right;
@@ -122,6 +126,8 @@
     width: 36px;
     position: relative;
     top: 6px;
+    color: #0f6ddf;
+    cursor: pointer;
   }
   .view-icon {
     font-size: 20px;
@@ -151,4 +157,15 @@
   }
   .right-content {
     padding-left: 1px;
+  }
+  .email-error {
+    color: red;
+  }
+  .optional-text {
+    font-weight: 300;
+    color: #808080;
+  }
+  .text-weight {
+    font-weight: 500;
+    margin-left: 11px;
   }
