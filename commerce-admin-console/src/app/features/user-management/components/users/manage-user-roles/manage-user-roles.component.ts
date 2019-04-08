@@ -2,51 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-manage-user-roles',
+  selector: 'ac-manage-user-roles',
   templateUrl: './manage-user-roles.component.html',
   styleUrls: ['./manage-user-roles.component.scss']
 })
 export class ManageUserRolesComponent implements OnInit {
-
-  constructor(private router: Router) { }
-
   model: '';
   disabled: '';
-
-  orgList = [
-    {
-      content: 'Organization A',
-      selected: false
-    },
-    {
-      content: 'Organization B',
-      selected: false,
-    }
-  ];
-  rolesList = [
-    {
-      content: 'Developer',
-      selected: true
-    },
-    {
-      content: 'Tester',
-      selected: false,
-    },
-    {
-      content: 'Architect',
-      selected: false,
-    },
-    {
-      content: 'Test Lead',
-      selected: false,
-    }
-  ];
+  rolesArray: any = [];
+  result: any = [];
+  modelRoles: '';
+  orgList: any;
+  rolesList: any;
+  constructor() { }
 
   ngOnInit() {
   }
-
-  saveRoles() {
-    this.router.navigate(['/users/manageGroups']);
-  }
-
+  saveRoles() {}
 }
