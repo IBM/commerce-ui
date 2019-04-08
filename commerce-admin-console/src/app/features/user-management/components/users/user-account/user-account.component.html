@@ -14,44 +14,62 @@
           <div class="bx--col-sm-4 bx--col-md-4 side-content">
             <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
             <!-- <ibm-icon-radio-button20 id="radio-icon" class="radio-icon"></ibm-icon-radio-button20><span class="text-margin">Account Information</span> -->
-            <span class="dot account-dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.ACCOUNT_INFORMATION' | translate}}</span>
+            <span class="dot account-dot"></span><span class="text-weight">{{'MANAGE_USER.USER_ACCOUNT.ACCOUNT_INFORMATION' | translate}}</span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
             <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.CONTACT_INFORMATION' | translate}}</span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.ROLES' | translate}}</span>
+            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.ROLES' | translate}}
+              <span class="optional-text">{{'MANAGE_USER.USER_ACCOUNT.OPTIONAL' | translate}}</span>
+            </span>
             <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.GROUPS' | translate}}</span>
+            <span class="dot"></span><span class="text-margin">{{'MANAGE_USER.USER_ACCOUNT.GROUPS' | translate}}
+                <span class="optional-text">{{'MANAGE_USER.USER_ACCOUNT.OPTIONAL' | translate}}</span>
+            </span>
             </div>
           </div>
           <div class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
               <div class="bx--col-sm-11 bx--col-md-11 inside-content">
-                  <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.LOGIN_ID' | translate}}</div>
-                  <input ibmText class=" inputbx">
+                  <div class="top-form-text">{{'MANAGE_USER.USER_ACCOUNT.LOGIN_ID' | translate}}</div>
+                  <input ibmText class=" inputbx" [(ngModel)]="logonId" maxlength="15">
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.EMAIL' | translate}}</div>
-                  <input ibmText class=" inputbx">
+                  <input ibmText class=" inputbx" [(ngModel)]="email1" (blur)="validateEmail(email1)">
+                  <span *ngIf="envalidEmail" class="email-error">{{'MANAGE_USER.USER_ACCOUNT.EMAIL_ERROR' | translate}}</span>
                   <div class="form-text">
                     <span>{{'MANAGE_USER.USER_ACCOUNT.PASSWORD' | translate}}</span>
-                    <span class="password-show">
-                      <ibm-icon-view16 class="view-icon"></ibm-icon-view16><span class="show-margin">{{'MANAGE_USER.USER_ACCOUNT.SHOW' | translate}}</span>
+                    <span class="password-show" *ngIf="showTextVisible" (click)="showHide()">
+                      <ibm-icon-view16 class="view-icon"></ibm-icon-view16>
+                      <span class="show-margin">{{'MANAGE_USER.USER_ACCOUNT.SHOW' | translate}}</span>
+                    </span>
+                    <span class="password-show" *ngIf="!showTextVisible" (click)="showHide()">
+                      <ibm-icon-view-off16 class="view-icon"></ibm-icon-view-off16>
+                      <span class="show-margin">{{'MANAGE_USER.USER_ACCOUNT.HIDE' | translate}}</span>
                     </span>
                     <div class="clr"></div>
                     <!-- <span class="password-show">
                       <ibm-icon-view-off16 class="view-icon"></ibm-icon-view-off16>Hide
                     </span> -->
                   </div>
-                    <div class="input-tikmark" *ngIf="showInput"> 
-                        <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
-                        <input ibmText class=" inputbx" type="password">
+                    <div class="input-tikmark" *ngIf="showTextVisible"> 
+                        <ibm-icon-checkmark-filled16 class="fa-tickmark" *ngIf="showTickboxVisible"></ibm-icon-checkmark-filled16>
+                        <input ibmText class=" inputbx" type="password" [(ngModel)]="password" (keyup)="validatePassword()">
                     </div>
-                      <div class="input-tikmark" *ngIf="!showInput">
-                          <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
-                          <input ibmText class=" inputbx" type="text">
-                      </div>
+                    <div class="input-tikmark" *ngIf="!showTextVisible">
+                        <ibm-icon-checkmark-filled16 class="fa-tickmark" *ngIf="showTickboxVisible"></ibm-icon-checkmark-filled16>
+                        <input ibmText class=" inputbx" type="text" [(ngModel)]="password" (keyup)="validatePassword()">
+                    </div>
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.ORGANIZATION' | translate}}</div>
-                  <input ibmText class=" inputbx">
+                  <input ibmText class=" inputbx" [(ngModel)]="organizationName">
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.ACCOUNT_POLICY' | translate}}</div>
-                  <input ibmText class=" inputbx">
+                  <div class="dropdown-margin">
+                      <ibm-dropdown
+                      placeholder="Select title"
+                      [disabled]="disabled"
+                      [(ngModel)]="policy"
+                      value="content">
+                      <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
+                    </ibm-dropdown>
+                  </div>
               </div>
             </div>
             <div class="bx--row footer-content">
