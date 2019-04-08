@@ -32,6 +32,7 @@
     background-color: #0f6ddf;
   }
   .text-margin {
+    font-weight: 400;
     margin-left: 11px;
   }
   .arrow-icon {
@@ -115,7 +116,11 @@
     width: 100%;
   }
   .form-text {
-    margin-bottom: 1%;
+    margin-bottom: 5px;
+    margin-top: 23px;
+  }
+  .top-form-text {
+    margin-bottom: 5px;
   }
   .password-show {
     float: right;
@@ -159,5 +164,19 @@
     margin-left: 20px;
   }
   .icon-ckeckout {
-    fill: blue;
+    fill: #0f6ddf;
+  }
+  .name-field {
+    margin-top: 23px;
+  }
+  .optional-text {
+    font-weight: 300;
+    color: #808080;
+  }
+  .text-weight {
+    font-weight: 500;
+    margin-left: 11px;
+  }
+  .address2 {
+    margin-top: 23px;
   }

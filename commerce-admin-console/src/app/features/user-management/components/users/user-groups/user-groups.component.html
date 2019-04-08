@@ -20,9 +20,13 @@
               <span class="text-margin">{{'MANAGE_USER.USER_GROUPS.CONTACT_INFORMATION'| translate}}</span>
               <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
               <ibm-icon-checkmark-outline16 class="icon-ckeckout"></ibm-icon-checkmark-outline16>
-              <span class="text-margin">{{'MANAGE_USER.USER_GROUPS.ROLES'| translate}}</span>
+              <span class="text-margin">{{'MANAGE_USER.USER_GROUPS.ROLES'| translate}}
+                  <span class="optional-text">{{'MANAGE_USER.USER_ACCOUNT.OPTIONAL' | translate}}</span>
+              </span>
               <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
-              <span class="dot account-dot"></span><span class="text-margin">{{'MANAGE_USER.USER_GROUPS.GROUPS'| translate}}</span>
+              <span class="dot account-dot"></span><span class="text-weight">{{'MANAGE_USER.USER_GROUPS.GROUPS'| translate}}
+                  <span class="optional-text">{{'MANAGE_USER.USER_ACCOUNT.OPTIONAL' | translate}}</span>
+              </span>
             </div>
           </div>
           <div class="bx--col-sm-8 bx--col-md-8 right-content">
@@ -38,11 +42,11 @@
                                 <div class="aval-grp-txt">
                                     <span>{{'MANAGE_USER.USER_GROUPS.INCLUDE_TAB.AVAILABLE_GROUPS'| translate}}</span>
                                 </div>
-                                <input ibmText class="inputbx" placeholder="Find a group"><br/><br/>
+                                <input ibmText class="inputbx" placeholder="Find a group" [(ngModel)]="searchText">
                                 <ul>
-                                  <li *ngFor="let groupList of groupListData">
+                                  <li *ngFor="let groupList of groupListData | filter:searchText" class="list-content">
                                       <ibm-checkbox
-                                      (change)="onChange($event)">
+                                      (change)="onChangeCheckbox(groupList,$event)">
                                       {{groupList.groupName}}
                                     </ibm-checkbox>
                                   </li>
@@ -62,9 +66,9 @@
                                 <div class="aval-grp-txt">
                                     <span>{{'MANAGE_USER.USER_GROUPS.EXCLUDE_TAB.AVAILABLE_GROUPS'| translate}}</span>
                                 </div>
-                                <input ibmText class="inputbx" placeholder="Find a group"><br/><br/>
+                                <input ibmText class="inputbx" placeholder="Find a group" [(ngModel)]="searchText">
                                 <ul>
-                                  <li *ngFor="let groupList of groupListData">
+                                  <li *ngFor="let groupList of groupListData | filter:searchText" class="list-content">
                                       <ibm-checkbox
                                       (change)="onChange($event)">
                                       {{groupList.groupName}}
