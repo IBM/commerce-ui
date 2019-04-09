@@ -65,15 +65,42 @@ export class UserListComponent implements OnInit {
     const fullPage = [];
 
     for (
+<<<<<<< HEAD
       let i = (page - 1) * this.model.pageLength;
       i < page * this.model.pageLength && i < this.model.totalDataLength;
       i++
     ) {
       fullPage.push(line(i + 1));
+=======
+     let i = (page - 1) * this.model.pageLength;
+     i < page * this.model.pageLength && i < this.model.totalDataLength;
+     i++
+    ) {
+     fullPage.push(line(i + 1));
+>>>>>>> added organizations components
     }
 
     return new Promise(resolve => {
       setTimeout(() => resolve(fullPage), 150);
+<<<<<<< HEAD
+=======
+      this.usersService.UsersGetManageableUsers({
+        offset:(page-1)*this.model.pageLength,
+        limit:this.model.pageLength
+      }).subscribe((body: any) => {
+        this.model.totalDataLength = body.count;
+        let data = [];
+        for (let i = 0; i < body.items.length; i++) {
+          let item = body.items[i];
+          let logonId = item.logonId;
+          let firstName = item.address ? item.address.firstName : '';
+          let lastName = item.address ? item.address.lastName : '';
+          let organizationName = item.organizationName;
+          data.push([logonId, firstName, lastName, organizationName, '', '']);
+        }
+        resolve(data);
+      });
+>>>>>>> added organizations components
     });
   }
 
