@@ -12,12 +12,19 @@ import { ComponentsModule } from '../../components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { OrganizationsRoutingModule } from './organizations-routing.module';
-import { OrganizationsMainService } from './organizations.main.service';
+import { OrganizationMainService } from './organization.main.service';
 import { ListOrganizationsComponent } from './list-organizations/list-organizations.component';
 import { FindOrganizationsComponent } from './find-organizations/find-organizations.component';
 import { CreateOrganizationComponent } from './create-organization/create-organization.component';
 import { EditOrganizationComponent } from './edit-organization/edit-organization.component';
 import { OrganizationFormComponent } from './organization-form/organization-form.component';
+import { OrganizationListComponent } from './components/organization-list/organization-list.component';
+import { HeaderComponent } from './components/header/header.component';
+import { Settings16Module } from '@carbon/icons-angular/lib/settings/16';
+import { Filter16Module } from '@carbon/icons-angular/lib/filter/16';
+import { Menu32Module } from '@carbon/icons-angular/lib/menu/32';
+
+
 
 @NgModule({
 	imports: [
@@ -35,17 +42,22 @@ import { OrganizationFormComponent } from './organization-form/organization-form
 		ComponentsModule,
 		OrganizationsRoutingModule,
 		ComponentsModule,
-		TranslateModule
+		TranslateModule,
+		Settings16Module,
+		Filter16Module,
+		Menu32Module
 	],
 	declarations: [
 		ListOrganizationsComponent,
 		FindOrganizationsComponent,
 		CreateOrganizationComponent,
 		EditOrganizationComponent,
-		OrganizationFormComponent
+		OrganizationFormComponent,
+		OrganizationListComponent,
+    HeaderComponent
 	],
 	providers: [
-		OrganizationsMainService
+		OrganizationMainService
 	]
 })
 export class OrganizationsModule {}
