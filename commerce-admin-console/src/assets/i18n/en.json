@@ -751,6 +751,135 @@
             "TITLE":"IBM Watson Commerce",
             "ORGANIZATIONS":"Organisations",
             "NEW_BUTTON":"New"  
+        },
+        "ORGANIZATION_DETAILS":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "NEW_ORGANIZATION":"New organization",
+            "ORGANISATION_DETAILS_HEADING":"Organization details",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles",
+            "APPROVALS":"Approvals",
+            "ORGANIZATION_NAME":"Organization name",
+            "DESCRIPTION_OPTIONAL":"Description (optional)",
+            "TYPE":"Type",
+            "PARENT_ORGANIZATION":"Parent organization",
+            "CANCEL":"Cancel",
+            "NEXT":"Next"
+        },
+        "ORGANIZATION_CONTACT":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "NEW_ORGANIZATION":"New organization",
+            "ORGANISATION_DETAILS_HEADING":"Organization details",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles",
+            "APPROVALS":"Approvals",
+            "CONTACT_NAME":"Contact name",
+            "CONTACT_EMAIL":"Contact email",
+            "STREET_ADDRESS":"Street address",
+            "CITY":"City",
+            "ADDRESS":"State / Province / Region",
+            "CANCEL":"Cancel",
+            "BACK":"Back",
+            "NEXT":"Next"
+        },
+        "ORGANIZATION_ROLES":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "NEW_ORGANIZATION":"New organization",
+            "ORGANISATION_DETAILS_HEADING":"Organization details",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles",
+            "APPROVALS":"Approvals",
+            "SELECT_ROLES":"Select the roles that are available for the organization",
+            "AVAILABLE_ROLES":"Available Roles",
+            "ITEMS":"23 items",
+            "CANCEL":"Cancel",
+            "BACK":"Back",
+            "NEXT":"Next"
+        },
+        "ORGANISATION_APPROVALS":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "NEW_ORGANIZATION":"New organization",
+            "ORGANISATION_DETAILS_HEADING":"Organization details",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles",
+            "APPROVALS":"Approvals",
+            "SELECT_APPROVALS":"Select the approval types that are available for the organization",
+            "AVAILABLE_APPROVALS":"Available approvals",
+            "ITEMS":"23 items",
+            "CANCEL":"Cancel",
+            "BACK":"Back",
+            "NEXT":"Next"
+        },
+        "MANAGE_ORGANIZATION_DETAILS":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "EDIT_ORGANIZATION":"Edit organization",
+            "ACCOUNT_INFORMATION":"Account information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles",
+            "APPROVALS":"Approvals",
+            "ORGANIZATION_NAME":"Organization name",
+            "DESCRIPTION_OPTIONAL":"Description (optional)",
+            "TYPE":"Type",
+            "PARENT_ORGANIZATION":"Parent organization",
+            "CANCEL":"Cancel",
+            "SAVE":"Save"
+        },
+        "MANAGE_ORGANIZATION_CONTACT":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "EDIT_ORGANIZATION":"Edit organization",
+            "ACCOUNT_INFORMATION":"Account information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles",
+            "APPROVALS":"Approvals",
+            "CONTACT_NAME":"Contact name",
+            "CONTACT_EMAIL":"Contact email",
+            "STREET_ADDRESS":"Street address",
+            "CITY":"City",
+            "ADDRESS":"State / Province / Region",
+            "CANCEL":"Cancel",
+            "SAVE":"Save"
+        },
+        "MANAGE_ORGANIZATION_ROLES":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "EDIT_ORGANIZATION":"Edit organization",
+            "ACCOUNT_INFORMATION":"Account information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles",
+            "APPROVALS":"Approvals",
+            "SELECT_ROLES":"Select the roles that are available for the organization",
+            "AVAILABLE_ROLES":"Available Roles",
+            "ITEMS":"23 items",
+            "CANCEL":"Cancel",
+            "SAVE":"Save"
+        },
+        "MANAGE_ORGANIZATION_APPROVALS":
+        {
+            "TITLE":"IBM Watson Commerce",
+            "ORGANIZATIONS":"Organisations",
+            "EDIT_ORGANIZATION":"Edit organization",
+            "ACCOUNT_INFORMATION":"Account information",
+            "CONTACT_INFORMATION":"Contact Information",
+            "ROLES":"Roles",
+            "APPROVALS":"Approvals",
+            "SELECT_APPROVALS":"Select the approval types that are available for the organization",
+            "AVAILABLE_APPROVALS":"Available approvals",
+            "ITEMS":"23 items",
+            "CANCEL":"Cancel",
+            "SAVE":"Save"
         }
     }
 

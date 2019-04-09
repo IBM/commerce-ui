@@ -1,0 +1,65 @@
+<div class="header">
+  <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
+  <span class="ibm-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.TITLE' | translate}}</span>
+</div>
+<div class="border-div">
+  <div class="users">
+    <span>{{'MANAGE_USER.ORGANIZATION_CONTACT.ORGANIZATIONS' | translate}}</span>
+    <span class="icon-top">
+      <ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16>
+    </span>
+    <span><strong class="new-user">{{'MANAGE_USER.ORGANIZATION_CONTACT.NEW_ORGANIZATION' | translate}}</strong></span>
+    <div class="clr"></div>
+  </div>
+
+   <div class="bx--row header-border">
+    <div class="bx--col-sm-4 bx--col-md-4 side-content">
+      <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
+        <ibm-icon-checkmark-outline16 class="icon-ckeckout"></ibm-icon-checkmark-outline16>
+        <span class="text-margin">{{'MANAGE_USER.ORGANIZATION_CONTACT.ORGANISATION_DETAILS_HEADING' | translate}}</span>
+        <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+        <span class="dot account-dot"></span>
+        <span class="text-margin">{{'MANAGE_USER.ORGANIZATION_CONTACT.CONTACT_INFORMATION' | translate}}</span>
+        <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+        <span class="dot"></span><span
+          class="text-margin">{{'MANAGE_USER.ORGANIZATION_CONTACT.ROLES' | translate}}</span>
+        <ibm-icon-arrow-down16 id="table-icon" class="arrow-icon"></ibm-icon-arrow-down16>
+        <span class="dot"></span><span
+          class="text-margin">{{'MANAGE_USER.ORGANIZATION_CONTACT.APPROVALS' | translate}}</span>
+      </div>
+    </div>
+    <div class="bx--col-sm-8 bx--col-md-8 right-content">
+      <div class="bx--row main-content">
+        <div class="bx--col-sm-11 bx--col-md-11 inside-content">
+          <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.CONTACT_NAME' | translate}}</div>
+          <input ibmText class=" inputbx">
+          <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.CONTACT_EMAIL' | translate}}</div>
+          <input ibmText class=" inputbx">
+
+          <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.STREET_ADDRESS' | translate}}</div>
+          <input ibmText class=" inputbx" placeholder="Strett and number, P.O. box, c/o">
+          <input ibmText class=" inputbx" placeholder="Apartment, suite, unit, building, floor, etc.">
+          <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.CITY' | translate}}</div>
+          <input ibmText class=" inputbx">
+          <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.ADDRESS' | translate}}</div>
+          <input ibmText class=" inputbx">
+        </div>
+      </div>
+      <div class="bx--row footer-content">
+        <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
+          <div class="bx--row">
+            <div class="bx--col-sm-2 bx--col-md-2"></div>
+            <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button"
+                >{{'MANAGE_USER.ORGANIZATION_CONTACT.CANCEL' | translate}}</button>
+              <button ibmButton size="lg" id="save-preview" class="back-button"
+                >{{'MANAGE_USER.ORGANIZATION_CONTACT.BACK' | translate}}</button>
+              <button ibmButton size="lg" id="save-preview" class="next-button"
+                >{{'MANAGE_USER.ORGANIZATION_CONTACT.NEXT' | translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
