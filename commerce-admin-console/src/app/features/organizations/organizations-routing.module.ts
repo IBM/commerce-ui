@@ -5,11 +5,12 @@ import { ListOrganizationsComponent } from './list-organizations/list-organizati
 import { FindOrganizationsComponent } from './find-organizations/find-organizations.component';
 import { CreateOrganizationComponent } from './create-organization/create-organization.component';
 import { EditOrganizationComponent } from './edit-organization/edit-organization.component';
+import { OrganizationListComponent } from './components/organization-list/organization-list.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: ListOrganizationsComponent
+		component: OrganizationListComponent
 	},
 	{
 		path: 'find',
