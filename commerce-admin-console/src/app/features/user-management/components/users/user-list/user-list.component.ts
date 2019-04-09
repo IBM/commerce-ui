@@ -56,20 +56,20 @@ export class UserListComponent implements OnInit {
   }
 
   getPage(page: number) {
-    //const line = line => [`dave_evans`, `Dave`,`Evans`,`Organization A`,`Site Administrator`,``];
+    const line = line => [`dave_evans`, `Dave`,`Evans`,`Organization A`,`Site Administrator`,``];
 
-    //const fullPage = [];
+    const fullPage = [];
 
-    //for (
-    //  let i = (page - 1) * this.model.pageLength;
-    //  i < page * this.model.pageLength && i < this.model.totalDataLength;
-    //  i++
-    //) {
-    //  fullPage.push(line(i + 1));
-    //}
+    for (
+     let i = (page - 1) * this.model.pageLength;
+     i < page * this.model.pageLength && i < this.model.totalDataLength;
+     i++
+    ) {
+     fullPage.push(line(i + 1));
+    }
 
     return new Promise(resolve => {
-      //setTimeout(() => resolve(fullPage), 150);
+      setTimeout(() => resolve(fullPage), 150);
       this.usersService.UsersGetManageableUsers({
         offset:(page-1)*this.model.pageLength,
         limit:this.model.pageLength
