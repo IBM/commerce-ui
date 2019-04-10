@@ -11888,7 +11888,8 @@
                     "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
                     "properties": {
                       "id": {
-                        "type": "string",
+                        "type": "integer",
+                        "format": "int64",
                         "description": "The unique numeric ID for identifying the address."
                       },
                       "address1": {
@@ -11974,6 +11975,7 @@
                       },
                       "memberId": {
                         "type": "integer",
+                        "format": "int64",
                         "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                       },
                       "middleName": {
@@ -12551,7 +12553,8 @@
               "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
               "properties": {
                 "id": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the address."
                 },
                 "address1": {
@@ -12637,6 +12640,7 @@
                 },
                 "memberId": {
                   "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                 },
                 "middleName": {
@@ -12755,7 +12759,8 @@
               "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
               "properties": {
                 "id": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the address."
                 },
                 "address1": {
@@ -12841,6 +12846,7 @@
                 },
                 "memberId": {
                   "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                 },
                 "middleName": {
@@ -13590,7 +13596,8 @@
               "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
               "properties": {
                 "id": {
-                  "type": "string",
+                  "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the address."
                 },
                 "address1": {
@@ -13676,6 +13683,7 @@
                 },
                 "memberId": {
                   "type": "integer",
+                  "format": "int64",
                   "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
                 },
                 "middleName": {

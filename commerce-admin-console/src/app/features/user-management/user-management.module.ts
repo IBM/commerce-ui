@@ -48,6 +48,8 @@ import { OrganizationListComponent } from './components/organizations/organizati
     PaginationModule,
     DialogModule,
     ModalModule,
+    Search16Module,
+    Add16Module,
     FormsModule,
     TranslateModule,
     Search16Module,
