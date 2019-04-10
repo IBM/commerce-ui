@@ -120,4 +120,30 @@ setUserData() {
    };
   }
 
+  id: number;
+updateUser(id: number): Promise<Object> {
+  this.id=1005;
+  return new Promise((resolve, reject) => {
+    this.userService.UsersFindByUserId(1005
+    ).subscribe(response => {
+      resolve(response);
+      this.resultData = response;
+      console.log('service', this.resultData);
+    },  error => {
+      reject();
+    });
+  });
+}
+
+  manageuserAccount(data) {
+    this.userAccountData = {
+      'logonId': data.logonId,
+      'email1': data.email1,
+      'password': data.password,
+      'passwordVerify': data.passwordVerify,
+      'organizationName': data.organizationName,
+      'policy': data.policy
+    };
+  }
+
 }
