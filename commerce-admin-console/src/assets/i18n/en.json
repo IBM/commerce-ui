@@ -574,6 +574,7 @@
         }
         
     },
+
     "MANAGE_USER":
     {
         "USER_LANDING_PAGE":
@@ -595,13 +596,15 @@
             "LOGIN_ID":"Login ID",
             "EMAIL":"Email",
             "PASSWORD":"Password",
+            "CONFIRM_PASSWORD": "Confirm password",
             "SHOW":"Show",
             "HIDE":"Hide",
             "ORGANIZATION":"Organization",
             "ACCOUNT_POLICY":"Account Policy",
             "CANCEL":"Cancel",
             "NEXT":"Next",
-            "EMAIL_ERROR": "Please enter valid Email address"
+            "EMAIL_ERROR": "Please enter valid Email address",
+            "INPUT_ERROR": "Please enter all mandatory field."
         },
         "USER_CONTACT":
         {
@@ -622,7 +625,8 @@
             "ZIP_POSTAI_CODE":"Zip / Postal code",
             "CANCEL":"Cancel",
             "BACK":"Back",
-            "NEXT":"Next"
+            "NEXT":"Next",
+            "INPUT_ERROR": "Please enter all mandatory field."
         },
         "USER_ROLES":
         {
