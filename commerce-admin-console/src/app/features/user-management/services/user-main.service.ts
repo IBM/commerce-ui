@@ -10,6 +10,7 @@ export class UserMainService {
   userAccountData: any;
   userContactData: any;
   userRolesData: any;
+  listResult: any;
 
   constructor( private userService: UsersService) { }
 
@@ -30,6 +31,20 @@ export class UserMainService {
   //     });
   //   });
   // }
+
+userList(): Promise<object> {
+  return new Promise((resolve, reject) => {
+    this.userService.UsersGetManageableUsers({
+    }).
+    subscribe(response => {
+      resolve(response);
+      this.listResult  = response;
+      console.log('service', response);
+    },  error => {
+      reject();
+    });
+  });
+}
 
   createUser(): Promise<Object> {
     this.setUserData();
