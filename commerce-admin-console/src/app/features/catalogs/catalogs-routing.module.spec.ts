@@ -52,32 +52,32 @@ fdescribe("Router: Catalog", () => {
     // fixture = TestBed.createComponent(CatalogsRoutingModule);
     router.initialNavigation();
   });
-  it("fakeAsync works", fakeAsync(() => {
-    let promise = new Promise(resolve => {
-      setTimeout(resolve, 10);
-    });
-    let done = false;
-    promise.then(() => (done = true));
-    tick(50);
-    expect(done).toBeTruthy();
-  }));
+  // it("fakeAsync works", fakeAsync(() => {
+  //   let promise = new Promise(resolve => {
+  //     setTimeout(resolve, 10);
+  //   });
+  //   let done = false;
+  //   promise.then(() => (done = true));
+  //   tick(50);
+  //   expect(done).toBeTruthy();
+  // }));
 
-  it('navigate to "" redirects you to /catalog', fakeAsync(() => {
-    router.navigate([""]).then(() => {
-      tick(50);
-      expect(location.path()).toBe("/");
-    });
-  }));
-  it('navigate to "masterCategory" takes you to /masterCategory', fakeAsync(() => {
-    router.navigate(["/masterCategory"]).then(() => {
-      tick(50);
-      expect(location.path()).toBe("/masterCategory");
-    });
-  }));
-  it('navigate to "masterCategory" takes you to /masterCategory', fakeAsync(() => {
-    router.navigate(["/searchResult"]).then(() => {
-      tick(50);
-      expect(location.path()).toBe("/searchResult");
-    });
-  }));
+  // it('navigate to "" redirects you to /catalog', fakeAsync(() => {
+  //   router.navigate([""]).then(() => {
+  //     tick(50);
+  //     expect(location.path()).toBe("/");
+  //   });
+  // }));
+  // it('navigate to "masterCategory" takes you to /masterCategory', fakeAsync(() => {
+  //   router.navigate(["/masterCategory"]).then(() => {
+  //     tick(50);
+  //     expect(location.path()).toBe("/masterCategory");
+  //   });
+  // }));
+  // it('navigate to "masterCategory" takes you to /masterCategory', fakeAsync(() => {
+  //   router.navigate(["/searchResult"]).then(() => {
+  //     tick(50);
+  //     expect(location.path()).toBe("/searchResult");
+  //   });
+  // }));
 });

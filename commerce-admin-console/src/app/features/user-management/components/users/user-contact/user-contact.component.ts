@@ -20,6 +20,8 @@ export class UserContactComponent implements OnInit {
   city: string;
   country: string;
   zipCode: string;
+  allInputValidated: boolean;
+  inputFieldError: boolean;
 
   items = [
     {
@@ -54,9 +56,12 @@ export class UserContactComponent implements OnInit {
   }
 
   goToRoles() {
-    this.contactCall();
-    this.userMainService.userContact(this.userContactData);
-    this.router.navigate(['users/userRoles']);
+    this.validateInputField();
+      if (this.allInputValidated) {
+        this.contactCall();
+        this.userMainService.userContact(this.userContactData);
+        this.router.navigate(['users/userRoles']);
+      }
     }
     backClick() {
       this.userSettingService.contactBackClick = true;
@@ -77,5 +82,16 @@ export class UserContactComponent implements OnInit {
       'country': this.country,
       'zipCode': this.zipCode
     };
+  }
+  validateInputField() {
+    if (this.firstName !== '' && this.firstName !== undefined && this.lastName !== '' && this.lastName !== undefined &&
+     this.address1 !== '' && this.address1 !== undefined && this.address2 !== '' && this.address2 !== undefined && this.city !== undefined
+    && this.city !== '' && this.country !== '' && this.country !== undefined && this.zipCode !== '' && this.zipCode !== undefined) {
+    this.allInputValidated = true;
+    this.inputFieldError = false;
+    } else {
+      this.allInputValidated = false;
+      this.inputFieldError = true;
+    }
   }
 }

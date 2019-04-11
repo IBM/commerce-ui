@@ -6,12 +6,12 @@ import { Routes, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateLoader, TranslateModule, TranslateFakeLoader, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../../shared/shared.module'
-import { Location} from "@angular/common";
-import { OrganizationsService } from '../../../rest/services/organization.service';
+import { Location} from '@angular/common';
 import { OrganizationsMainService } from '../organizations.main.service';
 import { ApiConfiguration } from '../../../rest/api-configuration';
 import { IframeService } from '../../../services/iframe.service';
 import { AuthService } from '../../../services/auth.service';
+import { OrganizationsService } from '../../../rest/services/organizations.service';
 
 const routes: Routes = [
   {path: 'organizations', component: ListOrganizationsComponent}
@@ -26,11 +26,11 @@ fdescribe('CreateOrganizationComponent', () => {
   let fixture: ComponentFixture<CreateOrganizationComponent>;
   let router: Router;
   let location: Location;
-  let orgMainService : OrganizationsMainService;
+  let orgMainService: OrganizationsMainService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ 
+      imports: [
         TranslateModule.forChild({
           loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
         }),

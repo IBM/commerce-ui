@@ -27,25 +27,25 @@ fdescribe('NewCatalogUploadComponent', () => {
     fixture.detectChanges();
     // const routerSpy = createRouterSpy();
   });
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-  it('should have <h3> with "New Catalog Upload"', () => {
-    const Element: HTMLElement = fixture.nativeElement;
-    const selector = Element.querySelector('h3');
-    expect(selector.textContent).toEqual('CATALOGS.NEW_CATALOG_UPLOAD.HEADER');
-    // expect('CATALOGS.SEARCH_RESULT.HEADER').toEqual('Search Results - Catagories')
-  });
-  it('before selection targetcatalog and charecterset should be null', () => {
-    expect(component.targetCatalog).toContain('');
-    expect(component.charecterSet).toContain('');
-  });
-  it('before selection filename should be undefined', () => {
-  expect(component.filename[0]).toBeUndefined;
-  });
-  it('before selection size should be undefined', () => {
-    expect(component.size).toBeUndefined; 
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
+  // it('should have <h3> with "New Catalog Upload"', () => {
+  //   const Element: HTMLElement = fixture.nativeElement;
+  //   const selector = Element.querySelector('h3');
+  //   expect(selector.textContent).toEqual('CATALOGS.NEW_CATALOG_UPLOAD.HEADER');
+  //   // expect('CATALOGS.SEARCH_RESULT.HEADER').toEqual('Search Results - Catagories')
+  // });
+  // it('before selection targetcatalog and charecterset should be null', () => {
+  //   expect(component.targetCatalog).toContain('');
+  //   expect(component.charecterSet).toContain('');
+  // });
+  // it('before selection filename should be undefined', () => {
+  // expect(component.filename[0]).toBeUndefined;
+  // });
+  // it('before selection size should be undefined', () => {
+  //   expect(component.size).toBeUndefined; 
+  // });
   // it('validating save should be disabled', () => {
   // });
   // it('cancel btn', fakeAsync(() => {
