@@ -24,6 +24,7 @@ export class UserAccountComponent implements OnInit {
   envalidEmail: boolean;
   showTextVisible = true;
   showTickboxVisible: boolean;
+  inputFieldError: boolean;
 
 
   items = [
@@ -54,15 +55,16 @@ export class UserAccountComponent implements OnInit {
     this.logonId = this.accountData.logonId;
     this.email1 = this.accountData.email1;
     this.password = this.accountData.password;
-    this.passwordVerify = this.accountData.password;
+    this.passwordVerify = this.accountData.passwordVerify;
     this.organizationName = this.accountData.organizationName;
     this.policy = this.accountData.policy;
   }
 
   goToContact() {
-    this.accountCall();
     this.validateInputField();
-    if (this.validateInputField && !this.envalidEmail) {
+    this.validatePassword();
+    if (this.inputFieldValideted && !this.envalidEmail && this.showTickboxVisible) {
+      this.accountCall();
       this.router.navigate(['/users/userContact']);
       this.userMainService.useraccount(this.userAccountData);
     }
@@ -76,7 +78,7 @@ accountCall() {
     'logonId': this.logonId,
     'email1': this.email1,
     'password': this.password,
-    'passwordVerify': this.password,
+    'passwordVerify': this.passwordVerify,
     'organizationName': this.organizationName,
     'policy': this.policy
   };
@@ -91,11 +93,14 @@ validateEmail(email) {
   }
 }
 validateInputField() {
-  if (this.logonId !== '' && this.email1 !== '' && this.password !== '' && this.passwordVerify !== ''
-  && this.organizationName !== '' && this.policy !== '') {
+  if (this.logonId !== '' && this.logonId !== undefined && this.email1 !== '' && this.email1 !== undefined
+   && this.password !== '' && this.password !== undefined && this.passwordVerify !== '' && this.passwordVerify !== undefined
+  && this.organizationName !== '' && this.organizationName !== undefined && this.policy !== '' && this.policy !== undefined) {
     this.inputFieldValideted = true;
+    this.inputFieldError = false;
   } else {
     this.inputFieldValideted = false;
+    this.inputFieldError = true;
   }
 }
 validatePassword() {

@@ -35,7 +35,7 @@ export class UserMainService {
     this.setUserData();
     console.log(this.listData);
     return new Promise((resolve, reject) => {
-      this.userService.UsersCreateUser(this.listData,
+      this.userService.UsersCreateUserResponse(this.listData,
       ).subscribe(response => {
         resolve(response);
         this.resultData = response;

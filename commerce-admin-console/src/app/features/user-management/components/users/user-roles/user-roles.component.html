@@ -40,7 +40,7 @@
                   placeholder="Select title"
                   [disabled]="disabled"
                   [(ngModel)]="organization"
-                  value="content">
+                  value="content" id="organizationName" ngDefaultControl>
                   <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                 </ibm-dropdown>
                 <div class="form-text select-field">{{'MANAGE_USER.USER_ROLES.AVAILABLE_ROLES'| translate}}</div>
@@ -48,7 +48,7 @@
                   placeholder="Select title"
                   [disabled]="disabled"
                   [(ngModel)]="availablrRoles"
-                  value="content" (click)="mySelectedRoles(availablrRoles)">
+                  value="content" (click)="mySelectedRoles(availablrRoles)" id="rolesList" ngDefaultControl>
                   <ibm-dropdown-list [items]="rolesList"></ibm-dropdown-list>
                 </ibm-dropdown>
                 <div class="roles-margin">
@@ -76,4 +76,3 @@
           </div>
         </div>
   </div>
-  
