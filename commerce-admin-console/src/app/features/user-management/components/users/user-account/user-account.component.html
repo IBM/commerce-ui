@@ -31,12 +31,14 @@
             <div class="bx--row main-content">
               <div class="bx--col-sm-11 bx--col-md-11 inside-content">
                   <div class="top-form-text">{{'MANAGE_USER.USER_ACCOUNT.LOGIN_ID' | translate}}</div>
-                  <input ibmText class=" inputbx" [(ngModel)]="logonId" maxlength="15">
+                  <input ibmText class=" inputbx" [(ngModel)]="logonId" maxlength="15" id="logonid" ngDefaultControl>
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.EMAIL' | translate}}</div>
-                  <input ibmText class=" inputbx" [(ngModel)]="email1" (blur)="validateEmail(email1)">
-                  <span *ngIf="envalidEmail" class="email-error">{{'MANAGE_USER.USER_ACCOUNT.EMAIL_ERROR' | translate}}</span>
+                  <input ibmText class=" inputbx" [(ngModel)]="email1" (blur)="validateEmail(email1)" id="email" ngDefaultControl>
+                  <span *ngIf="envalidEmail" class="error-msg">{{'MANAGE_USER.USER_ACCOUNT.EMAIL_ERROR' | translate}}</span>
+                  <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.PASSWORD' | translate}}</div>
+                  <input ibmText class=" inputbx" [(ngModel)]="password" id="password" id="password" ngDefaultControl>
                   <div class="form-text">
-                    <span>{{'MANAGE_USER.USER_ACCOUNT.PASSWORD' | translate}}</span>
+                    <span>{{'MANAGE_USER.USER_ACCOUNT.CONFIRM_PASSWORD' | translate}}</span>
                     <span class="password-show" *ngIf="showTextVisible" (click)="showHide()">
                       <ibm-icon-view16 class="view-icon"></ibm-icon-view16>
                       <span class="show-margin">{{'MANAGE_USER.USER_ACCOUNT.SHOW' | translate}}</span>
@@ -46,27 +48,24 @@
                       <span class="show-margin">{{'MANAGE_USER.USER_ACCOUNT.HIDE' | translate}}</span>
                     </span>
                     <div class="clr"></div>
-                    <!-- <span class="password-show">
-                      <ibm-icon-view-off16 class="view-icon"></ibm-icon-view-off16>Hide
-                    </span> -->
                   </div>
                     <div class="input-tikmark" *ngIf="showTextVisible"> 
                         <ibm-icon-checkmark-filled16 class="fa-tickmark" *ngIf="showTickboxVisible"></ibm-icon-checkmark-filled16>
-                        <input ibmText class=" inputbx" type="password" [(ngModel)]="password" (keyup)="validatePassword()">
+                        <input ibmText class=" inputbx" type="password" [(ngModel)]="passwordVerify" (keyup)="validatePassword()" id="passwordVerify" ngDefaultControl>
                     </div>
                     <div class="input-tikmark" *ngIf="!showTextVisible">
                         <ibm-icon-checkmark-filled16 class="fa-tickmark" *ngIf="showTickboxVisible"></ibm-icon-checkmark-filled16>
-                        <input ibmText class=" inputbx" type="text" [(ngModel)]="password" (keyup)="validatePassword()">
+                        <input ibmText class=" inputbx" type="text" [(ngModel)]="passwordVerify" (keyup)="validatePassword()" id="passwordVerify1" ngDefaultControl>
                     </div>
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.ORGANIZATION' | translate}}</div>
-                  <input ibmText class=" inputbx" [(ngModel)]="organizationName">
+                  <input ibmText class=" inputbx" [(ngModel)]="organizationName" id="organization" ngDefaultControl>
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.ACCOUNT_POLICY' | translate}}</div>
                   <div class="dropdown-margin">
                       <ibm-dropdown
                       placeholder="Select title"
                       [disabled]="disabled"
                       [(ngModel)]="policy"
-                      value="content">
+                      value="content" id="accountPolicy" ngDefaultControl>
                       <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
                     </ibm-dropdown>
                   </div>
@@ -81,6 +80,7 @@
                       <button ibmButton size="lg" id="save-preview" class="next-button" (click)="goToContact()">{{'MANAGE_USER.USER_ACCOUNT.NEXT' | translate}}</button>
                     </div>
                   </div>
+                  <span *ngIf="inputFieldError" class="input-error">{{'MANAGE_USER.USER_CONTACT.INPUT_ERROR' | translate}}</span>
                 </div>
               </div>
           </div>

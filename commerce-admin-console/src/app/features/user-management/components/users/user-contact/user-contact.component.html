@@ -35,28 +35,28 @@
                         placeholder="Select title"
                         [disabled]="disabled"
                         [(ngModel)]="personTitle"
-                        value="content">
+                        value="content" id="title" ngDefaultControl>
                         <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
 			                </ibm-dropdown>
                       <div class="bx--row name-field">
                         <div class="bx--col-sm-6 bx--col-md-6">
                             <div class="form-text">{{'MANAGE_USER.USER_CONTACT.FIRST_NAME' | translate}}</div>
-                            <input ibmText class=" inputbx" [(ngModel)]="firstName">
+                            <input ibmText class=" inputbx" [(ngModel)]="firstName" id="firstName" ngDefaultControl>
                         </div>
                         <div class="bx--col-sm-6 bx--col-md-6">
                             <div class="form-text">{{'MANAGE_USER.USER_CONTACT.LAST_NAME' | translate}}</div>
-                            <input ibmText class=" inputbx" [(ngModel)]="lastName">
+                            <input ibmText class=" inputbx" [(ngModel)]="lastName" id="lastName" ngDefaultControl>
                         </div>
                       </div>
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.STREET_ADDRESS' | translate}}</div>
-                  <input ibmText class=" inputbx" [(ngModel)]="address1">
-                  <input ibmText class=" inputbx address2" [(ngModel)]="address2">
+                  <input ibmText class=" inputbx" [(ngModel)]="address1" id="address1" ngDefaultControl>
+                  <input ibmText class=" inputbx address2" [(ngModel)]="address2" id="address2" ngDefaultControl>
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.CITY' | translate}}</div>
-                  <input ibmText class=" inputbx" [(ngModel)]="city">
+                  <input ibmText class=" inputbx" [(ngModel)]="city" id="city" ngDefaultControl>
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
-                  <input ibmText class=" inputbx" [(ngModel)]="country">
+                  <input ibmText class=" inputbx" [(ngModel)]="country" id="country" ngDefaultControl>
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.ZIP_POSTAI_CODE' | translate}}</div>
-                  <input ibmText class=" inputbx" [(ngModel)]="zipCode">
+                  <input ibmText class=" inputbx" [(ngModel)]="zipCode" id="zipCode" ngDefaultControl>
               </div>
             </div>
             <div class="bx--row footer-content">
@@ -69,6 +69,7 @@
                       <button ibmButton size="lg" id="save-preview" class="next-button" (click)="goToRoles()">{{'MANAGE_USER.USER_CONTACT.NEXT' | translate}}</button>
                     </div>
                   </div>
+                  <span *ngIf="inputFieldError" class="input-error">{{'MANAGE_USER.USER_CONTACT.INPUT_ERROR' | translate}}</span>
                 </div>
               </div>
           </div>

@@ -48,6 +48,7 @@ export class UserGroupsComponent implements OnInit {
   createUserApiCall() {
     this.userMainService.createUser().then(results => {
     this.createUserResponse = Object.assign([], results);
+    console.log('from component', this.createUserResponse);
  }).catch(() => {
   this.translateService
       .get('CATALOGS.HEADR.store_list_failed')

@@ -165,8 +165,14 @@
   .right-content {
     padding-left: 1px;
   }
-  .email-error {
+  .error-msg {
     color: red;
+  }
+  .input-error {
+    color: red;
+    float: right;
+    margin-right: 6%;
+    margin-top: 5px;
   }
   .optional-text {
     font-weight: 300;

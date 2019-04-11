@@ -170,6 +170,10 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class OrganizationMainService {
   orgDataResponse = [];
+  listData: any;
+  resultData: any;
+
+
   constructor(private organizationsService: OrganizationsService,
               private iframeService: IframeService,
               private translateService: TranslateService) { }
@@ -315,7 +319,20 @@ export class OrganizationMainService {
         });  
       });
   }
-
+  orgList(): Promise<Object> {
+    //this.setUserData();
+   
+    return new Promise((resolve, reject) => {
+      this.organizationsService.OrganizationGetManageableOrganizations({   
+      }).subscribe(response => {
+        resolve(response);
+        this.resultData = response;
+        console.log('service', this.resultData);
+      },  error => {
+        reject();
+      });
+    });
+  }
   getOrganizations(_orgName: string, _parentOrgName: string, _orgId: string): Promise<Object> { 
    return new Promise((resolve, reject) => {
     this.iframeService.startProgressIndicator();
