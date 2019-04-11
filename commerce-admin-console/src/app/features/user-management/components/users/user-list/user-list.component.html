@@ -27,6 +27,9 @@
   <div class="TableItem bx--row">
     <div class="table-body bx--col-md-12 bx--col-sm-12">
           <ibm-table [model]="model"   [striped]="striped"></ibm-table>
+          <ng-template #listUserItemTemplate let-data="data">
+              <a routerLink='userAccount' (click)="userId(data.name)">{{data.name}}</a>
+          </ng-template>
           <ibm-pagination  [model]="model" (selectPage)="selectPage($event)"></ibm-pagination>
     </div> 
 </div>
