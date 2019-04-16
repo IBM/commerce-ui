@@ -30,15 +30,12 @@
             </span>
           </div>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.LOGIN_ID'| translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="logonId"><br /><br />
+          <input ibmText class="inputbx" [(ngModel)]="logonId" (change)="onChange($event)" ><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.EMAIL'| translate}}</div>
           <input ibmText class="inputbx" [(ngModel)]="email1"><br /><br />
           <div class="form-text">
             <span>{{'MANAGE_USER.MANAGE_USER_ACCOUNT.PASSWORD'| translate}}</span>
             <span class="password-show"></span>
-            <!-- <span class="password-show">
-                <ibm-icon-view-off16 class="view-icon"></ibm-icon-view-off16>Hide
-              </span> -->
           </div>
           <div class="input-tikmark" *ngIf="showInput">
             <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
@@ -51,7 +48,15 @@
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.ORGANIZATION'| translate}}</div>
           <input ibmText class="inputbx" [(ngModel)]="organizationName"><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.USER_TYPE'| translate}}</div>
-          <input ibmText class="inputbx"><br /><br />
+          <div class="dropdown-margin">
+              <ibm-dropdown
+              placeholder="Select title"
+              [disabled]="disabled"
+              [(ngModel)]="policy"
+              value="content" id="accountPolicy" ngDefaultControl>
+              <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
+            </ibm-dropdown>
+          </div><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.PREFERED_LANGUAGE'| translate}}</div>
         </div>
       </div>
@@ -60,10 +65,12 @@
           <div class="bx--row">
             <div class="bx--col-sm-2 bx--col-md-2"></div>
             <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.CANCEL'|
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.CANCEL'|
                 translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveAccount()>{{'MANAGE_USER.MANAGE_USER_ACCOUNT.SAVE'|
+              <button ibmButton size="lg" id="save-preview" class="next-button" (onChange)="enableButton()" (click)="saveAccount()" >{{'MANAGE_USER.MANAGE_USER_ACCOUNT.SAVE'|
                 translate}}</button>
+                <!-- <button ibmButton size="lg" id="save-preview" class="next-button" (onChange)="enableButton()" (click)="saveAccount()"  [disabled]="!logonId || buttonEnabled">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.SAVE'| -->
+                    <!-- translate}}</button> -->
             </div>
           </div>
         </div>
