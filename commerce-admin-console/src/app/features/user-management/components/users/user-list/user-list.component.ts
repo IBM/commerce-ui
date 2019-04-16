@@ -178,7 +178,6 @@ export class UserListComponent implements OnInit {
   }
   userId(logonId: any) {
     if (this.userListData) {
-      debugger;
       //console.log('itm', this.userListData);
       //console.log('list', this.userListData);
       this.userListData.forEach(function(value) {

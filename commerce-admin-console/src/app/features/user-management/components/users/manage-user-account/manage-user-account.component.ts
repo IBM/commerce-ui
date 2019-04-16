@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../../../../../../../src/app/rest/services/users.service';
 import { UserMainService } from '../../../services/user-main.service';
@@ -27,6 +27,7 @@ export class ManageUserAccountComponent implements OnInit {
   showTickboxVisible: boolean;
   manageUserResponse: any;
   id: number;
+  Mohan: any;
 
   constructor(
     private router: Router,
@@ -37,10 +38,22 @@ export class ManageUserAccountComponent implements OnInit {
 
   updateUser;
 
+  items = [
+    {
+      content: 'Administator',
+      selected: false
+    },
+    {
+      content: 'User',
+      selected: false,
+    }
+  ];
+
   ngOnInit() {
     this.showInput = true;
     this.accountData = this.userMainService.manageuserAccount;
     this.updateUserApiCall();
+    this.enableButton();
     
   }
 
@@ -59,8 +72,26 @@ export class ManageUserAccountComponent implements OnInit {
     });
   }
   
+  buttonEnabled: boolean = false;
+  // apiLogonId: any = this.logonId;
+  // userLogonId: any;
+  enableButton(){
+    if(this.logonId === this.logonId) {
+      this.buttonEnabled = !this.buttonEnabled;
+    }
+    else {
+      this.buttonEnabled = this.buttonEnabled;
+    }
+  }
+
+  values: any ;
+  onChange(event: any) {
+    this.values = event.target.value;
+    console.log("onChange", this.values);
+ };
+
   saveAccount() {
-    this.router.navigate(['/users/manageContact']); 
+    this.router.navigate(['/users/manageContact']);
   }
 
   // getAccountData(){
@@ -102,8 +133,28 @@ export class ManageUserAccountComponent implements OnInit {
   }
 
   cancelClick() {
-    this.router.navigate(['users']);
+    this.router.navigate(['/users']);
   }
+
+//   myPassword: any;
+//   checkPasswordEmpty() {
+//     console.log("checkPasswordEmpty runs");
+//     if (this.myPassword) {
+//         // enable the button
+//     }
+// }
+
+
+check(){
+  var tocheck = ["text1", "text2", "text3", "email"];
+  let tform = document.getElementById("theform");
+  let ok = true;
+  let i;
+  for(i=0; i<tocheck.length; i++){
+      ok = ok && tform[tocheck[i]].value != "";
+  }
+  document.getElementById("subm").style.color = ok ? "green" : "red";
+}
 
 }
 

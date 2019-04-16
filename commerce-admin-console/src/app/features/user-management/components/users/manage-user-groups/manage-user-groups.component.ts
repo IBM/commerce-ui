@@ -29,6 +29,10 @@ export class ManageUserGroupsComponent implements OnInit {
     console.log(this.groupListData);
   }
 
+  cancelClick() {
+    this.router.navigate(['/users']);
+  }
+
   saveGroups() {
     this.router.navigate(['/users/organizationsList']);
   }
