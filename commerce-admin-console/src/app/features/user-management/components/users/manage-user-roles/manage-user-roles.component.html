@@ -50,7 +50,7 @@
           <div class="bx--row">
             <div class="bx--col-sm-4 bx--col-md-4"></div>
             <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button">{{'MANAGE_USER.MANAGE_USER_ROLES.CANCEL'| translate}}</button>
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">{{'MANAGE_USER.MANAGE_USER_ROLES.CANCEL'| translate}}</button>
               <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveRoles()>{{'MANAGE_USER.MANAGE_USER_ROLES.SAVE'| translate}}</button>
             </div>
           </div>

@@ -11,11 +11,44 @@ export class ManageUserRolesComponent implements OnInit {
   rolesArray: any = [];
   result: any = [];
   modelRoles: '';
-  orgList: any;
-  rolesList: any;
-  constructor() { }
+  constructor(private router: Router) { }
+
+  orgList = [
+    {
+      content: 'Organization A',
+      selected: false
+    },
+    {
+      content: 'Organization B',
+      selected: false,
+    }
+  ];
+  rolesList = [
+    {
+      content: 'Developer',
+      selected: true
+    },
+    {
+      content: 'Tester',
+      selected: false,
+    },
+    {
+      content: 'Architect',
+      selected: false,
+    },
+    {
+      content: 'Test Lead',
+      selected: false,
+    }
+  ];
 
   ngOnInit() {
   }
-  saveRoles() {}
+
+  cancelClick() {
+    this.router.navigate(['/users']);
+  }
+  saveRoles() {
+    this.router.navigate(['/users/manageGroups']);
+  }
 }
