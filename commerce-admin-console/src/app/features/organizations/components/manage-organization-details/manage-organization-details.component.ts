@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-manage-organization-details',
   templateUrl: './manage-organization-details.component.html',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ManageOrganizationDetailsComponent implements OnInit {
   disabled: boolean;
   model: string;
-  constructor() { }
+  constructor(private router: Router) { }
   orgList = [
     {
       content: 'Organization A',
@@ -21,5 +21,10 @@ export class ManageOrganizationDetailsComponent implements OnInit {
   ];
   ngOnInit() {
   }
-
+  routeOrganizationApprovals() {
+    this.router.navigate(['organizations/organizationsApprovals']);
+  }
+  routeManageOrganizationContact() {
+    this.router.navigate(['organizations/manageOrganizationContact']);
+  }
 }

@@ -127,8 +127,8 @@ protected prepareData(data: Array<Array<any>>) {
   });
   return newData;
 }
-createUser() {
-  this.router.navigate(['organizations/userAccount']);
+routeOrganizationDetails() {
+  this.router.navigate(['organizations/organizationsDetails']);
 }
 
 }

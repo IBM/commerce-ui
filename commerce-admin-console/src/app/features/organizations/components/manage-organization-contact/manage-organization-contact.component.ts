@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-manage-organization-contact',
   templateUrl: './manage-organization-contact.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageOrganizationContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-
+  routeManageOrganizationDetails() {
+    this.router.navigate(['organizations/manageOrganizationDetails']);
+  }
+  routeManageOrganizationRoles() {
+    this.router.navigate(['organizations/manageOrganizationRoles']);
+  }
 }

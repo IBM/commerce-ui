@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-organization-details',
   templateUrl: './organization-details.component.html',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class OrganizationDetailsComponent implements OnInit {
   disabled: boolean;
   model: string;
-  constructor() { }
+  constructor(private router: Router) { }
   orgList = [
     {
       content: 'Organization A',
@@ -21,5 +21,10 @@ export class OrganizationDetailsComponent implements OnInit {
   ];
   ngOnInit() {
   }
-
+  routeOrganizationList() {
+    this.router.navigate(['organizations']);
+  }
+  routeOrganizationContact() {
+    this.router.navigate(['organizations/organizationContact']);
+  }
 }
