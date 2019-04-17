@@ -14,7 +14,7 @@
 <div class="Users bx--row">
     <div class="bx--col-xs-12 bx--col-sm-12 bx--col-md-12 bx--col-lg-12 bx--col-xl-12 bx--col-xxl-12">
         <p class="userName">
-            Organisations
+            Organizations
         </p>
     </div>
 </div>
@@ -22,7 +22,7 @@
 <div class="SearchMenu icons_user bx--row">
     <div class="icon-group">
         <span class="icons">
-            <button ibmButton class="rowAdditionButton" (click)="routeOrganizationDetails()">New</button>
+            <button ibmButton class="rowAdditionButton" (click)='createOrganization()'>New</button>
         </span>
         <span class="icons glyphiconsButton">
             <ibm-icon-settings16></ibm-icon-settings16>
@@ -41,7 +41,7 @@
   <div class="table-body">
         <ibm-table [model]="model"   [striped]="striped"></ibm-table>
         <ng-template #listOrgItemTemplate let-data="data">
-         <i><a [routerLink]="data.link">{{data.name}}</a></i>
+         <a routerLink="organisations" (click)="getSelectedOrganization(data.name)">{{data.name}}</a>
      </ng-template>
     
         <ibm-pagination  [model]="model" (selectPage)="selectPage($event)"></ibm-pagination>
