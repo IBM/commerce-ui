@@ -49,9 +49,9 @@
           <div class="bx--row">
             <div class="bx--col-sm-5 bx--col-md-5"></div>
             <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button"
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeManageOrganizationDetails()"
                 >{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CANCEL' | translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button"
+              <button ibmButton size="lg" id="save-preview" class="next-button" (click)="routeManageOrganizationRoles()"
                 >{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.SAVE' | translate}}</button>
             </div>
           </div>

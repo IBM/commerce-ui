@@ -150,51 +150,19 @@
     </div>
 </div>
 <div class="SearchMenu icons_user bx--row">
-  <div class="icon-group">
-      
-      <span class="icons glyphiconsButton">
-          <ibm-icon-settings16></ibm-icon-settings16>
-      </span>
-      <span class="icons glyphiconsButton">
-          <ibm-icon-filter16></ibm-icon-filter16>
-      </span>
-      <span class="icons glyphiconsButton">
-          <ibm-icon-search16></ibm-icon-search16>
-      </span>
-      <span class="icons glyphiconsButton">
-        <button ibmButton class="rowAdditionButton">New</button>
-    </span>
-  </div>
-</div>
-  <!-- <p [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.number'" [translateParams]="{num: orgModel.totalDataLength }"></p>
-  <div class="organization_buttons">
-      <button class="bx--btn bx--btn--primary" routerLink="/organizations/create" [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.new'"></button>
-      <div class="icon_buttons">
-          <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.find'" routerLink="/organizations/find"><ibm-icon-search16 icon="find" size="sm" ></ibm-icon-search16>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.find' | translate}}</button>
-          <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.approval'" routerLink="/approvals" ><ibm-icon-search16 icon="check_circle" size="sm"></ibm-icon-search16>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.approval' | translate}}</button>
-          <button [attr.disabled]="selectOrgLink === null ?  '' : null" routerLink="{{selectOrgLink}}">
-              <ibm-icon-search16 icon="edit" size="sm" *ngIf="selectOrgLink != null"></ibm-icon-search16>
-              <ibm-icon-search16 icon="edit_disabled" size="sm" *ngIf="selectOrgLink === null" ></ibm-icon-search16> {{'ORGANIZATIONS.LIST_ORGANIZATIONS.edit' | translate}}
-           </button>
-          <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn'"><ibm-icon-search16 icon="lock_key" size="sm"></ibm-icon-search16>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn' | translate}}</button>
-          <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.roles'"><ibm-icon-search16 icon="behaviors" size="sm"></ibm-icon-search16>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.roles' | translate}}</button>
-      </div>
-  </div> -->
-  <div class="orgTable bx--row">
-  <ibm-table [columnsResizable]="true" class="table--md" [model]="orgModel" [striped]="striped" (selectRow)="onSelect($event)"
-  (deselectRow)="onDeselect($event)" (deselectAll)="onDeselectAll($event)" (selectAll)="onSelectAll($event)"></ibm-table>
-  <ng-template #listOrgItemTemplate let-data="data">
-      <i><a [routerLink]="data.link">{{data.name}}</a></i>
-  </ng-template>
-  <div *ngIf="orgModel.pageLength < 0" class="empty-table"> {{'ORGANIZATIONS.LIST_ORGANIZATIONS.emptyTable' | translate}} </div>
-
-  <footer class="bx--row table-footer--pagination" *ngIf="orgModel.pageLength > 0">
-      <!-- <span class="table-footer_row-count" [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.rowcount'" 
-          [translateParams]="{total: orgModel.totalDataLength, start: pageIndex['start'], end: pageIndex['end']}" ></span> -->
-      <div class="bx--col-offset-4">
-          <ibm-pagination [model]="orgModel" (selectPage)="onPage($event)"></ibm-pagination>
-      </div>
-  </footer>
-</div>
+    <div class="icon-group">
+        <span class="icons">
+            <button ibmButton class="rowAdditionButton" (click)="routeOrganizationDetails()">New</button>
+        </span>
+        <span class="icons glyphiconsButton">
+            <ibm-icon-settings16></ibm-icon-settings16>
+        </span>
+        <span class="icons glyphiconsButton">
+            <ibm-icon-filter16></ibm-icon-filter16>
+        </span>
+        <span class="icons glyphiconsButton">
+            <ibm-icon-search16></ibm-icon-search16>
+        </span>
+    </div>
 </div>
 
