@@ -492,6 +492,13 @@ export class OrganizationListComponent implements OnInit {
             this.iframeService.postStatusMsg(msg, 'error');
           });
     });
+    newData.push(row);
+  });
+  return newData;
+}
+routeOrganizationDetails() {
+  this.router.navigate(['organizations/organizationsDetails']);
+}
 
     this.orgModel.header = [
       new TableHeaderItem({data: 'Name'}),

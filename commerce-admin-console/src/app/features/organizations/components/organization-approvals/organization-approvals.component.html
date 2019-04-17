@@ -64,8 +64,8 @@
                   <div class="bx--col-sm-2 bx--col-md-2"></div>
                   <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
                     <button ibmButton="ghost" size="normal" id="save-preview" class="cancel-button" >{{'MANAGE_USER.ORGANISATION_APPROVALS.CANCEL' | translate}}</button>
-                    <button ibmButton size="normal" id="save-preview" class="back-button" >{{'MANAGE_USER.ORGANISATION_APPROVALS.BACK' | translate}}</button>
-                    <button ibmButton size="normal" id="save-preview" class="next-button" >{{'MANAGE_USER.ORGANISATION_APPROVALS.NEXT' | translate}}</button>
+                    <button ibmButton size="normal" id="save-preview" class="back-button" (click)="routeOrganizationRoles()">{{'MANAGE_USER.ORGANISATION_APPROVALS.BACK' | translate}}</button>
+                    <button ibmButton size="normal" id="save-preview" class="next-button" (click)="routeManageOrganizationDetails()">{{'MANAGE_USER.ORGANISATION_APPROVALS.NEXT' | translate}}</button>
                   </div>
                 </div>
               </div>

@@ -62,9 +62,9 @@
           <div class="bx--row">
             <div class="bx--col-sm-5 bx--col-md-5"></div>
             <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button"
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeOrganizationList()"
                 >{{'MANAGE_USER.ORGANIZATION_DETAILS.CANCEL' | translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button"
+              <button ibmButton size="lg" id="save-preview" class="next-button" (click)="routeOrganizationContact()"
                 >{{'MANAGE_USER.ORGANIZATION_DETAILS.NEXT' | translate}}</button>
             </div>
           </div>

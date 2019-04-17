@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-manage-organization-roles',
   templateUrl: './manage-organization-roles.component.html',
@@ -21,10 +21,15 @@ export class ManageOrganizationRolesComponent implements OnInit {
     { id: 9, roleName: 'Role' },
     { id: 10, roleName: 'Role' }
   ];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.roleListData = this.roleList;
   }
-
+  routeManageOrganizationContact() {
+    this.router.navigate(['organizations/manageOrganizationContact']);
+  }
+  routeManageOrganizationApprovals() {
+    this.router.navigate(['organizations/manageOrganizationApprovals']);
+  }
 }

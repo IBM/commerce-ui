@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-organization-details',
   templateUrl: './organization-details.component.html',
   styleUrls: ['./organization-details.component.scss']
 })
 export class OrganizationDetailsComponent implements OnInit {
-
-  constructor() { }
+  disabled: boolean;
+  model: string;
+  constructor(private router: Router) { }
   orgList = [
     {
       content: 'Organization A',
@@ -20,5 +21,10 @@ export class OrganizationDetailsComponent implements OnInit {
   ];
   ngOnInit() {
   }
-
+  routeOrganizationList() {
+    this.router.navigate(['organizations']);
+  }
+  routeOrganizationContact() {
+    this.router.navigate(['organizations/organizationContact']);
+  }
 }
