@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NFormsModule, TableModule, PaginationModule, DropdownModule } from 'carbon-components-angular';
+import { NFormsModule, TableModule, PaginationModule, DropdownModule, LinkModule } from 'carbon-components-angular';
 import { Search16Module } from '@carbon/icons-angular/lib/search/16';
 import { CheckmarkOutline16Module } from '@carbon/icons-angular/lib/checkmark--outline/16';
 import { Edit16Module } from '@carbon/icons-angular/lib/edit/16';
@@ -70,7 +70,8 @@ import { OrganizationsMainService } from './organizations.main.service';
     View16Module,
     ViewOff16Module,
     Settings16Module,
-    Filter16Module
+		Filter16Module,
+		LinkModule
 
 	],
 	declarations: [
