@@ -1,0 +1,996 @@
+swagger: '2.0'
+info:
+  title: Member Group Admin REST APIs
+  version: '2.0'
+paths:
+  /member-groups:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: >
+            The member group's usage. Available values:
+
+            * GeneralPurpose - A general grouping of persons and/or
+            organizations.
+
+            * AccessControl - A group of persons specified as part of an access
+            control policy.
+
+            * CustomerTerritory - A group of customers, typically by territory.
+
+            * CustomerServiceRepresentative - A group of customer service
+            representatives, which in turn can have customer territory groups or
+            customer accounts assigned to them.
+
+            * RegisteredCustomer - A group of buyer organizations that have
+            registered to a seller organization.
+
+            * CustomerPrice - A group of customers that are entitled to get a
+            contract's terms and conditions; often used to enforce custom
+            pricing for the group. Customer price groups can comprise any user,
+            who can be included and excluded explicitly.
+
+            * CustomerSegment - A group of persons based on common attributes,
+            for example demographics or purchase history. This group is used in
+            marketing campaigns.
+
+            * RFQResponseApproval - An organization that wants request for quote
+            (RFQ) response approvals owns a member group of this usage. The
+            group contains persons that are able to approve RFQ responses.
+
+            * DisableInheritedRFQResponseApproval - An organization that does
+            not want request for quote (RFQ) response approvals owns a member
+            group of this usage.
+
+            * OrderProcessApproval - An organization that wants order approvals
+            owns a member group of this usage. The group contains persons that
+            are able to approve orders.
+
+            * DisableInheritedOrderProcessApproval - An organization that does
+            not want order approvals owns a member group of this usage.
+
+            * ContractSubmitApproval - An organization that wants contract
+            approvals owns a member group of this usage. The group contains
+            persons that are able to approve contracts.
+
+            * DisableInheritedContractSubmitApproval - An organization that does
+            not want contract approvals owns a member group of this usage.
+
+            * UserRegistrationApproval - An organization that wants user
+            registration approvals owns a member group of this usage. The group
+            contains persons that are able to approve user registration
+            requests.
+
+            * DisableInheritedUserRegistrationApproval - An organization that
+            does not want user registration approvals owns a member group of
+            this usage.
+
+            * ResellerRegistrationApproval - An organization that wants reseller
+            registration approvals owns a member group of this usage. The group
+            contains persons that are able to approve reseller registration
+            requests.
+
+            * DisableInheritedResellerRegistrationApproval - An organization
+            that does not want reseller registration approvals owns a member
+            group of this usage.
+          in: query
+          name: usage
+          required: true
+          type: string
+        - description: >-
+            The position within the resulting dataset where the query begins
+            returning item records. If the offset is "5", the records that
+            returned begin with the sixth record that matches the query
+            parameters. If the offset is "0", the records that are returned
+            begin with the first record that matches the query parameters.
+          format: int32
+          in: query
+          name: offset
+          required: false
+          type: integer
+          x-entity-path: dataArea/get/recordSetStartNumber
+        - description: The maximum number of records to return.
+          format: int32
+          in: query
+          name: limit
+          required: false
+          type: integer
+          x-entity-path: dataArea/get/maxItems
+      responses:
+        '200':
+          description: The operation is successful.
+          schema:
+            $ref: '#/definitions/MemberGroupCollection'
+          x-entity-path: dataArea/memberGroup
+      summary: Get member groups by store and usage.
+      x-expression-template: '{_wcf.ap=''IBM_Admin_Details''}/MemberGroup[Usage=''{usage}'']'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: getMemberGroup
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.GetMemberGroupType
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+          x-entity-path: >-
+            dataArea/memberGroup[1]/memberGroupIdentifier/externalIdentifier/storeIdentifier/uniqueID
+        - description: The request body.
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/MemberGroup'
+          x-entity-path: 'dataArea/memberGroup[1]'
+      responses:
+        '201':
+          description: The operation is successful.
+          headers:
+            Location:
+              description: The URI of the member group.
+              type: string
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+      summary: Create a member group.
+      x-action-code: Add
+      x-expression-template: '/MemberGroup[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: processMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.PostBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ProcessMemberGroupType
+  /member-groups/by-name-and-usage:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: The member group usage type.
+          in: query
+          name: usage
+          required: true
+          type: string
+        - description: The member group name.
+          enum:
+            - GeneralPurpose
+            - AccessControl
+            - CustomerTerritory
+            - CustomerServiceRepresentative
+            - RegisteredCustomer
+            - CustomerPrice
+            - CustomerSegment
+            - RFQResponseApproval
+            - DisableInheritedRFQResponseApproval
+            - OrderProcessApproval
+            - DisableInheritedOrderProcessApproval
+            - ContractSubmitApproval
+            - DisableInheritedContractSubmitApproval
+            - UserRegistrationApproval
+            - DisableInheritedUserRegistrationApproval
+            - ResellerRegistrationApproval
+            - DisableInheritedResellerRegistrationApproval
+          in: query
+          name: memberGroupName
+          required: true
+          type: string
+      responses:
+        '200':
+          description: The operation is successful.
+          schema:
+            $ref: '#/definitions/MemberGroupCollection'
+          x-entity-path: dataArea/memberGroup
+      summary: Find the member groups in a store by member group name and usage.
+      x-expression-template: >-
+        {_wcf.ap='IBM_Admin_Details'}/MemberGroup[Usage='{usage}' and
+        search(MemberGroupIdentifier/ExternalIdentifier/Name='{memberGroupName}')]
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: getMemberGroup
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.GetMemberGroupType
+  '/member-groups/{id}':
+    delete:
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+          x-entity-path: >-
+            dataArea/memberGroup[1]/memberGroupIdentifier/externalIdentifier/storeIdentifier/uniqueID
+      responses:
+        '204':
+          description: The operation is successful.
+      summary: Delete a member group by unique identifier.
+      x-action-code: Delete
+      x-expression-template: '/MemberGroup[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: processMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.DeleteBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ProcessMemberGroupType
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+      responses:
+        '200':
+          description: The operation is successful.
+          schema:
+            $ref: '#/definitions/MemberGroup'
+          x-entity-path: 'dataArea/memberGroup[1]'
+      summary: Get a member group by unique identifier.
+      x-expression-template: >-
+        {_wcf.ap='IBM_Admin_Details'}/MemberGroup[MemberGroupIdentifier[(UniqueID='{id}')]]
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: getMemberGroup
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.GetMemberGroupType
+    patch:
+      consumes:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+          x-entity-path: >-
+            dataArea/memberGroup[1]/memberGroupIdentifier/externalIdentifier/storeIdentifier/uniqueID
+        - description: The request body.
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/MemberGroup'
+          x-entity-path: 'dataArea/memberGroup[1]'
+      responses:
+        '200':
+          description: The operation is successful.
+      summary: Update a member group by unique identifier.
+      x-action-code: Change
+      x-expression-template: '/MemberGroup[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: changeMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.PatchBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ChangeMemberGroupType
+  '/member-groups/{id}/activate':
+    post:
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+          x-entity-path: >-
+            dataArea/memberGroup[1]/memberGroupIdentifier/externalIdentifier/storeIdentifier/uniqueID
+      responses:
+        '200':
+          description: The operation is successful.
+      summary: >-
+        Activates a member group by assembling the information for the group
+        that is within the member group condition element authoring database
+        tables. The information is transformed and persisted to the runtime
+        database tables for use in evaluating whether a user implicitly belongs
+        to a member group.
+      x-action-code: Activate
+      x-expression-template: '/MemberGroup[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: processMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.PostBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ProcessMemberGroupType
+  '/member-groups/{id}/condition-elements':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+      responses:
+        '200':
+          description: The operation is successful.
+          schema:
+            $ref: '#/definitions/MemberGroupConditionElementCollection'
+          x-entity-path: 'dataArea/memberGroup[1]/conditionElement'
+      summary: Get the condition elements that are part of a member group.
+      x-expression-template: >-
+        {_wcf.ap='IBM_Admin_Details'}/MemberGroup[MemberGroupIdentifier[(UniqueID='{id}')]]
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: getMemberGroup
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.GetMemberGroupType
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: The request body.
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/MemberGroupConditionElement'
+          x-entity-path: 'dataArea/memberGroup[1]/conditionElement[1]'
+      responses:
+        '201':
+          description: The operation is successful.
+          headers:
+            Location:
+              description: The URI of the member group condition element.
+              type: string
+          x-entity-path: >-
+            dataArea/memberGroup[1]/conditionElement[1]/memberGroupConditionElementIdentifier/uniqueID
+      summary: Create a condition element within a member group.
+      x-action-code: Add
+      x-expression-template: '/MemberGroup[1]/ConditionElement[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: changeMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.PostBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ChangeMemberGroupType
+      x-request-verb: change
+      x-response-verb: respond
+  '/member-groups/{id}/condition-elements/{elementId}':
+    delete:
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: The unique numeric ID for identifying the condition element.
+          format: int32
+          in: path
+          name: elementId
+          required: true
+          type: integer
+          x-entity-path: >-
+            dataArea/memberGroup[1]/conditionElement[1]/memberGroupConditionElementIdentifier/uniqueID
+      responses:
+        '204':
+          description: The operation is successful.
+      summary: Delete a condition element within a member group.
+      x-action-code: Delete
+      x-expression-template: '/MemberGroup[1]/ConditionElement[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: changeMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.DeleteBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ChangeMemberGroupType
+      x-request-verb: change
+      x-response-verb: respond
+    patch:
+      consumes:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: The unique numeric ID for identifying the condition element.
+          format: int32
+          in: path
+          name: elementId
+          required: true
+          type: integer
+          x-entity-path: >-
+            dataArea/memberGroup[1]/conditionElement[1]/memberGroupConditionElementIdentifier/uniqueID
+        - description: The request body.
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/MemberGroupConditionElement'
+          x-entity-path: 'dataArea/memberGroup[1]/conditionElement[1]'
+      responses:
+        '200':
+          description: The operation is successful.
+      summary: Update a condition element within a member group.
+      x-action-code: Change
+      x-expression-template: '/MemberGroup[1]/ConditionElement[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: changeMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.PatchBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ChangeMemberGroupType
+  '/member-groups/{id}/descriptions':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: >-
+            The integer(s) for identifying the language of the member group
+            description. For a list of the integers that map to the supported
+            default languages, refer to the Knowledge Center. Multiple
+            identifiers should be specified as a comma-separated list.
+          in: query
+          name: dataLanguageIds
+          required: true
+          type: string
+      responses:
+        '200':
+          description: The operation is successful.
+          schema:
+            $ref: '#/definitions/MemberGroupDescriptionCollection'
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupDescription'
+      summary: Get the descriptions that are part of a member group.
+      x-expression-template: >-
+        {_wcf.ap='IBM_Admin_Details';_wcf.dataLanguageIds='{dataLanguageIds}'}/MemberGroup[MemberGroupIdentifier[(UniqueID='{id}')]]
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: getMemberGroup
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.GetMemberGroupType
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: The request body.
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/MemberGroupDescription'
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupDescription[1]'
+      responses:
+        '201':
+          description: The operation is successful.
+          headers:
+            Location:
+              description: The URI of the member group condition element.
+              type: string
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupDescription[1]/language'
+      summary: Create a description within a member group.
+      x-action-code: Add
+      x-expression-template: '/MemberGroup[1]/MemberGroupDescription[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: changeMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.PostBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ChangeMemberGroupType
+      x-request-verb: change
+      x-response-verb: respond
+  '/member-groups/{id}/descriptions/{languageId}':
+    delete:
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: >-
+            The integer for identifying the language of the member group
+            description. For a list of the integers that map to the supported
+            default languages, refer to the Knowledge Center.
+          format: int32
+          in: path
+          name: languageId
+          required: true
+          type: integer
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupDescription[1]/language'
+      responses:
+        '204':
+          description: The operation is successful.
+      summary: Delete a description within a member group.
+      x-action-code: Delete
+      x-expression-template: '/MemberGroup[1]/MemberGroupDescription[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: changeMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.DeleteBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ChangeMemberGroupType
+      x-request-verb: change
+      x-response-verb: respond
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: >-
+            The integer for identifying the language of the member group
+            description. For a list of the integers that map to the supported
+            default languages, refer to the Knowledge Center.
+          format: int32
+          in: path
+          name: languageId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: The operation is successful.
+          schema:
+            $ref: '#/definitions/MemberGroupDescription'
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupDescription[1]'
+      summary: >-
+        Get the descriptions that are part of a member group for a specific
+        language.
+      x-expression-template: >-
+        {_wcf.ap='IBM_Admin_Details';_wcf.dataLanguageIds='{languageId}'}/MemberGroup[MemberGroupIdentifier[(UniqueID='{id}')]]
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: getMemberGroup
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.GetMemberGroupType
+    patch:
+      consumes:
+        - application/json
+      parameters:
+        - description: The unique numeric ID for identifying the member group.
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+          x-context-data: uniqueId
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupIdentifier/uniqueID'
+        - description: >-
+            The integer for identifying the language of the member group
+            description. For a list of the integers that map to the supported
+            default languages, refer to the Knowledge Center.
+          format: int32
+          in: path
+          name: languageId
+          required: true
+          type: integer
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupDescription[1]/language'
+        - description: The unique numeric ID for identifying the store.
+          format: int32
+          in: query
+          name: storeId
+          required: true
+          type: integer
+          x-context-data: storeId
+        - description: The request body.
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/MemberGroupDescription'
+          x-entity-path: 'dataArea/memberGroup[1]/memberGroupDescription[1]'
+      responses:
+        '200':
+          description: The operation is successful.
+      summary: Update a description within a member group.
+      x-action-code: Change
+      x-expression-template: '/MemberGroup[1]/MemberGroupDescription[1]'
+      x-facade-client-class: com.ibm.commerce.member.facade.client.MemberFacadeClient
+      x-facade-client-method: changeMemberGroup
+      x-flow-class: com.ibm.commerce.rest.bod.PatchBodMappingFlow
+      x-request-bod-class: com.ibm.commerce.member.facade.datatypes.ChangeMemberGroupType
+definitions:
+  MemberGroup:
+    description: A member group.
+    properties:
+      allowExport:
+        description: >-
+          Allow information about the users in the member group, for example
+          their email addresses and names, to be exported to external
+          applications using the "Export customer segment" feature.
+        type: boolean
+      exportAll:
+        description: >-
+          When exporting a member group to external applications, if exportAll
+          is true, then all customers in the member group are exported,
+          including customers that have opted out from marketing communications.
+          If exportAll is false, then only customers that have opted in to
+          receive marketing communications will be exported.
+        type: boolean
+      id:
+        description: The unique numeric ID for identifying the member group.
+        format: int64
+        readOnly: true
+        type: integer
+        x-entity-path: memberGroupIdentifier/uniqueID
+      name:
+        description: The member group name.
+        type: string
+        x-entity-path: memberGroupIdentifier/externalIdentifier/name
+      ownerId:
+        description: >-
+          Identifier of the organization that owns the member group. Can only be
+          set when the member group is created.
+        type: string
+        x-entity-path: memberGroupIdentifier/externalIdentifier/ownerID
+      storeId:
+        description: The unique numeric ID for identifying the store.
+        format: int32
+        readOnly: true
+        type: integer
+        x-entity-path: memberGroupIdentifier/externalIdentifier/storeIdentifier/uniqueID
+      updatedBy:
+        description: Individual who performed the most recent update to the member group.
+        readOnly: true
+        type: string
+        x-entity-path: lastUpdatedBy
+      updatedDateTime:
+        description: Date and time of the most recent update to the member group.
+        format: date-time
+        readOnly: true
+        type: string
+        x-entity-path: lastUpdate
+      usage:
+        description: >
+          Member group's usage. Can only be set when member group is created. If
+          multiple usages are specified, only the first one will be applied.
+          Available values:
+
+          * GeneralPurpose - A general grouping of persons and/or organizations.
+
+          * AccessControl - A group of persons specified as part of an access
+          control policy.
+
+          * CustomerTerritory - A group of customers, typically by territory.
+
+          * CustomerServiceRepresentative - A group of customer service
+          representatives, which in turn can have customer territory groups or
+          customer accounts assigned to them.
+
+          * RegisteredCustomer - A group of buyer organizations that have
+          registered to a seller organization.
+
+          * CustomerPrice - A group of customers that are entitled to get a
+          contract's terms and conditions; often used to enforce custom pricing
+          for the group. Customer price groups can comprise any user, who can be
+          included and excluded explicitly.
+
+          * CustomerSegment - A group of persons based on common attributes, for
+          example demographics or purchase history. This group is used in
+          marketing campaigns.
+
+          * RFQResponseApproval - An organization that wants request for quote
+          (RFQ) response approvals owns a member group of this usage. The group
+          contains persons that are able to approve RFQ responses.
+
+          * DisableInheritedRFQResponseApproval - An organization that does not
+          want request for quote (RFQ) response approvals owns a member group of
+          this usage.
+
+          * OrderProcessApproval - An organization that wants order approvals
+          owns a member group of this usage. The group contains persons that are
+          able to approve orders.
+
+          * DisableInheritedOrderProcessApproval - An organization that does not
+          want order approvals owns a member group of this usage.
+
+          * ContractSubmitApproval - An organization that wants contract
+          approvals owns a member group of this usage. The group contains
+          persons that are able to approve contracts.
+
+          * DisableInheritedContractSubmitApproval - An organization that does
+          not want contract approvals owns a member group of this usage.
+
+          * UserRegistrationApproval - An organization that wants user
+          registration approvals owns a member group of this usage. The group
+          contains persons that are able to approve user registration requests.
+
+          * DisableInheritedUserRegistrationApproval - An organization that does
+          not want user registration approvals owns a member group of this
+          usage.
+
+          * ResellerRegistrationApproval - An organization that wants reseller
+          registration approvals owns a member group of this usage. The group
+          contains persons that are able to approve reseller registration
+          requests.
+
+          * DisableInheritedResellerRegistrationApproval - An organization that
+          does not want reseller registration approvals owns a member group of
+          this usage.
+        items:
+          enum:
+            - GeneralPurpose
+            - AccessControl
+            - CustomerTerritory
+            - CustomerServiceRepresentative
+            - RegisteredCustomer
+            - CustomerPrice
+            - CustomerSegment
+            - RFQResponseApproval
+            - DisableInheritedRFQResponseApproval
+            - OrderProcessApproval
+            - DisableInheritedOrderProcessApproval
+            - ContractSubmitApproval
+            - DisableInheritedContractSubmitApproval
+            - UserRegistrationApproval
+            - DisableInheritedUserRegistrationApproval
+            - ResellerRegistrationApproval
+            - DisableInheritedResellerRegistrationApproval
+          type: string
+          x-entity-class: >-
+            com.ibm.commerce.member.facade.datatypes.MemberGroupUsageEnumerationType
+        type: array
+    type: object
+    x-entity-class: com.ibm.commerce.member.facade.datatypes.MemberGroupType
+  MemberGroupCollection:
+    description: A collection of member groups.
+    properties:
+      count:
+        description: The number of member groups found.
+        format: int64
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/MemberGroup'
+        type: array
+    type: object
+  MemberGroupConditionElement:
+    description: A member group condition element.
+    properties:
+      id:
+        description: The unique numeric ID for identifying the condition element.
+        format: int64
+        readOnly: true
+        type: integer
+        x-entity-path: memberGroupConditionElementIdentifier/uniqueID
+      name:
+        description: >-
+          The name of the condition element. Can only be set when the member
+          group condition element is created.
+        type: string
+        x-entity-path: memberGroupConditionElementIdentifier/name
+      nameValuePairVariable:
+        description: >-
+          The name-value pair variables associated with a member group condition
+          element. Applicable to condition elements of type simpleCondition
+          only. Name-value pairs can only be set when the member group condition
+          element is created. To change a name-value pair, delete the condition
+          element and create it again with the desired name-value pairs.
+        items:
+          $ref: '#/definitions/MemberGroupConditionNameValuePair'
+        type: array
+      negate:
+        description: |
+          Whether or not to negate the condition element. Available values:
+          * true - The condition element result is negated.
+          * false - The condition element result is not negated.
+        type: boolean
+      parentElementName:
+        description: The name of the condition element's parent element.
+        type: string
+        x-entity-path: parentElementIdentifier/name
+      simpleConditionOperator:
+        description: >-
+          For simple condition elements, the relational operator between the
+          simpleConditionVariable and simpleConditionValue.
+        type: string
+      simpleConditionValue:
+        description: >-
+          For simple condition elements, the value that simpleConditionVariable
+          will be compared to for determining membership of a member group.
+        type: string
+      simpleConditionVariable:
+        description: >-
+          For simple condition elements, the variable to assess to determine
+          membership of a member group.
+        type: string
+      type:
+        description: >
+          The usage of the member group condition element. Available values:
+
+          * andListCondition - A boolean expression that consists of a list of
+          boolean expressions joined by the boolean AND operator.
+
+          * orListCondition - A boolean expression that consists of a list of
+          boolean expressions joined by the boolean OR operator.
+
+          * simpleCondition - A simple condition boolean expression.  A simple
+          condition consists of a variable, an operator, and a value with
+          optional qualifiers.
+
+          * trueCondition - A boolean expression that always evaluates as true.
+        enum:
+          - andListCondition
+          - orListCondition
+          - simpleCondition
+          - trueCondition
+        type: string
+        x-entity-path: conditionUsage
+    type: object
+    x-entity-class: com.ibm.commerce.member.facade.datatypes.MemberGroupConditionElementType
+  MemberGroupConditionElementCollection:
+    description: A collection of member group condition elements.
+    properties:
+      count:
+        description: The number of condition elements found.
+        format: int64
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/MemberGroupConditionElement'
+        type: array
+    type: object
+  MemberGroupConditionNameValuePair:
+    description: >-
+      A mapping of variable names to values as qualifiers within the context of
+      a condition element.
+    properties:
+      id:
+        description: The unique numeric ID for the condition element variable.
+        readOnly: true
+        type: string
+        x-entity-path: uniqueID
+      name:
+        description: The name of the condition element variable.
+        type: string
+      value:
+        description: The value of the condition element variable.
+        type: string
+    type: object
+    x-entity-class: >-
+      com.ibm.commerce.member.facade.datatypes.MemberGroupConditionNameValuePairVariableType
+  MemberGroupDescription:
+    description: A member group descriptor.
+    properties:
+      languageId:
+        description: >-
+          The integer for identifying the language of the member group
+          description. For a list of the integers that map to the supported
+          default languages, refer to the Knowledge Center.
+        format: int32
+        type: integer
+        x-entity-path: language
+      longDescription:
+        description: Detailed description of a member group.
+        type: string
+      shortDescription:
+        description: Brief description of a member group.
+        type: string
+    type: object
+    x-entity-class: com.ibm.commerce.member.facade.datatypes.MemberGroupDescriptionType
+  MemberGroupDescriptionCollection:
+    description: A collection of member group descriptors.
+    properties:
+      count:
+        description: The number of descriptions found.
+        format: int64
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/MemberGroupDescription'
+        type: array
+    type: object
+x-components: {}

@@ -377,7 +377,7 @@ class UsersService extends __BaseService {
   }
 
   /**
-   * Update a user's site-level attributes.
+   * Update a user's site-level attributes. Attribute values are merged at the attribute level, rather than the attribute value level. For example, if an attribute has the following values '[a, b]', after performing an update using values '[c, d, e]', the attribute values would be '[c, d, e]'.
    * @param params The `UsersService.UsersUpdateUserSiteAttributeParams` containing the following parameters:
    *
    * - `id`: The unique numeric ID for identifying the user.
@@ -412,7 +412,7 @@ class UsersService extends __BaseService {
   }
 
   /**
-   * Update a user's site-level attributes.
+   * Update a user's site-level attributes. Attribute values are merged at the attribute level, rather than the attribute value level. For example, if an attribute has the following values '[a, b]', after performing an update using values '[c, d, e]', the attribute values would be '[c, d, e]'.
    * @param params The `UsersService.UsersUpdateUserSiteAttributeParams` containing the following parameters:
    *
    * - `id`: The unique numeric ID for identifying the user.
@@ -645,7 +645,7 @@ class UsersService extends __BaseService {
   }
 
   /**
-   * Update a user's store-specific attributes.
+   * Update a user's store-specific attributes. Attribute values are merged at the attribute level, rather than the attribute value level. For example, if an attribute has the following values '[a, b]', after performing an update using values '[c, d, e]', the attribute values would be '[c, d, e]'.
    * @param params The `UsersService.UsersUpdateUserStoreMemberAttributeParams` containing the following parameters:
    *
    * - `id`: The unique numeric ID for identifying the user.
@@ -683,7 +683,7 @@ class UsersService extends __BaseService {
   }
 
   /**
-   * Update a user's store-specific attributes.
+   * Update a user's store-specific attributes. Attribute values are merged at the attribute level, rather than the attribute value level. For example, if an attribute has the following values '[a, b]', after performing an update using values '[c, d, e]', the attribute values would be '[c, d, e]'.
    * @param params The `UsersService.UsersUpdateUserStoreMemberAttributeParams` containing the following parameters:
    *
    * - `id`: The unique numeric ID for identifying the user.
