@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
 import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
 import { Router } from '@angular/router';
+import { UsersService } from '../../../../../rest/services/users.service';
 
 @Component({
   selector: 'ac-user-list',
@@ -23,12 +24,7 @@ export class UserListComponent implements OnInit {
   @ViewChild('paginationTableItemTemplate')
   protected paginationTableItemTemplate: TemplateRef<any>;
   
-
-
-
-
-  constructor(private router: Router) { }
-  
+  constructor(private router: Router, private usersService: UsersService) { }
 
   ngOnInit() {
     
@@ -60,30 +56,20 @@ export class UserListComponent implements OnInit {
   }
 
   getPage(page: number) {
-    const line = line => [`dave_evans`, `Dave`,`Evans`,`Organization A`,`Site Administrator`,``];
+    //const line = line => [`dave_evans`, `Dave`,`Evans`,`Organization A`,`Site Administrator`,``];
 
-    const fullPage = [];
+    //const fullPage = [];
 
-    for (
-<<<<<<< HEAD
-      let i = (page - 1) * this.model.pageLength;
-      i < page * this.model.pageLength && i < this.model.totalDataLength;
-      i++
-    ) {
-      fullPage.push(line(i + 1));
-=======
-     let i = (page - 1) * this.model.pageLength;
-     i < page * this.model.pageLength && i < this.model.totalDataLength;
-     i++
-    ) {
-     fullPage.push(line(i + 1));
->>>>>>> added organizations components
-    }
+    //for (
+    //  let i = (page - 1) * this.model.pageLength;
+    //  i < page * this.model.pageLength && i < this.model.totalDataLength;
+    //  i++
+    //) {
+    //  fullPage.push(line(i + 1));
+    //}
 
     return new Promise(resolve => {
-      setTimeout(() => resolve(fullPage), 150);
-<<<<<<< HEAD
-=======
+      //setTimeout(() => resolve(fullPage), 150);
       this.usersService.UsersGetManageableUsers({
         offset:(page-1)*this.model.pageLength,
         limit:this.model.pageLength
@@ -100,7 +86,6 @@ export class UserListComponent implements OnInit {
         }
         resolve(data);
       });
->>>>>>> added organizations components
     });
   }
 
