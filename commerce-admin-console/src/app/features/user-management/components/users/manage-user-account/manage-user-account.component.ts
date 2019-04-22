@@ -27,7 +27,6 @@ export class ManageUserAccountComponent implements OnInit {
   showTickboxVisible: boolean;
   manageUserResponse: any;
   id: number;
-  Mohan: any;
 
   constructor(
     private router: Router,

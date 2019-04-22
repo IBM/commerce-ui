@@ -30,23 +30,23 @@
             </span>
           </div>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.LOGIN_ID'| translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="logonId" (change)="onChange($event)" ><br /><br />
+          <input ibmText class="inputbx" [(ngModel)]="logonId" id="logonid" (change)="onChange($event)" ><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.EMAIL'| translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="email1"><br /><br />
+          <input ibmText class="inputbx" [(ngModel)]="email1" id="email"><br /><br />
           <div class="form-text">
             <span>{{'MANAGE_USER.MANAGE_USER_ACCOUNT.PASSWORD'| translate}}</span>
             <span class="password-show"></span>
           </div>
           <div class="input-tikmark" *ngIf="showInput">
             <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
-            <input ibmText class="inputbx" type="password" [(ngModel)]="password"><br /><br />
+            <input ibmText class="inputbx" type="password" [(ngModel)]="password" id="password"><br /><br />
           </div>
           <div class="input-tikmark" *ngIf="!showInput">
             <ibm-icon-checkmark-filled16 class="fa-tickmark"></ibm-icon-checkmark-filled16>
             <input ibmText class="inputbx" type="text" [(ngModel)]="password"><br /><br />
           </div>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.ORGANIZATION'| translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="organizationName"><br /><br />
+          <input ibmText class="inputbx" [(ngModel)]="organizationName" id="organization"><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.USER_TYPE'| translate}}</div>
           <div class="dropdown-margin">
               <ibm-dropdown
