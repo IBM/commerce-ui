@@ -6,6 +6,7 @@ import { Location} from "@angular/common";
 import { TranslateLoader, TranslateModule, TranslateFakeLoader, TranslateService } from '@ngx-translate/core';
 
 import { OrganizationListComponent } from './organization-list.component';
+import { OrganizationsService } from '../../../../rest/services/organizations.service';
 
 // describe('OrganizationListComponent', () => {
 //   let component: OrganizationListComponent;
@@ -29,20 +30,41 @@ import { OrganizationListComponent } from './organization-list.component';
 //   });
 // });
 
+const routes: Routes = [
+  {path: 'organizations', component: OrganizationListComponent}
+];
 
+class MockOrganizationsService {
 
-
-fdescribe('OrganisationLandingPageComponent', () => {
+}
+fdescribe('FindOrganizationComponent', () => {
   let component: OrganizationListComponent;
   let fixture: ComponentFixture<OrganizationListComponent>;
   let router: Router;
   let location: Location;
-  beforeEach(async(() => {
+let orgService : OrganizationsService;
+
+  beforeEach((done) => {
     TestBed.configureTestingModule({
-      declarations: [ OrganizationListComponent ]
+      imports: [  
+        TranslateModule.forChild({
+          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+        }),
+       
+        RouterTestingModule.withRoutes(routes)
+      ],
+      declarations: [ OrganizationListComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [
+        { provide: OrganizationsService, useClass: MockOrganizationsService },
+       
+        MockOrganizationsService,
+        
+      ]
     })
     .compileComponents();
-  }));
+    done();
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -68,13 +90,60 @@ fdescribe('OrganisationLandingPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should initialize successfully', (done) => {
+    var organizationsData = [];
+    var orgResponse = {
+        businessCategory: "business",
+        description: "unitTest",
+        displayName: "unitTest",
+        distinguishedName: "unitTest",
+        legalId: "1",
+        memberId: "1",
+        orgEntityType: 'Organization' ,
+        orgEntityTypeCode: '1001',
+        organizationId: '101',
+        organizationName: "Default Organization",
+        parentMemberId: "Root Organization",
+        parentMemberName: "Root Organization",
+        state: "Approved",
+        status: "Unlocked",
+        type: "unitTest"
+    }
+    organizationsData.push(orgResponse);
+    spyOn(orgService, 'OrganizationGetManageableOrganizations').and.returnValue(Promise.resolve(organizationsData));
+    component.ngOnInit();
+    setTimeout(function() {
+      expect(orgService.OrganizationGetManageableOrganizations).toHaveBeenCalled();
+      expect(component.organizationResponse.find(item => item.content == "unitTest")).toBeDefined;
+      expect(component.organizationResponse.find(item => item.content == "Root Organization")).toBeDefined;
+      done();
+    }, 1000);
+  });
+
+  // it('the org name should not be assigned given the org is not selected', (done) => {
+  //   let selection : Object = {'item' : {'selected' : false, 'content' : ''}};
+  //   component.onOrgSelected(selection);
+  //   expect(component.orgName).toBeNull;
+  //   done();
+  // });
+
+  // it('the parent org name should not be assigned given the parent org is not selected', (done) => {
+  //   let selection : Object = {'item' : {'selected' : false, 'content' : ''}};
+  //   component.onParentOrgSelected(selection);
+  //   expect(component.orgParentName).toBeNull;
+  //   done();
+  // });
 
   it('Organisation landing should contain "Translation header!"', () => {
     const headerElement: HTMLElement = fixture.nativeElement;
-    const header  = headerElement.querySelector('h3');
+    const header  = headerElement.querySelector('userName');
     expect(header.textContent).toContain('organizations');
   });
   
+  // it('checking the service', inject([OrganizationsService]),  (service: OrganizationsService) => {
+  //   expect(service).toBeTruthy(); 
+  // });
+
   it("fakeAsync works", fakeAsync(() => {
     let promise = new Promise(resolve => {
       setTimeout(resolve, 10);

@@ -78,7 +78,7 @@ export class OrganizationListComponent implements OnInit {
         for (let i = 0; i < body.items.length; i++) {
           const item = body.items[i];
           this.organizationResponse = item;
-          const name = item.name;
+          const name = item.organizationName;
           const parentOrganizationName = item.parentOrganizationName;
           const organizationType = item.organizationType;
           data.push([name, parentOrganizationName, organizationType]);
@@ -146,4 +146,3 @@ export class OrganizationListComponent implements OnInit {
   }
 
 }
-

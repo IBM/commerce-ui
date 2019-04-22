@@ -756,6 +756,11 @@
             "ORGANIZATIONS":"Organisations",
             "NEW_BUTTON":"New"  
         },
+        "ORGANIZATION_TABLE": {
+            "name": "Name",
+            "parent_organization": "Parent organization",
+            "type": "Type"
+        },
         "ORGANIZATION_DETAILS":
         {
             "TITLE":"IBM Watson Commerce",

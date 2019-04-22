@@ -22,6 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CheckmarkOutline16Module } from '@carbon/icons-angular/lib/checkmark--outline/16';
 import { CloseOutline16Module } from '@carbon/icons-angular/lib/close--outline/16';
 import { Search16Module } from '@carbon/icons-angular/lib/search/16';
+import { ApprovalsListComponent } from './components/approvals-list/approvals-list.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { Search16Module } from '@carbon/icons-angular/lib/search/16';
     ViewDropdownComponent,
     ButtonBarComponent,
     ApprovalTableComponent,
-    SearchModalComponent
+    SearchModalComponent,
+    ApprovalsListComponent
   ],
   entryComponents: [
     SearchModalComponent
