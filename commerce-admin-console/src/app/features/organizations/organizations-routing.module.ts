@@ -15,7 +15,6 @@ import { ManageOrganizationContactComponent } from './components/manage-organiza
 import { ManageOrganizationRolesComponent } from './components/manage-organization-roles/manage-organization-roles.component';
 import { ManageOrganizationApprovalsComponent } from './components/manage-organization-approvals/manage-organization-approvals.component';
 
-
 const routes: Routes = [
 	{
 		path: '',
