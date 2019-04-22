@@ -14,6 +14,7 @@ export class ManageUserContactComponent implements OnInit {
 
   model: '';
   disabled: '';
+  updateUser;
   items = [
     {
       content: 'Mr.',
@@ -75,7 +76,7 @@ export class ManageUserContactComponent implements OnInit {
       this.zipcode = this.manageUserResponse.address.zipCode;
     }
    
-    accountCall() {
+    contactCall() {
       this.userAccountData = {
         'firstName': this.firstName,
         'lastName': this.lastName,
