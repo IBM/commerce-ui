@@ -448,7 +448,7 @@ class OrganizationsService extends __BaseService {
   }
 
   /**
-   * Update an organization's site-level attributes.
+   * Update an organization's site-level attributes. Attribute values are merged at the attribute level, rather than at the attribute value level. For example, if an attribute has the following values '[a, b]', after performing an update using values '[c, d, e]', the attribute values would be '[c, d, e]'.
    * @param params The `OrganizationsService.OrganizationsUpdateOrganizationSiteAttributeParams` containing the following parameters:
    *
    * - `id`: The unique numeric ID for identifying the organization.
@@ -483,7 +483,7 @@ class OrganizationsService extends __BaseService {
   }
 
   /**
-   * Update an organization's site-level attributes.
+   * Update an organization's site-level attributes. Attribute values are merged at the attribute level, rather than at the attribute value level. For example, if an attribute has the following values '[a, b]', after performing an update using values '[c, d, e]', the attribute values would be '[c, d, e]'.
    * @param params The `OrganizationsService.OrganizationsUpdateOrganizationSiteAttributeParams` containing the following parameters:
    *
    * - `id`: The unique numeric ID for identifying the organization.
@@ -706,7 +706,7 @@ class OrganizationsService extends __BaseService {
   }
 
   /**
-   * Update an organization's store-specific attributes.
+   * Update an organization's store-specific attributes. Attribute values are merged at the attribute level, rather than the attribute value level. For example, if an attribute has the following values '[a, b]', after performing an update using values '[c, d, e]', the attribute values would be '[c, d, e]'.
    * @param params The `OrganizationsService.OrganizationsUpdateOrganizationStoreMemberAttributeParams` containing the following parameters:
    *
    * - `id`: The unique numeric ID for identifying the organization.
@@ -744,7 +744,7 @@ class OrganizationsService extends __BaseService {
   }
 
   /**
-   * Update an organization's store-specific attributes.
+   * Update an organization's store-specific attributes. Attribute values are merged at the attribute level, rather than the attribute value level. For example, if an attribute has the following values '[a, b]', after performing an update using values '[c, d, e]', the attribute values would be '[c, d, e]'.
    * @param params The `OrganizationsService.OrganizationsUpdateOrganizationStoreMemberAttributeParams` containing the following parameters:
    *
    * - `id`: The unique numeric ID for identifying the organization.

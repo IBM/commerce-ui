@@ -1,22 +1,8 @@
 <div class="list_organizations">
-    <div class="breadcrumb-container">
-        <a href = {{ORGANIZATIONS_HELPLINKS}} target="_blank">
-            <ac-help-links></ac-help-links>
-        </a>
-    </div>
-    <label [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.header'" ></label>
-    <p [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.number'" [translateParams]="{num: orgModel.totalDataLength }"></p>
-    <div class="organization_buttons">
-        <button class="bx--btn bx--btn--primary" routerLink="/organizations/create" [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.new'"></button>
-        <div class="icon_buttons">
-            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.find'" routerLink="/organizations/find"><ibm-icon-search16></ibm-icon-search16>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.find' | translate}}</button>
-            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.approval'" routerLink="/approvals" ><ibm-icon-checkmark-outline16></ibm-icon-checkmark-outline16>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.approval' | translate}}</button>
-            <button [attr.disabled]="selectOrgLink === null ?  '' : null" routerLink="{{selectOrgLink}}">
-                <ibm-icon-edit16></ibm-icon-edit16>
-                {{'ORGANIZATIONS.LIST_ORGANIZATIONS.edit' | translate}}
-            </button>
-            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn'"><ibm-icon-locked16></ibm-icon-locked16>{{'ORGANIZATIONS.LIST_ORGANIZATIONS.lockbtn' | translate}}</button>
-            <button [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.roles'">{{'ORGANIZATIONS.LIST_ORGANIZATIONS.roles' | translate}}</button>
+        <div class="breadcrumb-container">
+            <a href = {{ORGANIZATIONS_HELPLINKS}} target="_blank">
+                <ac-help-links></ac-help-links>
+            </a>
         </div>
         <label [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.header'" ></label>
         <p [translate]="'ORGANIZATIONS.LIST_ORGANIZATIONS.number'" [translateParams]="{num: orgModel.totalDataLength }"></p>
