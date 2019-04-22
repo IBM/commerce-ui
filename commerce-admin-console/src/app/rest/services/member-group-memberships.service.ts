@@ -15,7 +15,6 @@ class MemberGroupMembershipsService extends __BaseService {
   static readonly createMemberGroupMembershipPath = '/rest/admin/v2/member-group-memberships';
   static readonly getMemberGroupMembershipByIdPath = '/rest/admin/v2/member-group-memberships/memberId:{memberId},memberGroupId:{memberGroupId}';
   static readonly deleteMemberGroupMembershipByIdPath = '/rest/admin/v2/member-group-memberships/memberId:{memberId},memberGroupId:{memberGroupId}';
-  static readonly updateMemberGroupMembershipByIdPath = '/rest/admin/v2/member-group-memberships/memberId:{memberId},memberGroupId:{memberGroupId}';
 
   constructor(
     config: __Configuration,
@@ -44,6 +43,8 @@ class MemberGroupMembershipsService extends __BaseService {
    *
    * - `expand`: The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.
    *
+   * - `sort`: The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.
+   *
    * @return A collection of member group memberships.
    */
   getMemberGroupMembershipsResponse(params: MemberGroupMembershipsService.GetMemberGroupMembershipsParams): __Observable<__StrictHttpResponse<{count?: number, items?: Array<{memberId?: number, memberGroupId?: number, field1?: string, exclude?: string}>}>> {
@@ -58,6 +59,7 @@ class MemberGroupMembershipsService extends __BaseService {
     if (params.limit != null) __params = __params.set('limit', params.limit.toString());
     if (params.fields != null) __params = __params.set('fields', params.fields.toString());
     if (params.expand != null) __params = __params.set('expand', params.expand.toString());
+    if (params.sort != null) __params = __params.set('sort', params.sort.toString());
     let req = new HttpRequest<any>(
       'GET',
       this.rootUrl + `/rest/admin/v2/member-group-memberships`,
@@ -95,6 +97,8 @@ class MemberGroupMembershipsService extends __BaseService {
    * - `fields`: The comma-separated set of properties to be returned. If no properties are specified, all properties are returned.
    *
    * - `expand`: The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.
+   *
+   * - `sort`: The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.
    *
    * @return A collection of member group memberships.
    */
@@ -153,6 +157,8 @@ class MemberGroupMembershipsService extends __BaseService {
    *
    * - `expand`: The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.
    *
+   * - `sort`: The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.
+   *
    * @return A member group membership, which is an association of a member (user or organization) to a member group.
    */
   getMemberGroupMembershipByIdResponse(params: MemberGroupMembershipsService.GetMemberGroupMembershipByIdParams): __Observable<__StrictHttpResponse<{memberId?: number, memberGroupId?: number, field1?: string, exclude?: string}>> {
@@ -163,6 +169,7 @@ class MemberGroupMembershipsService extends __BaseService {
 
     if (params.fields != null) __params = __params.set('fields', params.fields.toString());
     if (params.expand != null) __params = __params.set('expand', params.expand.toString());
+    if (params.sort != null) __params = __params.set('sort', params.sort.toString());
     let req = new HttpRequest<any>(
       'GET',
       this.rootUrl + `/rest/admin/v2/member-group-memberships/memberId:${params.memberId},memberGroupId:${params.memberGroupId}`,
@@ -192,6 +199,8 @@ class MemberGroupMembershipsService extends __BaseService {
    * - `fields`: The comma-separated set of properties to be returned. If no properties are specified, all properties are returned.
    *
    * - `expand`: The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.
+   *
+   * - `sort`: The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.
    *
    * @return A member group membership, which is an association of a member (user or organization) to a member group.
    */
@@ -246,55 +255,6 @@ class MemberGroupMembershipsService extends __BaseService {
       __map(_r => _r.body as null)
     );
   }
-
-  /**
-   * @param params The `MemberGroupMembershipsService.UpdateMemberGroupMembershipByIdParams` containing the following parameters:
-   *
-   * - `MemberGroupMembership`: A member group membership, which is an association of a member (user or organization) to a member group.
-   *
-   * - `memberId`: The user ID or organization ID that is associated to the member group.
-   *
-   * - `memberGroupId`: The member group ID.
-   */
-  updateMemberGroupMembershipByIdResponse(params: MemberGroupMembershipsService.UpdateMemberGroupMembershipByIdParams): __Observable<__StrictHttpResponse<null>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = params.MemberGroupMembership;
-
-
-    let req = new HttpRequest<any>(
-      'PATCH',
-      this.rootUrl + `/rest/admin/v2/member-group-memberships/memberId:${params.memberId},memberGroupId:${params.memberGroupId}`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
-      })
-    );
-  }
-
-  /**
-   * @param params The `MemberGroupMembershipsService.UpdateMemberGroupMembershipByIdParams` containing the following parameters:
-   *
-   * - `MemberGroupMembership`: A member group membership, which is an association of a member (user or organization) to a member group.
-   *
-   * - `memberId`: The user ID or organization ID that is associated to the member group.
-   *
-   * - `memberGroupId`: The member group ID.
-   */
-  updateMemberGroupMembershipById(params: MemberGroupMembershipsService.UpdateMemberGroupMembershipByIdParams): __Observable<null> {
-    return this.updateMemberGroupMembershipByIdResponse(params).pipe(
-      __map(_r => _r.body as null)
-    );
-  }
 }
 
 module MemberGroupMembershipsService {
@@ -343,6 +303,11 @@ module MemberGroupMembershipsService {
      * The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.
      */
     expand?: string;
+
+    /**
+     * The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.
+     */
+    sort?: string;
   }
 
   /**
@@ -369,33 +334,17 @@ module MemberGroupMembershipsService {
      * The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.
      */
     expand?: string;
+
+    /**
+     * The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.
+     */
+    sort?: string;
   }
 
   /**
    * Parameters for deleteMemberGroupMembershipById
    */
   export interface DeleteMemberGroupMembershipByIdParams {
-
-    /**
-     * The user ID or organization ID that is associated to the member group.
-     */
-    memberId: number;
-
-    /**
-     * The member group ID.
-     */
-    memberGroupId: number;
-  }
-
-  /**
-   * Parameters for updateMemberGroupMembershipById
-   */
-  export interface UpdateMemberGroupMembershipByIdParams {
-
-    /**
-     * A member group membership, which is an association of a member (user or organization) to a member group.
-     */
-    MemberGroupMembership: {memberId?: number, memberGroupId?: number, field1?: string, exclude?: string};
 
     /**
      * The user ID or organization ID that is associated to the member group.
