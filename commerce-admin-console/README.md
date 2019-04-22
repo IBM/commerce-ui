@@ -46,7 +46,9 @@ Translation file located in `src/app/i18n` serves as a global translation. Each 
 ## Generating combined REST API swagger
 
 Install api-spec-converter using the following command: `npm install -g api-spec-converter`
-Convert openApi 3.1 to swagger 2: `api-spec-converter --from=openapi_3 --to=swagger_2 ../../WebSphereCommerce/commerce-transaction-server/src/projects/Rest-Transaction/WebContent/WEB-INF/config/bod/v2/online-stores.yml > api_definition\online-stores.json`
+Convert openApi 3.1 to swagger 2:
+	`api-spec-converter --from=openapi_3 --to=swagger_2 ../../WebSphereCommerce/commerce-transaction-server/src/projects/Rest-Transaction/WebContent/WEB-INF/config/bod/v2/online-stores.yml > api_definition\online-stores.json`
+	`api-spec-converter --from=openapi_3 --to=swagger_2 ../../WebSphereCommerce/commerce-transaction-server/src/projects/Rest-Transaction/WebContent/WEB-INF/config/bod/v2/member-groups.yml > api_definition\member-groups.json`
 Install swagger-combine using the following command: `npm install –g swagger-combine`
 Combine swagger into one swagger file: `swagger-combine swagger-combine.json > api_definition/swagger.json`
 The swagger combine depends on the transaction server swagger files found here: https://ecdgit.canlab.ibm.com/aleong-ca/commerce-api-management
