@@ -60,7 +60,6 @@ import { OrganizationsMainService } from './organizations.main.service';
 		TranslateModule,
 		Settings16Module,
 		Filter16Module,
-		Menu32Module,
 		ChevronRight16Module,
 		Menu32Module,
     CheckmarkOutline16Module,
