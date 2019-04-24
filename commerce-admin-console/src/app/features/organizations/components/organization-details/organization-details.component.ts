@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-organization-details',
   templateUrl: './organization-details.component.html',
@@ -8,14 +9,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class OrganizationDetailsComponent implements OnInit {
   disabled: boolean;
   model: string;
-  constructor(private router: Router) { }
+  userForm = new FormGroup({
+    organizationName: new FormControl(),
+    description: new FormControl(),
+    organizationType: new FormControl(),
+    searchOrganization: new FormControl()
+  });
+  constructor(private router: Router, private fb: FormBuilder) { }
   orgList = [
     {
-      content: 'Organization A',
+      content: 'Organization',
       selected: false
     },
     {
-      content: 'Organization B',
+      content: 'Organization Unit',
       selected: false,
     }
   ];
@@ -24,7 +31,11 @@ export class OrganizationDetailsComponent implements OnInit {
   routeOrganizationList() {
     this.router.navigate(['organizations']);
   }
-  routeOrganizationContact() {
+  // routeOrganizationContact() {
+  //   this.router.navigate(['organizations/organizationContact']);
+  // }
+  onSubmit() {
+    console.log(this.userForm.value);
     this.router.navigate(['organizations/organizationContact']);
   }
 }

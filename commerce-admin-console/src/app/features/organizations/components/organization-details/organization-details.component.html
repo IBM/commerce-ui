@@ -35,16 +35,18 @@
     </div>
 
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
+        <form  [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
+          
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.ORGANIZATION_NAME' | translate}}</div>
-          <input ibmText class=" inputbx">
+          <input ibmText class=" inputbx" id="organizationName" formControlName="organizationName">
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.DESCRIPTION_OPTIONAL' | translate}}</div>
-          <input ibmText class="inputbx">
+          <input ibmText class="inputbx" id="description-optional" formControlName="description">
 
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.TYPE' | translate}}</div>
-          <div class="typeOrganization">
-            <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content">
+          <div class="typeOrganization" >
+            <ibm-dropdown placeholder="Select title" id="organization-type" [disabled]="disabled" value="content" formControlName="organizationType">
               <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
             </ibm-dropdown>
           </div>
@@ -52,8 +54,9 @@
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.PARENT_ORGANIZATION' | translate}}</div>
           <span class="left-addon">
             <ibm-icon-search16 class="searchICon"></ibm-icon-search16>
-            <input ibmText class=" inputbx" placeholder="Find organization">
+            <input ibmText class=" inputbx" placeholder="Find organization" id="parent-organization" formControlName="searchOrganization">
           </span>
+        
         </div>
       </div>
 
@@ -64,12 +67,13 @@
             <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
               <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeOrganizationList()"
                 >{{'MANAGE_USER.ORGANIZATION_DETAILS.CANCEL' | translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button" (click)="routeOrganizationContact()"
+              <button ibmButton size="lg" id="save-preview" class="next-button" type="submit"
                 >{{'MANAGE_USER.ORGANIZATION_DETAILS.NEXT' | translate}}</button>
             </div>
           </div>
         </div>
       </div>
+    </form>
     </div>
   </div>
 </div>

@@ -31,5 +31,7 @@ export class OrganizationRolesComponent implements OnInit {
   routeOrganizationApprovals() {
     this.router.navigate(['organizations/organizationsApprovals']);
   }
-
+  routeOrganizationList() {
+    this.router.navigate(['organizations']);
+  }
 }

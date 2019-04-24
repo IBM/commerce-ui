@@ -31,17 +31,17 @@
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
           <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CONTACT_NAME' | translate}}</div>
-          <input ibmText class=" inputbx">
+          <input ibmText class=" inputbx" id="manage-contact-name">
           <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CONTACT_EMAIL' | translate}}</div>
-          <input ibmText class=" inputbx">
+          <input ibmText class=" inputbx" id="manage-contact-email">
 
           <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.STREET_ADDRESS' | translate}}</div>
-          <input ibmText class=" inputbx" placeholder="Strett and number, P.O. box, c/o">
-          <input ibmText class=" inputbx" placeholder="Apartment, suite, unit, building, floor, etc.">
+          <input ibmText class=" inputbx" id="manage-contact-street" placeholder="Strett and number, P.O. box, c/o">
+          <input ibmText class=" inputbx" id="manage-contact-apartment" placeholder="Apartment, suite, unit, building, floor, etc.">
           <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CITY' | translate}}</div>
-          <input ibmText class=" inputbx">
+          <input ibmText class=" inputbx" id="manage-contact-city">
           <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.ADDRESS' | translate}}</div>
-          <input ibmText class=" inputbx">
+          <input ibmText class=" inputbx" id="manage-contact-state">
         </div>
       </div>
       <div class="bx--row footer-content">
@@ -49,7 +49,7 @@
           <div class="bx--row">
             <div class="bx--col-sm-5 bx--col-md-5"></div>
             <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeManageOrganizationDetails()"
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeOrganizationList()"
                 >{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CANCEL' | translate}}</button>
               <button ibmButton size="lg" id="save-preview" class="next-button" (click)="routeManageOrganizationRoles()"
                 >{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.SAVE' | translate}}</button>

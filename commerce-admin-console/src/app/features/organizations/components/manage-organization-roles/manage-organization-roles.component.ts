@@ -32,4 +32,7 @@ export class ManageOrganizationRolesComponent implements OnInit {
   routeManageOrganizationApprovals() {
     this.router.navigate(['organizations/manageOrganizationApprovals']);
   }
+  routeOrganizationList() {
+    this.router.navigate(['organizations']);
+  }
 }

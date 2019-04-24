@@ -38,7 +38,7 @@
               <div class="aval-grp-txt">
                 <span>{{'MANAGE_USER.ORGANIZATION_ROLES.AVAILABLE_ROLES' | translate}}</span>
               </div>
-              <input ibmText class="inputbx" placeholder="Find roles">
+              <input ibmText class="inputbx" id="available-roles" placeholder="Find roles">
               <ul class="table_data">
                 <li *ngFor="let roleList of roleListData">
                   <ibm-checkbox (change)="onChange($event)">
@@ -58,7 +58,7 @@
           <div class="bx--row">
             <div class="bx--col-sm-2 bx--col-md-2"></div>
             <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-              <button ibmButton="ghost" size="normal" id="save-preview" class="cancel-button"
+              <button ibmButton="ghost" size="normal" id="save-preview" class="cancel-button" (click)="routeOrganizationList()"
                 >{{'MANAGE_USER.ORGANIZATION_ROLES.CANCEL' | translate}}</button>
               <button ibmButton size="normal" id="save-preview" class="back-button" (click)="routeOrganizationContact()"
                 >{{'MANAGE_USER.ORGANIZATION_ROLES.BACK' | translate}}</button>

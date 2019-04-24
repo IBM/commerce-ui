@@ -27,4 +27,7 @@ export class ManageOrganizationDetailsComponent implements OnInit {
   routeManageOrganizationContact() {
     this.router.navigate(['organizations/manageOrganizationContact']);
   }
+  routeOrganizationList() {
+    this.router.navigate(['organizations']);
+  }
 }

@@ -825,7 +825,8 @@
             "ITEMS":"23 items",
             "CANCEL":"Cancel",
             "BACK":"Back",
-            "NEXT":"Next"
+            "NEXT":"Next",
+            "SUBMIT":"Submit"
         },
         "MANAGE_ORGANIZATION_DETAILS":
         {

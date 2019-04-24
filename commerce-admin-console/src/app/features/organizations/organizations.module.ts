@@ -38,6 +38,10 @@ import { CheckmarkFilled16Module } from '@carbon/icons-angular/lib/checkmark--fi
 import { View16Module } from '@carbon/icons-angular/lib/view/16';
 import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { OrganizationsMainService } from './organizations.main.service';
+import { GroupListComponent } from './groups/components/group-list/group-list.component';
+import { DefineGroupComponent } from './groups/components/define-group/define-group.component';
+import { ReviewGroupComponent } from './groups/components/review-group/review-group.component';
+import { GroupDetailsComponent } from './groups/components/group-details/group-details.component';
 
 
 
@@ -88,7 +92,11 @@ import { OrganizationsMainService } from './organizations.main.service';
 		OrganizationApprovalsComponent,
 		OrganizationContactComponent,
 		OrganizationDetailsComponent,
-		OrganizationRolesComponent
+		OrganizationRolesComponent,
+		GroupListComponent,
+		DefineGroupComponent,
+		ReviewGroupComponent,
+		GroupDetailsComponent
 	],
 	providers: [
 		OrganizationMainService, OrganizationsMainService
