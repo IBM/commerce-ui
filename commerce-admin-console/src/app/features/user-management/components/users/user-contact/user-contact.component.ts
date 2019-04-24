@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserMainService } from '../../../services/user-main.service';
 import { UserSettingService } from '../../../services/user-setting.service';
+import { CountriesService } from '../../../../../rest/services/countries.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ac-user-contact',
@@ -9,19 +11,23 @@ import { UserSettingService } from '../../../services/user-setting.service';
   styleUrls: ['./user-contact.component.scss']
 })
 export class UserContactComponent implements OnInit {
+  contactForm: FormGroup;
   disabled: '';
   userContactData: any;
   contactData: any;
-  personTitle: string;
-  firstName: string;
-  lastName: string;
-  address1: string;
-  address2: string;
-  city: string;
-  country: string;
-  zipCode: string;
+  personTitle: FormControl;
+  firstName: FormControl;
+  lastName: FormControl;
+  address1: FormControl;
+  address2: FormControl;
+  city: FormControl;
+  state: FormControl;
+  country: FormControl;
+  zipCode: FormControl;
+
   allInputValidated: boolean;
   inputFieldError: boolean;
+  countryListData: any;
 
   items = [
     {
@@ -34,34 +40,90 @@ export class UserContactComponent implements OnInit {
     }
   ];
   constructor(private router: Router, private userMainService: UserMainService,
-    private userSettingService: UserSettingService) { }
+    private userSettingService: UserSettingService, private countriesService: CountriesService) { }
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+    this.countryList();
     this.contactData = this.userMainService.userContactData;
-    console.log(this.contactData);
     if (this.userSettingService.rolesBackCall) {
       this.setModelData();
     }
   }
 
-  setModelData() {
-    this.personTitle = this.contactData.personTitle;
-    this.firstName = this.contactData.firstName;
-    this.lastName = this.contactData.lastName;
-    this.address1 = this.contactData.address1;
-    this.address2 = this.contactData.address2;
-    this.city = this.contactData.city;
-    this.country = this.contactData.country;
-    this.zipCode = this.contactData.zipCode;
+  createFormControls() {
+    this.personTitle = new FormControl('');
+    this.firstName = new FormControl('', Validators.required);
+    this.lastName = new FormControl('',
+    [Validators.required
+    ]);
+    this.address1 = new FormControl('', [
+      Validators.required
+    ]);
+    this.address2 = new FormControl('', [
+      Validators.required
+    ]);
+    this.city = new FormControl('', Validators.required);
+    this.country = new FormControl('', Validators.required);
+    this.state = new FormControl('', Validators.required);
+    this.zipCode = new FormControl('', Validators.required);
   }
 
+  createForm() {
+    this.contactForm = new FormGroup({
+      personTitle: this.personTitle,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      address1: this.address1,
+      address2: this.address2,
+      city: this.city,
+      country: this.country,
+      state: this.state,
+      zipCode: this.zipCode
+    });
+  }
+
+  setModelData() {
+    // this.personTitle = this.contactData.personTitle;
+    // this.firstName = this.contactData.firstName;
+    // this.lastName = this.contactData.lastName;
+    // this.address1 = this.contactData.address1;
+    // this.address2 = this.contactData.address2;
+    // this.city = this.contactData.city;
+    // this.country = this.contactData.country;
+    // this.zipCode = this.contactData.zipCode;
+
+    this.personTitle.setValue(this.userContactData.personTitle);
+    this.firstName.setValue(this.userContactData.firstName);
+    this.lastName.setValue(this.userContactData.lastName);
+    this.address1.setValue(this.userContactData.address1);
+    this.address2.setValue(this.userContactData.address2);
+    this.city.setValue(this.userContactData.city);
+    this.country.setValue(this.userContactData.country);
+    this.zipCode.setValue(this.userContactData.zipCode);
+  }
+
+  accountCall() {
+    this.userContactData = {
+      'personTitle': this.personTitle.value,
+      'firstName': this.firstName.value,
+      'lastName': this.lastName.value,
+      'address1': this.address1.value,
+      'address2': this.address2.value,
+      'city': this.city.value,
+      'country': this.country.value,
+      'zipCode': this.zipCode.value
+    };
+    console.log('setData', this.userContactData);
+  }
   goToRoles() {
-    this.validateInputField();
-      if (this.allInputValidated) {
+    //this.validateInputField();
+      //if (this.allInputValidated) {
         this.contactCall();
         this.userMainService.userContact(this.userContactData);
         this.router.navigate(['users/userRoles']);
-      }
+      //}
     }
     backClick() {
       this.userSettingService.contactBackClick = true;
@@ -83,15 +145,46 @@ export class UserContactComponent implements OnInit {
       'zipCode': this.zipCode
     };
   }
-  validateInputField() {
-    if (this.firstName !== '' && this.firstName !== undefined && this.lastName !== '' && this.lastName !== undefined &&
-     this.address1 !== '' && this.address1 !== undefined && this.address2 !== '' && this.address2 !== undefined && this.city !== undefined
-    && this.city !== '' && this.country !== '' && this.country !== undefined && this.zipCode !== '' && this.zipCode !== undefined) {
-    this.allInputValidated = true;
-    this.inputFieldError = false;
-    } else {
-      this.allInputValidated = false;
-      this.inputFieldError = true;
-    }
+  // validateInputField() {
+  //   if (this.firstName !== '' && this.firstName !== undefined && this.lastName !== '' && this.lastName !== undefined &&
+  //    this.address1 !== '' && this.address1 !== undefined && this.address2 !== '' && this.address2 !== undefined && this.city !== undefined
+  //   && this.city !== '' && this.country !== '' && this.country !== undefined && this.zipCode !== '' && this.zipCode !== undefined) {
+  //   this.allInputValidated = true;
+  //   this.inputFieldError = false;
+  //   } else {
+  //     this.allInputValidated = false;
+  //     this.inputFieldError = true;
+  //   }
+  // }
+
+  countryList(): Promise<Object> {
+    return new Promise((resolve, reject) => {
+      this.countriesService.getCountries({}
+      ).subscribe(response => {
+        resolve(response);
+        this.countryListData = response;
+        console.log('resp', response);
+        console.log('countryListData ', this.countryListData );
+      },  error => {
+        reject();
+      });
+    });
   }
+
+  // countryListApi(): Promise<Object> {
+  //   return new Promise((resolve, reject) => {
+  //     this.organizationsService.OrganizationGetManageableOrganizations({}
+  //     ).subscribe(response => {
+  //       resolve(response);
+  //       this.organizationListData = response.items;
+  //       this.parentOrgData = this.organizationListData.map(value => {
+  //         return {parentOrganizationName: value.parentOrganizationName, id: value.parentOrganizationId};
+  //       });
+  //       this.organizationListFocused = true;
+  //     },  error => {
+  //       reject();
+  //     });
+  //   });
+  // }
+
 }

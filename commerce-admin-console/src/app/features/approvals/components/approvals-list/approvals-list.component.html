@@ -36,11 +36,11 @@
 <!-- TABLE PART (START) -->
 <div class="TableItem bx--row">
   <div class="table-body">
-        <ibm-table [model]="model"   [striped]="striped"></ibm-table>
+        <ibm-table></ibm-table>
         <ng-template #listOrgItemTemplate let-data="data">
          <a routerLink="organisations" (click)="getSelectedOrganization(data.name)">{{data.name}}</a>
      </ng-template>
     
-        <ibm-pagination  [model]="model" (selectPage)="selectPage($event)"></ibm-pagination>
+        <ibm-pagination></ibm-pagination>
   </div> 
 </div>

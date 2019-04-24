@@ -5,7 +5,7 @@ import { Router, Routes } from '@angular/router';
 import { Location } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'carbon-components-angular';
 import { Search16Module } from '@carbon/icons-angular/lib/search/16';
 import { Add16Module } from '@carbon/icons-angular/lib/add/16';
@@ -26,7 +26,8 @@ fdescribe('UserAccountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule, FormsModule, DialogModule, Search16Module, Add16Module, ChevronRight16Module,
+      imports: [RouterTestingModule, FormsModule, ReactiveFormsModule, HttpClientModule, FormsModule, DialogModule, Search16Module,
+         Add16Module, ChevronRight16Module,
          Menu32Module, CheckmarkOutline16Module, ArrowDown16Module, CheckmarkFilled16Module, View16Module, ViewOff16Module,
          TranslateModule.forRoot()],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -46,5 +47,25 @@ fdescribe('UserAccountComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('form invalid when empty', () => {
+    expect(component.accountForm.valid).toBeFalsy();
+  });
+  it('email field validity', () => {
+    const email1 = component.accountForm.controls['email1'];
+    expect(email1.valid).toBeFalsy();
+  });
+  it('email field validity, input required', () => {
+    let errors = {};
+    const email1 = component.accountForm.controls['email1'];
+    errors = email1.errors || {};
+    expect(errors['required']).toBeTruthy();
+  });
+  it('email field validity, pattern validation', () => {
+    let errors = {};
+    const email1 = component.accountForm.controls['email1'];
+    email1.setValue('test');
+errors = email1.errors || {};
+expect(errors['pattern']).toBeTruthy();
   });
 });
