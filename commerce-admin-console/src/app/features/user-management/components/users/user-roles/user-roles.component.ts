@@ -47,7 +47,26 @@ export class UserRolesComponent implements OnInit {
     this.rolesData = this.userMainService.listData;
   }
 
+  mySelectedRoles(mySelectedRoles: any) {
+    if (mySelectedRoles != null) {
+      this.rolesArray.push(mySelectedRoles);
+      this.removeDuplicate(this.rolesArray);
+    }
   }
+  removeDuplicate(rolesArray: any) {
+    let index;
+    const len = rolesArray.length;
+    const resultArray = [];
+    const obj = {};
+    for (index = 0; index < len; index++) {
+      obj[rolesArray[index]] = 0;
+    }
+    for (index in obj) {
+      resultArray.push(index);
+    }
+    this.result = resultArray;
+  }
+
   goToGroup() {
     this.rolesCall();
     this.userMainService.userRoles(this.userRolesData);

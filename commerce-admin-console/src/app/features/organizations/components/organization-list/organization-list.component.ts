@@ -1,12 +1,13 @@
 import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation, Input } from '@angular/core';
 import { TableModel, TableItem, TableHeaderItem } from 'carbon-components-angular';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 //import { OrganizationsConstants } from '../organizations.constants';
 //import { AppConstants } from '../../../app.constants';
 //import { HelpLinksConstants } from '../../../components/help-links/help-links.constants';
 import { IframeService } from '../../../../services/iframe.service';
 import { OrganizationMainService } from '../../organization.main.service';
+import { OrganizationsService } from '../../../../rest/services/organizations.service';
 
 @Component({
   selector: 'app-organization-list',
@@ -140,16 +141,6 @@ export class OrganizationListComponent implements OnInit {
 
   createOrganization() {
     this.router.navigate(['organizations/organizationsDetails']);
-  }
-
-    this.orgModel.header = [
-      new TableHeaderItem({data: 'Name'}),
-      new TableHeaderItem({data: 'Parent Organization'}),
-      // new TableHeaderItem({data: 'Approval State'}),
-      // new TableHeaderItem({data: 'Status'}),
-      new TableHeaderItem({data: 'Type'})
-    ];
-    this.orgModel.currentPage = 1;
   }
 
 }
