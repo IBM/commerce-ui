@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
 import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 import { IframeService } from '../../../../../services/iframe.service';
@@ -38,7 +38,8 @@ export class GroupListComponent implements OnInit {
 
   constructor(
     private translateService: TranslateService,
-    private iframeService: IframeService) { }
+    private iframeService: IframeService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -104,6 +105,8 @@ export class GroupListComponent implements OnInit {
      return newData;
    }
 
-
+   routeGroupDetails() {
+    this.router.navigate(['organizations/groupDetails']);
+   }
 
 }

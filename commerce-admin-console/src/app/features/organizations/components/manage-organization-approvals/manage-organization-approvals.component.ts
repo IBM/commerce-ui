@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+export class ManageApprovals {
+  constructor(public manageAvailableApprovals: string,
+  ) {
+  }
+}
 @Component({
   selector: 'app-manage-organization-approvals',
   templateUrl: './manage-organization-approvals.component.html',
@@ -7,7 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ManageOrganizationApprovalsComponent implements OnInit {
 
-  
+  @Output() loggedIn = new EventEmitter<ManageApprovals>();
+  manageApprovalsForm: FormGroup;
   approvalListData: any;
 
   approvalList = [
@@ -22,10 +29,25 @@ export class ManageOrganizationApprovalsComponent implements OnInit {
     { id: 9, approvalName: 'Approvals' },
     { id: 10, approvalName: 'Approvals' }
   ];
-  constructor(private router: Router) { }
+  constructor(private router: Router , private _fb: FormBuilder) { }
 
   ngOnInit() {
     this.approvalListData = this.approvalList;
+    this.manageApprovalsForm = this._fb.group({
+      manageAvailableApprovals: ['', [
+        Validators.required]]
+    });
+  }
+  onSubmit() {
+    console.log(this.manageApprovalsForm.value);
+    if (this.manageApprovalsForm.valid) {
+      this.loggedIn.emit(
+        new ManageApprovals(
+          this.manageApprovalsForm.value.manageAvailableApprovals,
+        )
+      );
+    }
+    this.router.navigate(['organizations']);
   }
   routeManageOrganizationRoles() {
     this.router.navigate(['organizations/manageOrganizationRoles']);

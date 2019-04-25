@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { OrganizationDetailsComponent } from './organization-details.component';
+import { OrganizationDetailsComponent, DetailsOrganization } from './organization-details.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -37,10 +37,34 @@ fdescribe('OrganizationDetailsComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+  it('form invalid when empty', () => {
+    expect(component.detailsForm.valid).toBeFalsy();
+});
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+it('organization name field validity', () => {
+  let errors = {};
+  const userName = component.detailsForm.controls['organizationName'];
+  expect (userName.valid).toBeFalsy();
+
+  // user name field is required
+  errors = userName.errors  || {};
+  expect(errors['required']).toBeTruthy();
+
+  // Set user name to something wrong
+  userName.setValue('');
+  errors = userName.errors || {};
+  expect(errors['required']).toBeTruthy();
+
+  // Set user name to something correct
+  userName.setValue('Sriman');
+  errors = userName.errors || {};
+  expect(errors['required']).toBeFalsy();
+
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
   /*.... IF the Form Data is empty ...*/
 //   it('form invalid when empty', () => {
 //     expect(component.userForm.valid).toBeFalsy();

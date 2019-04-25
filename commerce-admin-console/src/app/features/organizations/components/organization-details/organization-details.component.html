@@ -35,12 +35,16 @@
     </div>
 
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
-        <form [formGroup]="userForm"  (ngSubmit)="onSubmit()">
+        <form  [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
           
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.ORGANIZATION_NAME' | translate}}</div>
-          <input ibmText class=" inputbx" id="organizationName" formControlName="organizationName" ngDefaultControl>
+          <input ibmText class=" inputbx" id="organizationName" formControlName="organizationName">
+          <!--Validation for the organization name field.-->
+          <div class="errorField" *ngIf="detailsForm.controls['organizationName'].hasError('required')">
+            Organization Name is Mandatory.
+          </div>
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.DESCRIPTION_OPTIONAL' | translate}}</div>
           <input ibmText class="inputbx" id="description-optional" formControlName="description" ngDefaultControl>
 
@@ -67,7 +71,7 @@
             <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
               <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeOrganizationList()"
                 >{{'MANAGE_USER.ORGANIZATION_DETAILS.CANCEL' | translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button" type="submit"
+              <button ibmButton size="lg" id="save-preview" class="next-button" type="submit" [disabled]="!detailsForm.valid"
                 >{{'MANAGE_USER.ORGANIZATION_DETAILS.NEXT' | translate}}</button>
             </div>
           </div>

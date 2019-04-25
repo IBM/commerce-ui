@@ -3,75 +3,83 @@
   <span class="ibm-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.TITLE' | translate}}</span>
 </div>
 <div class="border-div">
-    <div class="users">
-      <span>{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.ORGANIZATIONS' | translate}}</span>
-      <span class="icon-top"><ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16></span>
-      <span><strong class="new-user">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.EDIT_ORGANIZATION' | translate}}</strong></span>
-      <div class="clr"></div>
-    </div>
-      <div class="bx--row header-border">
-        <div class="bx--col-sm-4 bx--col-md-4 side-content">
-            <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
-              
-              <div class="text-margin">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.ACCOUNT_INFORMATION' | translate}}</div><br />
-              
-              <div class="text-margin">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.CONTACT_INFORMATION' | translate}}</div><br />
-              
-              <div class="text-margin">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.ROLES' | translate}}</div><br />
-              <span class="dot account-dot"></span>
-              <div class="text-margin">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.APPROVALS' | translate}}</div>
-            </div>
-          </div>
-        <div class="bx--col-sm-8 bx--col-md-8 right-content">
-          <div class="bx--row main-content">
-            <div class="bx--col-sm-11 bx--col-md-11 inside-content">
-                  
-                      
-                          <div class="slct-grp-content">
-                              <div class="slct-grp-txt">
-                                  <span>{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.SELECT_APPROVALS' | translate}}</span>
-                              </div>
-                            <div>
-                              <div class="aval-grp-txt">
-                                  <span>{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.AVAILABLE_APPROVALS' | translate}}</span>
-                              </div>
-                              <input ibmText class="inputbx" id="manage-organisation-approvals" placeholder="Find approvals">
-                              <ul class="table_data">
-                                <li *ngFor="let approvalList of approvalListData">
-                                    <ibm-checkbox
-                                    (change)="onChange($event)">
-                                    {{approvalList.approvalName}}
-                                  </ibm-checkbox>
-                                </li>
-                              </ul>
-                            </div>
-                            <div class="total-items">
-                                <span >{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.ITEMS' | translate}}</span>
-                            </div>
-                          </div>
-                      
-                      
-                      
-                      
-                    
-            </div>
-          </div>
-          <div class="bx--row footer-content">
-            <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
-              <div class="bx--row">
-          <div class="bx--col-sm-5 bx--col-md-5"></div>
-          <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
-            <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeOrganizationList()"
-              >{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.CANCEL' | translate}}</button>
-            <button ibmButton size="lg" id="save-preview" class="next-button" (click)="routeOrganizationList()"
-              >{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.SAVE' | translate}}</button>
-          </div>
-        </div>
-            </div>
-          </div>
-        </div>
+  <div class="users">
+    <span>{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.ORGANIZATIONS' | translate}}</span>
+    <span class="icon-top">
+      <ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16>
+    </span>
+    <span><strong
+        class="new-user">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.EDIT_ORGANIZATION' | translate}}</strong></span>
+    <div class="clr"></div>
+  </div>
+   <div class="bx--row header-border">
+    <div class="bx--col-sm-4 bx--col-md-4 side-content">
+      <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
+
+        <div class="text-margin">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.ACCOUNT_INFORMATION' | translate}}</div>
+        <br />
+
+        <div class="text-margin">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.CONTACT_INFORMATION' | translate}}</div>
+        <br />
+
+        <div class="text-margin">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.ROLES' | translate}}</div><br />
+        <span class="dot account-dot"></span>
+        <div class="text-margin">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.APPROVALS' | translate}}</div>
       </div>
+    </div>
+    <div class="bx--col-sm-8 bx--col-md-8 right-content">
+      <form [formGroup]="manageApprovalsForm" (ngSubmit)="onSubmit()">
+        <div class="bx--row main-content">
+          <div class="bx--col-sm-11 bx--col-md-11 inside-content">
+
+
+            <div class="slct-grp-content">
+              <div class="slct-grp-txt">
+                <span>{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.SELECT_APPROVALS' | translate}}</span>
+              </div>
+              <div>
+                <div class="aval-grp-txt">
+                  <span>{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.AVAILABLE_APPROVALS' | translate}}</span>
+                </div>
+                <input ibmText class="inputbx" formControlName="manageAvailableApprovals" #refmangApprovals
+                  id="manage-organisation-approvals" placeholder="Find approvals">
+                <!--Validation for the Available roles field.-->
+                <div class="errorField" *ngIf="manageApprovalsForm.controls['manageAvailableApprovals'].hasError('required')">
+                  Available Approvals is the Mandatory field.
+                </div>
+                <ul class="table_data">
+                  <li *ngFor="let approvalList of approvalListData">
+                    <ibm-checkbox (change)="onChange($event)">
+                      {{approvalList.approvalName}}
+                    </ibm-checkbox>
+                  </li>
+                </ul>
+              </div>
+              <div class="total-items">
+                <span>{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.ITEMS' | translate}}</span>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+        <div class="bx--row footer-content">
+          <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
+            <div class="bx--row">
+              <div class="bx--col-sm-5 bx--col-md-5"></div>
+              <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
+                <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button"
+                  (click)="routeOrganizationList()">{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.CANCEL' | translate}}</button>
+                <button ibmButton size="lg" id="save-preview" class="next-button" type="submit" [disabled]="!manageApprovalsForm.valid"
+                  >{{'MANAGE_USER.MANAGE_ORGANIZATION_APPROVALS.SAVE' | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-
-
-
