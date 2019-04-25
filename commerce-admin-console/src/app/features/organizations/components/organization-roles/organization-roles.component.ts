@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrganizationMainService } from '../../organization.main.service';
 @Component({
   selector: 'app-organization-roles',
   templateUrl: './organization-roles.component.html',
@@ -20,12 +21,14 @@ export class OrganizationRolesComponent implements OnInit {
     { id: 9, roleName: 'Role' },
     { id: 10, roleName: 'Role' }
   ];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private orgMainService: OrganizationMainService) { }
 
   ngOnInit() {
     this.roleListData = this.roleList;
   }
   routeOrganizationContact() {
+    this.orgMainService.rolesBackCall = true;
+    this.router.navigate(['users/userContact']);
     this.router.navigate(['organizations/organizationContact']);
   }
   routeOrganizationApprovals() {

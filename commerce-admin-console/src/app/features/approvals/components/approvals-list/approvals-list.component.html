@@ -41,6 +41,6 @@
          <a routerLink="organisations" (click)="getSelectedOrganization(data.name)">{{data.name}}</a>
      </ng-template>
     
-        <ibm-pagination></ibm-pagination>
+        <ibm-pagination  [model]="model" ></ibm-pagination>
   </div> 
 </div>

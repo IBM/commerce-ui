@@ -73,7 +73,7 @@ export class OrganizationListComponent implements OnInit {
         limit: this.model.pageLength
       }).subscribe((body: any) => {
         this.model.totalDataLength = body.count;
-        console.log("org" + this.totalDataLength);
+        //console.log("org" + this.totalDataLength);
         const data = [];
         for (let i = 0; i < body.items.length; i++) {
           const item = body.items[i];
@@ -84,8 +84,8 @@ export class OrganizationListComponent implements OnInit {
           data.push([name, parentOrganizationName, organizationType]);
         }
         resolve(data);
-        console.log(data);
-        console.log(data[0]);
+       // console.log(data);
+        //console.log(data[0]);
       });
     });
   }
@@ -100,7 +100,7 @@ export class OrganizationListComponent implements OnInit {
       //     [new TableItem({data: {name:data[0][0], link: "/table"}, template: this.listOrgItemTemplate}), 
       //     new TableItem({data:  data[0][1]}), new TableItem({data: data[2][2] })]
       // ];
-      console.log("data[1][1]", data[0][1])
+     // console.log("data[1][1]", data[0][1])
       this.model.currentPage = page;
     });
   }
@@ -113,8 +113,8 @@ export class OrganizationListComponent implements OnInit {
     // }
     // return listData;
     data.forEach((value, idx) => {
-      console.log('val', value);
-      console.log('idx', idx);
+      //console.log('val', value);
+      //console.log('idx', idx);
       if (value[2] === 'O') {
         listData.push([new TableItem({ data: { name: data[idx][0] }, template: this.listOrgItemTemplate }),
         new TableItem({ data: data[idx][1] }), new TableItem({ data: 'Organization' })]);

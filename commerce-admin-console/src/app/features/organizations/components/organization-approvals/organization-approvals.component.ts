@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrganizationMainService } from '../../organization.main.service';
+import { TranslateService } from '@ngx-translate/core';
+import { IframeService } from '../../../../services/iframe.service';
 @Component({
   selector: 'app-organization-approvals',
   templateUrl: './organization-approvals.component.html',
@@ -8,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class OrganizationApprovalsComponent implements OnInit {
 
   approvalListData: any;
+  createUserResponse: any;
 
   approvalList = [
     { id: 1, approvalName: 'Order Process approvals' },
@@ -21,7 +25,8 @@ export class OrganizationApprovalsComponent implements OnInit {
     { id: 9, approvalName: 'Approvals' },
     { id: 10, approvalName: 'Approvals' }
   ];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private orgMainService: OrganizationMainService,
+    private translateService: TranslateService, private iframeService: IframeService) { }
 
   ngOnInit() {
     this.approvalListData = this.approvalList;
@@ -32,7 +37,24 @@ export class OrganizationApprovalsComponent implements OnInit {
   // routeManageOrganizationDetails() {
   //   this.router.navigate(['organizations/manageOrganizationDetails']);
   // }
-  routeOrganizationList() {
+  // routeOrganizationList() {
+  //   this.router.navigate(['organizations']);
+  // }
+  createUserApiCall() {
+    this.orgMainService.createUser().then(results => {
+    this.createUserResponse = Object.assign([], results);
+    console.log('from component', this.createUserResponse);
+ }).catch(() => {
+  this.translateService
+      .get('CATALOGS.HEADR.store_list_failed')
+      .subscribe((msg: string) => {
+        this.iframeService.postStatusMsg(msg, 'error');
+      });
+});
+}
+
+  submitUserDetails() {
+    this.createUserApiCall();
     this.router.navigate(['organizations']);
-  }
+    }
 }

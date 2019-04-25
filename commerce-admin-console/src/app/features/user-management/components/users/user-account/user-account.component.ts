@@ -60,6 +60,7 @@ export class UserAccountComponent implements OnInit {
     this.createForm();
     this.showInput = true;
     this.accountData = this.userMainService.userAccountData;
+    console.log("dddd", this.accountData);
     if (this.userSettingService.contactBackClick) {
       this.setModelData();
       this.showTickboxVisible = true;
