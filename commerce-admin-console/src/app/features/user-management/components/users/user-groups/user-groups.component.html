@@ -29,7 +29,7 @@
               </span>
             </div>
           </div>
-          <div class="bx--col-sm-8 bx--col-md-8 right-content">
+          <form [formGroup]="groupForm" class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
               <div class="bx--col-sm-11 bx--col-md-11 inside-content">
                     <ibm-tabs>
@@ -42,17 +42,23 @@
                                 <div class="aval-grp-txt">
                                     <span>{{'MANAGE_USER.USER_GROUPS.INCLUDE_TAB.AVAILABLE_GROUPS'| translate}}</span>
                                 </div>
-                                <input ibmText class="inputbx" placeholder="Find a group" [(ngModel)]="searchText" id="groupsInput" ngDefaultControl>
-                                <ul>
-                                  <li *ngFor="let groupList of groupListData | filter:searchText" class="list-content">
-                                      <ibm-checkbox
-                                      (change)="onChangeCheckbox(groupList,$event)">
+                                <input ibmText class="inputbx" placeholder="Find a group" formControlName="includeSearchText" id="groupsInput" ngDefaultControl>
+                                <ul *ngIf="!showFullList">
+                                  <li *ngFor="let groupList of groupListData | slice:0:10" class="list-content">
+                                      <ibm-checkbox (change)="onChangeCheckbox(groupList,$event)">
+                                      {{groupList.groupName}}
+                                    </ibm-checkbox>
+                                  </li>
+                                </ul>
+                                <ul *ngIf="showFullList">
+                                  <li *ngFor="let groupList of groupListData" class="list-content">
+                                      <ibm-checkbox (change)="onChangeCheckbox(groupList,$event)">
                                       {{groupList.groupName}}
                                     </ibm-checkbox>
                                   </li>
                                 </ul>
                               </div>
-                              <div class="total-items">
+                              <div class="total-items" (click)="showTotalItems()">
                                   <span >{{'MANAGE_USER.USER_GROUPS.INCLUDE_TAB.ITEMS'| translate}}</span>
                               </div>
                             </div>
@@ -66,9 +72,9 @@
                                 <div class="aval-grp-txt">
                                     <span>{{'MANAGE_USER.USER_GROUPS.EXCLUDE_TAB.AVAILABLE_GROUPS'| translate}}</span>
                                 </div>
-                                <input ibmText class="inputbx" placeholder="Find a group" [(ngModel)]="searchText">
+                                <input ibmText class="inputbx" placeholder="Find a group" formControlName="excludeSearchText" ngDefaultControl>
                                 <ul>
-                                  <li *ngFor="let groupList of groupListData | filter:searchText" class="list-content">
+                                  <li *ngFor="let groupList of groupListData | filter:excludeSearchText.value" class="list-content">
                                       <ibm-checkbox
                                       (change)="onChange($event)">
                                       {{groupList.groupName}}
@@ -96,7 +102,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
   </div>
   

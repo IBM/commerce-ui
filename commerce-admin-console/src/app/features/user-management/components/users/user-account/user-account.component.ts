@@ -21,6 +21,7 @@ export class UserAccountComponent implements OnInit {
   organizationName: FormControl;
   policy: FormControl;
 
+  organizationId: number;
   accountData: any;
   userAccountData: any;
   emailPattern: any;
@@ -115,6 +116,7 @@ export class UserAccountComponent implements OnInit {
 
   goToContact() {
     if (this.accountForm.valid) {
+      this.findOrginationId();
       this.accountCall();
       this.router.navigate(['/users/userContact']);
       this.userMainService.useraccount(this.userAccountData);
@@ -131,6 +133,7 @@ accountCall() {
     'password': this.password.value,
     'passwordVerify': this.passwordVerify.value,
     'organizationName': this.organizationName.value,
+    'organizationId': this.organizationId,
     'policy': this.policy.value
   };
   console.log('setData', this.userAccountData);
@@ -169,8 +172,9 @@ organizationListApi(): Promise<Object> {
       resolve(response);
       this.organizationListData = response.items;
       this.parentOrgData = this.organizationListData.map(value => {
-        return {parentOrganizationName: value.parentOrganizationName, id: value.parentOrganizationId};
+        return value.parentOrganizationName;
       });
+      console.log('response', this.parentOrgData);
       this.organizationListFocused = true;
     },  error => {
       reject();
@@ -197,9 +201,17 @@ orgInputKeyup() {
 }
 
 selectedOrg(event: any) {
-  this.organizationName.setValue(event.parentOrganizationName);
+  this.organizationName.setValue(event);
   console.log(event);
   this.showOrgList = false;
+}
+
+findOrginationId() {
+  this.organizationListData.forEach(value => {
+    if (value.parentOrganizationName === this.organizationName.value) {
+    this.organizationId = value.parentOrganizationId;
+    }
+  });
 }
 
 }

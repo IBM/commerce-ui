@@ -70,7 +70,7 @@
                     <ul *ngIf="showOrgList">
                       <li class="org-list" *ngFor="let orgList of parentOrgData | search:organizationName.value"
                       (click)="selectedOrg(orgList)">
-                      {{orgList.parentOrganizationName}}</li>
+                      {{orgList}}</li>
                     </ul>
                   </div>
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.ACCOUNT_POLICY' | translate}}</div>

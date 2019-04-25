@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserMainService } from '../../../services/user-main.service';
 import { UserSettingService } from '../../../services/user-setting.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ac-user-roles',
@@ -9,15 +10,15 @@ import { UserSettingService } from '../../../services/user-setting.service';
   styleUrls: ['./user-roles.component.scss']
 })
 export class UserRolesComponent implements OnInit {
-
+  rolesForm: FormGroup;
   disabled: '';
   rolesData: any;
   userRolesData: any;
   rolesArray: any = [];
   result: any = [];
   modelRoles: '';
-  organization: string;
-  availablrRoles: string;
+  organization: FormControl;
+  availablrRoles: FormControl;
 
   constructor(private router: Router, private userMainService: UserMainService,
     private userSettingService: UserSettingService) { }
@@ -52,8 +53,23 @@ export class UserRolesComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
     this.rolesData = this.userMainService.listData;
   }
+
+  createFormControls() {
+    this.organization = new FormControl('', Validators.required);
+    this.availablrRoles = new FormControl('', Validators.required);
+  }
+
+  createForm() {
+    this.rolesForm = new FormGroup({
+      organization: this.organization,
+      availablrRoles: this.availablrRoles
+    });
+  }
+
   mySelectedRoles(mySelectedRoles: any) {
     if (mySelectedRoles != null) {
       this.rolesArray.push(mySelectedRoles);

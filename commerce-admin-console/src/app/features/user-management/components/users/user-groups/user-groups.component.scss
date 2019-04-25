@@ -191,6 +191,10 @@
   }
   .total-items {
     margin: 1% 0 1% 0;
+    cursor: pointer;
+    &:hover {
+      color: #0f6ddf;
+    }
   }
   .list-content {
     margin-bottom: 10px;

@@ -28,7 +28,7 @@
             </span>
             </div>
           </div>
-          <div class="bx--col-sm-8 bx--col-md-8 right-content">
+          <form [formGroup]="rolesForm" class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
               <div class="bx--col-sm-11 bx--col-md-11 inside-content">
                 <div class="info-text">
@@ -38,16 +38,14 @@
                 <div class="form-text">{{'MANAGE_USER.USER_ROLES.ORGANIZATION'| translate}}</div>
                 <ibm-dropdown
                   placeholder="Select title"
-                  [disabled]="disabled"
-                  [(ngModel)]="organization"
+                  formControlName="organization"
                   value="content" id="organizationName" ngDefaultControl>
                   <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                 </ibm-dropdown>
                 <div class="form-text select-field">{{'MANAGE_USER.USER_ROLES.AVAILABLE_ROLES'| translate}}</div>
                 <ibm-dropdown
                   placeholder="Select title"
-                  [disabled]="disabled"
-                  [(ngModel)]="availablrRoles"
+                  formControlName="availablrRoles"
                   value="content" (click)="mySelectedRoles(availablrRoles)" id="rolesList" ngDefaultControl>
                   <ibm-dropdown-list [items]="rolesList"></ibm-dropdown-list>
                 </ibm-dropdown>
@@ -73,6 +71,6 @@
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
   </div>

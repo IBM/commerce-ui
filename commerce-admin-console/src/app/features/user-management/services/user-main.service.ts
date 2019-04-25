@@ -11,6 +11,7 @@ export class UserMainService {
   userContactData: any;
   userRolesData: any;
   listResult: any;
+  id: number;
 
   constructor( private userService: UsersService) { }
 
@@ -46,20 +47,20 @@ userList(): Promise<object> {
   });
 }
 
-  createUser(): Promise<Object> {
-    this.setUserData();
-    console.log(this.listData);
-    return new Promise((resolve, reject) => {
-      this.userService.UsersCreateUserResponse(this.listData,
-      ).subscribe(response => {
-        resolve(response);
-        this.resultData = response;
-        console.log('service', this.resultData);
-      },  error => {
-        reject();
-      });
-    });
-  }
+  // createUser(): Promise<Object> {
+  //   this.setUserData();
+  //   console.log(this.listData);
+  //   return new Promise((resolve, reject) => {
+  //     this.userService.UsersCreateUserResponse(this.listData,
+  //     ).subscribe(response => {
+  //       resolve(response);
+  //       this.resultData = response;
+  //       console.log('service', this.resultData);
+  //     },  error => {
+  //       reject();
+  //     });
+  //   });
+  // }
 
   useraccount(data) {
     this.userAccountData = {
@@ -67,6 +68,7 @@ userList(): Promise<object> {
       'email1': data.email1,
       'password': data.password,
       'passwordVerify': data.passwordVerify,
+      'organizationId': data.organizationId,
       'organizationName': data.organizationName,
       'policy': data.policy
     };
@@ -119,23 +121,20 @@ setUserData() {
       'bestCallingTime': 'D',
       'businessTitle': 'Director',
       'city': this.userContactData.city,
-      'zipCode': this.userContactData.zipCode,
       'country': this.userContactData.country,
       'email1': this.userAccountData.email1,
-      'personTitle': this.userContactData.personTitle,
       'firstName': this.userContactData.firstName,
       'lastName': this.userContactData.lastName,
       'state': 'ON',
     },
     'logonId': this.userAccountData.logonId,
-    'organizationId': -2001,
     'password': this.userAccountData.password,
     'passwordVerify': this.userAccountData.passwordVerify,
-    'organizationName': this.userAccountData.organizationName,
+    'organizationId': this.userAccountData.organizationId,
    };
   }
 
-  id: number;
+
 updateUser(id: number): Promise<Object> {
   this.id=1005;
   return new Promise((resolve, reject) => {

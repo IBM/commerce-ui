@@ -37,9 +37,9 @@ export class OrganizationApprovalsComponent implements OnInit {
   // routeManageOrganizationDetails() {
   //   this.router.navigate(['organizations/manageOrganizationDetails']);
   // }
-  // routeOrganizationList() {
-  //   this.router.navigate(['organizations']);
-  // }
+  routeOrganizationList() {
+    this.router.navigate(['organizations']);
+  }
   createUserApiCall() {
     this.orgMainService.createUser().then(results => {
     this.createUserResponse = Object.assign([], results);

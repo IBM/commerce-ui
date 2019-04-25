@@ -54,9 +54,25 @@
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.CITY' | translate}}</div>
                   <input ibmText class=" inputbx" formControlName="city" id="city" ngDefaultControl>
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.COUNTRY' | translate}}</div>
-                  <input ibmText class=" inputbx" formControlName="country" id="country" ngDefaultControl>
+                  <input ibmText class=" inputbx" formControlName="country" id="country"
+                    (keyup)="countryInputKeyup()" ngDefaultControl>
+                  <div>
+                    <ul *ngIf="showCountryList">
+                      <li class="list-data" *ngFor="let country of countryNameList | search:country.value"
+                      (click)="selectedCountry(country)">
+                      {{country}}</li>
+                    </ul>
+                  </div>
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
-                  <input ibmText class=" inputbx" formControlName="state" id="state" ngDefaultControl>
+                  <input ibmText class=" inputbx" formControlName="state" id="state"
+                  (keyup)="stateInputKeyup()" ngDefaultControl>
+                  <div>
+                    <ul *ngIf="showStateList">
+                      <li class="list-data" *ngFor="let state of stateNameList | search:state.value"
+                      (click)="selectedState(state)">
+                      {{state}}</li>
+                    </ul>
+                  </div>
                   <div class="form-text">{{'MANAGE_USER.USER_CONTACT.ZIP_POSTAI_CODE' | translate}}</div>
                   <input ibmText class=" inputbx" formControlName="zipCode" id="zipCode" ngDefaultControl>
               </div>
