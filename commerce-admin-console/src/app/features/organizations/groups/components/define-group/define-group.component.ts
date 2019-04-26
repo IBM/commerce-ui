@@ -20,6 +20,7 @@ export class DefineGroupComponent implements OnInit {
   ];
   ngOnInit() {
   }
+  
   routeGroupList() {
     this.router.navigate(['organizations/groupList']);
    }
