@@ -8,7 +8,7 @@ import { element } from '@angular/core/src/render3/instructions';
 import { UserAccountPoliciesService } from '../../../../../rest/services/user-account-policies.service';
 
 @Component({
-  selector: 'ac-user-account',
+  selector: 'app-user-account',
   templateUrl: './user-account.component.html',
   styleUrls: ['./user-account.component.scss']
 })

@@ -9,14 +9,12 @@ import { IframeService } from '../../../../services/iframe.service';
 import { OrganizationMainService } from '../../organization.main.service';
 import { OrganizationsService } from '../../../../rest/services/organizations.service';
 
-
 @Component({
   selector: 'app-organization-list',
   templateUrl: './organization-list.component.html',
   styleUrls: ['./organization-list.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-
 export class OrganizationListComponent implements OnInit {
   organizationResponse: any;
   @Input() striped = false;

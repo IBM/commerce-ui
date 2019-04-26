@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StatesService } from '../../../../../rest/services/states.service';
 
 @Component({
-  selector: 'ac-user-contact',
+  selector: 'app-user-contact',
   templateUrl: './user-contact.component.html',
   styleUrls: ['./user-contact.component.scss']
 })

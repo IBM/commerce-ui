@@ -5,39 +5,27 @@
     margin-top: -0.5%;  
   }
   .side-content {
-    padding-top: 56px;
+    padding-top: 4%; 
     background-color: #ffffff; 
   }
   .main-content {
-    padding-top: 56px;
+    padding-top: 6%;
     margin: 0 0 0.2% 0.1%;
     background-color: #ffffff;
-  }
-  .ibm-text {
-    font-size: 14px;
-    position: absolute;
-    top: 16px;
-    margin-left: 25px;
   }
   .footer-content {
     margin: 0 0 0% 0.1%;
     background-color: #ffffff;
   }
   .inside-footer {
-    margin: 30px 0 38px 0;
+    margin: 4% 0 4% 0;
   }
   .dot {
-    height: 14px;
-    width:  14px;
+    height: 10px;
+    width:  10px;
     border-radius: 50%;
     display: inline-block;
     border: 1px solid blue;
-  }
-  .account-dot {
-    background-color: #0f6ddf;
-  }
-  .icon-ckeckout {
-    fill: #0f6ddf;
   }
   .text-margin {
     margin-left: 11px;
@@ -45,7 +33,7 @@
   }
   .arrow-icon {
     display: block;
-    margin: 16px 0px 16px -2px;
+    margin: 10px 0px 10px -5px;
   }
   .radio-icon {
     //border: 1px solid blue;
@@ -71,7 +59,7 @@
     height: 35px;
     background: white;
     color: black;
-    padding: 8px 0px 0px 18px;
+    padding: 8px 0px 0px 10px;
     font-size: 14px;
   }
   .user-show {
@@ -97,9 +85,6 @@
   }
   .icon-top {
     margin-top: 4px !important;
-  }
-  .group-header li {
-    width: 18%;
   }
   .account-dot {
     background-color: blue;
@@ -128,7 +113,7 @@
   }
   .inputbx {
     background-color: #f4f7fb;
-    height: 2.5rem;
+    height: 30px;
     font-size: 14px;
     color: #282828;
     border: none;

@@ -35,7 +35,7 @@
                   </div>
                   <input ibmText class="inputbx" placeholder="Find a group"><br /><br />
                   <ul>
-                    <li *ngFor="let groupList of groupListData" class="list-content">
+                    <li *ngFor="let groupList of groupListData">
                       <ibm-checkbox (change)="onChange($event)">
                         {{groupList.groupName}}
                       </ibm-checkbox>
@@ -56,14 +56,6 @@
                   <div class="aval-grp-txt">
                     <span>{{'MANAGE_USER.MANAGE_USER_GROUPS.EXCLUDE_TAB.AVAILABLE_GROUPS'| translate}}</span>
                   </div>
-                  <input ibmText class="inputbx" placeholder="Find a group"><br /><br />
-                  <ul>
-                    <li *ngFor="let groupList of groupListData" class="list-content">
-                      <ibm-checkbox (change)="onChange($event)">
-                        {{groupList.groupName}}
-                      </ibm-checkbox>
-                    </li>
-                  </ul>
                 </div>
                 <div class="total-items">
                   <span>{{'MANAGE_USER.MANAGE_USER_GROUPS.EXCLUDE_TAB.ITEMS'| translate}}</span>
@@ -81,9 +73,8 @@
                 <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">{{'MANAGE_USER.MANAGE_USER_GROUPS.CANCEL'| translate}}</button>
                 <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveGroups()>{{'MANAGE_USER.MANAGE_USER_GROUPS.SAVE'| translate}}</button>
               </div>
+            </div>
           </div>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
+    
+  

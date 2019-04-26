@@ -5,7 +5,7 @@ import { UserSettingService } from '../../../services/user-setting.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'ac-user-roles',
+  selector: 'app-user-roles',
   templateUrl: './user-roles.component.html',
   styleUrls: ['./user-roles.component.scss']
 })
@@ -36,18 +36,10 @@ export class UserRolesComponent implements OnInit {
   rolesList = [
     {
       content: 'Developer',
-      selected: true
+      selected: false
     },
     {
       content: 'Tester',
-      selected: false,
-    },
-    {
-      content: 'Architect',
-      selected: false,
-    },
-    {
-      content: 'Test Lead',
       selected: false,
     }
   ];
@@ -90,20 +82,6 @@ export class UserRolesComponent implements OnInit {
     this.result = resultArray;
   }
 
-  RemoveRoles(removeRoles: any) {
-    for (let i = 0; i < this.result.length; i++) {
-      if (this.result[i] === removeRoles) {
-        this.result.splice(i, 1);
-        this.rolesArray.splice(i, 1);
-        this.modelRoles = null;
-        if (this.result.length === 0) {
-          this.result = [];
-          this.rolesArray = [];
-        }
-      }
-    }
-
-  }
   goToGroup() {
     this.rolesCall();
     this.userMainService.userRoles(this.userRolesData);

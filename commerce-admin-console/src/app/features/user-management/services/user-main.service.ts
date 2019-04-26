@@ -134,7 +134,6 @@ setUserData() {
    };
   }
 
-
 updateUser(id: number): Promise<Object> {
   this.id=1005;
   return new Promise((resolve, reject) => {

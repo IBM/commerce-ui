@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IframeService } from '../../../../../services/iframe.service';
 
 @Component({
-  selector: 'ac-user-list',
+  selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })

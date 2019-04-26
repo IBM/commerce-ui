@@ -42,7 +42,7 @@
       }
     },
     {
-      "url": "./api_definition/user_account_policy_admin.yaml",
+      "url": "../../commerce-api-management/spec/swagger20/admin/role_assignment.json",
       "paths": {
         "rename": [
           {
@@ -54,7 +54,7 @@
       }
     },
     {
-      "url": "./api_definition/languages.yaml",
+      "url": "./api_definition/user-account-policy-descriptions.json",
       "paths": {
         "rename": [
           {
@@ -66,7 +66,7 @@
       }
     },
     {
-      "url": "./api_definition/language-descriptions.yaml",
+      "url": "./api_definition/language-descriptions.json",
       "paths": {
         "rename": [
           {
@@ -78,7 +78,7 @@
       }
     },
     {
-      "url": "./api_definition/states_admin.yaml",
+      "url": "./api_definition/states.json",
       "paths": {
         "rename": [
           {
@@ -90,7 +90,7 @@
       }
     },
     {
-      "url": "./api_definition/countries_admin.yaml",
+      "url": "./api_definition/countries.json",
       "paths": {
         "rename": [
           {
@@ -102,7 +102,7 @@
       }
     },
     {
-      "url": "./api_definition/role_assignment_admin.yaml",
+      "url": "./api_definition/member-groups.json",
       "paths": {
         "rename": [
           {
@@ -114,19 +114,7 @@
       }
     },
     {
-      "url": "./api_definition/member_groups.yaml",
-      "paths": {
-        "rename": [
-          {
-            "type": "regex",
-            "from": "(.*)",
-            "to": "/rest/admin/v2$1"
-          }
-        ]
-      }
-    },
-    {
-      "url": "./api_definition/member_group_member_admin.yaml",
+      "url": "./api_definition/member-group-memberships.json",
       "paths": {
         "rename": [
           {

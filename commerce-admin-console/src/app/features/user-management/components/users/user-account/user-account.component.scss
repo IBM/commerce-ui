@@ -5,16 +5,13 @@
     margin-top: -0.5%;  
   }
   .side-content {
-    padding-top: 56px; 
+    padding-top: 4%; 
     background-color: #ffffff; 
   }
   .main-content {
-    padding-top: 56px;
+    padding-top: 6%;
     margin: 0 0 0.2% 0.2%;
     background-color: #ffffff;
-  }
-  .inside-content {
-    margin-left: 20px;
   }
   .footer-content {
     margin: 0 0 0.2% 0.2%;
@@ -27,11 +24,11 @@
     margin: 30px 0 38px 0;
   }
   .dot {
-    height: 14px;
-    width:  14px;
+    height: 10px;
+    width:  10px;
     border-radius: 50%;
     display: inline-block;
-    border: 1px solid #0f6ddf;
+    border: 1px solid blue;
   }
   .text-margin {
     margin-left: 11px;
@@ -39,7 +36,7 @@
   }
   .arrow-icon {
     display: block;
-    margin: 16px 0px 16px -2px;
+    margin: 10px 0px 10px -5px;
   }
   .dropdown-margin {
     margin-bottom: 23px;
@@ -59,18 +56,12 @@
     padding: 5px;
     fill: white;
   }
-  .ibm-text {
-    font-size: 14px;
-    position: absolute;
-    top: 16px;
-    margin-left: 25px;
-  }
   .users {
     width: 100%;
     height: 35px;
     background: white;
     color: black;
-    padding: 8px 0px 0px 18px;
+    padding: 8px 0px 0px 10px;
     font-size: 14px;
   }
   .user-show {
@@ -95,11 +86,10 @@
     vertical-align: middle;
   }
   .icon-top {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 4px !important;
   }
   .account-dot {
-    background-color: #0f6ddf;
+    background-color: blue;
   }
   .next-button {
     width: 33.68%;
@@ -115,8 +105,8 @@
     margin: 3% 0% 3% 35%;
   }
   .inputbx {
-    background-color: #f4f7fb;
-    height: 2.5rem;
+    background: #F3F3F3;
+    height: 30px;
     font-size: 14px;
     color: #282828;
     border: none;
@@ -145,19 +135,22 @@
     position: absolute;
     left: -17px;
     bottom: -10px;
-    fill: #0f6ddf;
   }
   .clr{clear: both;}
   .input-tikmark {
     position: relative; 
   }
+  // .input-tikmark input {
+  //   text-indent: 30px;
+  //   font-family:  FontAwesome, sans-serif;
+  // }
   .input-tikmark .fa-tickmark { 
     position: absolute;
-    top: 12px;
+    top: 7px;
     right: 7px;
     font-size: 15px;
     z-index: 10000;
-    fill: #3DBB61;
+    fill: blue;
   }
   .show-margin {
     margin-left: 12%;
@@ -167,6 +160,9 @@
   }
   .error-msg {
     color: red;
+    float: right;
+    margin-right: 6%;
+    margin-top: 5px;
   }
   .input-error {
     color: red;
