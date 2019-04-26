@@ -18,6 +18,8 @@ export class UserGroupsComponent implements OnInit {
   checkedList: Array<String> = [];
   checked: boolean;
   showFullList = false;
+  listArray: any;
+  listOld: any;
 
   includeSearchText: FormControl;
   excludeSearchText: FormControl;
@@ -44,6 +46,8 @@ export class UserGroupsComponent implements OnInit {
     { id: 19, groupName: 'AccountAdministatorsRole19' },
     { id: 20, groupName: 'AccountAdministatorsRole20'}
   ];
+
+
   constructor(private router: Router, private userMainService: UserMainService,
     private translateService: TranslateService, private iframeService: IframeService,
     private userService: UsersService) { }
@@ -66,21 +70,21 @@ export class UserGroupsComponent implements OnInit {
     });
   }
 
-//   createUserApiCall() {
-//     this.userMainService.createUser().then(results => {
-//     this.createUserResponse = Object.assign([], results);
-//     console.log('from component', this.createUserResponse);
-//  }).catch(() => {
-//   this.translateService
-//       .get('CATALOGS.HEADR.store_list_failed')
-//       .subscribe((msg: string) => {
-//         this.iframeService.postStatusMsg(msg, 'error');
-//       });
-// });
-// }
+  createUserApiCall() {
+    this.userMainService.createUser().then(results => {
+    this.createUserResponse = Object.assign([], results);
+    console.log('from component', this.createUserResponse);
+ }).catch(() => {
+  this.translateService
+      .get('CATALOGS.HEADR.store_list_failed')
+      .subscribe((msg: string) => {
+        this.iframeService.postStatusMsg(msg, 'error');
+      });
+});
+}
 
   submitUserDetails() {
-    this.createUser();
+    this.createUserApiCall();
     this.router.navigate(['users']);
     }
     backClick() {
@@ -106,41 +110,19 @@ export class UserGroupsComponent implements OnInit {
 this.showFullList = true;
   }
 
-  createUser(): Promise<Object> {
-    this.userMainService.setUserData();
-    console.log(this.userMainService.listData);
-    const list = this.userMainService.listData;
-    return new Promise((resolve, reject) => {
-      this.userService.UsersCreateUserResponse(list
-      ).subscribe(response => {
-        resolve(response);
-        console.log('serviceGroup', response);
-      },  error => {
-        reject();
-      });
-    });
-  }
-
-
-  // listOld = {
-  //   "address": {
-  //     "address1": "address 1",
-  //     "address2": "address 2",
-  //     "address3": "address 3",
-  //     "addressType": "SB",
-  //     "bestCallingTime": "D",
-  //     "businessTitle": "Director",
-  //     "city": "Bangalore",
-  //     "country": "India",
-  //     "email1": "asutosh.r@hcl.com",
-  //     "firstName": "Asutosh",
-  //     "lastName": "Roy",
-  //     "state": "ON"
-  //   },
-  //   "logonId": "asu54",
-  //   "organizationId": 7000000000000000002,
-  //   "password": "wcs1admin",
-  //   "passwordVerify": "wcs1admin"
-  //  }
+  // createUser(): Promise<Object> {
+  //   //this.userMainService.setUserData();
+  //   //console.log(this.userMainService.listData);
+  //   //const list = this.userMainService.listData;
+  //   return new Promise((resolve, reject) => {
+  //     this.userService.UsersCreateUserResponse(this.listOld
+  //     ).subscribe(response => {
+  //       resolve(response);
+  //       console.log('serviceGroup', response);
+  //     },  error => {
+  //       reject();
+  //     });
+  //   });
+  // }
 
 }

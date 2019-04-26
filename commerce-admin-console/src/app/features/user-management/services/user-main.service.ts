@@ -47,20 +47,20 @@ userList(): Promise<object> {
   });
 }
 
-  // createUser(): Promise<Object> {
-  //   this.setUserData();
-  //   console.log(this.listData);
-  //   return new Promise((resolve, reject) => {
-  //     this.userService.UsersCreateUserResponse(this.listData,
-  //     ).subscribe(response => {
-  //       resolve(response);
-  //       this.resultData = response;
-  //       console.log('service', this.resultData);
-  //     },  error => {
-  //       reject();
-  //     });
-  //   });
-  // }
+  createUser(): Promise<Object> {
+    this.setUserData();
+    console.log(this.listData);
+    return new Promise((resolve, reject) => {
+      this.userService.UsersCreateUserResponse(this.listData,
+      ).subscribe(response => {
+        resolve(response);
+        this.resultData = response;
+        console.log('service', this.resultData);
+      },  error => {
+        reject();
+      });
+    });
+  }
 
   useraccount(data) {
     this.userAccountData = {
@@ -123,6 +123,7 @@ setUserData() {
       'city': this.userContactData.city,
       'country': this.userContactData.country,
       'email1': this.userAccountData.email1,
+      'personTitle': this.userAccountData.personTitle,
       'firstName': this.userContactData.firstName,
       'lastName': this.userContactData.lastName,
       'state': 'ON',
@@ -131,6 +132,7 @@ setUserData() {
     'password': this.userAccountData.password,
     'passwordVerify': this.userAccountData.passwordVerify,
     'organizationId': this.userAccountData.organizationId,
+    'organizationName': this.userAccountData.organizationName,
    };
   }
 

@@ -93,26 +93,17 @@ export class UserContactComponent implements OnInit {
   }
 
   setModelData() {
-    // this.personTitle = this.contactData.personTitle;
-    // this.firstName = this.contactData.firstName;
-    // this.lastName = this.contactData.lastName;
-    // this.address1 = this.contactData.address1;
-    // this.address2 = this.contactData.address2;
-    // this.city = this.contactData.city;
-    // this.country = this.contactData.country;
-    // this.zipCode = this.contactData.zipCode;
-
-    this.personTitle.setValue(this.userContactData.personTitle);
-    this.firstName.setValue(this.userContactData.firstName);
-    this.lastName.setValue(this.userContactData.lastName);
-    this.address1.setValue(this.userContactData.address1);
-    this.address2.setValue(this.userContactData.address2);
-    this.city.setValue(this.userContactData.city);
-    this.country.setValue(this.userContactData.country);
-    this.zipCode.setValue(this.userContactData.zipCode);
+    this.personTitle.setValue(this.userContactData.personTitle.value);
+    this.firstName.setValue(this.userContactData.firstName.value);
+    this.lastName.setValue(this.userContactData.lastName.value);
+    this.address1.setValue(this.userContactData.address1.value);
+    this.address2.setValue(this.userContactData.address2.value);
+    this.city.setValue(this.userContactData.city.value);
+    this.country.setValue(this.userContactData.country.value);
+    this.zipCode.setValue(this.userContactData.zipCode.value);
   }
 
-  accountCall() {
+  contactCall() {
     this.userContactData = {
       'personTitle': this.personTitle.value,
       'firstName': this.firstName.value,
@@ -141,29 +132,6 @@ export class UserContactComponent implements OnInit {
     this.router.navigate(['users']);
   }
 
-  contactCall() {
-    this.userContactData = {
-      'personTitle': this.personTitle,
-      'firstName': this.firstName,
-      'lastName': this.lastName,
-      'address1': this.address1,
-      'address2': this.address2,
-      'city': this.city,
-      'country': this.country,
-      'zipCode': this.zipCode
-    };
-  }
-  // validateInputField() {
-  //   if (this.firstName !== '' && this.firstName !== undefined && this.lastName !== '' && this.lastName !== undefined &&
-  //    this.address1 !== '' && this.address1 !== undefined && this.address2 !== '' && this.address2 !== undefined && this.city !== undefined
-  //   && this.city !== '' && this.country !== '' && this.country !== undefined && this.zipCode !== '' && this.zipCode !== undefined) {
-  //   this.allInputValidated = true;
-  //   this.inputFieldError = false;
-  //   } else {
-  //     this.allInputValidated = false;
-  //     this.inputFieldError = true;
-  //   }
-  // }
 
   countryList(): Promise<Object> {
     return new Promise((resolve, reject) => {
@@ -208,7 +176,6 @@ export class UserContactComponent implements OnInit {
   }
 
   selectedCountry(countryName: string) {
-    //this.selectedCountryName = event;
     this.country.setValue(countryName);
     this.showCountryList = false;
     this.countryListData.forEach(value => {
