@@ -36,9 +36,13 @@
 <!-- TABLE PART (START) -->
 <div class="TableItem bx--row">
   <div class="table-body">
-        <ibm-table></ibm-table>
+        <ibm-table [model]="model"  [striped]="striped"></ibm-table>
         <ng-template #listOrgItemTemplate let-data="data">
-         <a routerLink="organisations" (click)="getSelectedOrganization(data.name)">{{data.name}}</a>
+                <ibm-overflow-menu>
+                        <ibm-overflow-menu-option *ngFor="let option of options">
+                            {{option}}
+                        </ibm-overflow-menu-option>
+                    </ibm-overflow-menu>
      </ng-template>
     
         <ibm-pagination  [model]="model" ></ibm-pagination>

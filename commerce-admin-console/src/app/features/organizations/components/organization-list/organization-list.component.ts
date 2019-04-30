@@ -111,8 +111,8 @@ export class OrganizationListComponent implements OnInit {
     // }
     // return listData;
     data.forEach((value, idx) => {
-      //console.log('val', value);
-      //console.log('idx', idx);
+      console.log('val', value);
+      console.log('idx', idx);
       if (value[2] === 'O') {
         listData.push([new TableItem({ data: { name: data[idx][0] }, template: this.listOrgItemTemplate }),
         new TableItem({ data: data[idx][1] }), new TableItem({ data: 'Organization' })]);

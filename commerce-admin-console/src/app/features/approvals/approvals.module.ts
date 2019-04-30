@@ -6,7 +6,9 @@ import {
   ModalModule,
   TableModule,
   PaginationModule,
-  NFormsModule
+  NFormsModule,
+  DialogModule,
+  PlaceholderModule
 } from 'carbon-components-angular';
 import { ViewDropdownComponent } from './view-dropdown/view-dropdown.component';
 import { ButtonBarComponent } from './button-bar/button-bar.component';
@@ -32,6 +34,7 @@ import { View16Module } from '@carbon/icons-angular/lib/view/16';
 import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { Settings16Module } from '@carbon/icons-angular/lib/settings/16';
 import { Filter16Module } from '@carbon/icons-angular/lib/filter/16';
+import { ApprovalSummaryComponent } from './components/approval-summary/approval-summary.component';
 
 @NgModule({
   imports: [
@@ -58,7 +61,9 @@ import { Filter16Module } from '@carbon/icons-angular/lib/filter/16';
     View16Module,
     ViewOff16Module,
     Settings16Module,
-		Filter16Module,
+    Filter16Module,
+    DialogModule,
+    PlaceholderModule
   ],
   providers: [
     ApprovalStatusQueryService,
@@ -70,7 +75,8 @@ import { Filter16Module } from '@carbon/icons-angular/lib/filter/16';
     ButtonBarComponent,
     ApprovalTableComponent,
     SearchModalComponent,
-    ApprovalsListComponent
+    ApprovalsListComponent,
+    ApprovalSummaryComponent
   ],
   entryComponents: [
     SearchModalComponent

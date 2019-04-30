@@ -105,9 +105,7 @@ let orgService : OrganizationsService;
         organizationName: "Default Organization",
         parentMemberId: "Root Organization",
         parentMemberName: "Root Organization",
-        state: "Approved",
-        status: "Unlocked",
-        type: "unitTest"
+        
     }
     organizationsData.push(orgResponse);
     spyOn(orgService, 'OrganizationGetManageableOrganizations').and.returnValue(Promise.resolve(organizationsData));
@@ -139,6 +137,17 @@ let orgService : OrganizationsService;
     const header  = headerElement.querySelector('userName');
     expect(header.textContent).toContain('organizations');
   });
+
+  it('should', async(() => {
+    spyOn(component, 'createOrganization');
+  
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+  
+    fixture.whenStable().then(() => {
+      expect(component.createOrganization).toHaveBeenCalled();
+    });
+  }));
   
   // it('checking the service', inject([OrganizationsService]),  (service: OrganizationsService) => {
   //   expect(service).toBeTruthy(); 

@@ -891,6 +891,12 @@
             "ITEMS":"23 items",
             "CANCEL":"Cancel",
             "SAVE":"Save"
+        },
+        "APPROVALS": 
+        {
+            "approvals": "Approvals",
+            "approval_summary": "Approval Summary",
+            "organization_details": "Organization details"
         }
     }
 

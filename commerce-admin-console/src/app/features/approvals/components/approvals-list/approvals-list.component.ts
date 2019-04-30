@@ -25,6 +25,9 @@ export class ApprovalsListComponent implements OnInit {
   @ViewChild('listOrgItemTemplate')
   protected listOrgItemTemplate: TemplateRef<any>;
 
+  options  = ['option1', 'option2', 'option3'];
+
+
   constructor() { }
 
   ngOnInit() {
@@ -32,9 +35,12 @@ export class ApprovalsListComponent implements OnInit {
 
 
     this.model.header = [
-      new TableHeaderItem({ data: 'Name' }),
-      new TableHeaderItem({ data: 'Parent Organization' }),
-      new TableHeaderItem({ data: 'Type' }),
+      new TableHeaderItem({ data: 'Requestor' }),
+      new TableHeaderItem({ data: 'Approver' }),
+      new TableHeaderItem({ data: 'Process' }),
+      new TableHeaderItem({ data: 'Status' }),
+      new TableHeaderItem({ data: 'Date Submitted' }),
+      new TableHeaderItem({ data: ''})
     ];
     this.model.data = [[]];
     this.model.pageLength = 10;
