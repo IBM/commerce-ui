@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UsersService } from '../../../rest/services/users.service';
+import { IframeService } from '../../../services/iframe.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,12 @@ export class UserMainService {
   userContactData: any;
   userRolesData: any;
   listResult: any;
+  manageuserAccountData: any;
   id: number;
 
-  constructor( private userService: UsersService) { }
+  constructor(private userService: UsersService,
+    private iframeService: IframeService,
+    private translateService: TranslateService) { }
 
   // createUser(): Promise<Object> {
   //   this.setUserData();
@@ -33,19 +38,19 @@ export class UserMainService {
   //   });
   // }
 
-userList(): Promise<object> {
-  return new Promise((resolve, reject) => {
-    this.userService.UsersGetManageableUsers({
-    }).
-    subscribe(response => {
-      resolve(response);
-      this.listResult  = response;
-      console.log('service', response);
-    },  error => {
-      reject();
+  userList(): Promise<object> {
+    return new Promise((resolve, reject) => {
+      this.userService.UsersGetManageableUsers({
+      }).
+        subscribe(response => {
+          resolve(response);
+          this.listResult = response;
+          console.log('service', response);
+        }, error => {
+          reject();
+        });
     });
-  });
-}
+  }
 
   createUser(): Promise<Object> {
     this.setUserData();
@@ -56,7 +61,7 @@ userList(): Promise<object> {
         resolve(response);
         this.resultData = response;
         console.log('service', this.resultData);
-      },  error => {
+      }, error => {
         reject();
       });
     });
@@ -91,73 +96,106 @@ userList(): Promise<object> {
     };
   }
 
-setUserData() {
-  // this.listData = {
-  //   "address": {
-  //     "address1": "address 1",
-  //     "address2": "address 2",
-  //     "address3": "address 3",
-  //     "addressType": "SB",
-  //     "bestCallingTime": "D",
-  //     "businessTitle": "Director",
-  //     "city": "Toronto",
-  //     "country": "Canada",
-  //     "email1": "bbaker@ca.ibm.com",
-  //     "firstName": "Bruce",
-  //     "lastName": "Baker",
-  //     "state": "ON"
-  //   },
-  //   "logonId": "asu00",
-  //   "organizationId": -2001,
-  //   "password": "wcs1admin",
-  //   "passwordVerify": "wcs1admin"
-  //  }
-   this.listData = {
-    'address': {
-      'address1': this.userContactData.address1,
-      'address2': this.userContactData.address2,
-      'address3': 'address 3',
-      'addressType': 'SB',
-      'bestCallingTime': 'D',
-      'businessTitle': 'Director',
-      'city': this.userContactData.city,
-      'country': this.userContactData.country,
-      'email1': this.userAccountData.email1,
-      'personTitle': this.userAccountData.personTitle,
-      'firstName': this.userContactData.firstName,
-      'lastName': this.userContactData.lastName,
-      'state': 'ON',
-    },
-    'logonId': this.userAccountData.logonId,
-    'password': this.userAccountData.password,
-    'passwordVerify': this.userAccountData.passwordVerify,
-    'organizationId': this.userAccountData.organizationId,
-    'organizationName': this.userAccountData.organizationName,
-   };
+  setUserData() {
+    // this.listData = {
+    //   "address": {
+    //     "address1": "address 1",
+    //     "address2": "address 2",
+    //     "address3": "address 3",
+    //     "addressType": "SB",
+    //     "bestCallingTime": "D",
+    //     "businessTitle": "Director",
+    //     "city": "Toronto",
+    //     "country": "Canada",
+    //     "email1": "bbaker@ca.ibm.com",
+    //     "firstName": "Bruce",
+    //     "lastName": "Baker",
+    //     "state": "ON"
+    //   },
+    //   "logonId": "asu00",
+    //   "organizationId": -2001,
+    //   "password": "wcs1admin",
+    //   "passwordVerify": "wcs1admin"
+    //  }
+    this.listData = {
+      'address': {
+        'address1': this.userContactData.address1,
+        'address2': this.userContactData.address2,
+        'address3': 'address 3',
+        'addressType': 'SB',
+        'bestCallingTime': 'D',
+        'businessTitle': 'Director',
+        'city': this.userContactData.city,
+        'country': this.userContactData.country,
+        'email1': this.userAccountData.email1,
+        'personTitle': this.userAccountData.personTitle,
+        'firstName': this.userContactData.firstName,
+        'lastName': this.userContactData.lastName,
+        'state': 'ON',
+      },
+      'logonId': this.userAccountData.logonId,
+      'password': this.userAccountData.password,
+      'passwordVerify': this.userAccountData.passwordVerify,
+      'organizationId': this.userAccountData.organizationId,
+      'organizationName': this.userAccountData.organizationName,
+    };
   }
 
-updateUser(id: number): Promise<Object> {
-  this.id=1005;
-  return new Promise((resolve, reject) => {
-    this.userService.UsersFindByUserId(1005
-    ).subscribe(response => {
-      resolve(response);
-      this.resultData = response;
-      console.log('service', this.resultData);
-    },  error => {
-      reject();
+  userBody: any;
+  manageUserData(data) {
+    this.userBody = {
+      'logonId': data.logonId,
+      'email1': data.email1,
+      'organizationName': data.organizationName,
+      'password': data.password,
+      'firstName': data.firstName,
+      'lastName': data.lastName,
+      'streetAddress1': data.address1,
+      'streetAddress2': data.address2,
+      'state': data.state,
+      'city': data.city,
+      'zipcode': data.zipcode
+    };
+  }
+
+  getUpdateUser(id: number): Promise<Object> {
+    this.id = 2011;
+    return new Promise((resolve, reject) => {
+      this.userService.UsersFindByUserId(2011
+      ).subscribe(response => {
+        resolve(response);
+        this.resultData = response;
+        console.log('service', this.resultData);
+      }, error => {
+        reject();
+      });
     });
-  });
-}
+  }
+
+  updateUser(id: number): Promise<Object> {
+    this.id = 2011;
+    return new Promise((resolve, reject) => {
+      console.log('Inside Promise method');
+      this.userService.UsersUpdateUser({
+        id: this.id,
+        body: this.userBody
+      }).subscribe(response => {
+        console.log('service', response);
+        resolve(response);
+        this.resultData = response;
+        // console.log('service', this.resultData);
+      }, error => {
+        reject();
+      });
+    });
+  }
 
   manageuserAccount(data) {
-    this.userAccountData = {
+    this.manageuserAccountData = {
       'logonId': data.logonId,
       'email1': data.email1,
       'password': data.password,
-      'passwordVerify': data.passwordVerify,
-      'organizationName': data.organizationName,
-      'policy': data.policy
+      'organizationName': data.organizationName
     };
   }
 
