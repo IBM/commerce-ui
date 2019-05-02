@@ -1,6 +1,11 @@
-import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrganizationsService } from '../../../../../../src/app/rest/services/organizations.service';
+import { OrganizationMainService } from '../../organization.main.service';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+import { IframeService } from '../../../../services/iframe.service';
+import { TranslateService } from '@ngx-translate/core';
+
 export class ManageUserContact {
   constructor(public contactName: string,
     public contactEmail: string,
@@ -18,9 +23,30 @@ export class ManageUserContact {
 export class ManageOrganizationContactComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<ManageUserContact>();
   manageContactForm: FormGroup;
-  constructor(private router: Router, private _fb: FormBuilder) { }
+
+  orgDetailsData: any;
+  manageOrgResponse: any;
+  id: number;
+  contactName: any;
+  contactEmail: any;
+  streetAddress1: any;
+  streetAddress2: any;
+  city: any;
+  state: any;
+  country: any;
+  zipcode: any;
+
+  constructor(
+    private router: Router,
+    private _fb: FormBuilder,
+    private OrgService: OrganizationsService,
+    private orgMainService: OrganizationMainService,
+    private iframeService: IframeService,
+    private translateService: TranslateService
+  ) { }
 
   ngOnInit() {
+    this.getOrgApiCall();
     this.manageContactForm = this._fb.group({
       contactName: ['', [
         Validators.required,
@@ -50,6 +76,45 @@ export class ManageOrganizationContactComponent implements OnInit {
       );
     }
     this.router.navigate(['organizations/manageOrganizationRoles']);
+  }
+
+  getOrgApiCall() {
+    this.id = -2011;
+    this.orgMainService.getUpdateOrg(this.id).then(results => {
+      this.manageOrgResponse = Object.assign([], results);
+      this.setModelData();
+      console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageOrgResponse);
+    }).catch(() => {
+      this.translateService
+        .get('CATALOGS.HEADR.store_list_failed')
+        .subscribe((msg: string) => {
+          this.iframeService.postStatusMsg(msg, 'error');
+        });
+    });
+  }
+
+  setModelData() {
+    this.contactName = this.manageOrgResponse.organizationName;
+    this.contactEmail = this.manageOrgResponse.address.email1;
+    this.streetAddress1 = this.manageOrgResponse.address.address1;
+    this.streetAddress2 = this.manageOrgResponse.address.address2;
+    this.city = this.manageOrgResponse.addresscity;
+    this.state = this.manageOrgResponse.addressstate;
+    this.country = this.manageOrgResponse.address.country;
+    this.zipcode = this.manageOrgResponse.address.zipCode;
+  }
+
+  detailsCall() {
+    this.orgDetailsData = {
+      'contactName': this.contactName,
+      'contactEmail': this.contactEmail,
+      'streetAddress1': this.streetAddress1,
+      'streetAddress2': this.streetAddress2,
+      'city': this.city,
+      'state': this.state,
+      'country': this.country,
+      'zipcode': this.zipcode
+    };
   }
   routeManageOrganizationDetails() {
     this.router.navigate(['organizations/manageOrganizationDetails']);

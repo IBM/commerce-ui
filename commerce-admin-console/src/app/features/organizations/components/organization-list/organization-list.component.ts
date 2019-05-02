@@ -126,12 +126,12 @@ export class OrganizationListComponent implements OnInit {
   }
 
   getSelectedOrganization(name) {
-    this.organizationResponse.forEach((value, idx) => {
-      if (value.name === name) {
-        this.manageOrgApiCall();
-      }
-    })
-    this.router.navigate(['organizations/organizationsDetails']);
+    // this.organizationResponse.forEach((value, idx) => {
+    //   if (value.name === name) {
+    //     this.manageOrgApiCall();
+    //   }
+    // })
+    this.router.navigate(['organizations/manageOrganizationDetails']);
   }
   manageOrgApiCall() {
 
