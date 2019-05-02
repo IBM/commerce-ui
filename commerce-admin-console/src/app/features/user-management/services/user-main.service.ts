@@ -154,6 +154,7 @@ export class UserMainService {
       'streetAddress2': data.address2,
       'state': data.state,
       'city': data.city,
+      'country': data.country,
       'zipcode': data.zipcode
     };
   }

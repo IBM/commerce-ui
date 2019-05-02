@@ -36,6 +36,7 @@ export class ManageUserContactComponent implements OnInit {
   streetAddress2: any;
   city: any;
   state: any;
+  country: any;
   zipcode: number;
 
   constructor(
@@ -88,6 +89,7 @@ export class ManageUserContactComponent implements OnInit {
       this.streetAddress2 = this.manageUserResponse.address.address2;
       this.city = this.manageUserResponse.address.city;
       this.state = this.manageUserResponse.address.organizationName;
+      this.country = this.manageUserResponse.address.country;
       this.zipcode = this.manageUserResponse.address.zipCode;
     }
    
@@ -99,6 +101,7 @@ export class ManageUserContactComponent implements OnInit {
         'streetAddress2': this.streetAddress2,
         'city': this.city,
         'state': this.state,
+        'country': this.country,
         'zipcode': this.zipcode
       };
     }

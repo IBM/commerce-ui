@@ -707,8 +707,10 @@
             "STREET_ADDRESS":"Street address",
             "CITY":"City",
             "STATE_PROVINCE_REGION":"State / Province / Region",
+            "COUNTRY":"Country",
+            "ZIPCODE":"Zip / Postal code",
             "CANCEL":"Cancel",
-            "SAVE":"Save" 
+            "SAVE":"Save"
         },
         "MANAGE_USER_GROUPS":
         {
