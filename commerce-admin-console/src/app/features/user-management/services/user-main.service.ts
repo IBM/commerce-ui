@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UsersService } from '../../../rest/services/users.service';
 import { IframeService } from '../../../services/iframe.service';
 import { TranslateService } from '@ngx-translate/core';
+import { OrganizationsService } from '../../../rest/services/organizations.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,8 @@ export class UserMainService {
   manageuserAccountData: any;
   id: number;
 
-  constructor(private userService: UsersService,
-    private iframeService: IframeService,
-    private translateService: TranslateService) { }
+  constructor(private userService: UsersService, private organizationsService: OrganizationsService,
+    private iframeService: IframeService, private translateService: TranslateService) { }
 
   // createUser(): Promise<Object> {
   //   this.setUserData();
@@ -62,6 +62,17 @@ export class UserMainService {
         this.resultData = response;
         console.log('service', this.resultData);
       }, error => {
+        reject();
+      });
+    });
+  }
+
+  organizationListApi(): Promise<Object> {
+    return new Promise((resolve, reject) => {
+      this.organizationsService.OrganizationGetManageableOrganizations({}
+      ).subscribe(response => {
+        resolve(response);
+      },  error => {
         reject();
       });
     });

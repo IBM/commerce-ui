@@ -17,6 +17,8 @@ import { CheckmarkFilled16Module } from '@carbon/icons-angular/lib/checkmark--fi
 import { View16Module } from '@carbon/icons-angular/lib/view/16';
 import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchPipe } from '../../../pipe/search.pipe';
+import { IframeService } from '../../../../../services/iframe.service';
 
 fdescribe('UserAccountComponent', () => {
   let router: Router;
@@ -31,7 +33,8 @@ fdescribe('UserAccountComponent', () => {
          Menu32Module, CheckmarkOutline16Module, ArrowDown16Module, CheckmarkFilled16Module, View16Module, ViewOff16Module,
          TranslateModule.forRoot()],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      declarations: [ UserAccountComponent ]
+      providers: [ IframeService],
+      declarations: [ UserAccountComponent, SearchPipe]
     })
     .compileComponents();
   }));
@@ -45,7 +48,7 @@ fdescribe('UserAccountComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create userAccount component', () => {
     expect(component).toBeTruthy();
   });
   it('form invalid when empty', () => {

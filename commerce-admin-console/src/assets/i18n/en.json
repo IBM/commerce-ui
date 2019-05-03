@@ -603,6 +603,7 @@
             "ACCOUNT_POLICY":"Account Policy",
             "CANCEL":"Cancel",
             "NEXT":"Next",
+            "LOGONID_ERROR": "Login Id already exist",
             "EMAIL_ERROR": "Please enter valid Email address",
             "INPUT_ERROR": "Please enter all mandatory field."
         },

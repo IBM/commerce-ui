@@ -6,9 +6,11 @@ import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms'
 import { OrganizationsService } from '../../../../../rest/services/organizations.service';
 import { element } from '@angular/core/src/render3/instructions';
 import { UserAccountPoliciesService } from '../../../../../rest/services/user-account-policies.service';
+import { IframeService } from '../../../../../services/iframe.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-user-account',
+  selector: 'ac-user-account',
   templateUrl: './user-account.component.html',
   styleUrls: ['./user-account.component.scss']
 })
@@ -35,6 +37,10 @@ export class UserAccountComponent implements OnInit {
   organizationListData: any;
   accountPolicyListData: any;
   showOrgList = false;
+  orgListResponse: any;
+  logonIdList: any;
+  userListResponse: any;
+  invalidLoginId = false;
 
 
   form: FormGroup;
@@ -52,16 +58,17 @@ export class UserAccountComponent implements OnInit {
   ];
   constructor(private router: Router, private userMainService: UserMainService,
     private userSettingService: UserSettingService, private formBuilder: FormBuilder,
-    private organizationsService: OrganizationsService, private userAccountPoliciesService: UserAccountPoliciesService) { }
+    private organizationsService: OrganizationsService, private userAccountPoliciesService: UserAccountPoliciesService,
+    private iframeService: IframeService, private translateService: TranslateService) { }
 
   ngOnInit() {
-    this.organizationListApi();
+    this.organizationListApiCall();
     this.accountPolicyList();
     this.createFormControls();
     this.createForm();
+    this.getUserList();
     this.showInput = true;
     this.accountData = this.userMainService.userAccountData;
-    console.log("dddd", this.accountData);
     if (this.userSettingService.contactBackClick) {
       this.setModelData();
       this.showTickboxVisible = true;
@@ -164,22 +171,64 @@ showHide() {
   this.showTextVisible = !this.showTextVisible;
 }
 
-organizationListApi(): Promise<Object> {
+// organizationListApi(): Promise<Object> {
+//   this.parentOrgData = [];
+//   return new Promise((resolve, reject) => {
+//     this.organizationsService.OrganizationGetManageableOrganizations({}
+//     ).subscribe(response => {
+//       resolve(response);
+//       this.organizationListData = response.items;
+//       this.parentOrgData = this.organizationListData.map(value => {
+//         return value.parentOrganizationName;
+//       });
+//       console.log('response', this.parentOrgData);
+//       this.organizationListFocused = true;
+//     },  error => {
+//       reject();
+//     });
+//   });
+// }
+
+organizationListApiCall() {
   this.parentOrgData = [];
-  return new Promise((resolve, reject) => {
-    this.organizationsService.OrganizationGetManageableOrganizations({}
-    ).subscribe(response => {
-      resolve(response);
-      this.organizationListData = response.items;
-      this.parentOrgData = this.organizationListData.map(value => {
-        return value.parentOrganizationName;
-      });
-      console.log('response', this.parentOrgData);
-      this.organizationListFocused = true;
-    },  error => {
-      reject();
+  this.userMainService.organizationListApi().then(results => {
+  this.orgListResponse = Object.assign([], results);
+  console.log('from component', this.orgListResponse);
+  this.organizationListData = this.orgListResponse.items;
+        this.parentOrgData = this.organizationListData.map(value => {
+          return value.parentOrganizationName;
+        });
+        this.organizationListFocused = true;
+}).catch(() => {
+this.translateService
+    .get('CATALOGS.HEADR.store_list_failed')
+    .subscribe((msg: string) => {
+      this.iframeService.postStatusMsg(msg, 'error');
     });
+});
+}
+
+getUserList() {
+  this.userMainService.userList().then(results => {
+  this.userListResponse = Object.assign([], results);
+  this.logonIdList = this.userListResponse.items.map(value => {
+    return value.logonId.toLowerCase();
   });
+  console.log('this.logonIdList', this.logonIdList);
+}).catch(() => {
+this.translateService
+    .get('CATALOGS.HEADR.store_list_failed')
+    .subscribe((msg: string) => {
+      this.iframeService.postStatusMsg(msg, 'error');
+    });
+});
+}
+validateLogonId(logonid) {
+if (this.logonIdList.indexOf(logonid.toLowerCase()) === -1) {
+  this.invalidLoginId = false;
+} else {
+  this.invalidLoginId = true;
+}
 }
 
 accountPolicyList(): Promise<Object> {

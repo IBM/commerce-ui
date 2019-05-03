@@ -85,7 +85,9 @@ export class UserGroupsComponent implements OnInit {
 
   submitUserDetails() {
     this.createUserApiCall();
-    this.router.navigate(['users']);
+    setTimeout(() => {
+      this.router.navigate(['users']);
+ }, 1500);
     }
     backClick() {
       this.router.navigate(['users/userRoles']);
