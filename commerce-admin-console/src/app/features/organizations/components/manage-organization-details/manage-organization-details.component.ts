@@ -64,7 +64,7 @@ export class ManageOrganizationDetailsComponent implements OnInit {
   }
 
   getOrgApiCall() {
-    this.id = -2011;
+    this.id = -2001;
     this.orgMainService.getUpdateOrg(this.id).then(results => {
     this.manageOrgResponse = Object.assign([], results);
     this.setModelData();
@@ -76,6 +76,21 @@ export class ManageOrganizationDetailsComponent implements OnInit {
             this.iframeService.postStatusMsg(msg, 'error');
           });
     });
+  }
+
+  updateOrgApiCall() {
+    this.id = -2001;
+    this.orgMainService.updateOrg(this.id).then(results => {
+      this.manageOrgResponse = Object.assign([], results);
+      this.setModelData();
+      console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageOrgResponse);
+    }).catch(() => {
+      this.translateService
+      .get('CATALOGS.HEADR.store_list_failed')
+      .subscribe((msg: string) => {
+        this.iframeService.postStatusMsg(msg, 'error');
+      })
+    })
   }
 
   setModelData() {
@@ -104,6 +119,9 @@ export class ManageOrganizationDetailsComponent implements OnInit {
         )
       );
     }
+    this.detailsCall();
+    this.orgMainService.manageOrgData(this.orgDetailsData);
+    this.updateOrgApiCall();
     this.router.navigate(['organizations/manageOrganizationContact']);
   }
   // routeOrganizationApprovals() {

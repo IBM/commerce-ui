@@ -90,6 +90,24 @@ export class OrganizationMainService {
     };
   }
 
+  orgBody: any;
+  manageOrgData(data) {
+    this.orgBody = {
+      'email1': data.email1,
+      'organizationName': data.organizationName,
+      'parentOrganization': data.parentOrganization,
+      'description': data.description,
+      'firstName': data.firstName,
+      'lastName': data.lastName,
+      'streetAddress1': data.address1,
+      'streetAddress2': data.address2,
+      'state': data.state,
+      'city': data.city,
+      'country': data.country,
+      'zipcode': data.zipcode
+    };
+  }
+
   getUpdateOrg(id: number): Promise<Object> {
     this.id = -2001;
     return new Promise((resolve, reject) => {
@@ -97,7 +115,6 @@ export class OrganizationMainService {
       ).subscribe(response => {
         resolve(response);
         this.resultData = response;
-        console.log('service', this.resultData);
       }, error => {
         reject();
       });
@@ -105,14 +122,16 @@ export class OrganizationMainService {
   }
 
   id: number;
-  updateUser(id: number): Promise<Object> {
-    this.id = 2001;
+  updateOrg(id: number): Promise<Object> {
+    this.id = -2001;
     return new Promise((resolve, reject) => {
-      this.orgService.OrganizationsFindByOrganizationId(2001
-      ).subscribe(response => {
+      this.orgService.OrganizationsUpdateOrganization({
+        id: this.id,
+        body: this.orgBody
+      }).subscribe(response => {
         resolve(response);
         this.resultData = response;
-        console.log('service', this.resultData);
+        console.log('updateOrg Main Service', this.resultData);
       }, error => {
         reject();
       });

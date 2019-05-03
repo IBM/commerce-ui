@@ -75,6 +75,9 @@ export class ManageOrganizationContactComponent implements OnInit {
         )
       );
     }
+    this.contactCall();
+    this.orgMainService.manageOrgData(this.orgDetailsData);
+    this.updateOrgApiCall();
     this.router.navigate(['organizations/manageOrganizationRoles']);
   }
 
@@ -93,18 +96,33 @@ export class ManageOrganizationContactComponent implements OnInit {
     });
   }
 
+  updateOrgApiCall() {
+    this.id = -2001;
+    this.orgMainService.updateOrg(this.id).then(results => {
+      this.manageOrgResponse = Object.assign([], results);
+      this.setModelData();
+      console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageOrgResponse);
+    }).catch(() => {
+      this.translateService
+      .get('CATALOGS.HEADR.store_list_failed')
+      .subscribe((msg: string) => {
+        this.iframeService.postStatusMsg(msg, 'error');
+      })
+    })
+  }
+
   setModelData() {
     this.contactName = this.manageOrgResponse.organizationName;
     this.contactEmail = this.manageOrgResponse.address.email1;
     this.streetAddress1 = this.manageOrgResponse.address.address1;
     this.streetAddress2 = this.manageOrgResponse.address.address2;
-    this.city = this.manageOrgResponse.addresscity;
-    this.state = this.manageOrgResponse.addressstate;
+    this.city = this.manageOrgResponse.address.city;
+    this.state = this.manageOrgResponse.address.state;
     this.country = this.manageOrgResponse.address.country;
     this.zipcode = this.manageOrgResponse.address.zipCode;
   }
 
-  detailsCall() {
+  contactCall() {
     this.orgDetailsData = {
       'contactName': this.contactName,
       'contactEmail': this.contactEmail,
