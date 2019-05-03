@@ -1,85 +1,96 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
 import { UserListComponent } from './user-list.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Routes, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Location} from "@angular/common";
-import { TranslateLoader, TranslateModule, TranslateFakeLoader, TranslateService } from '@ngx-translate/core';
+import { Router, Routes } from '@angular/router';
+import { Location } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogModule } from 'carbon-components-angular';
+import { Search16Module } from '@carbon/icons-angular/lib/search/16';
+import { Add16Module } from '@carbon/icons-angular/lib/add/16';
+import { ChevronRight16Module } from '@carbon/icons-angular/lib/chevron--right/16';
+import { Menu32Module } from '@carbon/icons-angular/lib/menu/32';
+import { CheckmarkOutline16Module } from '@carbon/icons-angular/lib/checkmark--outline/16';
+import { ArrowDown16Module } from '@carbon/icons-angular/lib/arrow--down/16';
+import { CheckmarkFilled16Module } from '@carbon/icons-angular/lib/checkmark--filled/16';
+import { View16Module } from '@carbon/icons-angular/lib/view/16';
+import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
+import { HttpClientModule } from '@angular/common/http';
 import { UsersService } from '../../../../../rest/services/users.service';
-// describe('UserListComponent', () => {
-//   let component: UserListComponent;
-//   let fixture: ComponentFixture<UserListComponent>;
-
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ UserListComponent ]
-//     })
-//     .compileComponents();
-//   }));
-
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(UserListComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
-const routes: Routes = [
-  {path: 'users', component: UserListComponent}
-];
-
-class MockUsersService {
-
-}
+import { UserMainService } from '../../../services/user-main.service';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
 fdescribe('UserListComponent', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
-  let router: Router;
-  let location: Location;
-let userService : UsersService;
-
-  beforeEach((done) => {
-    TestBed.configureTestingModule({
-      imports: [  
-        TranslateModule.forChild({
-          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-        }),
-       
-        RouterTestingModule.withRoutes(routes)
-      ],
-      declarations: [ UserListComponent ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [
-        { provide: UsersService, useClass: MockUsersService },
-       
-        MockUsersService,
-        
-      ]
-    })
-    .compileComponents();
-    done();
-  });
+  let service: UsersService;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, TranslateModule.forRoot()],
-      declarations: [ UserListComponent ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [],
+      declarations: [UserListComponent],
+      imports: [RouterTestingModule, FormsModule, ReactiveFormsModule,  FormsModule, DialogModule, Search16Module,
+        Add16Module, ChevronRight16Module, HttpClientModule, HttpClientTestingModule, HttpTestingController,
+        Menu32Module, CheckmarkOutline16Module, ArrowDown16Module, CheckmarkFilled16Module, View16Module, ViewOff16Module, tick,
+        TranslateModule.forRoot()],
+      providers: [UsersService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
-  beforeEach(() => {
-    router = TestBed.get(Router); 
-    location = TestBed.get(Location);
-    fixture = TestBed.createComponent(UserListComponent);
-    router.initialNavigation();
+  // Returns a service with the MockBackend so we can test with dummy responses
+  service = TestBed.get(UsersService);
+  // Inject the http service and test controller for each test
+  httpTestingController = TestBed.get(HttpTestingController);
 
+  afterEach(() => {
+    // After every test, assert that there are no more pending requests.
+    httpTestingController.verify();
+  });
+  /*... Trial ...*/
+  it(
+    'search should return SearchItems',
+    fakeAsync(() => {
+      const response = {
+        resultCount: 1,
+        results: [
+          {
+            logonId: 78500,
+            firstName: 'U2',
+            lastName: 'Beautiful Day',
+          }
+        ]
+      };
+
+      // Perform a request (this is fakeAsync to the responce won't be called until tick() is called)
+      // service.UsersGetManageableUsers();
+
+      // Expect a call to this URL
+      const req = httpTestingController.expectOne(
+        'https://xiangxil1.fyre.ibm.com:5443/rest/admin/v2/users/manageable'
+      );
+      // Assert that the request is a GET.
+      expect(req.request.method).toEqual('GET');
+      // Respond with this data when called
+      req.flush(response);
+
+      // Call tick whic actually processes te response
+      this.tick();
+
+      // Run our tests
+      expect(response.results.length).toBe(1);
+      expect(response.results[0].logonId).toBe(78500);
+      expect(response.results[0].firstName).toBe('U2');
+      expect(response.results[0].lastName).toBe('Beautiful Day');
+    })
+  );
+  /*... Trial ...*/
+  beforeEach(() => {
+    fixture = TestBed.createComponent(UserListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -87,92 +98,4 @@ let userService : UsersService;
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should initialize successfully', (done) => {
-    var usersData = [];
-    var userResponse = {
-        businessCategory: "business",
-        description: "unitTest",
-        displayName: "unitTest",
-        distinguishedName: "unitTest",
-        legalId: "1",
-        memberId: "1",
-        orgEntityType: 'Organization' ,
-        orgEntityTypeCode: '1001',
-        organizationId: '101',
-        organizationName: "Default Organization",
-        parentMemberId: "Root Organization",
-        parentMemberName: "Root Organization",
-        
-    }
-    usersData.push(userResponse);
-    spyOn(userService, 'UsersGetManageableUsers').and.returnValue(Promise.resolve(userResponse));
-    component.ngOnInit();
-    setTimeout(function() {
-      expect(userService.UsersGetManageableUsers).toHaveBeenCalled();
-      expect(component.userListData.find(item => item.content == "unitTest")).toBeDefined;
-      expect(component.userListData.find(item => item.content == "Root Organization")).toBeDefined;
-      done();
-    }, 1000);
-  });
-
-  // it('the org name should not be assigned given the org is not selected', (done) => {
-  //   let selection : Object = {'item' : {'selected' : false, 'content' : ''}};
-  //   component.onOrgSelected(selection);
-  //   expect(component.orgName).toBeNull;
-  //   done();
-  // });
-
-  // it('the parent org name should not be assigned given the parent org is not selected', (done) => {
-  //   let selection : Object = {'item' : {'selected' : false, 'content' : ''}};
-  //   component.onParentOrgSelected(selection);
-  //   expect(component.orgParentName).toBeNull;
-  //   done();
-  // });
-
-  it('Organisation landing should contain "Translation header!"', () => {
-    const headerElement: HTMLElement = fixture.nativeElement;
-    const header  = headerElement.querySelector('userName');
-    expect(header.textContent).toContain('Users');
-  });
-  
-  // it('checking the service', inject([OrganizationsService]),  (service: OrganizationsService) => {
-  //   expect(service).toBeTruthy(); 
-  // });
-  it('should', async(() => {
-    spyOn(component, 'createUser');
-  
-    let button = fixture.debugElement.nativeElement.querySelector('button');
-    button.click();
-  
-    fixture.whenStable().then(() => {
-      expect(component.createUser).toHaveBeenCalled();
-    });
-  }));
-
-  it("fakeAsync works", fakeAsync(() => {
-    let promise = new Promise(resolve => {
-      setTimeout(resolve, 10);
-    });
-    let done = false;
-    promise.then(() => (done = true));
-    tick(50);
-    expect(done).toBeTruthy();
-  }));
-
-  it('navigate to "" redirects you to /home', fakeAsync(() => {
-    router.navigate([""]).then(() => {
-      expect(location.path()).toBe("/");
-    });
-  }));
-
-  // it('navigate to "search" takes you to /masterCategory', fakeAsync(() => {
-  //   component.onSelect();
-  //   router.navigate(["/catalogs/masterCategory"]).then(() => {
-  //     expect(location.path()).toBe("/catalogs/masterCategory");
-  //   });
-  // }));
-
-
 });
-

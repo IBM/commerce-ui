@@ -1,11 +1,11 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrganizationsService } from '../../../../../../src/app/rest/services/organizations.service';
 import { OrganizationMainService } from '../../organization.main.service';
-import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { IframeService } from '../../../../services/iframe.service';
 import { TranslateService } from '@ngx-translate/core';
 
+import { FormGroup, Validators, FormBuilder, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class ManageDetailsOrganization {
   constructor(
     public organizationName: string,
@@ -18,7 +18,14 @@ export class ManageDetailsOrganization {
 @Component({
   selector: 'app-manage-organization-details',
   templateUrl: './manage-organization-details.component.html',
-  styleUrls: ['./manage-organization-details.component.scss']
+  styleUrls: ['./manage-organization-details.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => ManageOrganizationDetailsComponent),
+    }
+  ]
 })
 export class ManageOrganizationDetailsComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<ManageDetailsOrganization>();
