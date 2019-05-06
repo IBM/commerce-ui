@@ -51,14 +51,29 @@ export class ManageUserAccountComponent implements OnInit {
   ngOnInit() {
     this.showInput = true;
     this.accountData = this.userMainService.manageuserAccount;
-    this.updateUserApiCall();
+    this.getUserApiCall();
     this.enableButton();
     
   }
 
+  getUserApiCall() {
+    this.id = 2011;
+    this.userMainService.getUpdateUser(this.id).then(results => {
+    this.manageUserResponse = Object.assign([], results);
+    this.setModelData();
+    console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageUserResponse);
+    }).catch(() => {
+      this.translateService
+          .get('CATALOGS.HEADR.store_list_failed')
+          .subscribe((msg: string) => {
+            this.iframeService.postStatusMsg(msg, 'error');
+          });
+    });
+  }
+
   updateUserApiCall() {
-    this.id = 1005;
-    this.userMainService.updateUser(1005).then(results => {
+    this.id = 2011;
+    this.userMainService.updateUser(this.id).then(results => {
     this.manageUserResponse = Object.assign([], results);
     this.setModelData();
     console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageUserResponse);
@@ -90,6 +105,9 @@ export class ManageUserAccountComponent implements OnInit {
  };
 
   saveAccount() {
+    this.accountCall();
+    this.userMainService.manageUserData(this.userAccountData);
+    this.updateUserApiCall();
     this.router.navigate(['/users/manageContact']);
   }
 
@@ -116,7 +134,7 @@ export class ManageUserAccountComponent implements OnInit {
     this.email1 = this.manageUserResponse.address.email1;
     this.password = this.manageUserResponse.password;
     this.passwordVerify = this.manageUserResponse.password;
-    this.organizationName = this.manageUserResponse.organizationName;
+    this.organizationName = this.manageUserResponse.parentOrganizationName;
     this.policy = this.manageUserResponse.policy;
   }
  
@@ -125,7 +143,6 @@ export class ManageUserAccountComponent implements OnInit {
       'logonId': this.logonId,
       'email1': this.email1,
       'password': this.password,
-      'passwordVerify': this.password,
       'organizationName': this.organizationName,
       'policy': this.policy
     };

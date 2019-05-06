@@ -28,16 +28,16 @@ const routes: Routes = [
     path: 'userGroups', component: UserGroupsComponent
   },
   {
-    path: 'manageAccount', component: ManageUserAccountComponent
+    path: 'manageAccount/:id', component: ManageUserAccountComponent
   },
   {
-    path: 'manageContact', component: ManageUserContactComponent
+    path: 'manageContact/:id', component: ManageUserContactComponent
   },
   {
-    path: 'manageGroups', component: ManageUserGroupsComponent
+    path: 'manageGroups/:id', component: ManageUserGroupsComponent
   },
   {
-    path: 'manageRoles', component: ManageUserRolesComponent
+    path: 'manageRoles/:id', component: ManageUserRolesComponent
   },
   {
     path: 'organizationsList', component: OrganizationListComponent

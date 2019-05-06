@@ -581,7 +581,12 @@
         {
             "TITLE":"IBM Watson Commerce",
             "USERS":"Users",
-            "NEW_BUTTON":"New"
+            "NEW_BUTTON":"New",
+            "LOGIN_ID":"Login ID",
+            "FIRST_NAME":"First name",
+            "LAST_NAME":"Last name",
+            "ORGANIZATION":"Organization",
+            "ROLE":"Role"
         },
         "USER_ACCOUNT":
         {
@@ -601,8 +606,10 @@
             "HIDE":"Hide",
             "ORGANIZATION":"Organization",
             "ACCOUNT_POLICY":"Account Policy",
+            "ACCOUNT_POLICY_PLACEHOLDER":"Select policy",
             "CANCEL":"Cancel",
             "NEXT":"Next",
+            "LOGONID_ERROR": "Login ID already exists",
             "EMAIL_ERROR": "Please enter valid Email address",
             "INPUT_ERROR": "Please enter all mandatory field."
         },
@@ -621,6 +628,7 @@
             "LAST_NAME":"Last Name",
             "STREET_ADDRESS":"Street address",
             "CITY":"City",
+            "COUNTRY": "Country",
             "STATE_PROVINCE_REGION":"State / Province / Region",
             "ZIP_POSTAI_CODE":"Zip / Postal code",
             "CANCEL":"Cancel",
@@ -756,6 +764,11 @@
             "ORGANIZATIONS":"Organisations",
             "NEW_BUTTON":"New"  
         },
+        "ORGANIZATION_TABLE": {
+            "name": "Name",
+            "parent_organization": "Parent organization",
+            "type": "Type"
+        },
         "ORGANIZATION_DETAILS":
         {
             "TITLE":"IBM Watson Commerce",
@@ -820,7 +833,8 @@
             "ITEMS":"23 items",
             "CANCEL":"Cancel",
             "BACK":"Back",
-            "NEXT":"Next"
+            "NEXT":"Next",
+            "SUBMIT":"Submit"
         },
         "MANAGE_ORGANIZATION_DETAILS":
         {

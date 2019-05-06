@@ -21,11 +21,12 @@
     margin: 4% 0 4% 0;
   }
   .dot {
-    height: 10px;
-    width:  10px;
-    border-radius: 50%;
+    height: 18px;
+    width:  4px;
     display: inline-block;
-    border: 1px solid blue;
+    border: 1px solid #0062FF;
+    position: absolute;
+    margin-inline-start: -25px;
   }
   .text-margin {
     margin-left: 5px;
@@ -89,7 +90,7 @@
     background-color: blue;
   }
   .footer-btn-margin {
-    margin-left: 13.5%;
+    margin-left: 48.5%;
 }
   .next-button {
     width: 33.68%;
@@ -98,7 +99,7 @@
     height: 3rem;
   }
   .cancel-button {
-    width: 29%;
+    width: 20%;
     height: 3rem;
   }
   .back-button {
@@ -117,7 +118,7 @@
     color: #282828;
     border: none;
     border-bottom: 1px solid gray;
-    width: 100%;
+    width: 60%;
   }
   .form-text {
     margin-bottom: 1%;

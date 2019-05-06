@@ -28,9 +28,9 @@
             </span>
             </div>
           </div>
-          <div class="bx--col-sm-8 bx--col-md-8 right-content">
+          <form [formGroup]="rolesForm" class="bx--col-sm-8 bx--col-md-8 right-content">
             <div class="bx--row main-content">
-              <div class="bx--col-sm-11 bx--col-md-11">
+              <div class="bx--col-sm-11 bx--col-md-11 inside-content">
                 <div class="info-text">
                     <p>{{'MANAGE_USER.USER_ROLES.SELECT_AN_ORGANIZATION'| translate}}</p>
                     <p>{{'MANAGE_USER.USER_ROLES.MULTIPLE_ROLES'| translate}}</p>
@@ -38,24 +38,29 @@
                 <div class="form-text">{{'MANAGE_USER.USER_ROLES.ORGANIZATION'| translate}}</div>
                 <ibm-dropdown
                   placeholder="Select title"
-                  [disabled]="disabled"
-                  [(ngModel)]="organization"
+                  formControlName="organization"
                   value="content" id="organizationName" ngDefaultControl>
                   <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                 </ibm-dropdown>
                 <div class="form-text select-field">{{'MANAGE_USER.USER_ROLES.AVAILABLE_ROLES'| translate}}</div>
                 <ibm-dropdown
                   placeholder="Select title"
-                  [disabled]="disabled"
-                  [(ngModel)]="availablrRoles"
+                  formControlName="availablrRoles"
                   value="content" (click)="mySelectedRoles(availablrRoles)" id="rolesList" ngDefaultControl>
                   <ibm-dropdown-list [items]="rolesList"></ibm-dropdown-list>
-                </ibm-dropdown><br/><br/>
+                </ibm-dropdown>
                 <div class="roles-margin">
                   <span>{{'MANAGE_USER.USER_ROLES.SELECTED_ROLES'| translate}}</span>
                 </div>
+                <div class="roles-margin">
+                  <span class="model-role" *ngFor="let Roles of result; let i = index" [attr.data-index]="i">{{Roles}}
+                    <ibm-icon-close16 class="icon-close"  (click)="RemoveRoles(Roles)"></ibm-icon-close16>
+                  </span>
+                </div>
               </div>
-              <div class="bx--col-sm-11 bx--col-md-11 footer-content">
+            </div>
+            <div class="bx--row footer-content">
+              <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
                 <div class="bx--row">
                   <div class="bx--col-sm-2 bx--col-md-2"></div>
                   <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
@@ -66,6 +71,6 @@
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
   </div>
