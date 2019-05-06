@@ -32,7 +32,7 @@
               <div class="bx--col-sm-11 bx--col-md-11 inside-content">
                   <div class="top-form-text">{{'MANAGE_USER.USER_ACCOUNT.LOGIN_ID' | translate}}</div>
                   <input ibmText class=" inputbx"
-                  formControlName="logonId" maxlength="20" id="logonid" ngDefaultControl (blur)="validateLogonId(logonId.value)">
+                  formControlName="logonId" maxlength="20" id="logonid" ngDefaultControl (blur)="validateLogonId()">
                   <span *ngIf="invalidLoginId" class="error-msg">{{'MANAGE_USER.USER_ACCOUNT.LOGONID_ERROR' | translate}}</span>
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.EMAIL' | translate}}</div>
                   <input ibmText class=" inputbx" (blur)="validateEmail()"
