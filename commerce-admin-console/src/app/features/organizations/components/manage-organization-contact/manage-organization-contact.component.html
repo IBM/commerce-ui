@@ -9,8 +9,7 @@
     <span class="icon-top">
       <ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16>
     </span>
-    <span><strong
-        class="new-user">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.EDIT_ORGANIZATION' | translate}}</strong></span>
+    <span><strong class="new-user">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.EDIT_ORGANIZATION' | translate}}</strong></span>
     <div class="clr"></div>
   </div>
 
@@ -28,35 +27,53 @@
       </div>
     </div>
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
-      <div class="bx--row main-content">
-        <div class="bx--col-sm-11 bx--col-md-11 inside-content">
-          <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CONTACT_NAME' | translate}}</div>
-          <input ibmText class=" inputbx">
-          <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CONTACT_EMAIL' | translate}}</div>
-          <input ibmText class=" inputbx">
-
-          <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.STREET_ADDRESS' | translate}}</div>
-          <input ibmText class=" inputbx" placeholder="Strett and number, P.O. box, c/o">
-          <input ibmText class=" inputbx" placeholder="Apartment, suite, unit, building, floor, etc.">
-          <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CITY' | translate}}</div>
-          <input ibmText class=" inputbx">
-          <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.ADDRESS' | translate}}</div>
-          <input ibmText class=" inputbx">
+      <form [formGroup]="manageContactForm" (ngSubmit)="onSubmit()">
+        <div class="bx--row main-content">
+          <div class="bx--col-sm-11 bx--col-md-11 inside-content">
+            <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CONTACT_NAME' | translate}}</div>
+            <input ibmText class=" inputbx" id="manage-contact-name" [(ngModel)]="contactName" formControlName="contactName">
+            <!--Validation for the Contact name field.-->
+            <!-- <div class="errorField" *ngIf="manageContactForm.controls['contactName'].hasError('required')">
+              Contact Name is the Mandatory field.
+            </div>
+            <div class="errorField" *ngIf="manageContactForm.controls['contactName'].hasError('minlength')">
+              Minimum length should be 4
+            </div>
+            <div class="errorField" *ngIf="manageContactForm.controls['contactName'].hasError('maxlength')">
+              Maximum length should be 10
+            </div> -->
+            <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CONTACT_EMAIL' | translate}}</div>
+            <input ibmText class=" inputbx" id="manage-contact-email" [(ngModel)]="contactEmail" formControlName="contactEmail">
+            <!--Validation for the Email field.-->
+            <!-- <div class="errorField" *ngIf="manageContactForm.controls['contactEmail'].hasError('required')">
+              Email is Mandatory to proceed.
+            </div>
+            <div class="errorField" *ngIf="manageContactForm.controls['contactEmail'].hasError('pattern')">
+              Please Enter a valid email
+            </div> -->
+            <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.STREET_ADDRESS' | translate}}</div>
+            <input ibmText class=" inputbx" id="manage-contact-street" [(ngModel)]="streetAddress1" formControlName="streetAddress" placeholder="Strett and number, P.O. box, c/o">
+            <input ibmText class=" inputbx" id="manage-contact-apartment" [(ngModel)]="streetAddress2" formControlName="apartmentName" placeholder="Apartment, suite, unit, building, floor, etc.">
+            <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CITY' | translate}}</div>
+            <input ibmText class=" inputbx" id="manage-contact-city" [(ngModel)]="city" formControlName="city">
+            <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.ADDRESS' | translate}}</div>
+            <input ibmText class=" inputbx" id="manage-contact-state" [(ngModel)]="state" formControlName="state">
+          </div>
         </div>
-      </div>
-      <div class="bx--row footer-content">
-        <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
-          <div class="bx--row">
-            <div class="bx--col-sm-5 bx--col-md-5"></div>
-            <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeManageOrganizationDetails()"
-                >{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CANCEL' | translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button" (click)="routeManageOrganizationRoles()"
-                >{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.SAVE' | translate}}</button>
+        <div class="bx--row footer-content">
+          <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
+            <div class="bx--row">
+              <div class="bx--col-sm-5 bx--col-md-5"></div>
+              <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
+                <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeOrganizationList()">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CANCEL'
+                  | translate}}</button>
+                <button ibmButton size="lg" id="save-preview" class="next-button"
+                  type="submit">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.SAVE' | translate}}</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

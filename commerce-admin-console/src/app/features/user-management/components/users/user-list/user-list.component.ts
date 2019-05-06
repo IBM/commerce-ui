@@ -1,192 +1,83 @@
-import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
 import { Router } from '@angular/router';
-import { UsersService } from '../../../../../rest/services/users.service';
-import { UserMainService } from '../../../services/user-main.service';
 import { TranslateService } from '@ngx-translate/core';
-import { IframeService } from '../../../../../services/iframe.service';
+import { UsersService } from '../../../../../rest/services/users.service';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+	templateUrl: './user-list.component.html',
+	styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+	model = new TableModel();
 
-  loginArray: any = [];
-  userListData: any;
-  @Input() striped = false;
-  userResult: any;
-  //specificUserId: string
-  id: string;
+	@ViewChild('listUserItemTemplate')
+	protected listUserItemTemplate: TemplateRef<any>;
 
-  @Input() model = new TableModel();
+	constructor(private router: Router, private usersService: UsersService, private translateService: TranslateService) { }
 
-  @Input() get totalDataLength() {
-    return this.model.totalDataLength;
-  }
-  set totalDataLength(value) {
-    this.model.totalDataLength = value;
-  }
+	ngOnInit() {
+		const logonIdHeader = { data: '' };
+		const firstNameHeader = { data: '' };
+		const lastNameHeader = { data: '' };
+		const organizationHeader = { data: '' };
+		const roleHeader = { data: '' };
+		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.LOGIN_ID").subscribe((title: string) => {
+			logonIdHeader.data = title;
+		});
+		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.FIRST_NAME").subscribe((title: string) => {
+			firstNameHeader.data = title;
+		});
+		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.LAST_NAME").subscribe((title: string) => {
+			lastNameHeader.data = title;
+		});
+		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.ORGANIZATION").subscribe((title: string) => {
+			organizationHeader.data = title;
+		});
+		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.ROLE").subscribe((title: string) => {
+			roleHeader.data = title;
+		});
+		this.model.header = [
+			new TableHeaderItem(logonIdHeader),
+			new TableHeaderItem(firstNameHeader),
+			new TableHeaderItem(lastNameHeader),
+			new TableHeaderItem(organizationHeader),
+			new TableHeaderItem(roleHeader)
+		];
+		this.model.data = [];
+		this.model.pageLength = 10;
+		this.model.totalDataLength = 0;
+		this.selectPage(1);
+	}
 
-  @ViewChild('paginationTableItemTemplate')
-  protected paginationTableItemTemplate: TemplateRef<any>;
-  @ViewChild('paginationTableItemTemplate')
+	selectPage(page: number) {
+		this.usersService.UsersGetManageableUsers({
+			offset: (page - 1) * this.model.pageLength,
+			limit: this.model.pageLength
+		}).subscribe((body: any) => {
+			this.model.totalDataLength = body.count;
+			const data = [];
+			for (let i = 0; i < body.items.length; i++) {
+				const item = body.items[i];
+				const id = item.id;
+				const logonId = item.logonId;
+				const firstName = item.address ? item.address.firstName : '';
+				const lastName = item.address ? item.address.lastName : '';
+				const parentOrganizationName = item.parentOrganizationName;
+				data.push([
+					new TableItem({ data: { name: logonId, id: id }, template: this.listUserItemTemplate }),
+					new TableItem({ data: firstName }),
+					new TableItem({ data: lastName }),
+					new TableItem({ data: parentOrganizationName }),
+					new TableItem({ data: ''})
+				]);
+			}
+			this.model.data = data;
+			this.model.currentPage = page;
+		});
+	}
 
-  @ViewChild('listUserItemTemplate')
-  protected listUserItemTemplate: TemplateRef<any>;
-
-
-
-
-  constructor(private router: Router, private usersService: UsersService,
-    private userMainservice: UserMainService,
-    private translateService: TranslateService,
-    private iframeService: IframeService) { }
-
-  ngOnInit() {
-
-
-    this.model.data = [[]];
-    this.model.header = [
-      new TableHeaderItem({ data: 'Login ID' }),
-      new TableHeaderItem({ data: 'First name' }),
-      new TableHeaderItem({ data: 'Last name' }),
-      new TableHeaderItem({ data: 'Organization' }),
-      new TableHeaderItem({ data: 'Role' }),
-      new TableHeaderItem({ })
-    ];
-
-    // this.getUsersList();
-    this.model.pageLength = 10;
-    // this.model.totalDataLength = 15;
-
-
-     this.selectPage(1);
-  }
-  // getUsersList() {
-  //   this.userMainservice.userList().then(results => {
-  //     this.userResult = Object.assign([], results);
-  //     if (this.userResult.items.length > 0) {
-  //       this.model.totalDataLength = this.userResult.length;
-  //       for (const org of this.userResult.items) {
-  //         this.model.addRow([
-  //           new TableItem({ data: { name: org['logonId'], link: '/users' + org['logonId'] }, template: this.listUserItemTemplate }),
-  //           new TableItem({ data: org['id'] }),
-  //           new TableItem({ data: org['receiveSmsNotification'] }),
-  //           new TableItem({ data: org['organizationId'] }),
-  //           new TableItem({ data: org['registrationType'] })
-  //         ]);
-  //       }
-  //     }
-
-  //   }).catch(() => {
-  //     this.translateService
-  //       .get('CATALOGS.HEADR.store_list_failed')
-  //       .subscribe((msg: string) => {
-  //         this.iframeService.postStatusMsg(msg, 'error');
-  //       });
-  //   });
-  // }
-
-  // sort
-  // customSort(index: number) {
-  //   this.sort(this.model, index);
-  // }
-  // sort(Tablemodel, index: number) {
-  //   if (Tablemodel.header[index].sorted) {
-  //     // if already sorted flip sorting direction
-  //     Tablemodel.header[index].ascending = Tablemodel.header[index].descending;
-  //   }
-  //   Tablemodel.sort(index);
-  // }
-
-  getPage(page: number) {
-    // const line = line => [`dave_evans`, `Dave`, `Evans`, `Organization A`, `Site Administrator`, ``];
-
-    // const fullPage = [];
-
-    // for (
-    //  let i = (page - 1) * this.model.pageLength;
-    //  i < page * this.model.pageLength && i < this.model.totalDataLength;
-    //  i++
-    // ) {
-    //  fullPage.push(line(i + 1));
-    // }
-
-    return new Promise(resolve => {
-      //setTimeout(() => resolve(fullPage), 150);
-      this.usersService.UsersGetManageableUsers({
-        offset: (page - 1) * this.model.pageLength,
-        limit: this.model.pageLength
-      }).subscribe((body: any) => {
-       this.userListData = body.items;
-        this.model.totalDataLength = body.count;
-        const data = [];
-        for (let i = 0; i < body.items.length; i++) {
-          const item = body.items[i];
-          const logonId = item.logonId;
-          const firstName = item.address ? item.address.firstName : '';
-          const lastName = item.address ? item.address.lastName : '';
-          const organizationName = item.organizationName;
-          data.push([ logonId, firstName, lastName, organizationName, '', '']);
-          this.loginArray.push([logonId]);
-        }
-        resolve(data);
-      });
-    });
-  }
-
-  selectPage(page) {
-
-    this.getPage(page).then((data: Array<Array<any>>) => {
-      // set the data and update page
-      this.model.data = this.prepareData(data, this.loginArray);
-      this.model.currentPage = page;
-    });
-  }
-
-  protected prepareData(data: Array<Array<any>>, loginArray: Array<Array<any>>) {
-    // create new data from the service data
-    const newData = [];
-    // loginArray.forEach(dataRow => {
-    //   const row1 = [] ;
-    //   dataRow.forEach(dataElement => {
-    //     row1.push(new TableItem({
-    //       data: dataElement
-    //     }));
-    //         });
-    //         newData.push(row1);
-    // });
-    data.forEach(dataRow => {
-      const row = [];
-
-      dataRow.forEach(dataElement => {
-        row.push(
-          new TableItem({
-            data: { name: dataElement  }, template: this.listUserItemTemplate
-          }));
-      });
-        newData.push(row);
-      });
-
-    return newData;
-  }
-
-  createUser() {
-    this.router.navigate(['users/userAccount']);
-  }
-  userId(logonId: any) {
-    if (this.userListData) {
-      //console.log('itm', this.userListData);
-      //console.log('list', this.userListData);
-      this.userListData.forEach(function(value) {
-        //console.log('val', value);
-        // if (value.logonId === logonId) {
-        //    this.id = value.id;
-        // }
-      });
-    }
-
-  }
+	createUser() {
+		this.router.navigate(['users/userAccount']);
+	}
 }

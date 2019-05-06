@@ -38,24 +38,28 @@
                   [(ngModel)]="model"
                   value="content">
                   <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
-                </ibm-dropdown>
+                </ibm-dropdown><br />
                 <div class="bx--row name-field">
                   <div class="bx--col-sm-6 bx--col-md-6">
                       <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.FIRST_NAME' | translate}}</div>
-                      <input ibmText class="inputbx" [(ngModel)]="firstName">
+                      <input ibmText class="inputbx" [(ngModel)]="firstName"><br/>
                   </div>
                   <div class="bx--col-sm-6 bx--col-md-6">
                       <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.LAST_NAME' | translate}}</div>
-                      <input ibmText class="inputbx" [(ngModel)]="lastName">
+                      <input ibmText class="inputbx" [(ngModel)]="lastName"><br/>
                   </div>
                 </div>
             <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STREET_ADDRESS' | translate}}</div>
-            <input ibmText class="inputbx" [(ngModel)]="streetAddress1">
-            <input ibmText class="inputbx" [(ngModel)]="streetAddress2">
+            <input ibmText class="inputbx" [(ngModel)]="streetAddress1"><br/>
+            <input ibmText class="inputbx" [(ngModel)]="streetAddress2"><br/>
             <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.CITY' | translate}}</div>
-            <input ibmText class="inputbx" [(ngModel)]="city">
+            <input ibmText class="inputbx" [(ngModel)]="city"><br/>
+            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.COUNTRY' | translate}}</div>
+            <input ibmText class="inputbx" [(ngModel)]="country"><br/>
             <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
-            <input ibmText class="inputbx" [(ngModel)]="state">
+            <input ibmText class="inputbx" [(ngModel)]="state"><br/>
+            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.ZIPCODE' | translate}}</div>
+            <input ibmText class="inputbx" [(ngModel)]="zipcode">
         </div>
       </div>
       <div class="bx--row footer-content">

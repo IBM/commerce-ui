@@ -34,6 +34,6 @@ export class ManageUserGroupsComponent implements OnInit {
   }
 
   saveGroups() {
-    this.router.navigate(['/users/organizationsList']);
+    this.router.navigate(['/users']);
   }
 }

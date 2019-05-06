@@ -36,6 +36,7 @@ export class ManageUserContactComponent implements OnInit {
   streetAddress2: any;
   city: any;
   state: any;
+  country: any;
   zipcode: number;
 
   constructor(
@@ -47,12 +48,27 @@ export class ManageUserContactComponent implements OnInit {
 
     ngOnInit() {
       this.accountData = this.userMainService.manageuserAccount;
-      this.updateUserApiCall();
+      this.getUserApiCall();
       
     }
   
+    getUserApiCall() {
+      this.id = 2011;
+      this.userMainService.getUpdateUser(this.id).then(results => {
+      this.manageUserResponse = Object.assign([], results);
+      this.setModelData();
+      console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageUserResponse);
+      }).catch(() => {
+        this.translateService
+            .get('CATALOGS.HEADR.store_list_failed')
+            .subscribe((msg: string) => {
+              this.iframeService.postStatusMsg(msg, 'error');
+            });
+      });
+    }
+  
     updateUserApiCall() {
-      this.id = 1005;
+      this.id = 2011;
       this.userMainService.updateUser(this.id).then(results => {
       this.manageUserResponse = Object.assign([], results);
       this.setModelData();
@@ -72,7 +88,8 @@ export class ManageUserContactComponent implements OnInit {
       this.streetAddress1 = this.manageUserResponse.address.address1;
       this.streetAddress2 = this.manageUserResponse.address.address2;
       this.city = this.manageUserResponse.address.city;
-      this.state = this.manageUserResponse.organizationName;
+      this.state = this.manageUserResponse.address.organizationName;
+      this.country = this.manageUserResponse.address.country;
       this.zipcode = this.manageUserResponse.address.zipCode;
     }
    
@@ -84,16 +101,20 @@ export class ManageUserContactComponent implements OnInit {
         'streetAddress2': this.streetAddress2,
         'city': this.city,
         'state': this.state,
+        'country': this.country,
         'zipcode': this.zipcode
       };
     }
 
   saveContact() {
+    this.contactCall();
+    this.userMainService.manageUserData(this.userAccountData);
+    this.updateUserApiCall();
     this.router.navigate(['/users/manageRoles']);
   }
 
   cancelClick() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/users/manageAccount']);
   }
 
 }

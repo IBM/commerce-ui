@@ -1,11 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrganizationMainService } from '../../organization.main.service';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+export class Roles {
+  constructor(public availableRoles: string,
+  ) {
+  }
+}
 @Component({
   selector: 'app-organization-roles',
   templateUrl: './organization-roles.component.html',
   styleUrls: ['./organization-roles.component.scss']
 })
 export class OrganizationRolesComponent implements OnInit {
+  @Output() loggedIn = new EventEmitter<Roles>();
+  rolesForm: FormGroup;
   roleListData: any;
 
   roleList = [
@@ -20,16 +29,37 @@ export class OrganizationRolesComponent implements OnInit {
     { id: 9, roleName: 'Role' },
     { id: 10, roleName: 'Role' }
   ];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private orgMainService: OrganizationMainService,
+    private _fb: FormBuilder) { }
+
 
   ngOnInit() {
     this.roleListData = this.roleList;
+
+    this.rolesForm = this._fb.group({
+      availableRoles: ['', [
+        Validators.required]]
+    });
   }
-  routeOrganizationContact() {
-    this.router.navigate(['organizations/organizationContact']);
-  }
-  routeOrganizationApprovals() {
+
+  onSubmit() {
+    console.log(this.rolesForm.value);
+    if (this.rolesForm.valid) {
+      this.loggedIn.emit(
+        new Roles(
+          this.rolesForm.value.availableRoles,
+        )
+      );
+    }
     this.router.navigate(['organizations/organizationsApprovals']);
   }
 
+  routeOrganizationContact() {
+    this.orgMainService.rolesBackCall = true;
+    this.router.navigate(['users/userContact']);
+    this.router.navigate(['organizations/organizationContact']);
+  }
+  routeOrganizationList() {
+    this.router.navigate(['organizations']);
+  }
 }

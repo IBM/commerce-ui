@@ -29,20 +29,37 @@
       </div>
     </div>
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
+        <form  [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.CONTACT_NAME' | translate}}</div>
-          <input ibmText class=" inputbx">
+          <input ibmText class="inputbx" id="contact-name" #refName formControlName="contactName">
+          <!--Validation for the Contact name field.-->
+          <div class="errorField" *ngIf="contactForm.controls['contactName'].hasError('required')">
+            Contact Name is the Mandatory field.
+          </div>
+          <div class="errorField" *ngIf="contactForm.controls['contactName'].hasError('minlength')">
+              Minimum length should be 4
+            </div>
+            <div class="errorField" *ngIf="contactForm.controls['contactName'].hasError('maxlength')">
+                Maximum length should be 10
+              </div>
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.CONTACT_EMAIL' | translate}}</div>
-          <input ibmText class=" inputbx">
-
+          <input type="email" class=" inputbx" id="contact-email" #refEmail formControlName="contactEmail">
+          <!--Validation for the Email field.-->
+          <div class="errorField" *ngIf="contactForm.controls['contactEmail'].hasError('required')">
+              Email is Mandatory to proceed.
+            </div>
+          <div class="errorField" *ngIf="contactForm.controls['contactEmail'].hasError('pattern')">
+              Please Enter a valid email
+            </div>
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.STREET_ADDRESS' | translate}}</div>
-          <input ibmText class=" inputbx" placeholder="Strett and number, P.O. box, c/o">
-          <input ibmText class=" inputbx" placeholder="Apartment, suite, unit, building, floor, etc.">
+          <input ibmText class=" inputbx" id="contact-street" placeholder="Strett and number, P.O. box, c/o" formControlName="streetAddress">
+          <input ibmText class=" inputbx" id="contact-apartment" placeholder="Apartment, suite, unit, building, floor, etc." formControlName="apartmentName">
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.CITY' | translate}}</div>
-          <input ibmText class=" inputbx">
+          <input ibmText class=" inputbx" id="contact-city" formControlName="city">
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.ADDRESS' | translate}}</div>
-          <input ibmText class=" inputbx">
+          <input ibmText class=" inputbx" id="contact-state" formControlName="state">
         </div>
       </div>
       <div class="bx--row footer-content">
@@ -50,16 +67,20 @@
           <div class="bx--row">
             <div class="bx--col-sm-2 bx--col-md-2"></div>
             <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button"
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeOrganizationList()"
                 >{{'MANAGE_USER.ORGANIZATION_CONTACT.CANCEL' | translate}}</button>
               <button ibmButton size="lg" id="save-preview" class="back-button" (click)="routeOrganizationDetails()"
                 >{{'MANAGE_USER.ORGANIZATION_CONTACT.BACK' | translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button" (click)="routeOrganizationRoles()"
+              <!-- <button ibmButton size="lg" id="save-preview" class="next-button" type="submit"
+                >{{'MANAGE_USER.ORGANIZATION_CONTACT.NEXT' | translate}}</button> -->
+
+                <button ibmButton size="lg" id="save-preview" [disabled]="!contactForm.valid" class="next-button" type="submit"
                 >{{'MANAGE_USER.ORGANIZATION_CONTACT.NEXT' | translate}}</button>
             </div>
           </div>
         </div>
       </div>
+        </form>
     </div>
   </div>
 </div>

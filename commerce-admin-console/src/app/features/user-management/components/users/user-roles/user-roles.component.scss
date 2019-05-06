@@ -5,16 +5,16 @@
     margin-top: -0.5%;  
   }
   .side-content {
-    padding-top: 4%; 
+    padding-top: 56px; 
     background-color: #ffffff; 
   }
   .main-content {
-    padding-top: 6%;
+    padding-top: 56px;
     margin: 0 0 0.2% 0.2%;
     background-color: #ffffff;
   }
   .footer-content {
-    margin: 0 0 3% 0.2%;
+    margin: 0 0 0 0.2%;
     background-color: #ffffff;
   }
   .inside-footer {
@@ -27,11 +27,14 @@
     margin-left: 21%;
   }
   .dot {
-    height: 10px;
-    width:  10px;
+    height: 14px;
+    width:  14px;
     border-radius: 50%;
     display: inline-block;
-    border: 1px solid blue;
+    border: 1px solid #0f6ddf;
+  }
+  .icon-ckeckout {
+    fill: #0f6ddf;
   }
   .text-margin {
     margin-left: 11px;
@@ -39,7 +42,7 @@
   }
   .arrow-icon {
     display: block;
-    margin: 10px 0px 10px -5px;
+    margin: 16px 0px 16px -2px;
   }
   .radio-icon {
     //border: 1px solid blue;
@@ -60,12 +63,18 @@
     padding: 5px;
     fill: white;
   }
+  .ibm-text {
+    font-size: 14px;
+    position: absolute;
+    top: 16px;
+    margin-left: 25px;
+  }
   .users {
     width: 100%;
     height: 35px;
     background: white;
     color: black;
-    padding: 8px 0px 0px 10px;
+    padding: 8px 0px 0px 18px;
     font-size: 14px;
   }
   .user-show {
@@ -90,28 +99,34 @@
     vertical-align: middle;
   }
   .icon-top {
-    margin-top: 4px !important;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .account-dot {
-    background-color: blue;
+    background-color: #0f6ddf;
   }
   .next-button {
-    width: 39%;
+    width: 33.68%;
+    text-align: left;
+    background-color: #0f6ddf;
+    height: 3rem;
   }
   .cancel-button {
     width: 20%;
     height: 3rem;
   }
   .back-button {
-    width: 38%;
-    background-color: black;
+    width: 33.68%;
+    text-align: left;
+    background-color: #343334;
+    height: 3rem;
   }
   .footer-btn {
     margin: 3% 0% 3% 35%;
   }
   .inputbx {
-    background: #F3F3F3;
-    height: 30px;
+    background-color: #f4f7fb;
+    height: 2.5rem;
     font-size: 14px;
     color: #282828;
     border: none;
@@ -140,10 +155,9 @@
   .input-tikmark {
     position: relative; 
   }
-  // .input-tikmark input {
-  //   text-indent: 30px;
-  //   font-family:  FontAwesome, sans-serif;
-  // }
+  .select-field {
+    margin-top: 23px;
+  }
   .input-tikmark .fa-tickmark { 
     position: absolute;
     top: 7px;
@@ -166,6 +180,7 @@
   }
   .roles-margin {
       margin-bottom: 20px;
+      margin-top: 23px;
   }
   .roles-margin {
     margin-bottom: 20px;

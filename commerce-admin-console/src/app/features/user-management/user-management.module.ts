@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../../components/components.module';
 import { UserManagementRoutingModule } from './user-management-routing.module';
 import {
@@ -33,11 +33,13 @@ import { ManageUserGroupsComponent } from './components/users/manage-user-groups
 import { ManageUserRolesComponent } from './components/users/manage-user-roles/manage-user-roles.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { OrganizationListComponent } from './components/organizations/organization-list/organization-list.component';
+import { SearchPipe } from './pipe/search.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
   ComponentsModule,
+  ReactiveFormsModule,
   Ng2SearchPipeModule,
     UserManagementRoutingModule,
     HttpClientModule,
@@ -75,7 +77,8 @@ import { OrganizationListComponent } from './components/organizations/organizati
     ManageUserGroupsComponent,
     ManageUserRolesComponent,
     UserListComponent,
-    OrganizationListComponent
+    OrganizationListComponent,
+    SearchPipe
   ],
   providers: [
   ],

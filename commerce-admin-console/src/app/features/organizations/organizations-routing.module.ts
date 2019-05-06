@@ -14,6 +14,10 @@ import { ManageOrganizationDetailsComponent } from './components/manage-organiza
 import { ManageOrganizationContactComponent } from './components/manage-organization-contact/manage-organization-contact.component';
 import { ManageOrganizationRolesComponent } from './components/manage-organization-roles/manage-organization-roles.component';
 import { ManageOrganizationApprovalsComponent } from './components/manage-organization-approvals/manage-organization-approvals.component';
+import { GroupListComponent } from './groups/components/group-list/group-list.component';
+import { DefineGroupComponent } from './groups/components/define-group/define-group.component';
+import { ReviewGroupComponent } from './groups/components/review-group/review-group.component';
+import { GroupDetailsComponent } from './groups/components/group-details/group-details.component';
 
 const routes: Routes = [
 	{
@@ -43,7 +47,19 @@ const routes: Routes = [
 	  },
 	  {
 		path: 'manageOrganizationApprovals', component: ManageOrganizationApprovalsComponent
-	  },
+		},
+		{
+			path: 'groupList', component: GroupListComponent
+		},
+		{
+			path: 'groupDefine', component: DefineGroupComponent
+		},
+		{
+			path: 'groupReview', component: ReviewGroupComponent
+		},
+		{
+			path: 'groupDetails', component: GroupDetailsComponent
+		},
 	{
 		path: 'find',
 		component: FindOrganizationsComponent

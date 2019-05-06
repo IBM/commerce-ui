@@ -71,19 +71,19 @@ export class OrganizationListComponent implements OnInit {
         limit: this.model.pageLength
       }).subscribe((body: any) => {
         this.model.totalDataLength = body.count;
-        console.log("org" + this.totalDataLength);
+        //console.log("org" + this.totalDataLength);
         const data = [];
         for (let i = 0; i < body.items.length; i++) {
           const item = body.items[i];
           this.organizationResponse = item;
-          const name = item.name;
+          const name = item.organizationName;
           const parentOrganizationName = item.parentOrganizationName;
           const organizationType = item.organizationType;
           data.push([name, parentOrganizationName, organizationType]);
         }
         resolve(data);
-        console.log(data);
-        console.log(data[0]);
+       // console.log(data);
+        //console.log(data[0]);
       });
     });
   }
@@ -98,7 +98,7 @@ export class OrganizationListComponent implements OnInit {
       //     [new TableItem({data: {name:data[0][0], link: "/table"}, template: this.listOrgItemTemplate}), 
       //     new TableItem({data:  data[0][1]}), new TableItem({data: data[2][2] })]
       // ];
-      console.log("data[1][1]", data[0][1])
+     // console.log("data[1][1]", data[0][1])
       this.model.currentPage = page;
     });
   }
@@ -126,12 +126,12 @@ export class OrganizationListComponent implements OnInit {
   }
 
   getSelectedOrganization(name) {
-    this.organizationResponse.forEach((value, idx) => {
-      if (value.name === name) {
-        this.manageOrgApiCall();
-      }
-    })
-    this.router.navigate(['organizations/organizationsDetails']);
+    // this.organizationResponse.forEach((value, idx) => {
+    //   if (value.name === name) {
+    //     this.manageOrgApiCall();
+    //   }
+    // })
+    this.router.navigate(['organizations/manageOrganizationDetails']);
   }
   manageOrgApiCall() {
 
