@@ -16,7 +16,8 @@ import { CheckmarkFilled16Module } from '@carbon/icons-angular/lib/checkmark--fi
 import { View16Module } from '@carbon/icons-angular/lib/view/16';
 import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { HttpClientModule } from '@angular/common/http';
-
+import { OrganizationMainService } from '../../organization.main.service';
+import { IframeService } from '../../../../services/iframe.service';
 fdescribe('ManageOrganizationDetailsComponent', () => {
   let component: ManageOrganizationDetailsComponent;
   let fixture: ComponentFixture<ManageOrganizationDetailsComponent>;
@@ -28,6 +29,7 @@ fdescribe('ManageOrganizationDetailsComponent', () => {
         Menu32Module, CheckmarkOutline16Module, ArrowDown16Module, CheckmarkFilled16Module, View16Module, ViewOff16Module,
         TranslateModule.forRoot()],
      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+     providers: [OrganizationMainService, IframeService],
       declarations: [ ManageOrganizationDetailsComponent ]
     })
     .compileComponents();
