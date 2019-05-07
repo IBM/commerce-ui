@@ -12,8 +12,8 @@ export class OrganizationMainService {
   rolesBackCall: boolean;
   listData: any;
   resultData: any;
-  orgAccountData: any;
-  orgContactData: any;
+  orgAccountData = {};
+  orgContactData = {};
   orgRolesData: any;
   orgApprovalsData: any;
   listResult: any;
@@ -77,7 +77,7 @@ export class OrganizationMainService {
         'bestCallingTime': 'D',
         'city': this.orgContactData.city,
         'country': 'India',
-        'email1': this.orgAccountData.email,
+        'email1': this.orgContactData.email,
         'phone': '970086',
         'zipCode': '516745',
         'state': this.orgContactData.state
