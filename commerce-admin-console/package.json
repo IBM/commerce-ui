@@ -37,13 +37,13 @@
     "carbon-components-angular": "^2.47.0",
     "core-js": "^2.5.3",
     "ng2-search-filter": "^0.4.7",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "rxjs": "6.2.2",
     "rxjs-compat": "6.2.2",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.0",
+    "@angular-devkit/build-angular": "^0.13.8",
     "@angular/cli": "^6.1.0",
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^5.2.9",
@@ -51,6 +51,8 @@
     "@types/jasminewd2": "~2.0.6",
     "@types/node": "~8.0.53",
     "codelyzer": "~4.2.1",
+    "cross-env": "^5.0.5",
+    "increase-memory-limit": "^1.0.3",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^3.1.1",
@@ -64,8 +66,6 @@
     "protractor": "^5.4.1",
     "ts-node": "~3.3.0",
     "tslint": "^5.8.0",
-    "typescript": "2.9.2",
-    "increase-memory-limit": "^1.0.3",
-    "cross-env": "^5.0.5"
+    "typescript": "2.9.2"
   }
 }
