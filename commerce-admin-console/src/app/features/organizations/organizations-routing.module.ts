@@ -21,45 +21,44 @@ import { GroupDetailsComponent } from './groups/components/group-details/group-d
 
 const routes: Routes = [
 	{
-		path: '',
-		component: OrganizationListComponent
+		path: '', component: OrganizationListComponent
 	},
 	{
 		path: 'organizationsDetails', component: OrganizationDetailsComponent
-	  },
-	  {
+	},
+	{
 		path: 'organizationContact', component: OrganizationContactComponent
-	  },
-	  {
+	},
+	{
 		path: 'organizationsRoles', component: OrganizationRolesComponent
-	  },
-	  {
+	},
+	{
 		path: 'organizationsApprovals', component: OrganizationApprovalsComponent
-	  },
-	  {
-		path: 'manageOrganizationDetails', component: ManageOrganizationDetailsComponent
-	  },
-	  {
-		path: 'manageOrganizationContact', component: ManageOrganizationContactComponent
-	  },
-	  {
+	},
+	{
+		path: 'manageOrganizationDetails/:id', component: ManageOrganizationDetailsComponent
+	},
+	{
+		path: 'manageOrganizationContact/:id', component: ManageOrganizationContactComponent
+	},
+	{
 		path: 'manageOrganizationRoles', component: ManageOrganizationRolesComponent
-	  },
-	  {
+	},
+	{
 		path: 'manageOrganizationApprovals', component: ManageOrganizationApprovalsComponent
-		},
-		{
-			path: 'groupList', component: GroupListComponent
-		},
-		{
-			path: 'groupDefine', component: DefineGroupComponent
-		},
-		{
-			path: 'groupReview', component: ReviewGroupComponent
-		},
-		{
-			path: 'groupDetails', component: GroupDetailsComponent
-		},
+	},
+	{
+		path: 'groupList', component: GroupListComponent
+	},
+	{
+		path: 'groupDefine', component: DefineGroupComponent
+	},
+	{
+		path: 'groupReview', component: ReviewGroupComponent
+	},
+	{
+		path: 'groupDetails', component: GroupDetailsComponent
+	},
 	{
 		path: 'find',
 		component: FindOrganizationsComponent
