@@ -39,6 +39,7 @@ export class ManageOrganizationDetailsComponent implements OnInit {
   organizationName: any;
   description: any;
   parentOrganization: any;
+  private sub: any;
 
   constructor(
     private router: Router,
@@ -46,7 +47,8 @@ export class ManageOrganizationDetailsComponent implements OnInit {
     private OrgService: OrganizationsService,
     private orgMainService: OrganizationMainService,
     private iframeService: IframeService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private route: ActivatedRoute
   ) { }
 
   orgList = [
@@ -71,11 +73,14 @@ export class ManageOrganizationDetailsComponent implements OnInit {
   }
 
   getOrgApiCall() {
-    this.id = -2001;
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+   });
+    // this.id = -2001;
     this.orgMainService.getUpdateOrg(this.id).then(results => {
     this.manageOrgResponse = Object.assign([], results);
     this.setModelData();
-    console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageOrgResponse);
+    // console.log("getOrgApiCall FROM SERVICE", this.id, this.manageOrgResponse);
     }).catch(() => {
       this.translateService
           .get('CATALOGS.HEADR.store_list_failed')
@@ -86,11 +91,16 @@ export class ManageOrganizationDetailsComponent implements OnInit {
   }
 
   updateOrgApiCall() {
-    this.id = -2001;
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      console.log("CHECKING ROUTE PARAMS", this.id);
+   });
+    // this.id = -2001;
     this.orgMainService.updateOrg(this.id).then(results => {
+      console.log("this.orgMainService.updateOrg(this.id)", this.id);
       this.manageOrgResponse = Object.assign([], results);
       this.setModelData();
-      console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageOrgResponse);
+      console.log("updateOrgApiCall FROM SERVICE", this.id, this.manageOrgResponse);
     }).catch(() => {
       this.translateService
       .get('CATALOGS.HEADR.store_list_failed')
@@ -129,7 +139,7 @@ export class ManageOrganizationDetailsComponent implements OnInit {
     this.detailsCall();
     this.orgMainService.manageOrgData(this.orgDetailsData);
     this.updateOrgApiCall();
-    this.router.navigate(['organizations/manageOrganizationContact']);
+    this.router.navigate(['organizations/manageOrganizationContact', this.id]);
   }
   // routeOrganizationApprovals() {
   //   this.router.navigate(['organizations/organizationsApprovals']);

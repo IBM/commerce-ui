@@ -52,8 +52,10 @@
               Please Enter a valid email
             </div> -->
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.STREET_ADDRESS' | translate}}</div>
-            <input ibmText class=" inputbx" id="manage-contact-street" [(ngModel)]="streetAddress1" formControlName="streetAddress" placeholder="Strett and number, P.O. box, c/o">
-            <input ibmText class=" inputbx" id="manage-contact-apartment" [(ngModel)]="streetAddress2" formControlName="apartmentName" placeholder="Apartment, suite, unit, building, floor, etc.">
+            <input ibmText class=" inputbx" id="manage-contact-street" [(ngModel)]="streetAddress1" formControlName="streetAddress"
+              placeholder="Strett and number, P.O. box, c/o">
+            <input ibmText class=" inputbx" id="manage-contact-apartment" [(ngModel)]="streetAddress2" formControlName="apartmentName"
+              placeholder="Apartment, suite, unit, building, floor, etc.">
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CITY' | translate}}</div>
             <input ibmText class=" inputbx" id="manage-contact-city" [(ngModel)]="city" formControlName="city">
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.ADDRESS' | translate}}</div>
@@ -67,8 +69,8 @@
               <div class="bx--col-sm-7 bx--col-md-7 footer-btn-margin">
                 <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="routeOrganizationList()">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CANCEL'
                   | translate}}</button>
-                <button ibmButton size="lg" id="save-preview" class="next-button"
-                  type="submit">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.SAVE' | translate}}</button>
+                <button ibmButton size="lg" id="save-preview" class="next-button" type="submit">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.SAVE'
+                  | translate}}</button>
               </div>
             </div>
           </div>

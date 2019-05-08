@@ -109,12 +109,13 @@ export class OrganizationMainService {
   }
 
   getUpdateOrg(id: number): Promise<Object> {
-    this.id = -2001;
+    //this.id = -2001;
     return new Promise((resolve, reject) => {
-      this.orgService.OrganizationsFindByOrganizationId(-2001
+      this.orgService.OrganizationsFindByOrganizationId(id
       ).subscribe(response => {
         resolve(response);
         this.resultData = response;
+        console.log("getUpdateOrg in service", id, this.resultData);
       }, error => {
         reject();
       });
@@ -123,10 +124,10 @@ export class OrganizationMainService {
 
   id: number;
   updateOrg(id: number): Promise<Object> {
-    this.id = -2001;
+    // this.id = -2001;
     return new Promise((resolve, reject) => {
       this.orgService.OrganizationsUpdateOrganization({
-        id: this.id,
+        id: id,
         body: this.orgBody
       }).subscribe(response => {
         resolve(response);

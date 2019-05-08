@@ -24,7 +24,7 @@ export class ManageOrganizationContactComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<ManageUserContact>();
   manageContactForm: FormGroup;
 
-  orgDetailsData: any;
+  orgContactData: any;
   manageOrgResponse: any;
   id: number;
   contactName: any;
@@ -35,6 +35,7 @@ export class ManageOrganizationContactComponent implements OnInit {
   state: any;
   country: any;
   zipcode: any;
+  private sub: any;
 
   constructor(
     private router: Router,
@@ -42,7 +43,8 @@ export class ManageOrganizationContactComponent implements OnInit {
     private OrgService: OrganizationsService,
     private orgMainService: OrganizationMainService,
     private iframeService: IframeService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -61,28 +63,13 @@ export class ManageOrganizationContactComponent implements OnInit {
       state: []
     });
   }
-  onSubmit() {
-    console.log(this.manageContactForm.value);
-    if (this.manageContactForm.valid) {
-      this.loggedIn.emit(
-        new ManageUserContact(
-          this.manageContactForm.value.contactName,
-          this.manageContactForm.value.contactEmail,
-          this.manageContactForm.value.streetAddress,
-          this.manageContactForm.value.apartmentName,
-          this.manageContactForm.value.city,
-          this.manageContactForm.value.state,
-        )
-      );
-    }
-    this.contactCall();
-    this.orgMainService.manageOrgData(this.orgDetailsData);
-    this.updateOrgApiCall();
-    this.router.navigate(['organizations/manageOrganizationRoles']);
-  }
 
   getOrgApiCall() {
-    this.id = -2011;
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      console.log("CHECKING ROUTE PARAMS", this.id);
+    });
+    // this.id = -2011;
     this.orgMainService.getUpdateOrg(this.id).then(results => {
       this.manageOrgResponse = Object.assign([], results);
       this.setModelData();
@@ -97,17 +84,18 @@ export class ManageOrganizationContactComponent implements OnInit {
   }
 
   updateOrgApiCall() {
-    this.id = -2001;
+    // this.id = -2001;
     this.orgMainService.updateOrg(this.id).then(results => {
+      console.log("this.orgMainService.updateOrg(this.id)", this.id);
       this.manageOrgResponse = Object.assign([], results);
       this.setModelData();
-      console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageOrgResponse);
+      console.log("updateOrgApiCall FROM SERVICE", this.id, this.manageOrgResponse);
     }).catch(() => {
       this.translateService
-      .get('CATALOGS.HEADR.store_list_failed')
-      .subscribe((msg: string) => {
-        this.iframeService.postStatusMsg(msg, 'error');
-      })
+        .get('CATALOGS.HEADR.store_list_failed')
+        .subscribe((msg: string) => {
+          this.iframeService.postStatusMsg(msg, 'error');
+        })
     })
   }
 
@@ -123,7 +111,7 @@ export class ManageOrganizationContactComponent implements OnInit {
   }
 
   contactCall() {
-    this.orgDetailsData = {
+    this.orgContactData = {
       'contactName': this.contactName,
       'contactEmail': this.contactEmail,
       'streetAddress1': this.streetAddress1,
@@ -134,6 +122,27 @@ export class ManageOrganizationContactComponent implements OnInit {
       'zipcode': this.zipcode
     };
   }
+
+  onSubmit() {
+    console.log(this.manageContactForm.value);
+    if (this.manageContactForm.valid) {
+      this.loggedIn.emit(
+        new ManageUserContact(
+          this.manageContactForm.value.contactName,
+          this.manageContactForm.value.contactEmail,
+          this.manageContactForm.value.streetAddress,
+          this.manageContactForm.value.apartmentName,
+          this.manageContactForm.value.city,
+          this.manageContactForm.value.state,
+        )
+      );
+    }
+    this.contactCall();
+    this.orgMainService.manageOrgData(this.orgContactData);
+    this.updateOrgApiCall();
+    this.router.navigate(['organizations/manageOrganizationRoles']);
+  }
+
   routeManageOrganizationDetails() {
     this.router.navigate(['organizations/manageOrganizationDetails']);
   }

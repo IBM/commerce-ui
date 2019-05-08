@@ -17,6 +17,9 @@ import { OrganizationsService } from '../../../../rest/services/organizations.se
 })
 export class OrganizationListComponent implements OnInit {
   organizationResponse: any;
+  orgListData: any;
+  id: number;
+
   @Input() striped = false;
 
   @Input() model = new TableModel();
@@ -33,12 +36,10 @@ export class OrganizationListComponent implements OnInit {
   @ViewChild('listOrgItemTemplate')
   protected listOrgItemTemplate: TemplateRef<any>;
 
-  constructor(private router: Router, private orgService: OrganizationsService) { }
+  constructor(private router: Router,
+    private orgService: OrganizationsService) { }
 
   ngOnInit() {
-
-
-
     this.model.header = [
       new TableHeaderItem({ data: 'Name' }),
       new TableHeaderItem({ data: 'Parent Organization' }),
@@ -70,6 +71,7 @@ export class OrganizationListComponent implements OnInit {
         offset: (page - 1) * this.model.pageLength,
         limit: this.model.pageLength
       }).subscribe((body: any) => {
+        this.orgListData = body.items;
         this.model.totalDataLength = body.count;
         //console.log("org" + this.totalDataLength);
         const data = [];
@@ -126,18 +128,18 @@ export class OrganizationListComponent implements OnInit {
   }
 
   getSelectedOrganization(name) {
-    // this.organizationResponse.forEach((value, idx) => {
-    //   if (value.name === name) {
-    //     this.manageOrgApiCall();
-    //   }
-    // })
-    this.router.navigate(['organizations/manageOrganizationDetails']);
+    this.orgListData.forEach(value => {
+      if (value.organizationName === name) {
+        this.id = value.id;
+      }
+    })
+    console.log("ID IS.....", this.id);
+    this.router.navigate(['organizations/manageOrganizationDetails', this.id]);
+    console.log("ID ISSSSS.....", this.id);
+    
   }
-  manageOrgApiCall() {
-
-  }
-
-
+  
+  manageOrgApiCall() {}
 
   createOrganization() {
     this.router.navigate(['organizations/organizationsDetails']);
