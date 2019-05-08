@@ -10,7 +10,8 @@
 	<div class="SearchMenu icons_user bx--row">
 		<div class="bx--col-md-12 bx--col-sm-12 icon-group">
 			<span class="icons">
-				<button type="button" class="rowAdditionButton" (click)="createUser()">{{'MANAGE_USER.USER_LANDING_PAGE.NEW_BUTTON' | translate}}</button>
+				<button type="button" class="rowAdditionButton" (click)="createUser()">{{'MANAGE_USER.USER_LANDING_PAGE.NEW_BUTTON'
+					| translate}}</button>
 			</span>
 			<span class="icons glyphiconsButton">
 				<ibm-icon-settings16></ibm-icon-settings16>
@@ -28,7 +29,7 @@
 		<div class="table-body bx--col-md-12 bx--col-sm-12">
 			<ibm-table [model]="model" [striped]="false"></ibm-table>
 			<ng-template #listUserItemTemplate let-data="data">
-				<a [routerLink]="['manageAccount', data.id]">{{data.name}}</a>
+				<a [routerLink]="['manageAccount', data.id]" (click)="getSelectedUser(data.name)">{{data.name}}</a>
 			</ng-template>
 			<ibm-pagination [model]="model" (selectPage)="selectPage($event)"></ibm-pagination>
 		</div>

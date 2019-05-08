@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../../../../../../src/app/rest/services/users.service';
 import { UserMainService } from '../../../services/user-main.service';
 import { IframeService } from '../../../../../services/iframe.service';
@@ -27,13 +27,15 @@ export class ManageUserAccountComponent implements OnInit {
   showTickboxVisible: boolean;
   manageUserResponse: any;
   id: number;
+  private sub: any;
 
   constructor(
     private router: Router,
     private userMainService: UserMainService,
     private userService: UsersService,
     private iframeService: IframeService,
-    private translateService: TranslateService) { }
+    private translateService: TranslateService,
+    private route: ActivatedRoute) { }
 
   updateUser;
 
@@ -53,44 +55,50 @@ export class ManageUserAccountComponent implements OnInit {
     this.accountData = this.userMainService.manageuserAccount;
     this.getUserApiCall();
     this.enableButton();
-    
+
   }
 
   getUserApiCall() {
-    this.id = 2011;
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+    });
+    // this.id = 2011;
     this.userMainService.getUpdateUser(this.id).then(results => {
-    this.manageUserResponse = Object.assign([], results);
-    this.setModelData();
-    console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageUserResponse);
+      this.manageUserResponse = Object.assign([], results);
+      this.setModelData();
+      console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageUserResponse);
     }).catch(() => {
       this.translateService
-          .get('CATALOGS.HEADR.store_list_failed')
-          .subscribe((msg: string) => {
-            this.iframeService.postStatusMsg(msg, 'error');
-          });
+        .get('CATALOGS.HEADR.store_list_failed')
+        .subscribe((msg: string) => {
+          this.iframeService.postStatusMsg(msg, 'error');
+        });
     });
   }
 
   updateUserApiCall() {
-    this.id = 2011;
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+    });
+    // this.id = 2011;
     this.userMainService.updateUser(this.id).then(results => {
-    this.manageUserResponse = Object.assign([], results);
-    this.setModelData();
-    console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageUserResponse);
+      this.manageUserResponse = Object.assign([], results);
+      this.setModelData();
+      console.log("GET UPDATEUSER DATA FROM SERVICE", this.manageUserResponse);
     }).catch(() => {
       this.translateService
-          .get('CATALOGS.HEADR.store_list_failed')
-          .subscribe((msg: string) => {
-            this.iframeService.postStatusMsg(msg, 'error');
-          });
+        .get('CATALOGS.HEADR.store_list_failed')
+        .subscribe((msg: string) => {
+          this.iframeService.postStatusMsg(msg, 'error');
+        });
     });
   }
-  
+
   buttonEnabled: boolean = false;
   // apiLogonId: any = this.logonId;
   // userLogonId: any;
-  enableButton(){
-    if(this.logonId === this.logonId) {
+  enableButton() {
+    if (this.logonId === this.logonId) {
       this.buttonEnabled = !this.buttonEnabled;
     }
     else {
@@ -98,17 +106,17 @@ export class ManageUserAccountComponent implements OnInit {
     }
   }
 
-  values: any ;
+  values: any;
   onChange(event: any) {
     this.values = event.target.value;
     console.log("onChange", this.values);
- };
+  };
 
   saveAccount() {
     this.accountCall();
     this.userMainService.manageUserData(this.userAccountData);
     this.updateUserApiCall();
-    this.router.navigate(['/users/manageContact']);
+    this.router.navigate(['/users/manageContact', this.id]);
   }
 
   // getAccountData(){
@@ -137,7 +145,7 @@ export class ManageUserAccountComponent implements OnInit {
     this.organizationName = this.manageUserResponse.parentOrganizationName;
     this.policy = this.manageUserResponse.policy;
   }
- 
+
   accountCall() {
     this.userAccountData = {
       'logonId': this.logonId,
@@ -152,25 +160,25 @@ export class ManageUserAccountComponent implements OnInit {
     this.router.navigate(['/users']);
   }
 
-//   myPassword: any;
-//   checkPasswordEmpty() {
-//     console.log("checkPasswordEmpty runs");
-//     if (this.myPassword) {
-//         // enable the button
-//     }
-// }
+  //   myPassword: any;
+  //   checkPasswordEmpty() {
+  //     console.log("checkPasswordEmpty runs");
+  //     if (this.myPassword) {
+  //         // enable the button
+  //     }
+  // }
 
 
-check(){
-  var tocheck = ["text1", "text2", "text3", "email"];
-  let tform = document.getElementById("theform");
-  let ok = true;
-  let i;
-  for(i=0; i<tocheck.length; i++){
+  check() {
+    var tocheck = ["text1", "text2", "text3", "email"];
+    let tform = document.getElementById("theform");
+    let ok = true;
+    let i;
+    for (i = 0; i < tocheck.length; i++) {
       ok = ok && tform[tocheck[i]].value != "";
+    }
+    document.getElementById("subm").style.color = ok ? "green" : "red";
   }
-  document.getElementById("subm").style.color = ok ? "green" : "red";
-}
 
 }
 
