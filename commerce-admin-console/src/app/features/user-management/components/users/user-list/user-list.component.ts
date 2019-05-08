@@ -15,7 +15,12 @@ export class UserListComponent implements OnInit {
 	@ViewChild('listUserItemTemplate')
 	protected listUserItemTemplate: TemplateRef<any>;
 
-	constructor(private router: Router, private usersService: UsersService, private translateService: TranslateService, private userMainService: UserMainService) { }
+	constructor(private router: Router,
+		private usersService: UsersService,
+		private translateService: TranslateService) { }
+
+	userListData: any;
+	id: any;
 
 	ngOnInit() {
 		const logonIdHeader = { data: '' };
@@ -56,6 +61,7 @@ export class UserListComponent implements OnInit {
 			offset: (page - 1) * this.model.pageLength,
 			limit: this.model.pageLength
 		}).subscribe((body: any) => {
+			this.userListData = body.items;
 			this.model.totalDataLength = body.count;
 			const data = [];
 			for (let i = 0; i < body.items.length; i++) {
@@ -70,12 +76,23 @@ export class UserListComponent implements OnInit {
 					new TableItem({ data: firstName }),
 					new TableItem({ data: lastName }),
 					new TableItem({ data: parentOrganizationName }),
-					new TableItem({ data: ''})
+					new TableItem({ data: '' })
 				]);
 			}
 			this.model.data = data;
 			this.model.currentPage = page;
 		});
+	}
+
+	getSelectedUser(name) {
+		this.userListData.forEach(value => {
+			if (value.logonId === name) {
+				this.id = value.id;
+			}
+		})
+		console.log("ID IS.....", this.id);
+		this.router.navigate(['users/manageAccount', this.id]);
+
 	}
 
 	createUser() {

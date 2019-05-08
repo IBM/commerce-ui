@@ -31,35 +31,35 @@
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
-            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.TITLE_OPTIONAL' | translate}}</div>
-                <ibm-dropdown
-                  placeholder="Select title"
-                  [disabled]="disabled"
-                  [(ngModel)]="model"
-                  value="content">
-                  <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
-                </ibm-dropdown><br />
-                <div class="bx--row name-field">
-                  <div class="bx--col-sm-6 bx--col-md-6">
-                      <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.FIRST_NAME' | translate}}</div>
-                      <input ibmText class="inputbx" [(ngModel)]="firstName"><br/>
-                  </div>
-                  <div class="bx--col-sm-6 bx--col-md-6">
-                      <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.LAST_NAME' | translate}}</div>
-                      <input ibmText class="inputbx" [(ngModel)]="lastName"><br/>
-                  </div>
-                </div>
-            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STREET_ADDRESS' | translate}}</div>
-            <input ibmText class="inputbx" [(ngModel)]="streetAddress1"><br/>
-            <input ibmText class="inputbx" [(ngModel)]="streetAddress2"><br/>
-            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.CITY' | translate}}</div>
-            <input ibmText class="inputbx" [(ngModel)]="city"><br/>
-            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.COUNTRY' | translate}}</div>
-            <input ibmText class="inputbx" [(ngModel)]="country"><br/>
-            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
-            <input ibmText class="inputbx" [(ngModel)]="state"><br/>
-            <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.ZIPCODE' | translate}}</div>
-            <input ibmText class="inputbx" [(ngModel)]="zipcode">
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.TITLE_OPTIONAL' | translate}}</div>
+          <ibm-dropdown
+          placeholder="Select title"
+          [disabled]="disabled"
+          [(ngModel)]="model"
+          value="content">
+            <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
+          </ibm-dropdown><br />
+          <div class="bx--row name-field">
+            <div class="bx--col-sm-6 bx--col-md-6">
+              <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.FIRST_NAME' | translate}}</div>
+              <input ibmText class="inputbx" [(ngModel)]="firstName"><br />
+            </div>
+            <div class="bx--col-sm-6 bx--col-md-6">
+              <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.LAST_NAME' | translate}}</div>
+              <input ibmText class="inputbx" [(ngModel)]="lastName"><br />
+            </div>
+          </div>
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STREET_ADDRESS' | translate}}</div>
+          <input ibmText class="inputbx" [(ngModel)]="streetAddress1"><br />
+          <input ibmText class="inputbx" [(ngModel)]="streetAddress2"><br />
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.CITY' | translate}}</div>
+          <input ibmText class="inputbx" [(ngModel)]="city"><br />
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.COUNTRY' | translate}}</div>
+          <input ibmText class="inputbx" [(ngModel)]="country"><br />
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
+          <input ibmText class="inputbx" [(ngModel)]="state"><br />
+          <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.ZIPCODE' | translate}}</div>
+          <input ibmText class="inputbx" [(ngModel)]="zipcode">
         </div>
       </div>
       <div class="bx--row footer-content">
@@ -67,8 +67,10 @@
           <div class="bx--row">
             <div class="bx--col-sm-4 bx--col-md-4"></div>
             <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
-              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">{{'MANAGE_USER.MANAGE_USER_CONTACT.CANCEL'| translate}}</button>
-              <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveContact()>{{'MANAGE_USER.MANAGE_USER_CONTACT.SAVE'| translate}}</button>
+              <button ibmButton="ghost" size="lg" id="save-preview" class="cancel-button" (click)="cancelClick()">{{'MANAGE_USER.MANAGE_USER_CONTACT.CANCEL'|
+                translate}}</button>
+              <button ibmButton size="lg" id="save-preview" class="next-button" (click)=saveContact()>{{'MANAGE_USER.MANAGE_USER_CONTACT.SAVE'|
+                translate}}</button>
             </div>
           </div>
         </div>

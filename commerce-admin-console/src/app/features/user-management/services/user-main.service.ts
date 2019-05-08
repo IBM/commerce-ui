@@ -15,7 +15,7 @@ export class UserMainService {
   listResult: any;
   id: number;
 
-  constructor( private userService: UsersService) { }
+  constructor(private userService: UsersService) { }
 
   // createUser(): Promise<Object> {
   //   this.setUserData();
@@ -35,19 +35,19 @@ export class UserMainService {
   //   });
   // }
 
-userList(): Promise<object> {
-  return new Promise((resolve, reject) => {
-    this.userService.UsersGetManageableUsers({
-    }).
-    subscribe(response => {
-      resolve(response);
-      this.listResult  = response;
-      console.log('service', response);
-    },  error => {
-      reject();
+  userList(): Promise<object> {
+    return new Promise((resolve, reject) => {
+      this.userService.UsersGetManageableUsers({
+      }).
+        subscribe(response => {
+          resolve(response);
+          this.listResult = response;
+          console.log('service', response);
+        }, error => {
+          reject();
+        });
     });
-  });
-}
+  }
 
   createUser(): Promise<Object> {
     return new Promise((resolve, reject) => {
@@ -91,47 +91,47 @@ userList(): Promise<object> {
     };
   }
 
-setUserData() {
-  // this.listData = {
-  //   "address": {
-  //     "address1": "address 1",
-  //     "address2": "address 2",
-  //     "address3": "address 3",
-  //     "addressType": "SB",
-  //     "bestCallingTime": "D",
-  //     "businessTitle": "Director",
-  //     "city": "Toronto",
-  //     "country": "Canada",
-  //     "email1": "bbaker@ca.ibm.com",
-  //     "firstName": "Bruce",
-  //     "lastName": "Baker",
-  //     "state": "ON"
-  //   },
-  //   "logonId": "asu00",
-  //   "organizationId": -2001,
-  //   "password": "wcs1admin",
-  //   "passwordVerify": "wcs1admin"
-  //  }
-   this.listData = {
-    'address': {
-      'address1': this.userContactData.address1,
-      'address2': this.userContactData.address2,
-      'address3': 'address 3',
-      'addressType': 'SB',
-      'bestCallingTime': 'D',
-      'businessTitle': 'Director',
-      'city': this.userContactData.city,
-      'country': this.userContactData.country,
-      'email1': this.userAccountData.email1,
-      'firstName': this.userContactData.firstName,
-      'lastName': this.userContactData.lastName,
-      'state': 'ON',
-    },
-    'logonId': this.userAccountData.logonId,
-    'password': this.userAccountData.password,
-    'passwordVerify': this.userAccountData.passwordVerify,
-    'organizationId': this.userAccountData.organizationId,
-   };
+  setUserData() {
+    // this.listData = {
+    //   "address": {
+    //     "address1": "address 1",
+    //     "address2": "address 2",
+    //     "address3": "address 3",
+    //     "addressType": "SB",
+    //     "bestCallingTime": "D",
+    //     "businessTitle": "Director",
+    //     "city": "Toronto",
+    //     "country": "Canada",
+    //     "email1": "bbaker@ca.ibm.com",
+    //     "firstName": "Bruce",
+    //     "lastName": "Baker",
+    //     "state": "ON"
+    //   },
+    //   "logonId": "asu00",
+    //   "organizationId": -2001,
+    //   "password": "wcs1admin",
+    //   "passwordVerify": "wcs1admin"
+    //  }
+    this.listData = {
+      'address': {
+        'address1': this.userContactData.address1,
+        'address2': this.userContactData.address2,
+        'address3': 'address 3',
+        'addressType': 'SB',
+        'bestCallingTime': 'D',
+        'businessTitle': 'Director',
+        'city': this.userContactData.city,
+        'country': this.userContactData.country,
+        'email1': this.userAccountData.email1,
+        'firstName': this.userContactData.firstName,
+        'lastName': this.userContactData.lastName,
+        'state': 'ON',
+      },
+      'logonId': this.userAccountData.logonId,
+      'password': this.userAccountData.password,
+      'passwordVerify': this.userAccountData.passwordVerify,
+      'organizationId': this.userAccountData.organizationId,
+    };
   }
 
   userBody: any;
@@ -153,9 +153,9 @@ setUserData() {
   }
 
   getUpdateUser(id: number): Promise<Object> {
-    this.id = 2011;
+    // this.id = 2011;
     return new Promise((resolve, reject) => {
-      this.userService.UsersFindByUserId(2011
+      this.userService.UsersFindByUserId(id
       ).subscribe(response => {
         resolve(response);
         this.resultData = response;
@@ -167,11 +167,11 @@ setUserData() {
   }
 
   updateUser(id: number): Promise<Object> {
-    this.id = 2011;
+    // this.id = 2011;
     return new Promise((resolve, reject) => {
       console.log('Inside Promise method');
       this.userService.UsersUpdateUser({
-        id: this.id,
+        id: id,
         body: this.userBody
       }).subscribe(response => {
         console.log('service', response);
