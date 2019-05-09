@@ -5,6 +5,19 @@
     text-align: left;
     color:white; 
 }
+.breadcumbApproval {
+    width: 63px;
+    height: 23px;
+    font-family: IBMPlexSans;
+font-size: 14px;
+color: #0F0F0F;
+line-height: 23px;
+font-weight: 600;
+padding-left: 16px;
+  }
+  .approval {
+    padding-top: 10px;
+  }
 .menuLogo{
     margin-top:10px;
 }
@@ -21,11 +34,7 @@
     height:50px;
     background-color: white;
 }
-.userName{
-    margin-top:13px;
-    font-size: 15px;
-    font-weight:600;
-}
+
 .SearchMenu{
     width:95%;
     height:75px;
