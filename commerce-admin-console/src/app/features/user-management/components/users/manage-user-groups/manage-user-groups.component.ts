@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class ManageUserGroupsComponent implements OnInit {
   
   groupListData: any;
+  id: number;
 
   groupList = [
     { id: 1, groupName: 'AccountAdministatorsRole1' },
@@ -35,5 +36,25 @@ export class ManageUserGroupsComponent implements OnInit {
 
   saveGroups() {
     this.router.navigate(['/users']);
+  }
+
+  goToAccount() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageAccount', this.id]);
+  }
+
+  goToContact() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageContact', this.id]);
+  }
+  goToRoles() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageRoles', this.id]);
   }
 }
