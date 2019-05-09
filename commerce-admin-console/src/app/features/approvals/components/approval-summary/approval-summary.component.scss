@@ -6,7 +6,19 @@
     color: white;
     padding: 3px 0px 0px 10px;
   }
+  .breadcumbApproval {
+    width: 63px;
+    height: 23px;
+    font-family: IBMPlexSans;
+font-size: 14px;
+color: #0F0F0F;
+line-height: 23px;
 
+padding-left: 16px;
+  }
+  .approval {
+    padding-top: 10px;
+  }
   .menu-icon {
     padding: 5px;
     fill: white;
@@ -48,27 +60,52 @@
     width: 98%;
     margin: 0 0 2% 1%;
     margin-top: 1.0%;  
-    height: 779px;
+    height: 725px;
   }
   .side-content {
     
     background-color: #ffffff; 
   }
   .bodyContainer {
-      padding: 10px;
-      height: 200px;
-  }
-  .orgDetails {
+    padding-left: 36px;
+    padding-top: 32px;
+    height: 200px;
+    // background-color: #ffffff;
+}
+  .orgDetails1 {
       width: 230px;
       height: 20px;
-    margin-left: 36px;
-    margin-right: 130px;
-    font-family: IBMPlexSans-Medium;
-font-size: 14px;
-color: #646364;
-letter-spacing: 0.01px;
-line-height: 20px;
+      //margin-left: 36px;
+      margin-right: 179px;
+      font-family: IBMPlexSans-Medium;
+      font-size: 14px;
+      color: #646364;
+      letter-spacing: 0.01px;
+      line-height: 20px;
   }
+  .orgDetails2 {
+    width: 262px;
+    height: 20px;
+    margin-left: 24px;
+    padding-right: 179px;
+    font-family: IBMPlexSans-Medium;
+    font-size: 14px;
+    color: #646364;
+    letter-spacing: 0.01px;
+    line-height: 20px;
+}
+.orgDetails3 {
+  width: 230px;
+  height: 20px;
+  font-family: IBMPlexSans-Medium;
+  margin-left: 4px;
+  padding-right: 179px;
+  font-size: 14px;
+  color: #646364;
+  letter-spacing: 0.01px;
+  line-height: 20px;
+}
+
   .inputbx {
     background-color: #f4f7fb;
     height: 6.5rem;
@@ -80,6 +117,10 @@ line-height: 20px;
   }
   .footButton {
      
+    margin-right: 24px;
+  }
+  .footButtonCancel {
+    
     margin-right: 24px;
   }
   .secondrowOrgdetail {
@@ -106,30 +147,52 @@ line-height: 22px;
       margin-top: 8px;
       padding: 0px;
   }
-  .approvaldetail {
+  .approvaldetail1 {
     width: 230px;
     height: 80px;
-  margin-left: 36px;
-  margin-right: 130px;
-  font-family: IBMPlexSans;
-font-size: 14px;
-color: #282828;
-letter-spacing: 0.01px;
-line-height: 20px;
+  
+    padding-right: 179px;
+    font-family: IBMPlexSans;
+    font-size: 14px;
+    color: #282828;
+    letter-spacing: 0.01px;
+    line-height: 20px;
   }
+  .approvaldetail2 {
+    width: 230px;
+    height: 80px;
+    margin-left: 24px;
+    padding-right: 179px;
+    font-family: IBMPlexSans;
+    font-size: 14px;
+    color: #282828;
+    letter-spacing: 0.01px;
+    line-height: 20px;
+  }
+  .approvaldetail3 {
+    width: 230px;
+    height: 20px;
+    margin-left: 4px;
+    padding-right: 179px;
+    font-family: IBMPlexSans;
+    font-size: 14px;
+    color: #282828;
+    letter-spacing: 0.01px;
+    line-height: 20px;
+  }    
   .bx--text-area {
     width: 680px;
     height: 102px;
     margin-left: 36px;
   }
   .comment {
-      margin-top: 24px;
+      margin-top: 100px;
       margin-left: 36px;
       font-family: IBMPlexSans-Medium;
-font-size: 14px;
-color: #646364;
-letter-spacing: 0.01px;
-line-height: 20px;
+      font-size: 14px;
+      color: #646364;
+      letter-spacing: 0.01px;
+      line-height: 20px;
   }
   .footerButtons {
     margin-right: 24px;
@@ -143,4 +206,43 @@ line-height: 20px;
 }
 .bx--btn--primary {
     background-color: #0062FF;
+}
+.approvaldetail32 {
+  width: 230px;
+  height: 20px;
+  margin-left: 19px;
+  padding-right: 179px;
+  font-family: IBMPlexSans;
+  font-size: 14px;
+  color: #282828;
+  letter-spacing: 0.01px;
+  line-height: 20px;
+}
+.approvaldetail22 {
+  width: 230px;
+  height: 20px;
+  margin-left: 23px;
+  padding-right: 179px;
+  font-family: IBMPlexSans;
+  font-size: 14px;
+  color: #282828;
+  letter-spacing: 0.01px;
+  line-height: 20px;
+}
+.bx--btn {
+text-align: left;
+}
+.orgDetails23 {
+  width: 262px;
+  height: 20px;
+  margin-left: -20px;
+  padding-right: 179px;
+  font-family: IBMPlexSans-Medium;
+  font-size: 14px;
+  color: #646364;
+  letter-spacing: 0.01px;
+  line-height: 20px;
+}
+.bx--btn--danger--primary {
+  background-color: #565656;
 }
