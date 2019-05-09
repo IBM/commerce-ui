@@ -21,11 +21,11 @@
     <div class="bx--col-sm-4 bx--col-md-4 side-content">
       <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
         <span></span>
-        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_CONTACT.ACCOUNT_INFORMATION'| translate}}</div><br />
+        <div class="text-margin" (click)="goToAccount()">{{'MANAGE_USER.MANAGE_USER_CONTACT.ACCOUNT_INFORMATION'| translate}}</div><br />
         <span class="dot account-dot"></span>
-        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_CONTACT.CONTACT_INFORMATION'| translate}}</div><br />
-        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_CONTACT.ROLES'| translate}}</div><br />
-        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_CONTACT.GROUPS'| translate}}</div>
+        <div>{{'MANAGE_USER.MANAGE_USER_CONTACT.CONTACT_INFORMATION'| translate}}</div><br />
+        <div class="text-margin" (click)="goToRoles()">{{'MANAGE_USER.MANAGE_USER_CONTACT.ROLES'| translate}}</div><br />
+        <div class="text-margin" (click)="goToGroups()">{{'MANAGE_USER.MANAGE_USER_CONTACT.GROUPS'| translate}}</div>
       </div>
     </div>
     <div class="bx--col-sm-8 bx--col-md-8 right-content">

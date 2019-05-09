@@ -160,15 +160,26 @@ export class ManageUserAccountComponent implements OnInit {
     this.router.navigate(['/users']);
   }
 
-  //   myPassword: any;
-  //   checkPasswordEmpty() {
-  //     console.log("checkPasswordEmpty runs");
-  //     if (this.myPassword) {
-  //         // enable the button
-  //     }
-  // }
+  goToContact() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageContact', this.id]);
+  }
 
-
+  goToRoles() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageRoles', this.id]);
+  }
+  goToGroups() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageGroups', this.id]);
+  }
+  
   check() {
     var tocheck = ["text1", "text2", "text3", "email"];
     let tform = document.getElementById("theform");

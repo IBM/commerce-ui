@@ -12,6 +12,8 @@ export class ManageUserRolesComponent implements OnInit {
   rolesArray: any = [];
   result: any = [];
   modelRoles: '';
+  id: number;
+
   constructor(private router: Router) { }
 
   orgList = [
@@ -51,5 +53,25 @@ export class ManageUserRolesComponent implements OnInit {
   }
   saveRoles() {
     this.router.navigate(['/users/manageGroups']);
+  }
+
+  goToAccount() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageAccount', this.id]);
+  }
+
+  goToContact() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageContact', this.id]);
+  }
+  goToGroups() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageGroups', this.id]);
   }
 }

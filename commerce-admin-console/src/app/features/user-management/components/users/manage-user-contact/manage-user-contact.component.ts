@@ -125,4 +125,24 @@ export class ManageUserContactComponent implements OnInit {
     this.router.navigate(['/users']);
   }
 
+  goToAccount() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageAccount', this.id]);
+  }
+
+  goToRoles() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageRoles', this.id]);
+  }
+  goToGroups() {
+    // this.accountCall();
+    // this.userMainService.manageUserData(this.userAccountData);
+    // this.updateUserApiCall();
+    this.router.navigate(['/users/manageGroups', this.id]);
+  }
+
 }
