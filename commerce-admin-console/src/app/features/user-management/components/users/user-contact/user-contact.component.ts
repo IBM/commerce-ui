@@ -1,200 +1,224 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserMainService } from '../../../services/user-main.service';
-import { UserSettingService } from '../../../services/user-setting.service';
 import { CountriesService } from '../../../../../rest/services/countries.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StatesService } from '../../../../../rest/services/states.service';
 
 @Component({
-  selector: 'app-user-contact',
-  templateUrl: './user-contact.component.html',
-  styleUrls: ['./user-contact.component.scss']
+	templateUrl: './user-contact.component.html',
+	styleUrls: ['./user-contact.component.scss']
 })
 export class UserContactComponent implements OnInit {
-  contactForm: FormGroup;
-  disabled: '';
-  userContactData: any;
-  contactData: any;
-  personTitle: FormControl;
-  firstName: FormControl;
-  lastName: FormControl;
-  address1: FormControl;
-  address2: FormControl;
-  city: FormControl;
-  state: FormControl;
-  country: FormControl;
-  zipCode: FormControl;
+	contactForm: FormGroup;
+	personTitle: FormControl;
+	firstName: FormControl;
+	lastName: FormControl;
+	address1: FormControl;
+	address2: FormControl;
+	city: FormControl;
+	state: FormControl;
+	country: FormControl;
+	zipCode: FormControl;
 
-  allInputValidated: boolean;
-  inputFieldError: boolean;
-  selectedCountryNameAbbr: string;
-  showCountryList = false;
-  showStateList = false;
-  countryListData: any;
-  countryNameList: Array<string>;
-  stateListData: any;
-  stateNameList: Array<string>;
+	inputFieldError: boolean;
+	showCountryList = false;
+	showStateList = false;
+	countryList: Array<any> = [];
+	stateList: Array<any> = [];
 
-  items = [
-    {
-      content: 'Mr.',
-      selected: false
-    },
-    {
-      content: 'Mrs.',
-      selected: false,
-    }
-  ];
-  constructor(private router: Router, private userMainService: UserMainService,
-    private userSettingService: UserSettingService, private countriesService: CountriesService,
-    private statesService: StatesService) { }
+	constructor(private router: Router, private userMainService: UserMainService,
+			private countriesService: CountriesService,
+			private statesService: StatesService) { }
 
-  ngOnInit() {
-    this.createFormControls();
-    this.createForm();
-    this.countryList();
-    this.contactData = this.userMainService.userContactData;
-    if (this.userSettingService.rolesBackCall) {
-      this.setModelData();
-    }
-  }
+	ngOnInit() {
+		this.createFormControls();
+		this.createForm();
+		if (this.userMainService.userData != null) {
+			let userData = this.userMainService.userData;
+			this.personTitle.setValue(userData.address.personTitle ? userData.address.personTitle : '');
+			this.firstName.setValue(userData.address.firstName ? userData.address.firstName : '');
+			this.lastName.setValue(userData.address.lastName ? userData.address.lastName : '');
+			this.address1.setValue(userData.address.address1 ? userData.address.address1 : '');
+			this.address2.setValue(userData.address.address2 ? userData.address.address2 : '');
+			this.city.setValue(userData.address.city ? userData.address.city : '');
+			this.zipCode.setValue(userData.address.zipCode ? userData.address.zipCode : '');
+		}
+		else {
+			this.userMainService.userData = {
+					"address": {}
+			};
+		}
+		this.initCountryList();
+	}
 
-  createFormControls() {
-    this.personTitle = new FormControl('');
-    this.firstName = new FormControl('', Validators.required);
-    this.lastName = new FormControl('',
-    [Validators.required
-    ]);
-    this.address1 = new FormControl('', [
-      Validators.required
-    ]);
-    this.address2 = new FormControl('', [
-      Validators.required
-    ]);
-    this.city = new FormControl('', Validators.required);
-    this.country = new FormControl('', Validators.required);
-    this.state = new FormControl('', Validators.required);
-    this.zipCode = new FormControl('', Validators.required);
-  }
+	private createFormControls() {
+		this.personTitle = new FormControl('');
+		this.firstName = new FormControl('', Validators.required);
+		this.lastName = new FormControl('', Validators.required);
+		this.address1 = new FormControl('', Validators.required);
+		this.address2 = new FormControl('');
+		this.city = new FormControl('', Validators.required);
+		this.country = new FormControl('', Validators.required);
+		this.state = new FormControl('');
+		this.zipCode = new FormControl('');
+	}
 
-  createForm() {
-    this.contactForm = new FormGroup({
-      personTitle: this.personTitle,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      address1: this.address1,
-      address2: this.address2,
-      city: this.city,
-      country: this.country,
-      state: this.state,
-      zipCode: this.zipCode
-    });
-  }
+	private createForm() {
+		this.contactForm = new FormGroup({
+			personTitle: this.personTitle,
+			firstName: this.firstName,
+			lastName: this.lastName,
+			address1: this.address1,
+			address2: this.address2,
+			city: this.city,
+			country: this.country,
+			state: this.state,
+			zipCode: this.zipCode
+		});
+	}
 
-  setModelData() {
-    this.personTitle.setValue(this.userContactData.personTitle.value);
-    this.firstName.setValue(this.userContactData.firstName.value);
-    this.lastName.setValue(this.userContactData.lastName.value);
-    this.address1.setValue(this.userContactData.address1.value);
-    this.address2.setValue(this.userContactData.address2.value);
-    this.city.setValue(this.userContactData.city.value);
-    this.country.setValue(this.userContactData.country.value);
-    this.zipCode.setValue(this.userContactData.zipCode.value);
-  }
+	goToRoles() {
+		if (this.contactForm.valid) {
+			this.router.navigate(['users/user-roles']);
+		}
+		else {
+			this.inputFieldError = true;
+		}
+	}
+	
+	backClick() {
+		this.router.navigate(['users/user-account']);
+	}
 
-  contactCall() {
-    this.userContactData = {
-      'personTitle': this.personTitle.value,
-      'firstName': this.firstName.value,
-      'lastName': this.lastName.value,
-      'address1': this.address1.value,
-      'address2': this.address2.value,
-      'city': this.city.value,
-      'country': this.country.value,
-      'zipCode': this.zipCode.value
-    };
-    console.log('setData', this.userContactData);
-  }
-  goToRoles() {
-    //this.validateInputField();
-      //if (this.allInputValidated) {
-        this.contactCall();
-        this.userMainService.userContact(this.userContactData);
-        this.router.navigate(['users/userRoles']);
-      //}
-    }
-    backClick() {
-      this.userSettingService.contactBackClick = true;
-      this.router.navigate(['users/userAccount']);
-    }
-  cancelClick() {
-    this.router.navigate(['users']);
-  }
+	cancelClick() {
+		this.userMainService.userData = null;
+		this.router.navigate(['users']);
+	}
 
+	private initCountryList() {
+		this.countriesService.getCountries({
+			languageId: -1
+		}).subscribe(
+			response => {
+				this.countryList = response.items;
+				let countryCode = this.userMainService.userData.address.country;
+				if (countryCode) {
+					for (let i = 0; i < this.countryList.length; i++) {
+						let country = this.countryList[i];
+						if (country.countryAbbr === countryCode) {
+							this.selectCountry(country);
+							break;
+						}
+						else if (country.name === this.country.value) {
+							this.selectCountry(country);
+							break;
+						}
+					}
+				}
+			},
+			error => {
+				console.log(error);
+			}
+		);
+	}
 
-  countryList(): Promise<Object> {
-    return new Promise((resolve, reject) => {
-      this.countriesService.getCountries({}
-      ).subscribe(response => {
-        resolve(response);
-        this.countryListData = response.items;
-        console.log('resp', response);
-        this.countryNameList = this.countryListData.map(value => {
-          return value.name;
-        });
-        console.log('this.countryNameList ', this.countryNameList );
-      },  error => {
-        reject();
-      });
-    });
-  }
+	private initStateList() {
+		let countryCode = this.userMainService.userData.address.country;
+		this.stateList = [];
+		if (countryCode != null && countryCode != '') {
+			this.statesService.getStates({
+				countryAbbr: countryCode,
+				languageId: -1
+			}).subscribe(
+				response => {
+					this.stateList = response.items;
+					let stateCode = this.userMainService.userData.address.state;
+					if (stateCode) {
+						for (let i = 0; i < this.stateList.length; i++) {
+							let state = this.stateList[i];
+							if (state.stateAbbr === stateCode) {
+								this.selectState(state);
+								break;
+							}
+							else if (state.name === this.state.value) {
+								this.selectState(state);
+								break;
+							}
+						}
+					}
+				},
+				error => {
+					console.log(error);
+				});
+		}
+	}
 
-  stateList(): Promise<Object> {
-    return new Promise((resolve, reject) => {
-      this.statesService.getStates({
-        countryAbbr: this.selectedCountryNameAbbr
-      }
-      ).subscribe(response => {
-        resolve(response);
-        this.stateListData = response.items;
-        console.log('stateListData ', this.stateListData );
-        this.stateNameList = this.stateListData.map(value => {
-          return value.name;
-        });
-        console.log('stateNameList ', this.stateNameList );
-      },  error => {
-        reject();
-      });
-    });
-  }
+	validatePersonTitle() {
+		this.userMainService.userData.address.personTitle = this.personTitle.value;
+	}
 
-  countryInputKeyup() {
-    if (this.country.value !== '') {
-        this.showCountryList = true;
-    }
-  }
+	validateFirstName() {
+		this.userMainService.userData.address.firstName = this.firstName.value;
+	}
 
-  selectedCountry(countryName: string) {
-    this.country.setValue(countryName);
-    this.showCountryList = false;
-    this.countryListData.forEach(value => {
-      if (value.name === countryName) {
-        this.selectedCountryNameAbbr = value.countryAbbr;
-      }
-    });
-    this.stateList();
-  }
+	validateLastName() {
+		this.userMainService.userData.address.lastName = this.lastName.value;
+	}
 
-  stateInputKeyup() {
-    if (this.state.value !== '') {
-        this.showStateList = true;
-    }
-  }
+	validateAddress1() {
+		this.userMainService.userData.address.address1 = this.address1.value;
+	}
 
-  selectedState(stateName: string) {
-    this.state.setValue(stateName);
-    this.showStateList = false;
-  }
+	validateAddress2() {
+		this.userMainService.userData.address.address2 = this.address2.value;
+	}
 
+	validateCity() {
+		this.userMainService.userData.address.city = this.city.value;
+	}
+
+	validateZipCode() {
+		this.userMainService.userData.address.zipCode = this.zipCode.value;
+	}
+
+	countryInputKeyup() {
+		if (this.country.value !== '') {
+			this.showCountryList = true;
+			for (var i = 0; i < this.countryList.length; i++) {
+				let country = this.countryList[i];
+				if (country.name === this.country.value) {
+					this.selectCountry(country);
+				}
+			}
+		}
+	}
+
+	selectCountry(country: any) {
+		this.country.setValue(country ? country.name : '');
+		let countryCode = country != null ? country.countryAbbr : null;
+		this.userMainService.userData.address.country = countryCode;
+		this.showCountryList = false;
+		this.state.setValue("");
+		this.initStateList();
+	}
+
+	stateInputKeyup() {
+		if (this.state.value !== '') {
+			this.showStateList = true;
+			for (var i = 0; i < this.stateList.length; i++) {
+				let state = this.stateList[i];
+				if (state.name === this.state.value) {
+					this.selectState(state);
+				}
+			}
+		}
+	}
+
+	selectState(state: any) {
+		this.state.setValue(state ? state.name : '');
+		let stateCode = state != null ? state.stateAbbr : null;
+		this.userMainService.userData.address.state = stateCode;
+		this.showStateList = false;
+	}
 }

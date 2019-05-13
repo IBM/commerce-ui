@@ -11,6 +11,9 @@ import { map as __map, filter as __filter } from 'rxjs/operators';
   providedIn: 'root',
 })
 class ApprovalStatusService extends __BaseService {
+  static readonly findAllPath = '/rest/admin/v2/approval-statuses';
+  static readonly findByApprovalStatusIdPath = '/rest/admin/v2/approval-statuses/{id}';
+  static readonly updateApprovalStatusPath = '/rest/admin/v2/approval-statuses/{id}';
   static readonly ApprovalStatusFindByQueryPath = '/wcs/resources/store/{storeId}/approval_status';
   static readonly ApprovalStatusUpdateApprovalStatusPath = '/wcs/resources/store/{storeId}/approval_status/{approvalStatusId}';
 
@@ -19,6 +22,202 @@ class ApprovalStatusService extends __BaseService {
     http: HttpClient
   ) {
     super(config, http);
+  }
+
+  /**
+   * @param params The `ApprovalStatusService.FindAllParams` containing the following parameters:
+   *
+   * - `status`: Query by approval request status.
+   *
+   * - `flowTypeId`: Query by flow type identifier which must be one of the values listed below.
+   *    * 10001 - RFQ response
+   *    * 10002 - Order approval
+   *    * 10003 - Contract approval
+   *    * 10004 - Buyer approval
+   *    * 10005 - Seller org approval
+   *    * 10006 - Seller approval
+   *
+   * - `submitterMiddleName`: Query by approval request submitter's middle name.
+   *
+   * - `submitterLastName`: Query by approval request submitter's last name.
+   *
+   * - `startSubmitDate`: Query by approval request start time formatted as standard ISO date and time.
+   *
+   * - `endSubmitDate`: Query by approval request end time formatted as standard ISO date and time.
+   *
+   * - `submitterFirstName`: Query by approval request submitter's first name.
+   *
+   * - `id`: Query by approval request approval status ID.
+   *
+   * - `entityId`: Query by approval request entity ID, such as order ID.
+   *
+   * - `approverId`: Query by approver ID. Only returns approval requests that can be approved by the current user.
+   *
+   * - `sort`: The sort order of the properties in the response message. Properties can be prefixed with a + or - sign to indicate ascending or descending sort order, for example +entityId. The default sort order is ascending.
+   *
+   * - `offset`: Offset, starting at 0. Valid values include positive integers of 1 and above. The "limit" must be specified for paging to work.
+   *
+   * - `limit`: Used to limit the amount of data returned by a query. Valid values include positive integers of 1 and above. The "offset" must be specified for paging to work.
+   *
+   * @return The requested completed successfully.
+   */
+  findAllResponse(params: ApprovalStatusService.FindAllParams): __Observable<__StrictHttpResponse<any>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    if (params.status != null) __params = __params.set('status', params.status.toString());
+    if (params.flowTypeId != null) __params = __params.set('flowTypeId', params.flowTypeId.toString());
+    if (params.submitterMiddleName != null) __params = __params.set('submitterMiddleName', params.submitterMiddleName.toString());
+    if (params.submitterLastName != null) __params = __params.set('submitterLastName', params.submitterLastName.toString());
+    if (params.startSubmitDate != null) __params = __params.set('startSubmitDate', params.startSubmitDate.toString());
+    if (params.endSubmitDate != null) __params = __params.set('endSubmitDate', params.endSubmitDate.toString());
+    if (params.submitterFirstName != null) __params = __params.set('submitterFirstName', params.submitterFirstName.toString());
+    if (params.id != null) __params = __params.set('id', params.id.toString());
+    if (params.entityId != null) __params = __params.set('entityId', params.entityId.toString());
+    if (params.approverId != null) __params = __params.set('approverId', params.approverId.toString());
+    if (params.sort != null) __params = __params.set('sort', params.sort.toString());
+    if (params.offset != null) __params = __params.set('offset', params.offset.toString());
+    if (params.limit != null) __params = __params.set('limit', params.limit.toString());
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/rest/admin/v2/approval-statuses`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  /**
+   * @param params The `ApprovalStatusService.FindAllParams` containing the following parameters:
+   *
+   * - `status`: Query by approval request status.
+   *
+   * - `flowTypeId`: Query by flow type identifier which must be one of the values listed below.
+   *    * 10001 - RFQ response
+   *    * 10002 - Order approval
+   *    * 10003 - Contract approval
+   *    * 10004 - Buyer approval
+   *    * 10005 - Seller org approval
+   *    * 10006 - Seller approval
+   *
+   * - `submitterMiddleName`: Query by approval request submitter's middle name.
+   *
+   * - `submitterLastName`: Query by approval request submitter's last name.
+   *
+   * - `startSubmitDate`: Query by approval request start time formatted as standard ISO date and time.
+   *
+   * - `endSubmitDate`: Query by approval request end time formatted as standard ISO date and time.
+   *
+   * - `submitterFirstName`: Query by approval request submitter's first name.
+   *
+   * - `id`: Query by approval request approval status ID.
+   *
+   * - `entityId`: Query by approval request entity ID, such as order ID.
+   *
+   * - `approverId`: Query by approver ID. Only returns approval requests that can be approved by the current user.
+   *
+   * - `sort`: The sort order of the properties in the response message. Properties can be prefixed with a + or - sign to indicate ascending or descending sort order, for example +entityId. The default sort order is ascending.
+   *
+   * - `offset`: Offset, starting at 0. Valid values include positive integers of 1 and above. The "limit" must be specified for paging to work.
+   *
+   * - `limit`: Used to limit the amount of data returned by a query. Valid values include positive integers of 1 and above. The "offset" must be specified for paging to work.
+   *
+   * @return The requested completed successfully.
+   */
+  findAll(params: ApprovalStatusService.FindAllParams): __Observable<any> {
+    return this.findAllResponse(params).pipe(
+      __map(_r => _r.body as any)
+    );
+  }
+
+  /**
+   * @param id The unique numeric ID for identifying the approval status record.
+   * @return The requested completed successfully.
+   */
+  findByApprovalStatusIdResponse(id: string): __Observable<__StrictHttpResponse<any>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/rest/admin/v2/approval-statuses/${id}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  /**
+   * @param id The unique numeric ID for identifying the approval status record.
+   * @return The requested completed successfully.
+   */
+  findByApprovalStatusId(id: string): __Observable<any> {
+    return this.findByApprovalStatusIdResponse(id).pipe(
+      __map(_r => _r.body as any)
+    );
+  }
+
+  /**
+   * @param params The `ApprovalStatusService.UpdateApprovalStatusParams` containing the following parameters:
+   *
+   * - `id`: The unique numeric ID for identifying the approval status record.
+   *
+   * - `body`: The request body for updating an approval status record.
+   */
+  updateApprovalStatusResponse(params: ApprovalStatusService.UpdateApprovalStatusParams): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    __body = params.body;
+    let req = new HttpRequest<any>(
+      'PATCH',
+      this.rootUrl + `/rest/admin/v2/approval-statuses/${params.id}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+
+  /**
+   * @param params The `ApprovalStatusService.UpdateApprovalStatusParams` containing the following parameters:
+   *
+   * - `id`: The unique numeric ID for identifying the approval status record.
+   *
+   * - `body`: The request body for updating an approval status record.
+   */
+  updateApprovalStatus(params: ApprovalStatusService.UpdateApprovalStatusParams): __Observable<null> {
+    return this.updateApprovalStatusResponse(params).pipe(
+      __map(_r => _r.body as null)
+    );
   }
 
   /**
@@ -203,6 +402,99 @@ class ApprovalStatusService extends __BaseService {
 }
 
 module ApprovalStatusService {
+
+  /**
+   * Parameters for findAll
+   */
+  export interface FindAllParams {
+
+    /**
+     * Query by approval request status.
+     */
+    status?: number;
+
+    /**
+     * Query by flow type identifier which must be one of the values listed below.
+     *  * 10001 - RFQ response
+     *  * 10002 - Order approval
+     *  * 10003 - Contract approval
+     *  * 10004 - Buyer approval
+     *  * 10005 - Seller org approval
+     *  * 10006 - Seller approval
+     */
+    flowTypeId?: 10001 | 10002 | 10003 | 10004 | 10005 | 10006;
+
+    /**
+     * Query by approval request submitter's middle name.
+     */
+    submitterMiddleName?: string;
+
+    /**
+     * Query by approval request submitter's last name.
+     */
+    submitterLastName?: string;
+
+    /**
+     * Query by approval request start time formatted as standard ISO date and time.
+     */
+    startSubmitDate?: string;
+
+    /**
+     * Query by approval request end time formatted as standard ISO date and time.
+     */
+    endSubmitDate?: string;
+
+    /**
+     * Query by approval request submitter's first name.
+     */
+    submitterFirstName?: string;
+
+    /**
+     * Query by approval request approval status ID.
+     */
+    id?: number;
+
+    /**
+     * Query by approval request entity ID, such as order ID.
+     */
+    entityId?: number;
+
+    /**
+     * Query by approver ID. Only returns approval requests that can be approved by the current user.
+     */
+    approverId?: number;
+
+    /**
+     * The sort order of the properties in the response message. Properties can be prefixed with a + or - sign to indicate ascending or descending sort order, for example +entityId. The default sort order is ascending.
+     */
+    sort?: 'id' | 'entityId' | 'submitTime' | 'approveTime' | 'status' | 'flowTypeId' | 'stateId';
+
+    /**
+     * Offset, starting at 0. Valid values include positive integers of 1 and above. The "limit" must be specified for paging to work.
+     */
+    offset?: number;
+
+    /**
+     * Used to limit the amount of data returned by a query. Valid values include positive integers of 1 and above. The "offset" must be specified for paging to work.
+     */
+    limit?: number;
+  }
+
+  /**
+   * Parameters for updateApprovalStatus
+   */
+  export interface UpdateApprovalStatusParams {
+
+    /**
+     * The unique numeric ID for identifying the approval status record.
+     */
+    id: string;
+
+    /**
+     * The request body for updating an approval status record.
+     */
+    body: any;
+  }
 
   /**
    * Parameters for ApprovalStatusFindByQuery

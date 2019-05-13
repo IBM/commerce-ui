@@ -16,13 +16,13 @@ const routes: Routes = [
     path: '', component: UserListComponent
   },
   {
-    path: 'userAccount', component: UserAccountComponent
+    path: 'user-account', component: UserAccountComponent
   },
   {
-      path: 'userContact', component: UserContactComponent
+      path: 'user-contact', component: UserContactComponent
   },
   {
-      path: 'userRoles', component: UserRolesComponent
+      path: 'user-roles', component: UserRolesComponent
   },
   {
     path: 'userGroups', component: UserGroupsComponent

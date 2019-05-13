@@ -11,7 +11,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class UserRolesComponent implements OnInit {
   rolesForm: FormGroup;
-  disabled: '';
   rolesData: any;
   userRolesData: any;
   rolesArray: any = [];
@@ -89,7 +88,7 @@ export class UserRolesComponent implements OnInit {
   }
   backClick() {
     this.userSettingService.rolesBackCall = true;
-    this.router.navigate(['users/userContact']);
+    this.router.navigate(['users/user-contact']);
   }
   cancelClick() {
     this.router.navigate(['users']);

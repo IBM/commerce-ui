@@ -3,6 +3,7 @@ import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angula
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { UsersService } from '../../../../../rest/services/users.service';
+import { UserMainService } from '../../../services/user-main.service';
 
 @Component({
 	templateUrl: './user-list.component.html',
@@ -14,7 +15,7 @@ export class UserListComponent implements OnInit {
 	@ViewChild('listUserItemTemplate')
 	protected listUserItemTemplate: TemplateRef<any>;
 
-	constructor(private router: Router, private usersService: UsersService, private translateService: TranslateService) { }
+	constructor(private router: Router, private usersService: UsersService, private translateService: TranslateService, private userMainService: UserMainService) { }
 
 	ngOnInit() {
 		const logonIdHeader = { data: '' };
@@ -78,6 +79,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	createUser() {
-		this.router.navigate(['users/userAccount']);
+		this.userMainService.userData = null;
+		this.router.navigate(['users/user-account']);
 	}
 }

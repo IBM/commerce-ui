@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserMainService } from '../../../services/user-main.service';
-import { UserSettingService } from '../../../services/user-setting.service';
-import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { OrganizationsService } from '../../../../../rest/services/organizations.service';
 import { UserAccountPolicyDescriptionsService } from '../../../../../rest/services/user-account-policy-descriptions.service';
 import { UsersService } from '../../../../../rest/services/users.service';
+import { Subscription } from 'rxjs';
 
 @Component({
 	templateUrl: './user-account.component.html',
@@ -17,48 +17,46 @@ export class UserAccountComponent implements OnInit {
 	email1: FormControl;
 	password: FormControl;
 	passwordVerify: FormControl;
-	organizationName: FormControl;
+	parentOrganization: FormControl;
 	policy: FormControl;
 
-	organizationId: number;
-	accountData: any;
-	userAccountData: any;
 	emailPattern: any;
-	showInput: boolean;
 	invalidEmail: boolean;
-	showTextVisible = true;
-	showTickboxVisible: boolean;
-	inputFieldError: boolean;
-	parentOrgData: Array<string>;
-	organizationListData: any;
-	accountPolicyListData: any;
-	accountPolicyData: Array<string>;
-	userAccountPolicyId: number;
+	passwordVisible = false;
+	invalidPassword: boolean;
+	inputFieldError: boolean = false;
+	organizationList: Array<string> = [];
+	accountPolicyList: Array<any>;
 	showOrgList = false;
 	invalidLoginId = false;
+	getOrganizationsSubscription: Subscription = null;
 
 	constructor(private router: Router, private userMainService: UserMainService,
-			private userSettingService: UserSettingService, private formBuilder: FormBuilder,
 			private organizationsService: OrganizationsService,
 			private userAccountPolicyDescriptionsService: UserAccountPolicyDescriptionsService,
 			private usersService: UsersService) { }
 
 	ngOnInit() {
-		this.organizationListApi();
-		this.accountPolicyList();
 		this.createFormControls();
 		this.createForm();
-		this.showInput = true;
-		this.accountData = this.userMainService.userAccountData;
-		if (this.userSettingService.contactBackClick) {
-			this.setModelData();
-			this.showTickboxVisible = true;
+		if (this.userMainService.userData != null) {
+			let userData = this.userMainService.userData;
+			this.logonId.setValue(userData.logonId);
+			this.email1.setValue(userData.address.email1);
+			this.password.setValue(userData.password);
+			this.passwordVerify.setValue(userData.passwordVerify);
+			this.parentOrganization.setValue(userData.parentOrganizationName);
+			this.invalidPassword = false;
 		} else {
-			this.showTickboxVisible = false;
+			this.userMainService.userData = {
+				"address": {}
+			};
+			this.invalidPassword = true;
 		}
+		this.initAccountPolicyList();
 	}
 
-	createFormControls() {
+	private createFormControls() {
 		this.logonId = new FormControl('', Validators.required);
 		this.email1 = new FormControl('', [
 			Validators.required,
@@ -72,160 +70,143 @@ export class UserAccountComponent implements OnInit {
 			Validators.required,
 			Validators.minLength(8)
 		]);
-		this.organizationName = new FormControl('', Validators.required);
+		this.parentOrganization = new FormControl('', Validators.required);
 		this.policy = new FormControl('', Validators.required);
 	}
 
-	createForm() {
+	private createForm() {
 		this.accountForm = new FormGroup({
 			logonId: this.logonId,
 			email1: this.email1,
 			password: this.password,
 			passwordVerify: this.passwordVerify,
-			organizationName: this.organizationName,
+			parentOrganization: this.parentOrganization,
 			policy: this.policy
 		});
 	}
 
-	setModelData() {
-		this.logonId.setValue(this.accountData.logonId);
-		this.email1.setValue(this.accountData.email1);
-		this.password.setValue(this.accountData.password);
-		this.passwordVerify.setValue(this.accountData.passwordVerify);
-		this.organizationName.setValue(this.accountData.organizationName);
-		this.policy.setValue(this.accountData.policy);
-	}
-
 	goToContact() {
-		if (this.accountForm.valid) {
-			this.findOrginationId();
-			this.accountCall();
-			this.router.navigate(['/users/userContact']);
-			this.userMainService.useraccount(this.userAccountData);
+		if (this.accountForm.valid && !this.invalidLoginId && this.userMainService.userData.parentOrganizationId != null && !this.invalidPassword) {
+			this.router.navigate(['/users/user-contact']);
+		}
+		else {
+			this.inputFieldError = true;
 		}
 	}
 
 	cancelClick() {
+		this.userMainService.userData = null;
 		this.router.navigate(['users']);
 	}
-accountCall() {
-  this.userAccountData = {
-    'logonId': this.logonId.value,
-    'email1': this.email1.value,
-    'password': this.password.value,
-    'passwordVerify': this.passwordVerify.value,
-    'organizationName': this.organizationName.value,
-    'organizationId': this.organizationId,
-    'policy': this.userAccountPolicyId
-  };
-  console.log('setData', this.userAccountData);
-}
 
-validateLogonId() {
-	if (this.logonId.valid) {
-		this.invalidLoginId = false;
-		this.usersService.UsersGetManageableUsers({
-			logonId: this.logonId.value
-		}).subscribe((body: any) => {
-			if (body && body.items) {
-				for (let i = 0; i < body.items.length; i++) {
-					const logonId = body.items[i].logonId;
-					if (logonId == this.logonId.value) {
-						this.invalidLoginId = true;
-						break;
+	validateLogonId() {
+		if (this.logonId.valid) {
+			this.userMainService.userData.logonId = this.logonId.value;
+			this.invalidLoginId = false;
+			this.usersService.UsersGetManageableUsers({
+				logonId: this.logonId.value
+			}).subscribe((body: any) => {
+				if (body && body.items) {
+					for (let i = 0; i < body.items.length; i++) {
+						const logonId = body.items[i].logonId;
+						if (logonId === this.logonId.value) {
+							this.invalidLoginId = true;
+							break;
+						}
 					}
 				}
+			});
+		}
+		else {
+			this.invalidLoginId = true;
+		}
+	}
+
+	validateEmail() {
+		if (this.email1.valid) {
+			this.userMainService.userData.address.email1 = this.email1.value;
+			this.invalidEmail = false;
+		}
+		else {
+			this.invalidEmail = true;
+		}
+	}
+
+	validatePassword() {
+		if (this.password.valid && this.passwordVerify.valid && this.password.value === this.passwordVerify.value) {
+			this.userMainService.userData.password = this.password.value;
+			this.userMainService.userData.passwordVerify = this.passwordVerify.value;
+			this.invalidPassword = false;
+		}
+		else {
+			this.invalidPassword = true;
+		}
+	}
+
+	showPassword() {
+		this.passwordVisible = true;
+	}
+
+	hidePassword() {
+		this.passwordVisible = false;
+	}
+
+	private initAccountPolicyList(): void {
+		this.accountPolicyList = [];
+		this.userAccountPolicyDescriptionsService.getUserAccountPolicyDescriptions({
+			"languageId": -1
+		}).subscribe(
+			response => {
+				this.accountPolicyList = response.items.map(value => {
+					return {
+						"content": value.description,
+						"selected": this.userMainService.userData.userAccountPolicyId === value.userAccountPolicyId,
+						"userAccountPolicyId": value.userAccountPolicyId
+					}
+				});
+			},
+			error => {
+				console.log(error);
 			}
-		});
+		);
 	}
-	else {
-		this.invalidLoginId = true;
+
+	orgInputKeyup() {
+		if (this.getOrganizationsSubscription != null) {
+			this.getOrganizationsSubscription.unsubscribe();
+			this.getOrganizationsSubscription = null;
+		}
+		this.userMainService.userData.parentOrganizationId = null;
+		this.userMainService.userData.parentOrganizationName = null;
+		this.getOrganizationsSubscription = this.organizationsService.OrganizationGetManageableOrganizations({
+			organizationName: this.parentOrganization.value,
+			limit: 10
+		}).subscribe(
+			response => {
+				if (response.items.length === 1 && response.items[0].organizationName === this.parentOrganization.value) {
+					this.selectParentOrganization(response.items[0]);
+				}
+				else {
+					this.organizationList = response.items;
+					this.showOrgList = true;
+				}
+				this.getOrganizationsSubscription = null;
+			},
+			error => {
+				this.getOrganizationsSubscription = null;
+				console.log(error);
+			}
+		);
 	}
-}
 
-validateEmail() {
-  if (this.email1.valid) {
-    this.invalidEmail = false;
-  } else {
-    this.invalidEmail = true;
-  }
-}
-validateInputField() {
-  if (this.accountForm.invalid) {
-    this.inputFieldError = true;
-  } else {
-    this.inputFieldError = false;
-  }
-}
-validatePassword() {
-  if (this.passwordVerify.valid) {
-    this.showTickboxVisible = true;
-  } else {
-    this.showTickboxVisible = false;
-  }
-}
-showHide() {
-  this.showTextVisible = !this.showTextVisible;
-}
+	selectParentOrganization(org: any) {
+		this.parentOrganization.setValue(org.organizationName);
+		this.userMainService.userData.parentOrganizationId = org.id;
+		this.userMainService.userData.parentOrganizationName = org.organizationName;
+		this.showOrgList = false;
+	}
 
-organizationListApi(): void {
-  this.parentOrgData = [];
-  this.organizationsService.OrganizationGetManageableOrganizations({}).subscribe(
-    response => {
-      this.organizationListData = response.items;
-      this.parentOrgData = this.organizationListData.map(value => {
-        return value.organizationName;
-      });
-    },
-    error => {
-      console.log(error);
-    }
-  );
-}
-
-accountPolicyList(): void {
-  this.accountPolicyData = [];
-  this.userAccountPolicyDescriptionsService.getUserAccountPolicyDescriptions({
-    "languageId": -1
-  }).subscribe(
-    response => {
-      this.accountPolicyListData = response.items;
-      this.accountPolicyData = this.accountPolicyListData.map(value => {
-        return {
-          "content": value.description,
-          "selected": false,
-          "userAccountPolicyId": value.userAccountPolicyId
-        }
-      });
-    },
-    error => {
-      console.log(error);
-    }
-  );
-}
-
-orgInputKeyup() {
-  if (this.organizationName.value !== '') {
-      this.showOrgList = true;
-  }
-}
-
-selectedOrg(event: any) {
-  this.organizationName.setValue(event);
-  console.log(event);
-  this.showOrgList = false;
-}
-
-findOrginationId() {
-  this.organizationListData.forEach(value => {
-    if (value.organizationName === this.organizationName.value) {
-      this.organizationId = value.organizationId;
-    }
-  });
-}
-
-selectAccountPolicy(event: any) {
-  this.userAccountPolicyId = event.item.userAccountPolicyId;
-}
-
+	selectAccountPolicy(event: any) {
+		this.userMainService.userData.userAccountPolicyId = event.item.userAccountPolicyId;
+	}
 }

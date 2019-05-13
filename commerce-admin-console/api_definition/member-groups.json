@@ -847,6 +847,10 @@
             "description": "The operation is successful."
           }
         },
+        "tags": [
+          "Member Groups"
+        ],
+        "operationId": "updateMemberGroupDescription",
         "summary": "Update a description within a member group.",
         "x-action-code": "Change",
         "x-expression-template": "/MemberGroup[1]/MemberGroupDescription[1]",

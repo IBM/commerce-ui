@@ -5,6 +5,8 @@ import { UsersService } from '../../../rest/services/users.service';
   providedIn: 'root'
 })
 export class UserMainService {
+	userData: any = null;
+
   listData: any;
   resultData: any;
   userAccountData: any;
@@ -48,10 +50,8 @@ userList(): Promise<object> {
 }
 
   createUser(): Promise<Object> {
-    this.setUserData();
-    console.log(this.listData);
     return new Promise((resolve, reject) => {
-      this.userService.UsersCreateUserResponse(this.listData,
+      this.userService.UsersCreateUserResponse(this.userData,
       ).subscribe(response => {
         resolve(response);
         this.resultData = response;

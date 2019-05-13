@@ -604,7 +604,7 @@
             "CONFIRM_PASSWORD": "Confirm password",
             "SHOW":"Show",
             "HIDE":"Hide",
-            "ORGANIZATION":"Organization",
+            "PARENT_ORGANIZATION":"Parent Organization",
             "ACCOUNT_POLICY":"Account Policy",
             "ACCOUNT_POLICY_PLACEHOLDER":"Select policy",
             "CANCEL":"Cancel",

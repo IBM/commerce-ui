@@ -26,6 +26,7 @@ class MemberGroupsService extends __BaseService {
   static readonly createMemberGroupDescriptionPath = '/rest/admin/v2/member-groups/{id}/descriptions';
   static readonly deleteMemberGroupDescriptionPath = '/rest/admin/v2/member-groups/{id}/descriptions/{languageId}';
   static readonly getMemberGroupDescriptionPath = '/rest/admin/v2/member-groups/{id}/descriptions/{languageId}';
+  static readonly updateMemberGroupDescriptionPath = '/rest/admin/v2/member-groups/{id}/descriptions/{languageId}';
 
   constructor(
     config: __Configuration,
@@ -811,6 +812,60 @@ class MemberGroupsService extends __BaseService {
       __map(_r => _r.body as {languageId?: number, longDescription?: string, shortDescription?: string})
     );
   }
+
+  /**
+   * @param params The `MemberGroupsService.UpdateMemberGroupDescriptionParams` containing the following parameters:
+   *
+   * - `id`: The unique numeric ID for identifying the member group.
+   *
+   * - `languageId`: The integer for identifying the language of the member group description. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.
+   *
+   * - `storeId`: The unique numeric ID for identifying the store.
+   *
+   * - `body`: The request body.
+   */
+  updateMemberGroupDescriptionResponse(params: MemberGroupsService.UpdateMemberGroupDescriptionParams): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+
+    if (params.storeId != null) __params = __params.set('storeId', params.storeId.toString());
+    __body = params.body;
+    let req = new HttpRequest<any>(
+      'PATCH',
+      this.rootUrl + `/rest/admin/v2/member-groups/${params.id}/descriptions/${params.languageId}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+
+  /**
+   * @param params The `MemberGroupsService.UpdateMemberGroupDescriptionParams` containing the following parameters:
+   *
+   * - `id`: The unique numeric ID for identifying the member group.
+   *
+   * - `languageId`: The integer for identifying the language of the member group description. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.
+   *
+   * - `storeId`: The unique numeric ID for identifying the store.
+   *
+   * - `body`: The request body.
+   */
+  updateMemberGroupDescription(params: MemberGroupsService.UpdateMemberGroupDescriptionParams): __Observable<null> {
+    return this.updateMemberGroupDescriptionResponse(params).pipe(
+      __map(_r => _r.body as null)
+    );
+  }
 }
 
 module MemberGroupsService {
@@ -1130,6 +1185,32 @@ module MemberGroupsService {
      * The integer for identifying the language of the member group description. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.
      */
     languageId: number;
+  }
+
+  /**
+   * Parameters for updateMemberGroupDescription
+   */
+  export interface UpdateMemberGroupDescriptionParams {
+
+    /**
+     * The unique numeric ID for identifying the member group.
+     */
+    id: number;
+
+    /**
+     * The integer for identifying the language of the member group description. For a list of the integers that map to the supported default languages, refer to the Knowledge Center.
+     */
+    languageId: number;
+
+    /**
+     * The unique numeric ID for identifying the store.
+     */
+    storeId: number;
+
+    /**
+     * The request body.
+     */
+    body: {languageId?: number, longDescription?: string, shortDescription?: string};
   }
 }
 
