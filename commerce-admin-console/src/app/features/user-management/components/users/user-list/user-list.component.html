@@ -29,7 +29,12 @@
 		<div class="table-body bx--col-md-12 bx--col-sm-12">
 			<ibm-table [model]="model" [striped]="false"></ibm-table>
 			<ng-template #listUserItemTemplate let-data="data">
-				<a [routerLink]="['manageAccount', data.id]" (click)="getSelectedUser(data.name)">{{data.name}}</a>
+				<a [routerLink]="['manageAccount', data.id]">{{data.name}}</a>
+			</ng-template>
+			<ng-template #listUserRoleTemplate let-data="data">
+				<br>
+				<div *ngFor="let roleName of data">{{roleName}}</div>
+				<br>
 			</ng-template>
 			<ibm-pagination [model]="model" (selectPage)="selectPage($event)"></ibm-pagination>
 		</div>

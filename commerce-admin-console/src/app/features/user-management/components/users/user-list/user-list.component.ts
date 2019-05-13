@@ -3,6 +3,8 @@ import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angula
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { UsersService } from '../../../../../rest/services/users.service';
+import { RoleAssignmentsService } from '../../../../../rest/services/role-assignments.service';
+import { RoleDescriptionsService } from '../../../../../rest/services/role-descriptions.service';
 import { UserMainService } from '../../../services/user-main.service';
 
 @Component({
@@ -11,17 +13,20 @@ import { UserMainService } from '../../../services/user-main.service';
 })
 export class UserListComponent implements OnInit {
 	model = new TableModel();
+	roleNames = null;
 
 	@ViewChild('listUserItemTemplate')
 	protected listUserItemTemplate: TemplateRef<any>;
+	
+	@ViewChild('listUserRoleTemplate')
+	protected listUserRoleTemplate: TemplateRef<any>;
 
 	constructor(private router: Router,
 		private usersService: UsersService,
+		private roleAssignmentsService: RoleAssignmentsService,
+		private roleDescriptionsService: RoleDescriptionsService,
 		private translateService: TranslateService,
 		private userMainService: UserMainService) { }
-
-	userListData: any;
-	id: any;
 
 	ngOnInit() {
 		const logonIdHeader = { data: '' };
@@ -54,7 +59,7 @@ export class UserListComponent implements OnInit {
 		this.model.data = [];
 		this.model.pageLength = 10;
 		this.model.totalDataLength = 0;
-		this.selectPage(1);
+		this.loadRoleNames();
 	}
 
 	selectPage(page: number) {
@@ -62,40 +67,78 @@ export class UserListComponent implements OnInit {
 			offset: (page - 1) * this.model.pageLength,
 			limit: this.model.pageLength
 		}).subscribe((body: any) => {
-			this.userListData = body.items;
 			this.model.totalDataLength = body.count;
 			const data = [];
 			for (let i = 0; i < body.items.length; i++) {
 				const item = body.items[i];
-				const id = item.id;
-				const logonId = item.logonId;
-				const firstName = item.address ? item.address.firstName : '';
-				const lastName = item.address ? item.address.lastName : '';
-				const parentOrganizationName = item.parentOrganizationName;
+				const idTableItem = new TableItem({
+					data: { name: item.logonId, id: item.id },
+					template: this.listUserItemTemplate
+				});
+				const firstNameTableItem = new TableItem({
+					data: item.address ? item.address.firstName : ''
+				});
+				const lastNameTableItem = new TableItem({
+					data: item.address ? item.address.lastName : ''
+				}); 
+				const parentOrganizationTableItem = new TableItem({
+					data: item.parentOrganizationName
+				});
+				const roleTableItem = new TableItem({
+					data: [],
+					template: this.listUserRoleTemplate
+				});
 				data.push([
-					new TableItem({ data: { name: logonId, id: id }, template: this.listUserItemTemplate }),
-					new TableItem({ data: firstName }),
-					new TableItem({ data: lastName }),
-					new TableItem({ data: parentOrganizationName }),
-					new TableItem({ data: '' })
+					idTableItem,
+					firstNameTableItem,
+					lastNameTableItem,
+					parentOrganizationTableItem,
+					roleTableItem
 				]);
+				this.populateRoles(item.id, roleTableItem);
 			}
 			this.model.data = data;
 			this.model.currentPage = page;
 		});
 	}
 
-	getSelectedUser(name) {
-		this.userListData.forEach(value => {
-			if (value.logonId === name) {
-				this.id = value.id;
+	private populateRoles(id:number, roleTableItem: TableItem) {
+		this.roleAssignmentsService.getRoleAssignments({
+			memberId: id
+		}).subscribe((body: any) => {
+			let uniqueRoles:Array<number> = [];
+			for (let i = 0; i < body.items.length; i++) {
+				let roleId = body.items[i].roleId;
+				if (uniqueRoles.indexOf(roleId) === -1) {
+					uniqueRoles.push(roleId);
+				}
 			}
-		})
-		console.log("ID IS.....", this.id);
-		this.router.navigate(['users/manageAccount', this.id]);
-
+			roleTableItem.data = this.getRoleNamesFromIds(uniqueRoles);
+		});
 	}
 
+	private getRoleNamesFromIds(roleIds:Array<number>): Array<string> {
+		let roleNames = [];
+		for (let i = 0; i < roleIds.length; i++) {
+			roleNames.push(this.roleNames[roleIds[i]]);
+		}
+		return roleNames;
+	}
+
+	private loadRoleNames() {
+		this.roleDescriptionsService.getRoleDescriptions({
+			languageId: -1
+		}).subscribe((body: any) => {
+			let roleNames = {};
+			for (let i = 0; i < body.items.length; i++) {
+				let roleDescription = body.items[i];
+				roleNames[roleDescription.roleId] = roleDescription.displayName;
+			}
+			this.roleNames = roleNames;
+			this.selectPage(1);
+		});
+	}
+	
 	createUser() {
 		this.userMainService.userData = null;
 		this.router.navigate(['users/user-account']);
