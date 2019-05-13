@@ -17,6 +17,7 @@ import { CountriesService } from './services/countries.service';
 import { MemberGroupsService } from './services/member-groups.service';
 import { MemberGroupMembershipsService } from './services/member-group-memberships.service';
 import { PersonService } from './services/person.service';
+import { RoleDescriptionsService } from './services/role-descriptions.service';
 
 /**
  * Provider for all Api services, plus ApiConfiguration
@@ -44,7 +45,8 @@ import { PersonService } from './services/person.service';
     CountriesService,
     MemberGroupsService,
     MemberGroupMembershipsService,
-    PersonService
+    PersonService,
+    RoleDescriptionsService
   ],
 })
 export class ApiModule {

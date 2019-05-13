@@ -2761,7 +2761,8 @@
                 "id": {
                   "description": "The unique numeric ID for identifying the organization.",
                   "type": "integer",
-                  "format": "int64"
+                  "format": "int64",
+                  "readOnly": true
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
@@ -2785,11 +2786,11 @@
                     },
                     "addressType": {
                       "type": "string",
-                      "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                      "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                     },
                     "bestCallingTime": {
                       "type": "string",
-                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                     },
                     "billingCode": {
                       "type": "string",
@@ -2855,7 +2856,7 @@
                     "memberId": {
                       "type": "integer",
                       "format": "int64",
-                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "middleName": {
                       "type": "string",
@@ -2871,7 +2872,7 @@
                     },
                     "nickName": {
                       "type": "string",
-                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "officeAddress": {
                       "type": "string",
@@ -2887,7 +2888,11 @@
                     },
                     "packageSuppression": {
                       "type": "integer",
-                      "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                      "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "personTitle": {
                       "type": "string",
@@ -2911,19 +2916,36 @@
                     },
                     "primary": {
                       "type": "integer",
-                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                      "default": 0,
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone1": {
                       "type": "integer",
-                      "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone2": {
                       "type": "integer",
-                      "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "selfAddress": {
                       "type": "integer",
-                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ],
                       "readOnly": true
                     },
                     "shippingGeoCode": {
@@ -2936,7 +2958,7 @@
                     },
                     "status": {
                       "type": "string",
-                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                       "readOnly": true
                     },
                     "taxGeoCode": {
@@ -2964,7 +2986,7 @@
                 "approvalState": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "The organizational entity's approval status. Supported values are 0 (pending approval), 1 (approved), 2 (rejected) and null (approval not applicable, so considered approved).",
+                  "description": "The organizational entity's approval status. Available values: <br>* 0 - pending approval.<br>* 1 - approved.<br>* 2 - rejected.<br>* null - approval not applicable, so considered approved.",
                   "readOnly": true
                 },
                 "businessCategory": {
@@ -2982,7 +3004,8 @@
                 },
                 "isBusinessEntity": {
                   "description": "Whether this organization is a business entity, that is, an organization that can have business accounts. If the organization is a business entity, the value will be true, or false otherwise.",
-                  "type": "boolean"
+                  "type": "boolean",
+                  "readOnly": true
                 },
                 "legalId": {
                   "description": "The organization's legal identifier, such as the identifier assigned by a government. The value may be null for an organization whose type is an organizational unit (OU).",
@@ -2993,33 +3016,36 @@
                   "type": "string"
                 },
                 "organizationType": {
-                  "description": "The type of the organizational entity being added. O=Organization; OU=Organizational Unit.",
-                  "type": "string"
+                  "description": "The type of the organizational entity being added. The value can be set when creating an organization, but is otherwise read-only. Available values: <br>* O - Organization.<br>* OU - Organization Unit.",
+                  "type": "string",
+                  "readOnly": true
                 },
                 "parentOrganizationId": {
-                  "description": "If the organization type is an organizational unit (OU), parentOrganizationId is the unique ID of the parent organization of this organization. If the organization type is an organization (O), parentOrganizationId is not required and the default value is the root organization (-2001). Can be set when creating an organization, but is read only otherwise.",
+                  "description": "If the organization type is an organizational unit (OU), parentOrganizationId is the unique ID of the parent organization of this organization. If the organization type is an organization (O), parentOrganizationId is not required and the default value is the root organization (-2001). The value can be set when creating an organization, but is otherwise read-only.",
                   "type": "integer",
                   "format": "int64"
                 },
                 "parentOrganizationName": {
                   "description": "The name of this organization's parent.",
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "preferredDelivery": {
                   "description": "The registrant's preferred mode of delivery.",
                   "type": "string"
                 },
                 "status": {
-                  "description": "Whether or not the organization is locked. A value of 0 indicates the organization is unlocked, and a value of -1 indicates the organization is locked.",
+                  "description": "Whether or not the organization is locked. Available values: <br> * 0 - The organization is unlocked.<br> * -1 - The organization is locked.",
+                  "enum": [
+                    0,
+                    -1
+                  ],
                   "format": "int32",
-                  "type": "integer"
+                  "type": "integer",
+                  "readOnly": true
                 },
                 "taxPayerId": {
                   "description": "A string used to identify the user for taxation, especially useful with tax software.",
-                  "type": "string"
-                },
-                "type": {
-                  "description": "The type of data bean returning this information. Supported values are: O (OrgEntity), U (User), and G (MemberGroup).",
                   "type": "string"
                 }
               }
@@ -3262,7 +3288,8 @@
                 "id": {
                   "description": "The unique numeric ID for identifying the organization.",
                   "type": "integer",
-                  "format": "int64"
+                  "format": "int64",
+                  "readOnly": true
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
@@ -3286,11 +3313,11 @@
                     },
                     "addressType": {
                       "type": "string",
-                      "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                      "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                     },
                     "bestCallingTime": {
                       "type": "string",
-                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                     },
                     "billingCode": {
                       "type": "string",
@@ -3356,7 +3383,7 @@
                     "memberId": {
                       "type": "integer",
                       "format": "int64",
-                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "middleName": {
                       "type": "string",
@@ -3372,7 +3399,7 @@
                     },
                     "nickName": {
                       "type": "string",
-                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "officeAddress": {
                       "type": "string",
@@ -3388,7 +3415,11 @@
                     },
                     "packageSuppression": {
                       "type": "integer",
-                      "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                      "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "personTitle": {
                       "type": "string",
@@ -3412,19 +3443,36 @@
                     },
                     "primary": {
                       "type": "integer",
-                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                      "default": 0,
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone1": {
                       "type": "integer",
-                      "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone2": {
                       "type": "integer",
-                      "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "selfAddress": {
                       "type": "integer",
-                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ],
                       "readOnly": true
                     },
                     "shippingGeoCode": {
@@ -3437,7 +3485,7 @@
                     },
                     "status": {
                       "type": "string",
-                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                       "readOnly": true
                     },
                     "taxGeoCode": {
@@ -3465,7 +3513,7 @@
                 "approvalState": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "The organizational entity's approval status. Supported values are 0 (pending approval), 1 (approved), 2 (rejected) and null (approval not applicable, so considered approved).",
+                  "description": "The organizational entity's approval status. Available values: <br>* 0 - pending approval.<br>* 1 - approved.<br>* 2 - rejected.<br>* null - approval not applicable, so considered approved.",
                   "readOnly": true
                 },
                 "businessCategory": {
@@ -3483,7 +3531,8 @@
                 },
                 "isBusinessEntity": {
                   "description": "Whether this organization is a business entity, that is, an organization that can have business accounts. If the organization is a business entity, the value will be true, or false otherwise.",
-                  "type": "boolean"
+                  "type": "boolean",
+                  "readOnly": true
                 },
                 "legalId": {
                   "description": "The organization's legal identifier, such as the identifier assigned by a government. The value may be null for an organization whose type is an organizational unit (OU).",
@@ -3494,33 +3543,36 @@
                   "type": "string"
                 },
                 "organizationType": {
-                  "description": "The type of the organizational entity being added. O=Organization; OU=Organizational Unit.",
-                  "type": "string"
+                  "description": "The type of the organizational entity being added. The value can be set when creating an organization, but is otherwise read-only. Available values: <br>* O - Organization.<br>* OU - Organization Unit.",
+                  "type": "string",
+                  "readOnly": true
                 },
                 "parentOrganizationId": {
-                  "description": "If the organization type is an organizational unit (OU), parentOrganizationId is the unique ID of the parent organization of this organization. If the organization type is an organization (O), parentOrganizationId is not required and the default value is the root organization (-2001). Can be set when creating an organization, but is read only otherwise.",
+                  "description": "If the organization type is an organizational unit (OU), parentOrganizationId is the unique ID of the parent organization of this organization. If the organization type is an organization (O), parentOrganizationId is not required and the default value is the root organization (-2001). The value can be set when creating an organization, but is otherwise read-only.",
                   "type": "integer",
                   "format": "int64"
                 },
                 "parentOrganizationName": {
                   "description": "The name of this organization's parent.",
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "preferredDelivery": {
                   "description": "The registrant's preferred mode of delivery.",
                   "type": "string"
                 },
                 "status": {
-                  "description": "Whether or not the organization is locked. A value of 0 indicates the organization is unlocked, and a value of -1 indicates the organization is locked.",
+                  "description": "Whether or not the organization is locked. Available values: <br> * 0 - The organization is unlocked.<br> * -1 - The organization is locked.",
+                  "enum": [
+                    0,
+                    -1
+                  ],
                   "format": "int32",
-                  "type": "integer"
+                  "type": "integer",
+                  "readOnly": true
                 },
                 "taxPayerId": {
                   "description": "A string used to identify the user for taxation, especially useful with tax software.",
-                  "type": "string"
-                },
-                "type": {
-                  "description": "The type of data bean returning this information. Supported values are: O (OrgEntity), U (User), and G (MemberGroup).",
                   "type": "string"
                 }
               }
@@ -3548,7 +3600,8 @@
                 "id": {
                   "description": "The unique numeric ID for identifying the organization.",
                   "type": "integer",
-                  "format": "int64"
+                  "format": "int64",
+                  "readOnly": true
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
@@ -3572,11 +3625,11 @@
                     },
                     "addressType": {
                       "type": "string",
-                      "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                      "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                     },
                     "bestCallingTime": {
                       "type": "string",
-                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                     },
                     "billingCode": {
                       "type": "string",
@@ -3642,7 +3695,7 @@
                     "memberId": {
                       "type": "integer",
                       "format": "int64",
-                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "middleName": {
                       "type": "string",
@@ -3658,7 +3711,7 @@
                     },
                     "nickName": {
                       "type": "string",
-                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "officeAddress": {
                       "type": "string",
@@ -3674,7 +3727,11 @@
                     },
                     "packageSuppression": {
                       "type": "integer",
-                      "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                      "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "personTitle": {
                       "type": "string",
@@ -3698,19 +3755,36 @@
                     },
                     "primary": {
                       "type": "integer",
-                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                      "default": 0,
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone1": {
                       "type": "integer",
-                      "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone2": {
                       "type": "integer",
-                      "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "selfAddress": {
                       "type": "integer",
-                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ],
                       "readOnly": true
                     },
                     "shippingGeoCode": {
@@ -3723,7 +3797,7 @@
                     },
                     "status": {
                       "type": "string",
-                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                       "readOnly": true
                     },
                     "taxGeoCode": {
@@ -3751,7 +3825,7 @@
                 "approvalState": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "The organizational entity's approval status. Supported values are 0 (pending approval), 1 (approved), 2 (rejected) and null (approval not applicable, so considered approved).",
+                  "description": "The organizational entity's approval status. Available values: <br>* 0 - pending approval.<br>* 1 - approved.<br>* 2 - rejected.<br>* null - approval not applicable, so considered approved.",
                   "readOnly": true
                 },
                 "businessCategory": {
@@ -3769,7 +3843,8 @@
                 },
                 "isBusinessEntity": {
                   "description": "Whether this organization is a business entity, that is, an organization that can have business accounts. If the organization is a business entity, the value will be true, or false otherwise.",
-                  "type": "boolean"
+                  "type": "boolean",
+                  "readOnly": true
                 },
                 "legalId": {
                   "description": "The organization's legal identifier, such as the identifier assigned by a government. The value may be null for an organization whose type is an organizational unit (OU).",
@@ -3780,33 +3855,36 @@
                   "type": "string"
                 },
                 "organizationType": {
-                  "description": "The type of the organizational entity being added. O=Organization; OU=Organizational Unit.",
-                  "type": "string"
+                  "description": "The type of the organizational entity being added. The value can be set when creating an organization, but is otherwise read-only. Available values: <br>* O - Organization.<br>* OU - Organization Unit.",
+                  "type": "string",
+                  "readOnly": true
                 },
                 "parentOrganizationId": {
-                  "description": "If the organization type is an organizational unit (OU), parentOrganizationId is the unique ID of the parent organization of this organization. If the organization type is an organization (O), parentOrganizationId is not required and the default value is the root organization (-2001). Can be set when creating an organization, but is read only otherwise.",
+                  "description": "If the organization type is an organizational unit (OU), parentOrganizationId is the unique ID of the parent organization of this organization. If the organization type is an organization (O), parentOrganizationId is not required and the default value is the root organization (-2001). The value can be set when creating an organization, but is otherwise read-only.",
                   "type": "integer",
                   "format": "int64"
                 },
                 "parentOrganizationName": {
                   "description": "The name of this organization's parent.",
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "preferredDelivery": {
                   "description": "The registrant's preferred mode of delivery.",
                   "type": "string"
                 },
                 "status": {
-                  "description": "Whether or not the organization is locked. A value of 0 indicates the organization is unlocked, and a value of -1 indicates the organization is locked.",
+                  "description": "Whether or not the organization is locked. Available values: <br> * 0 - The organization is unlocked.<br> * -1 - The organization is locked.",
+                  "enum": [
+                    0,
+                    -1
+                  ],
                   "format": "int32",
-                  "type": "integer"
+                  "type": "integer",
+                  "readOnly": true
                 },
                 "taxPayerId": {
                   "description": "A string used to identify the user for taxation, especially useful with tax software.",
-                  "type": "string"
-                },
-                "type": {
-                  "description": "The type of data bean returning this information. Supported values are: O (OrgEntity), U (User), and G (MemberGroup).",
                   "type": "string"
                 }
               }
@@ -4500,7 +4578,8 @@
                       "id": {
                         "description": "The unique numeric ID for identifying the organization.",
                         "type": "integer",
-                        "format": "int64"
+                        "format": "int64",
+                        "readOnly": true
                       },
                       "address": {
                         "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
@@ -4524,11 +4603,11 @@
                           },
                           "addressType": {
                             "type": "string",
-                            "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                            "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                           },
                           "bestCallingTime": {
                             "type": "string",
-                            "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                            "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                           },
                           "billingCode": {
                             "type": "string",
@@ -4594,7 +4673,7 @@
                           "memberId": {
                             "type": "integer",
                             "format": "int64",
-                            "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                            "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                           },
                           "middleName": {
                             "type": "string",
@@ -4610,7 +4689,7 @@
                           },
                           "nickName": {
                             "type": "string",
-                            "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                            "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                           },
                           "officeAddress": {
                             "type": "string",
@@ -4626,7 +4705,11 @@
                           },
                           "packageSuppression": {
                             "type": "integer",
-                            "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                            "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                            "enum": [
+                              0,
+                              1
+                            ]
                           },
                           "personTitle": {
                             "type": "string",
@@ -4650,19 +4733,36 @@
                           },
                           "primary": {
                             "type": "integer",
-                            "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                            "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                            "default": 0,
+                            "enum": [
+                              0,
+                              1
+                            ]
                           },
                           "publishPhone1": {
                             "type": "integer",
-                            "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                            "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                            "enum": [
+                              0,
+                              1
+                            ]
                           },
                           "publishPhone2": {
                             "type": "integer",
-                            "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                            "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                            "enum": [
+                              0,
+                              1
+                            ]
                           },
                           "selfAddress": {
                             "type": "integer",
-                            "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                            "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                            "enum": [
+                              0,
+                              1
+                            ],
                             "readOnly": true
                           },
                           "shippingGeoCode": {
@@ -4675,7 +4775,7 @@
                           },
                           "status": {
                             "type": "string",
-                            "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                            "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                             "readOnly": true
                           },
                           "taxGeoCode": {
@@ -4703,7 +4803,7 @@
                       "approvalState": {
                         "type": "integer",
                         "format": "int32",
-                        "description": "The organizational entity's approval status. Supported values are 0 (pending approval), 1 (approved), 2 (rejected) and null (approval not applicable, so considered approved).",
+                        "description": "The organizational entity's approval status. Available values: <br>* 0 - pending approval.<br>* 1 - approved.<br>* 2 - rejected.<br>* null - approval not applicable, so considered approved.",
                         "readOnly": true
                       },
                       "businessCategory": {
@@ -4721,7 +4821,8 @@
                       },
                       "isBusinessEntity": {
                         "description": "Whether this organization is a business entity, that is, an organization that can have business accounts. If the organization is a business entity, the value will be true, or false otherwise.",
-                        "type": "boolean"
+                        "type": "boolean",
+                        "readOnly": true
                       },
                       "legalId": {
                         "description": "The organization's legal identifier, such as the identifier assigned by a government. The value may be null for an organization whose type is an organizational unit (OU).",
@@ -4732,33 +4833,36 @@
                         "type": "string"
                       },
                       "organizationType": {
-                        "description": "The type of the organizational entity being added. O=Organization; OU=Organizational Unit.",
-                        "type": "string"
+                        "description": "The type of the organizational entity being added. The value can be set when creating an organization, but is otherwise read-only. Available values: <br>* O - Organization.<br>* OU - Organization Unit.",
+                        "type": "string",
+                        "readOnly": true
                       },
                       "parentOrganizationId": {
-                        "description": "If the organization type is an organizational unit (OU), parentOrganizationId is the unique ID of the parent organization of this organization. If the organization type is an organization (O), parentOrganizationId is not required and the default value is the root organization (-2001). Can be set when creating an organization, but is read only otherwise.",
+                        "description": "If the organization type is an organizational unit (OU), parentOrganizationId is the unique ID of the parent organization of this organization. If the organization type is an organization (O), parentOrganizationId is not required and the default value is the root organization (-2001). The value can be set when creating an organization, but is otherwise read-only.",
                         "type": "integer",
                         "format": "int64"
                       },
                       "parentOrganizationName": {
                         "description": "The name of this organization's parent.",
-                        "type": "string"
+                        "type": "string",
+                        "readOnly": true
                       },
                       "preferredDelivery": {
                         "description": "The registrant's preferred mode of delivery.",
                         "type": "string"
                       },
                       "status": {
-                        "description": "Whether or not the organization is locked. A value of 0 indicates the organization is unlocked, and a value of -1 indicates the organization is locked.",
+                        "description": "Whether or not the organization is locked. Available values: <br> * 0 - The organization is unlocked.<br> * -1 - The organization is locked.",
+                        "enum": [
+                          0,
+                          -1
+                        ],
                         "format": "int32",
-                        "type": "integer"
+                        "type": "integer",
+                        "readOnly": true
                       },
                       "taxPayerId": {
                         "description": "A string used to identify the user for taxation, especially useful with tax software.",
-                        "type": "string"
-                      },
-                      "type": {
-                        "description": "The type of data bean returning this information. Supported values are: O (OrgEntity), U (User), and G (MemberGroup).",
                         "type": "string"
                       }
                     }
@@ -7461,7 +7565,8 @@
                       "id": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "The unique numeric ID for identifying the user."
+                        "description": "The unique numeric ID for identifying the user.",
+                        "readOnly": true
                       },
                       "address": {
                         "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
@@ -7485,11 +7590,11 @@
                           },
                           "addressType": {
                             "type": "string",
-                            "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                            "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                           },
                           "bestCallingTime": {
                             "type": "string",
-                            "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                            "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                           },
                           "billingCode": {
                             "type": "string",
@@ -7555,7 +7660,7 @@
                           "memberId": {
                             "type": "integer",
                             "format": "int64",
-                            "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                            "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                           },
                           "middleName": {
                             "type": "string",
@@ -7571,7 +7676,7 @@
                           },
                           "nickName": {
                             "type": "string",
-                            "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                            "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                           },
                           "officeAddress": {
                             "type": "string",
@@ -7587,7 +7692,11 @@
                           },
                           "packageSuppression": {
                             "type": "integer",
-                            "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                            "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                            "enum": [
+                              0,
+                              1
+                            ]
                           },
                           "personTitle": {
                             "type": "string",
@@ -7611,19 +7720,36 @@
                           },
                           "primary": {
                             "type": "integer",
-                            "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                            "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                            "default": 0,
+                            "enum": [
+                              0,
+                              1
+                            ]
                           },
                           "publishPhone1": {
                             "type": "integer",
-                            "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                            "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                            "enum": [
+                              0,
+                              1
+                            ]
                           },
                           "publishPhone2": {
                             "type": "integer",
-                            "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                            "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                            "enum": [
+                              0,
+                              1
+                            ]
                           },
                           "selfAddress": {
                             "type": "integer",
-                            "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                            "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                            "enum": [
+                              0,
+                              1
+                            ],
                             "readOnly": true
                           },
                           "shippingGeoCode": {
@@ -7636,7 +7762,7 @@
                           },
                           "status": {
                             "type": "string",
-                            "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                            "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                             "readOnly": true
                           },
                           "taxGeoCode": {
@@ -7657,13 +7783,14 @@
                       "approvalState": {
                         "type": "integer",
                         "format": "int32",
-                        "description": "The registrant's approval status. Supported values are 0 (pending approval), 1 (approved), 2 (rejected), 3 (pending email activation) and null (approval not applicable, so considered approved).",
+                        "description": "The organizational entity's approval status. Available values: <br>* 0 - pending approval.<br>* 1 - approved.<br>* 2 - rejected.<br>* null - approval not applicable, so considered approved.",
                         "readOnly": true
                       },
                       "createdDateTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "The date and time that the registrant was registered."
+                        "description": "The date and time that the registrant was registered.",
+                        "readOnly": true
                       },
                       "dateOfBirth": {
                         "type": "string",
@@ -7702,16 +7829,18 @@
                       "updatedDateTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "The date and time representing the most recent update to the registrant's information."
+                        "description": "The date and time representing the most recent update to the registrant's information.",
+                        "readOnly": true
                       },
                       "lastSession": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "The date and time representing the most recent login time of the user."
+                        "description": "The date and time representing the most recent login time of the user.",
+                        "readOnly": true
                       },
                       "logonId": {
                         "type": "string",
-                        "description": "The registrant's logon ID. Leading and trailing spaces are trimmed. When the system is configured with LDAP, the following restrictions apply, since the logonId is part of the distinguished name: Must not begin with a '#'; Must not contain equals sign, comma, plus sign, quotation mark, backslash, angle brackets or semicolon."
+                        "description": "The registrant's logon ID. Leading and trailing spaces are trimmed. When the system is configured with LDAP, the following restrictions apply, since the logonId is part of the distinguished name: <br>* Must not begin with a '#'.<br>* Must not contain equals sign, comma, plus sign, quotation mark, backslash, angle brackets or semicolon."
                       },
                       "manager": {
                         "type": "string",
@@ -7720,12 +7849,12 @@
                       "parentOrganizationId": {
                         "type": "integer",
                         "format": "int64",
-                        "readOnly": true,
-                        "description": "The identifier of the registrant's company."
+                        "description": "The identifier of the registrant's company. Can be set when the user is created, but is otherwise read-only."
                       },
                       "parentOrganizationName": {
                         "type": "string",
-                        "description": "The name of the organization that the registrant represents."
+                        "description": "The name of the organization that the registrant represents.",
+                        "readOnly": true
                       },
                       "password": {
                         "type": "string",
@@ -7750,7 +7879,7 @@
                       },
                       "profileType": {
                         "default": "B",
-                        "description": "The registrant's user profile type. Available values: <br>* B - A business user profile.<br>* C - A customer user profile.",
+                        "description": "The registrant's user profile type. Available values: <br> * B - A business user profile.<br> * C - A customer user profile.",
                         "enum": [
                           "B",
                           "C"
@@ -7764,7 +7893,7 @@
                       },
                       "registrationType": {
                         "type": "string",
-                        "description": "The registrant's registration type. Supported values are S (Site Administrator), A (Sell-side Administrator), R (Registered Customer) and G (Guest Customer).",
+                        "description": "The registrant's registration type. Available values: <br>* A - Sell-side Administrator.<br> * G - Guest Customer.<br> * R - Registered Customer.<br> * S - Site Administrator.<br>",
                         "readOnly": true
                       },
                       "secretary": {
@@ -7774,7 +7903,7 @@
                       "status": {
                         "type": "integer",
                         "format": "int32",
-                        "description": "Whether or not the user's account is enabled. Supported values are 1 (enabled) and 0 (disabled)."
+                        "description": "Whether or not the user's account is enabled. Available values: <br> * 0 - Disabled.<br> * 1 - Enabled."
                       },
                       "userAccountPolicyId": {
                         "type": "integer",
@@ -8064,7 +8193,8 @@
                 "id": {
                   "type": "integer",
                   "format": "int64",
-                  "description": "The unique numeric ID for identifying the user."
+                  "description": "The unique numeric ID for identifying the user.",
+                  "readOnly": true
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
@@ -8088,11 +8218,11 @@
                     },
                     "addressType": {
                       "type": "string",
-                      "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                      "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                     },
                     "bestCallingTime": {
                       "type": "string",
-                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                     },
                     "billingCode": {
                       "type": "string",
@@ -8158,7 +8288,7 @@
                     "memberId": {
                       "type": "integer",
                       "format": "int64",
-                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "middleName": {
                       "type": "string",
@@ -8174,7 +8304,7 @@
                     },
                     "nickName": {
                       "type": "string",
-                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "officeAddress": {
                       "type": "string",
@@ -8190,7 +8320,11 @@
                     },
                     "packageSuppression": {
                       "type": "integer",
-                      "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                      "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "personTitle": {
                       "type": "string",
@@ -8214,19 +8348,36 @@
                     },
                     "primary": {
                       "type": "integer",
-                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                      "default": 0,
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone1": {
                       "type": "integer",
-                      "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone2": {
                       "type": "integer",
-                      "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "selfAddress": {
                       "type": "integer",
-                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ],
                       "readOnly": true
                     },
                     "shippingGeoCode": {
@@ -8239,7 +8390,7 @@
                     },
                     "status": {
                       "type": "string",
-                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                       "readOnly": true
                     },
                     "taxGeoCode": {
@@ -8260,13 +8411,14 @@
                 "approvalState": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "The registrant's approval status. Supported values are 0 (pending approval), 1 (approved), 2 (rejected), 3 (pending email activation) and null (approval not applicable, so considered approved).",
+                  "description": "The organizational entity's approval status. Available values: <br>* 0 - pending approval.<br>* 1 - approved.<br>* 2 - rejected.<br>* null - approval not applicable, so considered approved.",
                   "readOnly": true
                 },
                 "createdDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time that the registrant was registered."
+                  "description": "The date and time that the registrant was registered.",
+                  "readOnly": true
                 },
                 "dateOfBirth": {
                   "type": "string",
@@ -8305,16 +8457,18 @@
                 "updatedDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time representing the most recent update to the registrant's information."
+                  "description": "The date and time representing the most recent update to the registrant's information.",
+                  "readOnly": true
                 },
                 "lastSession": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time representing the most recent login time of the user."
+                  "description": "The date and time representing the most recent login time of the user.",
+                  "readOnly": true
                 },
                 "logonId": {
                   "type": "string",
-                  "description": "The registrant's logon ID. Leading and trailing spaces are trimmed. When the system is configured with LDAP, the following restrictions apply, since the logonId is part of the distinguished name: Must not begin with a '#'; Must not contain equals sign, comma, plus sign, quotation mark, backslash, angle brackets or semicolon."
+                  "description": "The registrant's logon ID. Leading and trailing spaces are trimmed. When the system is configured with LDAP, the following restrictions apply, since the logonId is part of the distinguished name: <br>* Must not begin with a '#'.<br>* Must not contain equals sign, comma, plus sign, quotation mark, backslash, angle brackets or semicolon."
                 },
                 "manager": {
                   "type": "string",
@@ -8323,12 +8477,12 @@
                 "parentOrganizationId": {
                   "type": "integer",
                   "format": "int64",
-                  "readOnly": true,
-                  "description": "The identifier of the registrant's company."
+                  "description": "The identifier of the registrant's company. Can be set when the user is created, but is otherwise read-only."
                 },
                 "parentOrganizationName": {
                   "type": "string",
-                  "description": "The name of the organization that the registrant represents."
+                  "description": "The name of the organization that the registrant represents.",
+                  "readOnly": true
                 },
                 "password": {
                   "type": "string",
@@ -8353,7 +8507,7 @@
                 },
                 "profileType": {
                   "default": "B",
-                  "description": "The registrant's user profile type. Available values: <br>* B - A business user profile.<br>* C - A customer user profile.",
+                  "description": "The registrant's user profile type. Available values: <br> * B - A business user profile.<br> * C - A customer user profile.",
                   "enum": [
                     "B",
                     "C"
@@ -8367,7 +8521,7 @@
                 },
                 "registrationType": {
                   "type": "string",
-                  "description": "The registrant's registration type. Supported values are S (Site Administrator), A (Sell-side Administrator), R (Registered Customer) and G (Guest Customer).",
+                  "description": "The registrant's registration type. Available values: <br>* A - Sell-side Administrator.<br> * G - Guest Customer.<br> * R - Registered Customer.<br> * S - Site Administrator.<br>",
                   "readOnly": true
                 },
                 "secretary": {
@@ -8377,7 +8531,7 @@
                 "status": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "Whether or not the user's account is enabled. Supported values are 1 (enabled) and 0 (disabled)."
+                  "description": "Whether or not the user's account is enabled. Available values: <br> * 0 - Disabled.<br> * 1 - Enabled."
                 },
                 "userAccountPolicyId": {
                   "type": "integer",
@@ -8826,7 +8980,8 @@
                 "id": {
                   "type": "integer",
                   "format": "int64",
-                  "description": "The unique numeric ID for identifying the user."
+                  "description": "The unique numeric ID for identifying the user.",
+                  "readOnly": true
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
@@ -8850,11 +9005,11 @@
                     },
                     "addressType": {
                       "type": "string",
-                      "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                      "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                     },
                     "bestCallingTime": {
                       "type": "string",
-                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                     },
                     "billingCode": {
                       "type": "string",
@@ -8920,7 +9075,7 @@
                     "memberId": {
                       "type": "integer",
                       "format": "int64",
-                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "middleName": {
                       "type": "string",
@@ -8936,7 +9091,7 @@
                     },
                     "nickName": {
                       "type": "string",
-                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "officeAddress": {
                       "type": "string",
@@ -8952,7 +9107,11 @@
                     },
                     "packageSuppression": {
                       "type": "integer",
-                      "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                      "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "personTitle": {
                       "type": "string",
@@ -8976,19 +9135,36 @@
                     },
                     "primary": {
                       "type": "integer",
-                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                      "default": 0,
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone1": {
                       "type": "integer",
-                      "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone2": {
                       "type": "integer",
-                      "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "selfAddress": {
                       "type": "integer",
-                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ],
                       "readOnly": true
                     },
                     "shippingGeoCode": {
@@ -9001,7 +9177,7 @@
                     },
                     "status": {
                       "type": "string",
-                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                       "readOnly": true
                     },
                     "taxGeoCode": {
@@ -9022,13 +9198,14 @@
                 "approvalState": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "The registrant's approval status. Supported values are 0 (pending approval), 1 (approved), 2 (rejected), 3 (pending email activation) and null (approval not applicable, so considered approved).",
+                  "description": "The organizational entity's approval status. Available values: <br>* 0 - pending approval.<br>* 1 - approved.<br>* 2 - rejected.<br>* null - approval not applicable, so considered approved.",
                   "readOnly": true
                 },
                 "createdDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time that the registrant was registered."
+                  "description": "The date and time that the registrant was registered.",
+                  "readOnly": true
                 },
                 "dateOfBirth": {
                   "type": "string",
@@ -9067,16 +9244,18 @@
                 "updatedDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time representing the most recent update to the registrant's information."
+                  "description": "The date and time representing the most recent update to the registrant's information.",
+                  "readOnly": true
                 },
                 "lastSession": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time representing the most recent login time of the user."
+                  "description": "The date and time representing the most recent login time of the user.",
+                  "readOnly": true
                 },
                 "logonId": {
                   "type": "string",
-                  "description": "The registrant's logon ID. Leading and trailing spaces are trimmed. When the system is configured with LDAP, the following restrictions apply, since the logonId is part of the distinguished name: Must not begin with a '#'; Must not contain equals sign, comma, plus sign, quotation mark, backslash, angle brackets or semicolon."
+                  "description": "The registrant's logon ID. Leading and trailing spaces are trimmed. When the system is configured with LDAP, the following restrictions apply, since the logonId is part of the distinguished name: <br>* Must not begin with a '#'.<br>* Must not contain equals sign, comma, plus sign, quotation mark, backslash, angle brackets or semicolon."
                 },
                 "manager": {
                   "type": "string",
@@ -9085,12 +9264,12 @@
                 "parentOrganizationId": {
                   "type": "integer",
                   "format": "int64",
-                  "readOnly": true,
-                  "description": "The identifier of the registrant's company."
+                  "description": "The identifier of the registrant's company. Can be set when the user is created, but is otherwise read-only."
                 },
                 "parentOrganizationName": {
                   "type": "string",
-                  "description": "The name of the organization that the registrant represents."
+                  "description": "The name of the organization that the registrant represents.",
+                  "readOnly": true
                 },
                 "password": {
                   "type": "string",
@@ -9115,7 +9294,7 @@
                 },
                 "profileType": {
                   "default": "B",
-                  "description": "The registrant's user profile type. Available values: <br>* B - A business user profile.<br>* C - A customer user profile.",
+                  "description": "The registrant's user profile type. Available values: <br> * B - A business user profile.<br> * C - A customer user profile.",
                   "enum": [
                     "B",
                     "C"
@@ -9129,7 +9308,7 @@
                 },
                 "registrationType": {
                   "type": "string",
-                  "description": "The registrant's registration type. Supported values are S (Site Administrator), A (Sell-side Administrator), R (Registered Customer) and G (Guest Customer).",
+                  "description": "The registrant's registration type. Available values: <br>* A - Sell-side Administrator.<br> * G - Guest Customer.<br> * R - Registered Customer.<br> * S - Site Administrator.<br>",
                   "readOnly": true
                 },
                 "secretary": {
@@ -9139,7 +9318,7 @@
                 "status": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "Whether or not the user's account is enabled. Supported values are 1 (enabled) and 0 (disabled)."
+                  "description": "Whether or not the user's account is enabled. Available values: <br> * 0 - Disabled.<br> * 1 - Enabled."
                 },
                 "userAccountPolicyId": {
                   "type": "integer",
@@ -9384,7 +9563,8 @@
                 "id": {
                   "type": "integer",
                   "format": "int64",
-                  "description": "The unique numeric ID for identifying the user."
+                  "description": "The unique numeric ID for identifying the user.",
+                  "readOnly": true
                 },
                 "address": {
                   "description": "The addresses of users and organizations. An address can be the a user's own address or alternative address that is used for billing or shipping purposes.",
@@ -9408,11 +9588,11 @@
                     },
                     "addressType": {
                       "type": "string",
-                      "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                      "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                     },
                     "bestCallingTime": {
                       "type": "string",
-                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                      "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                     },
                     "billingCode": {
                       "type": "string",
@@ -9478,7 +9658,7 @@
                     "memberId": {
                       "type": "integer",
                       "format": "int64",
-                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                      "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "middleName": {
                       "type": "string",
@@ -9494,7 +9674,7 @@
                     },
                     "nickName": {
                       "type": "string",
-                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                      "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                     },
                     "officeAddress": {
                       "type": "string",
@@ -9510,7 +9690,11 @@
                     },
                     "packageSuppression": {
                       "type": "integer",
-                      "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                      "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "personTitle": {
                       "type": "string",
@@ -9534,19 +9718,36 @@
                     },
                     "primary": {
                       "type": "integer",
-                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                      "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                      "default": 0,
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone1": {
                       "type": "integer",
-                      "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "publishPhone2": {
                       "type": "integer",
-                      "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                      "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ]
                     },
                     "selfAddress": {
                       "type": "integer",
-                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                      "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                      "enum": [
+                        0,
+                        1
+                      ],
                       "readOnly": true
                     },
                     "shippingGeoCode": {
@@ -9559,7 +9760,7 @@
                     },
                     "status": {
                       "type": "string",
-                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                      "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                       "readOnly": true
                     },
                     "taxGeoCode": {
@@ -9580,13 +9781,14 @@
                 "approvalState": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "The registrant's approval status. Supported values are 0 (pending approval), 1 (approved), 2 (rejected), 3 (pending email activation) and null (approval not applicable, so considered approved).",
+                  "description": "The organizational entity's approval status. Available values: <br>* 0 - pending approval.<br>* 1 - approved.<br>* 2 - rejected.<br>* null - approval not applicable, so considered approved.",
                   "readOnly": true
                 },
                 "createdDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time that the registrant was registered."
+                  "description": "The date and time that the registrant was registered.",
+                  "readOnly": true
                 },
                 "dateOfBirth": {
                   "type": "string",
@@ -9625,16 +9827,18 @@
                 "updatedDateTime": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time representing the most recent update to the registrant's information."
+                  "description": "The date and time representing the most recent update to the registrant's information.",
+                  "readOnly": true
                 },
                 "lastSession": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "The date and time representing the most recent login time of the user."
+                  "description": "The date and time representing the most recent login time of the user.",
+                  "readOnly": true
                 },
                 "logonId": {
                   "type": "string",
-                  "description": "The registrant's logon ID. Leading and trailing spaces are trimmed. When the system is configured with LDAP, the following restrictions apply, since the logonId is part of the distinguished name: Must not begin with a '#'; Must not contain equals sign, comma, plus sign, quotation mark, backslash, angle brackets or semicolon."
+                  "description": "The registrant's logon ID. Leading and trailing spaces are trimmed. When the system is configured with LDAP, the following restrictions apply, since the logonId is part of the distinguished name: <br>* Must not begin with a '#'.<br>* Must not contain equals sign, comma, plus sign, quotation mark, backslash, angle brackets or semicolon."
                 },
                 "manager": {
                   "type": "string",
@@ -9643,12 +9847,12 @@
                 "parentOrganizationId": {
                   "type": "integer",
                   "format": "int64",
-                  "readOnly": true,
-                  "description": "The identifier of the registrant's company."
+                  "description": "The identifier of the registrant's company. Can be set when the user is created, but is otherwise read-only."
                 },
                 "parentOrganizationName": {
                   "type": "string",
-                  "description": "The name of the organization that the registrant represents."
+                  "description": "The name of the organization that the registrant represents.",
+                  "readOnly": true
                 },
                 "password": {
                   "type": "string",
@@ -9673,7 +9877,7 @@
                 },
                 "profileType": {
                   "default": "B",
-                  "description": "The registrant's user profile type. Available values: <br>* B - A business user profile.<br>* C - A customer user profile.",
+                  "description": "The registrant's user profile type. Available values: <br> * B - A business user profile.<br> * C - A customer user profile.",
                   "enum": [
                     "B",
                     "C"
@@ -9687,7 +9891,7 @@
                 },
                 "registrationType": {
                   "type": "string",
-                  "description": "The registrant's registration type. Supported values are S (Site Administrator), A (Sell-side Administrator), R (Registered Customer) and G (Guest Customer).",
+                  "description": "The registrant's registration type. Available values: <br>* A - Sell-side Administrator.<br> * G - Guest Customer.<br> * R - Registered Customer.<br> * S - Site Administrator.<br>",
                   "readOnly": true
                 },
                 "secretary": {
@@ -9697,7 +9901,7 @@
                 "status": {
                   "type": "integer",
                   "format": "int32",
-                  "description": "Whether or not the user's account is enabled. Supported values are 1 (enabled) and 0 (disabled)."
+                  "description": "Whether or not the user's account is enabled. Available values: <br> * 0 - Disabled.<br> * 1 - Enabled."
                 },
                 "userAccountPolicyId": {
                   "type": "integer",
@@ -12190,11 +12394,11 @@
                       },
                       "addressType": {
                         "type": "string",
-                        "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                        "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                       },
                       "bestCallingTime": {
                         "type": "string",
-                        "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                        "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                       },
                       "billingCode": {
                         "type": "string",
@@ -12260,7 +12464,7 @@
                       "memberId": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                        "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                       },
                       "middleName": {
                         "type": "string",
@@ -12276,7 +12480,7 @@
                       },
                       "nickName": {
                         "type": "string",
-                        "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                        "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                       },
                       "officeAddress": {
                         "type": "string",
@@ -12292,7 +12496,11 @@
                       },
                       "packageSuppression": {
                         "type": "integer",
-                        "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                        "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                        "enum": [
+                          0,
+                          1
+                        ]
                       },
                       "personTitle": {
                         "type": "string",
@@ -12316,19 +12524,36 @@
                       },
                       "primary": {
                         "type": "integer",
-                        "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                        "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                        "default": 0,
+                        "enum": [
+                          0,
+                          1
+                        ]
                       },
                       "publishPhone1": {
                         "type": "integer",
-                        "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                        "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                        "enum": [
+                          0,
+                          1
+                        ]
                       },
                       "publishPhone2": {
                         "type": "integer",
-                        "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                        "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                        "enum": [
+                          0,
+                          1
+                        ]
                       },
                       "selfAddress": {
                         "type": "integer",
-                        "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                        "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                        "enum": [
+                          0,
+                          1
+                        ],
                         "readOnly": true
                       },
                       "shippingGeoCode": {
@@ -12341,7 +12566,7 @@
                       },
                       "status": {
                         "type": "string",
-                        "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                        "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                         "readOnly": true
                       },
                       "taxGeoCode": {
@@ -12871,11 +13096,11 @@
                 },
                 "addressType": {
                   "type": "string",
-                  "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                  "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                 },
                 "bestCallingTime": {
                   "type": "string",
-                  "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                  "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                 },
                 "billingCode": {
                   "type": "string",
@@ -12941,7 +13166,7 @@
                 "memberId": {
                   "type": "integer",
                   "format": "int64",
-                  "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                  "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                 },
                 "middleName": {
                   "type": "string",
@@ -12957,7 +13182,7 @@
                 },
                 "nickName": {
                   "type": "string",
-                  "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                  "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                 },
                 "officeAddress": {
                   "type": "string",
@@ -12973,7 +13198,11 @@
                 },
                 "packageSuppression": {
                   "type": "integer",
-                  "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                  "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "personTitle": {
                   "type": "string",
@@ -12997,19 +13226,36 @@
                 },
                 "primary": {
                   "type": "integer",
-                  "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                  "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                  "default": 0,
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "publishPhone1": {
                   "type": "integer",
-                  "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                  "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "publishPhone2": {
                   "type": "integer",
-                  "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                  "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "selfAddress": {
                   "type": "integer",
-                  "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                  "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ],
                   "readOnly": true
                 },
                 "shippingGeoCode": {
@@ -13022,7 +13268,7 @@
                 },
                 "status": {
                   "type": "string",
-                  "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                  "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                   "readOnly": true
                 },
                 "taxGeoCode": {
@@ -13077,11 +13323,11 @@
                 },
                 "addressType": {
                   "type": "string",
-                  "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                  "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                 },
                 "bestCallingTime": {
                   "type": "string",
-                  "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                  "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                 },
                 "billingCode": {
                   "type": "string",
@@ -13147,7 +13393,7 @@
                 "memberId": {
                   "type": "integer",
                   "format": "int64",
-                  "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                  "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                 },
                 "middleName": {
                   "type": "string",
@@ -13163,7 +13409,7 @@
                 },
                 "nickName": {
                   "type": "string",
-                  "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                  "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                 },
                 "officeAddress": {
                   "type": "string",
@@ -13179,7 +13425,11 @@
                 },
                 "packageSuppression": {
                   "type": "integer",
-                  "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                  "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "personTitle": {
                   "type": "string",
@@ -13203,19 +13453,36 @@
                 },
                 "primary": {
                   "type": "integer",
-                  "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                  "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                  "default": 0,
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "publishPhone1": {
                   "type": "integer",
-                  "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                  "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "publishPhone2": {
                   "type": "integer",
-                  "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                  "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "selfAddress": {
                   "type": "integer",
-                  "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                  "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ],
                   "readOnly": true
                 },
                 "shippingGeoCode": {
@@ -13228,7 +13495,7 @@
                 },
                 "status": {
                   "type": "string",
-                  "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                  "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                   "readOnly": true
                 },
                 "taxGeoCode": {
@@ -13938,11 +14205,11 @@
                 },
                 "addressType": {
                   "type": "string",
-                  "description": "The usage of the address. Available values:<br>  SB - The address is used both as a shipping and a billing address.<br>  S - The address is used as a shipping address.<br>  B - The address is used as a billing address."
+                  "description": "The usage of the address. Available values:<br> * SB - The address is used both as a shipping and a billing address.<br> * S - The address is used as a shipping address.<br> * B - The address is used as a billing address."
                 },
                 "bestCallingTime": {
                   "type": "string",
-                  "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br>  D - Daytime.<br>  E - Evening."
+                  "description": "Indicates the preferred time of day when the user is to be contacted. Available values:<br> * D - Daytime.<br> * E - Evening."
                 },
                 "billingCode": {
                   "type": "string",
@@ -14008,7 +14275,7 @@
                 "memberId": {
                   "type": "integer",
                   "format": "int64",
-                  "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on)."
+                  "description": "The unique numeric ID for identifying the member that this address belongs to. A member can be an organization or a user. If memberId is not specified, then the default is the current user (the user who is logging on). The value cannot be set or updated by users or organizations REST APIs."
                 },
                 "middleName": {
                   "type": "string",
@@ -14024,7 +14291,7 @@
                 },
                 "nickName": {
                   "type": "string",
-                  "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname."
+                  "description": "The unique name or identifier for the address. A nickname must be unique among the addresses for a specific user or organization. The nickname for a user's address must also be different than the logon ID for a user so that the address does not conflict with the user's self-address. The self-address is created when the account for the user is first created. Multiple users or organizations can each have an address with the same nickname. The value cannot be set or updated by users or organizations REST APIs."
                 },
                 "officeAddress": {
                   "type": "string",
@@ -14040,7 +14307,11 @@
                 },
                 "packageSuppression": {
                   "type": "integer",
-                  "description": "Specifies whether or not to include package inserts. Available values:<br>  1 - Include.<br>  0 - Do not include."
+                  "description": "Specifies whether or not to include package inserts. Available values:<br> * 1 - Include.<br> * 0 - Do not include.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "personTitle": {
                   "type": "string",
@@ -14064,19 +14335,36 @@
                 },
                 "primary": {
                   "type": "integer",
-                  "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. Available values:<br>  1 - The address is the primary address.<br>  0 - (Default value) The address is an alternate address."
+                  "description": "Indicates that the address is the primary address for the user or organization when the user or organization has multiple addresses associated, such as when a user or organization has multiple shipping addresses. The value cannot be set or updated by users or organizations REST APIs. Available values:<br> * 1 - The address is the primary address.<br> * 0 - (Default value) The address is an alternate address.",
+                  "default": 0,
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "publishPhone1": {
                   "type": "integer",
-                  "description": "Whether to list the primary phone number. Available values: 1 - Yes, 0 - No."
+                  "description": "Whether to list the primary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "publishPhone2": {
                   "type": "integer",
-                  "description": "Whether to list the secondary phone number. Available values: 1 - Yes, 0 - No."
+                  "description": "Whether to list the secondary phone number. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ]
                 },
                 "selfAddress": {
                   "type": "integer",
-                  "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: 1 - Yes, 0 - No.",
+                  "description": "Indicates whether the address is associated with the registration of the user or organization. This value cannot be edited after address creation. Available values: <br> * 1 - Yes.<br> * 0 - No.",
+                  "enum": [
+                    0,
+                    1
+                  ],
                   "readOnly": true
                 },
                 "shippingGeoCode": {
@@ -14089,7 +14377,7 @@
                 },
                 "status": {
                   "type": "string",
-                  "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", and indicates that the address is the historical address. This value cannot be edited.",
+                  "description": "Indicates the status of the address. When an address is created, its status is marked with a \"P\", meaning \"permanent\", and indicates that the address is the current address. When an address is updated, a new record of the address is created with the updates. The new record is marked with a \"P\" and the earlier record is marked with a \"T\", meaning \"temporary\", which indicates that the address is the historical address. This value cannot be edited.",
                   "readOnly": true
                 },
                 "taxGeoCode": {
@@ -27297,6 +27585,737 @@
         ],
         "operationId": "ApprovalStatus-updateApprovalStatus"
       }
+    },
+    "/rest/admin/v2/role-descriptions": {
+      "get": {
+        "tags": [
+          "role-descriptions"
+        ],
+        "description": "Get a collection of role descriptions.",
+        "operationId": "getRoleDescriptions",
+        "parameters": [
+          {
+            "name": "roleId",
+            "in": "query",
+            "description": "The unique numeric ID for identifying the role.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "The language of the description. For a list of integer language identifiers, refer to the Knowledge Center.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "displayName",
+            "in": "query",
+            "description": "The name of the role.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "description": "The description of the role.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The position within the resulting dataset where the query begins returning item records. If the offset is \"5\", the records that returned begin with the sixth record that matches the query parameters. If the offset is \"0\", the records that are returned begin with the first record that matches the query parameters.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of records to return.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "The comma-separated set of properties to be returned. If no properties are specified, all properties are returned.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "description": "The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of role descriptions.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "The total number of items."
+                },
+                "items": {
+                  "type": "array",
+                  "description": "The items.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "roleId": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The unique numeric ID for identifying the role."
+                      },
+                      "languageId": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The language of the description. For a list of integer language identifiers, refer to the Knowledge Center."
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "The name of the role."
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "The description of the role."
+                      }
+                    },
+                    "description": "The role description."
+                  }
+                }
+              },
+              "description": "A collection of role descriptions."
+            }
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "role-descriptions"
+        ],
+        "description": "Create a role description.",
+        "operationId": "createRoleDescription",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "RoleDescription",
+            "description": "The role description.",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The unique numeric ID for identifying the role."
+                },
+                "languageId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The language of the description. For a list of integer language identifiers, refer to the Knowledge Center."
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "The name of the role."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The description of the role."
+                }
+              },
+              "description": "The role description."
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The operation was successful."
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          }
+        }
+      }
+    },
+    "/rest/admin/v2/role-descriptions/roleId:{roleId},languageId:{languageId}": {
+      "get": {
+        "tags": [
+          "role-descriptions"
+        ],
+        "description": "Get a role description.",
+        "operationId": "getRoleDescriptionById",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "The comma-separated set of properties to be returned. If no properties are specified, all properties are returned.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "description": "The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The role description.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The unique numeric ID for identifying the role."
+                },
+                "languageId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The language of the description. For a list of integer language identifiers, refer to the Knowledge Center."
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "The name of the role."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The description of the role."
+                }
+              },
+              "description": "The role description."
+            }
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          },
+          "404": {
+            "description": "The resource was not found."
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "role-descriptions"
+        ],
+        "description": "Delete a role description.",
+        "operationId": "deleteRoleDescriptionById",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "The operation was successful."
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          },
+          "404": {
+            "description": "The resource was not found."
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "role-descriptions"
+        ],
+        "description": "Update a role description.",
+        "operationId": "updateRoleDescriptionById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "RoleDescription",
+            "description": "The role description.",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The unique numeric ID for identifying the role."
+                },
+                "languageId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The language of the description. For a list of integer language identifiers, refer to the Knowledge Center."
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "The name of the role."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The description of the role."
+                }
+              },
+              "description": "The role description."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation was successful."
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          },
+          "404": {
+            "description": "The resource was not found."
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "messageKey": {
+                        "type": "string"
+                      },
+                      "messageArguments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "correlationId": {
+                        "type": "string"
+                      },
+                      "locale": {
+                        "type": "string"
+                      }
+                    },
+                    "description": "The error message item model."
+                  }
+                }
+              },
+              "description": "The error message model."
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "roleId",
+          "in": "path",
+          "description": "The unique numeric ID for identifying the role.",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        {
+          "name": "languageId",
+          "in": "path",
+          "description": "The language of the description. For a list of integer language identifiers, refer to the Knowledge Center.",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        }
+      ]
     },
     "/wcs/resources/store/{storeId}/storelocator/byLocation": {
       "get": {
