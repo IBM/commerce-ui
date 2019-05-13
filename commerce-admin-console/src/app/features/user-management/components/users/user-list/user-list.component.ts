@@ -17,7 +17,8 @@ export class UserListComponent implements OnInit {
 
 	constructor(private router: Router,
 		private usersService: UsersService,
-		private translateService: TranslateService) { }
+		private translateService: TranslateService,
+		private userMainService: UserMainService) { }
 
 	userListData: any;
 	id: any;
