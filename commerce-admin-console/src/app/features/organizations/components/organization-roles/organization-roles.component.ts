@@ -56,7 +56,7 @@ export class OrganizationRolesComponent implements OnInit {
 
   routeOrganizationContact() {
     this.orgMainService.rolesBackCall = true;
-    this.router.navigate(['users/userContact']);
+    this.router.navigate(['users/user-contact']);
     this.router.navigate(['organizations/organizationContact']);
   }
   routeOrganizationList() {

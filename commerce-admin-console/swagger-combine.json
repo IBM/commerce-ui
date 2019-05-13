@@ -54,6 +54,18 @@
       }
     },
     {
+      "url": "../../commerce-api-management/spec/swagger20/admin/approval_status.json",
+      "paths": {
+        "rename": [
+          {
+            "type": "regex",
+            "from": "(.*)",
+            "to": "/rest/admin/v2$1"
+          }
+        ]
+      }
+    },
+    {
       "url": "./api_definition/user-account-policy-descriptions.json",
       "paths": {
         "rename": [

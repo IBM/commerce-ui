@@ -90,7 +90,7 @@ export class UserGroupsComponent implements OnInit {
  }, 1500);
     }
     backClick() {
-      this.router.navigate(['users/userRoles']);
+      this.router.navigate(['users/user-roles']);
     }
     cancelClick() {
     this.router.navigate(['users']);
