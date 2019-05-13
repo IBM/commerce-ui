@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
-      <form [formGroup]="approvalsForm" (ngSubmit)="onSubmit()">
+     
         <div class="bx--row main-content">
           <div class="bx--col-sm-11 bx--col-md-11 inside-content">
 
@@ -42,12 +42,9 @@
                 <div class="aval-grp-txt">
                   <span>{{'MANAGE_USER.ORGANISATION_APPROVALS.AVAILABLE_APPROVALS' | translate}}</span>
                 </div>
-                <input ibmText class="inputbx" formControlName="availableApprovals" #refApprovals id="available-approvals"
+                <input ibmText class="inputbx"  #refApprovals id="available-approvals"
                   placeholder="Find approvals">
-                <!--Validation for the Available roles field.-->
-                <div class="errorField" *ngIf="approvalsForm.controls['availableApprovals'].hasError('required')">
-                  Available Approvals is the Mandatory field.
-                </div>
+                
                 <ul class="table_data">
                   <li *ngFor="let approvalList of approvalListData">
                     <ibm-checkbox (change)="onChange($event)">
@@ -60,11 +57,7 @@
                 <span>{{'MANAGE_USER.ORGANISATION_APPROVALS.ITEMS' | translate}}</span>
               </div>
             </div>
-
-
-
-
-
+          </div>
           </div>
           <div class="bx--row footer-content">
             <div class="bx--col-sm-12 bx--col-md-12 inside-footer">
@@ -73,13 +66,14 @@
                 <div class="bx--col-sm-10 bx--col-md-10 footer-btn-margin">
                   <button ibmButton="ghost" size="normal" id="save-preview" class="cancel-button" (click)="routeOrganizationList()" >{{'MANAGE_USER.ORGANISATION_APPROVALS.CANCEL' | translate}}</button>
                   <button ibmButton size="normal" id="save-preview" class="back-button" (click)="routeOrganizationRoles()">{{'MANAGE_USER.ORGANISATION_APPROVALS.BACK' | translate}}</button>
-                  <button ibmButton size="normal" id="save-preview" class="next-button" type="submit" [disabled]="!approvalsForm.valid">{{'MANAGE_USER.ORGANISATION_APPROVALS.SUBMIT' | translate}}</button>
+                  <button ibmButton size="normal" type="button" id="save-preview" class="next-button" (click)="RoutonOrganizations()">{{'MANAGE_USER.ORGANISATION_APPROVALS.SUBMIT' | translate}}</button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </form>
+        
+      
     </div>
   </div>
 </div>
+
