@@ -177,5 +177,33 @@ let orgService : OrganizationsService;
   // }));
 
 
+  it('testing of the user list service', () => {
+    const response = {
+                resultCount: 1,
+                results: [
+                    {
+                      name: 'SRIMAN',
+                      parentOrganizationName: 'HCL',
+                      organizationType: 'Finance'
+                    }
+                ]
+            };
+            fixture.detectChanges();
+            expect(response.resultCount).toBe(1);
+            expect(response.results[0].name).toBe('SRIMAN');
+            expect(response.results[0].parentOrganizationName).toBe('HCL');
+            expect(response.results[0].organizationType).toBe('Finance');
+  });
+  it('testing of the organization list service', () => {
+    fixture = TestBed.createComponent(OrganizationListComponent);
+    component = fixture.debugElement.componentInstance;
+    const userService = fixture.debugElement.injector.get(OrganizationsService);
+    fixture.detectChanges();
+    // tslint:disable-next-line:prefer-const
+    let offset: any = 1;
+    expect(userService.OrganizationGetManageableOrganizations(offset).subscribe(result => expect(result.length).toBeGreaterThan(0)));
+  });
+
+
 });
 

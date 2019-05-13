@@ -5,7 +5,7 @@ import { Router, Routes } from '@angular/router';
 import { Location } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { DialogModule } from 'carbon-components-angular';
 import { Search16Module } from '@carbon/icons-angular/lib/search/16';
 import { Add16Module } from '@carbon/icons-angular/lib/add/16';
@@ -17,7 +17,11 @@ import { CheckmarkFilled16Module } from '@carbon/icons-angular/lib/checkmark--fi
 import { View16Module } from '@carbon/icons-angular/lib/view/16';
 import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CountriesService } from '../../../../../rest/services/countries.service';
+import { StatesService } from '../../../../../rest/services/states.service';
+import { resolve } from 'url';
+import { SearchPipe } from '../../../pipe/search.pipe';
+import { IframeService } from '../../../../../services/iframe.service';
 fdescribe('UserContactComponent', () => {
   let router: Router;
   let location: Location;
@@ -27,10 +31,12 @@ fdescribe('UserContactComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientModule, FormsModule, DialogModule, Search16Module, Add16Module, ChevronRight16Module,
-        Menu32Module, CheckmarkOutline16Module, ArrowDown16Module, CheckmarkFilled16Module, View16Module, ViewOff16Module,
+        // tslint:disable-next-line:max-line-length
+        Menu32Module, CheckmarkOutline16Module, ArrowDown16Module, CheckmarkFilled16Module, View16Module, ViewOff16Module, ReactiveFormsModule, 
         TranslateModule.forRoot()],
+        providers: [CountriesService, StatesService, IframeService],
      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      declarations: [ UserContactComponent ]
+      declarations: [ UserContactComponent, SearchPipe ]
     })
     .compileComponents();
   }));
@@ -43,7 +49,25 @@ fdescribe('UserContactComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+  it('testing of the country service', () => {
+    fixture = TestBed.createComponent(UserContactComponent);
+    component = fixture.debugElement.componentInstance;
+    const countryService = fixture.debugElement.injector.get(CountriesService);
+    fixture.detectChanges();
+    expect(countryService.getCountries({}).subscribe(result => {
+      expect(result.items.length).toBeGreaterThan(0);
+    }));
+  });
 
+  it('testing of the state service', () => {
+    fixture = TestBed.createComponent(UserContactComponent);
+    component = fixture.debugElement.componentInstance;
+    const stateService = fixture.debugElement.injector.get(StatesService);
+    fixture.detectChanges();
+    expect(stateService.getStates({}).subscribe(result => {
+      expect(result.items.length).toBeGreaterThan(0);
+    }));
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });

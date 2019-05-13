@@ -12,12 +12,11 @@ export class OrganizationMainService {
   rolesBackCall: boolean;
   listData: any;
   resultData: any;
-  orgAccountData: any;
-  orgContactData: any;
+  orgAccountData: any = {};
+  orgContactData: any = {};
   orgRolesData: any;
   orgApprovalsData: any;
   listResult: any;
-
   createUser(): Promise<Object> {
     this.setOrgData();
     console.log("whole data from servicee", this.listData);
@@ -77,7 +76,7 @@ export class OrganizationMainService {
         'bestCallingTime': 'D',
         'city': this.orgContactData.city,
         'country': 'India',
-        'email1': this.orgAccountData.email,
+        'email1': this.orgContactData.email,
         'phone': '970086',
         'zipCode': '516745',
         'state': this.orgContactData.state
@@ -109,13 +108,12 @@ export class OrganizationMainService {
   }
 
   getUpdateOrg(id: number): Promise<Object> {
-    //this.id = -2001;
+    this.id = -2001;
     return new Promise((resolve, reject) => {
-      this.orgService.OrganizationsFindByOrganizationId(id
+      this.orgService.OrganizationsFindByOrganizationId(-2001
       ).subscribe(response => {
         resolve(response);
         this.resultData = response;
-        console.log("getUpdateOrg in service", id, this.resultData);
       }, error => {
         reject();
       });
@@ -124,10 +122,10 @@ export class OrganizationMainService {
 
   id: number;
   updateOrg(id: number): Promise<Object> {
-    // this.id = -2001;
+    this.id = -2001;
     return new Promise((resolve, reject) => {
       this.orgService.OrganizationsUpdateOrganization({
-        id: id,
+        id: this.id,
         body: this.orgBody
       }).subscribe(response => {
         resolve(response);
@@ -150,4 +148,5 @@ export class OrganizationMainService {
     };
   }
 
+// tslint:disable-next-line:eofline
 }

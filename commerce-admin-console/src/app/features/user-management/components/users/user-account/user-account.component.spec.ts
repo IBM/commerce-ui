@@ -19,6 +19,7 @@ import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from '../../../pipe/search.pipe';
 import { IframeService } from '../../../../../services/iframe.service';
+import { UserAccountPolicyDescriptionsService } from '../../../../../rest/services/user-account-policy-descriptions.service';
 
 fdescribe('UserAccountComponent', () => {
   let router: Router;
@@ -33,7 +34,7 @@ fdescribe('UserAccountComponent', () => {
          Menu32Module, CheckmarkOutline16Module, ArrowDown16Module, CheckmarkFilled16Module, View16Module, ViewOff16Module,
          TranslateModule.forRoot()],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [ IframeService],
+      providers: [ IframeService, UserAccountPolicyDescriptionsService],
       declarations: [ UserAccountComponent, SearchPipe]
     })
     .compileComponents();
@@ -70,5 +71,15 @@ fdescribe('UserAccountComponent', () => {
     email1.setValue('test');
 errors = email1.errors || {};
 expect(errors['pattern']).toBeTruthy();
+  });
+
+  it('testing of the Account policy list service', () => {
+    fixture = TestBed.createComponent(UserAccountComponent);
+    component = fixture.debugElement.componentInstance;
+    const accountPolicyService = fixture.debugElement.injector.get(UserAccountPolicyDescriptionsService);
+    fixture.detectChanges();
+    expect(accountPolicyService.getUserAccountPolicyDescriptions({}).subscribe(result => {
+      expect(result.items.length).toBeGreaterThan(0);
+    }));
   });
 });

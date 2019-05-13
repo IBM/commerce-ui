@@ -16,7 +16,7 @@ export class Approvals {
 })
 export class OrganizationApprovalsComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<Approvals>();
-  approvalsForm: FormGroup;
+  // approvalsForm: FormGroup;
   approvalListData: any;
   createUserResponse: any;
 
@@ -32,25 +32,15 @@ export class OrganizationApprovalsComponent implements OnInit {
     { id: 9, approvalName: 'Approvals' },
     { id: 10, approvalName: 'Approvals' }
   ];
-  constructor(private _fb: FormBuilder, private router: Router, private orgMainService: OrganizationMainService,
+  constructor(
+    // private _fb: FormBuilder,
+     private router: Router, private orgMainService: OrganizationMainService,
     private translateService: TranslateService, private iframeService: IframeService) { }
   ngOnInit() {
     this.approvalListData = this.approvalList;
-    this.approvalsForm = this._fb.group({
-      availableApprovals: ['', [
-        Validators.required]]
-    });
   }
 
-  onSubmit() {
-    console.log(this.approvalsForm.value);
-    if (this.approvalsForm.valid) {
-      this.loggedIn.emit(
-        new Approvals(
-          this.approvalsForm.value.availableApprovals,
-        )
-      );
-    }
+  RoutonOrganizations() {
     this.createUserApiCall();
     this.router.navigate(['organizations']);
   }

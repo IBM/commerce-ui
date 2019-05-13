@@ -19,7 +19,8 @@ import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { IframeService } from '../../../../../services/iframe.service';
-
+import { UsersService } from '../../../../../rest/services/users.service';
+import { UserMainService } from '../../../services/user-main.service';
 fdescribe('UserGroupsComponent', () => {
   let router: Router;
   let location: Location;
@@ -33,7 +34,7 @@ fdescribe('UserGroupsComponent', () => {
          ViewOff16Module, Ng2SearchPipeModule,
         TranslateModule.forRoot()],
      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-     providers: [IframeService],
+     providers: [IframeService, UsersService, UserMainService],
       declarations: [ UserGroupsComponent ]
     })
     .compileComponents();
@@ -47,7 +48,16 @@ fdescribe('UserGroupsComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  it('testing of the groups service', () => {
+    fixture = TestBed.createComponent(UserGroupsComponent);
+    component = fixture.debugElement.componentInstance;
+    const groupsService = fixture.debugElement.injector.get(UserMainService);
+    fixture.detectChanges();
+    expect(groupsService.createUser().then(result => {
+      const createUserResponse = Object.assign([], result);
+      expect(createUserResponse.length).toBeGreaterThan(0);
+    }));
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });

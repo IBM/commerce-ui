@@ -18,10 +18,11 @@ import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { HttpClientModule } from '@angular/common/http';
 import { OrganizationMainService } from '../../organization.main.service';
 import { IframeService } from '../../../../services/iframe.service';
+
 fdescribe('OrganizationApprovalsComponent', () => {
   let component: OrganizationApprovalsComponent;
   let fixture: ComponentFixture<OrganizationApprovalsComponent>;
-  let service: OrganizationMainService;
+  // let service: OrganizationMainService;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       // tslint:disable-next-line:max-line-length
@@ -79,5 +80,18 @@ it('Approvals field validity', () => {
     component.onSubmit();
     // Now we can check to make sure the emitted value is correct
     expect(approvals.availableApprovals).toBe('Sriman');
+});
+
+it('testing of the approval service', () => {
+  fixture = TestBed.createComponent(OrganizationApprovalsComponent);
+  component = fixture.debugElement.componentInstance;
+  const orgApprovalService = fixture.debugElement.injector.get(OrganizationMainService);
+  fixture.detectChanges();
+  // tslint:disable-next-line:prefer-const
+  let offset: any = 1;
+  expect(orgApprovalService.createUser().then(result => {
+     const createUserResponse = Object.assign([], result);
+     expect(createUserResponse.length).toBeGreaterThan(0);
+  }));
 });
 });
