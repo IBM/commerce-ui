@@ -58,9 +58,16 @@
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.PARENT_ORGANIZATION' | translate}}</div>
           <span class="left-addon">
             <ibm-icon-search16 class="searchICon"></ibm-icon-search16>
-            <input ibmText class=" inputbx" placeholder="Find organization" id="parent-organization" formControlName="parentOrganizationId" ngDefaultControl>
+            <input ibmText class=" inputbx" placeholder="Find organization" id="parent-organization" 
+            (keyup)="orgInputKeyup()" formControlName="parentOrganizationId" ngDefaultControl>
           </span>
-        
+          <div>
+            <ul *ngIf="showOrgList">
+              <li class="org-list" *ngFor="let orgList of parentOrgData"
+              (click)="selectParentOrganization(org)">
+              {{orgList}}</li>
+            </ul>
+          </div>
         </div>
       </div>
 
