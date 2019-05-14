@@ -38,6 +38,8 @@ import { CheckmarkFilled16Module } from '@carbon/icons-angular/lib/checkmark--fi
 import { View16Module } from '@carbon/icons-angular/lib/view/16';
 import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { OrganizationsMainService } from './organizations.main.service';
+import { SearchPipeModule } from '../../pipes/search-pipe/search-pipe.module';
+import { SearchPipe } from './pipe/search.pipe';
 
 
 
@@ -70,8 +72,8 @@ import { OrganizationsMainService } from './organizations.main.service';
     ViewOff16Module,
     Settings16Module,
 		Filter16Module,
-		LinkModule
-
+		LinkModule,
+		SearchPipeModule
 	],
 	declarations: [
 		ListOrganizationsComponent,
@@ -88,7 +90,8 @@ import { OrganizationsMainService } from './organizations.main.service';
 		OrganizationApprovalsComponent,
 		OrganizationContactComponent,
 		OrganizationDetailsComponent,
-		OrganizationRolesComponent
+		OrganizationRolesComponent,
+		SearchPipe
 	],
 	providers: [
 		OrganizationMainService, OrganizationsMainService
