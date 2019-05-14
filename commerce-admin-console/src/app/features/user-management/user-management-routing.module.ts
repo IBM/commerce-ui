@@ -7,7 +7,6 @@ import { ManageUserAccountComponent } from './components/users/manage-user-accou
 import { ManageUserContactComponent } from './components/users/manage-user-contact/manage-user-contact.component';
 import { ManageUserGroupsComponent } from './components/users/manage-user-groups/manage-user-groups.component';
 import { ManageUserRolesComponent } from './components/users/manage-user-roles/manage-user-roles.component';
-import { OrganizationListComponent } from './components/organizations/organization-list/organization-list.component';
 import { UserRolesComponent } from './components/users/user-roles/user-roles.component';
 import { UserGroupsComponent } from './components/users/user-groups/user-groups.component';
 
@@ -39,12 +38,6 @@ const routes: Routes = [
   {
     path: 'manageRoles/:id', component: ManageUserRolesComponent
   },
-  {
-    path: 'organizationsList', component: OrganizationListComponent
-  },
-  {
-    path: 'landingPage', component: OrganizationListComponent
-  }
 ];
 
 @NgModule({
