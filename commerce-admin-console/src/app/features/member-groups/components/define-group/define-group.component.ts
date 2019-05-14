@@ -22,9 +22,9 @@ export class DefineGroupComponent implements OnInit {
   }
   
   routeGroupList() {
-    this.router.navigate(['organizations/groupList']);
+    this.router.navigate(['member-groups']);
    }
    routeGroupDetails() {
-    this.router.navigate(['organizations/groupDetails']);
+    this.router.navigate(['member-groups/groupDetails']);
    }
 }

@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MemberGroupListComponent } from './components/member-group-list/member-group-list.component';
+import { GroupListComponent } from './components/group-list/group-list.component';
+import { GroupDetailsComponent } from './components/group-details/group-details.component';
+import { DefineGroupComponent } from './components/define-group/define-group.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MemberGroupListComponent
+    component: GroupListComponent
+  },
+  {
+    path: 'groupDetails',
+    component: GroupDetailsComponent
+  },
+  {
+    path: 'defineGroup',
+    component: DefineGroupComponent
   }
 ];
 

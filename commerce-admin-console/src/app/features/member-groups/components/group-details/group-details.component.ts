@@ -21,9 +21,9 @@ export class GroupDetailsComponent implements OnInit {
   ngOnInit() {
   }
   routeGroupList() {
-    this.router.navigate(['organizations/groupList']);
+    this.router.navigate(['member-groups']);
    }
    routeGroupDefine() {
-    this.router.navigate(['organizations/groupDefine']);
+    this.router.navigate(['member-groups/defineGroup']);
    }
 }

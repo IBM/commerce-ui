@@ -32,7 +32,6 @@ import { ManageUserContactComponent } from './components/users/manage-user-conta
 import { ManageUserGroupsComponent } from './components/users/manage-user-groups/manage-user-groups.component';
 import { ManageUserRolesComponent } from './components/users/manage-user-roles/manage-user-roles.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
-import { OrganizationListComponent } from './components/organizations/organization-list/organization-list.component';
 import { SearchPipe } from './pipe/search.pipe';
 
 @NgModule({
@@ -77,7 +76,6 @@ import { SearchPipe } from './pipe/search.pipe';
     ManageUserGroupsComponent,
     ManageUserRolesComponent,
     UserListComponent,
-    OrganizationListComponent,
     SearchPipe
   ],
   providers: [

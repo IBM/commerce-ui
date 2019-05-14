@@ -3,7 +3,7 @@ import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angula
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
-import { IframeService } from '../../../../../services/iframe.service';
+import { IframeService } from '../../../../services/iframe.service';
 
 @Component({
   selector: 'app-group-list',
@@ -106,7 +106,7 @@ export class GroupListComponent implements OnInit {
    }
 
    routeGroupDetails() {
-    this.router.navigate(['organizations/groupDetails']);
+    this.router.navigate(['member-groups/groupDetails']);
    }
 
 }
