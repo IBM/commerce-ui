@@ -6,6 +6,7 @@ import { RolesService } from '../../../../../rest/services/roles.service';
 import { RoleDescriptionsService } from '../../../../../rest/services/role-descriptions.service';
 import { UserMainService } from '../../../services/user-main.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { RoleDescriptionsService } from '../../../../../rest/services/role-descriptions.service';
 
 @Component({
 	templateUrl: './user-roles.component.html',

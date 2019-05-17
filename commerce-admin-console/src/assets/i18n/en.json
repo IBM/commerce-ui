@@ -596,6 +596,7 @@
             "LOGIN_ID": "Login ID",
             "EMAIL": "Email",
             "PASSWORD": "Password",
+            "PARENT_ORGANIZATION": "Parent organization",
             "CONFIRM_PASSWORD": "Confirm password",
             "SHOW": "Show",
             "HIDE": "Hide",
@@ -785,7 +786,8 @@
             "ADDRESS": "State / Province / Region",
             "CANCEL": "Cancel",
             "BACK": "Back",
-            "NEXT": "Next"
+            "NEXT": "Next",
+            "SUBMIT": "Submit"
         },
         "ORGANIZATION_ROLES": {
             "TITLE": "IBM Watson Commerce",
