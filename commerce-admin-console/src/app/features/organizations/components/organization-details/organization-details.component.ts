@@ -4,17 +4,16 @@ import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms'
 import { OrganizationsService } from '../../../../rest/services/organizations.service';
 import { OrganizationMainService } from '../../organization.main.service';
 import { Subscription } from 'rxjs';
-import { UserMainService } from '../../../user-management/services/user-main.service';
 
-export class DetailsOrganization {
-  constructor(
-    public organizationName: string,
-    public description: string,
-    public organizationType: string,
-    public searchOrganization: string
-  ) {
-  }
-}
+// export class DetailsOrganization {
+//   constructor(
+//     public organizationName: string,
+//     public description: string,
+//     public organizationType: string,
+//     public parentOrganizationId: string
+//   ) {
+//   }
+// }
 
 @Component({
   selector: 'app-organization-details',
@@ -25,12 +24,13 @@ export class DetailsOrganization {
 
 export class OrganizationDetailsComponent implements OnInit {
   // userForm: FormGroup;
+  detailsForm: FormGroup;
+  organizationName: FormControl;
+    description: FormControl;
+    organizationType: FormControl;
+    parentOrganizationId: FormControl;
   disabled: boolean;
   model: string;
-  organizationName: any;
-  description: any;
-  organizationType: any;
-  parentOrganizationId: any;
   accountData: any;
   orgAccountData: any;
   showOrgList: boolean;
@@ -39,15 +39,9 @@ export class OrganizationDetailsComponent implements OnInit {
   getOrganizationsSubscription: Subscription = null;
 
 
-  @Output() loggedIn = new EventEmitter<DetailsOrganization>();
-  detailsForm: FormGroup;
+  //@Output() loggedIn = new EventEmitter<DetailsOrganization>();
 
-  // userForm = new FormGroup({
-  //   organizationName: new FormControl(),
-  //   description: new FormControl(),
-  //   organizationType: new FormControl(),
-  //   searchOrganization: new FormControl()
-  // });
+  
   orgList = [
     {
       content: 'O',
@@ -59,37 +53,68 @@ export class OrganizationDetailsComponent implements OnInit {
     }
   ];
 
+ 
+  
+  // userForm = new FormGroup({
+  //   organizationName: new FormControl(),
+  //   description: new FormControl(),
+  //   organizationType: new FormControl(),
+  //   searchOrganization: new FormControl()
+  // });
+  
 
   constructor(private router: Router, private fb: FormBuilder,
     private orgMainService: OrganizationMainService,
-    private organizationsService: OrganizationsService,
-    private userMainService: UserMainService) { }
-
+    private organizationsService: OrganizationsService) { }
 
   ngOnInit() {
-    this.organizationListApi();
+    this.createFormControls();
+		this.createForm();
+    //this.organizationListApi();
     this.accountData = this.orgMainService.orgAccountData;
     //   if (this.orgMainService.contactBackClick) {
     //     this.setModelData();
     // }
 
-    this.detailsForm = this.fb.group({
-      organizationName: ['', [
-        Validators.required]],
-      description: [],
-      organizationType: [],
-      searchOrganization: []
-    });
+    // this.detailsForm = this.fb.group({
+    //   organizationName: ['', [
+    //     Validators.required]],
+    //   description: [],
+    //   organizationType: [],
+    //   parentOrganizationId: []
+    // });
   }
 
+  private createFormControls() {
+
+    this.organizationName = new FormControl('', [Validators.required]);
+    this.description = new FormControl('', [
+      Validators.required
+    ]);
+    this.organizationType = new FormControl('', [
+      Validators.required
+    ]);
+    this.parentOrganizationId = new FormControl('', [
+      Validators.required
+    ]);
+  }
+
+  private createForm() {
+    this.detailsForm = new FormGroup({
+      organizationName : this.organizationName,
+      description: this.description,
+      organizationType: this.organizationType,
+      parentOrganizationId: this.parentOrganizationId,
+  })
+}
 
   orgInputKeyup() {
     if (this.getOrganizationsSubscription != null) {
       this.getOrganizationsSubscription.unsubscribe();
       this.getOrganizationsSubscription = null;
     }
-    this.userMainService.userData.parentOrganizationId = null;
-    this.userMainService.userData.parentOrganizationName = null;
+    this.orgMainService.organizationData.parentOrganizationId = null;
+    this.orgMainService.organizationData.parentOrganizationName = null;
     this.getOrganizationsSubscription = this.organizationsService.OrganizationGetManageableOrganizations({
       organizationName: this.parentOrganizationId.value,
       limit: 10
@@ -100,6 +125,7 @@ export class OrganizationDetailsComponent implements OnInit {
         }
         else {
           this.organizationList = response.items;
+          console.log('this.organizationList', this.organizationList);
           this.showOrgList = true;
         }
         this.getOrganizationsSubscription = null;
@@ -115,25 +141,25 @@ export class OrganizationDetailsComponent implements OnInit {
 
   selectParentOrganization(org: any) {
     this.parentOrganizationId.setValue(org.organizationName);
-    this.userMainService.userData.parentOrganizationId = org.id;
-    this.userMainService.userData.parentOrganizationName = org.organizationName;
+    this.orgMainService.organizationData.parentOrganizationId = org.id;
+    this.orgMainService.organizationData.parentOrganizationName = org.organizationName;
     this.showOrgList = false;
   }
 
-  organizationListApi(): void {
-    this.parentOrgData = [];
-    this.organizationsService.OrganizationGetManageableOrganizations({}).subscribe(
-      response => {
-        this.organizationList = response.items;
-        this.parentOrgData = this.organizationList.map(value => {
-          return value.organizationName;
-        });
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+  // organizationListApi(): void {
+  //   this.parentOrgData = [];
+  //   this.organizationsService.OrganizationGetManageableOrganizations({}).subscribe(
+  //     response => {
+  //       this.organizationList = response.items;
+  //       this.parentOrgData = this.organizationList.map(value => {
+  //         return value.organizationName;
+  //       });
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
   routeOrganizationList() {
     this.router.navigate(['organizations']);
   }
@@ -142,7 +168,7 @@ export class OrganizationDetailsComponent implements OnInit {
   // }
   onSubmit() {
     if (this.detailsForm.valid) {
-      this.accountCall();
+      //this.accountCall();
       this.router.navigate(['organizations/organizationContact']);
       this.orgMainService.orgaccount(this.orgAccountData);
     }
@@ -162,27 +188,27 @@ export class OrganizationDetailsComponent implements OnInit {
   //   //}
   //   console.log('form', this.userForm.value);
   // }
-  accountCall() {
-    this.orgAccountData = this.detailsForm.value;
-    // {
-    //   'organizationName': this.organizationName.value,
-    //   'description': this.description,
-    //   'organizationType': this.organizationType,
-    //   'parentOrganizationId': this.parentOrganizationId,
-    // };
-    console.log('setData', this.orgAccountData);
-    console.log(this.detailsForm.value);
-    if (this.detailsForm.valid) {
-      this.loggedIn.emit(
-        new DetailsOrganization(
-          this.detailsForm.value.organizationName,
-          this.detailsForm.value.description,
-          this.detailsForm.value.organizationType,
-          this.detailsForm.value.searchOrganization
-        )
-      );
-    }
-    this.router.navigate(['organizations/organizationContact']);
-  }
+  // accountCall() {
+  //   this.orgAccountData = this.detailsForm.value;
+  //   // {
+  //   //   'organizationName': this.organizationName.value,
+  //   //   'description': this.description,
+  //   //   'organizationType': this.organizationType,
+  //   //   'parentOrganizationId': this.parentOrganizationId,
+  //   // };
+  //   console.log('setData', this.orgAccountData);
+  //   console.log(this.detailsForm.value);
+  //   if (this.detailsForm.valid) {
+  //     this.loggedIn.emit(
+  //       new DetailsOrganization(
+  //         this.detailsForm.value.organizationName,
+  //         this.detailsForm.value.description,
+  //         this.detailsForm.value.organizationType,
+  //         this.detailsForm.value.searchOrganization
+  //       )
+  //     );
+  //   }
+  //   this.router.navigate(['organizations/organizationContact']);
+  // }
 }
 
