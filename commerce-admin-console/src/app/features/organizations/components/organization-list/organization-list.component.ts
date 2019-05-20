@@ -37,7 +37,8 @@ export class OrganizationListComponent implements OnInit {
   protected listOrgItemTemplate: TemplateRef<any>;
 
   constructor(private router: Router,
-    private orgService: OrganizationsService) { }
+    private orgService: OrganizationsService,
+    private orgMainService: OrganizationMainService) { }
 
   ngOnInit() {
     this.model.header = [
@@ -78,6 +79,7 @@ export class OrganizationListComponent implements OnInit {
         for (let i = 0; i < body.items.length; i++) {
           const item = body.items[i];
           this.organizationResponse = item;
+          this.orgMainService.organizationData = item;
           const name = item.organizationName;
           const parentOrganizationName = item.parentOrganizationName;
           const organizationType = item.organizationType;

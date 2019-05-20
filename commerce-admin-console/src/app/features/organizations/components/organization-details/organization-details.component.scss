@@ -121,8 +121,16 @@ div.header {
             padding: 13px;
             pointer-events: none;
           }
+          .org-list {
+            padding: 6px 0 6px 0;
+            cursor: pointer;
+            &:hover {
+              color: white;
+              background: #0f6ddf;
+            }
           }
         }
+      }
         div.footer-content {
           margin: 0 0 0.2% 0.2%;
           background-color: #ffffff;
@@ -149,7 +157,7 @@ div.header {
   }
 
 
-  /*..... NORMAL CSS FILE FOR ORGANIZATION-DETAILS PAGE....*/
+  //NORMAL CSS FILE FOR ORGANIZATION-DETAILS PAGE
 
 
   // .header-border {

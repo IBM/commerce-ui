@@ -35,16 +35,16 @@
     </div>
 
     <div class="bx--col-sm-8 bx--col-md-8 right-content">
-        <form  [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
           
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.ORGANIZATION_NAME' | translate}}</div>
-          <input ibmText class=" inputbx" id="organizationName" formControlName="organizationName">
+          <input ibmText class=" inputbx" id="organizationName" formControlName="organizationName" ngDefaultControl>
           <!--Validation for the organization name field.-->
-          <div class="errorField" *ngIf="detailsForm.controls['organizationName'].hasError('required')">
+          <!-- <div class="errorField" *ngIf="detailsForm.controls['organizationName'].hasError('required')">
             Organization Name is Mandatory.
-          </div>
+          </div> -->
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.DESCRIPTION_OPTIONAL' | translate}}</div>
           <input ibmText class="inputbx" id="description-optional" formControlName="description" ngDefaultControl>
 
@@ -63,9 +63,9 @@
           </span>
           <div>
             <ul *ngIf="showOrgList">
-              <li class="org-list" *ngFor="let orgList of parentOrgData"
-              (click)="selectParentOrganization(org)">
-              {{orgList}}</li>
+              <li class="org-list" *ngFor="let orgList of organizationList"
+              (click)="selectParentOrganization(orgList)">
+              {{orgList.organizationName}}</li>
             </ul>
           </div>
         </div>
