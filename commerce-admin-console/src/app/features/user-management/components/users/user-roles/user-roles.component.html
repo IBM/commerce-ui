@@ -46,8 +46,6 @@
                       {{org.organizationName}}</li>
                   </ul>
                 </div>
-                
-                
                 <div class="form-text select-field">{{'MANAGE_USER.USER_ROLES.AVAILABLE_ROLES'| translate}}</div>
                 <ibm-dropdown
                   placeholder="{{'MANAGE_USER.USER_ROLES.SELECT_ROLE_PLACEHOLDER' | translate}}"
@@ -59,9 +57,9 @@
                   <span>{{'MANAGE_USER.USER_ROLES.SELECTED_ROLES'| translate}}</span>
                 </div>
                 <div class="roles-margin">
-                  <span class="model-role" *ngFor="let assignedRole of assignedRoles">{{assignedRole.roleName}} - {{assignedRole.organizationName}}
-                    <ibm-icon-close16 class="icon-close" (click)="removeRole(assignedRole)"></ibm-icon-close16>
-                  </span>
+                  <div class="model-role" *ngFor="let assignedRole of assignedRoles">{{assignedRole.roleName}} - {{assignedRole.organizationName}}
+                    <span></span><ibm-icon-close16 class="icon-close" (click)="removeRole(assignedRole)"></ibm-icon-close16></span>
+                  </div>
                 </div>
               </div>
             </div>
