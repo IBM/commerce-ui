@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Subject, Subscription } from 'rxjs';
 import { UsersService } from '../../../../../rest/services/users.service';
 import { RoleAssignmentsService } from '../../../../../rest/services/role-assignments.service';
 import { RoleDescriptionsService } from '../../../../../rest/services/role-descriptions.service';
@@ -14,6 +15,7 @@ import { UserMainService } from '../../../services/user-main.service';
 export class UserListComponent implements OnInit {
 	model = new TableModel();
 	roleNames = null;
+	roleNamesLoaded: Subject<boolean> = new Subject<boolean>();
 
 	@ViewChild('listUserItemTemplate')
 	protected listUserItemTemplate: TemplateRef<any>;
@@ -43,7 +45,7 @@ export class UserListComponent implements OnInit {
 		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.LAST_NAME").subscribe((title: string) => {
 			lastNameHeader.data = title;
 		});
-		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.ORGANIZATION").subscribe((title: string) => {
+		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.PARENT_ORGANIZATION").subscribe((title: string) => {
 			organizationHeader.data = title;
 		});
 		this.translateService.get("MANAGE_USER.USER_LANDING_PAGE.ROLE").subscribe((title: string) => {
@@ -60,6 +62,7 @@ export class UserListComponent implements OnInit {
 		this.model.pageLength = 10;
 		this.model.totalDataLength = 0;
 		this.loadRoleNames();
+		this.selectPage(1);
 	}
 
 	selectPage(page: number) {
@@ -113,7 +116,17 @@ export class UserListComponent implements OnInit {
 					uniqueRoles.push(roleId);
 				}
 			}
-			roleTableItem.data = this.getRoleNamesFromIds(uniqueRoles);
+			if (this.roleNames != null) {
+				roleTableItem.data = this.getRoleNamesFromIds(uniqueRoles);
+			}
+			else {
+				const roleNamesLoadedSubscription: Subscription = this.roleNamesLoaded.subscribe((roleNamesLoaded: boolean) => {
+					if (roleNamesLoaded) {
+						roleTableItem.data = this.getRoleNamesFromIds(uniqueRoles);
+						roleNamesLoadedSubscription.unsubscribe();
+					}
+				});
+			}
 		});
 	}
 
@@ -126,6 +139,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	private loadRoleNames() {
+		this.roleNamesLoaded.next(false);
 		this.roleDescriptionsService.getRoleDescriptions({
 			languageId: -1
 		}).subscribe((body: any) => {
@@ -135,12 +149,12 @@ export class UserListComponent implements OnInit {
 				roleNames[roleDescription.roleId] = roleDescription.displayName;
 			}
 			this.roleNames = roleNames;
-			this.selectPage(1);
+			this.roleNamesLoaded.next(true);
 		});
 	}
 	
 	createUser() {
-		this.userMainService.userData = null;
+		this.userMainService.clearData();
 		this.router.navigate(['users/user-account']);
 	}
 }
