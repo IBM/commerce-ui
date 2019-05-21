@@ -5,7 +5,7 @@ import { Router, Routes } from '@angular/router';
 import { Location } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'carbon-components-angular';
 import { Search16Module } from '@carbon/icons-angular/lib/search/16';
 import { Add16Module } from '@carbon/icons-angular/lib/add/16';
@@ -29,7 +29,7 @@ fdescribe('UserGroupsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule, FormsModule, DialogModule, Search16Module, Add16Module,
+      imports: [RouterTestingModule, HttpClientModule, FormsModule, ReactiveFormsModule, DialogModule, Search16Module, Add16Module,
          ChevronRight16Module, Menu32Module, CheckmarkOutline16Module, ArrowDown16Module, CheckmarkFilled16Module, View16Module,
          ViewOff16Module, Ng2SearchPipeModule,
         TranslateModule.forRoot()],
@@ -57,6 +57,15 @@ fdescribe('UserGroupsComponent', () => {
       const createUserResponse = Object.assign([], result);
       expect(createUserResponse.length).toBeGreaterThan(0);
     }));
+  });
+
+  it('Include search text field validity', () => {
+    const includeSearchText = component.groupForm.controls['includeSearchText'];
+    expect(includeSearchText.valid).toBeFalsy();
+  });
+  it('Exclude search text field validity', () => {
+    const excludeSearchText = component.groupForm.controls['excludeSearchText'];
+    expect(excludeSearchText.valid).toBeFalsy();
   });
   it('should create', () => {
     expect(component).toBeTruthy();
