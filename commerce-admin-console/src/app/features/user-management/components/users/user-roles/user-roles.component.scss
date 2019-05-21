@@ -209,4 +209,11 @@
   font-weight: 500;
   margin-left: 11px;
 }
-  
+  .org-list {
+    padding: 6px 0 6px 0;
+    cursor: pointer;
+    &:hover {
+      color: white;
+      background: #0f6ddf;
+    }
+  }

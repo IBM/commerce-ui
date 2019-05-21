@@ -25,7 +25,7 @@ const routes: Routes = [
       path: 'user-roles', component: UserRolesComponent
   },
   {
-    path: 'userGroups', component: UserGroupsComponent
+    path: 'user-groups', component: UserGroupsComponent
   },
   {
     path: 'manageAccount/:id', component: ManageUserAccountComponent

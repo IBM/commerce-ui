@@ -25,7 +25,7 @@ export class UserAccountComponent implements OnInit {
 	passwordVisible = false;
 	invalidPassword: boolean;
 	inputFieldError: boolean = false;
-	organizationList: Array<string> = [];
+	organizationList: Array<any> = [];
 	accountPolicyList: Array<any>;
 	showOrgList = false;
 	invalidLoginId = false;
@@ -95,7 +95,7 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	cancelClick() {
-		this.userMainService.userData = null;
+		this.userMainService.clearData();
 		this.router.navigate(['users']);
 	}
 
@@ -187,6 +187,16 @@ export class UserAccountComponent implements OnInit {
 					this.selectParentOrganization(response.items[0]);
 				}
 				else {
+					response.items.sort((org1, org2) => {
+						let result = 0;
+						if (org1.organizationName < org2.organizationName) {
+							result = -1;
+						}
+						else if (org1.organizationName > org2.organizationName) {
+							result = 1;
+						}
+						return result;
+					});
 					this.organizationList = response.items;
 					this.showOrgList = true;
 				}

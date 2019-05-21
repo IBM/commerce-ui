@@ -92,7 +92,7 @@ export class UserContactComponent implements OnInit {
 	}
 
 	cancelClick() {
-		this.userMainService.userData = null;
+		this.userMainService.clearData();
 		this.router.navigate(['users']);
 	}
 

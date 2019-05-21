@@ -66,8 +66,8 @@
                         formControlName="passwordVerify" id="passwordVerify1" ngDefaultControl>
                     </div>
                   <div class="form-text">{{'MANAGE_USER.USER_ACCOUNT.PARENT_ORGANIZATION' | translate}}</div>
-                  <input ibmText class=" inputbx" id="parentOrganization"
-                  formControlName="parentOrganization" ngDefaultControl
+                  <input ibmText class="inputbx" id="parentOrganization"
+                  formControlName="parentOrganization" ngDefaultControl autocomplete="off"
                   (keyup)="orgInputKeyup()">
                   <div>
                     <ul *ngIf="showOrgList">
