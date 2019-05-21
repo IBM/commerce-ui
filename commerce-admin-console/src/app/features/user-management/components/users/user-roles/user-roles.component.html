@@ -58,7 +58,7 @@
                 </div>
                 <div class="roles-margin">
                   <div class="model-role" *ngFor="let assignedRole of assignedRoles">{{assignedRole.roleName}} - {{assignedRole.organizationName}}
-                    <span></span><ibm-icon-close16 class="icon-close" (click)="removeRole(assignedRole)"></ibm-icon-close16></span>
+                    <span><ibm-icon-close16 class="icon-close" (click)="removeRole(assignedRole)"></ibm-icon-close16></span>
                   </div>
                 </div>
               </div>
