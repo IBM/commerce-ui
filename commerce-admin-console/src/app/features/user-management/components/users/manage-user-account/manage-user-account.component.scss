@@ -157,3 +157,11 @@
   width:100%;
   margin-left: 96.05%;  
 }
+.org-list {
+  padding: 6px 0 6px 0;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    background: #0f6ddf;
+  }
+}

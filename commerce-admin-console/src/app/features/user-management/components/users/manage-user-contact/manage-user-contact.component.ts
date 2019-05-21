@@ -4,6 +4,11 @@ import { UsersService } from '../../../../../../../src/app/rest/services/users.s
 import { UserMainService } from '../../../services/user-main.service';
 import { IframeService } from '../../../../../services/iframe.service';
 import { TranslateService } from '@ngx-translate/core';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+import { OrganizationsService } from '../../../../../rest/services/organizations.service';
+import { UserAccountPolicyDescriptionsService } from '../../../../../rest/services/user-account-policy-descriptions.service';
+import { CountriesService } from '../../../../../rest/services/countries.service';
+import { StatesService } from '../../../../../rest/services/states.service';
 
 @Component({
   selector: 'app-manage-user-contact',
@@ -26,19 +31,29 @@ export class ManageUserContactComponent implements OnInit {
     }
   ];
 
+  contactForm: FormGroup;
   accountData: any;
   manageUserResponse: any;
   id: number;
   userAccountData: any;
-  firstName: any;
-  lastName: any;
-  streetAddress1: any;
-  streetAddress2: any;
-  city: any;
-  state: any;
-  country: any;
-  zipcode: number;
+  personTitle: FormControl;
+  firstName: FormControl;
+  lastName: FormControl;
+  address1: FormControl;
+  address2: FormControl;
+  city: FormControl;
+  state: FormControl;
+  country: FormControl;
+  zipCode: FormControl;
   private sub: any;
+
+  selectedCountryNameAbbr: string;
+  showCountryList = false;
+  showStateList = false;
+  countryListData: any;
+  countryNameList: Array<string>;
+  stateListData: any;
+  stateNameList: Array<string>;
 
   constructor(
     private router: Router,
@@ -46,9 +61,18 @@ export class ManageUserContactComponent implements OnInit {
     private userMainService: UserMainService,
     private iframeService: IframeService,
     private translateService: TranslateService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+		private organizationsService: OrganizationsService,
+    private userAccountPolicyDescriptionsService: UserAccountPolicyDescriptionsService,
+    private countriesService: CountriesService,
+    private statesService: StatesService) { }
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+    this.countryList();
+    this.stateList();
     this.accountData = this.userMainService.manageuserAccount;
     this.getUserApiCall();
 
@@ -90,27 +114,125 @@ export class ManageUserContactComponent implements OnInit {
     });
   }
 
+  countryList(): Promise<Object> {
+    return new Promise((resolve, reject) => {
+      this.countriesService.getCountries({}
+      ).subscribe(response => {
+        resolve(response);
+        this.countryListData = response.items;
+        console.log('resp', response);
+        this.countryNameList = this.countryListData.map(value => {
+          return value.name;
+        });
+        // console.log('this.countryNameList ', this.countryNameList );
+      },  error => {
+        reject();
+      });
+    });
+  }
+
+  stateList(): Promise<Object> {
+    return new Promise((resolve, reject) => {
+      this.statesService.getStates({
+        countryAbbr: this.selectedCountryNameAbbr
+      }
+      ).subscribe(response => {
+        resolve(response);
+        this.stateListData = response.items;
+        console.log('stateListData ', this.stateListData );
+        this.stateNameList = this.stateListData.map(value => {
+          return value.name;
+        });
+        console.log('stateNameList ', this.stateNameList );
+      },  error => {
+        reject();
+      });
+    });
+  }
+
+  countryInputKeyup() {
+    if (this.country.value !== '') {
+        this.showCountryList = true;
+    }
+  }
+
+  selectedCountry(countryName: string) {
+    this.country.setValue(countryName);
+    this.showCountryList = false;
+    this.countryListData.forEach(value => {
+      if (value.name === countryName) {
+        this.selectedCountryNameAbbr = value.countryAbbr;
+      }
+    });
+    this.stateList();
+  }
+
+  stateInputKeyup() {
+    if (this.state.value !== '') {
+        this.showStateList = true;
+    }
+  }
+
+  selectedState(stateName: string) {
+    this.state.setValue(stateName);
+    this.showStateList = false;
+  }
+
+  createFormControls() {
+    this.personTitle = new FormControl('');
+    this.firstName = new FormControl('');
+    this.lastName = new FormControl('',
+    [Validators.required
+    ]);
+    this.address1 = new FormControl('', [
+      Validators.required
+    ]);
+    this.address2 = new FormControl('', [
+      Validators.required
+    ]);
+    this.city = new FormControl('', Validators.required);
+    this.country = new FormControl('', Validators.required);
+    this.state = new FormControl('', Validators.required);
+    this.zipCode = new FormControl('', Validators.required);
+  }
+
+  createForm() {
+    this.contactForm = new FormGroup({
+      personTitle: this.personTitle,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      address1: this.address1,
+      address2: this.address2,
+      city: this.city,
+      country: this.country,
+      state: this.state,
+      zipCode: this.zipCode
+    });
+  }
+
   setModelData() {
-    this.firstName = this.manageUserResponse.address.firstName;
-    this.lastName = this.manageUserResponse.address.lastName;
-    this.streetAddress1 = this.manageUserResponse.address.address1;
-    this.streetAddress2 = this.manageUserResponse.address.address2;
-    this.city = this.manageUserResponse.address.city;
-    this.state = this.manageUserResponse.address.organizationName;
-    this.country = this.manageUserResponse.address.country;
-    this.zipcode = this.manageUserResponse.address.zipCode;
+    this.personTitle.setValue(this.manageUserResponse.personTitle.value);
+    this.firstName.setValue(this.manageUserResponse.address.firstName);
+    this.lastName.setValue(this.manageUserResponse.address.lastName);
+    this.address1.setValue(this.manageUserResponse.address.address1);
+    this.address2.setValue(this.manageUserResponse.address.address2);
+    this.city.setValue(this.manageUserResponse.address.city);
+    this.state.setValue(this.manageUserResponse.address.state);
+    this.country.setValue(this.manageUserResponse.address.country);
+    this.zipCode.setValue(this.manageUserResponse.address.zipCode);
   }
 
   contactCall() {
     this.userAccountData = {
-      'firstName': this.firstName,
-      'lastName': this.lastName,
-      'streetAddress1': this.streetAddress1,
-      'streetAddress2': this.streetAddress2,
-      'city': this.city,
-      'state': this.state,
-      'country': this.country,
-      'zipcode': this.zipcode
+      'personTitle': this.personTitle.value,
+      'firstName': this.firstName.value,
+      'lastName': this.lastName.value,
+      'streetAddress1': this.address1.value,
+      'streetAddress2': this.address2.value,
+      'city': this.city.value,
+      'state': this.state.value,
+      'country': this.country.value,
+      'zipcode': this.zipCode.value
     };
   }
 
@@ -144,5 +266,8 @@ export class ManageUserContactComponent implements OnInit {
     // this.updateUserApiCall();
     this.router.navigate(['/users/manageGroups', this.id]);
   }
+  selectAccountPolicy(event: any) {
+		// this.userMainService.userData.userAccountPolicyId = event.item.userAccountPolicyId;
+	}
 
 }

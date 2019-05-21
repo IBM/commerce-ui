@@ -4,6 +4,9 @@ import { UsersService } from '../../../../../../../src/app/rest/services/users.s
 import { UserMainService } from '../../../services/user-main.service';
 import { IframeService } from '../../../../../services/iframe.service';
 import { TranslateService } from '@ngx-translate/core';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+import { OrganizationsService } from '../../../../../rest/services/organizations.service';
+import { UserAccountPolicyDescriptionsService } from '../../../../../rest/services/user-account-policy-descriptions.service';
 
 @Component({
   selector: 'app-manage-user-account',
@@ -11,21 +14,35 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./manage-user-account.component.scss']
 })
 export class ManageUserAccountComponent implements OnInit {
+
+  accountForm: FormGroup;
+	logonId: FormControl;
+	email1: FormControl;
+	password: FormControl;
+	passwordVerify: FormControl;
+	organizationName: FormControl;
+  policy: FormControl;
+  
   showInput: boolean;
   disabled: '';
   accountData: any;
   userAccountData: any;
-  logonId: string;
-  email1: string;
-  password: string;
-  passwordVerify: string;
-  organizationName: string;
-  policy: string;
+  // logonId: string;
+  // email1: string;
+  // password: string;
+  // passwordVerify: string;
+  // organizationName: string;
+  // policy: string;
   emailPattern: any;
   envalidEmail: boolean;
   showTextVisible = true;
   showTickboxVisible: boolean;
   manageUserResponse: any;
+  showOrgList = false;
+  parentOrgData: Array<string>;
+	organizationListData: any;
+	accountPolicyListData: any;
+	accountPolicyData: Array<string>;
   id: number;
   private sub: any;
 
@@ -35,7 +52,10 @@ export class ManageUserAccountComponent implements OnInit {
     private userService: UsersService,
     private iframeService: IframeService,
     private translateService: TranslateService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+		private organizationsService: OrganizationsService,
+		private userAccountPolicyDescriptionsService: UserAccountPolicyDescriptionsService) { }
 
   updateUser;
 
@@ -51,12 +71,44 @@ export class ManageUserAccountComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.organizationListApi();
+		this.accountPolicyList();
+		this.createFormControls();
+		this.createForm();
     this.showInput = true;
     this.accountData = this.userMainService.manageuserAccount;
     this.getUserApiCall();
     this.enableButton();
-
   }
+
+  createFormControls() {
+		this.logonId = new FormControl('', Validators.required);
+		this.email1 = new FormControl('', [
+			Validators.required,
+			Validators.pattern('[a-zA-Z0-9_\\.\\+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-\\.]+')
+		]);
+		this.password = new FormControl('', [
+			Validators.required,
+			Validators.minLength(8)
+		]);
+		this.passwordVerify = new FormControl('', [
+			Validators.required,
+			Validators.minLength(8)
+		]);
+		this.organizationName = new FormControl('', Validators.required);
+		this.policy = new FormControl('', Validators.required);
+	}
+
+  createForm() {
+		this.accountForm = new FormGroup({
+			logonId: this.logonId,
+			email1: this.email1,
+			password: this.password,
+			passwordVerify: this.passwordVerify,
+			organizationName: this.organizationName,
+			policy: this.policy
+		});
+	}
 
   getUserApiCall() {
     this.sub = this.route.params.subscribe(params => {
@@ -94,6 +146,43 @@ export class ManageUserAccountComponent implements OnInit {
     });
   }
 
+  organizationListApi(): void {
+    this.parentOrgData = [];
+    this.organizationsService.OrganizationGetManageableOrganizations({}).subscribe(
+      response => {
+        this.organizationListData = response.items;
+        this.parentOrgData = this.organizationListData.map(value => {
+          return value.organizationName;
+        });
+        console.log("ORGLIST API", response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  accountPolicyList(): void {
+    this.accountPolicyData = [];
+    this.userAccountPolicyDescriptionsService.getUserAccountPolicyDescriptions({
+      "languageId": -1
+    }).subscribe(
+      response => {
+        this.accountPolicyListData = response.items;
+        this.accountPolicyData = this.accountPolicyListData.map(value => {
+          return {
+            "content": value.description,
+            "selected": false,
+            "userAccountPolicyId": value.userAccountPolicyId
+          }
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   buttonEnabled: boolean = false;
   // apiLogonId: any = this.logonId;
   // userLogonId: any;
@@ -119,6 +208,18 @@ export class ManageUserAccountComponent implements OnInit {
     this.router.navigate(['/users/manageContact', this.id]);
   }
 
+  orgInputKeyup() {
+    if (this.organizationName.value !== '') {
+        this.showOrgList = true;
+    }
+  }
+  
+  selectedOrg(event: any) {
+    this.organizationName.setValue(event);
+    console.log(event);
+    this.showOrgList = false;
+  }
+
   // getAccountData(){
   //   this.updateUser = this.userService.UsersUpdateUser;
   //   // console.log("$$$$$$$", this.updateUser);
@@ -138,21 +239,21 @@ export class ManageUserAccountComponent implements OnInit {
   // }
 
   setModelData() {
-    this.logonId = this.manageUserResponse.logonId;
-    this.email1 = this.manageUserResponse.address.email1;
-    this.password = this.manageUserResponse.password;
-    this.passwordVerify = this.manageUserResponse.password;
-    this.organizationName = this.manageUserResponse.parentOrganizationName;
-    this.policy = this.manageUserResponse.policy;
+    this.logonId.setValue(this.manageUserResponse.logonId);
+    this.email1.setValue(this.manageUserResponse.address.email1);
+    this.password.setValue(this.manageUserResponse.password);
+    this.passwordVerify.setValue(this.manageUserResponse.password);
+    this.organizationName.setValue(this.manageUserResponse.parentOrganizationName);
+    this.policy.setValue(this.manageUserResponse.policy);
   }
 
   accountCall() {
     this.userAccountData = {
-      'logonId': this.logonId,
-      'email1': this.email1,
-      'password': this.password,
-      'organizationName': this.organizationName,
-      'policy': this.policy
+      'logonId': this.logonId.value,
+      'email1': this.email1.value,
+      'password': this.password.value,
+      'organizationName': this.organizationName.value,
+      'policy': this.policy.value
     };
   }
 
@@ -179,6 +280,9 @@ export class ManageUserAccountComponent implements OnInit {
     // this.updateUserApiCall();
     this.router.navigate(['/users/manageGroups', this.id]);
   }
+  selectAccountPolicy(event: any) {
+		// this.userMainService.userData.userAccountPolicyId = event.item.userAccountPolicyId;
+	}
   
   check() {
     var tocheck = ["text1", "text2", "text3", "email"];
