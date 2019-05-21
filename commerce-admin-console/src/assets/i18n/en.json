@@ -687,6 +687,7 @@
             "ORGANIZATION": "Organization",
             "USER_TYPE": "User type",
             "PREFERED_LANGUAGE": "Preferred language",
+            "ACCOUNT_TYPE_PLACEHOLDER": "Select User Type",
             "CANCEL": "Cancel",
             "SAVE": "Save"
         },

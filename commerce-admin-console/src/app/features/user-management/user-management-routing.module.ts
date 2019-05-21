@@ -33,7 +33,7 @@ const routes: Routes = [
     path: 'manageContact/:id', component: ManageUserContactComponent
   },
   {
-    path: 'manageGroups/:id', component: ManageUserGroupsComponent
+    path: 'manageGroups', component: ManageUserGroupsComponent
   },
   {
     path: 'manageRoles/:id', component: ManageUserRolesComponent

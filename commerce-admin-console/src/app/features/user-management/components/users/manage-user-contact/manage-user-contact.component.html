@@ -21,45 +21,63 @@
     <div class="bx--col-sm-4 bx--col-md-4 side-content">
       <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
         <span></span>
-        <div class="text-margin" (click)="goToAccount()">{{'MANAGE_USER.MANAGE_USER_CONTACT.ACCOUNT_INFORMATION'| translate}}</div><br />
+        <div class="text-margin" (click)="goToAccount()">{{'MANAGE_USER.MANAGE_USER_CONTACT.ACCOUNT_INFORMATION'|
+          translate}}</div><br />
         <span class="dot account-dot"></span>
         <div>{{'MANAGE_USER.MANAGE_USER_CONTACT.CONTACT_INFORMATION'| translate}}</div><br />
         <div class="text-margin" (click)="goToRoles()">{{'MANAGE_USER.MANAGE_USER_CONTACT.ROLES'| translate}}</div><br />
         <div class="text-margin" (click)="goToGroups()">{{'MANAGE_USER.MANAGE_USER_CONTACT.GROUPS'| translate}}</div>
       </div>
     </div>
-    <div class="bx--col-sm-8 bx--col-md-8 right-content">
+    
+    <form [formGroup]="contactForm" class="bx--col-sm-8 bx--col-md-8 right-content">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.TITLE_OPTIONAL' | translate}}</div>
-          <ibm-dropdown
-          placeholder="Select title"
-          [disabled]="disabled"
-          [(ngModel)]="model"
-          value="content">
+          <ibm-dropdown 
+          placeholder="Select title" 
+          formControlName="personTitle" 
+          value="content" id="title"
+            ngDefaultControl>
             <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
           </ibm-dropdown><br />
           <div class="bx--row name-field">
             <div class="bx--col-sm-6 bx--col-md-6">
-              <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.FIRST_NAME' | translate}}</div>
-              <input ibmText class="inputbx" [(ngModel)]="firstName"><br />
+              <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.FIRST_NAME' | translate}}</div> 
+              <input ibmText class="inputbx" formControlName="firstName" id="firstName" ngDefaultControl><br />
             </div>
             <div class="bx--col-sm-6 bx--col-md-6">
               <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.LAST_NAME' | translate}}</div>
-              <input ibmText class="inputbx" [(ngModel)]="lastName"><br />
+              <input ibmText class="inputbx" formControlName="lastName" id="lastName" ngDefaultControl><br />
             </div>
           </div>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STREET_ADDRESS' | translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="streetAddress1"><br />
-          <input ibmText class="inputbx" [(ngModel)]="streetAddress2"><br />
+          <input ibmText class="inputbx" formControlName="address1" id="address1" ngDefaultControl><br />
+          <input ibmText class="inputbx" formControlName="address2" id="address2" ngDefaultControl><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.CITY' | translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="city"><br />
+          <input ibmText class="inputbx" formControlName="city" id="city" ngDefaultControl><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.COUNTRY' | translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="country"><br />
+          <input ibmText class="inputbx" formControlName="country" id="country"
+          (keyup)="countryInputKeyup()" ngDefaultControl>
+          <div>
+            <ul *ngIf="showCountryList">
+              <li class="list-data" *ngFor="let country of countryNameList | search:country.value"
+              (click)="selectedCountry(country)">
+              {{country}}</li>
+            </ul>
+          </div><br/>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="state"><br />
+          <input ibmText class="inputbx" formControlName="state" id="state"
+          (keyup)="stateInputKeyup()" ngDefaultControl>
+          <div>
+            <ul *ngIf="showStateList">
+              <li class="list-data" *ngFor="let state of stateNameList | search:state.value"
+              (click)="selectedState(state)">
+              {{state}}</li>
+            </ul>
+          </div><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.ZIPCODE' | translate}}</div>
-          <input ibmText class="inputbx" [(ngModel)]="zipcode">
+          <input ibmText class="inputbx" formControlName="zipCode" id="zipCode" ngDefaultControl>
         </div>
       </div>
       <div class="bx--row footer-content">
@@ -75,5 +93,5 @@
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
