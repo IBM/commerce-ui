@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { OrganizationDetailsComponent, DetailsOrganization } from './organization-details.component';
+import { OrganizationDetailsComponent } from './organization-details.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
