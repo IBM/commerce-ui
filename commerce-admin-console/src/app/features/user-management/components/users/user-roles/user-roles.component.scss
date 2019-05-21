@@ -186,20 +186,22 @@
     margin-bottom: 20px;
 }
 .model-role{
- 
-  width:200px;
-  height:15px;
-  color:white;
+  height: 25px;
+  color: white;
   background-color: black;
   border-radius: 25px;
-  padding:4px;
+  padding: 4px 5px 5px 12px;
   font-size: 12px;
-  margin-right:10px;
+  margin-right: 5px;
+  display: inline-block;
 }
 
 .icon-close{
   fill: white;
   cursor: pointer;
+  line-height: 24px;
+  vertical-align: text-top;
+  margin-left: 5px;
 }
 .optional-text {
   font-weight: 300;
@@ -209,11 +211,12 @@
   font-weight: 500;
   margin-left: 11px;
 }
-  .org-list {
-    padding: 6px 0 6px 0;
-    cursor: pointer;
-    &:hover {
-      color: white;
-      background: #0f6ddf;
-    }
+.org-list {
+  padding: 6px 0 6px 0;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    background: #0f6ddf;
   }
+}
+  
