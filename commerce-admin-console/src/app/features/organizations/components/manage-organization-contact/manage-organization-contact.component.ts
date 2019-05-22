@@ -60,7 +60,9 @@ export class ManageOrganizationContactComponent implements OnInit {
       streetAddress: [],
       apartmentName: [],
       city: [],
-      state: []
+      country: [],
+      state: [],
+      zipCode: []
     });
   }
 
