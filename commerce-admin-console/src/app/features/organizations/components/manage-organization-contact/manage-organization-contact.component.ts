@@ -34,7 +34,7 @@ export class ManageOrganizationContactComponent implements OnInit {
   city: any;
   state: any;
   country: any;
-  zipcode: any;
+  zipCode: any;
   private sub: any;
 
   constructor(
@@ -109,7 +109,7 @@ export class ManageOrganizationContactComponent implements OnInit {
     this.city = this.manageOrgResponse.address.city;
     this.state = this.manageOrgResponse.address.state;
     this.country = this.manageOrgResponse.address.country;
-    this.zipcode = this.manageOrgResponse.address.zipCode;
+    this.zipCode = this.manageOrgResponse.address.zipCode;
   }
 
   contactCall() {
@@ -121,7 +121,7 @@ export class ManageOrganizationContactComponent implements OnInit {
       'city': this.city,
       'state': this.state,
       'country': this.country,
-      'zipcode': this.zipcode
+      'zipCode': this.zipCode
     };
   }
 

@@ -107,7 +107,7 @@ export class OrganizationMainService {
       'state': data.state,
       'city': data.city,
       'country': data.country,
-      'zipcode': data.zipcode
+      'zipCode': data.zipCode
     };
   }
 
