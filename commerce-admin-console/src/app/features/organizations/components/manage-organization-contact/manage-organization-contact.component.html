@@ -31,7 +31,7 @@
         <div class="bx--row main-content">
           <div class="bx--col-sm-11 bx--col-md-11 inside-content">
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CONTACT_NAME' | translate}}</div>
-            <input ibmText class=" inputbx" id="manage-contact-name" [(ngModel)]="contactName" formControlName="contactName">
+            <input ibmText class=" inputbx" id="manage-contact-name" formControlName="firstName">
             <!--Validation for the Contact name field.-->
             <!-- <div class="errorField" *ngIf="manageContactForm.controls['contactName'].hasError('required')">
               Contact Name is the Mandatory field.
@@ -43,7 +43,7 @@
               Maximum length should be 10
             </div> -->
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CONTACT_EMAIL' | translate}}</div>
-            <input ibmText class=" inputbx" id="manage-contact-email" [(ngModel)]="contactEmail" formControlName="contactEmail">
+            <input ibmText class=" inputbx" id="manage-contact-email" formControlName="email1">
             <!--Validation for the Email field.-->
             <!-- <div class="errorField" *ngIf="manageContactForm.controls['contactEmail'].hasError('required')">
               Email is Mandatory to proceed.
@@ -52,18 +52,32 @@
               Please Enter a valid email
             </div> -->
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.STREET_ADDRESS' | translate}}</div>
-            <input ibmText class=" inputbx" id="manage-contact-street" [(ngModel)]="streetAddress1" formControlName="streetAddress"
+            <input ibmText class=" inputbx" id="manage-contact-street" formControlName="address1"
               placeholder="Strett and number, P.O. box, c/o">
-            <input ibmText class=" inputbx" id="manage-contact-apartment" [(ngModel)]="streetAddress2" formControlName="apartmentName"
+            <input ibmText class=" inputbx" id="manage-contact-apartment" formControlName="address2"
               placeholder="Apartment, suite, unit, building, floor, etc.">
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.CITY' | translate}}</div>
-            <input ibmText class=" inputbx" id="manage-contact-city" [(ngModel)]="city" formControlName="city">
+            <input ibmText class=" inputbx" id="manage-contact-city" formControlName="city">
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.COUNTRY' | translate}}</div>
-            <input ibmText class=" inputbx" id="manage-contact-city" [(ngModel)]="country" formControlName="country">
+            <input ibmText class=" inputbx" id="manage-contact-city" (keyup)="countryInputKeyup()" formControlName="country">
+            <div>
+              <ul *ngIf="showCountryList">
+                <li class="list-data" *ngFor="let countryInfo of countryList | search:country.value"
+                (click)="selectCountry(countryInfo)">
+                {{countryInfo.name}}</li>
+              </ul>
+            </div>
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.ADDRESS' | translate}}</div>
-            <input ibmText class=" inputbx" id="manage-contact-state" [(ngModel)]="state" formControlName="state">
+            <input ibmText class=" inputbx" id="manage-contact-state" (keyup)="stateInputKeyup()" formControlName="state">
+            <div>
+              <ul *ngIf="showStateList">
+                <li class="list-data" *ngFor="let state of stateList | search:state.value"
+                (click)="selectState(state)">
+                {{state.name}}</li>
+              </ul>
+            </div>
             <div class="form-text">{{'MANAGE_USER.MANAGE_ORGANIZATION_CONTACT.ZIP' | translate}}</div>
-            <input ibmText class=" inputbx" id="manage-contact-state" [(ngModel)]="zipCode" formControlName="zipCode">
+            <input ibmText class=" inputbx" id="manage-contact-state" formControlName="zipCode">
           </div>
         </div>
         <div class="bx--row footer-content">

@@ -18,6 +18,7 @@ export class OrganizationMainService {
   orgApprovalsData: any;
   listResult: any;
   organizationData: any;
+  manageOrganizationData: any;
 
 
   

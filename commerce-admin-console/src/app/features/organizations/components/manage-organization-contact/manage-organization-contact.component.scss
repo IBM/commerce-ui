@@ -84,6 +84,14 @@ div.border-div {
           div.form-text {
             margin-bottom: 1%;
           }
+          li.list-data {
+            padding: 6px 0 6px 0;
+            cursor: pointer;
+            &:hover {
+              color: white;
+              background: #0f6ddf;
+            }
+          }
           .inputbx {
             background-color: #f4f7fb;
             height: 2.5rem;
