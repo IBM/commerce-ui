@@ -49,8 +49,6 @@ fdescribe('UserGroupsComponent', () => {
     fixture.detectChanges();
   });
   it('testing of the groups service', () => {
-    fixture = TestBed.createComponent(UserGroupsComponent);
-    component = fixture.debugElement.componentInstance;
     const groupsService = fixture.debugElement.injector.get(UserMainService);
     fixture.detectChanges();
     expect(groupsService.createUser().then(result => {
