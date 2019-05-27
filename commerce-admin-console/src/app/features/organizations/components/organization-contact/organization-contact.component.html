@@ -59,7 +59,8 @@
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.CITY' | translate}}</div>
           <input ibmText class=" inputbx" id="contact-city" formControlName="city">
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.COUNTRY' | translate}}</div>
-          <input ibmText class=" inputbx" id="contact-city" (keyup)="countryInputKeyup()" formControlName="country">
+          <input ibmText class=" inputbx" id="contact-city" (keyup)="countryInputKeyup()"
+           formControlName="country" autocomplete="off">
           <div>
             <ul *ngIf="showCountryList">
               <li class="list-data" *ngFor="let countryInfo of countryList | search:country.value"
@@ -68,7 +69,8 @@
             </ul>
           </div>
           <div class="form-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.ADDRESS' | translate}}</div>
-          <input ibmText class=" inputbx" id="contact-state" (keyup)="stateInputKeyup()" formControlName="state">
+          <input ibmText class=" inputbx" id="contact-state" (keyup)="stateInputKeyup()"
+           formControlName="state" autocomplete="off">
           <div>
             <ul *ngIf="showStateList">
               <li class="list-data" *ngFor="let state of stateList | search:state.value"

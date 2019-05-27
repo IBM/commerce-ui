@@ -46,31 +46,24 @@
             <input ibmText class="inputbx" type="text" formControlName="password"><br /><br />
           </div>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.ORGANIZATION'| translate}}</div>
-          <input ibmText class=" inputbx" id="organization"
-                  formControlName="organizationName" ngDefaultControl
+          <input ibmText class="inputbx" id="parentOrganization"
+                  formControlName="parentOrganization" ngDefaultControl autocomplete="off"
                   (keyup)="orgInputKeyup()">
                   <div>
                     <ul *ngIf="showOrgList">
-                      <li class="org-list" *ngFor="let orgList of parentOrgData | search:organizationName.value"
-                      (click)="selectedOrg(orgList)">
-                      {{orgList}}</li>
+                      <li class="org-list" *ngFor="let org of organizationList"
+                      (click)="selectParentOrganization(org)">
+                      {{org.organizationName}}</li>
                     </ul>
                   </div><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.USER_TYPE'| translate}}</div>
           <div class="dropdown-margin">
-              <!-- <ibm-dropdown
-              placeholder="Select title"
-              [disabled]="disabled"
-              [(ngModel)]="policy"
-              value="content" id="accountPolicy" ngDefaultControl>
-              <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
-            </ibm-dropdown> -->
             <ibm-dropdown
-                      placeholder="{{'MANAGE_USER.MANAGE_USER_ACCOUNT.ACCOUNT_TYPE_PLACEHOLDER' | translate}}"
-                      formControlName="policy"
-                      value="content" id="accountPolicy" ngDefaultControl>
-                      <ibm-dropdown-list [items]="accountPolicyData" (select)="selectAccountPolicy($event)"></ibm-dropdown-list>
-                    </ibm-dropdown>
+                placeholder="{{'MANAGE_USER.MANAGE_USER_ACCOUNT.ACCOUNT_TYPE_PLACEHOLDER' | translate}}"
+                formControlName="policy"
+                value="content" id="accountPolicy" ngDefaultControl>
+                <ibm-dropdown-list [items]="accountPolicyList" (select)="selectAccountPolicy($event)"></ibm-dropdown-list>
+            </ibm-dropdown>
           </div><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ACCOUNT.PREFERED_LANGUAGE'| translate}}</div>
         </div>
