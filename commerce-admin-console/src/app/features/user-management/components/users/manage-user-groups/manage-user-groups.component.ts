@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-manage-user-groups',
   templateUrl: './manage-user-groups.component.html',
   styleUrls: ['./manage-user-groups.component.scss']
 })
 export class ManageUserGroupsComponent implements OnInit {
-  
+  manageGroupForm: FormGroup;
+  includeSearchText: FormControl;
   groupListData: any;
   id: number;
 
@@ -28,8 +29,17 @@ export class ManageUserGroupsComponent implements OnInit {
   ngOnInit() {
     this.groupListData = this.groupList;
     console.log(this.groupListData);
+    this.createFormControls();
+    this.createForm();
   }
-
+  createFormControls() {
+    this.includeSearchText = new FormControl('', Validators.required);
+  }
+  createForm() {
+    this.manageGroupForm = new FormGroup({
+      includeSearchText: this.includeSearchText
+    });
+  }
   cancelClick() {
     this.router.navigate(['/users']);
   }
