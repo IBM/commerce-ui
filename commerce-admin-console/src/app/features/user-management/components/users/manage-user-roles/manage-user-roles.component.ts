@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'ac-manage-user-roles',
   templateUrl: './manage-user-roles.component.html',
   styleUrls: ['./manage-user-roles.component.scss']
 })
 export class ManageUserRolesComponent implements OnInit {
+  manageRolesForm: FormGroup;
+  organization: FormControl;
+  roles: FormControl;
   model: '';
   disabled: '';
   rolesArray: any = [];
@@ -46,8 +49,19 @@ export class ManageUserRolesComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
   }
-
+  createFormControls() {
+    this.organization = new FormControl('', Validators.required);
+    this.roles = new FormControl('', Validators.required);
+  }
+  createForm() {
+    this.manageRolesForm = new FormGroup({
+      organization: this.organization,
+      roles: this.roles,
+    });
+  }
   cancelClick() {
     this.router.navigate(['/users']);
   }

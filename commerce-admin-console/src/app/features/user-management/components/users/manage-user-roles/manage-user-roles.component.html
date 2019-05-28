@@ -21,7 +21,7 @@
         <div class="text-margin" >{{'MANAGE_USER.MANAGE_USER_ROLES.GROUPS'| translate}}</div>
       </div>
     </div>
-    <div class="bx--col-sm-8 bx--col-md-8 right-content">
+    <form [formGroup]="manageRolesForm" class="bx--col-sm-8 bx--col-md-8 right-content">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
           <div class="info-text">
@@ -35,11 +35,11 @@
                       <option value="option2">Option 2</option>
                       <option value="option3">Option 3</option>
                       </ibm-select><br/><br/> -->
-          <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content">
+          <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content" formControlName="organization" ngDefaultControl>
             <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
           </ibm-dropdown><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ROLES.AVAILABLE_ROLES'| translate}}</div>
-          <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content">
+          <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content" formControlName="roles" ngDefaultControl>
             <ibm-dropdown-list [items]="rolesList"></ibm-dropdown-list>
           </ibm-dropdown><br /><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ROLES.SELECTED_ROLES'| translate}}</div>
@@ -56,5 +56,5 @@
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
