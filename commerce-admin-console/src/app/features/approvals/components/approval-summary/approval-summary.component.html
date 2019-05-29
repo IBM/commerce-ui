@@ -14,12 +14,12 @@
   <div class="bx--row header-border ">
     <div class="bx--col-sm-12 bx--col-md-12 side-content">
       <div class="bodyContainer">
-        <p class="summHeader">Organization details</p>
+        <p class="summHeader">{{'APPROVALS.ORGANIZATION.ORGNIZATION_DETAILS' | translate}}</p>
         <hr class="underline">
         <div class="approvalData">
-        <span class="orgDetails1">Name</span>
-        <span class="orgDetails2">Address</span>
-        <span class="orgDetails3">Parent</span>
+        <span class="orgDetails1">{{'APPROVALS.ORGANIZATION.NAME' | translate}}</span>
+        <span class="orgDetails2">{{'APPROVALS.ORGANIZATION.ADDRESS' | translate}}</span>
+        <span class="orgDetails3">{{'APPROVALS.ORGANIZATION.PARENT' | translate}}</span>
       </div>
       <div class="approvalData2">
           <span class="approvaldetail1">Name</span>
@@ -28,12 +28,12 @@
       </div>
       </div>
       <div class="bodyContainer">
-        <p class="summHeader">User details</p>
+        <p class="summHeader">{{'APPROVALS.USER.USER_DETAILS' | translate}}</p>
         <hr class="underline">
         <div class="approvalData">
-        <span class="orgDetails1">Name</span>
-        <span class="orgDetails2">Username</span>
-        <span class="orgDetails3">Email</span>
+        <span class="orgDetails1">{{'APPROVALS.USER.NAME' | translate}}</span>
+        <span class="orgDetails2">{{'APPROVALS.USER.USERNAME' | translate}}</span>
+        <span class="orgDetails3">{{'APPROVALS.USER.EMAIL' | translate}}</span>
       </div>
       <div class="approvalData2">
           <span class="approvaldetail1">Name</span>
@@ -41,8 +41,8 @@
           <span class="approvaldetail32">Parent</span>
       </div>
         <div class="secondrowOrgdetail">
-          <span class="orgDetails1">Organization</span>
-          <span class="orgDetails23">Roles</span>
+          <span class="orgDetails1">{{'APPROVALS.USER.ORGANIZATION' | translate}}</span>
+          <span class="orgDetails23">{{'APPROVALS.USER.ROLES' | translate}}</span>
         </div>
         <div class="approvalData2">
             <span class="approvaldetail1">Name</span>
@@ -51,7 +51,7 @@
         </div>
       </div>
       <div>
-      <p class="comment">Comments</p>
+      <p class="comment">{{'APPROVALS.USER.COMMENTS' | translate}}</p>
           
               <textarea ibmTextArea aria-label="textarea" rows="4" cols="50"></textarea>
               <!-- <input ibmText class=" inputbx"> -->
@@ -59,9 +59,12 @@
             </div>
     
       <div class="footerButtons">
-        <button ibmButton='danger--primary' class="footButtonCancel">Cancel</button> 
-        <button ibmButton='tertiary' class="footButton">Reject</button>
-        <button ibmButton='primary' class="footButton">Approve</button>
+        <button ibmButton='danger--primary' class="footButtonCancel">{{'APPROVALS.BUTTON.CANCEL'|
+          translate}}</button> 
+        <button ibmButton='tertiary' class="footButton">{{'APPROVALS.BUTTON.REJECT'|
+          translate}}</button>
+        <button ibmButton='primary' class="footButton">{{'APPROVALS.BUTTON.APPROVE'|
+          translate}}</button>
       </div>
     </div>
   </div>

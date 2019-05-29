@@ -217,6 +217,26 @@
                 "ENTITY_ID": "Eg. 2200002",
                 "APPROVER_ID": "Eg. 100001"
             }
+        },
+        "ORGANIZATION": {
+            "ORGNIZATION_DETAILS": "Organization details",
+            "NAME": "Name",
+            "ADDRESS": "Address",
+            "PARENT": "Parent"
+        },
+        "USER": {
+            "USER_DETAILS": "User details",
+            "NAME": "Name",
+            "USERNAME": "Username",
+            "EMAIL":"Email",
+            "ORGANIZATION":"Organization",
+            "ROLES":"Roles ",
+            "COMMENTS": "Comments"
+        },
+        "BUTTON": {
+            "CANCEL": "Cancel",
+            "REJECT": "Reject",
+            "APPROVE": "Approve"
         }
     },
     "USERS": {
