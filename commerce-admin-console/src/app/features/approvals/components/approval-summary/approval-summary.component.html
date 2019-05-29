@@ -21,10 +21,19 @@
         <span class="orgDetails2">{{'APPROVALS.ORGANIZATION.ADDRESS' | translate}}</span>
         <span class="orgDetails3">{{'APPROVALS.ORGANIZATION.PARENT' | translate}}</span>
       </div>
-      <div class="approvalData2">
-          <span class="approvaldetail1">Name</span>
-          <span class="approvaldetail2">Address</span>
-          <span class="approvaldetail3">Parent</span>
+      <div class="approvalData2" *ngIf="showOrganizationData">
+          <div class="org-name">
+              <span>{{organizationDetails.organizationName}}</span>
+          </div>
+          <div class="org-address">
+            <div>{{organizationDetails.address.address1}}</div>
+            <div>{{organizationDetails.address.city}}</div>
+            <div>{{organizationDetails.address.state}}</div>
+            <div>{{organizationDetails.address.country}}</div>
+          </div>
+          <div class="org-parent">
+              <span class="approvaldetail3">{{organizationDetails.parentOrganizationName}}</span>
+          </div>
       </div>
       </div>
       <div class="bodyContainer">
@@ -35,25 +44,24 @@
         <span class="orgDetails2">{{'APPROVALS.USER.USERNAME' | translate}}</span>
         <span class="orgDetails3">{{'APPROVALS.USER.EMAIL' | translate}}</span>
       </div>
-      <div class="approvalData2">
-          <span class="approvaldetail1">Name</span>
-          <span class="approvaldetail2">Address</span>
-          <span class="approvaldetail32">Parent</span>
+      <div class="approvalData2" *ngIf="showUserData">
+          <span class="approvaldetail1">{{userDetails.address.firstName}} {{userDetails.address.lastName}}</span>
+          <span class="approvaldetail2">{{userDetails.address.email1}}</span>
+          <span class="approvaldetail32">{{userDetails.address.email1}}</span>
       </div>
         <div class="secondrowOrgdetail">
           <span class="orgDetails1">{{'APPROVALS.USER.ORGANIZATION' | translate}}</span>
           <span class="orgDetails23">{{'APPROVALS.USER.ROLES' | translate}}</span>
         </div>
-        <div class="approvalData2">
-            <span class="approvaldetail1">Name</span>
-            <span class="approvaldetail22">Address</span>
-          
+        <div class="approvalData2" *ngIf="showUserData">
+            <span class="approvaldetail1">{{userDetails.parentOrganizationName}}</span>
+            <span class="approvaldetail22">Roles Data</span>
         </div>
       </div>
       <div>
       <p class="comment">{{'APPROVALS.USER.COMMENTS' | translate}}</p>
           
-              <textarea ibmTextArea aria-label="textarea" rows="4" cols="50"></textarea>
+              <textarea ibmTextArea aria-label="textarea" rows="4" cols="50" [(ngModel)]="comments" (keyup)="controlButtons()"></textarea>
               <!-- <input ibmText class=" inputbx"> -->
       
             </div>
@@ -61,9 +69,9 @@
       <div class="footerButtons">
         <button ibmButton='danger--primary' class="footButtonCancel">{{'APPROVALS.BUTTON.CANCEL'|
           translate}}</button> 
-        <button ibmButton='tertiary' class="footButton">{{'APPROVALS.BUTTON.REJECT'|
+        <button ibmButton='tertiary' class="footButton" [disabled]="disabledButtons" (click)="submitApproval('reject')">{{'APPROVALS.BUTTON.REJECT'|
           translate}}</button>
-        <button ibmButton='primary' class="footButton">{{'APPROVALS.BUTTON.APPROVE'|
+        <button ibmButton='primary' class="footButton" [disabled]="disabledButtons" (click)="submitApproval('approve')">{{'APPROVALS.BUTTON.APPROVE'|
           translate}}</button>
       </div>
     </div>

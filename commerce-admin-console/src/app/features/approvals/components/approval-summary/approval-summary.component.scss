@@ -149,7 +149,14 @@ line-height: 22px;
   }
   .approvaldetail1 {
     width: 230px;
-    height: 80px;
+  height: 20px;
+  font-family: IBMPlexSans-Medium;
+  margin-left: 4px;
+  padding-right: 154px;
+  font-size: 14px;
+  color: #646364;
+  letter-spacing: 0.01px;
+  line-height: 20px;
   
     padding-right: 179px;
     font-family: IBMPlexSans;
@@ -161,7 +168,7 @@ line-height: 22px;
   .approvaldetail2 {
     width: 230px;
     height: 80px;
-    margin-left: 24px;
+    margin-left: -2px;
     padding-right: 179px;
     font-family: IBMPlexSans;
     font-size: 14px;
@@ -210,8 +217,7 @@ line-height: 22px;
 .approvaldetail32 {
   width: 230px;
   height: 20px;
-  margin-left: 19px;
-  padding-right: 179px;
+  margin-left: -19px;
   font-family: IBMPlexSans;
   font-size: 14px;
   color: #282828;
@@ -221,8 +227,7 @@ line-height: 22px;
 .approvaldetail22 {
   width: 230px;
   height: 20px;
-  margin-left: 23px;
-  padding-right: 179px;
+  margin-left: -75px;
   font-family: IBMPlexSans;
   font-size: 14px;
   color: #282828;
@@ -245,4 +250,24 @@ text-align: left;
 }
 .bx--btn--danger--primary {
   background-color: #565656;
+}
+.org-name {
+  vertical-align: top;
+  font-size: 14px;
+  display: inline-block;
+}
+.org-address{
+  display: inline-block;
+  width: 19.5%;
+  height: 80px;
+  margin-left: 186px;
+  font-family: IBMPlexSans;
+  font-size: 14px;
+  color: #282828;
+  letter-spacing: 0.01px;
+  line-height: 20px;
+}
+.org-parent {
+  vertical-align: top;
+  display: inline-block;
 }
