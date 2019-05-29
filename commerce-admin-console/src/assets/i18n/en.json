@@ -168,7 +168,9 @@
         "BREADCRUMB": {
             "APPROVALS_LABEL": "Approval requests",
             "LOGOUT_LABEL": "Logout",
-            "HOME_LABEL": "Home"
+            "HOME_LABEL": "Home",
+            "APPROVALS": "Approvals",
+            "APPROVAL_SUMMARY": "Approval Summary"
         },
         "APPROVAL_TABLE": {
             "NUM_ROWS": "of",
