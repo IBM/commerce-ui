@@ -54,8 +54,14 @@
           <span class="orgDetails23">{{'APPROVALS.USER.ROLES' | translate}}</span>
         </div>
         <div class="approvalData2" *ngIf="showUserData">
-            <span class="approvaldetail1">{{userDetails.parentOrganizationName}}</span>
-            <span class="approvaldetail22">Roles Data</span>
+            <!-- <span class="approvaldetail1">{{userDetails.parentOrganizationName}}</span>
+            <span class="approvaldetail22">Roles Data</span> -->
+            <div class="org-name">
+                <span>{{userDetails.parentOrganizationName}}</span>
+            </div>
+            <div class="roles-name" *ngFor="let roles of rolesNameToDisplay">
+              <div>{{roles}}</div>
+            </div>
         </div>
       </div>
       <div>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApprovalStatusService } from '../../../../rest/services/approval-status.service';
 import { UsersService } from '../../../../rest/services/users.service';
 import { OrganizationsService } from '../../../../rest/services/organizations.service';
+import { RoleAssignmentsService } from '../../../../rest/services/role-assignments.service';
+import { RoleDescriptionsService } from '../../../../rest/services/role-descriptions.service';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-approval-summary',
@@ -12,7 +15,9 @@ export class ApprovalSummaryComponent implements OnInit {
 
   constructor(private approvalStatusService: ApprovalStatusService,
     private usersService: UsersService,
-    private organizationsService: OrganizationsService) { }
+    private organizationsService: OrganizationsService,
+    private roleAssignmentsService: RoleAssignmentsService,
+    private roleDescriptionsService: RoleDescriptionsService) { }
 
   comments: string;
   statusId: number;
@@ -22,8 +27,12 @@ export class ApprovalSummaryComponent implements OnInit {
   disabledButtons: boolean = true;
   showUserData: boolean = false;
   showOrganizationData: boolean = false;
+  roleNames = null;
+  rolesNameToDisplay: any;
+  roleNamesLoaded: Subject<boolean> = new Subject<boolean>();
 
   ngOnInit() {
+    this.loadRoleNames();
     this.getUserDetails();
     this.getOrganizationDetails();
   }
@@ -56,13 +65,68 @@ export class ApprovalSummaryComponent implements OnInit {
 			response => {
         console.log('userDetails', response);
         this.userDetails = response;
+        debugger
         this.showUserData = true;
+        this.populateRoles(this.userDetails.id);
 			},
 			error => {
 				console.log(error);
 			}
 		);
   }
+
+  private loadRoleNames() {
+    debugger
+    this.roleNamesLoaded.next(false);
+		this.roleDescriptionsService.getRoleDescriptions({
+			languageId: -1
+		}).subscribe((body: any) => {
+			let roleNames = {};
+			for (let i = 0; i < body.items.length; i++) {
+				let roleDescription = body.items[i];
+				roleNames[roleDescription.roleId] = roleDescription.displayName;
+			}
+      this.roleNames = roleNames;
+      this.roleNamesLoaded.next(true);
+		});
+  }
+  
+  private populateRoles(id:number) {
+		debugger
+		this.roleAssignmentsService.getRoleAssignments({
+			memberId: id
+		}).subscribe((body: any) => {
+      debugger
+      console.log('body', body);
+			let uniqueRoles:Array<number> = [];
+			for (let i = 0; i < body.items.length; i++) {
+				let roleId = body.items[i].roleId;
+				if (uniqueRoles.indexOf(roleId) === -1) {
+					uniqueRoles.push(roleId);
+				}
+			}
+			if (this.roleNames != null) {
+				this.getRoleNamesFromIds(uniqueRoles);
+			}
+			else {
+				const roleNamesLoadedSubscription: Subscription = this.roleNamesLoaded.subscribe((roleNamesLoaded: boolean) => {
+					if (roleNamesLoaded) {
+						this.getRoleNamesFromIds(uniqueRoles);
+						roleNamesLoadedSubscription.unsubscribe();
+					}
+				});
+			}
+		});
+  }
+
+  private getRoleNamesFromIds(roleIds:Array<number>) {
+		debugger
+		let roleNames = [];
+		for (let i = 0; i < roleIds.length; i++) {
+			roleNames.push(this.roleNames[roleIds[i]]);
+		}
+		this.rolesNameToDisplay = roleNames;
+	}
 
   submitApproval(data) {
     if (data === 'approve') {

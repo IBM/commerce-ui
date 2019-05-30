@@ -71,6 +71,7 @@ export class UserListComponent implements OnInit {
 			limit: this.model.pageLength
 		}).subscribe((body: any) => {
 			this.model.totalDataLength = body.count;
+			debugger
 			const data = [];
 			for (let i = 0; i < body.items.length; i++) {
 				const item = body.items[i];
@@ -106,6 +107,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	private populateRoles(id:number, roleTableItem: TableItem) {
+		debugger
 		this.roleAssignmentsService.getRoleAssignments({
 			memberId: id
 		}).subscribe((body: any) => {
@@ -131,6 +133,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	private getRoleNamesFromIds(roleIds:Array<number>): Array<string> {
+		debugger
 		let roleNames = [];
 		for (let i = 0; i < roleIds.length; i++) {
 			roleNames.push(this.roleNames[roleIds[i]]);
@@ -139,6 +142,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	private loadRoleNames() {
+		debugger
 		this.roleNamesLoaded.next(false);
 		this.roleDescriptionsService.getRoleDescriptions({
 			languageId: -1
