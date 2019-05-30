@@ -22,4 +22,14 @@ describe('ApprovalSummaryComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should', async(() => {
+    spyOn(component, 'ApprovalSummaryComponent');
+  
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+  
+    fixture.whenStable().then(() => {
+      expect(component.ApprovalSummaryComponent).toHaveBeenCalled();
+    });
 });

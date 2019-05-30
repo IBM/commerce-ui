@@ -37,16 +37,19 @@
 
 <!-- TABLE PART (START) -->
 <div class="TableItem bx--row">
-  <div class="table-body">
+  <div class="table-body" *ngIf="showApprovalList">
         <ibm-table [model]="model"  [striped]="striped"></ibm-table>
-        <ng-template #listOrgItemTemplate let-data="data">
-                <ibm-overflow-menu>
+        <!-- <ng-template #listOrgItemTemplate let-data="data"> -->
+                <!-- <ibm-overflow-menu>
                         <ibm-overflow-menu-option *ngFor="let option of options">
                             {{option}}
                         </ibm-overflow-menu-option>
-                    </ibm-overflow-menu>
-     </ng-template>
+                    </ibm-overflow-menu> -->
+                    <ng-template #listOrgItemTemplate let-data="data">
+                        <a routerLink="['/organisations', data.id]" (click)="getSelectedOrganization(data.requestor)">{{data.requestor}}</a>
+                 </ng-template>
+     <!-- </ng-template> -->
     
-        <ibm-pagination  [model]="model" ></ibm-pagination>
+     <ibm-pagination  [model]="model" (selectPage)="selectPage($event)"></ibm-pagination>
   </div> 
 </div>

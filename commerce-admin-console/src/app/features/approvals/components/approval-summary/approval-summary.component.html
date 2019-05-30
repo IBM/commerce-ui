@@ -73,7 +73,7 @@
             </div>
     
       <div class="footerButtons">
-        <button ibmButton='danger--primary' class="footButtonCancel">{{'APPROVALS.BUTTON.CANCEL'|
+        <button ibmButton='danger--primary' class="footButtonCancel"  (click)="cancelButton()">{{'APPROVALS.BUTTON.CANCEL'|
           translate}}</button> 
         <button ibmButton='tertiary' class="footButton" [disabled]="disabledButtons" (click)="submitApproval('reject')">{{'APPROVALS.BUTTON.REJECT'|
           translate}}</button>

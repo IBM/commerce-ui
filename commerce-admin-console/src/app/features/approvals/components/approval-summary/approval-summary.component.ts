@@ -5,6 +5,7 @@ import { OrganizationsService } from '../../../../rest/services/organizations.se
 import { RoleAssignmentsService } from '../../../../rest/services/role-assignments.service';
 import { RoleDescriptionsService } from '../../../../rest/services/role-descriptions.service';
 import { Subject, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-approval-summary',
@@ -17,7 +18,8 @@ export class ApprovalSummaryComponent implements OnInit {
     private usersService: UsersService,
     private organizationsService: OrganizationsService,
     private roleAssignmentsService: RoleAssignmentsService,
-    private roleDescriptionsService: RoleDescriptionsService) { }
+    private roleDescriptionsService: RoleDescriptionsService,
+    private router: Router) { }
 
   comments: string;
   statusId: number;
@@ -130,7 +132,7 @@ export class ApprovalSummaryComponent implements OnInit {
 
   submitApproval(data) {
     if (data === 'approve') {
-      this.statusId = 1
+      this.statusId = 1;
     }
     if (data === 'reject') {
       this.statusId = 2
@@ -151,7 +153,11 @@ export class ApprovalSummaryComponent implements OnInit {
 			error => {
 				console.log(error);
 			}
-		);
+    );
+    this.router.navigate(['/approvals']);
+  }
+  cancelButton() {
+    this.router.navigate(['/approvals']);
   }
   
 }
