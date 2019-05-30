@@ -11,11 +11,11 @@
    <div class="bx--row header-border">
     <div class="bx--col-sm-4 bx--col-md-4 side-content">
       <div class="bx--col-sm-12 bx--col-md-12 side-txt-margin">
-        <div class="text-margin" >{{'MANAGE_USER.MANAGE_USER_ROLES.ACCOUNT_INFORMATION'| translate}}</div><br />
-        <div class="text-margin" >{{'MANAGE_USER.MANAGE_USER_ROLES.CONTACT_INFORMATION'| translate}}</div><br />
+        <div class="text-margin" (click)="goToAccount()">{{'MANAGE_USER.MANAGE_USER_ROLES.ACCOUNT_INFORMATION'| translate}}</div><br />
+        <div class="text-margin" (click)="goToContact()">{{'MANAGE_USER.MANAGE_USER_ROLES.CONTACT_INFORMATION'| translate}}</div><br />
         <span class="dot account-dot"></span>
-        <div class="text-margin">{{'MANAGE_USER.MANAGE_USER_ROLES.ROLES'| translate}}</div><br />
-        <div class="text-margin" >{{'MANAGE_USER.MANAGE_USER_ROLES.GROUPS'| translate}}</div>
+        <div >{{'MANAGE_USER.MANAGE_USER_ROLES.ROLES'| translate}}</div><br />
+        <div class="text-margin" (click)="goToGroups()">{{'MANAGE_USER.MANAGE_USER_ROLES.GROUPS'| translate}}</div>
       </div>
     </div>
     <form [formGroup]="manageRolesForm" class="bx--col-sm-8 bx--col-md-8 right-content">
@@ -32,14 +32,32 @@
                       <option value="option2">Option 2</option>
                       <option value="option3">Option 3</option>
                       </ibm-select><br/><br/> -->
-          <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content" formControlName="organization" ngDefaultControl>
+          <!-- <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content" formControlName="organization" ngDefaultControl>
             <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
-          </ibm-dropdown><br /><br />
+          </ibm-dropdown><br /><br /> -->
+          <input ibmText class="inputbx" id="organization"
+                  formControlName="organization" ngDefaultControl autocomplete="off"
+                  (keyup)="orgInputKeyup()"><br>
+                <div>
+                  <ul *ngIf="showOrgList">
+                    <li class="org-list" *ngFor="let org of organizationList"
+                      (click)="selectOrganization(org)">
+                      {{org.organizationName}}</li>
+                  </ul>
+                </div>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ROLES.AVAILABLE_ROLES'| translate}}</div>
-          <ibm-dropdown placeholder="Select title" [disabled]="disabled" [(ngModel)]="model" value="content" formControlName="roles" ngDefaultControl>
-            <ibm-dropdown-list [items]="rolesList"></ibm-dropdown-list>
-          </ibm-dropdown><br /><br />
+          <ibm-dropdown
+                  placeholder="{{'MANAGE_USER.USER_ROLES.SELECT_ROLE_PLACEHOLDER' | translate}}"
+                  id="availableRoles" ngDefaultControl
+                  [disabled]="availableRoleList.length == 0">
+                  <ibm-dropdown-list [items]="availableRoleList" (select)="selectRole($event)"></ibm-dropdown-list>
+                </ibm-dropdown><br>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_ROLES.SELECTED_ROLES'| translate}}</div>
+          <div class="roles-margin">
+            <div class="model-role" *ngFor="let assignedRole of assignedRoles">{{assignedRole.roleName}} - {{assignedRole.organizationName}}
+              <span><ibm-icon-close16 class="icon-close" (click)="removeRole(assignedRole)"></ibm-icon-close16></span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="bx--row footer-content">
