@@ -286,7 +286,7 @@ export class ManageUserContactComponent implements OnInit {
     //this.contactCall();
     this.userMainService.setManageUserData(this.contactForm.value);
     this.updateUserApiCall();
-    //this.router.navigate(['/users/manageRoles', this.id]);
+    this.router.navigate(['/users/manageRoles', this.id]);
   }
 
   cancelClick() {
