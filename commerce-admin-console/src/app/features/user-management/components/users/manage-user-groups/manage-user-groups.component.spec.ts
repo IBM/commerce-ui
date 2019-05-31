@@ -41,7 +41,7 @@ fdescribe('ManageUserGroupsComponent', () => {
     fixture.detectChanges();
   });
   it('Include search text field validity', () => {
-    const includeSearchText = component.groupForm.controls['includeSearchText'];
+    const includeSearchText = component.manageGroupForm.controls['includeSearchText'];
     expect(includeSearchText.valid).toBeFalsy();
   });
   it('should create', () => {
