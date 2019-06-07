@@ -11,14 +11,13 @@ import { ApiModule } from './rest/api.module';
 import { FormsModule } from '@angular/forms';
 
 import { AppConstants } from './app.constants';
-import { NFormsModule, TableModule, DropdownModule } from 'carbon-components-angular';
+import { NFormsModule, TableModule, DropdownModule, IconModule } from 'carbon-components-angular';
 import { AuthService } from './services/auth.service';
 import { FeatureService } from './services/feature.service';
 import { FeatureEnabledDirective } from './directives/feature-enabled.directive';
 import { FeatureDisabledDirective } from './directives/feature-disabled.directive';
 import { JwtInterceptor } from './rest/interceptor';
 import { SharedModule } from './shared/shared.module';
-import { SearchPipeModule } from './pipes/search-pipe/search-pipe.module';
 
 export function initApiConfiguration(config: ApiConfiguration): () => Promise<any> {
 	return (): Promise<any> => {
@@ -58,7 +57,8 @@ export const INIT_API_CONFIGURATION: Provider = {
   declarations: [
     AppComponent,
     FeatureEnabledDirective,
-    FeatureDisabledDirective  ],
+    FeatureDisabledDirective
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -66,11 +66,11 @@ export const INIT_API_CONFIGURATION: Provider = {
     DropdownModule,
     FormsModule,
     HttpModule,
+    IconModule,
     NFormsModule,
     TableModule,
     SharedModule.forRoot(),
-    ApiModule,
-    SearchPipeModule
+    ApiModule
   ],
   providers: [
     INIT_API_CONFIGURATION,

@@ -32,6 +32,9 @@ public class RealCMCMainPage extends AbstractCMCPage implements CMCMainPage {
 
 	private static final Identifier CMC_TOOL_OPENED_ACTIVE = Identifier.byXPath(".//div[@modulename='cmc/shell/ToolTab::_$0_$1_$1' and text()='CMC_TOOL_NAME']");
 	private static final Identifier CMC_TOOL_OPENED_NOT_ACTIVE = Identifier.byXPath(".//div[@modulename='cmc/shell/ToolTab::_$1_$1_$1' and text()='CMC_TOOL_NAME']");
+	
+	private static final Identifier ALERT_VIEW_OK = Identifier.byXPath("//*[@id=\"mainContent\"]/div[2]/div[20]/div[7]/div/div[4]/div[6]");
+	
 			
 	@PageSection(identifier = "TOP_NAV_ROOT")
 	private TopNavigation topNavigation;
@@ -84,6 +87,17 @@ public class RealCMCMainPage extends AbstractCMCPage implements CMCMainPage {
 	public <T> T getComponent(Class<T> componentClass) {
 		
 		return getFactory().createPage().build(componentClass);
+	}
+	
+	
+	public CMCMainPage acceptAlert() {
+		getAndacceptAlert();
+		return this;
+	}
+	
+	public CMCMainPage clickOKOnAlert() {
+		getFactory().createQuery(ALERT_VIEW_OK).executeForOne().click();
+		return this;
 	}
 
 }

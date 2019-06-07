@@ -37,6 +37,8 @@ public class CMCConfigManager extends WcConfigManager {
 	 */
 	public String getCMCUrl() {
 		return "https://" + getHostName(MachineRole.CMC) + "/lobtools/cmc/ManagementCenterMain?locale=en_US";
+		//return "http://" + getHostName(MachineRole.CMC) + "/users/";
+
 	}
 	
 	/**

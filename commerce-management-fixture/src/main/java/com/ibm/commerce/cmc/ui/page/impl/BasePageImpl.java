@@ -47,6 +47,7 @@ public abstract class BasePageImpl implements BasePage {
     protected WteElement getElement(Identifier identifier) {
         return getFactory().createQuery(identifier).withinAjaxTimeout().asVisible()
                 .expectExactlyOne().executeForOne();
+   
     }
     
     /**

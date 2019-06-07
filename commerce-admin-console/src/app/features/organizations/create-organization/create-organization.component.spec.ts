@@ -6,18 +6,18 @@ import { Routes, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateLoader, TranslateModule, TranslateFakeLoader, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../../shared/shared.module'
-import { Location} from '@angular/common';
+import { Location} from "@angular/common";
+import { OrganizationService } from '../../../rest/services/organization.service';
 import { OrganizationsMainService } from '../organizations.main.service';
 import { ApiConfiguration } from '../../../rest/api-configuration';
 import { IframeService } from '../../../services/iframe.service';
 import { AuthService } from '../../../services/auth.service';
-import { OrganizationsService } from '../../../rest/services/organizations.service';
 
 const routes: Routes = [
   {path: 'organizations', component: ListOrganizationsComponent}
 ];
 
-class MockOrganizationsService {
+class MockOrganizationService {
 
 }
 
@@ -26,11 +26,11 @@ fdescribe('CreateOrganizationComponent', () => {
   let fixture: ComponentFixture<CreateOrganizationComponent>;
   let router: Router;
   let location: Location;
-  let orgMainService: OrganizationsMainService;
+  let orgMainService : OrganizationsMainService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
+      imports: [ 
         TranslateModule.forChild({
           loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
         }),
@@ -40,11 +40,11 @@ fdescribe('CreateOrganizationComponent', () => {
       declarations: [ CreateOrganizationComponent, ListOrganizationsComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: OrganizationsService, useClass: MockOrganizationsService },
+        { provide: OrganizationService, useClass: MockOrganizationService },
         ApiConfiguration,
         OrganizationsMainService,
         IframeService,
-        MockOrganizationsService,
+        MockOrganizationService,
         AuthService
       ]
     })

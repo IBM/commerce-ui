@@ -1,4 +1,2 @@
-includeFlat 'commerce-admin-console',
-'bvt',
-'commerce-management-fixture',
+includeFlat 'commerce-management-fixture',
 'orgadmin-fvt-tests'

@@ -1,0 +1,9 @@
+<div class="container">
+  <button class="btn" (click)='openSearchModal()'><ibm-icon icon="search" size="sm"></ibm-icon>{{'APPROVALS.BUTTON_BAR.FIND_BUTTON' | translate}}</button>
+  <button class="btn" (click)='addUser()'><ibm-icon icon="addnew" size="sm"></ibm-icon>{{'USER_MANAGEMENT.ADD_USER.addUser' | translate}}</button>
+  <div class="helplink-container">
+	<a href = {{USER_HELPLINKS}} target="_blank">
+      <ac-help-links></ac-help-links>
+	</a>
+  </div>
+</div> 

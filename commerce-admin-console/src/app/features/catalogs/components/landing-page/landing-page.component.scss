@@ -1,9 +1,9 @@
-// .containerClass{
-//     margin: 2%;
-//     }
-//     .catlogMargin{
-//         margin: 3%;
-//     }
+.containerClass{
+    margin: 2%;
+    }
+    .catlogMargin{
+        margin: 3%;
+    }
     ul.ordrLst {
         list-style-type: dot;
       }
@@ -28,16 +28,15 @@
         color: black;
     }
     .content-width{
-    margin-left: 0.5%;
-    width: 100%;
-    display: inline-block;
-    position: absolute;
-    background-color: #f1f1f1 !important;
+        max-width: 78% !important;
+        background-color: #f1f1f1 !important;
+        margin-left: 0.5%;
+        min-height: 438px;
+        margin-bottom: 0.6%;
     }
     .side-width{
+        max-width: 22% !important;
         background-color: #f1f1f1 !important;
         min-height: 438px;
         margin-bottom: 0.6%;
-        display: inline-block;
-       
     }

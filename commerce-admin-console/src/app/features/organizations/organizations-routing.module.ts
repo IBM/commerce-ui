@@ -5,43 +5,11 @@ import { ListOrganizationsComponent } from './list-organizations/list-organizati
 import { FindOrganizationsComponent } from './find-organizations/find-organizations.component';
 import { CreateOrganizationComponent } from './create-organization/create-organization.component';
 import { EditOrganizationComponent } from './edit-organization/edit-organization.component';
-import { OrganizationListComponent } from './components/organization-list/organization-list.component';
-import { OrganizationDetailsComponent } from './components/organization-details/organization-details.component';
-import { OrganizationContactComponent } from './components/organization-contact/organization-contact.component';
-import { OrganizationRolesComponent } from './components/organization-roles/organization-roles.component';
-import { OrganizationApprovalsComponent } from './components/organization-approvals/organization-approvals.component';
-import { ManageOrganizationDetailsComponent } from './components/manage-organization-details/manage-organization-details.component';
-import { ManageOrganizationContactComponent } from './components/manage-organization-contact/manage-organization-contact.component';
-import { ManageOrganizationRolesComponent } from './components/manage-organization-roles/manage-organization-roles.component';
-import { ManageOrganizationApprovalsComponent } from './components/manage-organization-approvals/manage-organization-approvals.component';
 
 const routes: Routes = [
 	{
-		path: '', component: OrganizationListComponent
-	},
-	{
-		path: 'organizationsDetails', component: OrganizationDetailsComponent
-	},
-	{
-		path: 'organizationContact', component: OrganizationContactComponent
-	},
-	{
-		path: 'organizationsRoles', component: OrganizationRolesComponent
-	},
-	{
-		path: 'organizationsApprovals', component: OrganizationApprovalsComponent
-	},
-	{
-		path: 'manageOrganizationDetails/:id', component: ManageOrganizationDetailsComponent
-	},
-	{
-		path: 'manageOrganizationContact/:id', component: ManageOrganizationContactComponent
-	},
-	{
-		path: 'manageOrganizationRoles', component: ManageOrganizationRolesComponent
-	},
-	{
-		path: 'manageOrganizationApprovals', component: ManageOrganizationApprovalsComponent
+		path: '',
+		component: ListOrganizationsComponent
 	},
 	{
 		path: 'find',
@@ -54,7 +22,7 @@ const routes: Routes = [
 	{
 		path: ':id',
 		component: EditOrganizationComponent
-	},
+	}
 ];
 
 @NgModule({

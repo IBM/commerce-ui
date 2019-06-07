@@ -51,15 +51,15 @@ export class ViewDropdownComponent implements OnInit {
     if (view.item.selected) {
       switch (view.item.id) {
         case ApprovalConstants.DROPDOWN_VIEW_TYPES.VIEW_PENDING:
-          this.approvalStatusQueryService.setStatus(0);
+          this.approvalStatusQueryService.setStatus(ApprovalConstants.DROPDOWN_VIEW_TYPES.VIEW_PENDING);
           this.approvalStatusQueryService.queryApprovalStatuses();
           break;
         case ApprovalConstants.DROPDOWN_VIEW_TYPES.VIEW_APPROVED:
-          this.approvalStatusQueryService.setStatus(1);
+          this.approvalStatusQueryService.setStatus(ApprovalConstants.DROPDOWN_VIEW_TYPES.VIEW_APPROVED);
           this.approvalStatusQueryService.queryApprovalStatuses();
           break;
         case ApprovalConstants.DROPDOWN_VIEW_TYPES.VIEW_REJECTED:
-          this.approvalStatusQueryService.setStatus(2);
+          this.approvalStatusQueryService.setStatus(ApprovalConstants.DROPDOWN_VIEW_TYPES.VIEW_REJECTED);
           this.approvalStatusQueryService.queryApprovalStatuses();
           break;
         case ApprovalConstants.DROPDOWN_VIEW_TYPES.VIEW_ALL:

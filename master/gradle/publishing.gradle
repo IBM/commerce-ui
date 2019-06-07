@@ -3,7 +3,7 @@ apply plugin: 'maven-publish'
 publishing {
 	repositories {
 		maven {
-			url "http://wcnexus.torolab.ibm.com:8081/nexus/content/repositories/snapshots"
+			url "https://na.artifactory.swg-devops.com/artifactory/wce-wte-snapshot-maven-local"
 			credentials {
 				username project.hasProperty('nexusUser') ? project.nexusUser : ''
 				password project.hasProperty('nexusPass') ? project.nexusPass : ''

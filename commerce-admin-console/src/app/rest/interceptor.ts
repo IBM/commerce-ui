@@ -9,7 +9,7 @@ export class JwtInterceptor implements HttpInterceptor {
 	constructor(private authService: AuthService, private apiConfiguration: ApiConfiguration) {}
 
 	intercept(request: HttpRequest<any>, nextHttpHandler: HttpHandler): Observable<HttpEvent<any>> {
-		if (request.url.indexOf(this.apiConfiguration.rootUrl + "/wcs/resources") === 0 || request.url.indexOf(this.apiConfiguration.rootUrl + "/rest") === 0) {
+		if (request.url.indexOf(this.apiConfiguration.rootUrl) === 0) {
 			return new Observable<HttpEvent<any>>((observer: Observer<HttpEvent<any>>) => {
 				if (AuthService.jwt) {
 					this.sendAuthenticatedRequest(request, nextHttpHandler, observer, null);

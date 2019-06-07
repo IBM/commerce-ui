@@ -1,23 +1,18 @@
 /* tslint:disable */
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration';
+import { ApiConfiguration } from './api-configuration';
 
-import { OnlineStoresService } from './services/online-stores.service';
-import { OrganizationsService } from './services/organizations.service';
-import { UsersService } from './services/users.service';
-import { AddressesService } from './services/addresses.service';
-import { RolesService } from './services/roles.service';
-import { RoleAssignmentsService } from './services/role-assignments.service';
-import { ApprovalStatusService } from './services/approval-status.service';
-import { UserAccountPolicyDescriptionsService } from './services/user-account-policy-descriptions.service';
-import { LanguageDescriptionsService } from './services/language-descriptions.service';
-import { StatesService } from './services/states.service';
-import { CountriesService } from './services/countries.service';
-import { MemberGroupsService } from './services/member-groups.service';
-import { MemberGroupMembershipsService } from './services/member-group-memberships.service';
+import { OrganizationService } from './services/organization.service';
 import { PersonService } from './services/person.service';
-import { RoleDescriptionsService } from './services/role-descriptions.service';
+import { ContactService } from './services/contact.service';
+import { CheckoutProfileService } from './services/checkout-profile.service';
+import { UserActivateService } from './services/user-activate.service';
+import { ApprovalStatusService } from './services/approval-status.service';
+
+import { StoreLocatorService } from './services/store-locator.service';
+import { CountryService } from './services/country.service';
+import { GeonodeService } from './services/geonode.service';
 
 /**
  * Provider for all Api services, plus ApiConfiguration
@@ -32,33 +27,16 @@ import { RoleDescriptionsService } from './services/role-descriptions.service';
   declarations: [],
   providers: [
     ApiConfiguration,
-    OnlineStoresService,
-    OrganizationsService,
-    UsersService,
-    AddressesService,
-    RolesService,
-    RoleAssignmentsService,
-    ApprovalStatusService,
-    UserAccountPolicyDescriptionsService,
-    LanguageDescriptionsService,
-    StatesService,
-    CountriesService,
-    MemberGroupsService,
-    MemberGroupMembershipsService,
+    OrganizationService,
     PersonService,
-    RoleDescriptionsService
+    ContactService,
+    CheckoutProfileService,
+    UserActivateService,
+    ApprovalStatusService,
+    ApiConfiguration,
+    StoreLocatorService,
+    CountryService,
+    GeonodeService
   ],
 })
-export class ApiModule {
-  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders {
-    return {
-      ngModule: ApiModule,
-      providers: [
-        {
-          provide: ApiConfiguration,
-          useValue: {rootUrl: customParams.rootUrl}
-        }
-      ]
-    }
-  }
-}
+export class ApiModule { }

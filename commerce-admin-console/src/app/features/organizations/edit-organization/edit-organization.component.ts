@@ -16,7 +16,7 @@ export class EditOrganizationComponent implements OnInit {
   breadCrumbLinks = [];
 
   readonly ORGANIZATIONS_HELPLINKS = HelpLinksConstants.ORGANIZATIONS_HELP_LINK;
-  orgId: number;
+  orgId: string;
   contextOrg: Object = {};
 
   onEdit(changedOrg: Object){

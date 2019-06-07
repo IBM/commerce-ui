@@ -7,24 +7,13 @@ allprojects {
 	// pull from maven central and from the Commerce maven repo
 	repositories {
 		maven {
-			url 'http://wcnexus.torolab.ibm.com:8081/nexus/content/groups/public'
-		}
-		maven {
-			url 'http://wcnexus.torolab.ibm.com:8081/nexus/content/groups/websphere'
-		}
-		ivy {
-			url "http://wcfvtivy.torolab.ibm.com/ivy/reps" 
-			layout 'pattern', {
-				artifact 'first-party-releases/[organisation]/[module]/[revision]/[artifact]-[revision]-[type].[ext]'
-				artifact 'third-party-releases/[organisation]/[module]/[revision]/[artifact]-[revision]-[type].[ext]'
-				ivy 'first-party-releases/[organisation]/[module]/[revision]/ivy.xml'
-				ivy 'third-party-releases/[organisation]/[module]/[revision]/ivy.xml'
-			}
+			url 'https://na.artifactory.swg-devops.com/artifactory/wce-wte-snapshot-maven-local'
 			credentials {
-				username 'smokeuser'
-				password 'v2z5yXlX'
-			}
+			    username 'jagadm02@in.ibm.com'
+			    password 'ka03me2053'
+		    }
 		}
+		mavenCentral()
 	}
 
 	group = rootProject.group
@@ -73,12 +62,6 @@ subprojects {
 
 	eclipse {
 		classpath.plusConfigurations += [configurations.provided]
-	}
-
-	sonarqube {
-		properties {
-			properties["sonar.java.libraries"] += configurations.provided
-		}
 	}
 
 	configurations {
@@ -138,30 +121,6 @@ subprojects {
 
 	// when running the build, also produce a code coverage report
 	build.dependsOn(jacocoTestReport)
-}
-
-sonarqube {
-	properties {
-		property 'sonar.projectKey', group
-		property 'sonar.projectName', product
-		property 'sonar.projectBaseDir', "$projectDir/.."
-		property 'sonar.host.url', System.getenv("SONAR_HOST")
-		property 'sonar.login', System.getenv("SONAR_SCANNER_TOKEN")
-		property 'sonar.sourceEncoding', 'UTF-8'
-		property 'sonar.jacoco.reportMissing.force.zero', 'true'
-		property 'sonar.scm.provider', 'git'
-
-		///////////////////////////////////////////
-		// Configurations for preview analysis and
-		// issues gate for code quality
-		//////////////////////////////////////////
-
-		property 'sonar.gitlab.max_blocker_issues_gate', System.getenv("SONAR_ISSUE_GATE_MAX_BLOCKER")
-                property 'sonar.gitlab.max_critical_issues_gate', System.getenv("SONAR_ISSUE_GATE_MAX_CRITICAL")
-		property 'sonar.gitlab.max_major_issues_gate', System.getenv("SONAR_ISSUE_GATE_MAX_MAJOR")
-		property 'sonar.gitlab.max_minor_issues_gate', System.getenv("SONAR_ISSUE_GATE_MAX_MINOR")
-		property 'sonar.gitlab.max_info_issues_gate', System.getenv("SONAR_ISSUE_GATE_MAX_INFO")
-	}
 }
 
 task clean(type: Delete) {

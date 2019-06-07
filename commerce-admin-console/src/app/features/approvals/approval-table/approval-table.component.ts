@@ -6,6 +6,7 @@ import {
 } from 'carbon-components-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ApprovalStatusQueryService } from '../approvals-status-query.service';
+import { ComIbmCommerceApprovalBeansOrderApprovalStatusListDataBean_IBM_Store_SummaryResultList } from '../../../rest/models'
 import { Subscription } from 'rxjs';
 import { ApprovalUpdateService } from '../approval-update.service';
 import { ApprovalConstants } from '../approval.constants';
@@ -73,8 +74,8 @@ export class ApprovalTableComponent implements OnInit {
     this.approvalTableContent = new TableModel();
     this.approvalTableContent.data = [[]];
     this.approvalTableContent.pageLength = approvalStatusQueryService.getPageSize();
-    // Make sure the table initializes with pending requests (0)
-    this.approvalStatusQueryService.setStatus(0);
+    // Make sure the table initializes with pending requests
+    this.approvalStatusQueryService.setStatus(ApprovalConstants.DROPDOWN_VIEW_TYPES.VIEW_PENDING);
     this.isTableEmpty = true;
   }
 
@@ -139,7 +140,7 @@ export class ApprovalTableComponent implements OnInit {
       this.approvalTableContent.totalDataLength = 1; //For Pagination to render properly...
     }
 
-    data.resultList.forEach((item) => {
+    data.resultList.forEach((item: ComIbmCommerceApprovalBeansOrderApprovalStatusListDataBean_IBM_Store_SummaryResultList) => {
       this.approvalTableContent.addRow([
         new TableItem({ data: item.approvalStatusId }),
         new TableItem({ data: item.submitterId }),

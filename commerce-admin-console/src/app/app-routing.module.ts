@@ -17,10 +17,6 @@ const routes: Routes = [
 	{
 		path: 'catalogs',
 		loadChildren: './features/catalogs/catalogs.module#CatalogsModule'
-	},
-	{
-		path: 'member-groups',
-		loadChildren: './features/member-groups/member-groups.module#MemberGroupsModule'
 	}
 ];
 
