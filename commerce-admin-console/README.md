@@ -30,7 +30,7 @@ npm install
 # Development server
 
 Run `npm start` for a dev server. Navigate to `https://localhost:7443`. The app will automatically reload if you change any of the source files. This command will also load reverse proxy settings in `proxy.conf.json`.
-By default the reverse proxy is configured to run with xiangxil1.fyre.ibm.com as the transaction server. You can launch Management Center using `https://localhost:7443/lobtools/cmc/ManagementCenter`.
+By default the reverse proxy is configured to run with your transaction server toolkit. With the transaction server running, you can launch Management Center using `https://localhost:7443/lobtools/cmc/ManagementCenter`.
 
 Check [proxy settings](https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md) to set up correct proxy for dev server. 
 
@@ -39,23 +39,13 @@ Check [proxy settings](https://github.com/angular/angular-cli/blob/master/docs/d
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Internationalization
-Follow Common-UI-Shell, the project use `ngx-translate` to provide internationalization related service. Available locale id are: `de, en, es, fr, it, ja, ko, pt_BR, sv, zh_TW, zh`. 
+Follow Common-UI-Shell, the project use `ngx-translate` to provide internationalization related service. Avaliable locale id are: `de, en, es, fr, it, ja, ko, pt_BR, sv, zh_TW, zh`. 
 
-Translation file located in `src/app/i18n` serves as a global translation. Each feature should have its own translation file in their own folder.
-
-## Generating combined REST API swagger
-
-Install api-spec-converter using the following command: `npm install -g api-spec-converter`
-Convert openApi 3.1 to swagger 2:
-	`api-spec-converter --from=openapi_3 --to=swagger_2 ../../WebSphereCommerce/commerce-transaction-server/src/projects/Rest-Transaction/WebContent/WEB-INF/config/bod/v2/online-stores.yml > api_definition\online-stores.json`
-	`api-spec-converter --from=openapi_3 --to=swagger_2 ../../WebSphereCommerce/commerce-transaction-server/src/projects/Rest-Transaction/WebContent/WEB-INF/config/bod/v2/member-groups.yml > api_definition\member-groups.json`
-Install swagger-combine using the following command: `npm install –g swagger-combine`
-Combine swagger into one swagger file: `swagger-combine swagger-combine.json > api_definition/swagger.json`
-The swagger combine depends on the transaction server swagger files found here: https://ecdgit.canlab.ibm.com/aleong-ca/commerce-api-management
-Before running `swagger-combine`, you must clone commerce-api-management at the same directory level as commerce-ui.
+Translation file located in `src/app/i18n` serves as a global translation. Each feature should have its own translation file in their own folder. 
 
 ## Create Rest service
-Run `npm run build-api` to generate the REST service client.
+Run `npm run build-api` to generate the REST service client. The swagger generator depends on the transaction server swagger files found here: https://ecdgit.canlab.ibm.com/aleong-ca/commerce-api-management
+Before running `npm run build-api`, you must clone commerce-api-management at the same directory level as commerce-admin-tools.
 
 ## Kill dev server process
 If you are using Mac OS, you may need run `sudo kill -9 $(sudo lsof -t -i:7443)` to kill previous `ng serve` process. 

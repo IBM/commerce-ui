@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ModalService } from 'carbon-components-angular'
 import { ModelPopupComponent } from '../model-popup/model-popup.component';
 @Component({

@@ -15,7 +15,7 @@ export class ApprovalStatusQueryService {
     private submitterLastName: string | null | undefined;
     private startSubmitTime: string | null | undefined;
     private endSubmitTime: string | undefined;
-    private status: 0 | 1 | 2 | null | undefined;
+    private status: number | null | undefined;
     private approvalStatusId: number | null | undefined;
     private entityId: number | null | undefined;
     private approverId: number | null | undefined;
@@ -121,7 +121,7 @@ export class ApprovalStatusQueryService {
         this.endSubmitTime = endSubmitTime;
     }
 
-    public setStatus(status: 0 | 1 | 2 | null | undefined) {
+    public setStatus(status: number | null | undefined) {
         this.status = status;
     }
 

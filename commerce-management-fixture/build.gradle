@@ -1,11 +1,6 @@
 dependencies {
 	compile group: 'com.ibm.commerce.qa.test-frameworks-utils', name: 'fvt-utils', version: '1.0+'
-	compile group: 'com.ibm.commerce', name: 'AuroraWteClientLib', version: '17.0.0.0.+'
+	compile group: 'com.ibm.commerce.qa.test-frameworks-wte', name: 'WCWebTestEngine', version: '1.0+'
+	compile group: 'com.ibm.commerce.qa.test-frameworks-wte', name: 'Wte', version: '1.0+'
 	compile group: 'org.jsoup', name: 'jsoup', version: '1.8.+'
-	compile group: 'com.ibm.commerce.qa.test-fixtures', name: 'casl-rest-fixture', version: '1.0+'
-}
-sonarqube {
-	properties {
-		property 'sonar.coverage.exclusions', '**/*'
-	}
 }

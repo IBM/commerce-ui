@@ -47,6 +47,16 @@ public interface CreateOrganizationsPage {
 	public CreateOrganizationsPage submit();
 	
 	public CreateOrganizationsPage cancel();
+	
+	public CreateOrganizationsPage next();
+	
+	public CreateOrganizationsPage typeContactName(String contactName);
 
+	public CreateOrganizationsPage typeStreetAddress2(String address2);
+	
+	public CreateOrganizationsPage selectFromAvailableRoles(String availableRole);
+	
+	public CreateOrganizationsPage selectFromAvailableApprovals(String availableApproval);
+	
 	public CreateOrganizationsPage validateCreateOrgFromList(String name, String parentOrg, String orgType);
 }

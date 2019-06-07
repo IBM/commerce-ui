@@ -1,31 +1,23 @@
-<app-main-ui-shell></app-main-ui-shell>
 <ac-header></ac-header>
-<app-ui-shell></app-ui-shell>
-
-  <div class="row">
-      <div class="side-width">
-        <ac-side-bar></ac-side-bar>
-      </div>
-      <div class="content-width">
-          <div style="text-align:center"><br>
-            <h3>
-              <span>
-                <ibm-icon-search32></ibm-icon-search32>
-              </span>{{ 'CATALOGS.SEARCH_RESULT.HEADER' | translate }}</h3><br>
-          </div>
-      
-          <div class="headTextMargin">
-            <ibm-table [model]="model" [showSelectionColumn]="showSelectionColumn" [size]="size" [striped]="striped" (sort)="simpleSort($event)">
-            </ibm-table>
-            <ng-template #customHeaderTemplate>
-              <div style="width: 230px">
-                <ibm-dropdown placeholder="Store" [disabled]="disabled" (selected)="selected($event)" (onClose)="onClose($event)">
-                  <ibm-dropdown-list [items]="listItems"></ibm-dropdown-list>
-                </ibm-dropdown>
-              </div>
-            </ng-template>
-          </div>
-       
-      </div>
-      </div>
+<div class="row">
+  <div class="col-md-3 side-width">
+    <ac-side-bar></ac-side-bar>
+  </div>
+  <div class="col-md-9 content-width">
+    <!--The content below is only a placeholder and can be replaced.-->
+    <div>
+      <p class="searchheader"><i class='fas fa-search'></i> &nbsp;Search Result - Catagories</p>
+      <!--Empty table-->
+      <ibm-table [model]="model" [size]="size" [striped]="striped">
+        <tbody>
+          <tr>
+            <td class="no-data" colspan="7">
+              <div>No data.</div>
+            </td>
+          </tr>
+        </tbody>
+      </ibm-table>
+</div>
+</div>
+</div>
       <ac-footer></ac-footer>

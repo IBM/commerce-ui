@@ -1,0 +1,22 @@
+<ibm-modal size="md">
+  <ibm-modal-header (closeSelect)="closeModal()">{{'USERS.SEARCH_MODAL.MODAL_HEADER' | translate}}</ibm-modal-header>
+  <div class="modal-body form-container">
+    <ibm-label>
+      {{'USERS.SEARCH_MODAL.LABEL.LOGON_ID' | translate}}
+      <input type="text" [(ngModel)]="logonId" class="input-text--md" placeholder="{{ 'USERS.SEARCH_MODAL.PLACEHOLDER.LOGON_ID' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'USERS.SEARCH_MODAL.LABEL.FIRST_NAME' | translate}}
+      <input type="text" [(ngModel)]="firstName" class="input-text--md" placeholder="{{ 'USERS.SEARCH_MODAL.PLACEHOLDER.FIRST_NAME' | translate}}" />
+    </ibm-label>
+    <ibm-label>
+      {{'USERS.SEARCH_MODAL.LABEL.LAST_NAME' | translate}}
+      <input type="text" [(ngModel)]="lastName" class="input-text--md" placeholder="{{ 'USERS.SEARCH_MODAL.PLACEHOLDER.LAST_NAME' | translate}}" />
+    </ibm-label>
+  </div>
+  <ibm-modal-footer>
+    <button class="btn--secondary cancel-button" type="button" (click)="closeModal()">{{'USERS.SEARCH_MODAL.CANCEL' |
+      translate}}</button>
+    <button class="btn--primary submit-button" type="button" (click)="search()">{{'USERS.SEARCH_MODAL.FIND' | translate}}</button>
+  </ibm-modal-footer>
+</ibm-modal>

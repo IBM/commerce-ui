@@ -1,0 +1,200 @@
+<div id="validationList" class="form-group">
+  <ul class="bx--row">
+    <li class="bx--col-xs-12 error-list-elem" *ngFor="let errorMessage of validationList">
+      <span>{{ errorMessage }}</span>
+    </li>
+  </ul>
+</div>
+
+<div class="form-group">
+  <div class="bx--row">
+    <div class="bx--col-xs-6">
+      <h3>{{'USER_MANAGEMENT.TITLES.details' | translate}}</h3>
+      <div class="bx--form-item">
+        <label for="title" class="bx--label" [ngClass]="{'ng-invalid':formElements[0].valid === false}">{{'USER_MANAGEMENT.ADD_USER.' + formElements[0].id | translate}}</label>
+        <input type="text" class="bx--text-input" id="loginId" [attr.disabled]="editUserEnabled ? '' : null" name="loginId" [(ngModel)]="formElements[0].value" [ngClass]="{'invalid-input-style':formElements[0].valid === false && formElements[0].required === true}">
+      </div>
+      <div class="bx--form-item" *ngIf="editUserEnabled">
+        <p id="distinguishedName">
+          {{ 'USER_MANAGEMENT.ADD_USER.distinguishedName' | translate }} {{ distinguishedName }}
+        </p>
+      </div>
+      <div class="bx--form-item">
+        <label for="title" class="bx--label" [ngClass]="{'ng-invalid':formElements[1].valid === false}">{{'USER_MANAGEMENT.ADD_USER.' + formElements[1].id | translate}}</label>
+        <input type="text" class="bx--text-input" id="title" name="title" [(ngModel)]="formElements[1].value" [ngClass]="{'invalid-input-style':formElements[1].valid === false && formElements[0].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="firstName">{{'USER_MANAGEMENT.ADD_USER.' + formElements[2].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="firstName" name="firstName" [(ngModel)]="formElements[2].value"
+          [ngClass]="{'invalid-input-style':formElements[2].valid === false && formElements[2].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="middleName">{{'USER_MANAGEMENT.ADD_USER.' + formElements[3].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="middleName" name="middleName" [(ngModel)]="formElements[3].value"
+          [ngClass]="{'invalid-input-style':formElements[3].valid === false && formElements[3].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="lastName">{{'USER_MANAGEMENT.ADD_USER.' + formElements[4].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="lastName" name="lastName" [(ngModel)]="formElements[4].value"
+          [ngClass]="{'invalid-input-style':formElements[4].valid === false && formElements[4].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="password">{{'USER_MANAGEMENT.ADD_USER.' + formElements[5].id | translate}}</label>
+        <input type="password" class="form-control bx--text-input" id="password" name="password" [(ngModel)]="formElements[5].value"
+          [ngClass]="{'invalid-input-style':formElements[5].valid === false && formElements[5].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="passwordConfirm">{{'USER_MANAGEMENT.ADD_USER.' + formElements[6].id | translate}}</label>
+        <input type="password" class="form-control bx--text-input" id="passwordConfirm" name="passwordConfirm"
+          [(ngModel)]="formElements[6].value" [ngClass]="{'invalid-input-style':formElements[6].valid === false && formElements[6].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="accountPolicyDropdown">{{'USER_MANAGEMENT.ADD_USER.' + formElements[7].id | translate}}
+          <ibm-dropdown id="accountPolicyDropdown" placeholder="{{'USER_MANAGEMENT.DROPDOWN.accountPolicyDropdown' | translate }}" size="sm"
+            (selected)="onDropdownSelect($event, 7)" [ngClass]="{'valid--error':formElements[7].valid === false && formElements[7].required === true}">
+            <ibm-dropdown-list [items]="policyList"></ibm-dropdown-list>
+          </ibm-dropdown>
+        </label>
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="accountStatusDropdown">{{'USER_MANAGEMENT.ADD_USER.' + formElements[8].id | translate}}
+          <ibm-dropdown id="accountStatusDropdown" placeholder="{{'USER_MANAGEMENT.DROPDOWN.statusDropdown' | translate }}" size="sm" (selected)="onDropdownSelect($event, 8)"
+            [ngClass]="{'valid--error':formElements[8].valid === false && formElements[8].required === true}">
+            <ibm-dropdown-list [items]="statusList"></ibm-dropdown-list>
+          </ibm-dropdown>
+        </label>
+      </div>
+      <div class="bx--form-item" *ngIf="editUserEnabled">
+        <p id="created">
+          {{ 'USER_MANAGEMENT.ADD_USER.distinguishedName' | translate }} {{ created }}
+        </p>
+      </div>
+      <div class="bx--form-item" *ngIf="editUserEnabled">
+        <p id="registrationTime">
+          {{ 'USER_MANAGEMENT.ADD_USER.distinguishedName' | translate }} {{ registrationTime }}
+        </p>
+      </div>
+      <div class="bx--form-item" *ngIf="editUserEnabled">
+        <p id="created">
+          {{ 'USER_MANAGEMENT.ADD_USER.distinguishedName' | translate }} {{ registrationUpdateTime }}
+        </p>
+      </div>
+      <h3>{{'USER_MANAGEMENT.TITLES.business' | translate}}</h3>
+      <div class="bx--form-item">
+        <label class="bx--label" for="employeeId">{{'USER_MANAGEMENT.ADD_USER.' + formElements[9].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="employeeId" name="employeeId" [(ngModel)]="formElements[9].value"
+          [ngClass]="{'invalid-input-style':formElements[9].valid === false && formElements[9].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="employeeType">{{'USER_MANAGEMENT.ADD_USER.' + formElements[10].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="employeeType" name="employeeType" [(ngModel)]="formElements[10].value"
+          [ngClass]="{'invalid-input-style':formElements[10].valid === false && formElements[10].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="departmentNumber">{{'USER_MANAGEMENT.ADD_USER.' + formElements[11].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="departmentNumber" name="departmentNumber"
+          [(ngModel)]="formElements[11].value" [ngClass]="{'invalid-input-style':formElements[11].valid === false && formElements[11].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="managerName">{{'USER_MANAGEMENT.ADD_USER.' + formElements[12].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="managerName" name="managerName" [(ngModel)]="formElements[12].value"
+          [ngClass]="{'invalid-input-style':formElements[12].valid === false && formElements[12].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="secretaryName">{{'USER_MANAGEMENT.ADD_USER.' + formElements[13].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="secretaryName" name="secretaryName" [(ngModel)]="formElements[13].value"
+          [ngClass]="{'invalid-input-style':formElements[13].valid === false && formElements[13].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="languageDropdown">{{'USER_MANAGEMENT.ADD_USER.' + formElements[14].id | translate}}
+          <ibm-dropdown id="languageDropdown" placeholder="{{'USER_MANAGEMENT.DROPDOWN.languageDropdown' | translate }}" size="sm" (selected)="onDropdownSelect($event, 14)"
+            [ngClass]="{'valid--error':formElements[14].valid === false && formElements[14].required === true}">
+            <ibm-dropdown-list [items]="languageList"></ibm-dropdown-list>
+          </ibm-dropdown>
+        </label>
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="organizationDropdown">{{'USER_MANAGEMENT.ADD_USER.' + formElements[15].id | translate}}
+          <ibm-dropdown id="organizationDropdown" placeholder="{{'USER_MANAGEMENT.DROPDOWN.organizationDropdown' | translate }}" size="sm" (selected)="onDropdownSelect($event, 15)"
+            [ngClass]="{'valid--error':formElements[15].valid === false && formElements[15].required === true}">
+            <ibm-dropdown-list [items]="organizationList"></ibm-dropdown-list>
+          </ibm-dropdown>
+        </label>
+      </div>
+      <h3>{{'USER_MANAGEMENT.TITLES.address' | translate}}</h3>
+      <div class="bx--form-item">
+        <label class="bx--label" for="address">{{'USER_MANAGEMENT.ADD_USER.' + formElements[16].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="address1" name="address1" [(ngModel)]="formElements[16].value"
+          [ngClass]="{'invalid-input-style':formElements[16].valid === false && formElements[16].required === true}">
+        <input type="text" class="form-control bx--text-input" id="address2" name="address2" [(ngModel)]="formElements[17].value"
+          [ngClass]="{'invalid-input-style':formElements[17].valid === false && formElements[17].required === true}">
+        <input type="text" class="form-control bx--text-input" id="address3" name="address3" [(ngModel)]="formElements[18].value"
+          [ngClass]="{'invalid-input-style':formElements[18].valid === false && formElements[18].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="city">{{'USER_MANAGEMENT.ADD_USER.' + formElements[19].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="city" name="city" [(ngModel)]="formElements[19].value"
+          [ngClass]="{'invalid-input-style':formElements[19].valid === false && formElements[19].required === true}">
+      </div>
+      <div class="bx--form-item" *ngIf="!stateDropdownEnabled">
+        <label class="bx--label" for="state">{{'USER_MANAGEMENT.ADD_USER.' + formElements[20].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="state" name="state" [(ngModel)]="formElements[20].value"
+          [ngClass]="{'invalid-input-style':formElements[20].valid === false && formElements[20].required === true}">
+      </div>
+      <div class="bx--form-item" *ngIf="stateDropdownEnabled">
+        <label class="bx--label" for="stateDropdown">{{'USER_MANAGEMENT.ADD_USER.' + formElements[20].id | translate}}
+          <ibm-dropdown id="stateDropdown" placeholder="{{'USER_MANAGEMENT.DROPDOWN.stateDropdown' | translate }}" size="sm" (selected)="onDropdownSelect($event, 20)"
+            [ngClass]="{'valid--error':formElements[20].valid === false && formElements[20].required === true}">
+            <ibm-dropdown-list [items]="stateDropdownList"></ibm-dropdown-list>
+          </ibm-dropdown>
+        </label>
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="employeeId">{{'USER_MANAGEMENT.ADD_USER.' + formElements[21].id | translate}}</label>
+        <input type="text" class="form-control bx--text-input" id="zip" name="zip" [(ngModel)]="formElements[21].value"
+          [ngClass]="{'invalid-input-style':formElements[21].valid === false && formElements[21].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="organizationDropdown">{{'USER_MANAGEMENT.ADD_USER.' + formElements[22].id | translate}}
+          <ibm-dropdown id="countryDropdown" placeholder="{{'USER_MANAGEMENT.DROPDOWN.countryDropdown' | translate }}" size="sm" (selected)="onCountryDropdownSelect($event);"
+            [ngClass]="{'valid--error':formElements[22].valid === false && formElements[22].required === true}">
+            <ibm-dropdown-list [items]="countryList"></ibm-dropdown-list>
+          </ibm-dropdown>
+        </label>
+      </div>
+      <h3>{{'USER_MANAGEMENT.TITLES.contact' | translate}}</h3>
+      <div class="bx--form-item">
+        <label class="bx--label" for="email1">{{'USER_MANAGEMENT.ADD_USER.' + formElements[23].id | translate}}</label>
+        <input type="email" class="form-control bx--text-input" id="email1" name="email1" [(ngModel)]="formElements[23].value"
+          [ngClass]="{'invalid-input-style':formElements[23].valid === false && formElements[23].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="email2">{{'USER_MANAGEMENT.ADD_USER.' + formElements[24].id | translate}}</label>
+        <input type="email" class="form-control bx--text-input" id="email2" name="email2" [(ngModel)]="formElements[24].value"
+          [ngClass]="{'invalid-input-style':formElements[24].valid === false && formElements[24].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="phone1">{{'USER_MANAGEMENT.ADD_USER.' + formElements[25].id | translate}}</label>
+        <input type="number" class="form-control bx--text-input" id="phone1" name="phone2" [(ngModel)]="formElements[25].value"
+          [ngClass]="{'invalid-input-style':formElements[25].valid === false && formElements[25].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="phone2">{{'USER_MANAGEMENT.ADD_USER.' + formElements[26].id | translate}}</label>
+        <input type="number" class="form-control bx--text-input" id="phone2" name="phone2" [(ngModel)]="formElements[26].value"
+          [ngClass]="{'invalid-input-style':formElements[26].valid === false && formElements[26].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="fax1">{{'USER_MANAGEMENT.ADD_USER.' + formElements[27].id | translate}}</label>
+        <input type="number" class="form-control bx--text-input" id="fax1" name="fax1" [(ngModel)]="formElements[27].value"
+          [ngClass]="{'invalid-input-style':formElements[27].valid === false && formElements[27].required === true}">
+      </div>
+      <div class="bx--form-item">
+        <label class="bx--label" for="fax2">{{'USER_MANAGEMENT.ADD_USER.' + formElements[28].id | translate}}</label>
+        <input type="number" class="form-control bx--text-input" id="fax2" name="fax2" [(ngModel)]="formElements[28].value"
+          [ngClass]="{'invalid-input-style':formElements[28].valid === false && formElements[28].required === true}">
+      </div>
+      <button id="searchButton" class="bx--btn bx--btn--primary" (click)="submit()" type="button">{{'USER_MANAGEMENT.TITLES.submitButton' | translate}}</button>
+      <button id="cancelButton" class="bx--btn bx--btn--secondary" (click)="cancel()" type="button">{{'USER_MANAGEMENT.TITLES.cancelButton' | translate}}</button>
+    </div>
+  </div>
+</div>

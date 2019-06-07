@@ -104,6 +104,9 @@ public abstract class AbstractCMCPage
 		getFactory().selectFirstWindow();
 	}
 	
+	protected void getAndacceptAlert() {
+		getFactory().getAlert().accept();;
+	}
 	
 	
 	/**

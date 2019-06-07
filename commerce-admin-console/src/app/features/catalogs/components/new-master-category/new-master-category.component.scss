@@ -1,27 +1,6 @@
-
-.side-width{
-    background-color: #f1f1f1 !important;
-    min-height: 438px;
-    margin-bottom: 0.6%;
-    display: inline-block;
-}
 .containerClass{
-    margin-left: 0.5%;
-    width: 78%;
-    display: inline-block;
-    position: absolute;
-    background-color: #f1f1f1 !important;
-    height: 438px;
-    overflow: scroll;
-}
-.div-right {
-    display: inline-block;
-    font-size: 13px;
-    margin-left: 5%;
-}
-.div-left {
-    font-size: 13px;
-    display: inline-block;
+    margin-top: 1%;
+    width: 100%;
 }
 .iconFontSize{
     font-size: 35px;
@@ -41,13 +20,7 @@
     margin-left: 2px;
 }
 .headTextMargin{
-    display: inline-block;
-    margin: 1% 0 0 1%;
-}
-.header-btn {
-    position: absolute;
-    display: inline-block;
-    margin: 1% 0 0 25%;
+    margin-left: -45px;
 }
 .mstrCtgry{
     font-size: 23px;
@@ -70,6 +43,9 @@
  ibm-tabs ul {
     border-bottom: 1px solid;
 }
+.associateFont{
+    font-size: 13px;
+}
 .bx--accordion__title{
     font-weight: 600 !important;
 }
@@ -79,23 +55,11 @@
 .uniqueRow{
     margin-top: 10px;
 }
-.input-size{
-    padding: 10px 0px 10px 0px;
-    width: 35%;
-    font-size: 13px;
-    margin-left: 13%;
-}
-.input-size-icon{
-    padding: 10px 0px 10px 0px;
-    width: 35%;
-    font-size: 13px;
+.inputPadding{
+    padding: 5px 0px 5px 0px;
 }
 .uniqueFont{
     font-size: 14px;
-    display: inline-block;
-    margin-top: 1%;
-    position: absolute;
-    width: 11%;
 }
 .questionMark{
     margin: 12px 5px 0px -21px;
@@ -176,6 +140,19 @@ td {
 .row-width{
     min-width: 105%;
 }
+.content-width{
+    max-width: 77% !important;
+    background-color: #f1f1f1 !important;
+    margin-left: 0.5%;
+    min-height: 438px;
+    margin-bottom: 0.6%;
+}
+.side-width{
+    max-width: 22% !important;
+    background-color: #f1f1f1 !important;
+    min-height: 438px;
+    margin-bottom: 0.6%;
+}
 .tab-overflow{
     overflow-y: auto;
     max-width: 96%;
@@ -195,66 +172,3 @@ td {
     font-size: 20px;
     cursor: pointer;
 }
-.general-div{
-    margin-top: 1.5%;
-}
-.general-input{
-    display: inline-block;
-    width: 100%;
-}
-.display-text{
-    display: inline-block;
-    width: 12%;
-    font-size: 14px;
-}
-.display-checkbox{
-    display: inline-flex;
-}
-.radio-space{
-    margin: 1% 0 1% 12%;
-}
-.unique-radio{
-    font-size: 14px;
-    display: inline-block;
-    margin-bottom: 1%;
-    position: absolute;
-    width: 11%;
-}
-.unique-radio-textbox{
-    font-size: 14px;
-    display: inline-block;
-    margin-top: 2%;
-    position: absolute;
-    width: 11%;
-}
-.icon-svg-warning {
-    fill: red;
-  }
-//   .headTextMargin label {
-//       display: inline-flex;
-//   }
-  .icon-svg-table{
-    font-size: 20px;
-    height: 50px;
-    line-height: 30px;
-  }
-  .icon-svg-help {
-    margin-left: 11%;
-    fill: rgb(189, 179, 179);
-  }
-  .icon-svg-btn {
-    fill: rgb(189, 179, 179);
-  }
-  .icon-svg-radio {
-    margin-left: 0;
-    fill: rgb(189, 179, 179);
-  }
-  .help-radio{
-      display: inline-flex;
-  }
-  .tooltip-class{
-    z-index: 1;
-  }
-  .icon-svg-display {
-    fill: rgb(189, 179, 179);
-  }

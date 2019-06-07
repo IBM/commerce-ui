@@ -26,6 +26,8 @@ public interface CreateUserPage {
 	
 	public CreateUserPage typeTitle(String title);
 	
+	public CreateUserPage selectTitle(String title);
+	
 	public CreateUserPage typeFirstName(String firstName);
 	
 	public CreateUserPage typeMiddleName(String middleName);
@@ -56,6 +58,8 @@ public interface CreateUserPage {
 	
 	public CreateUserPage typeStreetAddress(String streetAddress);
 	
+	public CreateUserPage typeStreetAddress2(String streetAddress);
+	
 	public CreateUserPage typeCity(String city);
 	
 	public CreateUserPage typeState(String state);
@@ -79,7 +83,30 @@ public interface CreateUserPage {
 	public CreateUserPage submit();
 	
 	public CreateUserPage cancel();
+	
+	public CreateUserPage next();
+	
+	public CreateUserPage save();
+	
+	public CreateUserPage selectOrganizationForRoles(String organization);
+	
+	public CreateUserPage selectFromAvailableRoles(String role);
+	
+	public CreateUserPage navigateToIncludeTab();
+	
+	public CreateUserPage navigateToExcludeTab();
+	
+	public CreateUserPage findAGroupToInclude(String groupName);
+	
+	public CreateUserPage findAGroupToExclude(String groupName);
+	
+	public CreateUserPage selectAGroupToInclude(String groupName);
+	
+	public CreateUserPage selectAGroupToExclude(String groupName);
+	
 
 	boolean verifyLanguageExist(String language);
+
+	
 
 }

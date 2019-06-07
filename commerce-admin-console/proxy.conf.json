@@ -1,17 +1,10 @@
 {
 	"/lobtools": {
-		"target": "https://xiangxil1.fyre.ibm.com:8000",
-		"secure": false,
-		"changeOrigin": true
+		"target": "https://localhost:8000",
+		"secure": false
 	},
 	"/wcs": {
-		"target": "https://xiangxil1.fyre.ibm.com:5443",
-		"secure": false,
-		"changeOrigin": true
-	},
-	"/rest": {
-		"target": "https://xiangxil1.fyre.ibm.com:5443",
-		"secure": false,
-		"changeOrigin": true
+		"target": "https://localhost:8000",
+		"secure": false
 	}
 }

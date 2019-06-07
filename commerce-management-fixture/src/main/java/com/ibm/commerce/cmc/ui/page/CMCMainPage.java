@@ -51,5 +51,7 @@ public interface CMCMainPage {
 	 */
 	public <T>T goToCMCToolPage(CMCTools tool);
 	
-	public abstract <T> T getComponent(Class<T> componentClass);	
+	public abstract <T> T getComponent(Class<T> componentClass);
+	public CMCMainPage acceptAlert();
+	public CMCMainPage clickOKOnAlert();
 }

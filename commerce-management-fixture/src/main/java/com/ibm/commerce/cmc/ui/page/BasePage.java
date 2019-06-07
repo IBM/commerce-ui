@@ -16,6 +16,7 @@ package com.ibm.commerce.cmc.ui.page;
  *-----------------------------------------------------------------
  */
 
+
 public abstract interface BasePage {
 
 }

@@ -1,8 +1,0 @@
-dependencies {
-	compile project(':commerce-management-fixture')
-}
-sonarqube {
-	properties {
-		property 'sonar.coverage.exclusions', '**/*'
-	}
-}

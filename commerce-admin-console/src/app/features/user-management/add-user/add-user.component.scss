@@ -1,0 +1,11 @@
+@import '../../../../../node_modules/carbon-components/src/globals/scss/styles.scss';
+@import '../../../../../node_modules/carbon-components/scss/globals/scss/styles.scss';
+@import '../../../../../node_modules/carbon-components/scss/components/form/form';
+
+.invalid-input-style {
+    border-color: red;
+}
+
+.error-list-elem {
+    color: red;
+}

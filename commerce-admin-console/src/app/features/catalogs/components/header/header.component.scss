@@ -1,100 +1,10 @@
-.headcontainer {
-
-    background: #BEBEBE;
-    display: flex;
-    //padding: 6px 0px 6px 0px;
-} 
-.third-level-menu
-{
-    position: absolute;
-    top: 0;
-    left: 200px;
-    right: -150px;
-    width: 200px;
-    list-style: none;
-    padding: 0;
-    //margin-left: -1px;
-    display: none;
-    z-index: 2;
-}
-
-.third-level-menu > li
-{
-    height: 30px;
-    background: white;
-}
-.third-level-menu > li:hover { background:lightblue; }
-
-.second-level-menu
-{
-    position: absolute;
-    top: 30px;
-    left: 0;
-    width: 200px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: none;
-}
-
-.second-level-menu > li
-{
-    position: relative;
-    height: 30px;
-    background: white;
-    z-index: 1;
-    margin-left: 2px;
-}
-.second-level-menu > li:hover { background: lightblue; }
-
-.top-level-menu
-{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.top-level-menu > li
-{
-    position: relative;
-    float: left;
-    height: 30px;
-    width: 150px;
-    background: #999999;
-}
-.top-level-menu > li { background: #CCCCCC; }
-
-.top-level-menu li:hover > ul
-{
-    /* On hover, display the next level's menu */
-    display: inline;
-}
-
-
-/* Menu Link Styles */
-
-.top-level-menu a /* Apply to all links inside the multi-level menu */
-{
-    font: bold 14px Arial, Helvetica, sans-serif;
-    color: #732f2f;
-    text-decoration: none;
-    padding: 0 0 0 10px;
-
-    /* Make the link cover the entire list item-container */
-    display: block;
-    line-height: 30px;
-    
-}
-.top-level-menu a:hover { color: #000000;}
-
  /* Remove the navbar's default margin-bottom and rounded borders */
- 
  
  .ibm-dropdownWidth {
     width: 250px;
     margin-top: 5px;
     position: absolute;
-    right: 450px;
+    right: 150px;
     height: 50px;
 }
 .ibm-dropdown {
@@ -109,14 +19,35 @@
     text-overflow: ellipsis;
 }
 .ibm-searchwidth{
+    // width: 170px;
+    // margin-top: 5px;
     position: absolute;
     right: 30px;
+    // height: 50px;
 }
 .bx--list-box {
+    // position: relative;
+    // width: 100%;
     height: 2.0rem !important;
     max-height: 2rem !important;
     width:170px;
+    // background-color: #f4f7fb;
+    // border: none;
+    // box-shadow: 0 1px 0 0 #5a6872;
+    // order: 1;
+    // cursor: pointer;
+    // color: #152935;
 }
+
+.navbar {
+padding: 0rem;
+margin-bottom: 0rem;
+} 
+// .disabled {
+//     pointer-events: none;
+//     cursor: default;
+// }
+
 .bx--list-box {
     height: 2.0rem;
     max-height: 2.5rem;  
@@ -230,69 +161,4 @@ span.bx--list-box__label {
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
-}
-.bg-secondary {
-    // background-color: #457ec3 !important;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
- .ibm-dropdownWidth .bx--list-box {
-        height: 2.0rem;
-        max-height: 2.5rem; 
-        margin-top: 2px; 
-    }
-
-    .bx--header {
-        display: flex;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3rem;
-        color: #f3f3f3;
-    }
-    .headcontainer {
-        background: #BEBEBE;
-        display: flex;
-        margin-top: 50px;
-    }
-    a.bx--header__name {
-        display: none;
-        text-decoration: none;
-    }
-    .bx--header__action {
-        display: flex;
-        background: none;
-    }
-.bx--grid {
-    margin-left: 0%;
-     margin-right: 0%; 
-     padding-left: 0px; 
-     padding-right: 0px; 
-}
-.bx--header__menu .bx--header__menu-item[role='menuitem'] {
-    height: 3rem;
-    background-color: white;
-    z-index: 1;
-    color: #3d70b2;
-}
-
-.bx--header__action {
-    font-family: "ibm-plex-sans", Helvetica Neue, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0;
-    display: none;
-    background: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    width: 100%;
-    width: 3rem;
-    height: 3rem;
-    border: 0.1875rem solid transparent;
 }

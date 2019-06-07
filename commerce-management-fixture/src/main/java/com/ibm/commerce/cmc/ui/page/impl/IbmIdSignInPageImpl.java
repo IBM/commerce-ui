@@ -21,6 +21,7 @@ import com.ibm.commerce.qa.wte.framework.page.Identifier;
 
 public class IbmIdSignInPageImpl extends BasePageImpl implements IbmIdSignInPage {
 	private static final Identifier IBM_ID_INPUT = Identifier.byId("username");
+	//private static final Identifier CONTINUE_BUTTON = Identifier.byId("continuebutton");
 	private static final Identifier CONTINUE_BUTTON = Identifier.byId("continue-button");
 	private static final Identifier PASSWORD_INPUT = Identifier.byId("password");
 	private static final Identifier SIGN_IN_BUTTON = Identifier.byId("signinbutton");

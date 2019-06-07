@@ -22,23 +22,23 @@ import com.ibm.commerce.qa.wte.framework.page.Identifier;
 
 public class FindOrganizationsPageImpl extends AbstractCMCPage implements FindOrganizationsPage{
 	
-	public static final Identifier NAME = Identifier.byXPath(".//li//span[(text() ='ORG_NAME')]");
+	private static final Identifier NAME = Identifier.byXPath(".//li//span[(text() ='ORG_NAME')]");
 	
-	public static final Identifier NAME_DROPDOWN = Identifier.byXPath(".//span[(text() ='The Short Name of the Organization')]");
+	private static final Identifier NAME_DROPDOWN = Identifier.byXPath(".//span[(text() ='The Short Name of the Organization')]");
 	
-	public static final Identifier SEARCH = Identifier.byXPath(".//input[@type='search']");
+	private static final Identifier SEARCH = Identifier.byXPath(".//input[@type='search']");
 	
-	public static final Identifier PARENT_ORG = Identifier.byXPath(".//li//span[(text() ='PARENT_ORG')]");
+	private static final Identifier PARENT_ORG = Identifier.byXPath(".//li//span[(text() ='PARENT_ORG')]");
 	
-	public static final Identifier PARENT_ORG_DROPDOWN = Identifier.byXPath(".//span[(text() ='The Name of the Parent Organization')]");
+	private static final Identifier PARENT_ORG_DROPDOWN = Identifier.byXPath(".//span[(text() ='The Name of the Parent Organization')]");
 	
-	public static final Identifier SUBMIT = Identifier.byXPath(".//button[(text() = 'Submit')]");
+	private static final Identifier SUBMIT = Identifier.byXPath(".//button[(text() = 'Submit')]");
 	
-	public static final Identifier CANCEL = Identifier.byXPath(".//button[(text() = 'Cancel')]");
+	private static final Identifier CANCEL = Identifier.byXPath(".//button[(text() = 'Cancel')]");
 	
-	public static final Identifier NAME_RESULT = Identifier.byXPath(".//a[(text() ='ORG_NAME')]");
+	private static final Identifier NAME_RESULT = Identifier.byXPath(".//a[(text() ='ORG_NAME')]");
 	
-	public static final Identifier PARENT_ORG_RESULT = Identifier.byXPath(".//span[(text() ='PARENT_ORG')]");
+	private static final Identifier PARENT_ORG_RESULT = Identifier.byXPath(".//span[(text() ='PARENT_ORG')]");
 
 	@Override
 	public FindOrganizationsPage selectName(String name) {
