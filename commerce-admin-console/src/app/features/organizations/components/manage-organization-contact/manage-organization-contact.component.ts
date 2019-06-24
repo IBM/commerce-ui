@@ -5,6 +5,8 @@ import { OrganizationMainService } from '../../organization.main.service';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { IframeService } from '../../../../services/iframe.service';
 import { TranslateService } from '@ngx-translate/core';
+import { CountriesService } from '../../../../rest/services/countries.service';
+import { StatesService } from '../../../../rest/services/states.service';
 
 export class ManageUserContact {
   constructor(public contactName: string,
@@ -22,20 +24,25 @@ export class ManageUserContact {
 })
 export class ManageOrganizationContactComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<ManageUserContact>();
-  manageContactForm: FormGroup;
 
+  showCountryList: boolean = false;
+  showStateList: boolean = false;
+  countryList: Array<any> = [];
+  stateList: Array<any> = [];
   orgContactData: any;
   manageOrgResponse: any;
   id: number;
-  contactName: any;
-  contactEmail: any;
-  streetAddress1: any;
-  streetAddress2: any;
-  city: any;
-  state: any;
-  country: any;
-  zipcode: any;
   private sub: any;
+
+  manageContactForm: FormGroup;
+  firstName: FormControl;
+	email1: FormControl;
+	address1: FormControl;
+	address2: FormControl;
+	city: FormControl;
+	state: FormControl;
+	country: FormControl;
+	zipCode: FormControl;
 
   constructor(
     private router: Router,
@@ -44,24 +51,70 @@ export class ManageOrganizationContactComponent implements OnInit {
     private orgMainService: OrganizationMainService,
     private iframeService: IframeService,
     private translateService: TranslateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private countriesService: CountriesService,
+    private statesService: StatesService
   ) { }
 
   ngOnInit() {
     this.getOrgApiCall();
-    this.manageContactForm = this._fb.group({
-      contactName: ['', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(10)]],
-      contactEmail: ['', [
-        Validators.required,
-        Validators.pattern('[^ @]*@[^ @]*')]],
-      streetAddress: [],
-      apartmentName: [],
-      city: [],
-      state: []
-    });
+
+    this.createFormControls();
+    this.createForm();
+    this.initCountryList();
+    if (this.orgMainService.manageOrganizationData != null) {
+			let manageOrganizationData = this.orgMainService.manageOrganizationData;
+			this.firstName.setValue(manageOrganizationData.address.firstName ? manageOrganizationData.address.firstName : '');
+			this.email1.setValue(manageOrganizationData.address.email1 ? manageOrganizationData.address.email1 : '');
+			this.address1.setValue(manageOrganizationData.address.address1 ? manageOrganizationData.address.address1 : '');
+			this.address2.setValue(manageOrganizationData.address.address2 ? manageOrganizationData.address.address2 : '');
+			this.city.setValue(manageOrganizationData.address.city ? manageOrganizationData.address.city : '');
+			this.zipCode.setValue(manageOrganizationData.address.zipCode ? manageOrganizationData.address.zipCode : '');
+		}
+		else {
+			this.orgMainService.manageOrganizationData = {
+					"address": {}
+			};
+    }
+    // this.manageContactForm = this._fb.group({
+    //   contactName: ['', [
+    //     Validators.required,
+    //     Validators.minLength(4),
+    //     Validators.maxLength(10)]],
+    //   contactEmail: ['', [
+    //     Validators.required,
+    //     Validators.pattern('[^ @]*@[^ @]*')]],
+    //   streetAddress: [],
+    //   apartmentName: [],
+    //   city: [],
+    //   country: [],
+    //   state: [],
+    //   zipCode: []
+    // });
+  }
+
+  private createFormControls() {
+		this.firstName = new FormControl('');
+		this.email1 = new FormControl('', Validators.required);
+		this.address1 = new FormControl('', Validators.required);
+		this.address2 = new FormControl('');
+		this.city = new FormControl('', Validators.required);
+		this.country = new FormControl('', Validators.required);
+		this.state = new FormControl('');
+		this.zipCode = new FormControl('');
+  }
+  
+  private createForm() {
+		this.manageContactForm = new FormGroup({
+			firstName: this.firstName,
+			email1: this.email1,
+			address1: this.address1,
+			address2: this.address2,
+			city: this.city,
+			country: this.country,
+			state: this.state,
+			zipCode: this.zipCode
+		});
   }
 
   getOrgApiCall() {
@@ -100,28 +153,28 @@ export class ManageOrganizationContactComponent implements OnInit {
   }
 
   setModelData() {
-    this.contactName = this.manageOrgResponse.organizationName;
-    this.contactEmail = this.manageOrgResponse.address.email1;
-    this.streetAddress1 = this.manageOrgResponse.address.address1;
-    this.streetAddress2 = this.manageOrgResponse.address.address2;
-    this.city = this.manageOrgResponse.address.city;
-    this.state = this.manageOrgResponse.address.state;
-    this.country = this.manageOrgResponse.address.country;
-    this.zipcode = this.manageOrgResponse.address.zipCode;
+    this.firstName.setValue(this.manageOrgResponse.organizationName);
+    this.email1.setValue(this.manageOrgResponse.address.email1);
+    this.address1.setValue(this.manageOrgResponse.address.address1);
+    this.address2.setValue(this.manageOrgResponse.address.address2);
+    this.city.setValue(this.manageOrgResponse.address.city);
+    this.state.setValue(this.manageOrgResponse.address.state);
+    this.country.setValue(this.manageOrgResponse.address.country);
+    this.zipCode.setValue(this.manageOrgResponse.address.zipCode);
   }
 
-  contactCall() {
-    this.orgContactData = {
-      'contactName': this.contactName,
-      'contactEmail': this.contactEmail,
-      'streetAddress1': this.streetAddress1,
-      'streetAddress2': this.streetAddress2,
-      'city': this.city,
-      'state': this.state,
-      'country': this.country,
-      'zipcode': this.zipcode
-    };
-  }
+  // contactCall() {
+  //   this.orgContactData = {
+  //     'contactName': this.contactName,
+  //     'contactEmail': this.contactEmail,
+  //     'streetAddress1': this.streetAddress1,
+  //     'streetAddress2': this.streetAddress2,
+  //     'city': this.city,
+  //     'state': this.state,
+  //     'country': this.country,
+  //     'zipCode': this.zipCode
+  //   };
+  // }
 
   onSubmit() {
     console.log(this.manageContactForm.value);
@@ -137,8 +190,8 @@ export class ManageOrganizationContactComponent implements OnInit {
         )
       );
     }
-    this.contactCall();
-    this.orgMainService.manageOrgData(this.orgContactData);
+    //this.contactCall();
+    this.orgMainService.manageOrgData(this.manageContactForm.value);
     this.updateOrgApiCall();
     this.router.navigate(['organizations/manageOrganizationRoles']);
   }
@@ -152,4 +205,102 @@ export class ManageOrganizationContactComponent implements OnInit {
   routeOrganizationList() {
     this.router.navigate(['organizations']);
   }
+
+  countryInputKeyup() {
+		if (this.country.value !== '') {
+			this.showCountryList = true;
+			for (var i = 0; i < this.countryList.length; i++) {
+				let country = this.countryList[i];
+				if (country.name === this.country.value) {
+					this.selectCountry(country);
+				}
+			}
+		}
+	}
+
+  stateInputKeyup() {
+		if (this.state.value !== '') {
+			this.showStateList = true;
+			for (var i = 0; i < this.stateList.length; i++) {
+				let state = this.stateList[i];
+				if (state.name === this.state.value) {
+					this.selectState(state);
+				}
+			}
+		}
+  }
+  
+  private initCountryList() {
+		this.countriesService.getCountries({
+			languageId: -1
+		}).subscribe(
+			response => {
+				this.countryList = response.items;
+				let countryCode = this.orgMainService.manageOrganizationData.address.country;
+				if (countryCode) {
+					for (let i = 0; i < this.countryList.length; i++) {
+						let country = this.countryList[i];
+						if (country.countryAbbr === countryCode) {
+							this.selectCountry(country);
+							break;
+						}
+						else if (country.name === this.country.value) {
+							this.selectCountry(country);
+							break;
+						}
+					}
+				}
+			},
+			error => {
+				console.log(error);
+			}
+		);
+	}
+
+  private initStateList() {
+		let countryCode = this.orgMainService.manageOrganizationData.address.country;
+		this.stateList = [];
+		if (countryCode != null && countryCode != '') {
+			this.statesService.getStates({
+				countryAbbr: countryCode,
+				languageId: -1
+			}).subscribe(
+				response => {
+					this.stateList = response.items;
+					let stateCode = this.orgMainService.manageOrganizationData.address.state;
+					if (stateCode) {
+						for (let i = 0; i < this.stateList.length; i++) {
+							let state = this.stateList[i];
+							if (state.stateAbbr === stateCode) {
+								this.selectState(state);
+								break;
+							}
+							else if (state.name === this.state.value) {
+								this.selectState(state);
+								break;
+							}
+						}
+					}
+				},
+				error => {
+					console.log(error);
+				});
+		}
+  }
+  
+  selectCountry(country: any) {
+		this.country.setValue(country ? country.name : '');
+		let countryCode = country != null ? country.countryAbbr : null;
+		this.orgMainService.manageOrganizationData.address.country = countryCode;
+		this.showCountryList = false;
+		this.state.setValue("");
+		this.initStateList();
+  }
+  selectState(state: any) {
+		this.state.setValue(state ? state.name : '');
+		let stateCode = state != null ? state.stateAbbr : null;
+		this.orgMainService.manageOrganizationData.address.state = stateCode;
+		this.showStateList = false;
+	}
+
 }

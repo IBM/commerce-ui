@@ -7,6 +7,7 @@ import { RoleAssignmentsService } from '../../../rest/services/role-assignments.
 })
 export class UserMainService {
 	userData: any = null;
+	manageUserData: any = null;
 	assignedRoles: Array<any> = null;
 
 	userAccountData: any;
@@ -103,7 +104,7 @@ export class UserMainService {
 	}
 
   userBody: any;
-  manageUserData(data) {
+  setManageUserData(data) {
     this.userBody = {
       'logonId': data.logonId,
       'email1': data.email1,
@@ -116,7 +117,7 @@ export class UserMainService {
       'state': data.state,
       'city': data.city,
       'country': data.country,
-      'zipcode': data.zipcode
+      'zipCode': data.zipCode
     };
   }
 

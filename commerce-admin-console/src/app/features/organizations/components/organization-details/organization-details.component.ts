@@ -44,11 +44,11 @@ export class OrganizationDetailsComponent implements OnInit {
   
   orgList = [
     {
-      content: 'O',
+      content: 'Organization',
       selected: false
     },
     {
-      content: 'OU',
+      content: 'Organization Unit',
       selected: false,
     }
   ];
@@ -170,7 +170,7 @@ export class OrganizationDetailsComponent implements OnInit {
     if (this.detailsForm.valid) {
       //this.accountCall();
       this.router.navigate(['organizations/organizationContact']);
-      this.orgMainService.orgaccount(this.orgAccountData);
+      this.orgMainService.orgaccount(this.detailsForm.value);
     }
     console.log('form', this.detailsForm.value);
   }

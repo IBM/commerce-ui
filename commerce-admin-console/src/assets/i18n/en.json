@@ -168,7 +168,9 @@
         "BREADCRUMB": {
             "APPROVALS_LABEL": "Approval requests",
             "LOGOUT_LABEL": "Logout",
-            "HOME_LABEL": "Home"
+            "HOME_LABEL": "Home",
+            "APPROVALS": "Approvals",
+            "APPROVAL_SUMMARY": "Approval Summary"
         },
         "APPROVAL_TABLE": {
             "NUM_ROWS": "of",
@@ -215,6 +217,26 @@
                 "ENTITY_ID": "Eg. 2200002",
                 "APPROVER_ID": "Eg. 100001"
             }
+        },
+        "ORGANIZATION": {
+            "ORGNIZATION_DETAILS": "Organization details",
+            "NAME": "Name",
+            "ADDRESS": "Address",
+            "PARENT": "Parent"
+        },
+        "USER": {
+            "USER_DETAILS": "User details",
+            "NAME": "Name",
+            "USERNAME": "Username",
+            "EMAIL":"Email",
+            "ORGANIZATION":"Organization",
+            "ROLES":"Roles ",
+            "COMMENTS": "Comments"
+        },
+        "BUTTON": {
+            "CANCEL": "Cancel",
+            "REJECT": "Reject",
+            "APPROVE": "Approve"
         }
     },
     "USERS": {
@@ -784,7 +806,9 @@
             "CONTACT_EMAIL": "Contact email",
             "STREET_ADDRESS": "Street address",
             "CITY": "City",
+            "COUNTRY": "Country",
             "ADDRESS": "State / Province / Region",
+            "ZIP": "Zip/Postal code",
             "CANCEL": "Cancel",
             "BACK": "Back",
             "NEXT": "Next",
@@ -848,7 +872,9 @@
             "CONTACT_EMAIL": "Contact email",
             "STREET_ADDRESS": "Street address",
             "CITY": "City",
+            "COUNTRY": "Country",
             "ADDRESS": "State / Province / Region",
+            "ZIP": "Zip/Postal code",
             "CANCEL": "Cancel",
             "SAVE": "Save"
         },

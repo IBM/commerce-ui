@@ -18,6 +18,7 @@ export class OrganizationMainService {
   orgApprovalsData: any;
   listResult: any;
   organizationData: any;
+  manageOrganizationData: any;
 
 
   
@@ -47,10 +48,10 @@ export class OrganizationMainService {
   }
   orgContact(data) {
     this.orgContactData = {
-      'contactName': data.contactName,
-      'email': data.contactEmail,
-      'address1': data.streetAddress,
-      'address2': data.apartmentName,
+      'firstName': data.firstName,
+      'email1': data.email1,
+      'address1': data.address1,
+      'address2': data.address2,
       'city': data.city,
       'country': data.country,
       'state': data.state,
@@ -79,11 +80,11 @@ export class OrganizationMainService {
         'addressType': 'SB',
         'bestCallingTime': 'D',
         'city': this.orgContactData.city,
-        'country': 'India',
-        'email1': this.orgContactData.email,
+        'country': this.orgContactData.country,
+        'email1': this.orgContactData.email1,
         'phone': '970086',
-        'zipCode': '516745',
-        'state': this.orgContactData.state
+        'state': this.orgContactData.state,
+        'zipCode': this.orgContactData.zipCode,
       },
       'businessCategory': 'my category',
       'description': this.orgAccountData.description,
@@ -107,7 +108,7 @@ export class OrganizationMainService {
       'state': data.state,
       'city': data.city,
       'country': data.country,
-      'zipcode': data.zipcode
+      'zipCode': data.zipCode
     };
   }
 

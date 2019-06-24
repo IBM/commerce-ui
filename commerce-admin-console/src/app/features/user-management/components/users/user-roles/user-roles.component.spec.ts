@@ -44,7 +44,22 @@ fdescribe('UserRolesComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+  it('form invalid when empty', () => {
+    expect(component.rolesForm.valid).toBeFalsy();
+  });
 
+  it('organization field validity, input required', () => {
+    let errors = {};
+    const organization = component.rolesForm.controls['organization'];
+    errors = organization.errors || {};
+    expect(errors['required']).toBeTruthy();
+  });
+  it('availablrRoles field validity, input required', () => {
+    let errors = {};
+    const availablrRoles = component.rolesForm.controls['availablrRoles'];
+    errors = availablrRoles.errors || {};
+    expect(errors['required']).toBeTruthy();
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });

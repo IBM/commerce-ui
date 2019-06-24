@@ -1,7 +1,4 @@
-<div class="header">
-  <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
-  <span class="ibm-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.TITLE'| translate}}</span>
-</div>
+
 <div class="border-div">
   <div class="users">
     <!-- <span>Password</span>
@@ -58,24 +55,24 @@
           <input ibmText class="inputbx" formControlName="city" id="city" ngDefaultControl><br />
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.COUNTRY' | translate}}</div>
           <input ibmText class="inputbx" formControlName="country" id="country"
-          (keyup)="countryInputKeyup()" ngDefaultControl>
+            (keyup)="countryInputKeyup()" ngDefaultControl autocomplete="off">
           <div>
             <ul *ngIf="showCountryList">
-              <li class="list-data" *ngFor="let country of countryNameList | search:country.value"
-              (click)="selectedCountry(country)">
-              {{country}}</li>
+              <li class="list-data" *ngFor="let countryInfo of countryList | search:country.value"
+              (click)="selectCountry(countryInfo)">
+              {{countryInfo.name}}</li>
             </ul>
-          </div><br/>
+          </div><br>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.STATE_PROVINCE_REGION' | translate}}</div>
           <input ibmText class="inputbx" formControlName="state" id="state"
-          (keyup)="stateInputKeyup()" ngDefaultControl>
+            (keyup)="stateInputKeyup()" ngDefaultControl autocomplete="off">
           <div>
             <ul *ngIf="showStateList">
-              <li class="list-data" *ngFor="let state of stateNameList | search:state.value"
-              (click)="selectedState(state)">
-              {{state}}</li>
+              <li class="list-data" *ngFor="let state of stateList | search:state.value"
+              (click)="selectState(state)">
+              {{state.name}}</li>
             </ul>
-          </div><br />
+          </div><br>
           <div class="form-text">{{'MANAGE_USER.MANAGE_USER_CONTACT.ZIPCODE' | translate}}</div>
           <input ibmText class="inputbx" formControlName="zipCode" id="zipCode" ngDefaultControl>
         </div>

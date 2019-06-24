@@ -95,7 +95,7 @@
   .inputbx {
     background: #F3F3F3;
     height: 30px;
-    margin-left: 5%;
+    // margin-left: 5%;
     font-size: 14px;
     color: #282828;
   }
@@ -122,4 +122,38 @@
   }
   .dropdown {
       margin-left: 5%;
+  }
+  .inputbx {
+    background-color: #f4f7fb;
+    height: 2.5rem;
+    font-size: 14px;
+    color: #282828;
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 100%;
+  }
+  .model-role{
+    height: 25px;
+    color: white;
+    background-color: black;
+    border-radius: 25px;
+    padding: 4px 5px 5px 12px;
+    font-size: 12px;
+    margin-right: 5px;
+    display: inline-block;
+  }
+  .icon-close{
+    fill: white;
+    cursor: pointer;
+    line-height: 24px;
+    vertical-align: text-top;
+    margin-left: 5px;
+  }
+  .org-list {
+    padding: 6px 0 6px 0;
+    cursor: pointer;
+    &:hover {
+      color: white;
+      background: #0f6ddf;
+    }
   }

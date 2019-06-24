@@ -1,7 +1,4 @@
-<div class="header">
-  <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
-  <span class="ibm-text">{{'MANAGE_USER.ORGANIZATION_CONTACT.TITLE' | translate}}</span>
-</div>
+
 <div class="border-div">
   <div class="users">
     <span>Groups</span>
@@ -26,84 +23,84 @@
         
       </div>
     </div>
-    <div class="bx--col-sm-8 bx--col-md-8 right-content">
+    <div [formGroup]="groupDefineForm" class="bx--col-sm-8 bx--col-md-8 right-content">
         
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
           <div class="form-text">Account</div>
           <div class="typeOrganization" >
-              <ibm-dropdown placeholder="Customer must belong to one of the following accounts" id="organization-type" value="content">
+              <ibm-dropdown placeholder="Customer must belong to one of the following accounts" id="organization-type" value="content" formControlName="account" ngDefaultControl>
                 <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
               </ibm-dropdown>
             </div>
             <span class="left-addon">
               <ibm-icon-search16 class="searchICon"></ibm-icon-search16>
-              <input ibmText class=" inputbx" placeholder="Find accounts" id="parent-organization" >
+              <input ibmText class=" inputbx" placeholder="Find accounts" id="parent-organization" formControlName="findAccount" ngDefaultControl>
             </span>
 
             <!-- <div class="form-text">Selected accounts</div> -->
           
             <div class="form-text">Account size</div>
             <div class="typeOrganization" >
-                <ibm-dropdown placeholder="Target the following account size" id="organization-type"  value="content">
+                <ibm-dropdown placeholder="Target the following account size" id="organization-type"  value="content" formControlName="accountSize" ngDefaultControl>
                   <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                 </ibm-dropdown>
               </div>
           
               <div class="typeOrganization" >
-                  <ibm-dropdown placeholder="Medium,Large" id="organization-type"  value="content">
+                  <ibm-dropdown placeholder="Medium,Large" id="organization-type"  value="content" formControlName="mediumLargeAccount" ngDefaultControl>
                     <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                   </ibm-dropdown>
                 </div>
                 <div class="form-text">Account geographical location</div>
                 <div class="typeOrganization" >
-                    <ibm-dropdown placeholder="Account location is in one of the following countries or regions" id="organization-type"  value="content">
+                    <ibm-dropdown placeholder="Account location is in one of the following countries or regions" id="organization-type"  value="content" formControlName="accountGeographical" ngDefaultControl>
                       <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                     </ibm-dropdown>
                   </div>
                   <span class="left-addon">
                     <ibm-icon-search16 class="searchICon"></ibm-icon-search16>
-                    <input ibmText class=" inputbx" placeholder="Find geographical locations" id="parent-organization" >
+                    <input ibmText class=" inputbx" placeholder="Find geographical locations" id="parent-organization" formControlName="findGeographical" ngDefaultControl>
                   </span>
 
                   <div class="form-text">Account location of operation</div>
                   <div class="typeOrganization" >
-                      <ibm-dropdown placeholder="Account operates is in one of the following countries or regions" id="organization-type" value="content">
+                      <ibm-dropdown placeholder="Account operates is in one of the following countries or regions" id="organization-type" value="content" formControlName="accountLocation" ngDefaultControl>
                         <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                       </ibm-dropdown>
                     </div>
 
                     <div class="form-text">Account industry</div>
               <div class="typeOrganization" >
-                <ibm-dropdown placeholder="Target the following industries" id="organization-type"  value="content">
+                <ibm-dropdown placeholder="Target the following industries" id="organization-type"  value="content" formControlName="accountIndustry" ngDefaultControl>
                   <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                 </ibm-dropdown>
               </div>
               <div class="typeOrganization" >
-                  <ibm-dropdown placeholder="Auto, Consumer product" id="organization-type"  value="content">
+                  <ibm-dropdown placeholder="Auto, Consumer product" id="organization-type"  value="content" formControlName="consumerProduct" ngDefaultControl>
                     <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                   </ibm-dropdown>
                 </div>
 
                 <div class="form-text">Account business</div>
               <div class="typeOrganization" >
-                <ibm-dropdown placeholder="Target the following business types" id="organization-type"  value="content">
+                <ibm-dropdown placeholder="Target the following business types" id="organization-type"  value="content" formControlName="accountBusiness" ngDefaultControl>
                   <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                 </ibm-dropdown>
               </div>
               <div class="typeOrganization" >
-                  <ibm-dropdown placeholder="Distributor, Manufacturer" id="organization-type"  value="content">
+                  <ibm-dropdown placeholder="Distributor, Manufacturer" id="organization-type"  value="content" formControlName="accountDistributor" ngDefaultControl>
                     <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                   </ibm-dropdown>
                 </div>
 
                 <div class="form-text">Account sales</div>
                 <div class="typeOrganization" >
-                  <ibm-dropdown placeholder="Amount spent must be greater than the following amount" id="organization-type"  value="content">
+                  <ibm-dropdown placeholder="Amount spent must be greater than the following amount" id="organization-type"  value="content" formControlName="accountSales" ngDefaultControl>
                     <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                   </ibm-dropdown>
                 </div>
-                <input ibmText class=" inputbx" placeholder="$25,000 (USD)" id="parent-organization" >
+                <input ibmText class=" inputbx" placeholder="$25,000 (USD)" id="parent-organization" formControlName="amount" ngDefaultControl>
         </div>
       </div>
       <div class="bx--row footer-content">

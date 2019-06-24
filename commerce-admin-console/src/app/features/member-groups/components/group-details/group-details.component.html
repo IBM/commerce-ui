@@ -1,8 +1,4 @@
-<div class="header">
-    <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
-    <span class="ibm-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.TITLE' | translate}}</span>
-  </div>
-  
+
   <div class="border-div">
   
     <div class="organizations">
@@ -33,28 +29,28 @@
         </div>
       </div>
   
-      <div class="bx--col-sm-8 bx--col-md-8 right-content">
+      <div [formGroup]="groupDetailsForm" class="bx--col-sm-8 bx--col-md-8 right-content">
       
         <div class="bx--row main-content">
           <div class="bx--col-sm-11 bx--col-md-11 inside-content">
             
               <div class="form-text">{{'MANAGE_USER.ORGANIZATION_DETAILS.TYPE' | translate}}</div>
               <div class="typeOrganization" >
-                <ibm-dropdown placeholder="Select a type" id="organization-type" value="content">
+                <ibm-dropdown placeholder="Select a type" id="organization-type" value="content" formControlName="type" ngDefaultControl>
                   <ibm-dropdown-list [items]="orgList"></ibm-dropdown-list>
                 </ibm-dropdown>
               </div>
            
             <div class="form-text">Name</div>
-            <input ibmText class="inputbx" id="description-name" >
+            <input ibmText class="inputbx" id="description-name" formControlName="Name" ngDefaultControl>
   
             <div class="form-text">Description (Optional)</div>
-            <input ibmText class="inputbx" id="description-optional" >
+            <input ibmText class="inputbx" id="description-optional" formControlName="Description" ngDefaultControl>
   
             <div class="form-text">Parent organization</div>
             <span class="left-addon">
               <ibm-icon-search16 class="searchICon"></ibm-icon-search16>
-              <input ibmText class=" inputbx" placeholder="Find parent organization" id="parent-organization" >
+              <input ibmText class=" inputbx" placeholder="Find parent organization" id="parent-organization" formControlName="parentOrganization" ngDefaultControl>
             </span>
           
           </div>
