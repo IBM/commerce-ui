@@ -37,7 +37,7 @@ const routes: Routes = [
 class MockOrganizationsService {
 
 }
-fdescribe('FindOrganizationComponent', () => {
+fdescribe('OrganizationListComponent', () => {
   let component: OrganizationListComponent;
   let fixture: ComponentFixture<OrganizationListComponent>;
   let router: Router;

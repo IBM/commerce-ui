@@ -18,6 +18,7 @@ import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { HttpClientModule } from '@angular/common/http';
 import { OrganizationMainService } from '../../organization.main.service';
 import { IframeService } from '../../../../services/iframe.service';
+import { SearchPipe } from '../../pipe/search.pipe';
 fdescribe('ManageOrganizationContactComponent', () => {
   let component: ManageOrganizationContactComponent;
   let fixture: ComponentFixture<ManageOrganizationContactComponent>;
@@ -30,7 +31,7 @@ fdescribe('ManageOrganizationContactComponent', () => {
         TranslateModule.forRoot()],
      schemas: [CUSTOM_ELEMENTS_SCHEMA],
      providers: [OrganizationMainService, IframeService],
-      declarations: [ ManageOrganizationContactComponent ]
+      declarations: [ ManageOrganizationContactComponent, SearchPipe ]
     })
     .compileComponents();
   }));

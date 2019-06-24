@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { OrganizationsService } from '../../../../../rest/services/organizations.service';
 import { UserAccountPolicyDescriptionsService } from '../../../../../rest/services/user-account-policy-descriptions.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-manage-user-account',
@@ -20,7 +21,7 @@ export class ManageUserAccountComponent implements OnInit {
 	email1: FormControl;
 	password: FormControl;
 	passwordVerify: FormControl;
-	organizationName: FormControl;
+	parentOrganization: FormControl;
   policy: FormControl;
   
   showInput: boolean;
@@ -39,10 +40,13 @@ export class ManageUserAccountComponent implements OnInit {
   showTickboxVisible: boolean;
   manageUserResponse: any;
   showOrgList = false;
-  parentOrgData: Array<string>;
+  //parentOrgData: Array<string>;
 	organizationListData: any;
 	accountPolicyListData: any;
-	accountPolicyData: Array<string>;
+  //accountPolicyData: Array<string>;
+  organizationList: Array<any> = [];
+  accountPolicyList: Array<any>;
+  getOrganizationsSubscription: Subscription = null;
   id: number;
   private sub: any;
 
@@ -71,14 +75,30 @@ export class ManageUserAccountComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.organizationListApi();
-		this.accountPolicyList();
+    // this.organizationListApi();
+		// this.accountPolicyList();
 		this.createFormControls();
 		this.createForm();
     this.showInput = true;
     this.accountData = this.userMainService.manageuserAccount;
     this.getUserApiCall();
     this.enableButton();
+
+    if (this.userMainService.userData != null) {
+			let userData = this.userMainService.userData;
+			this.logonId.setValue(userData.logonId);
+			this.email1.setValue(userData.address.email1);
+			this.password.setValue(userData.password);
+			this.passwordVerify.setValue(userData.passwordVerify);
+			this.parentOrganization.setValue(userData.parentOrganizationName);
+			//this.invalidPassword = false;
+		} else {
+			this.userMainService.userData = {
+				"address": {}
+			};
+			//this.invalidPassword = true;
+		}
+		this.initAccountPolicyList();
   }
 
   createFormControls() {
@@ -95,7 +115,7 @@ export class ManageUserAccountComponent implements OnInit {
 			Validators.required,
 			Validators.minLength(8)
 		]);
-		this.organizationName = new FormControl('', Validators.required);
+		this.parentOrganization = new FormControl('', Validators.required);
 		this.policy = new FormControl('', Validators.required);
 	}
 
@@ -105,7 +125,7 @@ export class ManageUserAccountComponent implements OnInit {
 			email1: this.email1,
 			password: this.password,
 			passwordVerify: this.passwordVerify,
-			organizationName: this.organizationName,
+			parentOrganization: this.parentOrganization,
 			policy: this.policy
 		});
 	}
@@ -146,42 +166,111 @@ export class ManageUserAccountComponent implements OnInit {
     });
   }
 
-  organizationListApi(): void {
-    this.parentOrgData = [];
-    this.organizationsService.OrganizationGetManageableOrganizations({}).subscribe(
-      response => {
-        this.organizationListData = response.items;
-        this.parentOrgData = this.organizationListData.map(value => {
-          return value.organizationName;
-        });
-        console.log("ORGLIST API", response);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  // organizationListApi(): void {
+  //   this.parentOrgData = [];
+  //   this.organizationsService.OrganizationGetManageableOrganizations({}).subscribe(
+  //     response => {
+  //       this.organizationListData = response.items;
+  //       this.parentOrgData = this.organizationListData.map(value => {
+  //         return value.organizationName;
+  //       });
+  //       console.log("ORGLIST API", response);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
+  private initAccountPolicyList(): void {
+		this.accountPolicyList = [];
+		this.userAccountPolicyDescriptionsService.getUserAccountPolicyDescriptions({
+			"languageId": -1
+		}).subscribe(
+			response => {
+				this.accountPolicyList = response.items.map(value => {
+					return {
+						"content": value.description,
+						"selected": this.userMainService.userData.userAccountPolicyId === value.userAccountPolicyId,
+						"userAccountPolicyId": value.userAccountPolicyId
+					}
+				});
+			},
+			error => {
+				console.log(error);
+			}
+		);
   }
 
-  accountPolicyList(): void {
-    this.accountPolicyData = [];
-    this.userAccountPolicyDescriptionsService.getUserAccountPolicyDescriptions({
-      "languageId": -1
-    }).subscribe(
-      response => {
-        this.accountPolicyListData = response.items;
-        this.accountPolicyData = this.accountPolicyListData.map(value => {
-          return {
-            "content": value.description,
-            "selected": false,
-            "userAccountPolicyId": value.userAccountPolicyId
-          }
-        });
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+  orgInputKeyup() {
+		if (this.getOrganizationsSubscription != null) {
+			this.getOrganizationsSubscription.unsubscribe();
+			this.getOrganizationsSubscription = null;
+		}
+		this.userMainService.userData.parentOrganizationId = null;
+		this.userMainService.userData.parentOrganizationName = null;
+		this.getOrganizationsSubscription = this.organizationsService.OrganizationGetManageableOrganizations({
+			organizationName: this.parentOrganization.value,
+			limit: 10
+		}).subscribe(
+			response => {
+				if (response.items.length === 1 && response.items[0].organizationName === this.parentOrganization.value) {
+					this.selectParentOrganization(response.items[0]);
+				}
+				else {
+					response.items.sort((org1, org2) => {
+						let result = 0;
+						if (org1.organizationName < org2.organizationName) {
+							result = -1;
+						}
+						else if (org1.organizationName > org2.organizationName) {
+							result = 1;
+						}
+						return result;
+					});
+					this.organizationList = response.items;
+					this.showOrgList = true;
+				}
+				this.getOrganizationsSubscription = null;
+			},
+			error => {
+				this.getOrganizationsSubscription = null;
+				console.log(error);
+			}
+		);
+	}
+
+	selectParentOrganization(org: any) {
+		this.parentOrganization.setValue(org.organizationName);
+		this.userMainService.userData.parentOrganizationId = org.id;
+		this.userMainService.userData.parentOrganizationName = org.organizationName;
+		this.showOrgList = false;
+	}
+
+	selectAccountPolicy(event: any) {
+		this.userMainService.userData.userAccountPolicyId = event.item.userAccountPolicyId;
+	}
+  
+  // accountPolicyList(): void {
+  //   this.accountPolicyData = [];
+  //   this.userAccountPolicyDescriptionsService.getUserAccountPolicyDescriptions({
+  //     "languageId": -1
+  //   }).subscribe(
+  //     response => {
+  //       this.accountPolicyListData = response.items;
+  //       this.accountPolicyData = this.accountPolicyListData.map(value => {
+  //         return {
+  //           "content": value.description,
+  //           "selected": false,
+  //           "userAccountPolicyId": value.userAccountPolicyId
+  //         }
+  //       });
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   buttonEnabled: boolean = false;
   // apiLogonId: any = this.logonId;
@@ -202,23 +291,23 @@ export class ManageUserAccountComponent implements OnInit {
   };
 
   saveAccount() {
-    this.accountCall();
-    this.userMainService.manageUserData(this.userAccountData);
+    //this.accountCall();
+    this.userMainService.setManageUserData(this.accountForm.value);
     this.updateUserApiCall();
     this.router.navigate(['/users/manageContact', this.id]);
   }
 
-  orgInputKeyup() {
-    if (this.organizationName.value !== '') {
-        this.showOrgList = true;
-    }
-  }
+  // orgInputKeyup() {
+  //   if (this.organizationName.value !== '') {
+  //       this.showOrgList = true;
+  //   }
+  // }
   
-  selectedOrg(event: any) {
-    this.organizationName.setValue(event);
-    console.log(event);
-    this.showOrgList = false;
-  }
+  // selectedOrg(event: any) {
+  //   this.organizationName.setValue(event);
+  //   console.log(event);
+  //   this.showOrgList = false;
+  // }
 
   // getAccountData(){
   //   this.updateUser = this.userService.UsersUpdateUser;
@@ -242,20 +331,25 @@ export class ManageUserAccountComponent implements OnInit {
     this.logonId.setValue(this.manageUserResponse.logonId);
     this.email1.setValue(this.manageUserResponse.address.email1);
     this.password.setValue(this.manageUserResponse.password);
-    this.passwordVerify.setValue(this.manageUserResponse.password);
-    this.organizationName.setValue(this.manageUserResponse.parentOrganizationName);
-    this.policy.setValue(this.manageUserResponse.policy);
+    this.parentOrganization.setValue(this.manageUserResponse.parentOrganizationName);
+    if (this.manageUserResponse.userAccountPolicyId === -1) {
+      this.policy.setValue('Shoppers');
+    }
+    if (this.manageUserResponse.userAccountPolicyId === -2) {
+      this.policy.setValue('Administrators');
+    }
+    
   }
 
-  accountCall() {
-    this.userAccountData = {
-      'logonId': this.logonId.value,
-      'email1': this.email1.value,
-      'password': this.password.value,
-      'organizationName': this.organizationName.value,
-      'policy': this.policy.value
-    };
-  }
+  // accountCall() {
+  //   this.userAccountData = {
+  //     'logonId': this.logonId.value,
+  //     'email1': this.email1.value,
+  //     'password': this.password.value,
+  //     'parentOrganization': this.parentOrganization.value,
+  //     'policy': this.policy.value
+  //   };
+  // }
 
   cancelClick() {
     this.router.navigate(['/users']);
@@ -263,7 +357,7 @@ export class ManageUserAccountComponent implements OnInit {
 
   goToContact() {
     // this.accountCall();
-    // this.userMainService.manageUserData(this.userAccountData);
+    // this.userMainService.manageUserData(this.accountForm.value);
     // this.updateUserApiCall();
     this.router.navigate(['/users/manageContact', this.id]);
   }
@@ -280,9 +374,9 @@ export class ManageUserAccountComponent implements OnInit {
     // this.updateUserApiCall();
     this.router.navigate(['/users/manageGroups', this.id]);
   }
-  selectAccountPolicy(event: any) {
-		// this.userMainService.userData.userAccountPolicyId = event.item.userAccountPolicyId;
-	}
+  // selectAccountPolicy(event: any) {
+	// 	// this.userMainService.userData.userAccountPolicyId = event.item.userAccountPolicyId;
+	// }
   
   check() {
     var tocheck = ["text1", "text2", "text3", "email"];

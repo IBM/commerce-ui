@@ -49,11 +49,9 @@ export class ManageUserContactComponent implements OnInit {
 
   selectedCountryNameAbbr: string;
   showCountryList = false;
-  showStateList = false;
-  countryListData: any;
-  countryNameList: Array<string>;
-  stateListData: any;
-  stateNameList: Array<string>;
+	showStateList = false;
+	countryList: Array<any> = [];
+	stateList: Array<any> = [];
 
   constructor(
     private router: Router,
@@ -71,11 +69,25 @@ export class ManageUserContactComponent implements OnInit {
   ngOnInit() {
     this.createFormControls();
     this.createForm();
-    this.countryList();
-    this.stateList();
     this.accountData = this.userMainService.manageuserAccount;
     this.getUserApiCall();
-
+    
+    if (this.userMainService.manageUserData != null) {
+			let manageUserData = this.userMainService.manageUserData;
+			this.personTitle.setValue(manageUserData.address.personTitle ? manageUserData.address.personTitle : '');
+			this.firstName.setValue(manageUserData.address.firstName ? manageUserData.address.firstName : '');
+			this.lastName.setValue(manageUserData.address.lastName ? manageUserData.address.lastName : '');
+			this.address1.setValue(manageUserData.address.address1 ? manageUserData.address.address1 : '');
+			this.address2.setValue(manageUserData.address.address2 ? manageUserData.address.address2 : '');
+			this.city.setValue(manageUserData.address.city ? manageUserData.address.city : '');
+			this.zipCode.setValue(manageUserData.address.zipCode ? manageUserData.address.zipCode : '');
+		}
+		else {
+			this.userMainService.manageUserData = {
+					"address": {}
+			};
+		}
+		this.initCountryList();
   }
 
   getUserApiCall() {
@@ -114,70 +126,6 @@ export class ManageUserContactComponent implements OnInit {
     });
   }
 
-  countryList(): Promise<Object> {
-    return new Promise((resolve, reject) => {
-      this.countriesService.getCountries({}
-      ).subscribe(response => {
-        resolve(response);
-        this.countryListData = response.items;
-        console.log('resp', response);
-        this.countryNameList = this.countryListData.map(value => {
-          return value.name;
-        });
-        // console.log('this.countryNameList ', this.countryNameList );
-      },  error => {
-        reject();
-      });
-    });
-  }
-
-  stateList(): Promise<Object> {
-    return new Promise((resolve, reject) => {
-      this.statesService.getStates({
-        countryAbbr: this.selectedCountryNameAbbr
-      }
-      ).subscribe(response => {
-        resolve(response);
-        this.stateListData = response.items;
-        console.log('stateListData ', this.stateListData );
-        this.stateNameList = this.stateListData.map(value => {
-          return value.name;
-        });
-        console.log('stateNameList ', this.stateNameList );
-      },  error => {
-        reject();
-      });
-    });
-  }
-
-  countryInputKeyup() {
-    if (this.country.value !== '') {
-        this.showCountryList = true;
-    }
-  }
-
-  selectedCountry(countryName: string) {
-    this.country.setValue(countryName);
-    this.showCountryList = false;
-    this.countryListData.forEach(value => {
-      if (value.name === countryName) {
-        this.selectedCountryNameAbbr = value.countryAbbr;
-      }
-    });
-    this.stateList();
-  }
-
-  stateInputKeyup() {
-    if (this.state.value !== '') {
-        this.showStateList = true;
-    }
-  }
-
-  selectedState(stateName: string) {
-    this.state.setValue(stateName);
-    this.showStateList = false;
-  }
-
   createFormControls() {
     this.personTitle = new FormControl('');
     this.firstName = new FormControl('');
@@ -210,6 +158,104 @@ export class ManageUserContactComponent implements OnInit {
     });
   }
 
+  private initCountryList() {
+		this.countriesService.getCountries({
+			languageId: -1
+		}).subscribe(
+			response => {
+				this.countryList = response.items;
+				let countryCode = this.userMainService.manageUserData.address.country;
+				if (countryCode) {
+					for (let i = 0; i < this.countryList.length; i++) {
+						let country = this.countryList[i];
+						if (country.countryAbbr === countryCode) {
+							this.selectCountry(country);
+							break;
+						}
+						else if (country.name === this.country.value) {
+							this.selectCountry(country);
+							break;
+						}
+					}
+				}
+			},
+			error => {
+				console.log(error);
+			}
+		);
+  }
+  
+  private initStateList() {
+		let countryCode = this.userMainService.manageUserData.address.country;
+		this.stateList = [];
+		if (countryCode != null && countryCode != '') {
+			this.statesService.getStates({
+				countryAbbr: countryCode,
+				languageId: -1
+			}).subscribe(
+				response => {
+					this.stateList = response.items;
+					let stateCode = this.userMainService.manageUserData.address.state;
+					if (stateCode) {
+						for (let i = 0; i < this.stateList.length; i++) {
+							let state = this.stateList[i];
+							if (state.stateAbbr === stateCode) {
+								this.selectState(state);
+								break;
+							}
+							else if (state.name === this.state.value) {
+								this.selectState(state);
+								break;
+							}
+						}
+					}
+				},
+				error => {
+					console.log(error);
+				});
+		}
+  }
+  
+  countryInputKeyup() {
+		if (this.country.value !== '') {
+			this.showCountryList = true;
+			for (var i = 0; i < this.countryList.length; i++) {
+				let country = this.countryList[i];
+				if (country.name === this.country.value) {
+					this.selectCountry(country);
+				}
+			}
+		}
+  }
+  
+  selectCountry(country: any) {
+		this.country.setValue(country ? country.name : '');
+		let countryCode = country != null ? country.countryAbbr : null;
+		this.userMainService.manageUserData.address.country = countryCode;
+		this.showCountryList = false;
+		this.state.setValue("");
+		this.initStateList();
+  }
+  
+  stateInputKeyup() {
+		if (this.state.value !== '') {
+			this.showStateList = true;
+			for (var i = 0; i < this.stateList.length; i++) {
+				let state = this.stateList[i];
+				if (state.name === this.state.value) {
+					this.selectState(state);
+				}
+			}
+		}
+  }
+  
+  selectState(state: any) {
+		this.state.setValue(state ? state.name : '');
+		let stateCode = state != null ? state.stateAbbr : null;
+		this.userMainService.manageUserData.address.state = stateCode;
+		this.showStateList = false;
+	}
+
   setModelData() {
     this.personTitle.setValue(this.manageUserResponse.personTitle.value);
     this.firstName.setValue(this.manageUserResponse.address.firstName);
@@ -222,23 +268,23 @@ export class ManageUserContactComponent implements OnInit {
     this.zipCode.setValue(this.manageUserResponse.address.zipCode);
   }
 
-  contactCall() {
-    this.userAccountData = {
-      'personTitle': this.personTitle.value,
-      'firstName': this.firstName.value,
-      'lastName': this.lastName.value,
-      'streetAddress1': this.address1.value,
-      'streetAddress2': this.address2.value,
-      'city': this.city.value,
-      'state': this.state.value,
-      'country': this.country.value,
-      'zipcode': this.zipCode.value
-    };
-  }
+  // contactCall() {
+  //   this.userAccountData = {
+  //     'personTitle': this.personTitle.value,
+  //     'firstName': this.firstName.value,
+  //     'lastName': this.lastName.value,
+  //     'streetAddress1': this.address1.value,
+  //     'streetAddress2': this.address2.value,
+  //     'city': this.city.value,
+  //     'state': this.state.value,
+  //     'country': this.country.value,
+  //     'zipcode': this.zipCode.value
+  //   };
+  // }
 
   saveContact() {
-    this.contactCall();
-    this.userMainService.manageUserData(this.userAccountData);
+    //this.contactCall();
+    this.userMainService.setManageUserData(this.contactForm.value);
     this.updateUserApiCall();
     this.router.navigate(['/users/manageRoles', this.id]);
   }

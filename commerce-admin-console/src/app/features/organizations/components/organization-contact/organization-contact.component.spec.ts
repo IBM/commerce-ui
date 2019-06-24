@@ -17,6 +17,7 @@ import { View16Module } from '@carbon/icons-angular/lib/view/16';
 import { ViewOff16Module } from '@carbon/icons-angular/lib/view--off/16';
 import { HttpClientModule } from '@angular/common/http';
 import { OrganizationMainService } from '../../organization.main.service';
+import { SearchPipe } from '../../pipe/search.pipe';
 fdescribe('OrganizationContactComponent', () => {
   let component: OrganizationContactComponent;
   let fixture: ComponentFixture<OrganizationContactComponent>;
@@ -29,7 +30,7 @@ fdescribe('OrganizationContactComponent', () => {
         TranslateModule.forRoot()],
      schemas: [CUSTOM_ELEMENTS_SCHEMA],
      providers: [OrganizationMainService],
-      declarations: [ OrganizationContactComponent ]
+      declarations: [ OrganizationContactComponent , SearchPipe]
     })
     .compileComponents();
   }));

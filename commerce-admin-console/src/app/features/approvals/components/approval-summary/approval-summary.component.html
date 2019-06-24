@@ -1,67 +1,84 @@
-<div class="header">
+<!-- <div class="header">
   <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
   <span class="ibm-text">{{'MANAGE_USER.USER_ACCOUNT.TITLE' | translate}}</span>
-</div>
+</div> -->
 <div class="border-div">
   <div class="approval">
-    <span class="breadcumbApproval">{{'MANAGE_USER.APPROVALS.approvals' | translate}}</span>
+    <span class="breadcumbApproval">{{'APPROVALS.BREADCRUMB.APPROVALS' | translate}}</span>
     <span class="icon-top">
       <ibm-icon-chevron-right16 class="chevron-icon"></ibm-icon-chevron-right16>
     </span>
-    <span><strong class="new-user">{{'MANAGE_USER.APPROVALS.approval_summary' | translate}}</strong></span>
+    <span><strong class="new-user">{{'APPROVALS.BREADCRUMB.APPROVAL_SUMMARY' | translate}}</strong></span>
     <div class="clr"></div>
   </div>
   <div class="bx--row header-border ">
     <div class="bx--col-sm-12 bx--col-md-12 side-content">
       <div class="bodyContainer">
-        <p class="summHeader">Organization details</p>
+        <p class="summHeader">{{'APPROVALS.ORGANIZATION.ORGNIZATION_DETAILS' | translate}}</p>
         <hr class="underline">
         <div class="approvalData">
-        <span class="orgDetails1">Name</span>
-        <span class="orgDetails2">Address</span>
-        <span class="orgDetails3">Parent</span>
+        <span class="orgDetails1">{{'APPROVALS.ORGANIZATION.NAME' | translate}}</span>
+        <span class="orgDetails2">{{'APPROVALS.ORGANIZATION.ADDRESS' | translate}}</span>
+        <span class="orgDetails3">{{'APPROVALS.ORGANIZATION.PARENT' | translate}}</span>
       </div>
-      <div class="approvalData2">
-          <span class="approvaldetail1">Name</span>
-          <span class="approvaldetail2">Address</span>
-          <span class="approvaldetail3">Parent</span>
+      <div class="approvalData2" *ngIf="showOrganizationData">
+          <div class="org-name">
+              <span>{{organizationDetails.organizationName}}</span>
+          </div>
+          <div class="org-address">
+            <div>{{organizationDetails.address.address1}}</div>
+            <div>{{organizationDetails.address.city}}</div>
+            <div>{{organizationDetails.address.state}}</div>
+            <div>{{organizationDetails.address.country}}</div>
+          </div>
+          <div class="org-parent">
+              <span class="approvaldetail3">{{organizationDetails.parentOrganizationName}}</span>
+          </div>
       </div>
       </div>
       <div class="bodyContainer">
-        <p class="summHeader">User details</p>
+        <p class="summHeader">{{'APPROVALS.USER.USER_DETAILS' | translate}}</p>
         <hr class="underline">
         <div class="approvalData">
-        <span class="orgDetails1">Name</span>
-        <span class="orgDetails2">Username</span>
-        <span class="orgDetails3">Email</span>
+        <span class="orgDetails1">{{'APPROVALS.USER.NAME' | translate}}</span>
+        <span class="orgDetails2">{{'APPROVALS.USER.USERNAME' | translate}}</span>
+        <span class="orgDetails3">{{'APPROVALS.USER.EMAIL' | translate}}</span>
       </div>
-      <div class="approvalData2">
-          <span class="approvaldetail1">Name</span>
-          <span class="approvaldetail2">Address</span>
-          <span class="approvaldetail32">Parent</span>
+      <div class="approvalData2" *ngIf="showUserData">
+          <span class="approvaldetail1">{{userDetails.address.firstName}} {{userDetails.address.lastName}}</span>
+          <span class="approvaldetail2">{{userDetails.address.email1}}</span>
+          <span class="approvaldetail32">{{userDetails.address.email1}}</span>
       </div>
         <div class="secondrowOrgdetail">
-          <span class="orgDetails1">Organization</span>
-          <span class="orgDetails23">Roles</span>
+          <span class="orgDetails1">{{'APPROVALS.USER.ORGANIZATION' | translate}}</span>
+          <span class="orgDetails23">{{'APPROVALS.USER.ROLES' | translate}}</span>
         </div>
-        <div class="approvalData2">
-            <span class="approvaldetail1">Name</span>
-            <span class="approvaldetail22">Address</span>
-          
+        <div class="approvalData2" *ngIf="showUserData">
+            <!-- <span class="approvaldetail1">{{userDetails.parentOrganizationName}}</span>
+            <span class="approvaldetail22">Roles Data</span> -->
+            <div class="org-name">
+                <span>{{userDetails.parentOrganizationName}}</span>
+            </div>
+            <div class="roles-name" *ngFor="let roles of rolesNameToDisplay">
+              <div>{{roles}}</div>
+            </div>
         </div>
       </div>
       <div>
-      <p class="comment">Comments</p>
+      <p class="comment">{{'APPROVALS.USER.COMMENTS' | translate}}</p>
           
-              <textarea ibmTextArea aria-label="textarea" rows="4" cols="50"></textarea>
+              <textarea ibmTextArea aria-label="textarea" rows="4" cols="50" [(ngModel)]="comments" (keyup)="controlButtons()"></textarea>
               <!-- <input ibmText class=" inputbx"> -->
       
             </div>
     
       <div class="footerButtons">
-        <button ibmButton='danger--primary' class="footButtonCancel">Cancel</button> 
-        <button ibmButton='tertiary' class="footButton">Reject</button>
-        <button ibmButton='primary' class="footButton">Approve</button>
+        <button ibmButton='danger--primary' class="footButtonCancel"  (click)="cancelButton()">{{'APPROVALS.BUTTON.CANCEL'|
+          translate}}</button> 
+        <button ibmButton='tertiary' class="footButton" [disabled]="disabledButtons" (click)="submitApproval('reject')">{{'APPROVALS.BUTTON.REJECT'|
+          translate}}</button>
+        <button ibmButton='primary' class="footButton" [disabled]="disabledButtons" (click)="submitApproval('approve')">{{'APPROVALS.BUTTON.APPROVE'|
+          translate}}</button>
       </div>
     </div>
   </div>

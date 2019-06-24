@@ -1,7 +1,4 @@
-<div class="header">
-  <ibm-icon-menu32 class="menu-icon"></ibm-icon-menu32>
-  <span class="ibm-text">{{'MANAGE_USER.MANAGE_USER_GROUPS.TITLE'| translate}}</span>
-</div>
+
 <div class="border-div">
   <div class="users">
     <span>{{'MANAGE_USER.MANAGE_USER_GROUPS.USERS'| translate}}</span>
@@ -20,7 +17,7 @@
         <div>{{'MANAGE_USER.MANAGE_USER_GROUPS.GROUPS'| translate}}</div>
       </div>
     </div>
-    <div class="bx--col-sm-8 bx--col-md-8 right-content">
+    <form [formGroup]="manageGroupForm" class="bx--col-sm-8 bx--col-md-8 right-content">
       <div class="bx--row main-content">
         <div class="bx--col-sm-11 bx--col-md-11 inside-content">
           <ibm-tabs>
@@ -33,7 +30,7 @@
                   <div class="aval-grp-txt">
                     <span>{{'MANAGE_USER.MANAGE_USER_GROUPS.INCLUDE_TAB.AVAILABLE_GROUPS'| translate}}</span>
                   </div>
-                  <input ibmText class="inputbx" placeholder="Find a group"><br /><br />
+                  <input ibmText class="inputbx" placeholder="Find a group" formControlName="includeSearchText" ngDefaultControl><br /><br />
                   <ul>
                     <li *ngFor="let groupList of groupListData">
                       <ibm-checkbox (change)="onChange($event)">
@@ -76,5 +73,7 @@
             </div>
           </div>
     </div>
-    
+    </form>
+   </div> 
+</div>
   

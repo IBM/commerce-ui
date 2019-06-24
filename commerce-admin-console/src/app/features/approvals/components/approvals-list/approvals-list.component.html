@@ -1,5 +1,4 @@
-<div class="userLandingPage">
-  <!-- Header part (start) -->
+<!-- <div class="userLandingPage">
    <div class="Header bx--row">
        <div class="menuLogo bx--col-xs-1 bx--col-sm-1 bx--col-md-1 bx--col-lg-1 bx--col-xl-1 bx--col-xxl-1">
            <ibm-icon-menu32 class="icon-menu"></ibm-icon-menu32>
@@ -9,7 +8,7 @@
                IBM Watson Commerce
            </p>
        </div>
-   </div>
+   </div> -->
 <!-- User part(start) -->
 <div class="Users bx--row">
     <div class="bx--col-xs-12 bx--col-sm-12 bx--col-md-12 bx--col-lg-12 bx--col-xl-12 bx--col-xxl-12">
@@ -32,21 +31,25 @@
         <span class="icons glyphiconsButton">
             <ibm-icon-search16></ibm-icon-search16>
         </span>
+        <a routerLink="/approvals/approvalSummary">Approval Summary</a>
     </div>
 </div>
 
 <!-- TABLE PART (START) -->
 <div class="TableItem bx--row">
-  <div class="table-body">
+  <div class="table-body" *ngIf="showApprovalList">
         <ibm-table [model]="model"  [striped]="striped"></ibm-table>
-        <ng-template #listOrgItemTemplate let-data="data">
-                <ibm-overflow-menu>
+        <!-- <ng-template #listOrgItemTemplate let-data="data"> -->
+                <!-- <ibm-overflow-menu>
                         <ibm-overflow-menu-option *ngFor="let option of options">
                             {{option}}
                         </ibm-overflow-menu-option>
-                    </ibm-overflow-menu>
-     </ng-template>
+                    </ibm-overflow-menu> -->
+                    <ng-template #listOrgItemTemplate let-data="data">
+                        <a routerLink="['/organisations', data.id]" (click)="getSelectedOrganization(data.requestor)">{{data.requestor}}</a>
+                 </ng-template>
+     <!-- </ng-template> -->
     
-        <ibm-pagination  [model]="model" ></ibm-pagination>
+     <ibm-pagination  [model]="model" (selectPage)="selectPage($event)"></ibm-pagination>
   </div> 
 </div>

@@ -1,0 +1,374 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0",
+    "title": "member-group-types"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/member-group-types": {
+      "get": {
+        "tags": [
+          "member-group-types"
+        ],
+        "description": "Get a collection of member group type.",
+        "operationId": "getMemberGroupTypes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The member group type identifier.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "description": "The description of the member group type.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The name of the member group type.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "properties",
+            "in": "query",
+            "description": "The properties of the member group type.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The position within the resulting dataset where the query begins returning item records. If the offset is \"5\", the records that returned begin with the sixth record that matches the query parameters. If the offset is \"0\", the records that are returned begin with the first record that matches the query parameters.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of records to return.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "The comma-separated set of properties to be returned. If no properties are specified, all properties are returned.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "description": "The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of member group type.",
+            "schema": {
+              "$ref": "#/definitions/MemberGroupTypeCollection"
+            }
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "member-group-types"
+        ],
+        "description": "Create a member group type.",
+        "operationId": "createMemberGroupType",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "MemberGroupType",
+            "description": "A member-group-type.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MemberGroupType"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The operation was successful."
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          }
+        }
+      }
+    },
+    "/member-group-types/{id}": {
+      "get": {
+        "tags": [
+          "member-group-types"
+        ],
+        "description": "Get a member group type.",
+        "operationId": "getMemberGroupTypeById",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "The comma-separated set of properties to be returned. If no properties are specified, all properties are returned.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "description": "The comma-separated set of related resources referenced in the links to be returned. If no related resources are specified, no related resources are returned.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "The comma-separated set of properties which controls the order of the items being listed, prefixed by either (-) to sort by descending order, or optionally (+) to sort by ascending order. For example, sort=name,-d which means, order the items based on the name value in ascending order, then by the id value in descending order.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A member-group-type.",
+            "schema": {
+              "$ref": "#/definitions/MemberGroupType"
+            }
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          },
+          "404": {
+            "description": "The resource was not found."
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "member-group-types"
+        ],
+        "description": "Delete a member group type.",
+        "operationId": "deleteMemberGroupTypeById",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "The operation was successful."
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          },
+          "404": {
+            "description": "The resource was not found."
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "member-group-types"
+        ],
+        "description": "Update a member group type.",
+        "operationId": "updateMemberGroupTypeById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "MemberGroupType",
+            "description": "A member-group-type.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MemberGroupType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation was successful."
+          },
+          "400": {
+            "description": "There was a client error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          },
+          "404": {
+            "description": "The resource was not found."
+          },
+          "500": {
+            "description": "There was a server error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponseContainer"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "The member group type identifier.",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Link": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL of the link."
+        }
+      },
+      "description": "Links to related resources."
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageKey": {
+          "type": "string"
+        },
+        "messageArguments": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "correlationId": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        }
+      },
+      "description": "The error message item model."
+    },
+    "ErrorResponseContainer": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      },
+      "description": "The error message model."
+    },
+    "MemberGroupType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The member group type identifier."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the member group type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The name of the member group type."
+        },
+        "properties": {
+          "type": "string",
+          "description": "The properties of the member group type."
+        }
+      },
+      "description": "A member-group-type."
+    },
+    "MemberGroupTypeCollection": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The total number of items."
+        },
+        "items": {
+          "type": "array",
+          "description": "The items.",
+          "items": {
+            "$ref": "#/definitions/MemberGroupType"
+          }
+        }
+      },
+      "description": "A collection of member group type."
+    }
+  }
+}
