@@ -3,7 +3,7 @@
 -- README needs updating.
 
 This template can be used as the starting point for a project that will produce 
-docker images.  These docker images act as micro engiines for our products.
+docker images.  These docker images act as micro engines for our products.
 
 # Getting Started
 
@@ -13,7 +13,7 @@ your own.  Execute the following to get your repository set up:
 * Fork this repository 
 * By default your new repository will have the same name.  This will need to 
 be changed to something meaningful.  From the repository's main page, select
-`edit project` from the settings button.
+`Edit project` from the `Settings` button.
 * From the `Rename repository` section, change the project name and the path 
 values to your desired name.  Make sure you keep path and name consistent to 
 avoid confusion.  When ready, rename the project.
