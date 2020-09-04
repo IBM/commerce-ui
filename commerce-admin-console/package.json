@@ -37,7 +37,7 @@
     "carbon-components-angular": "^2.47.0",
     "core-js": "^2.5.3",
     "ng2-search-filter": "^0.4.7",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "rxjs": "6.2.2",
     "rxjs-compat": "6.2.2",
     "zone.js": "^0.8.18"
